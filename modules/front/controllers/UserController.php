@@ -4,6 +4,7 @@ namespace app\modules\front\controllers;
 
 use app\forms\LoginForm;
 use app\forms\ProfilePasswordForm;
+use app\forms\RequireResetPasswordForm;
 use app\forms\ResetProfilePasswordForm;
 use app\library\helper\Helper;
 use app\models\Users;
@@ -120,33 +121,25 @@ class UserController extends FrontController
 
     public function actionForgot()
     {
-        $getEmail=$_POST['Lupa']['email'];
-        $getModel= Users::model()->findByAttributes(array('email'=>$getEmail));
-        if(isset($_POST['Lupa']))
+        $form = new RequireResetPasswordForm();
+
+
+        if(\Yii::$app->request->isPost)
         {
-            $getToken=rand(0, 99999);
-            $getTime=date("H:i:s");
-            $getModel->token=md5($getToken.$getTime);
-            $namaPengirim="Owner Jsource Indonesia";
-            $emailadmin="fahmi.j@programmer.net";
-            $subjek="Reset Password";
-            $setpesan="you have successfully reset your password<br/>
-                    <a href='http://yourdomain.com/index.php?r=site/vertoken/view&token=".$getModel->token."'>Click Here to Reset Password</a>";
-            if($getModel->validate())
+            $getModel= Users::findOne(array('username' => \Yii::$app->request->post('email')));
+            if($form->validate() && $getModel)
             {
-                $name='=?UTF-8?B?'.base64_encode($namaPengirim).'?=';
-                $subject='=?UTF-8?B?'.base64_encode($subjek).'?=';
-                $headers="From: $name <{$emailadmin}>\r\n".
-                    "Reply-To: {$emailadmin}\r\n".
-                    "MIME-Version: 1.0\r\n".
-                    "Content-type: text/html; charset=UTF-8";
-                $getModel->save();
-                \Yii::app()->user->setFlash('forgot','link to reset your password has been sent to your email');
-                mail($getEmail,$subject,$setpesan,$headers);
-                $this->refresh();
+                echo '<pre>';
+                print_r(12121);
+                echo '</pre>';
+                die;
+                // Todo send mail
+//                $this->refresh();
             }
 
         }
-        $this->render('forgot');
+        return $this->render('forgot', [
+            'model' => $form
+        ]);
     }
 }

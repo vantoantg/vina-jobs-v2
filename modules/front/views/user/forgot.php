@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use yii\bootstrap\ActiveForm;
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\User */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -10,8 +12,18 @@ use yii\widgets\Pjax;
 $this->title = 'Forgot password';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="users-index">
+<div class="container">
+    <div class="users-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+        <h1><?= Html::encode($this->title) ?></h1>
 
+        <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+        <?php
+        echo $form->field($model, 'email');
+        ?>
+        <div class="form-group">
+            <?= \yii\helpers\Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+        </div>
+        <?php ActiveForm::end(); ?>
+    </div>
 </div>
