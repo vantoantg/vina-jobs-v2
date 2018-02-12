@@ -1,6 +1,7 @@
 <?php
 
 use yii\bootstrap\ActiveForm;
+use app\library\helper\Helper;
 
 ?>
 
@@ -26,7 +27,7 @@ use yii\bootstrap\ActiveForm;
             <?php ActiveForm::end(); ?>
 
             <div class="login-help">
-                <a href="#">Register</a> - <a href="#">Forgot Password</a>
+                <a href="#">Register</a> - <a href="<?= Helper::createUrl('front/user/forgot') ?>">Forgot Password</a>
             </div>
             <div class="text-center socials">
                 <h2>or</h2><br>

@@ -14,6 +14,7 @@ return [
 	'user/register.html' => 'front/user/register',
 	'user/profile.html' => 'front/user/profile',
 	'user/profile/<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/user/view-profile',
+	'user/forgot-password.html' => 'front/user/forgot',
 
 
 
