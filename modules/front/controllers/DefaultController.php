@@ -16,6 +16,10 @@ class DefaultController extends FrontController
      */
     public function actionIndex()
     {
+        echo '<pre>';
+        print_r(12312313);
+        echo '</pre>';
+        die;
         return $this->render('index');
     }
 }
