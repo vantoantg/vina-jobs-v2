@@ -2,6 +2,7 @@
 .idea
 /config/db.php
 /assets
+!/assets/*.php
 /vendor
 # netbeans project files
 nbproject
