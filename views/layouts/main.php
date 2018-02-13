@@ -88,9 +88,9 @@ AppAsset::register($this);
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="<?= Helper::createUrl('front/jobs/post-jobs') ?>">Post a Job</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Change password</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Update profile</a></li>
-                            <li role="presentation" class="divider"></li>
                             <li role="presentation"><a href="<?= Helper::createUrl('front/user/profile') ?>">My page</a></li>
-
+                            <li role="presentation" class="divider"></li>
+                            <li role="presentation"><a href="<?= Helper::createUrl('front/user/logout') ?>">Logout</a></li>
                         </ul>
                     </div>
 
