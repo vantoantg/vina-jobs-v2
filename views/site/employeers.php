@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="container">
-    <div class="row page-title text-center wow bounce"  data-wow-delay="1s">
+    <div class="row page-title text-center wow bounce" data-wow-delay="1s">
         <h5>Recent Jobs</h5>
         <h2><span>54716</span> Available jobs for you</h2>
     </div>
