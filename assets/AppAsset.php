@@ -38,6 +38,7 @@ class AppAsset extends AssetBundle
         'web/template/jobs/js/main.js',
         'web/js/common/service.js',
         'web/js/site/login.js',
+        'web/js/site/main.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -125,4 +125,7 @@ var isMobile = {
     }
 };
 
-Common.clickGoToUrl();
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+    Common.clickGoToUrl();
+});
