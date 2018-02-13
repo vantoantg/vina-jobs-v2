@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-class CurriculumVitae extends \app\models\base\JobCategories
+class CurriculumVitae extends \app\models\base\CurriculumVitae
 {
 
 }

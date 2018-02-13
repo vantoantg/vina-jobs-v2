@@ -2,6 +2,7 @@
 
 namespace app\modules\front\controllers;
 
+use Yii;
 use app\forms\LoginForm;
 use app\forms\ProfilePasswordForm;
 use app\forms\RequireResetPasswordForm;
@@ -92,29 +93,29 @@ class UserController extends FrontController
 
     public function getToken($token)
     {
-        $model=Users::model()->findByAttributes(array('token'=>$token));
-        if($model===null)
-            throw new CHttpException(404,'The requested page does not exist.');
+        $model = Users::model()->findByAttributes(array('token' => $token));
+        if ($model === null) {
+            throw new CHttpException(404, 'The requested page does not exist.');
+        }
         return $model;
     }
 
 
     public function actionVerToken($token)
     {
-        $model=$this->getToken($token);
-        if(isset($_POST['Ganti']))
-        {
-            if($model->token==$_POST['Ganti']['tokenhid']){
-                $model->password=md5($_POST['Ganti']['password']);
-                $model->token="null";
+        $model = $this->getToken($token);
+        if (isset($_POST['Ganti'])) {
+            if ($model->token == $_POST['Ganti']['tokenhid']) {
+                $model->password = md5($_POST['Ganti']['password']);
+                $model->token = "null";
                 $model->save();
-                Yii::app()->user->setFlash('ganti','<b>Password has been successfully changed! please login</b>');
+                Yii::app()->user->setFlash('ganti', '<b>Password has been successfully changed! please login</b>');
                 $this->redirect('?r=site/login');
                 $this->refresh();
             }
         }
-        $this->render('verifikasi',array(
-            'model'=>$model,
+        $this->render('verifikasi', array(
+            'model' => $model,
         ));
     }
 
@@ -123,20 +124,17 @@ class UserController extends FrontController
     {
         $form = new RequireResetPasswordForm();
 
+        if (Yii::$app->request->isPost) {
+            // if ($form->validate()) {
+            $data = Yii::$app->request->post($form->formName());
+                $User = Users::findOne(array('username' => $data['email']));
+                if ($User) {
+                    // Todo send mail
+                    $form->sendEmailResetPassword(Yii::$app->params['adminEmail'], $User);
+                } else {
 
-        if(\Yii::$app->request->isPost)
-        {
-            $getModel= Users::findOne(array('username' => \Yii::$app->request->post('email')));
-            if($form->validate() && $getModel)
-            {
-                echo '<pre>';
-                print_r(12121);
-                echo '</pre>';
-                die;
-                // Todo send mail
-//                $this->refresh();
-            }
-
+                }
+            //}
         }
         return $this->render('forgot', [
             'model' => $form

@@ -25,10 +25,32 @@ class JobsController extends FrontController
     }
 
     public function actionPostJobs(){
+        $model = new \app\models\Job();
 
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+                // form inputs are valid, do something here
+                return;
+            }
+        }
+
+        return $this->render('jobs', [
+            'model' => $model,
+        ]);
     }
 
-    public function actionPostCV(){
+    public function actionPostCv(){
+        $model = new \app\models\CurriculumVitae();
 
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+                // form inputs are valid, do something here
+                return;
+            }
+        }
+
+        return $this->render('cv', [
+            'model' => $model,
+        ]);
     }
 }

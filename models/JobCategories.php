@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-class Jobs extends \app\models\base\Jobs
+class JobCategories extends \app\models\base\JobCategories
 {
 
 }
