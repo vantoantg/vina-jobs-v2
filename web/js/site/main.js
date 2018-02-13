@@ -18,7 +18,6 @@ var Main = function () {
 
         },
         blog: function () {
-            alert(1121);
 
             var acc = document.getElementsByClassName("accordion");
             var i;
