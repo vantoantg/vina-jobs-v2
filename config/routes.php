@@ -16,6 +16,10 @@ return [
 	'user/profile/<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/user/view-profile',
 	'user/forgot-password.html' => 'front/user/forgot',
 
+    // jobs
+	'service/register-jobs.html' => 'front/jobs/post-jobs',
+	'service/register-cv.html' => 'front/jobs/post-cv',
+
 
 
 	/* Admin module

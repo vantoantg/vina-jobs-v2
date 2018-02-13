@@ -1,7 +1,7 @@
 <?php
+
 namespace app\forms;
 
-use app\models\Users as User;
 use yii\base\Model;
 
 class RequireResetPasswordForm extends Model
@@ -24,13 +24,17 @@ class RequireResetPasswordForm extends Model
         ];
     }
 
-/*    protected function getUser()
-    {
-        if ($this->_user === null) {
-            $this->_user = User::findByUsername($this->username);
-        }
+    public function sendEmailResetPassword($email, $User){
+        /** var $User Users */
+        $mail = \Yii::$app->mailer->compose('@app/mail/layouts/html', ['content' => 1312312312])
+            ->setFrom($email)
+            ->setTo($this->email)
+            ->setSubject('Email sent from Yii2-Swiftmailer')
+            ->send();
 
-        return $this->_user;
-    }*/
-
+        echo '<pre>';
+        print_r($mail);
+        echo '</pre>';
+        die;
+    }
 }

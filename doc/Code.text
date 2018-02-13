@@ -1,0 +1,23 @@
+http://www.yiiframework.com/extension/yii2-migration-creator/
+php yii migrate
+php yii migrate/create table_name
+php yii migrate/update table_name
+
+
+http://www.bsourcecode.com/2013/04/render-and-renderpartial-in-yii/#renderPartial
+
+
+
+Php-...:
+
+Either GD PHP extension with FreeType support or ImageMagick PHP extension with PNG support is required. (apt-get install php5.6-gd)
+
+Php Rbac (Role based access control): http://www.yiiframework.com/doc-2.0/guide-security-authorization.html#rbac
+
+run to create table: yii migrate --migrationPath=@yii/rbac/migrations
+
+Auth:
+composer require --prefer-dist yiisoft/yii2-authclient
+
+Rich Text Input With Redactor:
+composer require --prefer-dist yiidoc/yii2-redactor "*"

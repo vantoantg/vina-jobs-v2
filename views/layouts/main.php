@@ -79,13 +79,25 @@ AppAsset::register($this);
                 <?php
                 if(\app\library\helper\Common::isLoginned()){
                 ?>
-                    <a href="<?= Helper::createUrl('front/user/profile') ?>">
-                    <button class="navbar-btn nav-button wow bounceInRight login"
-                            data-wow-delay="0.8s">My page</button>
-                    </a>
+                    <div class="dropdown">
+                        <button class="navbar-btn nav-button wow bounceInRight login dropdown-toggle" type="button" id="dropdownMenuButton" data-wow-delay="0.8s" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?= \app\library\helper\Common::currentUser('name') ?> <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?= Helper::createUrl('front/jobs/post-cv') ?>">Post a CV</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?= Helper::createUrl('front/jobs/post-jobs') ?>">Post a Job</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Change password</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Update profile</a></li>
+                            <li role="presentation" class="divider"></li>
+                            <li role="presentation"><a href="<?= Helper::createUrl('front/user/profile') ?>">My page</a></li>
+
+                        </ul>
+                    </div>
+
+
                 <?php }else{ ?>
                 <a href="<?= Helper::createUrl('front/user/register') ?>">
-                    <button class="navbar-btn nav-button wow fadeInRight" data-toggle="modal" data-target="#register-modal" data-wow-delay="0.6s">Sign up</button>
+                    <button class="navbar-btn nav-button wow fadeInRight" data-wow-delay="0.6s">Sign up</button>
                 </a>
                     <button class="navbar-btn nav-button wow bounceInRight login" data-toggle="modal" data-target="#login-modal" data-wow-delay="0.8s">Login</button>
                 <?php } ?>

@@ -147,4 +147,5 @@ class Users extends \app\models\base\User implements IdentityInterface
         $this->password_reset_token = null;
     }
     /** EXTENSION MOVIE **/
+
 }
