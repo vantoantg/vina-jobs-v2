@@ -82,7 +82,7 @@
 	height:440px;
 }
 #bg-slider .item img {
-  height: 440px;
+  /*height: 440px;*/
 }
 .slider .owl-pagination {
   bottom: 165px;
@@ -321,7 +321,7 @@
 	height:440px;
 }
 #bg-slider .item img {
-  height: 440px;
+  /*height: 440px;*/
 }
 .slider .owl-pagination {
   bottom: 165px;
@@ -651,7 +651,7 @@
 	height: 540px;
 }
 #bg-slider .item img {
-  height: 540px;
+  /*height: 540px;*/
 }
 .tab-content ul li {
   height: 160px;
