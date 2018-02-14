@@ -11,7 +11,7 @@ use app\library\helper\Helper;
         <div class="loginmodal-container">
             <h1>Login</h1><br>
             <?php $form = ActiveForm::begin([
-                'action' => \app\library\helper\Helper::createUrl('front/user/login'),
+                'action' => \app\library\helper\Helper::createUrl(['front/user/login']),
                 'method' => "post",
                 'options' => [
                     'class' => 'form floating-label',
@@ -27,9 +27,9 @@ use app\library\helper\Helper;
             <?php ActiveForm::end(); ?>
 
             <div class="login-help">
-                <a href="<?= Helper::createUrl('front/user/register') ?>">Register</a>
+                <a href="<?= Helper::createUrl(['front/user/register']) ?>">Register</a>
                 -
-                <a href="<?= Helper::createUrl('front/user/forgot') ?>">Forgot Password</a>
+                <a href="<?= Helper::createUrl(['front/user/forgot']) ?>">Forgot Password</a>
             </div>
             <div class="text-center socials">
                 <h2>or</h2><br>
