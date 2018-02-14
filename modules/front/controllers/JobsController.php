@@ -27,11 +27,8 @@ class JobsController extends FrontController
     public function actionPostJobs(){
         $model = new \app\models\Job();
 
-        if ($model->load(Yii::$app->request->post())) {
-            if ($model->validate()) {
-                // form inputs are valid, do something here
-                return;
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+
         }
 
         return $this->render('jobs', [
