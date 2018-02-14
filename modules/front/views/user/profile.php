@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container">
     <div class="row">
         <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-            <A href="<?= Helper::createUrl('front/user/front/user/view-profile', ['id' => 1]) ?>" >view</A>
+            <A href="<?= Helper::createUrl('front/user/front/user/view-profile') ?>" >view</A>
             <A href="<?= Helper::createUrl('front/user/logout') ?>" >Edit Profile</A>
 
             <A href="<?= Helper::createUrl('front/user/logout') ?>" >Logout</A>

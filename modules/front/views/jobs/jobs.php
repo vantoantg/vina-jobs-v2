@@ -25,15 +25,13 @@ $this->title = 'Post a Job';
 
             <?php
             $countries = \app\models\JobCategories::find()->all();
-            //use yii\helpers\ArrayHelper;
             $listData = \yii\helpers\ArrayHelper::map($countries, 'id', 'name');
-
             echo $form->field($model, 'categories_id')->dropDownList(
                 $listData,
                 ['prompt' => 'Select...']
             );
             ?>
-            <?= $form->field($model, 'description') ?>
+            <?= $form->field($model, 'description')->textarea() ?>
             <?= $form->field($model, 'content')->widget(\yii\redactor\widgets\Redactor::className(), [
                 'clientOptions' => [
                     'placeholder' => 'Redactor placeholder text',

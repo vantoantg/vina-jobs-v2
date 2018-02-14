@@ -2,6 +2,7 @@
 
 namespace app\modules\front\controllers;
 
+use app\models\Job;
 use Yii;
 use app\forms\LoginForm;
 use app\forms\ProfilePasswordForm;
@@ -24,17 +25,43 @@ class JobsController extends FrontController
 //        return $this->render('index');
     }
 
+    /**
+     * @return string|\yii\web\Response
+     */
     public function actionPostJobs(){
-        $model = new \app\models\Job();
+        $model = new Job();
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-
+            $url = Yii::$app->getUrlManager()->createUrl(['front/jobs/edit-jobs', 'id' => $model->id]);
+            return $this->redirect($url);
         }
 
         return $this->render('jobs', [
             'model' => $model,
         ]);
     }
+
+    /**
+     * @param int $id
+     * @return string|\yii\web\Response
+     */
+    public function actionEditJobs($id = 0){
+        if($id){
+            $model = $this->findModel($id);
+        }
+        if(!$model){
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+        return $this->render('jobs', [
+            'model' => $model,
+        ]);
+    }
+
 
     public function actionPostCv(){
         $model = new \app\models\CurriculumVitae();
@@ -49,5 +76,21 @@ class JobsController extends FrontController
         return $this->render('cv', [
             'model' => $model,
         ]);
+    }
+
+    /**
+     * Finds the AuthAssignment model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param string $id
+     * @return Job the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = Job::findOne(['id' => $id])) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }
