@@ -15,7 +15,9 @@ var Main = function () {
             this.blog();
         },
         events: function () {
-
+            $('.job-select2').select2({
+                placeholder: 'Select an option'
+            });
         },
         blog: function () {
 

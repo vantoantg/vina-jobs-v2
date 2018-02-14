@@ -28,7 +28,7 @@ $this->title = 'Post a Job';
             $listData = \yii\helpers\ArrayHelper::map($countries, 'id', 'name');
             echo $form->field($model, 'categories_id')->dropDownList(
                 $listData,
-                ['prompt' => 'Select...']
+                ['prompt' => 'Select...', 'class' => 'job-select2 form-control']
             );
             ?>
             <?= $form->field($model, 'description')->textarea() ?>

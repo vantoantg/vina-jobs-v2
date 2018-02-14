@@ -9,6 +9,7 @@ use app\forms\ProfilePasswordForm;
 use app\forms\RequireResetPasswordForm;
 use app\library\helper\Helper;
 use app\models\Users;
+use yii\web\NotFoundHttpException;
 
 
 /**
@@ -44,6 +45,7 @@ class JobsController extends FrontController
     /**
      * @param int $id
      * @return string|\yii\web\Response
+     * @throws NotFoundHttpException
      */
     public function actionEditJobs($id = 0){
         if($id){
@@ -54,7 +56,7 @@ class JobsController extends FrontController
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            $this->refresh();
         }
 
         return $this->render('jobs', [
