@@ -37,4 +37,10 @@ return [
     'system' => [
         'class' => \app\modules\system\Module::class,
     ],
+    'redactor' => [
+        'class' => 'yii\redactor\RedactorModule',
+        'uploadDir' => '@webroot/uploads',
+        'uploadUrl' => '@web/uploads',
+        'imageAllowExtensions'=>['jpg','png','gif']
+    ]
 ];

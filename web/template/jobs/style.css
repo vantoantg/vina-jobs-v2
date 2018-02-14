@@ -986,3 +986,18 @@ button.accordion.active:after {
 .input-group-addon {
     border-radius: 0px;
 }
+
+.btn-primary {
+    color: #fff;
+    background-color: #00AEEF;
+    border-color: #00AEEF;
+    border-radius: 2px;
+}
+
+/* redactor-editor */
+.redactor-editor{
+    min-height: 400px;
+}
+#redactor-modal footer button.redactor-modal-action-btn{
+    background: #00AEEF;
+}
