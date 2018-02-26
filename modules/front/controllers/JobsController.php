@@ -2,6 +2,7 @@
 
 namespace app\modules\front\controllers;
 
+use app\library\helper\Common;
 use app\models\CurriculumVitae;
 use app\models\Job;
 use Yii;
@@ -65,8 +66,13 @@ class JobsController extends FrontController
      * @return string|\yii\web\Response
      */
     public function actionPostCv(){
-        $model = new CurriculumVitae();
+        $model = CurriculumVitae::findOne(['created_by' => Common::currentUser()]);
+        if($model){
+            $url = Yii::$app->getUrlManager()->createUrl(['front/jobs/edit-cv', 'id' => $model->id]);
+            return $this->redirect($url);
+        }
 
+        $model = new CurriculumVitae();
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
 
             $url = Yii::$app->getUrlManager()->createUrl(['front/jobs/edit-cv', 'id' => $model->id]);
@@ -88,7 +94,7 @@ class JobsController extends FrontController
         if($id){
             $model = CurriculumVitae::findOne(['id' => $id]);
         }
-        if(!$model){
+        if(!$model || $model->created_by != Common::currentUser()){
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 

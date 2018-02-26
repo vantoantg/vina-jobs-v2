@@ -2,6 +2,10 @@
 
 namespace app\models;
 
+use app\library\helper\Common;
+use app\library\helper\Datetime;
+use Carbon\Carbon;
+
 class CurriculumVitae extends \app\models\base\CurriculumVitae
 {
     /**
@@ -55,4 +59,22 @@ class CurriculumVitae extends \app\models\base\CurriculumVitae
             'status' => 'Status',
         ];
     }
+
+    public function beforeSave($insert)
+    {
+
+        if($this->isNewRecord){
+            $this->effect_date = Datetime::getTimeNow(null, Datetime::SQL_DATETIME);
+            $this->created_at = Datetime::getTimeNow(null, Datetime::SQL_DATETIME);
+            $this->updated_at = Datetime::getTimeNow(null, Datetime::SQL_DATETIME);
+            $this->updated_by = Common::currentUser();
+            $this->created_by = Common::currentUser();
+        }else{
+            $this->updated_at = Datetime::getTimeNow(null, Datetime::SQL_DATETIME);
+            $this->updated_by = Common::currentUser();
+        }
+
+        return parent::beforeSave($insert);
+    }
+
 }
