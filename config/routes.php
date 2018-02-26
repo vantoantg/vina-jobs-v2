@@ -17,10 +17,11 @@ return [
 	'user/forgot-password.html' => 'front/user/forgot',
 
     // jobs
-	'service/jobs/update/<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/edit-jobs',
+	'service/jobs/update/job-<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/edit-jobs',
 	'service/register-jobs.html' => 'front/jobs/post-jobs',
 
 	'service/register-cv.html' => 'front/jobs/post-cv',
+    'service/cv/update/<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/edit-cv',
 
 
 
