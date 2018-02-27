@@ -73,26 +73,13 @@ class Helper
 
     /**
      * @param string $route
+     * @param array $params
      * @return string
      */
-    public static function createUrl($route = '/', $params = [])
+    public static function createUrl($params = [])
     {
-        if($params){
-            // Todo
-        }
-        if($route == '/'){
-            return self::homeUrl();
-        }
-
-        foreach (self::getRoutes() as $url => $r) {
-            if ($route == $r) {
-                return self::homeUrl() . $url;
-            }
-        }
-
-        return $route;
+        return Yii::$app->getUrlManager()->createUrl($params);
     }
-
 
     /**
      * Get all route definned

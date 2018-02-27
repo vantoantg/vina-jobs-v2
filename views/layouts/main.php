@@ -84,32 +84,32 @@ AppAsset::register($this);
                             <?= \app\library\helper\Common::currentUser('name') ?> <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?= Helper::createUrl('front/jobs/post-cv') ?>">Post a CV</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?= Helper::createUrl('front/jobs/post-jobs') ?>">Post a Job</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?= Helper::createUrl(['front/jobs/post-cv']) ?>">Post a CV</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?= Helper::createUrl(['front/jobs/post-jobs']) ?>">Post a Job</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Change password</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Update profile</a></li>
-                            <li role="presentation"><a href="<?= Helper::createUrl('front/user/profile') ?>">My page</a></li>
+                            <li role="presentation"><a href="<?= Helper::createUrl(['front/user/profile']) ?>">My page</a></li>
                             <li role="presentation" class="divider"></li>
-                            <li role="presentation"><a href="<?= Helper::createUrl('front/user/logout') ?>">Logout</a></li>
+                            <li role="presentation"><a href="<?= Helper::createUrl(['front/user/logout']) ?>">Logout</a></li>
                         </ul>
                     </div>
 
 
                 <?php }else{ ?>
-                <a href="<?= Helper::createUrl('front/user/register') ?>">
+                <a href="<?= Helper::createUrl(['front/user/register']) ?>">
                     <button class="navbar-btn nav-button wow fadeInRight" data-wow-delay="0.6s">Sign up</button>
                 </a>
                     <button class="navbar-btn nav-button wow bounceInRight login" data-toggle="modal" data-target="#login-modal" data-wow-delay="0.8s">Login</button>
                 <?php } ?>
             </div>
             <ul class="main-nav nav navbar-nav navbar-right">
-                <li class="wow fadeInDown" data-wow-delay="0s"><a class="<?= Helper::active('front/default/index') ?>" href="<?= Helper::createUrl() ?>">Home</a></li>
-                <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="<?= Helper::active('site/job-seekers') ?>" href="<?= Helper::createUrl('site/job-seekers') ?>">Job Seekers</a></li>
-                <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="<?= Helper::active('site/employeers') ?>" href="<?= Helper::createUrl('site/employeers') ?>">Employeers</a></li>
-                <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="<?= Helper::active('site/about-us') ?>" href="<?= Helper::createUrl('site/about-us') ?>">About us</a></li>
-                <li class="wow fadeInDown" data-wow-delay="0.4s"><a class="<?= Helper::active('site/blog') ?>" href="<?= Helper::createUrl('site/blog') ?>">Blog</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0s"><a class="<?= Helper::active('front/default/index') ?>" href="<?= Helper::createUrl(['front/default/index']) ?>">Home</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="<?= Helper::active('site/job-seekers') ?>" href="<?= Helper::createUrl(['site/job-seekers']) ?>">Job Seekers</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="<?= Helper::active('site/employeers') ?>" href="<?= Helper::createUrl(['site/employeers']) ?>">Employeers</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="<?= Helper::active('site/about-us') ?>" href="<?= Helper::createUrl(['site/about-us']) ?>">About us</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.4s"><a class="<?= Helper::active('site/blog') ?>" href="<?= Helper::createUrl(['site/blog']) ?>">Blog</a></li>
 
-                <li class="wow fadeInDown" data-wow-delay="0.5s"><a class="<?= Helper::active('site/contact') ?>" href="<?= Helper::createUrl('site/contact') ?>">Contact</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.5s"><a class="<?= Helper::active('site/contact') ?>" href="<?= Helper::createUrl(['site/contact']) ?>">Contact</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

@@ -12,13 +12,17 @@ return [
 	'user/logout.html' => 'front/user/logout',
 	'user/login.html' => 'front/user/login',
 	'user/register.html' => 'front/user/register',
+	'user/update.html' => 'front/user/update',
 	'user/profile.html' => 'front/user/profile',
 	'user/profile/<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/user/view-profile',
 	'user/forgot-password.html' => 'front/user/forgot',
 
     // jobs
+	'service/jobs/update/job-<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/edit-jobs',
 	'service/register-jobs.html' => 'front/jobs/post-jobs',
+
 	'service/register-cv.html' => 'front/jobs/post-cv',
+    'service/cv/update/<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/edit-cv',
 
 
 

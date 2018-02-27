@@ -17,8 +17,56 @@ class Users extends \app\models\base\User implements IdentityInterface
         USER_TYPE_GITHUB = 5;
 
     public $slug_name;
+    public $as_employers;
     public $new_password;
     public $renew_password;
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['name', 'email', 'password', 'auth_key'], 'required'],
+            [['role', 'archive', 'type', 'status'], 'integer'],
+            [['attributes'], 'string'],
+            [['username', 'name'], 'string', 'max' => 32],
+            [['email', 'avatar_url'], 'string', 'max' => 255],
+            [['password'], 'string', 'max' => 64],
+            [['auth_key', 'access_token', 'password_reset_token'], 'string', 'max' => 128],
+            [['slug_name', 'avatar'], 'string', 'max' => 155],
+            [['lang'], 'string', 'max' => 5],
+            [['timezone'], 'string', 'max' => 100],
+            [['access_token'], 'unique'],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'username' => 'Email',
+            'email' => 'Email',
+            'password' => 'Password',
+            'auth_key' => 'Auth Key',
+            'access_token' => 'Access Token',
+            'password_reset_token' => 'Password Reset Token',
+            'role' => 'Role',
+            'name' => 'Name',
+            'slug_name' => 'Slug Name',
+            'avatar' => 'Avatar',
+            'avatar_url' => 'Avatar Url',
+            'archive' => 'Archive',
+            'type' => 'Type',
+            'lang' => 'Lang',
+            'timezone' => 'Timezone',
+            'attributes' => 'Attributes',
+            'status' => 'Status',
+        ];
+    }
 
     public function beforeSave($insert) {
         $this->setPassword($this->password);
