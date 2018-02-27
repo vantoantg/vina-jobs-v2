@@ -1,3 +1,6 @@
+Install:
+bower install select2
+
 http://www.yiiframework.com/extension/yii2-migration-creator/
 php yii migrate
 php yii migrate/create table_name
