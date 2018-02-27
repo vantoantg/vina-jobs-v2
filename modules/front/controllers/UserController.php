@@ -2,6 +2,7 @@
 
 namespace app\modules\front\controllers;
 
+use app\library\helper\Common;
 use Yii;
 use app\forms\LoginForm;
 use app\forms\ProfilePasswordForm;
@@ -9,6 +10,7 @@ use app\forms\RequireResetPasswordForm;
 use app\forms\ResetProfilePasswordForm;
 use app\library\helper\Helper;
 use app\models\Users;
+use yii\web\NotFoundHttpException;
 
 
 /**
@@ -28,6 +30,28 @@ class UserController extends FrontController
     public function actionRegister()
     {
         $model = new Users();
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
+
+            $url = Yii::$app->getUrlManager()->createUrl(['front/user/update']);
+            return $this->redirect($url);
+        }
+        return $this->render('register', [
+            'model' => $model
+        ]);
+    }
+
+    public function actionUpdate()
+    {
+        $model = Users::findOne(['id' => Common::currentUser()]);
+        if(!$model){
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
+
+            $url = Yii::$app->getUrlManager()->createUrl(['front/jobs/edit-cv', 'id' => $model->id]);
+            return $this->redirect($url);
+        }
         return $this->render('register', [
             'model' => $model
         ]);
