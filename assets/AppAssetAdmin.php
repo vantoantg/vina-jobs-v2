@@ -23,6 +23,7 @@ class AppAssetAdmin extends AssetBundle
 		'web/template/admin/assets/css/theme-default/material-design-iconic-font.min.css',
 		'web/template/admin/assets/css/theme-default/libs/rickshaw/rickshaw.css',
 		'web/template/admin/assets/css/theme-default/libs/morris/morris.core.css',
+		'web/template/admin/assets/less/admin.css',
 	];
 	public $js = [
 //		'web/template/admin/assets/js/libs/jquery/jquery-1.11.2.min.js',

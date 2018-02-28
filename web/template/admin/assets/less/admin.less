@@ -1,0 +1,26 @@
+@white: #fff;
+
+#content{
+	.grid-view{
+		table{
+			background: @white;
+			thead{
+				tr{
+					th:last-child{ min-width: 70px}
+				}
+			}
+		}
+	}
+	.col-lg-offset-1.col-md-8{
+		background: @white;
+		.form-group{
+			> label,
+			.control-label{
+				opacity: 1;
+			}
+			label.checkbox-inline.checkbox-styled{
+				> span{ display: none}
+			}
+		}
+	}
+}
