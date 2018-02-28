@@ -13,7 +13,7 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(['options' => ['class' => 'form form-validate floating-label']]); ?>
 
 	<?php
-	$countries = \app\models\ProductCategory::find()->all();
+	$countries = \app\models\ProductCategory::categoriesMenus();
 	$listData = \yii\helpers\ArrayHelper::map($countries, 'id', 'name');
 	echo $form->field($model, 'category_id',[
 		'template' => '{input}{label}{error}{hint}'
@@ -30,13 +30,9 @@ use yii\widgets\ActiveForm;
 		'template' => '{input}{label}{error}{hint}'
 	])->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description', [
-	    'template' => '{input}{label}{error}{hint}'
-    ])->textarea(['rows' => 6]) ?>
-
-	<?= $form->field($model, 'content')->widget(\yii\redactor\widgets\Redactor::className(), [
+	<?= $form->field($model, 'description')->widget(\yii\redactor\widgets\Redactor::className(), [
 		'clientOptions' => [
-			'placeholder' => 'Content',
+			'placeholder' => 'Content..',
 			'observeLinks' => true,
 			'convertVideoLinks' => true,
 			'imageUpload' => ['/web/uploads/image'],
@@ -65,9 +61,11 @@ use yii\widgets\ActiveForm;
 		]
 	]) ?>
 
+	<?= $form->field($model, 'content')->textarea(['rows' => 6, 'id' => 'page-content', 'class' => 'form-control']) ?>
+
     <?= $form->field($model, 'image', [
 	    'template' => '{input}{label}{error}{hint}'
-    ])->textInput(['maxlength' => true]) ?>
+    ])->textInput(['maxlength' => true, 'class' => 'openFinder form-control image-url', 'data-target' => '.image-url', 'data-type'=> 'Images']) ?>
 
     <?= $form->field($model, 'slug', [
 	    'template' => '{input}{label}{error}{hint}'

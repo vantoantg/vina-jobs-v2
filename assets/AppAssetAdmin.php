@@ -51,6 +51,13 @@ class AppAssetAdmin extends AssetBundle
 		'web/template/admin/assets/js/core/source/AppNavSearch.js',
 		'web/template/admin/assets/js/core/source/AppVendor.js',
 		'web/template/admin/assets/js/core/demo/Demo.js',
+
+		/* CkEditor */
+		'web/ckeditors/ckeditor/ckeditor.js',
+		/* CkFinder */
+		'web/ckeditors/ckfinder/ckfinder.js?type=Images',
+
+		'web/js/admin/admin.js',
 	];
 	public $depends = [
 		'yii\web\YiiAsset',

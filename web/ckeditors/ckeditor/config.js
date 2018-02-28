@@ -7,10 +7,10 @@
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
-	config.filebrowserBrowseUrl = '/vendor/bower/ckeditors/ckfinder/ckfinder.html';
-	config.filebrowserImageBrowseUrl = '/vendor/bower/ckeditors/ckfinder/ckfinder.html?type=Images';
-	config.filebrowserFlashBrowseUrl = '/vendor/bower/ckeditors/ckfinder/ckfinder.html?type=Flash';
-	config.filebrowserUploadUrl = '/vendor/bower/ckeditors/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';
-	config.filebrowserImageUploadUrl = '/vendor/bower/ckeditors/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images';
-	config.filebrowserFlashUploadUrl = '/vendor/bower/ckeditors/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash';
+	config.filebrowserBrowseUrl = 'http://localhost/web/ckeditors/ckfinder/ckfinder.html';
+	config.filebrowserImageBrowseUrl = 'http://localhost/web/ckeditors/ckfinder/ckfinder.html?type=Images';
+	config.filebrowserFlashBrowseUrl = 'http://localhost/web/ckeditors/ckfinder/ckfinder.html?type=Flash';
+	config.filebrowserUploadUrl = 'http://localhost/web/ckeditors/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';
+	config.filebrowserImageUploadUrl = 'http://localhost/web/ckeditors/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images';
+	config.filebrowserFlashUploadUrl = 'http://localhost/web/ckeditors/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash';
 };
