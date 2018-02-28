@@ -72,6 +72,20 @@ use app\library\helper\Helper;
     </li><!--end /menu-li -->
     <!-- END LEVELS -->
 
+    <!-- BEGIN EMAIL -->
+    <li class="gui-folder">
+        <a>
+            <div class="gui-icon"><i class="md md-computer"></i></div>
+            <span class="title">Pages</span>
+        </a>
+        <!--start submenu -->
+        <ul>
+            <li><a href="<?= Url::toRoute('/auth/auth-rule') ?>" ><span class="title">List</span></a></li>
+            <li><a href="<?= Url::toRoute('/auth/auth-rule') ?>" ><span class="title">create</span></a></li>
+        </ul><!--end /submenu -->
+    </li><!--end /menu-li -->
+    <!-- END EMAIL -->
+
     <!-- BEGIN LEVELS -->
     <li class="gui-folder">
         <a>

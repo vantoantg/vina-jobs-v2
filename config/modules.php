@@ -40,6 +40,9 @@ return [
     'common' => [
         'class' => \app\modules\common\Module::class,
     ],
+    'product' => [
+        'class' => \app\modules\product\Module::class,
+    ],
     'redactor' => [
         'class' => 'yii\redactor\RedactorModule',
         'uploadDir' => '@webroot/uploads',
