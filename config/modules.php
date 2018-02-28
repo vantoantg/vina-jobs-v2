@@ -37,6 +37,9 @@ return [
     'system' => [
         'class' => \app\modules\system\Module::class,
     ],
+    'common' => [
+        'class' => \app\modules\common\Module::class,
+    ],
     'redactor' => [
         'class' => 'yii\redactor\RedactorModule',
         'uploadDir' => '@webroot/uploads',

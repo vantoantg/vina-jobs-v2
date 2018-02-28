@@ -72,7 +72,6 @@ class Helper
     }
 
     /**
-     * @param string $route
      * @param array $params
      * @return string
      */
@@ -110,6 +109,7 @@ class Helper
 	public static function getMethod(){
 		return $_SERVER['REQUEST_METHOD'];
 	}
+
 	/**
 	 * @return mixed
 	 */
@@ -123,6 +123,7 @@ class Helper
 	public static function getCurrentUrl(){
 		return "http" . (($_SERVER['SERVER_PORT'] == 443) ? "s://" : "://") . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 	}
+
 	/**
 	 * @param $name
 	 * @return mixed
@@ -215,7 +216,7 @@ class Helper
 		);
 
 		// -- Remove duplicated spaces
-		$stripped = preg_replace(array('/\s{2,}/', '/[\t\n]/'), ' ', $string);
+        $string = preg_replace(array('/\s{2,}/', '/[\t\n]/'), ' ', $string);
 
 		// -- Returns the slug
 		return strtolower(strtr($string, $table));
