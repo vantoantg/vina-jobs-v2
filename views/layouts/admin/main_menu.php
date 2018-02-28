@@ -72,6 +72,36 @@ use app\library\helper\Helper;
     </li><!--end /menu-li -->
     <!-- END LEVELS -->
 
+    <!-- BEGIN Products -->
+    <li class="gui-folder">
+        <a>
+            <div class="gui-icon"><i class="md md-computer"></i></div>
+            <span class="title">Products</span>
+        </a>
+        <!--start submenu -->
+        <ul>
+            <li><a href="<?= Url::toRoute('/product/product') ?>" ><span class="title">Product</span></a></li>
+            <li><a href="<?= Url::toRoute('/product/product/create') ?>" ><span class="title">Create product</span></a></li>
+            <li><a href="<?= Url::toRoute('/product/product-category') ?>" ><span class="title">Product category</span></a></li>
+            <li><a href="<?= Url::toRoute('/product/product-category/create') ?>" ><span class="title">Create product category</span></a></li>
+        </ul><!--end /submenu -->
+    </li><!--end /menu-li -->
+    <!-- END Products -->
+
+    <!-- BEGIN Pages -->
+    <li class="gui-folder">
+        <a>
+            <div class="gui-icon"><i class="md md-computer"></i></div>
+            <span class="title">Pages</span>
+        </a>
+        <!--start submenu -->
+        <ul>
+            <li><a href="<?= Url::toRoute('/admin/pages') ?>" ><span class="title">List</span></a></li>
+            <li><a href="<?= Url::toRoute('/admin/pages/create') ?>" ><span class="title">create</span></a></li>
+        </ul><!--end /submenu -->
+    </li><!--end /menu-li -->
+    <!-- END Pages -->
+
     <!-- BEGIN LEVELS -->
     <li class="gui-folder">
         <a>
