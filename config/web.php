@@ -63,6 +63,7 @@ $config = [
         'assetManager' => [
             'bundles' => [
                 'yii\web\JqueryAsset' => [
+//	                'jsOptions' => [ 'position' => \yii\web\View::POS_HEAD],
                     'basePath' => '@webroot',
                     'baseUrl' => '@web',
                     'js' => [

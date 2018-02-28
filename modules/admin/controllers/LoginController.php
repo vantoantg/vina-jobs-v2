@@ -30,9 +30,9 @@ class LoginController extends BaseController
 
 		$model = new AdminLoginForm();
 		if ($model->load($this->app->request->post()) && $model->login()) {
-//			if (Common::currentUser('role') == 0) {
-//				return $this->goHome();
-//			}
+			if (Common::currentUser('username') == 'admin') {
+				return $this->redirect(['/admin']);
+			}
 			return $this->goHome();
 		} else {
 			if ($this->app->request->isAjax) {

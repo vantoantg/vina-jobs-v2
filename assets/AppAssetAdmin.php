@@ -50,7 +50,6 @@ class AppAssetAdmin extends AssetBundle
 		'web/template/admin/assets/js/core/source/AppNavSearch.js',
 		'web/template/admin/assets/js/core/source/AppVendor.js',
 		'web/template/admin/assets/js/core/demo/Demo.js',
-		'web/template/admin/assets/js/core/demo/DemoDashboard.js',
 	];
 	public $depends = [
 		'yii\web\YiiAsset',
