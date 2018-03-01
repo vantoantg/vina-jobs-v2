@@ -45,34 +45,23 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
 
-                <!--<div class="form-group">
-                    <label for="username" class="cols-sm-2 control-label">Username</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="username" id="username"
-                                   placeholder="Enter your Username"/>
-                        </div>
-                    </div>
-                </div>-->
-
                 <div class="form-group">
                     <label for="email" class="cols-sm-2 control-label">Password</label>
                     <div class="cols-sm-10">
                         <?= $form->field($model, 'password', [
                             'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
                                                                        aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                        ])->label(false) ?>
+                        ])->passwordInput()->label(false) ?>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="email" class="cols-sm-2 control-label">Confirm Password</label>
                     <div class="cols-sm-10">
-                        <?= $form->field($model, 'password', [
+                        <?= $form->field($model, 'repassword', [
                             'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
                                                                        aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                        ])->label(false) ?>
+                        ])->passwordInput()->label(false) ?>
                     </div>
                 </div>
 
