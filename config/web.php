@@ -77,7 +77,7 @@ $config = [
     ],
 	'modules' => require __DIR__ . '/modules.php',
     'params' => require __DIR__ . '/params.php',
-    'defaultRoute' => 'admin',
+    'defaultRoute' => 'front/default/index',
 ];
 
 if (YII_ENV_DEV) {

@@ -63,9 +63,19 @@ use yii\widgets\ActiveForm;
 
 	<?= $form->field($model, 'content')->textarea(['rows' => 6, 'id' => 'page-content', 'class' => 'form-control']) ?>
 
-    <?= $form->field($model, 'image', [
-	    'template' => '{input}{label}{error}{hint}'
-    ])->textInput(['maxlength' => true, 'class' => 'openFinder form-control image-url', 'data-target' => '.image-url', 'data-type'=> 'Images']) ?>
+    <div class="row">
+        <div class="col-xs-10">
+            <?= $form->field($model, 'image', [
+                'template' => '{input}{label}{error}{hint}'
+            ])->textInput(['maxlength' => true, 'class' => 'form-control image-url', 'placeholder' => 'Enter image url address or select']) ?>
+        </div>
+        <div class="col-xs-2">
+            <button class="btn btn-default openFinder" data-target=".image-url" data-type = "Images" type="button">
+                <span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;&nbsp;SELECT
+            </button>
+        </div>
+    </div>
+
 
     <?= $form->field($model, 'slug', [
 	    'template' => '{input}{label}{error}{hint}'

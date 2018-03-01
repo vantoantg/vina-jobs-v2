@@ -27,6 +27,7 @@ class AppAssetAdmin extends AssetBundle
 	];
 	public $js = [
 //		'web/template/admin/assets/js/libs/jquery/jquery-1.11.2.min.js',
+		'web/js/common/config.js',
 		'web/template/admin/assets/js/libs/bootstrap/bootstrap.min.js',
 		'web/template/admin/assets/js/libs/spin.js/spin.min.js',
 		'web/template/admin/assets/js/libs/autosize/jquery.autosize.min.js',

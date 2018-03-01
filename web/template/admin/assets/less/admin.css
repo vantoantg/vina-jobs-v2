@@ -6,6 +6,8 @@
 }
 #content .col-lg-offset-1.col-md-8 {
   background: #fff;
+  /* layout.css Style */
+  /* skin.css Style*/
 }
 #content .col-lg-offset-1.col-md-8 .form-group > label,
 #content .col-lg-offset-1.col-md-8 .form-group .control-label {
@@ -13,4 +15,42 @@
 }
 #content .col-lg-offset-1.col-md-8 .form-group label.checkbox-inline.checkbox-styled > span {
   display: none;
+}
+#content .col-lg-offset-1.col-md-8 .upload-drop-zone {
+  height: 200px;
+  border-width: 2px;
+  margin-bottom: 20px;
+}
+#content .col-lg-offset-1.col-md-8 .upload-drop-zone {
+  color: #ccc;
+  border-style: dashed;
+  border-color: #ccc;
+  line-height: 200px;
+  text-align: center;
+}
+#content .col-lg-offset-1.col-md-8 .upload-drop-zone.drop {
+  color: #222;
+  border-color: #222;
+}
+#content .col-lg-offset-1.col-md-8 .image-preview-input {
+  position: relative;
+  overflow: hidden;
+  margin: 0px;
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+#content .col-lg-offset-1.col-md-8 .image-preview-input input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+#content .col-lg-offset-1.col-md-8 .image-preview-input-title {
+  margin-left: 2px;
 }
