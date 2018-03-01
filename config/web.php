@@ -62,11 +62,11 @@ $config = [
         ],
         'assetManager' => [
             'class' => \yii\web\AssetManager::class,
-            'basePath' => '@webroot/assets/cache',
+            'basePath' => '@webroot/assets',
             'bundles' => [
                 'yii\web\JqueryAsset' => [
 //	                'jsOptions' => [ 'position' => \yii\web\View::POS_HEAD],
-                    'basePath' => '@webroot',
+                    'basePath' => '@webroot/assets/cache',
                     'baseUrl' => '@web',
                     'js' => [
                         'web/template/jobs/js/vendor/jquery-1.10.2.min.js',
