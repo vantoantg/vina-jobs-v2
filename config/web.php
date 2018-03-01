@@ -61,6 +61,7 @@ $config = [
             // 'cache' => 'cache',
         ],
         'assetManager' => [
+            'class' => \yii\web\AssetManager::class,
             'basePath' => '@webroot/assets/cache',
             'bundles' => [
                 'yii\web\JqueryAsset' => [
