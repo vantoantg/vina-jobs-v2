@@ -13,9 +13,6 @@
 #content .col-lg-offset-1.col-md-8 .form-group .control-label {
   opacity: 1;
 }
-#content .col-lg-offset-1.col-md-8 .form-group label.checkbox-inline.checkbox-styled > span {
-  display: none;
-}
 #content .col-lg-offset-1.col-md-8 .upload-drop-zone {
   height: 200px;
   border-width: 2px;

@@ -139,7 +139,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'as_employers', [
                     'template' => '{input}{error}{hint}'
-                ])->checkbox(['class' => "btn btn-info", 'data-toggle' => "collapse", 'data-target' => "#isCompany"])->label('As employers') ?>
+                ])->checkbox([
+                    'class' => "btn btn-info",
+                    'data-toggle' => "collapse",
+                    'data-target' => "#isCompany"
+                ])->label('As employers') ?>
 
                 <div id="isCompany" class="collapse <?= $model->as_employers ? 'in' : ''; ?>">
                     <div class="form-group">

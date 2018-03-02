@@ -52,7 +52,7 @@
 
 	p._initRadioAndCheckbox = function () {
 		// Add a span class the styled checkboxes and radio buttons for correct styling
-		$('.checkbox-styled input, .radio-styled input').each(function () {
+		$('.checkbox-styled input:not(:hidden), .radio-styled input:not(:hidden)').each(function () {
 			if ($(this).next('span').length === 0) {
 				$(this).after('<span></span>');
 			}
