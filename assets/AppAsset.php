@@ -18,6 +18,8 @@ class AppAsset extends AssetBundle
     public $css = [
 //        'web/css/site.css',
         'http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800',
+        'http://fonts.googleapis.com/css?family=Roboto',
+        'http://fonts.googleapis.com/css?family=Lato:400,700',
         'web/template/jobs/css/normalize.css',
         'web/template/jobs/css/font-awesome.min.css',
         'web/template/jobs/css/fontello.css',
@@ -29,7 +31,7 @@ class AppAsset extends AssetBundle
         'vendor/bower-asset/select2/dist/css/select2.min.css',
         'web/template/jobs/style.css',
         'web/template/jobs/responsive.css',
-        'web/template/jobs/my-site.css',
+        'web/template/jobs/less/my-site.css',
     ];
     public $js = [
         'web/template/jobs/js/vendor/modernizr-2.6.2.min.js',

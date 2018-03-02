@@ -18,6 +18,7 @@ class Users extends \app\models\base\User implements IdentityInterface
 
     public $slug_name;
     public $as_employers;
+    public $repassword;
     public $new_password;
     public $renew_password;
 
@@ -27,7 +28,7 @@ class Users extends \app\models\base\User implements IdentityInterface
     public function rules()
     {
         return [
-            [['name', 'email', 'password', 'auth_key'], 'required'],
+            [['name', 'email', 'password', 'repassword', 'auth_key'], 'required'],
             [['role', 'archive', 'type', 'status'], 'integer'],
             [['attributes'], 'string'],
             [['username', 'name'], 'string', 'max' => 32],
