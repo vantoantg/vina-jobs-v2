@@ -8,12 +8,13 @@ use Yii;
  * This is the model class for table "tn_post_category".
  *
  * @property int $id
+ * @property int $parent_id
  * @property string $name
  * @property string $slug
  * @property string $description
  * @property string $content
  * @property string $img
- * @property int $sorted
+ * @property int $arranged
  * @property int $status
  */
 class PostCategory extends \yii\db\ActiveRecord
@@ -32,9 +33,9 @@ class PostCategory extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['parent_id', 'arranged', 'status'], 'integer'],
             [['name', 'slug'], 'required'],
             [['description', 'content'], 'string'],
-            [['sorted', 'status'], 'integer'],
             [['name', 'slug', 'img'], 'string', 'max' => 255],
         ];
     }
@@ -46,12 +47,13 @@ class PostCategory extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'parent_id' => 'Parent ID',
             'name' => 'Name',
             'slug' => 'Slug',
             'description' => 'Description',
             'content' => 'Content',
             'img' => 'Img',
-            'sorted' => 'Sorted',
+            'arranged' => 'Arranged',
             'status' => 'Status',
         ];
     }

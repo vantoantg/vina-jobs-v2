@@ -3,6 +3,8 @@
 namespace app\modules\front\controllers;
 
 use app\library\helper\Common;
+use app\models\Company;
+use app\models\UserDetails;
 use Yii;
 use app\forms\LoginForm;
 use app\forms\ProfilePasswordForm;
@@ -30,13 +32,18 @@ class UserController extends FrontController
     public function actionRegister()
     {
         $model = new Users();
+        $userDetail = new UserDetails();
+        $com = new Company();
+
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
 
             $url = Yii::$app->getUrlManager()->createUrl(['front/user/update']);
             return $this->redirect($url);
         }
         return $this->render('register', [
-            'model' => $model
+            'model' => $model,
+            'userDetail' => $userDetail,
+            'com' => $com,
         ]);
     }
 

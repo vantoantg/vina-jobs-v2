@@ -25,54 +25,113 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="main-login main-center">
                 <h5>Sign up once and watch any of our free demos.</h5>
                 <?php $form = ActiveForm::begin(); ?>
-
-                <div class="form-group">
-                    <label for="name" class="cols-sm-2 control-label">Your Name</label>
-                    <div class="cols-sm-10">
-                        <?= $form->field($model, 'name', [
-                            'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                        ])->label(false) ?>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="email" class="cols-sm-2 control-label">Your Email</label>
-                    <div class="cols-sm-10">
-                        <?= $form->field($model, 'email', [
-                            'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
-                                                                   aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                        ])->label(false) ?>
-                    </div>
-                </div>
-
-                <!--<div class="form-group">
-                    <label for="username" class="cols-sm-2 control-label">Username</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="username" id="username"
-                                   placeholder="Enter your Username"/>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            <label for="name" class="cols-sm-2 control-label">Your Name</label>
+                            <div class="cols-sm-10">
+                                <?= $form->field($model, 'name', [
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>{input}</div>{error}{hint}'
+                                ])->label(false) ?>
+                            </div>
                         </div>
                     </div>
-                </div>-->
-
-                <div class="form-group">
-                    <label for="email" class="cols-sm-2 control-label">Password</label>
-                    <div class="cols-sm-10">
-                        <?= $form->field($model, 'password', [
-                            'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
-                                                                       aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                        ])->label(false) ?>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            <label for="email" class="cols-sm-2 control-label">Your Email</label>
+                            <div class="cols-sm-10">
+                                <?= $form->field($model, 'email', [
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
+                                                                   aria-hidden="true"></i></span>{input}</div>{error}{hint}'
+                                ])->label(false) ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="email" class="cols-sm-2 control-label">Confirm Password</label>
-                    <div class="cols-sm-10">
-                        <?= $form->field($model, 'password', [
-                            'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            <label for="email" class="cols-sm-2 control-label">Password</label>
+                            <div class="cols-sm-10">
+                                <?= $form->field($model, 'password', [
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
                                                                        aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                        ])->label(false) ?>
+                                ])->passwordInput()->label(false) ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            <label for="email" class="cols-sm-2 control-label">Confirm Password</label>
+                            <div class="cols-sm-10">
+                                <?= $form->field($model, 'repassword', [
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
+                                                                       aria-hidden="true"></i></span>{input}</div>{error}{hint}'
+                                ])->passwordInput()->label(false) ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8">
+                        <div class="form-group">
+                            <label for="email" class="cols-sm-2 control-label">Address</label>
+                            <div class="cols-sm-10">
+                                <?= $form->field($userDetail, 'address', [
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
+                                                                   aria-hidden="true"></i></span>{input}</div>{error}{hint}'
+                                ])->label(false) ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="form-group">
+                            <label for="email" class="cols-sm-2 control-label">City</label>
+                            <div class="cols-sm-10">
+                                <?= $form->field($userDetail, 'city_id', [
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
+                                                                   aria-hidden="true"></i></span>{input}</div>{error}{hint}'
+                                ])->label(false) ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="form-group">
+                            <label for="email" class="cols-sm-2 control-label">Gender</label>
+                            <div class="cols-sm-10">
+                                <?= $form->field($userDetail, 'gender', [
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
+                                                                   aria-hidden="true"></i></span>{input}</div>{error}{hint}'
+                                ])->label(false) ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="form-group">
+                            <label for="email" class="cols-sm-2 control-label">Birthday</label>
+                            <div class="cols-sm-10">
+                                <?= $form->field($userDetail, 'birthday', [
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
+                                                                   aria-hidden="true"></i></span>{input}</div>{error}{hint}'
+                                ])->label(false) ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="form-group">
+                            <label for="email" class="cols-sm-2 control-label">Phone</label>
+                            <div class="cols-sm-10">
+                                <?= $form->field($userDetail, 'phone', [
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
+                                                                   aria-hidden="true"></i></span>{input}</div>{error}{hint}'
+                                ])->label(false) ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -80,20 +139,58 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'as_employers', [
                     'template' => '{input}{error}{hint}'
-                ])->checkbox(['class' => "btn btn-info", 'data-toggle' => "collapse", 'data-target' => "#isCompany"])->label('As employers') ?>
+                ])->checkbox([
+                    'class' => "btn btn-info",
+                    'data-toggle' => "collapse",
+                    'data-target' => "#isCompany"
+                ])->label('As employers') ?>
 
                 <div id="isCompany" class="collapse <?= $model->as_employers ? 'in' : ''; ?>">
                     <div class="form-group">
-                        <label for="email" class="cols-sm-2 control-label">Company name</label>
                         <div class="cols-sm-10">
-                            <div class="form-group">
-                                <div class="input-group"><span class="input-group-addon"><i class="fa fa-users fa"
-                                                                                            aria-hidden="true"></i></span><input
-                                            type="text" id="users-password" class="form-control" name="Company[name]"
-                                            aria-required="true"></div>
-                                <div class="help-block"></div>
-                            </div>
+                            <?= $form->field($com, 'name', [
+                                'template' => '{label}<div class="input-group"><span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>{input}</div>{error}{hint}'
+                            ])->label('Company name') ?>
                         </div>
+                        <div class="cols-sm-10">
+                            <?= $form->field($com, 'logo', [
+                                'template' => '{label}<div class="input-group"><span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>{input}</div>{error}{hint}'
+                            ])->label('Logo') ?>
+                        </div>
+                        <div class="cols-sm-10">
+
+                            <?= $form->field($com, 'content')->widget(\yii\redactor\widgets\Redactor::className(), [
+                                'clientOptions' => [
+                                    'placeholder' => 'Redactor placeholder text',
+                                    'observeLinks' => true,
+                                    'convertVideoLinks' => true,
+                                    'imageUpload' => ['/web/uploads/image'],
+                                    'fileUpload' => ['/web/uploads/file'],
+                                    'plugins' => ['clips', 'fontcolor', 'imagemanager'],
+                                    'toolbar' => true,
+                                    'buttons' => [
+                                        'html',
+                                        'format',
+                                        'formatting',
+                                        'lists',
+                                        'bold',
+                                        'italic',
+                                        'deleted',
+                                        'underline',
+                                        'horizontalrule',
+                                        'alignment',
+                                        'unorderedlist',
+                                        'orderedlist',
+                                        'outdent',
+                                        'indent',
+                                        'link',
+                                        /*'image',
+                                        'file'*/
+                                    ],
+                                ]
+                            ]) ?>
+                        </div>
+
                     </div>
                 </div>
 

@@ -23,9 +23,11 @@ class AppAssetAdmin extends AssetBundle
 		'web/template/admin/assets/css/theme-default/material-design-iconic-font.min.css',
 		'web/template/admin/assets/css/theme-default/libs/rickshaw/rickshaw.css',
 		'web/template/admin/assets/css/theme-default/libs/morris/morris.core.css',
+		'web/template/admin/assets/less/admin.css',
 	];
 	public $js = [
 //		'web/template/admin/assets/js/libs/jquery/jquery-1.11.2.min.js',
+		'web/js/common/config.js',
 		'web/template/admin/assets/js/libs/bootstrap/bootstrap.min.js',
 		'web/template/admin/assets/js/libs/spin.js/spin.min.js',
 		'web/template/admin/assets/js/libs/autosize/jquery.autosize.min.js',
@@ -50,7 +52,13 @@ class AppAssetAdmin extends AssetBundle
 		'web/template/admin/assets/js/core/source/AppNavSearch.js',
 		'web/template/admin/assets/js/core/source/AppVendor.js',
 		'web/template/admin/assets/js/core/demo/Demo.js',
-		'web/template/admin/assets/js/core/demo/DemoDashboard.js',
+
+		/* CkEditor */
+		'web/ckeditors/ckeditor/ckeditor.js',
+		/* CkFinder */
+		'web/ckeditors/ckfinder/ckfinder.js?type=Images',
+
+		'web/js/admin/admin.js',
 	];
 	public $depends = [
 		'yii\web\YiiAsset',

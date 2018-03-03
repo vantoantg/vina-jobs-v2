@@ -1,6 +1,10 @@
 <?php
+/* @var $this yii\web\View */
+
 $this->title = 'Admin';
 $this->params['breadcrumbs'][] = $this->title;
+
+$this->registerJsFile('web/template/admin/assets/js/core/demo/DemoDashboard.js', ['position' => \yii\web\View::POS_LOAD])
 ?>
 
 <div class="section-body">

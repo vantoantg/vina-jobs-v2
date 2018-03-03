@@ -61,9 +61,12 @@ $config = [
             // 'cache' => 'cache',
         ],
         'assetManager' => [
+            'class' => \yii\web\AssetManager::class,
+            'basePath' => '@webroot/assets',
             'bundles' => [
                 'yii\web\JqueryAsset' => [
-                    'basePath' => '@webroot',
+//	                'jsOptions' => [ 'position' => \yii\web\View::POS_HEAD],
+                    'basePath' => '@webroot/assets/cache',
                     'baseUrl' => '@web',
                     'js' => [
                         'web/template/jobs/js/vendor/jquery-1.10.2.min.js',
@@ -74,7 +77,7 @@ $config = [
     ],
 	'modules' => require __DIR__ . '/modules.php',
     'params' => require __DIR__ . '/params.php',
-    'defaultRoute' => 'admin',
+    'defaultRoute' => 'front/default/index',
 ];
 
 if (YII_ENV_DEV) {

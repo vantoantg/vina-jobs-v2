@@ -17,7 +17,7 @@ use Yii;
  * @property string $updated_at
  * @property int $created_by
  * @property int $updated_by
- * @property int $arrange
+ * @property int $arranged
  * @property int $total_jobs
  * @property int $total_cv
  * @property int $status
@@ -38,10 +38,11 @@ class JobCategories extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['parent_id', 'created_by', 'updated_by', 'arrange', 'total_jobs', 'total_cv', 'status'], 'integer'],
+            [['parent_id', 'created_by', 'updated_by', 'arranged', 'total_jobs', 'total_cv', 'status'], 'integer'],
+            [['description'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['name'], 'string', 'max' => 11],
-            [['description', 'icon_class', 'image'], 'string', 'max' => 255],
+            [['icon_class', 'image'], 'string', 'max' => 255],
         ];
     }
 
@@ -61,7 +62,7 @@ class JobCategories extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
             'created_by' => 'Created By',
             'updated_by' => 'Updated By',
-            'arrange' => 'Arrange',
+            'arranged' => 'Arranged',
             'total_jobs' => 'Total Jobs',
             'total_cv' => 'Total Cv',
             'status' => 'Status',
