@@ -29,5 +29,7 @@ Sentora server:
  https://chip.vina-jobs.com:8083
     username: admin
     password: cYjHYVpIn5
-
+ email:
     admin@vina-jobs.com/IM5znxBZ9i
+ db:
+    vina-jobs_vnj/vina-jobs_vnj/ROy2PzKot5

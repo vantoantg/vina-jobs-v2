@@ -31,11 +31,11 @@ $config = [
             // for the mailer to send real emails.
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.gmail.com',
-                'username' => 'vanvan.vt88@gmail.com',
-                'password' => '311982057',
-                'port' => '587',
-                'encryption' => 'tls',
+                'host' => 'chip.vina-jobs.com',
+                'username' => 'admin@vina-jobs.com',
+                'password' => 'IM5znxBZ9i',
+                'port' => '465',
+                'encryption' => 'TLS',
             ],
             'useFileTransport' => true,
         ],

@@ -23,7 +23,7 @@ AppAssetAdmin::register($this);
     <meta name="description" content="Short explanation about this website">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="<?= \app\library\helper\Helper::siteURL()?>/favicon.ico"/>
     <?php $this->head() ?>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

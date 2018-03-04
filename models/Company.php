@@ -32,9 +32,9 @@ class Company extends \app\models\base\Company
         return [
             'id' => 'ID',
             'location_id' => 'Location ID',
-            'name' => 'Name',
+            'name' => 'Tên công ty',
             'logo' => 'Logo',
-            'content' => 'Content',
+            'content' => 'Giới thiệu về công ty',
             'created_by' => 'Created By',
             'created_at' => 'Created At',
             'status' => 'Status',

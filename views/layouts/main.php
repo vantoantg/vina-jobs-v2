@@ -22,7 +22,7 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="<?= \app\library\helper\Helper::siteURL()?>/favicon.ico"/>
     <?php $this->head() ?>
 </head>
 <body>
@@ -39,8 +39,8 @@ AppAsset::register($this);
             <div class="col-md-5 col-sm-8 col-xs-8">
                 <div class="header-half header-call">
                     <p>
-                        <span><i class="icon-cloud"></i>+019 4854 8817</span>
-                        <span><i class="icon-mail"></i>ohidul.islam951@gmail.com</span>
+                        <span><i class="icon-cloud"></i>0932 252 414</span>
+                        <span><i class="icon-mail"></i>nguyennguyen.vt88@gmail.com</span>
                     </p>
                 </div>
             </div>
@@ -97,19 +97,19 @@ AppAsset::register($this);
 
                 <?php }else{ ?>
                 <a href="<?= Helper::createUrl(['front/user/register']) ?>">
-                    <button class="navbar-btn nav-button wow fadeInRight" data-wow-delay="0.6s">Sign up</button>
+                    <button class="navbar-btn nav-button wow fadeInRight" data-wow-delay="0.6s">Đăng ký</button>
                 </a>
-                    <button class="navbar-btn nav-button wow bounceInRight login" data-toggle="modal" data-target="#login-modal" data-wow-delay="0.8s">Login</button>
+                    <button class="navbar-btn nav-button wow bounceInRight login" data-toggle="modal" data-target="#login-modal" data-wow-delay="0.8s">Đăng nhập</button>
                 <?php } ?>
             </div>
             <ul class="main-nav nav navbar-nav navbar-right">
-                <li class="wow fadeInDown" data-wow-delay="0s"><a class="<?= Helper::active('front/default/index') ?>" href="<?= Helper::createUrl(['front/default/index']) ?>">Home</a></li>
-                <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="<?= Helper::active('site/job-seekers') ?>" href="<?= Helper::createUrl(['site/job-seekers']) ?>">Job Seekers</a></li>
-                <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="<?= Helper::active('site/employeers') ?>" href="<?= Helper::createUrl(['site/employeers']) ?>">Employeers</a></li>
-                <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="<?= Helper::active('site/about-us') ?>" href="<?= Helper::createUrl(['site/about-us']) ?>">About us</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0s"><a class="<?= Helper::active('front/default/index') ?>" href="<?= Helper::createUrl(['front/default/index']) ?>">Trang chủ</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="<?= Helper::active('site/job-seekers') ?>" href="<?= Helper::createUrl(['site/job-seekers']) ?>">Người tìm việc</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="<?= Helper::active('site/employeers') ?>" href="<?= Helper::createUrl(['site/employeers']) ?>">Nhà tuyển dụng</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="<?= Helper::active('site/about-us') ?>" href="<?= Helper::createUrl(['site/about-us']) ?>">Giới thiệu</a></li>
                 <li class="wow fadeInDown" data-wow-delay="0.4s"><a class="<?= Helper::active('site/blog') ?>" href="<?= Helper::createUrl(['site/blog']) ?>">Blog</a></li>
 
-                <li class="wow fadeInDown" data-wow-delay="0.5s"><a class="<?= Helper::active('site/contact') ?>" href="<?= Helper::createUrl(['site/contact']) ?>">Contact</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.5s"><a class="<?= Helper::active('site/contact') ?>" href="<?= Helper::createUrl(['site/contact']) ?>">Liên hệ</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -117,35 +117,12 @@ AppAsset::register($this);
 <?= $content ?>
 <?= (new \app\components\UserWidget())->login() ?>
 
-<div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-        <div class="loginmodal-container">
-            <h1>Login</h1><br>
-            <form>
-                <input type="text" name="user" placeholder="Username">
-                <input type="password" name="pass" placeholder="Password">
-                <input type="submit" name="login" class="login loginmodal-submit" value="Login">
-            </form>
-
-            <div class="login-help">
-                <a href="#">Register</a> - <a href="#">Forgot Password</a>
-            </div>
-            <div class="text-center socials">
-                <h2>or</h2><br>
-                <?= yii\authclient\widgets\AuthChoice::widget([
-                    'baseAuthUrl' => ['/site/auth']
-                ]) ?>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="footer-area">
     <div class="container">
         <div class="row footer">
-            <div class="col-md-4">
+            JUST GOT SO EASY       <div class="col-md-4">
                 <div class="single-footer">
-                    <img src="<?= Helper::homeUrl()?>web/template/jobs/img/logo.jpg" alt="" class="wow pulse" style="max-height: 73px" data-wow-delay="1s">
+                    <img src="<?= Helper::homeUrl()?>web/template/jobs/img/logo-ft.png" alt="" class="wow pulse" style="max-height: 60px" data-wow-delay="1s">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati architecto quaerat facere blanditiis tempora sequi nulla accusamus, possimus cum necessitatibus suscipit quia autem mollitia, similique quisquam molestias. Vel unde, blanditiis.</p>
                 </div>
             </div>
@@ -166,16 +143,16 @@ AppAsset::register($this);
             </div>
             <div class="col-md-4">
                 <div class="single-footer">
-                    <h4>Useful lnks</h4>
+                    <h4>Liên kết hữu ích</h4>
                     <div class="footer-links">
                         <ul class="list-unstyled">
-                            <li><a href="">About Us</a></li>
+                            <li><a href="">Giới thiệu</a></li>
                             <li><a href="" class="active">Services</a></li>
                             <li><a href="">Work</a></li>
-                            <li><a href="">Our Blog</a></li>
+                            <li><a href="">Blog</a></li>
                             <li><a href="">Customers Testimonials</a></li>
                             <li><a href="">Affliate</a></li>
-                            <li><a href="">Contact Us</a></li>
+                            <li><a href="">Liên hệ</a></li>
                         </ul>
                     </div>
                 </div>

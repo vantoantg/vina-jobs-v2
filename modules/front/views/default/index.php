@@ -1,7 +1,7 @@
 <?php
 use app\library\helper\Helper;
 
-$this->title = 'Home';
+$this->title = 'Trang chủ | '. Helper::siteURL();
 ?>
 <div class="slider-area">
     <div class="slider">
@@ -16,7 +16,7 @@ $this->title = 'Home';
     <div class="container slider-content">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
-                <h2>Job Searching Just Got So Easy</h2>
+                <h2>TÌM KIẾM CÔNG VIỆC TRỞ NÊN <br> DỄ DÀNG HƠN</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi deserunt deleniti, ullam commodi sit ipsam laboriosam velit adipisci quibusdam aliquam teneturo!</p>
                 <div class="search-form wow pulse" data-wow-delay="0.8s">
                     <form action="" class=" form-inline">
@@ -40,7 +40,7 @@ $this->title = 'Home';
                                 <option>App Design</option>
                             </select>
                         </div>
-                        <input type="submit" class="btn" value="Search">
+                        <input type="submit" class="btn" value="TÌM">
 
 
                     </form>
@@ -54,15 +54,15 @@ $this->title = 'Home';
     <div class="container">
         <div class="row page-title text-center wow zoomInDown" data-wow-delay="1s">
             <h5>Our Process</h5>
-            <h2>How we work for you?</h2>
+            <h2>Cách làm việc của bạn ?</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae illum dolorem, rem officia, id explicabo sapiente</p>
         </div>
         <div class="row how-it-work text-center">
             <div class="col-md-4">
                 <div class="single-work wow fadeInUp" data-wow-delay="0.8s">
                     <img src="<?= Helper::homeUrl()?>web/template/jobs/img/how-work1.png" alt="">
-                    <h3>Searching for the best job</h3>
-                    <p>Using the outcomes from the job, we will put together a plan for the most effective marketing strategy to get the best results.</p>
+                    <h3>Tìm kiếm công việc tốt nhất</h3>
+                    <p>Sử dụng các kết quả từ công việc, chúng tôi sẽ đưa ra một kế hoạch cho chiến lược tiếp thị hiệu quả nhất để có được kết quả tốt nhất.</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -88,8 +88,8 @@ $this->title = 'Home';
             <div role="tabpanel">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#job-seekers" aria-controls="home" role="tab" data-toggle="tab">Job Seekers</a></li>
-                    <li role="presentation"><a href="#employeers" aria-controls="profile" role="tab" data-toggle="tab">Employeers</a></li>
+                    <li role="presentation" class="active"><a href="#job-seekers" aria-controls="home" role="tab" data-toggle="tab">Người tìm việc</a></li>
+                    <li role="presentation"><a href="#employeers" aria-controls="profile" role="tab" data-toggle="tab">Nhà tuyển dụng</a></li>
                 </ul>
 
                 <!-- Tab panes -->
@@ -183,8 +183,8 @@ $this->title = 'Home';
 
     <div class="container">
         <div class="row page-title text-center wow bounce"  data-wow-delay="1s">
-            <h5>Recent Jobs</h5>
-            <h2><span>54716</span> Available jobs for you</h2>
+            <h5>Công việc mới nhất</h5>
+            <h2><span>54716</span> công việc sẵn có cho bạn</h2>
         </div>
         <div class="row jobs">
             <div class="col-md-9">
