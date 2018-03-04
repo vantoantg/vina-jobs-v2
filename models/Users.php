@@ -51,12 +51,12 @@ class Users extends \app\models\base\User implements IdentityInterface
             'id' => 'ID',
             'username' => 'Email',
             'email' => 'Email',
-            'password' => 'Password',
+            'password' => 'Mật khẩu',
             'auth_key' => 'Auth Key',
             'access_token' => 'Access Token',
             'password_reset_token' => 'Password Reset Token',
             'role' => 'Role',
-            'name' => 'Name',
+            'name' => 'Tên',
             'slug_name' => 'Slug Name',
             'avatar' => 'Avatar',
             'avatar_url' => 'Avatar Url',
@@ -66,6 +66,8 @@ class Users extends \app\models\base\User implements IdentityInterface
             'timezone' => 'Timezone',
             'attributes' => 'Attributes',
             'status' => 'Status',
+
+	        'as_employers' => 'Như là nhà tuyển dụng'
         ];
     }
 

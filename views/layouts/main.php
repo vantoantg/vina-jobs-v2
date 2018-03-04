@@ -97,48 +97,25 @@ AppAsset::register($this);
 
                 <?php }else{ ?>
                 <a href="<?= Helper::createUrl(['front/user/register']) ?>">
-                    <button class="navbar-btn nav-button wow fadeInRight" data-wow-delay="0.6s">Sign up</button>
+                    <button class="navbar-btn nav-button wow fadeInRight" data-wow-delay="0.6s">Đăng ký</button>
                 </a>
-                    <button class="navbar-btn nav-button wow bounceInRight login" data-toggle="modal" data-target="#login-modal" data-wow-delay="0.8s">Login</button>
+                    <button class="navbar-btn nav-button wow bounceInRight login" data-toggle="modal" data-target="#login-modal" data-wow-delay="0.8s">Đăng nhập</button>
                 <?php } ?>
             </div>
             <ul class="main-nav nav navbar-nav navbar-right">
-                <li class="wow fadeInDown" data-wow-delay="0s"><a class="<?= Helper::active('front/default/index') ?>" href="<?= Helper::createUrl(['front/default/index']) ?>">Home</a></li>
-                <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="<?= Helper::active('site/job-seekers') ?>" href="<?= Helper::createUrl(['site/job-seekers']) ?>">Job Seekers</a></li>
-                <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="<?= Helper::active('site/employeers') ?>" href="<?= Helper::createUrl(['site/employeers']) ?>">Employeers</a></li>
-                <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="<?= Helper::active('site/about-us') ?>" href="<?= Helper::createUrl(['site/about-us']) ?>">About us</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0s"><a class="<?= Helper::active('front/default/index') ?>" href="<?= Helper::createUrl(['front/default/index']) ?>">Trang chủ</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="<?= Helper::active('site/job-seekers') ?>" href="<?= Helper::createUrl(['site/job-seekers']) ?>">Người tìm việc</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="<?= Helper::active('site/employeers') ?>" href="<?= Helper::createUrl(['site/employeers']) ?>">Nhà tuyển dụng</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="<?= Helper::active('site/about-us') ?>" href="<?= Helper::createUrl(['site/about-us']) ?>">Giới thiệu</a></li>
                 <li class="wow fadeInDown" data-wow-delay="0.4s"><a class="<?= Helper::active('site/blog') ?>" href="<?= Helper::createUrl(['site/blog']) ?>">Blog</a></li>
 
-                <li class="wow fadeInDown" data-wow-delay="0.5s"><a class="<?= Helper::active('site/contact') ?>" href="<?= Helper::createUrl(['site/contact']) ?>">Contact</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.5s"><a class="<?= Helper::active('site/contact') ?>" href="<?= Helper::createUrl(['site/contact']) ?>">Liên hệ</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 <?= $content ?>
 <?= (new \app\components\UserWidget())->login() ?>
-
-<div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-        <div class="loginmodal-container">
-            <h1>Login</h1><br>
-            <form>
-                <input type="text" name="user" placeholder="Username">
-                <input type="password" name="pass" placeholder="Password">
-                <input type="submit" name="login" class="login loginmodal-submit" value="Login">
-            </form>
-
-            <div class="login-help">
-                <a href="#">Register</a> - <a href="#">Forgot Password</a>
-            </div>
-            <div class="text-center socials">
-                <h2>or</h2><br>
-                <?= yii\authclient\widgets\AuthChoice::widget([
-                    'baseAuthUrl' => ['/site/auth']
-                ]) ?>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="footer-area">
     <div class="container">

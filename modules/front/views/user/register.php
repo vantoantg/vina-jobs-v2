@@ -7,7 +7,7 @@ use \yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Users */
 
-$this->title = 'Create Users';
+$this->title = 'Đăng kí tài khoản - '. \app\library\helper\Helper::siteURL();
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -23,12 +23,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-12 col-sm-8">
         <div class="row main">
             <div class="main-login main-center">
-                <h5>Sign up once and watch any of our free demos.</h5>
+                <h5>Vui lòng điền đúng địa chỉ email, hệ thống sẽ gửi link kích hoạt tài khoản vào email.</h5>
                 <?php $form = ActiveForm::begin(); ?>
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Your Name</label>
+                            <label for="name" class="cols-sm-2 control-label">Họ & Tên</label>
                             <div class="cols-sm-10">
                                 <?= $form->field($model, 'name', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>{input}</div>{error}{hint}'
@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <div class="form-group">
-                            <label for="email" class="cols-sm-2 control-label">Your Email</label>
+                            <label for="email" class="cols-sm-2 control-label">Email</label>
                             <div class="cols-sm-10">
                                 <?= $form->field($model, 'email', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
@@ -52,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
                         <div class="form-group">
-                            <label for="email" class="cols-sm-2 control-label">Password</label>
+                            <label for="email" class="cols-sm-2 control-label">Mật khẩu</label>
                             <div class="cols-sm-10">
                                 <?= $form->field($model, 'password', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
@@ -63,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <div class="form-group">
-                            <label for="email" class="cols-sm-2 control-label">Confirm Password</label>
+                            <label for="email" class="cols-sm-2 control-label">Nhập lại mật khẩu</label>
                             <div class="cols-sm-10">
                                 <?= $form->field($model, 'repassword', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="row">
                     <div class="col-xs-12 col-sm-8">
                         <div class="form-group">
-                            <label for="email" class="cols-sm-2 control-label">Address</label>
+                            <label for="email" class="cols-sm-2 control-label">Địa chỉ</label>
                             <div class="cols-sm-10">
                                 <?= $form->field($userDetail, 'address', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
@@ -88,7 +88,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="col-xs-12 col-sm-4">
                         <div class="form-group">
-                            <label for="email" class="cols-sm-2 control-label">City</label>
+                            <label for="email" class="cols-sm-2 control-label">Tỉnh / TP</label>
                             <div class="cols-sm-10">
                                 <?= $form->field($userDetail, 'city_id', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
@@ -102,7 +102,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="row">
                     <div class="col-xs-12 col-sm-4">
                         <div class="form-group">
-                            <label for="email" class="cols-sm-2 control-label">Gender</label>
+                            <label for="email" class="cols-sm-2 control-label">Giới tính</label>
                             <div class="cols-sm-10">
                                 <?= $form->field($userDetail, 'gender', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
@@ -113,7 +113,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="col-xs-12 col-sm-4">
                         <div class="form-group">
-                            <label for="email" class="cols-sm-2 control-label">Birthday</label>
+                            <label for="email" class="cols-sm-2 control-label">Sinh nhật</label>
                             <div class="cols-sm-10">
                                 <?= $form->field($userDetail, 'birthday', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
@@ -124,7 +124,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="col-xs-12 col-sm-4">
                         <div class="form-group">
-                            <label for="email" class="cols-sm-2 control-label">Phone</label>
+                            <label for="email" class="cols-sm-2 control-label">Điện thoại liên hệ</label>
                             <div class="cols-sm-10">
                                 <?= $form->field($userDetail, 'phone', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
@@ -150,7 +150,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="cols-sm-10">
                             <?= $form->field($com, 'name', [
                                 'template' => '{label}<div class="input-group"><span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                            ])->label('Company name') ?>
+                            ]) ?>
                         </div>
                         <div class="cols-sm-10">
                             <?= $form->field($com, 'logo', [
@@ -195,7 +195,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
 
                 <div class="form-group ">
-                    <?= Html::submitButton('Register', ['class' => 'btn btn-primary btn-lg btn-block login-button']) ?>
+                    <?= Html::submitButton('Đăng ký', ['class' => 'btn btn-primary login-button']) ?>
                 </div>
 
                 <?php ActiveForm::end(); ?>

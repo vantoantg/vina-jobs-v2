@@ -9,7 +9,7 @@ use app\library\helper\Helper;
      style="display: none;">
     <div class="modal-dialog">
         <div class="loginmodal-container">
-            <h1>Login</h1><br>
+            <h1>Đăng nhập</h1><br>
             <?php $form = ActiveForm::begin([
                 'action' => \app\library\helper\Helper::createUrl(['front/user/login']),
                 'method' => "post",
@@ -27,12 +27,12 @@ use app\library\helper\Helper;
             <?php ActiveForm::end(); ?>
 
             <div class="login-help">
-                <a href="<?= Helper::createUrl(['front/user/register']) ?>">Register</a>
+                <a href="<?= Helper::createUrl(['front/user/register']) ?>">Đăng ký</a>
                 -
-                <a href="<?= Helper::createUrl(['front/user/forgot']) ?>">Forgot Password</a>
+                <a href="<?= Helper::createUrl(['front/user/forgot']) ?>">Quên mật khẩu</a>
             </div>
             <div class="text-center socials">
-                <h2>or</h2><br>
+                <h2>Hoặc</h2><br>
                 <?= yii\authclient\widgets\AuthChoice::widget([
                     'baseAuthUrl' => ['/site/auth']
                 ]) ?>

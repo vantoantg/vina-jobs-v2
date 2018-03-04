@@ -10,20 +10,20 @@ use yii\bootstrap\ActiveForm;
 /* @var $searchModel app\models\search\User */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Forgot password';
+$this->title = 'Quên mật khẩu';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container">
     <div class="users-index">
 
         <h1><?= Html::encode($this->title) ?></h1>
-
+        <h5>Vui lòng điền đúng địa chỉ email bạn đã đăng ký, hệ thống sẽ gửi mật khẩu mới vào email.</h5>
         <?php $form = ActiveForm::begin(); ?>
         <?php
         echo $form->field($model, 'email');
         ?>
         <div class="form-group">
-            <?= \yii\helpers\Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+            <?= \yii\helpers\Html::submitButton('Gửi', ['class' => 'btn btn-primary']) ?>
         </div>
         <?php ActiveForm::end(); ?>
     </div>
