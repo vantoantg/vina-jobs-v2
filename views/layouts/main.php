@@ -22,7 +22,7 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="<?= \app\library\helper\Helper::siteURL()?>/favicon.ico"/>
     <?php $this->head() ?>
 </head>
 <body>
@@ -39,8 +39,8 @@ AppAsset::register($this);
             <div class="col-md-5 col-sm-8 col-xs-8">
                 <div class="header-half header-call">
                     <p>
-                        <span><i class="icon-cloud"></i>+019 4854 8817</span>
-                        <span><i class="icon-mail"></i>ohidul.islam951@gmail.com</span>
+                        <span><i class="icon-cloud"></i>0932 252 414</span>
+                        <span><i class="icon-mail"></i>nguyennguyen.vt88@gmail.com</span>
                     </p>
                 </div>
             </div>
@@ -120,9 +120,9 @@ AppAsset::register($this);
 <div class="footer-area">
     <div class="container">
         <div class="row footer">
-            <div class="col-md-4">
+            JUST GOT SO EASY       <div class="col-md-4">
                 <div class="single-footer">
-                    <img src="<?= Helper::homeUrl()?>web/template/jobs/img/logo.jpg" alt="" class="wow pulse" style="max-height: 73px" data-wow-delay="1s">
+                    <img src="<?= Helper::homeUrl()?>web/template/jobs/img/logo-ft.png" alt="" class="wow pulse" style="max-height: 60px" data-wow-delay="1s">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati architecto quaerat facere blanditiis tempora sequi nulla accusamus, possimus cum necessitatibus suscipit quia autem mollitia, similique quisquam molestias. Vel unde, blanditiis.</p>
                 </div>
             </div>
@@ -143,16 +143,16 @@ AppAsset::register($this);
             </div>
             <div class="col-md-4">
                 <div class="single-footer">
-                    <h4>Useful lnks</h4>
+                    <h4>Liên kết hữu ích</h4>
                     <div class="footer-links">
                         <ul class="list-unstyled">
-                            <li><a href="">About Us</a></li>
+                            <li><a href="">Giới thiệu</a></li>
                             <li><a href="" class="active">Services</a></li>
                             <li><a href="">Work</a></li>
-                            <li><a href="">Our Blog</a></li>
+                            <li><a href="">Blog</a></li>
                             <li><a href="">Customers Testimonials</a></li>
                             <li><a href="">Affliate</a></li>
-                            <li><a href="">Contact Us</a></li>
+                            <li><a href="">Liên hệ</a></li>
                         </ul>
                     </div>
                 </div>
