@@ -1,6 +1,9 @@
 .bg-white {
   background: #fff;
 }
+form .form-control[readonly] {
+  background: #dedede;
+}
 #content .grid-view table {
   background: #fff;
 }
