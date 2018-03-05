@@ -1,4 +1,4 @@
-Install:
+INSTALL:
 bower install select2
 
 http://www.yiiframework.com/extension/yii2-migration-creator/
@@ -11,7 +11,7 @@ http://www.bsourcecode.com/2013/04/render-and-renderpartial-in-yii/#renderPartia
 
 
 
-Php-...:
+PHP-...:
 
 Either GD PHP extension with FreeType support or ImageMagick PHP extension with PNG support is required. (apt-get install php5.6-gd)
 
@@ -19,13 +19,13 @@ Php Rbac (Role based access control): http://www.yiiframework.com/doc-2.0/guide-
 
 run to create table: yii migrate --migrationPath=@yii/rbac/migrations
 
-Auth:
+AUTH:
 composer require --prefer-dist yiisoft/yii2-authclient
 
 Rich Text Input With Redactor:
 composer require --prefer-dist yiidoc/yii2-redactor "*"
 
-Sentora server:
+SENTORA SERVER:
  https://chip.vina-jobs.com:8083
     username: admin
     password: cYjHYVpIn5
@@ -33,3 +33,7 @@ Sentora server:
     admin@vina-jobs.com/IM5znxBZ9i
  db:
     vina-jobs_vnj/vina-jobs_vnj/ROy2PzKot5
+
+INSTALL-DOC
+    https://docs.google.com/document/d/1eVkRyi6j5h4d9c65bo_5vm126QcwT_f_D8EWGBd-9s8/edit
+    ssh -i "tonanguyenswe.pem" ubuntu@ec2-18-217-150-155.us-east-2.compute.amazonaws.com
