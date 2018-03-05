@@ -33,12 +33,13 @@ class Users extends \app\models\base\User implements IdentityInterface
             [['attributes'], 'string'],
             [['username', 'name'], 'string', 'max' => 32],
             [['email', 'avatar_url'], 'string', 'max' => 255],
-            [['password'], 'string', 'max' => 64],
+            [['password'], 'string', 'min' => 6, 'max' => 64],
             [['auth_key', 'access_token', 'password_reset_token'], 'string', 'max' => 128],
             [['slug_name', 'avatar'], 'string', 'max' => 155],
             [['lang'], 'string', 'max' => 5],
             [['timezone'], 'string', 'max' => 100],
             [['access_token'], 'unique'],
+	        ['repassword', 'compare', 'compareAttribute'=>'password', 'message' => "Mật khẩu nhập lại chưa chính xác." ],
         ];
     }
 
@@ -71,6 +72,10 @@ class Users extends \app\models\base\User implements IdentityInterface
         ];
     }
 
+	/**
+	 * @param bool $insert
+	 * @return bool
+	 */
     public function beforeSave($insert) {
 
         if (parent::beforeSave($insert)) {

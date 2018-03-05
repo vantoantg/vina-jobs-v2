@@ -42,4 +42,15 @@ class Company extends \app\models\base\Company
             'arranged' => 'Arranged',
         ];
     }
+
+	public function beforeSave($insert) {
+
+		if (parent::beforeSave($insert)) {
+			if ($this->isNewRecord) {
+
+			}
+			return true;
+		}
+		return false;
+	}
 }

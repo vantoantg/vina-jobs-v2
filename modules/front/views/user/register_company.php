@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use \yii\widgets\ActiveForm;
-
+use dosamigos\fileupload\FileUploadUI; // https://github.com/2amigos/yii2-file-upload-widget
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Users */
@@ -26,11 +26,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h5>Vui lòng điền đúng địa chỉ email, hệ thống sẽ gửi link kích hoạt tài khoản vào email.</h5>
 
                 <?php if($errors){
-                    foreach ($errors as $error){ ?>
-                        <div class="alert alert-danger">
-                            <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
-                        </div>
-                    <?php }
+                    echo '<div class="alert alert-danger">';
+                    echo '<strong>Có lỗi trong quá trình đăng ký:</strong>';
+                    foreach ($errors as $error){
+                             echo '<br>- ' . $error;
+                    }
+                    echo '</div>';
                 } ?>
 
                 <?php $form = ActiveForm::begin(); ?>
@@ -51,6 +52,29 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'template' => '{label}<div class="input-group">{input}</div>{error}{hint}'
                                 ])->label('Logo')->fileInput() ?>
                             </div>
+
+	                        <?= \dosamigos\fileupload\FileUpload::widget([
+		                        'model' => $com,
+		                        'attribute' => 'logo',
+		                        'url' => ['media/upload', 'id' => $com->id], // your url, this is just for demo purposes,
+		                        'options' => ['accept' => 'image/*'],
+		                        'clientOptions' => [
+			                        'maxFileSize' => 2000000
+		                        ],
+		                        // Also, you can specify jQuery-File-Upload events
+		                        // see: https://github.com/blueimp/jQuery-File-Upload/wiki/Options#processing-callback-options
+		                        'clientEvents' => [
+			                        'fileuploaddone' => 'function(e, data) {
+                                console.log(e);
+                                console.log(data);
+                            }',
+			                        'fileuploadfail' => 'function(e, data) {
+                                console.log(e);
+                                console.log(data);
+                            }',
+		                        ],
+	                        ]); ?>
+
                             <div class="cols-sm-10">
 
                                 <?= $form->field($com, 'content')->widget(\yii\redactor\widgets\Redactor::className(), [

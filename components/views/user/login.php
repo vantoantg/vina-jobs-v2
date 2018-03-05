@@ -9,6 +9,10 @@ use app\library\helper\Helper;
      style="display: none;">
     <div class="modal-dialog">
         <div class="loginmodal-container">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
             <h1>Đăng nhập</h1><br>
             <?php $form = ActiveForm::begin([
                 'action' => \app\library\helper\Helper::createUrl(['front/user/login']),

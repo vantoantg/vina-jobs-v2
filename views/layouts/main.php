@@ -96,9 +96,7 @@ AppAsset::register($this);
 
 
                 <?php }else{ ?>
-                <a href="<?= Helper::createUrl(['front/user/options-register']) ?>">
-                    <button class="navbar-btn nav-button wow fadeInRight" data-wow-delay="0.6s">Đăng ký</button>
-                </a>
+                    <button class="navbar-btn nav-button wow fadeInRight" data-toggle="modal" data-target="#register-modal" data-wow-delay="0.6s">Đăng ký</button>
                     <button class="navbar-btn nav-button wow bounceInRight login" data-toggle="modal" data-target="#login-modal" data-wow-delay="0.8s">Đăng nhập</button>
                 <?php } ?>
             </div>
@@ -115,6 +113,7 @@ AppAsset::register($this);
     </div><!-- /.container-fluid -->
 </nav>
 <?= $content ?>
+<?= (new \app\components\UserWidget())->optionsRegister() ?>
 <?= (new \app\components\UserWidget())->login() ?>
 
 <div class="footer-area">

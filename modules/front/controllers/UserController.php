@@ -31,16 +31,6 @@ class UserController extends FrontController
         return $this->render('index');
     }
 
-    public function actionOptionsRegister(){
-        if(Common::isLoginned()){
-            // Todo: return...
-        }
-
-        return $this->render('options_register', [
-            'candidate' => Helper::createUrl(['front/user/register-candidate']),
-            'company' => Helper::createUrl(['front/user/register-company']),
-        ]);
-    }
 
     public function actionRegisterCandidate()
     {
@@ -59,6 +49,7 @@ class UserController extends FrontController
             'com' => $com,
         ]);
     }
+
     public function actionRegisterCompany()
     {
         $errors = [];
@@ -69,19 +60,28 @@ class UserController extends FrontController
         $userDetail = new UserDetails();
         $com = new Company();
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate() && $com->validate() && $userDetail->validate()) {
-            $model->auth_key = $model->getAuthKey();
+        if (
+        	$model->load(Yii::$app->request->post()) && $model->validate() &&
+	        $com->load(Yii::$app->request->post()) && $com->validate() &&
+	        $userDetail->load(Yii::$app->request->post()) && $userDetail->validate()) {
+	        $model->username = $model->email;
             if($model->save()){
                 if($com->save()){
                     $com->created_by = $model->getId();
                     $com->update();
                 }
+	            $userDetail->user_id = $model->getId();
+	            $userDetail->save();
             }
 
-            $url = Yii::$app->getUrlManager()->createUrl(['front/user/update']);
+            $url = Yii::$app->getUrlManager()->createUrl(['front/user/update-company']);
             return $this->redirect($url);
         }else{
-            $errors = array_merge($model->getErrors(), $com->getErrors(), $userDetail->getErrors());
+            $errs = array_merge($model->getErrors(), $com->getErrors(), $userDetail->getErrors());
+            foreach ($errs as $error){
+	            $errors[] = $error[0];
+            }
+
         }
 
         return $this->render('register_company', [
@@ -92,6 +92,60 @@ class UserController extends FrontController
 
             'gender' => $gender
         ]);
+    }
+
+	/**
+	 * @return string|\yii\web\Response
+	 * @throws NotFoundHttpException
+	 */
+    public function actionUpdateCompany(){
+	    if(!Common::isLoginned()){
+	    	return $this->goHome();
+	    }
+
+	    $errors = [];
+	    $dropdowns = new Dropdown();
+	    $gender = $dropdowns->getDropdown(Dropdown::TYPE_GENDER);
+
+	    $model = Users::findOne(['id' => Common::currentUser()]);
+	    if(!$model){
+		    throw new NotFoundHttpException('The requested page does not exist.');
+	    }
+	    $userDetail = UserDetails::findOne(['user_id' => Common::currentUser()]);
+	    $com = Company::findOne(['created_by' => Common::currentUser()]);
+
+	    if (
+		    $model->load(Yii::$app->request->post()) && $model->validate() &&
+		    $com->load(Yii::$app->request->post()) && $com->validate() &&
+		    $userDetail->load(Yii::$app->request->post()) && $userDetail->validate()) {
+		    $model->username = $model->email;
+		    if($model->save()){
+			    if($com->save()){
+				    $com->created_by = $model->getId();
+				    $com->update();
+			    }
+			    $userDetail->user_id = $model->getId();
+			    $userDetail->save();
+		    }
+
+		    $url = Yii::$app->getUrlManager()->createUrl(['front/user/update-company']);
+		    return $this->redirect($url);
+	    }else{
+		    $errs = array_merge($model->getErrors(), $com->getErrors(), $userDetail->getErrors());
+		    foreach ($errs as $error){
+			    $errors[] = $error[0];
+		    }
+
+	    }
+
+	    return $this->render('register_company', [
+		    'model' => $model,
+		    'userDetail' => $userDetail,
+		    'com' => $com,
+		    'errors' => $errors,
+
+		    'gender' => $gender
+	    ]);
     }
 
     public function actionUpdate()
