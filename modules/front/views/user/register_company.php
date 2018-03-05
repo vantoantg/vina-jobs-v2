@@ -25,6 +25,14 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="main-login main-center">
                 <h5>Vui lòng điền đúng địa chỉ email, hệ thống sẽ gửi link kích hoạt tài khoản vào email.</h5>
 
+                <?php if($errors){
+                    foreach ($errors as $error){ ?>
+                        <div class="alert alert-danger">
+                            <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+                        </div>
+                    <?php }
+                } ?>
+
                 <?php $form = ActiveForm::begin(); ?>
                 <div class="row">
                     <div class="col-xs-12">

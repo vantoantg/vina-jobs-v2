@@ -28,7 +28,7 @@ class Users extends \app\models\base\User implements IdentityInterface
     public function rules()
     {
         return [
-            [['name', 'email', 'password', 'repassword', 'auth_key'], 'required'],
+            [['name', 'email', 'password', 'repassword'], 'required'],
             [['role', 'archive', 'type', 'status'], 'integer'],
             [['attributes'], 'string'],
             [['username', 'name'], 'string', 'max' => 32],
@@ -72,10 +72,17 @@ class Users extends \app\models\base\User implements IdentityInterface
     }
 
     public function beforeSave($insert) {
-        $this->setPassword($this->password);
-        $this->generateAuthKey();
-        $this->generatePasswordResetToken();
-        return true;
+
+        if (parent::beforeSave($insert)) {
+            if ($this->isNewRecord) {
+                $this->setPassword($this->password);
+                $this->generateAuthKey();
+                $this->generatePasswordResetToken();
+                $this->auth_key = \Yii::$app->getSecurity()->generateRandomString();
+            }
+            return true;
+        }
+        return false;
     }
 
     /**

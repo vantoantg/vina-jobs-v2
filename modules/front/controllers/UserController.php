@@ -6,6 +6,7 @@ use app\library\helper\Common;
 use app\models\Company;
 use app\models\Dropdown;
 use app\models\UserDetails;
+use Faker\Generator;
 use Yii;
 use app\forms\LoginForm;
 use app\forms\ProfilePasswordForm;
@@ -60,6 +61,7 @@ class UserController extends FrontController
     }
     public function actionRegisterCompany()
     {
+        $errors = [];
         $dropdowns = new Dropdown();
         $gender = $dropdowns->getDropdown(Dropdown::TYPE_GENDER);
 
@@ -67,15 +69,26 @@ class UserController extends FrontController
         $userDetail = new UserDetails();
         $com = new Company();
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
-//            if($com->load())
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $com->validate() && $userDetail->validate()) {
+            $model->auth_key = $model->getAuthKey();
+            if($model->save()){
+                if($com->save()){
+                    $com->created_by = $model->getId();
+                    $com->update();
+                }
+            }
+
             $url = Yii::$app->getUrlManager()->createUrl(['front/user/update']);
             return $this->redirect($url);
+        }else{
+            $errors = array_merge($model->getErrors(), $com->getErrors(), $userDetail->getErrors());
         }
+
         return $this->render('register_company', [
             'model' => $model,
             'userDetail' => $userDetail,
             'com' => $com,
+            'errors' => $errors,
 
             'gender' => $gender
         ]);
