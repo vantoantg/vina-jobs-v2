@@ -22,7 +22,7 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <link rel="shortcut icon" type="image/png" href="<?= \app\library\helper\Helper::siteURL()?>/favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="<?= \app\library\helper\Helper::homeUrl()?>favicon.ico"/>
     <?php $this->head() ?>
 </head>
 <body>
@@ -96,7 +96,7 @@ AppAsset::register($this);
 
 
                 <?php }else{ ?>
-                <a href="<?= Helper::createUrl(['front/user/register']) ?>">
+                <a href="<?= Helper::createUrl(['front/user/options-register']) ?>">
                     <button class="navbar-btn nav-button wow fadeInRight" data-wow-delay="0.6s">Đăng ký</button>
                 </a>
                     <button class="navbar-btn nav-button wow bounceInRight login" data-toggle="modal" data-target="#login-modal" data-wow-delay="0.8s">Đăng nhập</button>

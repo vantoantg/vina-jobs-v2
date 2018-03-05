@@ -4,6 +4,7 @@ namespace app\modules\front\controllers;
 
 use app\library\helper\Common;
 use app\models\Company;
+use app\models\Dropdown;
 use app\models\UserDetails;
 use Yii;
 use app\forms\LoginForm;
@@ -29,21 +30,54 @@ class UserController extends FrontController
         return $this->render('index');
     }
 
-    public function actionRegister()
+    public function actionOptionsRegister(){
+        if(Common::isLoginned()){
+            // Todo: return...
+        }
+
+        return $this->render('options_register', [
+            'candidate' => Helper::createUrl(['front/user/register-candidate']),
+            'company' => Helper::createUrl(['front/user/register-company']),
+        ]);
+    }
+
+    public function actionRegisterCandidate()
     {
         $model = new Users();
         $userDetail = new UserDetails();
         $com = new Company();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
-
+//            if($com->load())
             $url = Yii::$app->getUrlManager()->createUrl(['front/user/update']);
             return $this->redirect($url);
         }
-        return $this->render('register', [
+        return $this->render('register_candidate', [
             'model' => $model,
             'userDetail' => $userDetail,
             'com' => $com,
+        ]);
+    }
+    public function actionRegisterCompany()
+    {
+        $dropdowns = new Dropdown();
+        $gender = $dropdowns->getDropdown(Dropdown::TYPE_GENDER);
+
+        $model = new Users();
+        $userDetail = new UserDetails();
+        $com = new Company();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
+//            if($com->load())
+            $url = Yii::$app->getUrlManager()->createUrl(['front/user/update']);
+            return $this->redirect($url);
+        }
+        return $this->render('register_company', [
+            'model' => $model,
+            'userDetail' => $userDetail,
+            'com' => $com,
+
+            'gender' => $gender
         ]);
     }
 

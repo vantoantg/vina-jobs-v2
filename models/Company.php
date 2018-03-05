@@ -17,6 +17,7 @@ class Company extends \app\models\base\Company
     public function rules()
     {
         return [
+            [['name', 'content'], 'required'],
             [['location_id', 'created_by', 'status', 'arranged'], 'integer'],
             [['content'], 'string'],
             [['created_at'], 'safe'],
