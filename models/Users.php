@@ -16,6 +16,9 @@ class Users extends \app\models\base\User implements IdentityInterface
         USER_TYPE_TWITTER = 4,
         USER_TYPE_GITHUB = 5;
 
+    const SCENARIO_REGISTER = 'register';
+    const SCENARIO_UPDATE = 'update';
+
     public $slug_name;
     public $as_employers;
     public $repassword;
@@ -28,18 +31,30 @@ class Users extends \app\models\base\User implements IdentityInterface
     public function rules()
     {
         return [
-            [['name', 'email', 'password', 'repassword', 'auth_key'], 'required'],
+            [['name', 'email', 'password', 'repassword'], 'required'],
             [['role', 'archive', 'type', 'status'], 'integer'],
             [['attributes'], 'string'],
             [['username', 'name'], 'string', 'max' => 32],
             [['email', 'avatar_url'], 'string', 'max' => 255],
-            [['password'], 'string', 'max' => 64],
+            [['password'], 'string', 'min' => 6, 'max' => 64],
             [['auth_key', 'access_token', 'password_reset_token'], 'string', 'max' => 128],
             [['slug_name', 'avatar'], 'string', 'max' => 155],
             [['lang'], 'string', 'max' => 5],
             [['timezone'], 'string', 'max' => 100],
-            [['access_token'], 'unique'],
+            [['email', 'access_token'], 'unique'],
+	        ['repassword', 'compare', 'compareAttribute'=>'password', 'message' => "Mật khẩu nhập lại chưa chính xác." ],
         ];
+    }
+
+    /**
+     * @return array
+     */
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_UPDATE] = ['name'];
+        $scenarios[self::SCENARIO_REGISTER] = ['name', 'email', 'password', 'repassword'];
+        return $scenarios;
     }
 
     /**
@@ -71,11 +86,21 @@ class Users extends \app\models\base\User implements IdentityInterface
         ];
     }
 
+	/**
+	 * @param bool $insert
+	 * @return bool
+	 */
     public function beforeSave($insert) {
-        $this->setPassword($this->password);
-        $this->generateAuthKey();
-        $this->generatePasswordResetToken();
-        return true;
+
+        if (parent::beforeSave($insert)) {
+            if ($this->isNewRecord) {
+                $this->setPassword($this->password);
+                $this->password_reset_token = $this->generatePasswordResetToken();
+                $this->auth_key = \Yii::$app->getSecurity()->generateRandomString();
+            }
+            return true;
+        }
+        return false;
     }
 
     /**

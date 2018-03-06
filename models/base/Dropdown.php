@@ -11,7 +11,7 @@ use Yii;
  * @property int $type
  * @property string $name
  * @property string $decription
- * @property int $aranged
+ * @property int $arranged
  * @property int $status
  */
 class Dropdown extends \yii\db\ActiveRecord
@@ -31,7 +31,7 @@ class Dropdown extends \yii\db\ActiveRecord
     {
         return [
             [['type', 'name'], 'required'],
-            [['type', 'aranged', 'status'], 'integer'],
+            [['type', 'arranged', 'status'], 'integer'],
             [['decription'], 'string'],
             [['name'], 'string', 'max' => 255],
         ];
@@ -47,7 +47,7 @@ class Dropdown extends \yii\db\ActiveRecord
             'type' => 'Type',
             'name' => 'Name',
             'decription' => 'Decription',
-            'aranged' => 'Aranged',
+            'arranged' => 'Aranged',
             'status' => 'Status',
         ];
     }

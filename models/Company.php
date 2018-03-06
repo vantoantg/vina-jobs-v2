@@ -17,9 +17,11 @@ class Company extends \app\models\base\Company
     public function rules()
     {
         return [
+            [['name', 'content'], 'required'],
             [['location_id', 'created_by', 'status', 'arranged'], 'integer'],
             [['content'], 'string'],
             [['created_at'], 'safe'],
+            [['logo'], 'file', 'extensions' => 'gif, jpg, png, jpeg',],
             [['name', 'logo'], 'string', 'max' => 255],
         ];
     }
@@ -41,4 +43,15 @@ class Company extends \app\models\base\Company
             'arranged' => 'Arranged',
         ];
     }
+
+	public function beforeSave($insert) {
+
+		if (parent::beforeSave($insert)) {
+			if ($this->isNewRecord) {
+
+			}
+			return true;
+		}
+		return false;
+	}
 }

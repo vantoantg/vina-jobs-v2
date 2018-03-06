@@ -986,7 +986,9 @@ button.accordion.active:after {
 .input-group-addon {
     border-radius: 0px;
 }
-
+.btn{
+    border-radius: 2px;
+}
 .btn-primary {
     color: #fff;
     background-color: #00AEEF;
