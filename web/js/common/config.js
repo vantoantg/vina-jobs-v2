@@ -1,4 +1,2 @@
 
-
-// var webRoot = window.location.hostname;
-var webRoot = 'http://localhost:88/demo2/';
+var webRoot = $('input#setting-common').data('site');
