@@ -21,6 +21,7 @@ class Company extends \app\models\base\Company
             [['location_id', 'created_by', 'status', 'arranged'], 'integer'],
             [['content'], 'string'],
             [['created_at'], 'safe'],
+            [['logo'], 'file', 'extensions' => 'gif, jpg, png, jpeg',],
             [['name', 'logo'], 'string', 'max' => 255],
         ];
     }

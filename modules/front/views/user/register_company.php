@@ -53,28 +53,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ])->label('Logo')->fileInput() ?>
                             </div>
 
-	                        <?= \dosamigos\fileupload\FileUpload::widget([
-		                        'model' => $com,
-		                        'attribute' => 'logo',
-		                        'url' => ['media/upload', 'id' => $com->id], // your url, this is just for demo purposes,
-		                        'options' => ['accept' => 'image/*'],
-		                        'clientOptions' => [
-			                        'maxFileSize' => 2000000
-		                        ],
-		                        // Also, you can specify jQuery-File-Upload events
-		                        // see: https://github.com/blueimp/jQuery-File-Upload/wiki/Options#processing-callback-options
-		                        'clientEvents' => [
-			                        'fileuploaddone' => 'function(e, data) {
-                                console.log(e);
-                                console.log(data);
-                            }',
-			                        'fileuploadfail' => 'function(e, data) {
-                                console.log(e);
-                                console.log(data);
-                            }',
-		                        ],
-	                        ]); ?>
-
                             <div class="cols-sm-10">
 
                                 <?= $form->field($com, 'content')->widget(\yii\redactor\widgets\Redactor::className(), [
@@ -132,15 +110,22 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="form-group">
                             <label for="email" class="cols-sm-2 control-label">Email</label>
                             <div class="cols-sm-10">
+                                <?php
+                                $email_type = false;
+                                if(!$model->isNewRecord){
+                                    $email_type = true;
+                                }
+                                ?>
                                 <?= $form->field($model, 'email', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                                ])->label(false) ?>
+                                ])->textInput(['readonly' => $email_type])->label(false) ?>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <?php if($model->isNewRecord){ ?>
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
                         <div class="form-group">
@@ -165,6 +150,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     </div>
                 </div>
+                <?php } ?>
 
                 <div class="row">
                     <div class="col-xs-12 col-sm-8">

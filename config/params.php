@@ -2,4 +2,5 @@
 
 return [
     'adminEmail' => 'admin@vina-jobs.com',
+    'companyLogoPath' => '/web/uploads/_company/',
 ];

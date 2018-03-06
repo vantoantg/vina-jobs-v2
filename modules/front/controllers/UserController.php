@@ -15,6 +15,7 @@ use app\forms\ResetProfilePasswordForm;
 use app\library\helper\Helper;
 use app\models\Users;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 
 
 /**
@@ -57,29 +58,31 @@ class UserController extends FrontController
         $gender = $dropdowns->getDropdown(Dropdown::TYPE_GENDER);
 
         $model = new Users();
+        $model->scenario = Users::SCENARIO_REGISTER;
+
         $userDetail = new UserDetails();
         $com = new Company();
 
         if (
-        	$model->load(Yii::$app->request->post()) && $model->validate() &&
-	        $com->load(Yii::$app->request->post()) && $com->validate() &&
-	        $userDetail->load(Yii::$app->request->post()) && $userDetail->validate()) {
-	        $model->username = $model->email;
-            if($model->save()){
-                if($com->save()){
+            $model->load(Yii::$app->request->post()) && $model->validate() &&
+            $com->load(Yii::$app->request->post()) && $com->validate() &&
+            $userDetail->load(Yii::$app->request->post()) && $userDetail->validate()) {
+            $model->username = $model->email;
+            if ($model->save()) {
+                if ($com->save()) {
                     $com->created_by = $model->getId();
                     $com->update();
                 }
-	            $userDetail->user_id = $model->getId();
-	            $userDetail->save();
+                $userDetail->user_id = $model->getId();
+                $userDetail->save();
             }
 
             $url = Yii::$app->getUrlManager()->createUrl(['front/user/update-company']);
             return $this->redirect($url);
-        }else{
+        } else {
             $errs = array_merge($model->getErrors(), $com->getErrors(), $userDetail->getErrors());
-            foreach ($errs as $error){
-	            $errors[] = $error[0];
+            foreach ($errs as $error) {
+                $errors[] = $error[0];
             }
 
         }
@@ -94,64 +97,82 @@ class UserController extends FrontController
         ]);
     }
 
-	/**
-	 * @return string|\yii\web\Response
-	 * @throws NotFoundHttpException
-	 */
-    public function actionUpdateCompany(){
-	    if(!Common::isLoginned()){
-	    	return $this->goHome();
-	    }
+    /**
+     * @return string|\yii\web\Response
+     * @throws NotFoundHttpException
+     */
+    public function actionUpdateCompany()
+    {
+        if (!Common::isLoginned()) {
+            return $this->goHome();
+        }
 
-	    $errors = [];
-	    $dropdowns = new Dropdown();
-	    $gender = $dropdowns->getDropdown(Dropdown::TYPE_GENDER);
+        $errors = [];
+        $dropdowns = new Dropdown();
+        $gender = $dropdowns->getDropdown(Dropdown::TYPE_GENDER);
 
-	    $model = Users::findOne(['id' => Common::currentUser()]);
-	    if(!$model){
-		    throw new NotFoundHttpException('The requested page does not exist.');
-	    }
-	    $userDetail = UserDetails::findOne(['user_id' => Common::currentUser()]);
-	    $com = Company::findOne(['created_by' => Common::currentUser()]);
+        $model = Users::findOne(['id' => Common::currentUser()]);
+        if (!$model) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+        $model->scenario = Users::SCENARIO_UPDATE;
 
-	    if (
-		    $model->load(Yii::$app->request->post()) && $model->validate() &&
-		    $com->load(Yii::$app->request->post()) && $com->validate() &&
-		    $userDetail->load(Yii::$app->request->post()) && $userDetail->validate()) {
-		    $model->username = $model->email;
-		    if($model->save()){
-			    if($com->save()){
-				    $com->created_by = $model->getId();
-				    $com->update();
-			    }
-			    $userDetail->user_id = $model->getId();
-			    $userDetail->save();
-		    }
+        $userDetail = UserDetails::findOne(['user_id' => Common::currentUser()]);
+        $com = Company::findOne(['created_by' => Common::currentUser()]);
 
-		    $url = Yii::$app->getUrlManager()->createUrl(['front/user/update-company']);
-		    return $this->redirect($url);
-	    }else{
-		    $errs = array_merge($model->getErrors(), $com->getErrors(), $userDetail->getErrors());
-		    foreach ($errs as $error){
-			    $errors[] = $error[0];
-		    }
+        if (
+            $model->load(Yii::$app->request->post()) && $model->validate() &&
+            $com->load(Yii::$app->request->post()) && $com->validate() &&
+            $userDetail->load(Yii::$app->request->post()) && $userDetail->validate()) {
+            $model->username = $model->email;
+            if ($model->save()) {
+                // Upload logo
+                $image = UploadedFile::getInstance($com, 'logo');
+                if (!is_null($image)) {
+                    $com->logo = $image->name;
+                    $ex = explode(".", $image->name);
+                    $ext = end($ex);
 
-	    }
+                    // TODO: add new fild to save origin file name, generate a unique file name to prevent duplicate filenames
+                    /*$com->logo = Yii::$app->security->generateRandomString().".{$ext}";
+                    $path = Yii::$app->basePath.Yii::$app->params['companyLogoPath'] . $com->logo;*/
 
-	    return $this->render('register_company', [
-		    'model' => $model,
-		    'userDetail' => $userDetail,
-		    'com' => $com,
-		    'errors' => $errors,
+                    $path = Yii::$app->basePath.Yii::$app->params['companyLogoPath'] . $image->name;
+                    $image->saveAs($path);
+                }
 
-		    'gender' => $gender
-	    ]);
+                if ($com->save()) {
+                    $com->created_by = $model->getId();
+                    $com->update();
+                }
+                $userDetail->user_id = $model->getId();
+                $userDetail->save();
+            }
+
+            $url = Yii::$app->getUrlManager()->createUrl(['front/user/update-company']);
+            return $this->redirect($url);
+        } else {
+            $errs = array_merge($model->getErrors(), $com->getErrors(), $userDetail->getErrors());
+            foreach ($errs as $error) {
+                $errors[] = $error[0];
+            }
+
+        }
+
+        return $this->render('register_company', [
+            'model' => $model,
+            'userDetail' => $userDetail,
+            'com' => $com,
+            'errors' => $errors,
+
+            'gender' => $gender
+        ]);
     }
 
     public function actionUpdate()
     {
         $model = Users::findOne(['id' => Common::currentUser()]);
-        if(!$model){
+        if (!$model) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 
@@ -259,13 +280,13 @@ class UserController extends FrontController
         if (Yii::$app->request->isPost) {
             // if ($form->validate()) {
             $data = Yii::$app->request->post($form->formName());
-                $User = Users::findOne(array('username' => $data['email']));
-                if ($User) {
-                    // Todo send mail
-                    $form->sendEmailResetPassword(Yii::$app->params['adminEmail'], $User);
-                } else {
+            $User = Users::findOne(array('username' => $data['email']));
+            if ($User) {
+                // Todo send mail
+                $form->sendEmailResetPassword(Yii::$app->params['adminEmail'], $User);
+            } else {
 
-                }
+            }
             //}
         }
         return $this->render('forgot', [

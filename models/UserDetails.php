@@ -17,6 +17,7 @@ class UserDetails extends \app\models\base\UserDetails
     public function rules()
     {
         return [
+            [['phone'], 'required'],
             [['user_id', 'gender', 'job_title_id', 'direct_manager_id', 'city_id', 'approved_by', 'active_tour_guide'], 'integer'],
             [['birthday', 'changed_password_date', 'registration_date', 'approved_at'], 'safe'],
             [['email', 'address'], 'string', 'max' => 255],
