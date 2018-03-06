@@ -1,7 +1,7 @@
 <?php
 use app\library\helper\Helper;
-
-$this->title = 'Trang chủ | '. Helper::siteURL();
+/** @var $page \app\models\Pages title */
+$this->title = $page->seo_title. ' | '. Helper::siteURL();
 ?>
 <div class="slider-area">
     <div class="slider">

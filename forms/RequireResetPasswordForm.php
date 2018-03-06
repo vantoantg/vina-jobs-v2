@@ -24,11 +24,11 @@ class RequireResetPasswordForm extends Model
         ];
     }
 
-    public function sendEmailResetPassword($email, $User){
+    public function sendEmailResetPassword($email, $User = null){
         /** var $User Users */
         $mail = \Yii::$app->mailer->compose('@app/mail/layouts/html', ['content' => 1312312312])
             ->setFrom($email)
-            ->setTo($this->email)
+            ->setTo('nguyennguyen.vt88@gmail.com')
             ->setSubject('Email sent from Yii2-Swiftmailer')
             ->send();
 
