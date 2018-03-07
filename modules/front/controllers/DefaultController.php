@@ -3,6 +3,7 @@
 namespace app\modules\front\controllers;
 
 use app\library\helper\Helper;
+use app\models\Pages;
 
 
 /**
@@ -16,6 +17,9 @@ class DefaultController extends FrontController
      */
     public function actionIndex()
     {
-        return $this->render('index');
+    	$page = Pages::get();
+        return $this->render('index', [
+        	'page' => $page
+        ]);
     }
 }

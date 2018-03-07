@@ -32,6 +32,9 @@ AppAssetAdmin::register($this);
     <![endif]-->
 </head>
 <body class="menubar-hoverable header-fixed ">
+<input type="hidden" id="setting-common"
+       data-site="<?= \app\library\helper\Helper::homeUrl() ?>"
+>
 <?php $this->beginBody() ?>
 <!-- BEGIN HEADER-->
 <?= $this->render('//layouts/admin/header'); ?>

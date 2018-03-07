@@ -16,6 +16,7 @@ use app\library\helper\Helper;
 use app\models\Users;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
+use app\models\Email;
 
 
 /**
@@ -147,6 +148,8 @@ class UserController extends FrontController
                 }
                 $userDetail->user_id = $model->getId();
                 $userDetail->save();
+//	            (new RequireResetPasswordForm())->sendEmailResetPassword('admin@vina-jobs.com');
+	            Email::sendMail();
             }
 
             $url = Yii::$app->getUrlManager()->createUrl(['front/user/update-company']);

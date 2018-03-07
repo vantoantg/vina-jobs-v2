@@ -5,6 +5,7 @@
 
 namespace app\library\helper;
 
+use app\models\Pages;
 use Yii;
 use yii\helpers\Url;
 use \yii\web\Response;
@@ -364,4 +365,13 @@ class Helper
 		fwrite($handle, $return);
 		fclose($handle);
 	}
+
+    /**
+     * @param $page
+     */
+	public static function generateSeo($page){
+        /** @var $page Pages */
+        Yii::$app->params['seo']['description'] = $page->seo_description;
+        Yii::$app->params['seo']['keywords'] = $page->seo_keyword;
+    }
 }
