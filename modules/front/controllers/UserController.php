@@ -14,6 +14,8 @@ use app\forms\RequireResetPasswordForm;
 use app\forms\ResetProfilePasswordForm;
 use app\library\helper\Helper;
 use app\models\Users;
+use yii\bootstrap\Html;
+use yii\helpers\Url;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 use app\models\Email;
@@ -76,6 +78,11 @@ class UserController extends FrontController
                 }
                 $userDetail->user_id = $model->getId();
                 $userDetail->save();
+
+	            $data['name'] = $model->name;
+	            $data['link'] =  Url::to('/company/active/token/adasdasdsadsadaa8das9d98asd98sad.html', true);
+	            $temp = $this->renderPartial('@app/mail/layouts/active_company_register',['data' => $data]);
+	            Email::sendMail('Reset password - '. Helper::siteURL(), $temp);
             }
 
             $url = Yii::$app->getUrlManager()->createUrl(['front/user/update-company']);
@@ -148,8 +155,6 @@ class UserController extends FrontController
                 }
                 $userDetail->user_id = $model->getId();
                 $userDetail->save();
-//	            (new RequireResetPasswordForm())->sendEmailResetPassword('admin@vina-jobs.com');
-	            Email::sendMail();
             }
 
             $url = Yii::$app->getUrlManager()->createUrl(['front/user/update-company']);
@@ -285,8 +290,15 @@ class UserController extends FrontController
             $data = Yii::$app->request->post($form->formName());
             $User = Users::findOne(array('username' => $data['email']));
             if ($User) {
-                // Todo send mail
-                $form->sendEmailResetPassword(Yii::$app->params['adminEmail'], $User);
+	            $data['name'] = $User->name;
+	            $data['link'] =  Url::to('/user/reset-password/adasdasdsadsadaa8das9d98asd98sad.html', true);
+	            $temp = $this->renderPartial('@app/mail/layouts/email',['data' => $data]);
+	            $send = Email::sendMail('Reset password - '. Helper::siteURL(), $temp);
+	            if($send){
+		            return $this->render('forgot_success', [
+			            'email' => $User->email
+		            ]);
+	            }
             } else {
 
             }
