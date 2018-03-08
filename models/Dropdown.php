@@ -34,10 +34,11 @@ class Dropdown extends \app\models\base\Dropdown
         }
 
         $this->dropdowns = self::find()
-            ->select('id, type, name')
+            ->select('type, name, value')
             ->where('status = :status', [
                 ':status' => Dropdown::STATUS_ACTIVE
             ])
+	        ->orderBy(['arranged' => SORT_ASC])
             ->asArray()->all();
 
         return $this->dropdowns;
@@ -51,6 +52,7 @@ class Dropdown extends \app\models\base\Dropdown
         $array = [];
         foreach ($this->dropdowns as $item){
             if($type == $item['type']){
+            	$item['id'] = $item['value'];
                 $array[] = $item;
             }
         }

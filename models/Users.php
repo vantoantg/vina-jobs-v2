@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\library\helper\Cons;
+use app\library\helper\Role;
 use yii\base\Security;
 use yii\web\IdentityInterface;
 
@@ -10,11 +11,20 @@ class Users extends \app\models\base\User implements IdentityInterface
 {
 
     const
-        USER_TYPE_DEFAULT = 1, //  Register
+        USER_TYPE_DEFAULT = 1, //  Register(candidate)
         USER_TYPE_FACEBOOK = 2,
         USER_TYPE_GOOGLE = 3,
         USER_TYPE_TWITTER = 4,
-        USER_TYPE_GITHUB = 5;
+        USER_TYPE_GITHUB = 5,
+
+        USER_TYPE_CONTACT_OF_COMPANY = 9; // Contact of company
+
+	const
+		STATUS_WAITING_ACTIVE = 0,
+		STATUS_WAITING_RESET_PASSWORD = 3,
+
+		STATUS_ACTIVED = 1,
+		STATUS_DISABLED = 2;
 
     const SCENARIO_REGISTER = 'register';
     const SCENARIO_UPDATE = 'update';
@@ -101,6 +111,15 @@ class Users extends \app\models\base\User implements IdentityInterface
             return true;
         }
         return false;
+    }
+
+	/**
+	 *
+	 */
+    public function newContactCompany(){
+	    $this->type = Users::USER_TYPE_CONTACT_OF_COMPANY;
+	    $this->status = Users::STATUS_WAITING_ACTIVE;
+	    $this->role = Role::ROLE_CUSTOMMER;
     }
 
     /**

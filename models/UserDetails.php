@@ -20,6 +20,7 @@ class UserDetails extends \app\models\base\UserDetails
             [['phone'], 'required'],
             [['user_id', 'gender', 'job_title_id', 'direct_manager_id', 'city_id', 'approved_by', 'active_tour_guide'], 'integer'],
             [['birthday', 'changed_password_date', 'registration_date', 'approved_at'], 'safe'],
+	        [['birthday'], 'date', 'format' => 'dd/mm/yyyy'],
             [['email', 'address'], 'string', 'max' => 255],
             [['first_name', 'middle_name', 'last_name'], 'string', 'max' => 50],
             [['phone'], 'string', 'max' => 11],

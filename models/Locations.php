@@ -22,6 +22,7 @@ class Locations extends \app\models\base\Locations
                 ':parent_id' => 64,
                 ':type'      => 3
             ])
+	        ->orderBy(['arranged' => SORT_ASC])
             ->all();
     }
 
