@@ -7,10 +7,11 @@ use app\library\helper\Helper;
 
 <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
      style="display: none;">
-    <div class="modal-dialog">
+	<div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
 
-        <div class="loginmodal-container switch-register">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <div class="modal-content loginmodal-container switch-register">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" title="Đóng lại">
                 <span aria-hidden="true">&times;</span>
             </button>
             <div class="clearfix"></div>
@@ -27,5 +28,6 @@ use app\library\helper\Helper;
                 </li>
             </ul>
         </div>
+    </div>
     </div>
 </div>

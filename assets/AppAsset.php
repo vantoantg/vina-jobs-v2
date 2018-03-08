@@ -25,6 +25,7 @@ class AppAsset extends AssetBundle
         'web/template/jobs/css/fontello.css',
         'web/template/jobs/css/animate.css',
         'web/template/jobs/css/bootstrap.min.css',
+        'web/template/admin/assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css',
         'web/template/jobs/css/owl.carousel.css',
         'web/template/jobs/css/owl.theme.css',
         'web/template/jobs/css/owl.transitions.css',
@@ -36,6 +37,7 @@ class AppAsset extends AssetBundle
     public $js = [
         'web/template/jobs/js/vendor/modernizr-2.6.2.min.js',
         'web/template/jobs/js/bootstrap.min.js',
+        'web/template/admin/assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js',
         'web/template/jobs/js/owl.carousel.min.js',
         'web/template/jobs/js/wow.js',
         'vendor/bower-asset/select2/dist/js/select2.min.js',

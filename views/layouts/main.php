@@ -97,7 +97,7 @@ AppAsset::register($this);
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?= Yii::$app->homeUrl; ?>"><img src="<?= Helper::homeUrl()?>web/template/jobs/img/logo.jpg" style="max-height: 50px" alt=""></a>
+            <a class="navbar-brand" href="<?= Yii::$app->homeUrl; ?>" title="<?= Helper::siteURL()?>"><img src="<?= Helper::homeUrl()?>web/template/jobs/img/logo.jpg" style="max-height: 50px" alt="vina-jobs"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

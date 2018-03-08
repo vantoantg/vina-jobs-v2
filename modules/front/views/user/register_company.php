@@ -199,7 +199,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <?= $form->field($userDetail, 'birthday', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-birthday-cake"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                                ])->label(false) ?>
+                                ])->textInput(['class' => 'datepk form-control'])->label(false) ?>
                             </div>
                         </div>
                     </div>
