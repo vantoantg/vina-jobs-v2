@@ -146,7 +146,7 @@ AppAsset::register($this);
 <div class="footer-area">
     <div class="container">
         <div class="row footer">
-            JUST GOT SO EASY       <div class="col-md-4">
+	        <div class="col-md-4">
                 <div class="single-footer">
                     <img src="<?= Helper::homeUrl()?>web/template/jobs/img/logo-ft.png" alt="" class="wow pulse" style="max-height: 60px" data-wow-delay="1s">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati architecto quaerat facere blanditiis tempora sequi nulla accusamus, possimus cum necessitatibus suscipit quia autem mollitia, similique quisquam molestias. Vel unde, blanditiis.</p>

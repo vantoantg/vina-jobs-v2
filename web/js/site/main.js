@@ -26,26 +26,28 @@ var Main = function () {
                     var _this = $(this);
 
 
-                    var attr = $(this).attr('format');
+                    var attr = _this.attr('format');
                     if (typeof attr !== typeof undefined && attr !== false) {
                         var format = attr;
                     } else {
                         var format = "dd/mm/yyyy";
                     }
 
-                    var lang = $(this).attr('lang');
+                    var lang = _this.attr('lang');
                     if (typeof lang !== typeof undefined && lang !== false) {
                         var language = lang;
                     } else {
                         var language = "vi";
                     }
+                    console.log(new Date());
                     _this.datepicker({
+                        startView: 2,
                         format: format,
                         language: language,
                         todayHighlight: true,
                         toggleActive: true,
-                        // startDate: "25/10/1988",
-                        startView: 3
+                        startDate: "25/10/1988",
+                        clearBtn: true,
                     });
                 });
             }
