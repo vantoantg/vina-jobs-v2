@@ -12,28 +12,37 @@ namespace app\models;
 use PHPMailer\PHPMailer\PHPMailer;
 use yii\db\Exception;
 
+/**
+ * Class Email
+ * @package app\models
+ *
+ * Tona DOC:
+ * Setting gmail become mailserver: https://myaccount.google.com/u/1/apppasswords?rapt=AEjHL4O3T2Xk2UwwABN-Ca9GaqNigTxOSJhaTVOmee4otcVVKU65s9SflsgQRpoKde55TnFXjqZfvJHxvULa4uVQAKkWEMis_A
+ * + Create new password for account https://support.google.com/accounts/answer/185833
+ * Ex: vanvan.vt88@gmail.com / jkwdqrpqozpdhgqw
+ */
 class Email
 {
-    public static function sendMail(){
-	    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+    public static function sendMail($subject = 'Subject', $body){
+	    $mail = new PHPMailer();                              // Passing `true` enables exceptions
 	    try {
 		    //Server settings
-		    $mail->SMTPDebug = 1;                                 // Enable verbose debug output
+//		    $mail->SMTPDebug = 1;                                 // Enable verbose debug output
 		    $mail->isSMTP();                                      // Set mailer to use SMTP
 		    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 		    $mail->SMTPAuth = true;                               // Enable SMTP authentication
 		    $mail->Username = 'vanvan.vt88@gmail.com';                 // SMTP username
-		    $mail->Password = '311982057';                           // SMTP password
+		    $mail->Password = 'jkwdqrpqozpdhgqw';                           // SMTP password
 		    $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-		    $mail->Port = 587;                                    // TCP port to connect to
+		    $mail->Port = 465;                                    // TCP port to connect to
 
 		    //Recipients
-		    $mail->setFrom('admin@vina-jobs.com', 'Mailer');
+		    $mail->setFrom('vanvan.vt88@gmail.com', 'http://www.vina-jobs.com');
 		    $mail->addAddress('nguyennguyen.vt88@gmail.com', 'Joe User');     // Add a recipient
-		    $mail->addAddress('admin@vina-jobs.com');               // Name is optional
-		    $mail->addReplyTo('admin@vina-jobs.com', 'Information');
-		    $mail->addCC('cc@example.com');
-		    $mail->addBCC('bcc@example.com');
+//		    $mail->addAddress('admin@vina-jobs.com');               // Name is optional
+		    $mail->addReplyTo('nguyennguyen.vt88@gmail.com', 'Vina-jobs.com');
+//		    $mail->addCC('cc@example.com');
+//		    $mail->addBCC('bcc@example.com');
 
 		    //Attachments
 //		    $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
@@ -41,14 +50,18 @@ class Email
 
 		    //Content
 		    $mail->isHTML(true);                                  // Set email format to HTML
-		    $mail->Subject = 'Here is the subject';
-		    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-		    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+		    $mail->Subject = $subject;
+		    $mail->Body    = $body;
+		    $mail->AltBody = $body;
 
 		    $mail->send();
-		    echo 'Message has been sent';
+		    return true;
 	    } catch (\PHPMailer\PHPMailer\Exception $e) {
 		    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 	    }
+    }
+
+    public static function body(){
+
     }
 }
