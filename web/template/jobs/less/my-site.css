@@ -10,6 +10,15 @@
   overflow: hidden;
   font-family: roboto;
 }
+.loginmodal-container.switch-register {
+  max-width: 475px;
+}
+.loginmodal-container .close {
+  position: relative;
+  top: -20px;
+  right: -15px;
+  outline: none;
+}
 .loginmodal-container h1 {
   text-align: center;
   font-size: 1.8em;
@@ -93,4 +102,113 @@ input[type=password]:hover {
 }
 .socials .auth-clients li:hover a {
   opacity: 0.7;
+}
+.ds-btn {
+  padding-left: 0;
+  text-align: center;
+}
+.ds-btn li {
+  list-style: none;
+  display: inline-block;
+  padding: 10px;
+}
+.ds-btn li a {
+  color: #fff;
+}
+.ds-btn li a span {
+  padding-left: 15px;
+  padding-right: 5px;
+  width: 100%;
+  display: inline-block;
+  text-align: left;
+  color: #fff;
+}
+.ds-btn li a span small {
+  width: 100%;
+  display: inline-block;
+  text-align: left;
+}
+/** Midde modal */
+.vertical-alignment-helper {
+  display: table;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+}
+.vertical-align-center {
+  /* To center vertically */
+  display: table-cell;
+  vertical-align: middle;
+  pointer-events: none;
+}
+.modal-content {
+  /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+  width: inherit;
+  max-width: inherit;
+  /* For Bootstrap 4 - to avoid the modal window stretching full width */
+  height: inherit;
+  /* To center horizontally */
+  margin: 0 auto;
+  pointer-events: all;
+}
+/** End Midde modal */
+.datepicker table tr td.active:active,
+.datepicker table tr td.active:hover:active,
+.datepicker table tr td.active.disabled:active,
+.datepicker table tr td.active.disabled:hover:active,
+.datepicker table tr td.active.active,
+.datepicker table tr td.active:hover.active,
+.datepicker table tr td.active.disabled.active,
+.datepicker table tr td.active.disabled:hover.active {
+  background-color: #00AEEF;
+  border-color: #00AEEF;
+}
+.cropit-preview {
+  background-color: #f8f8f8;
+  background-size: cover;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin: auto;
+  margin-top: 7px;
+  width: 250px;
+  height: 250px;
+}
+.avatar-view {
+  padding-top: 20px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+.avatar-view a {
+  outline: none;
+}
+.avatar-view a img {
+  border-radius: 50%;
+  max-height: 120px;
+  max-width: 120px;
+  border: 1px dotted #ccc;
+}
+.avatar-view a:hover {
+  opacity: .8;
+}
+.image-editor input[type="file"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.image-editor .cropit-preview {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.cropit-preview-image-container {
+  cursor: move;
+}
+.image-size-label {
+  margin-top: 10px;
+}
+input,
+.export {
+  display: block;
+}
+button {
+  margin-top: 10px;
 }

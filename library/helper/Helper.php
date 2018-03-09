@@ -5,6 +5,7 @@
 
 namespace app\library\helper;
 
+use app\models\Pages;
 use Yii;
 use yii\helpers\Url;
 use \yii\web\Response;
@@ -39,6 +40,13 @@ class Helper
      */
 	public static function homeUrl(){
 	    return Yii::$app->getHomeUrl();
+    }
+
+    /**
+     * @return string
+     */
+    public static function webImgs($pathFile){
+        return Yii::$app->getHomeUrl().'web/imgs/'.$pathFile;
     }
 
     /**
@@ -364,4 +372,13 @@ class Helper
 		fwrite($handle, $return);
 		fclose($handle);
 	}
+
+    /**
+     * @param $page
+     */
+	public static function generateSeo($page){
+        /** @var $page Pages */
+        Yii::$app->params['seo']['description'] = $page->seo_description;
+        Yii::$app->params['seo']['keywords'] = $page->seo_keyword;
+    }
 }

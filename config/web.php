@@ -8,6 +8,7 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+	'language' => 'vi_VN',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -34,8 +35,8 @@ $config = [
                 'host' => 'chip.vina-jobs.com',
                 'username' => 'admin@vina-jobs.com',
                 'password' => 'IM5znxBZ9i',
-                'port' => '465',
-                'encryption' => 'TLS',
+                'port' => '587',
+                'encryption' => 'STARTTLS',
             ],
             'useFileTransport' => true,
         ],

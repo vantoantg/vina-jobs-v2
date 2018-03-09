@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\library\helper\Cons;
+use app\library\helper\Role;
 use yii\base\Security;
 use yii\web\IdentityInterface;
 
@@ -10,11 +11,23 @@ class Users extends \app\models\base\User implements IdentityInterface
 {
 
     const
-        USER_TYPE_DEFAULT = 1, //  Register
+        USER_TYPE_DEFAULT = 1, //  Register(candidate)
         USER_TYPE_FACEBOOK = 2,
         USER_TYPE_GOOGLE = 3,
         USER_TYPE_TWITTER = 4,
-        USER_TYPE_GITHUB = 5;
+        USER_TYPE_GITHUB = 5,
+
+        USER_TYPE_CONTACT_OF_COMPANY = 9; // Contact of company
+
+	const
+		STATUS_WAITING_ACTIVE = 0,
+		STATUS_WAITING_RESET_PASSWORD = 3,
+
+		STATUS_ACTIVED = 1,
+		STATUS_DISABLED = 2;
+
+    const SCENARIO_REGISTER = 'register';
+    const SCENARIO_UPDATE = 'update';
 
     public $slug_name;
     public $as_employers;
@@ -28,18 +41,30 @@ class Users extends \app\models\base\User implements IdentityInterface
     public function rules()
     {
         return [
-            [['name', 'email', 'password', 'repassword', 'auth_key'], 'required'],
+            [['name', 'email', 'password', 'repassword'], 'required'],
             [['role', 'archive', 'type', 'status'], 'integer'],
-            [['attributes'], 'string'],
+            [['attributes', 'avatar'], 'string'],
             [['username', 'name'], 'string', 'max' => 32],
             [['email', 'avatar_url'], 'string', 'max' => 255],
-            [['password'], 'string', 'max' => 64],
+            [['password'], 'string', 'min' => 6, 'max' => 64],
             [['auth_key', 'access_token', 'password_reset_token'], 'string', 'max' => 128],
-            [['slug_name', 'avatar'], 'string', 'max' => 155],
+            [['slug_name'], 'string', 'max' => 155],
             [['lang'], 'string', 'max' => 5],
             [['timezone'], 'string', 'max' => 100],
-            [['access_token'], 'unique'],
+            [['email', 'access_token'], 'unique'],
+	        ['repassword', 'compare', 'compareAttribute'=>'password', 'message' => "Mật khẩu nhập lại chưa chính xác." ],
         ];
+    }
+
+    /**
+     * @return array
+     */
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_UPDATE] = ['name'];
+        $scenarios[self::SCENARIO_REGISTER] = ['name', 'email', 'password', 'repassword'];
+        return $scenarios;
     }
 
     /**
@@ -52,6 +77,7 @@ class Users extends \app\models\base\User implements IdentityInterface
             'username' => 'Email',
             'email' => 'Email',
             'password' => 'Mật khẩu',
+            'repassword ' => 'Nhập lại mật khẩu',
             'auth_key' => 'Auth Key',
             'access_token' => 'Access Token',
             'password_reset_token' => 'Password Reset Token',
@@ -71,11 +97,30 @@ class Users extends \app\models\base\User implements IdentityInterface
         ];
     }
 
+	/**
+	 * @param bool $insert
+	 * @return bool
+	 */
     public function beforeSave($insert) {
-        $this->setPassword($this->password);
-        $this->generateAuthKey();
-        $this->generatePasswordResetToken();
-        return true;
+
+        if (parent::beforeSave($insert)) {
+            if ($this->isNewRecord) {
+                $this->setPassword($this->password);
+                $this->password_reset_token = $this->generatePasswordResetToken();
+                $this->auth_key = \Yii::$app->getSecurity()->generateRandomString();
+            }
+            return true;
+        }
+        return false;
+    }
+
+	/**
+	 *
+	 */
+    public function newContactCompany(){
+	    $this->type = Users::USER_TYPE_CONTACT_OF_COMPANY;
+	    $this->status = Users::STATUS_WAITING_ACTIVE;
+	    $this->role = Role::ROLE_CUSTOMMER;
     }
 
     /**

@@ -9,6 +9,7 @@ namespace app\components;
 
 use app\forms\LoginForm;
 use yii\base\Widget;
+use app\library\helper\Helper;
 use yii\helpers\Html;
 
 class UserWidget extends Widget
@@ -32,7 +33,11 @@ class UserWidget extends Widget
             'model' => $form
         ]);
     }
-    public static function register(){
-        // Todo: form register user
+
+    public function optionsRegister(){
+	    return $this->render('user/options_register', [
+		    'candidate' => Helper::createUrl(['front/user/register-candidate']),
+		    'company' => Helper::createUrl(['front/user/register-company']),
+	    ]);
     }
 }

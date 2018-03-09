@@ -24,6 +24,7 @@ use Yii;
  * @property string $lang
  * @property string $timezone
  * @property string $attributes
+ * @property string $token_waiting_active
  * @property int $status
  */
 class User extends \yii\db\ActiveRecord
@@ -46,7 +47,7 @@ class User extends \yii\db\ActiveRecord
             [['role', 'archive', 'type', 'status'], 'integer'],
             [['attributes'], 'string'],
             [['username', 'name'], 'string', 'max' => 32],
-            [['email', 'avatar_url'], 'string', 'max' => 255],
+            [['email', 'avatar_url', 'token_waiting_active'], 'string', 'max' => 255],
             [['password'], 'string', 'max' => 64],
             [['auth_key', 'access_token', 'password_reset_token'], 'string', 'max' => 128],
             [['slug_name', 'avatar'], 'string', 'max' => 155],

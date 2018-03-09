@@ -11,11 +11,16 @@ return [
 
 	'user/logout.html' => 'front/user/logout',
 	'user/login.html' => 'front/user/login',
-	'user/register.html' => 'front/user/register',
-	'user/update.html' => 'front/user/update',
+
+	'register/candidate.html' => 'front/user/register-candidate',
+	'register/company.html' => 'front/user/register-company',
+	'company/update.html' => 'front/user/update-company',
+
 	'user/profile.html' => 'front/user/profile',
 	'user/profile/<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/user/view-profile',
 	'user/forgot-password.html' => 'front/user/forgot',
+	'user/change-password.html' => 'front/user/profile-change-password',
+	'user/reset-password/<token:[a-zA-Z0-9_ -@.]+>.html' => 'front/user/profile-reset-password',
 
     // jobs
 	'service/jobs/update/job-<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/edit-jobs',

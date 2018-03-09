@@ -9,6 +9,10 @@ use app\library\helper\Helper;
      style="display: none;">
     <div class="modal-dialog">
         <div class="loginmodal-container">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
             <h1>Đăng nhập</h1><br>
             <?php $form = ActiveForm::begin([
                 'action' => \app\library\helper\Helper::createUrl(['front/user/login']),
@@ -20,8 +24,8 @@ use app\library\helper\Helper;
                 ]
             ]) ?>
 
-            <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'autocomplete' => 'off']) ?>
-            <?= $form->field($model, 'password')->passwordInput() ?>
+            <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'autocomplete' => 'off', 'placeholder' => 'Tài khoản hoặc email']) ?>
+            <?= $form->field($model, 'password')->passwordInput(['placeholder' => 'Mật khẩu']) ?>
             <div class="hide error-login"><p class="text-danger"></p></div>
             <input type="submit" id="login" class="login loginmodal-submit" value="Login">
             <?php ActiveForm::end(); ?>

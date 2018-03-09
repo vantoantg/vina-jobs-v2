@@ -22,10 +22,37 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <link rel="shortcut icon" type="image/png" href="<?= \app\library\helper\Helper::siteURL()?>/favicon.ico"/>
+    <meta name="description" content="<?= Yii::$app->params['seo']['description'] ?>">
+    <meta name="keywords" content="<?= Yii::$app->params['seo']['keywords'] ?>">
+    <meta name="robots" content="index,follow">
+    <meta name="copyright" content="index,follow">
+
+    <link rel="shortcut icon" type="image/png" href="<?= \app\library\helper\Helper::homeUrl()?>favicon.ico"/>
+
+    <!-- Jetpack Open Graph Tags -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Marketing &#8211; Create your stunning website" />
+    <meta property="og:url" content="https://wordpress.com/create/" />
+    <meta property="og:description" content="Visit the post for more." />
+    <meta property="article:published_time" content="2015-11-09T16:39:31+00:00" />
+    <meta property="article:modified_time" content="2017-08-01T18:22:52+00:00" />
+    <meta property="og:site_name" content="WordPress.com" />
+    <meta property="og:image" content="https://wpcom.files.wordpress.com/2017/11/cropped-wordpress.png?w=200" />
+    <meta property="og:image:width" content="200" />
+    <meta property="og:image:height" content="200" />
+    <meta property="og:locale" content="<?= Yii::$app->language ?>" />
+    <meta name="twitter:site" content="@WordPressDotCom" />
+    <meta name="twitter:text:title" content="Marketing &#8211; Create your stunning&nbsp;website" />
+    <meta name="twitter:image" content="https://wpcom.files.wordpress.com/2017/11/cropped-wordpress.png?w=240" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@WordPressDotCom" />
+    <meta name="twitter:description" content="Post by @WordPressDotCom." />
+    <meta property="article:publisher" content="https://www.facebook.com/WordPresscom" />
+
     <?php $this->head() ?>
 </head>
 <body>
+
 <?php $this->beginBody() ?>
 
 <div id="preloader">
@@ -70,7 +97,7 @@ AppAsset::register($this);
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?= Yii::$app->homeUrl; ?>"><img src="<?= Helper::homeUrl()?>web/template/jobs/img/logo.jpg" style="max-height: 50px" alt=""></a>
+            <a class="navbar-brand" href="<?= Yii::$app->homeUrl; ?>" title="<?= Helper::siteURL()?>"><img src="<?= Helper::homeUrl()?>web/template/jobs/img/logo.jpg" style="max-height: 50px" alt="vina-jobs"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -96,9 +123,7 @@ AppAsset::register($this);
 
 
                 <?php }else{ ?>
-                <a href="<?= Helper::createUrl(['front/user/register']) ?>">
-                    <button class="navbar-btn nav-button wow fadeInRight" data-wow-delay="0.6s">Đăng ký</button>
-                </a>
+                    <button class="navbar-btn nav-button wow fadeInRight" data-toggle="modal" data-target="#register-modal" data-wow-delay="0.6s">Đăng ký</button>
                     <button class="navbar-btn nav-button wow bounceInRight login" data-toggle="modal" data-target="#login-modal" data-wow-delay="0.8s">Đăng nhập</button>
                 <?php } ?>
             </div>
@@ -115,12 +140,13 @@ AppAsset::register($this);
     </div><!-- /.container-fluid -->
 </nav>
 <?= $content ?>
+<?= (new \app\components\UserWidget())->optionsRegister() ?>
 <?= (new \app\components\UserWidget())->login() ?>
 
 <div class="footer-area">
     <div class="container">
         <div class="row footer">
-            JUST GOT SO EASY       <div class="col-md-4">
+	        <div class="col-md-4">
                 <div class="single-footer">
                     <img src="<?= Helper::homeUrl()?>web/template/jobs/img/logo-ft.png" alt="" class="wow pulse" style="max-height: 60px" data-wow-delay="1s">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati architecto quaerat facere blanditiis tempora sequi nulla accusamus, possimus cum necessitatibus suscipit quia autem mollitia, similique quisquam molestias. Vel unde, blanditiis.</p>

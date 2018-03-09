@@ -1,7 +1,10 @@
 <?php
 use app\library\helper\Helper;
+/** @var $page \app\models\Pages title */
+/** @var $this \yii\web\View title */
+$this->title = $page->seo_title. ' | '. Helper::siteURL();
 
-$this->title = 'Trang chủ | '. Helper::siteURL();
+Helper::generateSeo($page);
 ?>
 <div class="slider-area">
     <div class="slider">
