@@ -73,7 +73,7 @@ var Main = function () {
                 });
 
                 //Set value of hidden input to base64
-                $("#hidden_base64").val(imageData);
+                $("input#users-name").val(12312312312);
                 $(".imgs").attr('src', imageData);
             });
         },

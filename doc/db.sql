@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.6.20 : Database - testj002
+SQLyog Ultimate v12.09 (64 bit)
+MySQL - 5.7.21 : Database - testj002
 *********************************************************************
 */
 
@@ -755,6 +755,7 @@ CREATE TABLE `tn_user_details` (
   `first_name` varchar(50) DEFAULT NULL,
   `middle_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL,
+  `about_me` text,
   `gender` tinyint(1) DEFAULT '0',
   `birthday` date DEFAULT NULL,
   `phone` varchar(11) DEFAULT NULL,
@@ -772,7 +773,7 @@ CREATE TABLE `tn_user_details` (
 
 /*Data for the table `tn_user_details` */
 
-insert  into `tn_user_details`(`user_id`,`email`,`first_name`,`middle_name`,`last_name`,`gender`,`birthday`,`phone`,`address`,`changed_password_date`,`job_title_id`,`direct_manager_id`,`city_id`,`registration_date`,`approved_by`,`approved_at`,`active_tour_guide`) values (36,NULL,'Idola',NULL,'Santos',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(38,'xyzedity@gmail.com','Idola',NULL,'Santos',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(39,'qogunyv@yahoo.com','Ariana',NULL,'Dyer',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(40,'sesati@gmail.com','Shelley',NULL,'Dudley',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(41,'tonanguyen@gmail.com','Nguyen',NULL,'Tona',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(43,'nguyennguyen.vt88@gmail.com','Tona',NULL,'Nguyen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(44,'toan@wumbo.com','Tona',NULL,'Nguyen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(45,'vysobetu@hotmail.com','Jaden',NULL,'Gibbs',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(66,NULL,NULL,NULL,NULL,21,NULL,'0932252414','143/70 Go Dau, Tan Phu',NULL,NULL,NULL,63,NULL,NULL,NULL,1),(67,NULL,NULL,NULL,NULL,21,NULL,'0932252414','',NULL,NULL,NULL,1,NULL,NULL,NULL,1),(68,NULL,NULL,NULL,NULL,1,'0000-00-00','0932252414','1111',NULL,NULL,NULL,62,NULL,NULL,NULL,1);
+insert  into `tn_user_details`(`user_id`,`email`,`first_name`,`middle_name`,`last_name`,`about_me`,`gender`,`birthday`,`phone`,`address`,`changed_password_date`,`job_title_id`,`direct_manager_id`,`city_id`,`registration_date`,`approved_by`,`approved_at`,`active_tour_guide`) values (36,NULL,'Idola',NULL,'Santos',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(38,'xyzedity@gmail.com','Idola',NULL,'Santos',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(39,'qogunyv@yahoo.com','Ariana',NULL,'Dyer',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(40,'sesati@gmail.com','Shelley',NULL,'Dudley',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(41,'tonanguyen@gmail.com','Nguyen',NULL,'Tona',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(43,'nguyennguyen.vt88@gmail.com','Tona',NULL,'Nguyen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(44,'toan@wumbo.com','Tona',NULL,'Nguyen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(45,'vysobetu@hotmail.com','Jaden',NULL,'Gibbs',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(66,NULL,NULL,NULL,NULL,NULL,21,NULL,'0932252414','143/70 Go Dau, Tan Phu',NULL,NULL,NULL,63,NULL,NULL,NULL,1),(67,NULL,NULL,NULL,NULL,NULL,21,NULL,'0932252414','',NULL,NULL,NULL,1,NULL,NULL,NULL,1),(68,NULL,NULL,NULL,NULL,NULL,1,'0000-00-00','0932252414','1111',NULL,NULL,NULL,62,NULL,NULL,NULL,1);
 
 /*Table structure for table `tn_user_online` */
 

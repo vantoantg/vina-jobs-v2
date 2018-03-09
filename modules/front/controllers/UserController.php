@@ -41,17 +41,22 @@ class UserController extends FrontController
 	{
 		$model = new Users();
 		$userDetail = new UserDetails();
-		$com = new Company();
 
-		if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
-//            if($com->load())
+		if (
+            $model->load(Yii::$app->request->post()) && $model->validate() &&
+            $userDetail->load(Yii::$app->request->post()) && $userDetail->validate()) {
+            $img = Yii::$app->request->post();
+            echo '<pre>';
+            print_r($img);
+            echo '</pre>';
+            die;
+
 			$url = Yii::$app->getUrlManager()->createUrl(['front/user/update']);
 			return $this->redirect($url);
 		}
 		return $this->render('register_candidate', [
 			'model' => $model,
 			'userDetail' => $userDetail,
-			'com' => $com,
 		]);
 	}
 

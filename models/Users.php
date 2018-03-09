@@ -48,7 +48,7 @@ class Users extends \app\models\base\User implements IdentityInterface
             [['email', 'avatar_url'], 'string', 'max' => 255],
             [['password'], 'string', 'min' => 6, 'max' => 64],
             [['auth_key', 'access_token', 'password_reset_token'], 'string', 'max' => 128],
-            [['slug_name', 'avatar'], 'string', 'max' => 155],
+            [['slug_name'], 'string', 'max' => 155],
             [['lang'], 'string', 'max' => 5],
             [['timezone'], 'string', 'max' => 100],
             [['email', 'access_token'], 'unique'],

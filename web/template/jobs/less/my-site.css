@@ -173,6 +173,32 @@ input[type=password]:hover {
   width: 250px;
   height: 250px;
 }
+.avatar-view {
+  padding-top: 20px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+.avatar-view a {
+  outline: none;
+}
+.avatar-view a img {
+  border-radius: 50%;
+  max-height: 120px;
+  max-width: 120px;
+  border: 1px dotted #ccc;
+}
+.avatar-view a:hover {
+  opacity: .8;
+}
+.image-editor input[type="file"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.image-editor .cropit-preview {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
 .cropit-preview-image-container {
   cursor: move;
 }
