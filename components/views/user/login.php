@@ -24,8 +24,8 @@ use app\library\helper\Helper;
                 ]
             ]) ?>
 
-            <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'autocomplete' => 'off']) ?>
-            <?= $form->field($model, 'password')->passwordInput() ?>
+            <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'autocomplete' => 'off', 'placeholder' => 'Tài khoản hoặc email']) ?>
+            <?= $form->field($model, 'password')->passwordInput(['placeholder' => 'Mật khẩu']) ?>
             <div class="hide error-login"><p class="text-danger"></p></div>
             <input type="submit" id="login" class="login loginmodal-submit" value="Login">
             <?php ActiveForm::end(); ?>

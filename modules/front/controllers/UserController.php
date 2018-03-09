@@ -3,6 +3,7 @@
 namespace app\modules\front\controllers;
 
 use app\library\helper\Common;
+use app\library\helper\Image;
 use app\models\base\User;
 use app\models\Company;
 use app\models\Dropdown;
@@ -46,13 +47,19 @@ class UserController extends FrontController
             $model->load(Yii::$app->request->post()) && $model->validate() &&
             $userDetail->load(Yii::$app->request->post()) && $userDetail->validate()) {
             $img = Yii::$app->request->post();
-            echo '<pre>';
-            print_r($img);
-            echo '</pre>';
-            die;
+            if($img['Users']['avatar']){
+	            $model->avatar = Image::base64ToImage($img['Users']['avatar']);
+            }
 
-			$url = Yii::$app->getUrlManager()->createUrl(['front/user/update']);
-			return $this->redirect($url);
+            if($model->save()){
+	            $userDetail->user_id = $model->getId();
+	            $userDetail->save();
+            	// TODO: Send email
+	            return $this->render('register_candidate_success', [
+		            'success' => true,
+		            'message' => "",
+	            ]);
+            }
 		}
 		return $this->render('register_candidate', [
 			'model' => $model,

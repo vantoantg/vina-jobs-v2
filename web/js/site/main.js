@@ -67,13 +67,13 @@ var Main = function () {
 
             $('.save-cropit').click(function() {
                 var imageData = $('.image-editor').cropit('export', {
-                    type: 'image/jpeg',
+                    type: 'image/png',
                     quality: 1,
                     originalSize: true,
                 });
 
                 //Set value of hidden input to base64
-                $("input#users-name").val(12312312312);
+                $(".hidden_base64").val(imageData);
                 $(".imgs").attr('src', imageData);
             });
         },

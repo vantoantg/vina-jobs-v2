@@ -43,7 +43,7 @@ class Users extends \app\models\base\User implements IdentityInterface
         return [
             [['name', 'email', 'password', 'repassword'], 'required'],
             [['role', 'archive', 'type', 'status'], 'integer'],
-            [['attributes'], 'string'],
+            [['attributes', 'avatar'], 'string'],
             [['username', 'name'], 'string', 'max' => 32],
             [['email', 'avatar_url'], 'string', 'max' => 255],
             [['password'], 'string', 'min' => 6, 'max' => 64],
@@ -77,6 +77,7 @@ class Users extends \app\models\base\User implements IdentityInterface
             'username' => 'Email',
             'email' => 'Email',
             'password' => 'Mật khẩu',
+            'repassword ' => 'Nhập lại mật khẩu',
             'auth_key' => 'Auth Key',
             'access_token' => 'Access Token',
             'password_reset_token' => 'Password Reset Token',

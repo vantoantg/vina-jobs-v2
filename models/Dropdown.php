@@ -15,6 +15,9 @@ class Dropdown extends \app\models\base\Dropdown
     const STATUS_DISABLED = 0;
 
     const TYPE_GENDER = 4;
+    const TYPE_LEVEL = 3;
+    const TYPE_EXP = 2;
+    const TYPE_TIME = 1;
 
     public $dropdowns;
 
@@ -50,7 +53,8 @@ class Dropdown extends \app\models\base\Dropdown
      */
     public function getDropdown($type = 0){
         $array = [];
-        foreach ($this->dropdowns as $item){
+        $data = $this->dropdowns;
+        foreach ($data as $item){
             if($type == $item['type']){
             	$item['id'] = $item['value'];
                 $array[] = $item;
