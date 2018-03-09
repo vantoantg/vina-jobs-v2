@@ -42,6 +42,7 @@ class AppAsset extends AssetBundle
         'web/template/jobs/js/owl.carousel.min.js',
         'web/template/jobs/js/wow.js',
         'vendor/bower-asset/select2/dist/js/select2.min.js',
+        'vendor/bower-asset/cropit/dist/jquery.cropit.js',
         'web/template/jobs/js/main.js',
         'web/js/common/service.js',
         'web/js/site/login.js',

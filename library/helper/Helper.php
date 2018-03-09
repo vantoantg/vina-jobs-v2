@@ -43,6 +43,13 @@ class Helper
     }
 
     /**
+     * @return string
+     */
+    public static function webImgs($pathFile){
+        return Yii::$app->getHomeUrl().'web/imgs/'.$pathFile;
+    }
+
+    /**
      * @param bool $domainNameOnly
      * @return string
      */

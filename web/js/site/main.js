@@ -14,6 +14,7 @@ var Main = function () {
             this.events();
             this.blog();
             this.initDatepicker();
+            this.initCropit();
         },
         events: function () {
             $('.job-select2').select2({
@@ -37,6 +38,44 @@ var Main = function () {
                     }
                 }
             }
+        },
+        initCropit: function(){
+            var _image_editor = $('.image-editor');
+            $('.add-img').click(function() {
+                $('input.cropit-image-input').trigger('click');
+            });
+
+            $('input.cropit-image-input').change(function () {
+                _image_editor.cropit();
+            });
+
+            var src = _image_editor.attr('data-default-img');
+            console.log(src);
+            _image_editor.cropit({
+                imageState: {
+                    src: src,
+                },
+            });
+
+
+            $('.rotate-cw').click(function() {
+                $('.image-editor').cropit('rotateCW');
+            });
+            $('.rotate-ccw').click(function() {
+                $('.image-editor').cropit('rotateCCW');
+            });
+
+            $('.save-cropit').click(function() {
+                var imageData = $('.image-editor').cropit('export', {
+                    type: 'image/jpeg',
+                    quality: 1,
+                    originalSize: true,
+                });
+
+                //Set value of hidden input to base64
+                $("#hidden_base64").val(imageData);
+                $(".imgs").attr('src', imageData);
+            });
         },
         initDatepicker: function(){
             // Use: https://uxsolutions.github.io/bootstrap-datepicker/?markup=input&format=&weekStart=&startDate=&endDate=&startView=0&minViewMode=0&maxViewMode=4&todayBtn=false&clearBtn=false&language=en&orientation=auto&multidate=&multidateSeparator=&keyboardNavigation=on&forceParse=on#sandbox

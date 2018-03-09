@@ -19,12 +19,49 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
 
+<div class="modal fade" id="register-avatar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+     style="display: none;">
+	<div class="vertical-alignment-helper">
+		<div class="modal-dialog vertical-align-center">
+
+			<div class="modal-content loginmodal-container switch-register">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close" title="Đóng lại">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<div class="clearfix"></div>
+
+				<div class="image-editor" data-default-img="<?= \app\library\helper\Helper::webImgs('no_image_user.jpg'); ?>">
+					<input type="hidden" id="hidden_base64">
+					<input type="file" class="cropit-image-input">
+					<div class="cropit-preview text-center"></div>
+					<div class="image-size-label">
+						Resize image
+					</div>
+					<input type="range" class="cropit-image-zoom-input">
+					<button class="add-img"><i class="fa fa-file-image-o"></i></button>
+					<button class="rotate-ccw"><i class="fa fa-rotate-left"></i></button>
+					<button class="rotate-cw"><i class="fa fa-rotate-right"></i></button>
+					<button class="save-cropit" data-dismiss="modal"><i class="fa fa fa-save"></i></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 <div class="container">
     <div class="col-12 col-sm-8">
         <div class="row main">
             <div class="main-login main-center">
                 <h5>Vui lòng điền đúng địa chỉ email, hệ thống sẽ gửi link kích hoạt tài khoản vào email.</h5>
                 <?php $form = ActiveForm::begin(); ?>
+	            <div class="row">
+		            <div class="col-xs-12 col-sm-6">
+		            <img class="imgs" src="<?= \app\library\helper\Helper::webImgs('no_image_user.png'); ?>">
+			            <br>
+			            <a href="#" data-toggle="modal" data-target="#register-avatar" data-wow-delay="0.6s">Upload avatar</a>
+		            </div>
+	            </div>
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
                         <div class="form-group">
