@@ -2,16 +2,13 @@
 
 namespace app\modules\admin\controllers;
 
-use app\components\tona\Helper;
 use app\components\UserOnlineWidget;
 use app\models\Tags;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
 
-class AjaxController extends BaseController
+class AjaxController extends AdminController
 {
     /**
      * @inheritdoc
@@ -68,7 +65,7 @@ class AjaxController extends BaseController
     public function actionCreateSlug(){
         if(Yii::$app->request->isAjax){
             $name = trim(Yii::$app->request->post('name'));
-            return $this->jsonData(['slug' => Helper::createSlug($name)]);
+            return $this->jsonData(['slug' => \app\library\helper\Helper::createSlug($name)]);
         }
     }
 

@@ -34,7 +34,7 @@ $dropdowns = new Dropdown();
 				</button>
 
 				<div class="image-editor"
-				     data-default-img="<?= \app\library\helper\Helper::webImgs('no_image_user.jpg'); ?>">
+				     data-default-img="<?= \app\library\helper\Helper::webImgs('no_image_user.png'); ?>">
 					<input type="file" class="cropit-image-input">
 					<div class="cropit-preview text-center"></div>
 					<div class="image-size-label">
@@ -163,7 +163,7 @@ $dropdowns = new Dropdown();
                                 <?= $form->field($userDetail, 'birthday', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                                ])->label(false) ?>
+                                ])->textInput(['class' => 'datepk form-control'])->label(false) ?>
 							</div>
 						</div>
 					</div>
@@ -172,7 +172,7 @@ $dropdowns = new Dropdown();
 							<label for="email" class="cols-sm-2 control-label">Điện thoại liên hệ</label>
 							<div class="cols-sm-10">
                                 <?= $form->field($userDetail, 'phone', [
-                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-mobile-phone"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
                                 ])->label(false) ?>
 							</div>
@@ -200,7 +200,7 @@ $dropdowns = new Dropdown();
                             <div class="cols-sm-10">
 	                            <?php $gender = $dropdowns->getDropdown(Dropdown::TYPE_EXP); ?>
 	                            <?= $form->field($userDetail, 'gender', [
-		                            'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-genderless"
+		                            'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-clock"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
 	                            ])->dropDownList(\yii\helpers\ArrayHelper::map($gender, 'id', 'name'))->label(false) ?>
                             </div>
@@ -256,6 +256,9 @@ $dropdowns = new Dropdown();
 
 				<hr>
 
+				<div class="form-group ">
+                    Tôi đã đọc và đồng ý chính sách của <a href="<?= \app\library\helper\Helper::createUrl(['site/policy'])?>"><?= \app\library\helper\Helper::siteURL()?></a>
+                </div>
 				<div class="form-group ">
                     <?= Html::submitButton('Đăng ký', ['class' => 'btn btn-primary login-button']) ?>
 				</div>

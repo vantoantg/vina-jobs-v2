@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\library\helper\Helper;
 use yii\web\Controller;
 
 /**
@@ -32,4 +33,12 @@ class BaseController extends Controller
 		return $result;
 	}
 
+	/**
+	 * @param array $data
+	 * @return string
+	 */
+	public function jsonData($data = [])
+	{
+		return Helper::jsonData($data);
+	}
 }

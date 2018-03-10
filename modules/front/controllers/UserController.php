@@ -37,7 +37,9 @@ class UserController extends FrontController
 		return $this->render('index');
 	}
 
-
+	/**
+	 * @return string
+	 */
 	public function actionRegisterCandidate()
 	{
 		$model = new Users();
@@ -51,17 +53,29 @@ class UserController extends FrontController
 	            $model->avatar = Image::base64ToImage($img['Users']['avatar']);
             }
 
+			$model->type = Users::USER_TYPE_DEFAULT;
+			$model->username = $model->email;
+			$token_waiting_active = \Yii::$app->getSecurity()->generateRandomString();
+			$model->token_waiting_active = $token_waiting_active;
             if($model->save()){
+            	$userDetail->setNames($model->name);
 	            $userDetail->user_id = $model->getId();
+	            $userDetail->email = $model->email;
 	            $userDetail->save();
             	// TODO: Send email
+	            $data['name'] = $model->name;
+	            $data['link'] = Url::to('/company/active/token/' . $token_waiting_active . '.html', true);
+	            $temp = $this->renderPartial('@app/mail/layouts/active_user_register', ['data' => $data]);
+
+	            // TODO: comment out
+//	            Email::sendMail('Reset password - '. Helper::siteURL(), $temp);
 	            return $this->render('register_candidate_success', [
 		            'success' => true,
 		            'message' => "",
 	            ]);
             }
 		}
-		return $this->render('register_candidate', [
+		return $this->render('register_candidate_success', [
 			'model' => $model,
 			'userDetail' => $userDetail,
 		]);

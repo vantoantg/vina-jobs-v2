@@ -108,6 +108,7 @@ class Users extends \app\models\base\User implements IdentityInterface
                 $this->setPassword($this->password);
                 $this->password_reset_token = $this->generatePasswordResetToken();
                 $this->auth_key = \Yii::$app->getSecurity()->generateRandomString();
+                $this->status = Users::STATUS_WAITING_ACTIVE;
             }
             return true;
         }

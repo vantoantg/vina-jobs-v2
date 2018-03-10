@@ -58,6 +58,7 @@ class AppAssetAdmin extends AssetBundle
 		/* CkFinder */
 		'web/ckeditors/ckfinder/ckfinder.js?type=Images',
 
+		'web/js/common/service.js',
 		'web/js/admin/admin.js',
 	];
 	public $depends = [

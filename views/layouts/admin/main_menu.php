@@ -97,7 +97,7 @@ use app\library\helper\Helper;
         <!--start submenu -->
         <ul>
             <li><a href="<?= Url::toRoute('/admin/pages') ?>" ><span class="title">List</span></a></li>
-            <li><a href="<?= Url::toRoute('/admin/pages/create') ?>" ><span class="title">create</span></a></li>
+            <li><a href="<?= Url::toRoute('/admin/pages/create') ?>" ><span class="title">Create</span></a></li>
         </ul><!--end /submenu -->
     </li><!--end /menu-li -->
     <!-- END Pages -->
