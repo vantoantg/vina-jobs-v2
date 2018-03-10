@@ -64,7 +64,7 @@ class UserController extends FrontController
 	            $userDetail->save();
             	// TODO: Send email
 	            $data['name'] = $model->name;
-	            $data['link'] = Url::to('/company/active/token/' . $token_waiting_active . '.html', true);
+	            $data['link'] = Url::to('/candidate/active/token/' . $token_waiting_active . '.html', true);
 	            $temp = $this->renderPartial('@app/mail/layouts/active_user_register', ['data' => $data]);
 
 	            // TODO: comment out
@@ -75,7 +75,7 @@ class UserController extends FrontController
 	            ]);
             }
 		}
-		return $this->render('register_candidate_success', [
+		return $this->render('register_candidate', [
 			'model' => $model,
 			'userDetail' => $userDetail,
 		]);

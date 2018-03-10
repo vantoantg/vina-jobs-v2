@@ -37,7 +37,7 @@ class UserOnlineWidget extends Widget
 		if (self::check($session) == false) {
 			$u = new UserOnline();
 			$u->session = $session;
-			$u->time = Carbon::now()->format(Cons::SQL_DATE_TIME);
+			$u->time = Carbon::now()->format(Datetime::SQL_DATETIME);
 			$u->browser = Helper::getBrowser();
 			$u->url = Helper::getCurrentUrl();
 			$u->ip = Helper::getIpClient();
@@ -68,10 +68,10 @@ class UserOnlineWidget extends Widget
 	 */
 	public static function check($session){
 		$time = Carbon::now()->timestamp - 600;
-		$timeCheck = Carbon::createFromTimestamp($time)->format(Datetime::SQL_DATE_TIME);
+		$timeCheck = Carbon::createFromTimestamp($time)->format(Datetime::SQL_DATETIME);
 		$uo = UserOnline::find()->where(['session' => $session])->andWhere("time > '$timeCheck'")->one();
 		if($uo){
-			$uo->time = Carbon::now()->format(Datetime::SQL_DATE_TIME);
+			$uo->time = Carbon::now()->format(Datetime::SQL_DATETIME);
 			$uo->save();
 			return true;
 		}
@@ -84,7 +84,7 @@ class UserOnlineWidget extends Widget
 	public static function countUserOnline(){
 		$lastWeek = Carbon::now()->subDay(7)->timestamp;
 		$lastMonth = Carbon::now()->subDay(30)->timestamp;
-		$today = Carbon::createFromFormat(Datetime::SQL_DATE_TIME, date('Y-m-d'). ' 00:00:00')->timestamp;
+		$today = Carbon::createFromFormat(Datetime::SQL_DATETIME, date('Y-m-d'). ' 00:00:00')->timestamp;
 
 		$week = 0;
 		$month = 0;
@@ -94,7 +94,7 @@ class UserOnlineWidget extends Widget
 
 		if($us){
 			foreach($us as $value){
-				$time = Carbon::createFromFormat(Datetime::SQL_DATE_TIME, $value->time)->timestamp;
+				$time = Carbon::createFromFormat(Datetime::SQL_DATETIME, $value->time)->timestamp;
 				if($time > $lastWeek){
 					$week += 1;
 				}
@@ -131,16 +131,17 @@ class UserOnlineWidget extends Widget
 		}
 	}
 
+	/**
+	 *
+	 */
 	public static function clearUserOnline(){
 		$total = count(UserOnline::find()->all()) - self::getStatistic()->month;
 		$s = System::find()->where(['code' => 'user_online_total'])->one();
 		$s->value_number = $s->value_number + $total;
 		$s->save();
 
-		$lastMonth = Carbon::now()->subDay(30)->format(Cons::SQL_DATE_TIME);
+		$lastMonth = Carbon::now()->subDay(30)->format(Datetime::SQL_DATETIME);
 		$sql = "DELETE FROM tn_user_online WHERE time < '$lastMonth'";
 		Yii::$app->db->createCommand($sql)->query();
-
-
 	}
 }
