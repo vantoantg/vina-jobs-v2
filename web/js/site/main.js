@@ -50,7 +50,6 @@ var Main = function () {
             });
 
             var src = _image_editor.attr('data-default-img');
-            console.log(src);
             _image_editor.cropit({
                 imageState: {
                     src: src,
@@ -97,7 +96,6 @@ var Main = function () {
                     } else {
                         var language = "vi";
                     }
-                    console.log(new Date());
                     _this.datepicker({
                         startView: 2,
                         format: format,
