@@ -35,6 +35,15 @@ $this->params['breadcrumbs'][] = $this->title;
             //'seo_keyword',
             //'seo_description',
             //'img',
+            [
+                'attribute' => 'img',
+                'format' => 'html',
+                'label' => 'Image',
+                'value' => function ($data) {
+                    return Html::img(\app\library\helper\Helper::webImgs($data['img']),
+                        ['height' => '80px']);
+                },
+            ],
             'view',
             //'pape_template',
             //'created_by',
@@ -44,6 +53,31 @@ $this->params['breadcrumbs'][] = $this->title;
             'status',
 
             ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'header' => 'Actions',
+                'headerOptions' => ['style' => 'color:#337ab7'],
+                'template' => '{view}{update}',
+                'buttons' => [
+                    'view' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
+                            'title' => Yii::t('app', 'lead-view'),
+                        ]);
+                    },
+
+                    'update' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
+                            'title' => Yii::t('app', 'lead-update'),
+                        ]);
+                    },
+                    'delete' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
+                            'title' => Yii::t('app', 'lead-delete'),
+                        ]);
+                    }
+
+                ]
+            ],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

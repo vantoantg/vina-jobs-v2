@@ -45,8 +45,12 @@ class Helper
     /**
      * @return string
      */
-    public static function webImgs($pathFile){
-        return Yii::$app->getHomeUrl().'web/imgs/'.$pathFile;
+    public static function webImgs($pathFile, $check = true){
+        $path = Yii::$app->getHomeUrl().'web/imgs/'.$pathFile;
+        if($check && file_exists(Yii::$app->basePath.'/webs/'.$pathFile)){
+            return $path;
+        }
+        return Yii::$app->getHomeUrl().'web/imgs/no-image.jpg';
     }
 
     /**
