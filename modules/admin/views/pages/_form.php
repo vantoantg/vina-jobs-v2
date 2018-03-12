@@ -28,11 +28,19 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'img')->textInput(['maxlength' => true]) ?>
 
+	<?php
+	if(\app\library\helper\Role::allowAdmin()){
+	?>
+
     <?= $form->field($model, 'view')->textInput() ?>
+
+	<?php } ?>
 
     <?= $form->field($model, 'pape_template')->textInput() ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status', [
+        'template' => '<label class="checkbox-inline checkbox-styled" >{input}</label>{label}{error}{hint}'
+    ])->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
