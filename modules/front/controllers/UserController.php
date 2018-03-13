@@ -84,6 +84,10 @@ class UserController extends FrontController
 		]);
 	}
 
+	public function actionCandidateActive($token){
+
+    }
+
 	public function actionRegisterCompany()
 	{
 		$errors = [];

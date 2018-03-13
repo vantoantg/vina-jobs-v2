@@ -137,7 +137,11 @@ $dropdowns = new Dropdown();
 								<?= $form->field($userDetail, 'city_id', [
 									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-map-pin"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-								])->dropDownList(\yii\helpers\ArrayHelper::map($loca, 'id', 'name'))->label(false) ?>
+								])->dropDownList(\yii\helpers\ArrayHelper::map($loca, 'id', 'name'),
+                                    [
+                                        'prompt' => '-- Chọn --',
+                                        'class' => 'job-select2 form-control'
+                                    ])->label(false) ?>
 							</div>
 						</div>
 					</div>
@@ -190,7 +194,11 @@ $dropdowns = new Dropdown();
 	                            <?= $form->field($userDetail, 'level', [
 		                            'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-align-center"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-	                            ])->dropDownList(\yii\helpers\ArrayHelper::map($lel, 'id', 'name'))->label(false) ?>
+	                            ])->dropDownList(\yii\helpers\ArrayHelper::map($lel, 'id', 'name'),
+                                    [
+                                        'prompt' => '-- Chọn --',
+                                        'class' => 'job-select2 form-control'
+                                    ])->label(false) ?>
                             </div>
                         </div>
                     </div>
@@ -202,7 +210,11 @@ $dropdowns = new Dropdown();
 	                            <?= $form->field($userDetail, 'experience', [
 		                            'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-list-ol"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-	                            ])->dropDownList(\yii\helpers\ArrayHelper::map($gender, 'id', 'name'))->label(false) ?>
+	                            ])->dropDownList(\yii\helpers\ArrayHelper::map($gender, 'id', 'name'),
+                                    [
+                                        'prompt' => '-- Chọn --',
+                                        'class' => 'job-select2 form-control'
+                                    ])->label(false) ?>
                             </div>
                         </div>
                     </div>
@@ -214,7 +226,11 @@ $dropdowns = new Dropdown();
 	                            <?= $form->field($userDetail, 'job_title_id', [
 		                            'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-genderless"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-	                            ])->dropDownList(\yii\helpers\ArrayHelper::map($data, 'id', 'name'))->label(false) ?>
+	                            ])->dropDownList(\yii\helpers\ArrayHelper::map($data, 'id', 'name'),
+                                    [
+                                        'prompt' => '-- Chọn --',
+                                        'class' => 'job-select2 form-control'
+                                    ])->label(false) ?>
                             </div>
                         </div>
                     </div>

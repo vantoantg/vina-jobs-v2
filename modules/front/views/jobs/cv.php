@@ -30,7 +30,7 @@ $this->title = 'Post a Curriculum Vitae';
             echo $form->field($model, 'categories_id')->dropDownList(
                 $listData,
                 [
-                    'prompt' => 'Select...',
+                    'prompt' => '-- Chọn --',
                     'class' => 'job-select2 form-control'
                 ]
             );
