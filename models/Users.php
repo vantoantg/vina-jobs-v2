@@ -125,6 +125,15 @@ class Users extends \app\models\base\User implements IdentityInterface
     }
 
     /**
+     *
+     */
+    public function newCandidate(){
+        $this->type = Users::USER_TYPE_DEFAULT;
+        $this->status = Users::STATUS_WAITING_ACTIVE;
+        $this->role = Role::ROLE_CUSTOMMER;
+    }
+
+    /**
      * @inheritdoc
      */
     public static function findIdentity($id)

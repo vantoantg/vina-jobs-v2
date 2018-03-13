@@ -12,12 +12,15 @@ use Yii;
  * @property string $first_name
  * @property string $middle_name
  * @property string $last_name
+ * @property string $about_me
  * @property int $gender
  * @property string $birthday
  * @property string $phone
  * @property string $address
  * @property string $changed_password_date
  * @property int $job_title_id
+ * @property int $experience
+ * @property int $level
  * @property int $direct_manager_id
  * @property int $city_id
  * @property string $registration_date
@@ -42,10 +45,12 @@ class UserDetails extends \yii\db\ActiveRecord
     {
         return [
             [['user_id'], 'required'],
-            [['user_id', 'gender', 'job_title_id', 'direct_manager_id', 'city_id', 'approved_by', 'active_tour_guide'], 'integer'],
+            [['user_id', 'job_title_id', 'experience', 'level', 'direct_manager_id', 'city_id', 'approved_by'], 'integer'],
+            [['about_me'], 'string'],
             [['birthday', 'changed_password_date', 'registration_date', 'approved_at'], 'safe'],
             [['email', 'address'], 'string', 'max' => 255],
             [['first_name', 'middle_name', 'last_name'], 'string', 'max' => 50],
+            [['gender', 'active_tour_guide'], 'string', 'max' => 1],
             [['phone'], 'string', 'max' => 11],
             [['user_id'], 'unique'],
         ];
@@ -62,12 +67,15 @@ class UserDetails extends \yii\db\ActiveRecord
             'first_name' => 'First Name',
             'middle_name' => 'Middle Name',
             'last_name' => 'Last Name',
+            'about_me' => 'About Me',
             'gender' => 'Gender',
             'birthday' => 'Birthday',
             'phone' => 'Phone',
             'address' => 'Address',
             'changed_password_date' => 'Changed Password Date',
             'job_title_id' => 'Job Title ID',
+            'experience' => 'Experience',
+            'level' => 'Level',
             'direct_manager_id' => 'Direct Manager ID',
             'city_id' => 'City ID',
             'registration_date' => 'Registration Date',

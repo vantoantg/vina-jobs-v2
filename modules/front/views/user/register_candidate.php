@@ -150,7 +150,7 @@ $dropdowns = new Dropdown();
 							<div class="cols-sm-10">
                                 <?php $gender = $dropdowns->getDropdown(Dropdown::TYPE_GENDER); ?>
 								<?= $form->field($userDetail, 'gender', [
-									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-genderless"
+									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-intersex"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
 								])->dropDownList(\yii\helpers\ArrayHelper::map($gender, 'id', 'name'))->label(false) ?>
 							</div>
@@ -161,7 +161,7 @@ $dropdowns = new Dropdown();
 							<label for="email" class="cols-sm-2 control-label">Sinh nhật</label>
 							<div class="cols-sm-10">
                                 <?= $form->field($userDetail, 'birthday', [
-                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-birthday-cake"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
                                 ])->textInput(['class' => 'datepk form-control'])->label(false) ?>
 							</div>
@@ -188,7 +188,7 @@ $dropdowns = new Dropdown();
 	                            <?php $lel = $dropdowns->getDropdown(Dropdown::TYPE_LEVEL);
 	                            ?>
 	                            <?= $form->field($userDetail, 'level', [
-		                            'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-genderless"
+		                            'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-align-center"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
 	                            ])->dropDownList(\yii\helpers\ArrayHelper::map($lel, 'id', 'name'))->label(false) ?>
                             </div>
@@ -200,7 +200,7 @@ $dropdowns = new Dropdown();
                             <div class="cols-sm-10">
 	                            <?php $gender = $dropdowns->getDropdown(Dropdown::TYPE_EXP); ?>
 	                            <?= $form->field($userDetail, 'experience', [
-		                            'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-clock"
+		                            'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-list-ol"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
 	                            ])->dropDownList(\yii\helpers\ArrayHelper::map($gender, 'id', 'name'))->label(false) ?>
                             </div>

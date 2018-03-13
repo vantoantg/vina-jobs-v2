@@ -21,7 +21,7 @@ class AppAsset extends AssetBundle
         'http://fonts.googleapis.com/css?family=Roboto',
         'http://fonts.googleapis.com/css?family=Lato:400,700',
         'web/template/jobs/css/normalize.css',
-        'web/template/jobs/css/font-awesome.min.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
         'web/template/jobs/css/fontello.css',
         'web/template/jobs/css/animate.css',
         'web/template/jobs/css/bootstrap.min.css',

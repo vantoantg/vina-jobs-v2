@@ -186,7 +186,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <label for="email" class="cols-sm-2 control-label">Giới tính</label>
                             <div class="cols-sm-10">
                                 <?= $form->field($userDetail, 'gender', [
-                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-genderless"
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-intersex"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
                                 ])->dropDownList(\yii\helpers\ArrayHelper::map($gender, 'id', 'name'))->label(false) ?>
                             </div>

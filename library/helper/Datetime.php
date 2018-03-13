@@ -65,4 +65,37 @@ class Datetime
         $date = Carbon::now($zone);
         return $date->format($format);
     }
+
+    /**
+     * @param $date
+     * @param string $fomat
+     * @return null|string
+     */
+    public static function todateSql($date, $fomat = 'd/m/Y'){
+        if(!$date){
+            return null;
+        }
+        return Carbon::createFromFormat($fomat, $date)->format(self::SQL_DATE);
+    }
+
+    /**
+     * @param $datetime
+     * @param string $fomat
+     * @return null|string
+     */
+    public static function todatetimeSql($datetime, $fomat = 'd/m/Y'){
+        if(!$datetime){
+            return null;
+        }
+        return Carbon::createFromFormat($fomat, $datetime)->format(self::SQL_DATE);
+    }
+
+    /**
+     * @param $datetime
+     * @param string $fomat
+     * @return null|string
+     */
+    public static function datetimeSqlNow($fomat = 'Y-m-d H:i:s', $tz = null){
+        return Carbon::now()->format($fomat);
+    }
 }

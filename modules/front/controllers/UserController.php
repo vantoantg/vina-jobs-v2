@@ -57,18 +57,21 @@ class UserController extends FrontController
 			$model->username = $model->email;
 			$token_waiting_active = \Yii::$app->getSecurity()->generateRandomString();
 			$model->token_waiting_active = $token_waiting_active;
+			$model->newCandidate();
             if($model->save()){
             	$userDetail->setNames($model->name);
 	            $userDetail->user_id = $model->getId();
 	            $userDetail->email = $model->email;
-	            $userDetail->save();
-            	// TODO: Send email
-	            $data['name'] = $model->name;
-	            $data['link'] = Url::to('/candidate/active/token/' . $token_waiting_active . '.html', true);
-	            $temp = $this->renderPartial('@app/mail/layouts/active_user_register', ['data' => $data]);
+	            $userDetail->saveInfo();
+	            if($userDetail->save()){
+                    // TODO: Send email
+                    $data['name'] = $model->name;
+                    $data['link'] = Url::to('/candidate/active/token/' . $token_waiting_active . '.html', true);
+                    $temp = $this->renderPartial('@app/mail/layouts/active_user_register', ['data' => $data]);
 
-	            // TODO: comment out
+                    // TODO: comment out
 //	            Email::sendMail('Reset password - '. Helper::siteURL(), $temp);
+                }
 	            return $this->render('register_candidate_success', [
 		            'success' => true,
 		            'message' => "",
