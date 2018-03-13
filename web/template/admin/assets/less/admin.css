@@ -4,6 +4,9 @@
 form .form-control[readonly] {
   background: #dedede;
 }
+form .form-control {
+  padding-left: 5px;
+}
 #content .grid-view table {
   background: #fff;
 }

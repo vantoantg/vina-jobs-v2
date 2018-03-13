@@ -7,8 +7,10 @@ use \app\models\Dropdown;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Users */
+/* @var $page app\models\Pages */
+$page = \app\models\Pages::get('user-dang-ky-thanh-cong');
 
-$this->title = 'Đăng kí tài khoản - ' . \app\library\helper\Helper::siteURL();
+$this->title = $page->seo_title . \app\library\helper\Helper::siteURL();
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $dropdowns = new Dropdown();
@@ -27,17 +29,9 @@ $dropdowns = new Dropdown();
 		<div class="row main">
 			<div class="main-login main-center">
 				<h5>Vui lòng điền đúng địa chỉ email, hệ thống sẽ gửi link kích hoạt tài khoản vào email.</h5>
-                <?php
-                try {
-                    if(isset($success) && $success){
-
-	                }echo 'OK';
-                }
-                catch (\yii\httpclient\Exception $exception){
-                    throw $exception;
-                }
-
-                ?>
+                <div class="content-page">
+                    <?= $page->content; ?>
+                </div>
 			</div>
 		</div>
 	</div>

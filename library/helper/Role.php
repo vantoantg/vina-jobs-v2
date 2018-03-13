@@ -71,6 +71,7 @@ class Role
             self::ROLE_GUEST])) {
             return true;
         }
+
         return false;
     }
 

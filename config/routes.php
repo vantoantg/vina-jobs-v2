@@ -8,6 +8,7 @@ return [
 	'about-us.html' => 'site/about-us',
 	'blog.html' => 'site/blog',
 	'contact.html' => 'site/contact',
+	'dieu-khoan-su-dung.html' => 'site/policy',
 
 	'user/logout.html' => 'front/user/logout',
 	'user/login.html' => 'front/user/login',

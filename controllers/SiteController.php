@@ -160,6 +160,11 @@ class SiteController extends Controller
         return $this->render('blog');
     }
 
+	public function actionPolicy()
+	{
+		return $this->render('policy');
+	}
+
     /**
      * Displays contact page.
      *

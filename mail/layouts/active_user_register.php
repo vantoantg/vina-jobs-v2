@@ -237,13 +237,13 @@
 		<tr>
 			<td bgcolor="#ffffff" style="padding: 40px 40px 20px; text-align: center;">
 				<h1 style="margin: 0; font-family: sans-serif; font-size: 24px; line-height: 125%; color: #333333; font-weight: normal;">
-					Hệ thống vừa nhận được yêu cầu nhập lại mật khẩu website <?= \app\library\helper\Helper::siteURL(); ?>
+					Thông báo kích hoạt tài khoản trên website <?= \app\library\helper\Helper::siteURL(); ?>
 				</h1>
 			</td>
 		</tr>
 		<tr>
 			<td bgcolor="#ffffff" style="padding: 0 40px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: center;">
-				<p style="margin: 0;">Chào bạn <?= $data['name'] ?>! Có một yêu cầu .... Maecenas sed ante pellentesque, posuere leo id, eleifend dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent laoreet malesuada cursus. Maecenas scelerisque congue eros eu posuere. Praesent in felis ut velit pretium lobortis rhoncus ut&nbsp;erat.</p>
+				<p style="margin: 0;">Chào bạn <?= $data['name'] ?>! Chúc mừng bạn đã đăng ký thành công trên vina-jobs. Vui lòng nhấp vào nút bên dưới để kích hoạt tài khoản của bạn. Xin cảm ơn !</p>
 			</td>
 		</tr>
 		<tr>

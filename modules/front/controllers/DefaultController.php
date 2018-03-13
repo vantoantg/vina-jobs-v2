@@ -2,6 +2,7 @@
 
 namespace app\modules\front\controllers;
 
+use app\forms\SearchForm;
 use app\library\helper\Helper;
 use app\models\Pages;
 
@@ -17,9 +18,9 @@ class DefaultController extends FrontController
      */
     public function actionIndex()
     {
-    	$page = Pages::get();
+        $form = new SearchForm();
         return $this->render('index', [
-        	'page' => $page
+        	'search' => $form
         ]);
     }
 }

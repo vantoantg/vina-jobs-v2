@@ -9,6 +9,8 @@
 namespace app\models;
 
 
+use app\library\helper\Datetime;
+
 class UserDetails extends \app\models\base\UserDetails
 {
     /**
@@ -18,9 +20,9 @@ class UserDetails extends \app\models\base\UserDetails
     {
         return [
             [['phone'], 'required'],
-            [['user_id', 'gender', 'job_title_id', 'direct_manager_id', 'city_id', 'approved_by', 'active_tour_guide'], 'integer'],
+            [['user_id', 'gender', 'job_title_id', 'experience', 'level', 'direct_manager_id', 'city_id', 'approved_by', 'active_tour_guide'], 'integer'],
             [['birthday', 'changed_password_date', 'registration_date', 'approved_at'], 'safe'],
-	        [['birthday'], 'date', 'format' => 'dd/mm/yyyy'],
+	        [['birthday', 'about_me'], 'string'],
             [['email', 'address'], 'string', 'max' => 255],
             [['first_name', 'middle_name', 'last_name'], 'string', 'max' => 50],
             [['phone'], 'string', 'max' => 11],
@@ -52,5 +54,37 @@ class UserDetails extends \app\models\base\UserDetails
             'approved_at' => 'Approved At',
             'active_tour_guide' => 'Active Tour Guide',
         ];
+    }
+
+    public function saveInfo(){
+        $this->birthday = Datetime::todateSql($this->birthday);
+        $this->registration_date = Datetime::datetimeSqlNow();
+    }
+
+	/**
+	 * @param string $fullname
+	 */
+    public function setNames($fullname = ''){
+    	$name = explode(" ", $fullname);
+    	if(count($name) == 1){
+		    $this->last_name = $name[0];
+	    }
+
+	    if(count($name) == 2){
+    		$this->first_name = $name[0];
+    		$this->last_name = $name[1];
+	    }
+
+	    if(count($name) >= 3){
+		    $this->first_name = $name[0];
+		    $middle = '';
+		    foreach ($name as $key => $n){
+		    	if($key > 0 && $key < count($name) - 1){
+				    $middle.= $n.' ';
+			    }
+		    }
+		    $this->middle_name = trim($middle);
+		    $this->last_name = $name[count($name)-1];
+	    }
     }
 }
