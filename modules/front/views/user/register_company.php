@@ -174,7 +174,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <?= $form->field($userDetail, 'city_id', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-map-pin"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                                ])->dropDownList(\yii\helpers\ArrayHelper::map($loca, 'id', 'name'))->label(false) ?>
+                                ])->dropDownList(\yii\helpers\ArrayHelper::map($loca, 'id', 'name'),
+                                    [
+                                        'prompt' => '-- Chọn --',
+                                        'class' => 'job-select2 form-control'
+                                    ])->label(false) ?>
                             </div>
                         </div>
                     </div>

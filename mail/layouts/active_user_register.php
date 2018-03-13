@@ -237,13 +237,13 @@
 		<tr>
 			<td bgcolor="#ffffff" style="padding: 40px 40px 20px; text-align: center;">
 				<h1 style="margin: 0; font-family: sans-serif; font-size: 24px; line-height: 125%; color: #333333; font-weight: normal;">
-					Thông báo kích hoạt tài khoản trên website <?= \app\library\helper\Helper::siteURL(); ?>
+					Thông báo kích hoạt tài khoản từ website <?= \app\library\helper\Helper::siteURL(); ?>
 				</h1>
 			</td>
 		</tr>
 		<tr>
 			<td bgcolor="#ffffff" style="padding: 0 40px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: center;">
-				<p style="margin: 0;">Chào bạn <?= $data['name'] ?>! Chúc mừng bạn đã đăng ký thành công trên vina-jobs. Vui lòng nhấp vào nút bên dưới để kích hoạt tài khoản của bạn. Xin cảm ơn !</p>
+				<p style="margin: 0;">Chào bạn <?= $data['name'] ?>! Chúc mừng bạn đã đăng ký thành công trên <?= \app\library\helper\Helper::siteURL(); ?> Vui lòng nhấp vào nút bên dưới để kích hoạt tài khoản của bạn. Xin cảm ơn !</p>
 			</td>
 		</tr>
 		<tr>

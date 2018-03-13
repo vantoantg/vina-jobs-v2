@@ -32,22 +32,22 @@ AppAsset::register($this);
     <!-- Jetpack Open Graph Tags -->
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Marketing &#8211; Create your stunning website" />
-    <meta property="og:url" content="https://wordpress.com/create/" />
+    <meta property="og:url" content="<?= \app\library\helper\Helper::siteURL()?>" />
     <meta property="og:description" content="Visit the post for more." />
     <meta property="article:published_time" content="2015-11-09T16:39:31+00:00" />
     <meta property="article:modified_time" content="2017-08-01T18:22:52+00:00" />
     <meta property="og:site_name" content="WordPress.com" />
-    <meta property="og:image" content="https://wpcom.files.wordpress.com/2017/11/cropped-wordpress.png?w=200" />
+    <meta property="og:image" content="<?= \app\library\helper\Helper::homeUrl()?>favicon.ico?w=200" />
     <meta property="og:image:width" content="200" />
     <meta property="og:image:height" content="200" />
     <meta property="og:locale" content="<?= Yii::$app->language ?>" />
-    <meta name="twitter:site" content="@WordPressDotCom" />
+    <meta name="twitter:site" content="@vina-jobsDotCom" />
     <meta name="twitter:text:title" content="Marketing &#8211; Create your stunning&nbsp;website" />
-    <meta name="twitter:image" content="https://wpcom.files.wordpress.com/2017/11/cropped-wordpress.png?w=240" />
+    <meta name="twitter:image" content="<?= \app\library\helper\Helper::homeUrl()?>favicon.ico?w=240" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:creator" content="@WordPressDotCom" />
-    <meta name="twitter:description" content="Post by @WordPressDotCom." />
-    <meta property="article:publisher" content="https://www.facebook.com/WordPresscom" />
+    <meta name="twitter:creator" content="@vina-jobsDotCom" />
+    <meta name="twitter:description" content="Post by @vina-jobsDotCom." />
+    <meta property="article:publisher" content="https://www.facebook.com/vina-jobs.com" />
 
     <?php $this->head() ?>
 </head>
