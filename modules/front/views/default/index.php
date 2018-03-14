@@ -30,7 +30,7 @@ Helper::generateSeo($page);
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi deserunt deleniti, ullam commodi
 					sit ipsam laboriosam velit adipisci quibusdam aliquam teneturo!</p>
 				<div class="search-form wow pulse" data-wow-delay="0.8s">
-                    <?php $form = ActiveForm::begin(['options' => ['class' => 'form-inline']]); ?>
+                    <?php $form = ActiveForm::begin(['action' => Helper::createUrl(['site/search']), 'options' => ['class' => 'form-inline']]); ?>
                     <?= $form->field($search, 'keys', [
                         'template' => '{input}'
                     ])->textInput(['placeholder' => 'Nhập từ khóa...'])->label(false) ?>

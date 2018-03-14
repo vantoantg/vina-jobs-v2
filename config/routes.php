@@ -10,6 +10,8 @@ return [
 	'contact.html' => 'site/contact',
 	'dieu-khoan-su-dung.html' => 'site/policy',
 
+	'search/result.html' => 'site/search',
+
 	'user/logout.html' => 'front/user/logout',
 	'user/login.html' => 'front/user/login',
 
