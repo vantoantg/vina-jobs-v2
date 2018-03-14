@@ -3,8 +3,8 @@
 
 $this->title = 'Admin';
 $this->params['breadcrumbs'][] = $this->title;
-
-$this->registerJsFile('web/template/admin/assets/js/core/demo/DemoDashboard.js', ['position' => \yii\web\View::POS_LOAD])
+//$this->registerJs('@web/template/admin/assets/js/core/demo/DemoDashboard.js');
+$this->registerJsFile('@web/template/admin/assets/js/core/demo/DemoDashboard.js', ['position' => \yii\web\View::POS_LOAD])
 ?>
 
 <div class="section-body">
