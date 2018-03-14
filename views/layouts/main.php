@@ -36,7 +36,7 @@ AppAsset::register($this);
     <meta property="og:description" content="Visit the post for more." />
     <meta property="article:published_time" content="2015-11-09T16:39:31+00:00" />
     <meta property="article:modified_time" content="2017-08-01T18:22:52+00:00" />
-    <meta property="og:site_name" content="WordPress.com" />
+    <meta property="og:site_name" content="<?= \app\library\helper\Helper::siteURL()?>" />
     <meta property="og:image" content="<?= \app\library\helper\Helper::homeUrl()?>favicon.ico?w=200" />
     <meta property="og:image:width" content="200" />
     <meta property="og:image:height" content="200" />
