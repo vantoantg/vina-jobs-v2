@@ -102,7 +102,7 @@ use app\library\helper\Helper;
     </li><!--end /menu-li -->
     <!-- END Pages -->
 
-    <!-- BEGIN LEVELS -->
+    <!-- BEGIN SYSTEM -->
     <li class="gui-folder">
         <a>
             <div class="gui-icon"><i class="fa fa-folder-open fa-fw"></i></div>
@@ -111,9 +111,25 @@ use app\library\helper\Helper;
         <!--start submenu -->
         <ul>
             <li><a href="<?= Url::toRoute('/system/migration') ?>" ><span class="title">Migrations</span></a></li>
+            <li><a href="<?= Url::toRoute('/system/log-system') ?>" ><span class="title">Log system</span></a></li>
+            <li><a href="<?= Url::toRoute('/system/system') ?>" ><span class="title">System</span></a></li>
         </ul><!--end /submenu -->
     </li><!--end /menu-li -->
-    <!-- END LEVELS -->
+    <!-- END SYSTEM -->
+
+	<!-- BEGIN CAROUSEL -->
+	<li class="gui-folder">
+		<a>
+			<div class="gui-icon"><i class="fa fa-folder-open fa-fw"></i></div>
+			<span class="title">Carousel</span>
+		</a>
+		<!--start submenu -->
+		<ul>
+			<li><a href="<?= Url::toRoute('/admin/carousel') ?>" ><span class="title">Carousel</span></a></li>
+			<li><a href="<?= Url::toRoute('/admin/carousel-items') ?>" ><span class="title">Carousel images</span></a></li>
+		</ul><!--end /submenu -->
+	</li><!--end /menu-li -->
+	<!-- END CAROUSEL -->
 
     <!-- BEGIN EMAIL -->
     <li class="gui-folder">

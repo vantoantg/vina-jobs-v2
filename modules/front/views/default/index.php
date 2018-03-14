@@ -30,7 +30,7 @@ Helper::generateSeo($page);
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi deserunt deleniti, ullam commodi
 					sit ipsam laboriosam velit adipisci quibusdam aliquam teneturo!</p>
 				<div class="search-form wow pulse" data-wow-delay="0.8s">
-                    <?php $form = ActiveForm::begin(['options' => ['class' => 'form-inline']]); ?>
+                    <?php $form = ActiveForm::begin(['action' => Helper::createUrl(['site/search']), 'options' => ['class' => 'form-inline']]); ?>
                     <?= $form->field($search, 'keys', [
                         'template' => '{input}'
                     ])->textInput(['placeholder' => 'Nhập từ khóa...'])->label(false) ?>
@@ -40,7 +40,11 @@ Helper::generateSeo($page);
                     ?>
                     <?= $form->field($search, 'location', [
                         'template' => '{input}'
-                    ])->dropDownList(\yii\helpers\ArrayHelper::map($loca, 'id', 'name'))->label(false) ?>
+                    ])->dropDownList(\yii\helpers\ArrayHelper::map($loca, 'id', 'name'),
+                        [
+                            'prompt' => '-- Chọn --',
+                            'class' => 'job-select2 form-control'
+                        ])->label(false) ?>
 
                     <?php
                     $data = \app\models\JobCategories::categoriesMenus();
@@ -48,7 +52,11 @@ Helper::generateSeo($page);
 
                     <?= $form->field($search, 'categories', [
                         'template' => '{input}'
-                    ])->dropDownList(\yii\helpers\ArrayHelper::map($data, 'id', 'name'))->label(false) ?>
+                    ])->dropDownList(\yii\helpers\ArrayHelper::map($data, 'id', 'name'),
+                        [
+                            'prompt' => '-- Chọn --',
+                            'class' => 'job-select2 form-control'
+                        ])->label(false) ?>
 					<input type="submit" class="btn" value="TÌM">
 
 
