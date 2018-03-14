@@ -40,7 +40,11 @@ Helper::generateSeo($page);
                     ?>
                     <?= $form->field($search, 'location', [
                         'template' => '{input}'
-                    ])->dropDownList(\yii\helpers\ArrayHelper::map($loca, 'id', 'name'))->label(false) ?>
+                    ])->dropDownList(\yii\helpers\ArrayHelper::map($loca, 'id', 'name'),
+                        [
+                            'prompt' => '-- Chọn --',
+                            'class' => 'job-select2 form-control'
+                        ])->label(false) ?>
 
                     <?php
                     $data = \app\models\JobCategories::categoriesMenus();
@@ -48,7 +52,11 @@ Helper::generateSeo($page);
 
                     <?= $form->field($search, 'categories', [
                         'template' => '{input}'
-                    ])->dropDownList(\yii\helpers\ArrayHelper::map($data, 'id', 'name'))->label(false) ?>
+                    ])->dropDownList(\yii\helpers\ArrayHelper::map($data, 'id', 'name'),
+                        [
+                            'prompt' => '-- Chọn --',
+                            'class' => 'job-select2 form-control'
+                        ])->label(false) ?>
 					<input type="submit" class="btn" value="TÌM">
 
 

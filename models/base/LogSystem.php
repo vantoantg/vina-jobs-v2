@@ -7,15 +7,16 @@ use Yii;
 /**
  * This is the model class for table "tn_log_system".
  *
- * @property integer $id
+ * @property int $id
  * @property string $url
- * @property integer $user_id
+ * @property int $user_id
  * @property string $ip
  * @property string $browser
  * @property string $time
  * @property string $controller
  * @property string $action
  * @property string $method
+ * @property string $user_timezone
  */
 class LogSystem extends \yii\db\ActiveRecord
 {
@@ -35,10 +36,9 @@ class LogSystem extends \yii\db\ActiveRecord
         return [
             [['user_id'], 'integer'],
             [['time'], 'safe'],
-            [['url'], 'string', 'max' => 255],
+            [['url', 'browser'], 'string', 'max' => 255],
             [['ip', 'method'], 'string', 'max' => 15],
-            [['browser'], 'string', 'max' => 255],
-            [['controller', 'action'], 'string', 'max' => 55],
+            [['controller', 'action', 'user_timezone'], 'string', 'max' => 55],
         ];
     }
 
@@ -57,6 +57,7 @@ class LogSystem extends \yii\db\ActiveRecord
             'controller' => 'Controller',
             'action' => 'Action',
             'method' => 'Method',
+            'user_timezone' => 'User Timezone',
         ];
     }
 }
