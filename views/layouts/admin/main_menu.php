@@ -131,6 +131,20 @@ use app\library\helper\Helper;
 	</li><!--end /menu-li -->
 	<!-- END CAROUSEL -->
 
+	<!-- BEGIN TAGS -->
+	<li class="gui-folder">
+		<a>
+			<div class="gui-icon"><i class="fa fa-folder-open fa-fw"></i></div>
+			<span class="title">Tags</span>
+		</a>
+		<!--start submenu -->
+		<ul>
+			<li><a href="<?= Url::toRoute('/admin/tags') ?>" ><span class="title">Tags</span></a></li>
+			<li><a href="<?= Url::toRoute('/admin/tags/create') ?>" ><span class="title">Create tag</span></a></li>
+		</ul><!--end /submenu -->
+	</li><!--end /menu-li -->
+	<!-- END TAGS -->
+
     <!-- BEGIN EMAIL -->
     <li class="gui-folder">
         <a>

@@ -2,7 +2,7 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=testj002',
+    'dsn' => 'mysql:host=localhost;dbname=testj002', // wampp_loc
     'username' => 'root',
     'password' => 'root',
     'charset' => 'utf8',
