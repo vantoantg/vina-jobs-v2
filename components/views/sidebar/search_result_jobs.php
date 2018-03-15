@@ -75,7 +75,7 @@
         <?php
         $data = \app\models\JobCategories::categoriesMenus()
         ?>
-		<select class="form-control" multiple>
+		<select class="form-control js-example-tokenizer" multiple>
             <?php
             foreach ($data as $value) {
                 ?>
