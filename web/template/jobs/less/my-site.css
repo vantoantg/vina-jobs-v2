@@ -1,4 +1,7 @@
 /****** LOGIN MODAL ******/
+body.modal-open {
+  padding-right: 0!important;
+}
 .loginmodal-container {
   padding: 30px;
   max-width: 350px;
@@ -253,4 +256,10 @@ button {
 .search-form .select2-container--default .select2-selection--single .select2-selection__arrow {
   height: 40px;
   top: 0;
+}
+.widget-sidebar.jobs ul li {
+  list-style: none;
+}
+.widget-sidebar.jobs ul li input {
+  display: inline-block;
 }

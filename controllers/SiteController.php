@@ -78,6 +78,16 @@ class SiteController extends Controller
         (new Auth())->detectUserType($client);
     }
 
+
+    /**
+     *
+     */
+    public function actionSearch(){
+        $keys = Yii::$app->request->get('keys');
+
+        return $this->render('search');
+    }
+
     /**
      * Displays homepage.
      *

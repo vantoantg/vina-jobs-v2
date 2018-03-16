@@ -459,7 +459,7 @@ DROP TABLE IF EXISTS `tn_log_system`;
 
 CREATE TABLE `tn_log_system` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `url` varchar(11) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `ip` varchar(15) DEFAULT NULL,
   `browser` varchar(255) DEFAULT NULL,
@@ -467,6 +467,7 @@ CREATE TABLE `tn_log_system` (
   `controller` varchar(55) DEFAULT NULL,
   `action` varchar(55) DEFAULT NULL,
   `method` varchar(15) DEFAULT NULL,
+  `user_timezone` varchar(55) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -679,7 +680,7 @@ CREATE TABLE `tn_system` (
 
 /*Data for the table `tn_system` */
 
-insert  into `tn_system`(`id`,`name`,`code`,`value`,`value_number`,`default`) values (1,'user_online_total','user_online_total','0',10201,'0'),(2,'user_online_week','user_online_week','0',NULL,'0'),(3,'user_online_month','user_online_month','0',NULL,'0');
+insert  into `tn_system`(`id`,`name`,`code`,`value`,`value_number`,`default`) values (1,'user_online_total','user_online_total','0',10199,'0'),(2,'user_online_week','user_online_week','0',NULL,'0'),(3,'user_online_month','user_online_month','0',NULL,'0');
 
 /*Table structure for table `tn_tags` */
 
@@ -794,11 +795,11 @@ CREATE TABLE `tn_user_online` (
   `action` varchar(55) DEFAULT NULL,
   `method` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=505214 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=505216 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tn_user_online` */
 
-insert  into `tn_user_online`(`id`,`session`,`ip`,`time`,`browser`,`url`,`controller`,`action`,`method`) values (505212,'6anmeci898oqadms75b6a3s6t9','::1','2018-03-12 06:21:20','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36','http://localhost:88/demo2//admin/ajax/php-working','ajax','php-working','GET'),(505213,'6anmeci898oqadms75b6a3s6t9','::1','2018-03-12 07:00:47','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36','http://localhost:88/demo2/admin/ajax/php-working','ajax','php-working','GET');
+insert  into `tn_user_online`(`id`,`session`,`ip`,`time`,`browser`,`url`,`controller`,`action`,`method`) values (505212,'6anmeci898oqadms75b6a3s6t9','::1','2018-03-12 06:21:20','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36','http://localhost:88/demo2//admin/ajax/php-working','ajax','php-working','GET'),(505213,'6anmeci898oqadms75b6a3s6t9','::1','2018-03-12 07:00:47','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36','http://localhost:88/demo2/admin/ajax/php-working','ajax','php-working','GET'),(505214,'nk39aqk14hge82pu3doi56o4di','::1','2018-03-14 06:02:11','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36','http://localhost:88/demo2/admin/ajax/php-working','ajax','php-working','GET'),(505215,'nk39aqk14hge82pu3doi56o4di','::1','2018-03-14 10:07:00','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36','http://localhost:88/demo2/admin/ajax/php-working','ajax','php-working','GET');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

@@ -12,6 +12,7 @@ use yii\captcha\Captcha;
 $this->title = 'Contact';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="container">
     <div class="col-12 col-sm-8">
 

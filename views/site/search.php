@@ -5,7 +5,7 @@
 use yii\helpers\Html;
 
 
-$page = \app\models\Pages::get('about');
+$page = \app\models\Pages::get('search');
 /** @var $page \app\models\Pages title */
 
 /** @var $this \yii\web\View title */
@@ -14,6 +14,10 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="container <?= $page->slug; ?>">
+	<div class="col-12 col-sm-4">
+        <?= (new \app\components\SidebarWidget())->searchResultJobs(); ?>
+	</div>
+
 	<div class="col-12 col-sm-8">
 
 		<div class="site-contact">
@@ -22,9 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="content-page">
                 <?= $page->content; ?>
             </div>
+
+			<div class="content-page">
+                <?= $page->content; ?>
+			</div>
 		</div>
-	</div>
-	<div class="col-12 col-sm-4">
-        <?= (new \app\components\SidebarWidget())->recentJobs(); ?>
 	</div>
 </div>

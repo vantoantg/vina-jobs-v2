@@ -48,4 +48,11 @@ class SidebarWidget extends Widget
 
         ]);
     }
+
+
+    public function searchResultJobs(){
+        return $this->render('sidebar/search_result_jobs', [
+
+        ]);
+    }
 }
