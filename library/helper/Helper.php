@@ -50,6 +50,7 @@ class Helper
         if($check && file_exists(Yii::$app->basePath.'/webs/'.$pathFile)){
             return $path;
         }
+
         return Yii::$app->getHomeUrl().'web/imgs/no-image.jpg';
     }
 

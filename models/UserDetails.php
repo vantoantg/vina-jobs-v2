@@ -87,4 +87,22 @@ class UserDetails extends \app\models\base\UserDetails
 		    $this->last_name = $name[count($name)-1];
 	    }
     }
+
+    /**
+     * @param $userId
+     * @return UserDetails|array|null|\yii\db\ActiveRecord
+     */
+    public static function getInfo($userId){
+        /** @var $userDetail self $userDetail */
+        $userDetail = self::find()->where(['user_id' => 40])->one();
+        if(!$userDetail){
+            return new  self();
+        }
+
+        $userDetail->birthday = Datetime::sqlDateToFormat($userDetail->birthday);
+        $userDetail->registration_date = Datetime::sqlDatetimeDiffForHumans($userDetail->registration_date);
+
+
+        return $userDetail;
+    }
 }

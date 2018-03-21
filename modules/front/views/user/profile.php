@@ -12,15 +12,14 @@ use \app\library\helper\Helper;
 
 $this->title = Common::currentUser('name');
 $this->params['breadcrumbs'][] = $this->title;
+
+/** @var $userInfo \app\models\UserDetails $userInfo */
+$userInfo = \app\models\UserDetails::getInfo(Common::currentUser());
 ?>
 
 <div class="container">
     <div class="row">
         <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-            <A href="<?= Helper::createUrl(['front/user/front/user/view-profile']) ?>" >view</A>
-            <A href="<?= Helper::createUrl(['company/update.html']) ?>" >Edit Profile</A>
-
-            <A href="<?= Helper::createUrl(['front/user/logout']) ?>" >Logout</A>
             <br>
             <p class=" text-info">May 05,2014,03:00 pm </p>
         </div>
@@ -31,7 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="/demo/app/web/template/jobs/img/team-small-1.jpg" class="img-circle img-responsive"> </div>
+                        <div class="col-md-3 col-lg-3 " align="center">
+	                        <img alt="User Pic" src="<?= Helper::webImgs(Common::currentUser('avatar')); ?>" class="img-circle img-responsive">
+                        </div>
 
                         <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
                           <dl>
@@ -53,30 +54,29 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <td>Programming</td>
                                 </tr>
                                 <tr>
-                                    <td>Hire date:</td>
-                                    <td>06/23/2013</td>
+                                    <td>Đăng ký:</td>
+                                    <td><?= $userInfo->registration_date; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Date of Birth</td>
-                                    <td>01/24/1988</td>
+                                    <td>Sinh nhật</td>
+                                    <td><?= $userInfo->birthday; ?></td>
                                 </tr>
 
                                 <tr>
                                 <tr>
-                                    <td>Gender</td>
+                                    <td>Giới tính</td>
                                     <td>Female</td>
                                 </tr>
                                 <tr>
-                                    <td>Home Address</td>
-                                    <td>Kathmandu,Nepal</td>
+                                    <td>Địa chỉ</td>
+                                    <td><?= $userInfo->address; ?></td>
                                 </tr>
                                 <tr>
                                     <td>Email</td>
-                                    <td><a href="mailto:info@support.com">info@support.com</a></td>
+                                    <td><a href="mailto:<?= Common::currentUser('email')?>"><?= Common::currentUser('email')?></a></td>
                                 </tr>
-                                <td>Phone Number</td>
-                                <td>123-4567-890(Landline)<br><br>555-4567-890(Mobile)
-                                </td>
+                                <td>Điện thoại</td>
+                                <td><?= $userInfo->phone; ?></td>
 
                                 </tr>
 
@@ -88,11 +88,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     </div>
                 </div>
-                <div class="panel-footer">
-                    <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-                    <span class="pull-right">
-                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+	            <div class="panel-footer">
+		            <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button"
+		               class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+		            <span class="pull-right">
+                            <a href="<?= Helper::createUrl(['company/update.html']) ?>" data-original-title="Edit this user" data-toggle="tooltip" type="button"
+                               class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a href="<?= Helper::createUrl(['front/user/logout']) ?>" data-original-title="Logout" data-toggle="tooltip" type="button"
+                               class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                         </span>
                 </div>
 

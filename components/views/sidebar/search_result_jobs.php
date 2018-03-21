@@ -89,7 +89,7 @@
         <?php
         $data = \app\models\Locations::categoriesMenus();
         ?>
-		<select class="form-control" multiple>
+		<select class="form-control js-example-tokenizer" multiple>
             <?php
             foreach ($data as $value) {
                 ?>

@@ -34,7 +34,7 @@ $dropdowns = new Dropdown();
 				</button>
 
 				<div class="image-editor"
-				     data-default-img="<?= \app\library\helper\Helper::webImgs('no_image_user.png'); ?>">
+				     data-default-img="<?= \app\library\helper\Helper::webImgs('no-image-u.jpg'); ?>">
 					<input type="file" class="cropit-image-input">
 					<div class="cropit-preview text-center"></div>
 					<div class="image-size-label">
