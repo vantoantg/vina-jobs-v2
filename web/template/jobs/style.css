@@ -483,7 +483,7 @@ body {
     background: #0486B7
 }
 
-.table tr:hover td a:hover {
+.jobs .table tr:hover td a:hover {
     background: #fff;
     color: #00AEEF
 }

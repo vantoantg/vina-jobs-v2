@@ -9,6 +9,7 @@
 namespace app\models;
 
 
+use app\library\helper\Common;
 use app\library\helper\Datetime;
 
 class UserDetails extends \app\models\base\UserDetails
@@ -92,11 +93,15 @@ class UserDetails extends \app\models\base\UserDetails
      * @param $userId
      * @return UserDetails|array|null|\yii\db\ActiveRecord
      */
-    public static function getInfo($userId){
+    public static function getInfo($userId = null){
+        if($userId == null){
+            $userId = Common::currentUser();
+        }
+
         /** @var $userDetail self $userDetail */
-        $userDetail = self::find()->where(['user_id' => 40])->one();
+        $userDetail = self::find()->where(['user_id' => $userId])->one();
         if(!$userDetail){
-            return new  self();
+            return new self();
         }
 
         $userDetail->birthday = Datetime::sqlDateToFormat($userDetail->birthday);
