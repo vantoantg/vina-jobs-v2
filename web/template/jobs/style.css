@@ -741,7 +741,7 @@ body {
 .content-footer span a {
     color: #fff;
     display: inline-block;
-    padding: 6px 5px;
+    padding: 3px 5px;
     text-decoration: none;
     transition: 0.5s;
 }
@@ -768,7 +768,7 @@ aside .content-footer > img {
 .user-ditels {
     width: 300px;
     top: -100px;
-    height: 100px;
+    height: 111px;
     padding-bottom: 99px;
     position: absolute;
     border: solid 2px #fff;

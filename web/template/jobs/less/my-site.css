@@ -263,3 +263,14 @@ button {
 .widget-sidebar.jobs ul li input {
   display: inline-block;
 }
+section#blog-section .content-title h3 {
+  font-size: 15px;
+  margin-top: 10px;
+}
+section#blog-section .content-footer span {
+  color: #fff;
+  font-size: 13px;
+}
+section#blog-section .content-footer span.pull-right {
+  margin-top: -15px;
+}

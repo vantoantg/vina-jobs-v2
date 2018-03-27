@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 </div>
                                 <div class="content-footer">
                                     <img class="user-small-img" src="https://lh3.googleusercontent.com/-uwagl9sPHag/WM7WQa00ynI/AAAAAAAADtA/hio87ZnTpakcchDXNrKc_wlkHEcpH6vMwCJoC/w140-h148-p-rw/profile-pic.jpg">
-                                    <span style="font-size: 16px;color: #fff;">Sumit Kumar</span>
+                                    <span>Sumit Kumar Kumar</span>
                                     <span class="pull-right">
 				<a href="#" data-toggle="tooltip" data-placement="left" title="Comments"><i class="fa fa-comments" ></i> 30</a>
 				<a href="#" data-toggle="tooltip" data-placement="right" title="Loved"><i class="fa fa-heart"></i> 20</a>
@@ -124,7 +124,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 </div>
                                 <div class="content-footer">
                                     <img class="user-small-img" src="https://lh3.googleusercontent.com/-uwagl9sPHag/WM7WQa00ynI/AAAAAAAADtA/hio87ZnTpakcchDXNrKc_wlkHEcpH6vMwCJoC/w140-h148-p-rw/profile-pic.jpg">
-                                    <span style="font-size: 16px;color: #fff;">Sumit Kumar</span>
+                                    <span style="font-size: 16px;color: #fff;">Sumit Kumar Kumar</span>
                                     <span class="pull-right">
 				<a href="#" data-toggle="tooltip" data-placement="left" title="Comments"><i class="fa fa-comments" ></i> 30</a>
 				<a href="#" data-toggle="tooltip" data-placement="right" title="Loved"><i class="fa fa-heart"></i> 20</a>
