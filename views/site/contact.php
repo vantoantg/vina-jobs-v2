@@ -9,7 +9,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
-$this->title = 'Contact';
+$this->title = 'Liên hệ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -40,8 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php else: ?>
 
                 <p>
-                    If you have business inquiries or other questions, please fill out the following form to contact us.
-                    Thank you.
+	                Nếu bạn có yêu cầu kinh doanh hoặc các câu hỏi khác, vui lòng điền vào mẫu dưới đây để liên hệ với chúng tôi. Cảm ơn bạn.
                 </p>
 
                 <div class="row">
@@ -66,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]) ?>
 
                         <div class="form-group">
-                            <?= Html::submitButton('Submit',
+                            <?= Html::submitButton('Gửi',
                                 ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
                         </div>
 

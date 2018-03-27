@@ -3,12 +3,11 @@
 namespace app\modules\front\controllers;
 
 use app\library\helper\Common;
+use app\library\helper\Datetime;
 use app\library\helper\Image;
-use app\models\base\User;
 use app\models\Company;
 use app\models\Dropdown;
 use app\models\UserDetails;
-use Faker\Generator;
 use Yii;
 use app\forms\LoginForm;
 use app\forms\ProfilePasswordForm;
@@ -16,7 +15,6 @@ use app\forms\RequireResetPasswordForm;
 use app\forms\ResetProfilePasswordForm;
 use app\library\helper\Helper;
 use app\models\Users;
-use yii\bootstrap\Html;
 use yii\helpers\Url;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
@@ -42,12 +40,20 @@ class UserController extends FrontController
 	 */
 	public function actionRegisterCandidate()
 	{
-		$model = new Users();
-		$userDetail = new UserDetails();
+        $model = new Users();
+        $userDetail = new UserDetails();
+	    if(Common::isLoginned()){
+            $model = Users::findOne(Common::currentUser());
+            $userDetail = UserDetails::find()->where(['user_id' => $model->getId()])->one();
+            $model->scenario = Users::SCENARIO_UPDATE;
+        }
 
 		if (
-            $model->load(Yii::$app->request->post()) && $model->validate() &&
-            $userDetail->load(Yii::$app->request->post()) && $userDetail->validate()) {
+            $model->load(Yii::$app->request->post()) &&
+            $userDetail->load(Yii::$app->request->post()) &&
+            $model->validate() &&
+            $userDetail->validate())
+		{
             $img = Yii::$app->request->post();
             if($img['Users']['avatar']){
 	            $model->avatar = Image::base64ToImage($img['Users']['avatar']);
@@ -101,9 +107,13 @@ class UserController extends FrontController
 		$company = new Company();
 
 		if (
-			$model->load(Yii::$app->request->post()) && $model->validate() &&
-			$company->load(Yii::$app->request->post()) && $company->validate() &&
-			$userDetail->load(Yii::$app->request->post()) && $userDetail->validate()) {
+			$model->load(Yii::$app->request->post()) &&
+			$company->load(Yii::$app->request->post()) &&
+            $userDetail->load(Yii::$app->request->post()) &&
+            $model->validate() &&
+            $company->validate() &&
+            $userDetail->validate())
+		{
 			$model->username = $model->email;
 			$model->newContactCompany();
 			$token_waiting_active = \Yii::$app->getSecurity()->generateRandomString();
@@ -113,6 +123,7 @@ class UserController extends FrontController
 					$company->created_by = $model->getId();
 					$company->update();
 				}
+				$userDetail->birthday = Datetime::todateSql($userDetail->birthday);
 				$userDetail->user_id = $model->getId();
 				$userDetail->save();
 
@@ -121,11 +132,12 @@ class UserController extends FrontController
 				$temp = $this->renderPartial('@app/mail/layouts/active_company_register', ['data' => $data]);
 
 				// TODO: comment out
-//	            Email::sendMail('Reset password - '. Helper::siteURL(), $temp);
+	            Email::sendMail('Register account - '. Helper::siteURL(), $temp);
 			}
 
-			$url = Yii::$app->getUrlManager()->createUrl(['front/user/update-company']);
-			return $this->redirect($url);
+            return $this->render('register_company_success', [
+                'email' => $model->email
+            ]);
 		} else {
 			$errs = array_merge($model->getErrors(), $company->getErrors(), $userDetail->getErrors());
 			foreach ($errs as $error) {
@@ -237,8 +249,14 @@ class UserController extends FrontController
 		return $this->render('view_profile');
 	}
 
+    /**
+     * @return string|\yii\web\Response
+     */
 	public function actionProfile()
 	{
+	    if(!Common::isLoginned()){
+            return $this->goHome();
+        }
 		return $this->render('profile');
 	}
 

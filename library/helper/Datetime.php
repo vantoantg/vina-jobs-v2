@@ -91,11 +91,50 @@ class Datetime
     }
 
     /**
-     * @param $datetime
      * @param string $fomat
-     * @return null|string
+     * @param null $tz
+     * @return string
      */
     public static function datetimeSqlNow($fomat = 'Y-m-d H:i:s', $tz = null){
         return Carbon::now()->format($fomat);
+    }
+
+    /**
+     * @param $date
+     * @param string $format
+     * @return string
+     */
+    public static function sqlDateToFormat($date, $format = 'd/m/Y'){
+        if(!$date){
+            return '';
+        }
+
+        return Carbon::createFromFormat(self::SQL_DATE, $date)->format($format);
+    }
+
+    /**
+     * @param $datetime
+     * @param string $format
+     * @return string
+     */
+    public static function sqlDatetimeToFormat($datetime, $format = 'd/m/Y'){
+        if(!$datetime){
+            return '';
+        }
+
+        return Carbon::createFromFormat(self::SQL_DATETIME, $datetime)->format($format);
+    }
+
+    /**
+     * @param $datetime
+     * @param string $lang
+     * @return string
+     */
+    public static function sqlDatetimeDiffForHumans($datetime, $lang = 'vi'){
+        if(!$datetime){
+            return '';
+        }
+        Carbon::setLocale($lang);
+        return Carbon::createFromFormat(self::SQL_DATETIME, $datetime)->diffForHumans();
     }
 }

@@ -60,3 +60,22 @@ form .form-control {
 #content .col-lg-offset-1.col-md-8 .image-preview-input-title {
   margin-left: 2px;
 }
+form div.buttons-fx {
+  position: fixed;
+  right: 0;
+  z-index: 2;
+}
+form div.buttons-fx > div {
+  padding: 15px;
+}
+.sidebar-admin {
+  padding-top: 75px;
+}
+.sidebar-admin div.fx {
+  position: fixed;
+  z-index: 1;
+}
+.form-group > label,
+.form-group .control-label {
+  opacity: 1;
+}
