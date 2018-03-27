@@ -23,4 +23,19 @@ class Pages extends \app\models\base\Pages
 	    }
 	    return new self();
     }
+
+    /**
+     * @param int $except
+     * @return array|null|\yii\db\ActiveRecord[]
+     */
+    public static function getList($except = 0){
+        $model = self::find()
+            ->select(['id', 'name'])
+            ->where(['<>', 'id', $except])
+            ->all();
+        if($model){
+            return $model;
+        }
+        return null;
+    }
 }

@@ -17,6 +17,7 @@ var Admin = function () {
             this.events();
             this.initSlug();
             this.doCallPHPWorking();
+            this.doSearchText();
         },
         events: function () {
             var pageCt = $("#page-content");
@@ -55,6 +56,29 @@ var Admin = function () {
         //TODO
         doCallPHPWorking: function () {
             _TNSERVICE.getCallback(_rootUrl + 'admin/ajax/php-working', function () {});
+        },
+        doSearchText: function () {
+            var _inpSearch = $('.search-from-list');
+            if (_inpSearch.length) {
+                _inpSearch.each(function () {
+                    var input = $(this);
+                    input.on('keyup', function () {
+                        var filter, ul, li, a, i;
+
+                        filter = input.val().toUpperCase();
+                        ul = $(input.attr('data-list'));
+                        li = ul.find("li");
+                        for (i = 0; i < li.length; i++) {
+                            a = li[i].getElementsByTagName("a")[0];
+                            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                li[i].style.display = "";
+                            } else {
+                                li[i].style.display = "none";
+                            }
+                        }
+                    });
+                });
+            }
         }
     }
 }();

@@ -86,11 +86,14 @@ class PagesController extends AdminController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if(Yii::$app->request->post('save') == 'saveback'){
+                return $this->redirect(['index']);
+            }
         }
 
         return $this->render('update', [
             'model' => $model,
+            'pages' => Pages::getList($id)
         ]);
     }
 
