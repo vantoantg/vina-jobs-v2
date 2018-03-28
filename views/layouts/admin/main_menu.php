@@ -103,7 +103,7 @@ use app\library\helper\Helper;
     <!-- END Pages -->
 
     <!-- BEGIN SYSTEM -->
-    <li class="gui-folder">
+    <li class="gui-folder expanded">
         <a>
             <div class="gui-icon"><i class="fa fa-folder-open fa-fw"></i></div>
             <span class="title">System</span>
