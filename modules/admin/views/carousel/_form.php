@@ -27,7 +27,9 @@ use app\library\helper\Cons;
 
     <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status', [
+        'template' => '<label class="checkbox-inline checkbox-styled" >{input}</label>{label}{error}{hint}'
+    ])->checkbox() ?>
 
     <?php ActiveForm::end(); ?>
 
