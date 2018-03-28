@@ -3,6 +3,7 @@
 namespace app\modules\admin\controllers;
 
 use app\library\helper\Role;
+use app\models\search\Setting;
 
 /**
  * Class BaseController
@@ -16,12 +17,16 @@ class AdminController extends BaseController
      */
 	public $app;
 
+	/** @var  $setting Setting */
+	public $setting;
+
 	public function init()
 	{
 		parent::init();
 		$this->app = \Yii::$app;
 		$this->layout = '/admin';
 		$this->app->name = 'Admin';
+		$this->app->language = 'en';
 
 		if(!\Yii::$app->getUser()->identity){
 			return $this->redirect(['/admin/login']);
@@ -38,7 +43,7 @@ class AdminController extends BaseController
 	 * Get setting from DB
 	 */
 	public function setSetting(){
-
+		$this->setting = \app\models\Setting::getSettings();
 	}
 
 	/**

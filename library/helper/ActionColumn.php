@@ -17,7 +17,7 @@ class ActionColumn
      * @param string $template
      * @return array
      */
-    public static function link($template = '{view} {update} {delete}')
+    public static function link($template = '{update} {delete}')
     {
 
         $buttons = [

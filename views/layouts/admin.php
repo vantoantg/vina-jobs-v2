@@ -34,6 +34,7 @@ AppAssetAdmin::register($this);
 <body class="menubar-hoverable header-fixed ">
 <input type="hidden" id="setting-common"
        data-site="<?= \app\library\helper\Helper::homeUrl() ?>"
+       data-page-current="<?= Yii::$app->controller->module->id.'/'.Yii::$app->controller->id ?>"
 >
 <?php $this->beginBody() ?>
 <!-- BEGIN HEADER-->

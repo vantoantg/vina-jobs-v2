@@ -5,7 +5,7 @@
 use yii\helpers\Html;
 
 
-$page = \app\models\Pages::get('about');
+$page = \app\models\Pages::get('gioi-thieu');
 /** @var $page \app\models\Pages title */
 
 /** @var $this \yii\web\View title */

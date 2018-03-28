@@ -5,12 +5,12 @@ namespace app\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Pages as PagesModel;
+use app\models\Setting as SettingModel;
 
 /**
- * Pages represents the model behind the search form of `app\models\Pages`.
+ * Setting represents the model behind the search form of `app\models\Setting`.
  */
-class Pages extends PagesModel
+class Setting extends SettingModel
 {
     /**
      * @inheritdoc
@@ -18,8 +18,7 @@ class Pages extends PagesModel
     public function rules()
     {
         return [
-            [['id', 'parent_id', 'pape_template', 'created_by', 'updated_by'], 'integer'],
-            [['name', 'slug', 'content', 'seo_title', 'seo_keyword', 'seo_description', 'created_at', 'updated_at'], 'safe'],
+            [['name', 'code'], 'safe'],
         ];
     }
 
@@ -41,7 +40,7 @@ class Pages extends PagesModel
      */
     public function search($params)
     {
-        $query = PagesModel::find();
+        $query = SettingModel::find();
 
         // add conditions that should always apply here
 
@@ -60,23 +59,14 @@ class Pages extends PagesModel
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'parent_id' => $this->parent_id,
-            'view' => $this->view,
-            'pape_template' => $this->pape_template,
-            'created_by' => $this->created_by,
-            'updated_by' => $this->updated_by,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'status' => $this->status,
+            'sorted' => $this->sorted,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'slug', $this->slug])
-            ->andFilterWhere(['like', 'content', $this->content])
-            ->andFilterWhere(['like', 'seo_title', $this->seo_title])
-            ->andFilterWhere(['like', 'seo_keyword', $this->seo_keyword])
-            ->andFilterWhere(['like', 'seo_description', $this->seo_description])
-            ->andFilterWhere(['like', 'img', $this->img]);
+            ->andFilterWhere(['like', 'code', $this->code])
+            ->andFilterWhere(['like', 'value', $this->value])
+            ->andFilterWhere(['like', 'default', $this->default])
+            ->andFilterWhere(['like', 'input', $this->input]);
 
         return $dataProvider;
     }

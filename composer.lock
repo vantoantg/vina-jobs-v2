@@ -424,20 +424,20 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.23.0",
+            "version": "1.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "4a874a39b2b00d7e0146cd46fab6f47c41ce9e65"
+                "reference": "cbcf13da0b531767e39eb86e9687f5deba9857b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/4a874a39b2b00d7e0146cd46fab6f47c41ce9e65",
-                "reference": "4a874a39b2b00d7e0146cd46fab6f47c41ce9e65",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/cbcf13da0b531767e39eb86e9687f5deba9857b4",
+                "reference": "cbcf13da0b531767e39eb86e9687f5deba9857b4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0",
+                "php": ">=5.3.9",
                 "symfony/translation": "~2.6 || ~3.0 || ~4.0"
             },
             "require-dev": {
@@ -473,20 +473,20 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-02-28T09:22:05+00:00"
+            "time": "2018-03-19T15:50:49+00:00"
         },
         {
             "name": "phpmailer/phpmailer",
-            "version": "v6.0.3",
+            "version": "v6.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "44d49bab5ab1fef721d3ee07e75dc0865ddf4cc6"
+                "reference": "cb3ea134d4d3729e7857737d5f320cce9caf4d32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/44d49bab5ab1fef721d3ee07e75dc0865ddf4cc6",
-                "reference": "44d49bab5ab1fef721d3ee07e75dc0865ddf4cc6",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/cb3ea134d4d3729e7857737d5f320cce9caf4d32",
+                "reference": "cb3ea134d4d3729e7857737d5f320cce9caf4d32",
                 "shasum": ""
             },
             "require": {
@@ -539,7 +539,7 @@
                 }
             ],
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
-            "time": "2018-01-05T13:19:58+00:00"
+            "time": "2018-03-27T13:49:45+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -768,16 +768,16 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.14.1",
+            "version": "2.0.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "d99969394c66dc3606134af092b8ec561ea5d7c6"
+                "reference": "ed3a9e1c4abe206e1c3ce48a6b3624119b79850d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/d99969394c66dc3606134af092b8ec561ea5d7c6",
-                "reference": "d99969394c66dc3606134af092b8ec561ea5d7c6",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/ed3a9e1c4abe206e1c3ce48a6b3624119b79850d",
+                "reference": "ed3a9e1c4abe206e1c3ce48a6b3624119b79850d",
                 "shasum": ""
             },
             "require": {
@@ -864,7 +864,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2018-02-24T20:23:06+00:00"
+            "time": "2018-03-21T18:36:53+00:00"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -980,16 +980,16 @@
         },
         {
             "name": "yiisoft/yii2-composer",
-            "version": "2.0.5",
+            "version": "2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-composer.git",
-                "reference": "3f4923c2bde6caf3f5b88cc22fdd5770f52f8df2"
+                "reference": "163419f1f197e02f015713b0d4f85598d8f8aa80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-composer/zipball/3f4923c2bde6caf3f5b88cc22fdd5770f52f8df2",
-                "reference": "3f4923c2bde6caf3f5b88cc22fdd5770f52f8df2",
+                "url": "https://api.github.com/repos/yiisoft/yii2-composer/zipball/163419f1f197e02f015713b0d4f85598d8f8aa80",
+                "reference": "163419f1f197e02f015713b0d4f85598d8f8aa80",
                 "shasum": ""
             },
             "require": {
@@ -1018,6 +1018,10 @@
                 {
                     "name": "Qiang Xue",
                     "email": "qiang.xue@gmail.com"
+                },
+                {
+                    "name": "Carsten Brandt",
+                    "email": "mail@cebe.cc"
                 }
             ],
             "description": "The composer plugin for Yii extension installer",
@@ -1026,7 +1030,7 @@
                 "extension installer",
                 "yii2"
             ],
-            "time": "2016-12-20T13:26:02+00:00"
+            "time": "2018-03-21T16:15:55+00:00"
         },
         {
             "name": "yiisoft/yii2-httpclient",
@@ -1296,16 +1300,16 @@
         },
         {
             "name": "codeception/phpunit-wrapper",
-            "version": "6.0.5",
+            "version": "6.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/phpunit-wrapper.git",
-                "reference": "44e2100c300413a6b40cf8874ad402695010f443"
+                "reference": "e18f3ea1f841bfd2cecaf6e183e584127b9d467b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/phpunit-wrapper/zipball/44e2100c300413a6b40cf8874ad402695010f443",
-                "reference": "44e2100c300413a6b40cf8874ad402695010f443",
+                "url": "https://api.github.com/repos/Codeception/phpunit-wrapper/zipball/e18f3ea1f841bfd2cecaf6e183e584127b9d467b",
+                "reference": "e18f3ea1f841bfd2cecaf6e183e584127b9d467b",
                 "shasum": ""
             },
             "require": {
@@ -1313,6 +1317,13 @@
                 "phpunit/phpunit": ">=4.8.28 <5.0.0 || >=5.6.3 <7.0",
                 "sebastian/comparator": ">1.1 <3.0",
                 "sebastian/diff": ">=1.4 <4.0"
+            },
+            "replace": {
+                "codeception/phpunit-wrapper": "*"
+            },
+            "require-dev": {
+                "codeception/specify": "*",
+                "vlucas/phpdotenv": "^2.4"
             },
             "type": "library",
             "autoload": {
@@ -1331,7 +1342,7 @@
                 }
             ],
             "description": "PHPUnit classes used by Codeception",
-            "time": "2018-02-19T13:24:40+00:00"
+            "time": "2018-03-16T10:17:47+00:00"
         },
         {
             "name": "codeception/specify",
