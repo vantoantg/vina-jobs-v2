@@ -19,12 +19,13 @@ use yii\widgets\ActiveForm;
             <?= Html::submitButton('Save & Edit', ['class' => 'btn btn-success', 'name' => 'save', 'value' => 'saveedit']) ?>
 		</div>
 	</div>
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true, 'class' => 'createSlug form-control', 'data-target' => '#tags-slug']) ?>
 
-    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'slug')->textInput(['maxlength' => true, 'readonly' => true]) ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
+	<?= $form->field($model, 'status', [
+		'template' => '<label class="checkbox-inline checkbox-styled" >{input}</label>{label}{error}{hint}'
+	])->checkbox() ?>
 
     <?php ActiveForm::end(); ?>
 

@@ -26,7 +26,8 @@ class Cons
         ROUTE_AD_CAROUSEL_TAGS_LIST = '/admin/tags',
         ROUTE_AD_PRODUCT_LIST = '/product/product',
         ROUTE_AD_PRODUCT_CATEGORY_LIST = '/product/product-category',
-        ROUTE_AD_SYSTEM_SETTING_LIST = '/system/setting';
+        ROUTE_AD_SYSTEM_SETTING_LIST = '/system/setting',
+        ROUTE_AD_USER_LIST = '/user';
 
     /**
      * @var array

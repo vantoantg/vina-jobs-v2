@@ -18,8 +18,8 @@ class ProductCategory extends ProductCategoryModel
     public function rules()
     {
         return [
-            [['id', 'parent_id', 'arranged', 'status'], 'integer'],
-            [['name', 'description', 'image'], 'safe'],
+            [['id', 'parent_id'], 'integer'],
+            [['name', 'description'], 'safe'],
         ];
     }
 

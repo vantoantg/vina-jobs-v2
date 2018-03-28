@@ -44,14 +44,14 @@ var Admin = function () {
                 var _this = $(this);
                 var _put = _this.attr('data-target');
                 var _val = _this.val();
-                clearTimeout(timer);
+                $('body').find(_put).val(Common.createSlug(Common.removeMark(_val)));
+                /*clearTimeout(timer);
                 timer = setTimeout(function() {
                     _TNSERVICE.postCallback(_rootUrl + 'admin/ajax/create-slug', {'name' : _val}, function (res) {
-                        console.log(res);
+
                         $('body').find(_put).val(res.slug);
                     });
-                }, delay);
-
+                }, delay);*/
             });
         },
         //TODO

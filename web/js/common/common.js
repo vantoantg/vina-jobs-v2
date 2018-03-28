@@ -98,6 +98,11 @@ var Common = {
         str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y");
         str = str.replace(/Đ/g, "D");
         return str;
+    },
+    createSlug: function (str) {
+        str = str.replace(/\W+/g, ' ');
+        str = str.replace(/\s/g, '-');
+        return str;
     }
 
 };

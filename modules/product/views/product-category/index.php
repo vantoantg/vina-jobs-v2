@@ -26,11 +26,28 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'parent_id',
+//            'id',
+	        [
+		        'attribute' => 'image',
+		        'format' => 'html',
+		        'label' => 'Image',
+		        'value' => function ($data) {
+			        return Html::img(\app\library\helper\Helper::webImgs($data['image']),
+				        ['height' => '80px']);
+		        },
+	        ],
+//            'parent_id',
+	        [
+		        'attribute' => 'parent_id',
+		        'format' => 'html',
+		        'label' => 'Category',
+		        'value' => function ($data) {
+			        return $data->getCategoryName();
+		        },
+	        ],
             'name',
             'description:ntext',
-            'image',
+//            'image',
             //'arranged',
             //'status',
 

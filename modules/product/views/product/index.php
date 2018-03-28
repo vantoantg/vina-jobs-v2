@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'id',
 //            'image',
 	        [
-		        'attribute' => 'img',
+		        'attribute' => 'image',
 		        'format' => 'html',
 		        'label' => 'Image',
 		        'value' => function ($data) {

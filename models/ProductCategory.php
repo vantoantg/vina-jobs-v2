@@ -45,4 +45,16 @@ class ProductCategory extends \app\models\base\ProductCategory
 
 		return $trees;
 	}
+
+	/**
+	 * @return string
+	 */
+	public function getCategoryName(){
+		$model = ProductCategory::findOne($this->parent_id);
+		if($model){
+			return $model->name;
+		}
+
+		return '--';
+	}
 }

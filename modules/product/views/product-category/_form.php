@@ -21,9 +21,21 @@ use app\library\helper\Cons;
 		</div>
 	</div>
 
-    <?= $form->field($model, 'parent_id')->textInput() ?>
+	<?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+	<?php
+	$countries = \app\models\ProductCategory::categoriesMenus();
+	$listData = \yii\helpers\ArrayHelper::map($countries, 'id', 'name');
+	echo $form->field($model, 'parent_id',[
+		'template' => '{input}{label}{error}{hint}'
+	])->dropDownList(
+		$listData,
+		[
+			'class' => 'form-control select2-list',
+			'data-placeholder' => "Select an item"
+		]
+	)->label('Select category');
+	?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
