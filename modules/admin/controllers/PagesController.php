@@ -106,7 +106,8 @@ class PagesController extends AdminController
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        // TODO: add field is_deleted
+//        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }

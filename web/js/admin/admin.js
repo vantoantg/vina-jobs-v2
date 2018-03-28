@@ -18,6 +18,7 @@ var Admin = function () {
             this.initSlug();
             this.doCallPHPWorking();
             this.doSearchText();
+            this.doConfirmDelete();
         },
         events: function () {
             var pageCt = $("#page-content");
@@ -65,17 +66,51 @@ var Admin = function () {
                     input.on('keyup', function () {
                         var filter, ul, li, a, i;
 
-                        filter = input.val().toUpperCase();
+                        filter = Common.removeMark(input.val().toUpperCase());
                         ul = $(input.attr('data-list'));
                         li = ul.find("li");
                         for (i = 0; i < li.length; i++) {
                             a = li[i].getElementsByTagName("a")[0];
-                            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            if (Common.removeMark(a.innerHTML.toUpperCase()).indexOf(filter) > -1) {
                                 li[i].style.display = "";
                             } else {
                                 li[i].style.display = "none";
                             }
                         }
+                    });
+                });
+            }
+        },
+        doConfirmDelete: function () {
+            var _item = $('[data-confirm-del="true"]');
+            if(_item.length){
+                _item.each(function () {
+                   var _this = $(this);
+                    _this.on('click', function (e) {
+                        e.preventDefault();
+                        $.confirm({
+                            title: 'Confirm!',
+                            content: _this.data('confirm-ms'),
+                            autoClose: 'cancel|10000',
+                            buttons: {
+                                confirm: {
+                                    text: 'DELETE',
+                                    btnClass: 'btn btn-blue',
+                                    keys: ['enter', 'y'],
+                                    action: function() {
+                                        _TNSERVICE.postCallback(_this.attr('href'), {}, function (data) {
+
+                                        });
+                                    }
+                                },
+                                cancel: {
+                                    keys: ['n'],
+                                    action: function() {
+
+                                    }
+                                }
+                            }
+                        });
                     });
                 });
             }

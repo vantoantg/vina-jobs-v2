@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by Tona Nguyen.
+ * Date: 3/28/2017
+ * Time: 11:35 AM
+ */
+
 namespace app\library\helper;
 
 class Cons
@@ -10,6 +16,11 @@ class Cons
 	const
 		ARCHIVE_FALSE = 0,
 		ARCHIVE_TRUE = 1;
+
+	const
+        ROUTE_AD_PAGE_LIST = '/admin/pages',
+        ROUTE_AD_CAROUSEL_LIST = '/admin/carousel';
+
     /**
      * @var array
      */

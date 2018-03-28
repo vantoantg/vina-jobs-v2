@@ -52,32 +52,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'updated_at',
             'status',
 
-            ['class' => 'yii\grid\ActionColumn'],
-            [
-                'class' => 'yii\grid\ActionColumn',
-                'header' => 'Actions',
-                'headerOptions' => ['style' => 'color:#337ab7'],
-                'template' => '{view}{update}',
-                'buttons' => [
-                    'view' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
-                            'title' => Yii::t('app', 'lead-view'),
-                        ]);
-                    },
-
-                    'update' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
-                            'title' => Yii::t('app', 'lead-update'),
-                        ]);
-                    },
-                    'delete' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
-                            'title' => Yii::t('app', 'lead-delete'),
-                        ]);
-                    }
-
-                ]
-            ],
+//            ['class' => 'yii\grid\ActionColumn'],
+            \app\library\helper\ActionColumn::link(),
         ],
     ]); ?>
     <?php Pjax::end(); ?>

@@ -1,6 +1,7 @@
 INSTALL:
 bower install select2
 bower install cropit
+bower install craftpip/jquery-confirm
 
 http://www.yiiframework.com/extension/yii2-migration-creator/
 php yii migrate

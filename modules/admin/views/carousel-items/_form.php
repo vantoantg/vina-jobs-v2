@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\library\helper\Helper;
+use app\library\helper\Cons;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\CarouselItems */
@@ -11,8 +13,25 @@ use yii\widgets\ActiveForm;
 <div class="carousel-items-form">
 
     <?php $form = ActiveForm::begin(); ?>
+	<div class="buttons-fx col-sm-12 col-md-4 col-lg-3">
+		<div class="col-sm-12 bg-white">
+            <?= Html::a('Back', Helper::createUrl(Cons::ROUTE_AD_CAROUSEL_ITEM_LIST), ['class' => 'btn btn-default']) ?>
+            <?= Html::submitButton('Save', ['class' => 'btn btn-primary', 'name' => 'save', 'value' => 'saveback']) ?>
+            <?= Html::submitButton('Save & Edit', ['class' => 'btn btn-success', 'name' => 'save', 'value' => 'saveedit']) ?>
+		</div>
+	</div>
 
-    <?= $form->field($model, 'carousel_id')->textInput() ?>
+    <?php
+    $datas = \app\models\Carousel::find()->all();
+    $listData = \yii\helpers\ArrayHelper::map($datas, 'id', 'name');
+    echo $form->field($model, 'carousel_id')->dropDownList(
+        $listData,
+        [
+            'prompt' => '-- Chọn --',
+            'class' => 'job-select2 form-control'
+        ]
+    );
+    ?>
 
     <?= $form->field($model, 'img_thum')->textInput(['maxlength' => true]) ?>
 
@@ -26,15 +45,21 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'link')->textInput(['maxlength' => true]) ?>
 
+    <?php
+    $listData = \app\library\helper\Dropdowns::$a_target;
+    echo $form->field($model, 'target')->dropDownList(
+        $listData,
+        [
+            'prompt' => '-- Chọn --',
+            'class' => 'job-select2 form-control'
+        ]
+    );
+    ?>
     <?= $form->field($model, 'target')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'sorted')->textInput() ?>
 
     <?= $form->field($model, 'status')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-    </div>
 
     <?php ActiveForm::end(); ?>
 

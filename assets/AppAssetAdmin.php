@@ -23,6 +23,9 @@ class AppAssetAdmin extends AssetBundle
 		'web/template/admin/assets/css/theme-default/material-design-iconic-font.min.css',
 		'web/template/admin/assets/css/theme-default/libs/rickshaw/rickshaw.css',
 		'web/template/admin/assets/css/theme-default/libs/morris/morris.core.css',
+
+        'vendor/bower-asset/jquery-confirm2/css/jquery-confirm.css',
+
 		'web/template/admin/assets/less/admin.css',
 	];
 	public $js = [
@@ -53,11 +56,14 @@ class AppAssetAdmin extends AssetBundle
 		'web/template/admin/assets/js/core/source/AppVendor.js',
 		'web/template/admin/assets/js/core/demo/Demo.js',
 
+		'vendor/bower-asset/jquery-confirm2/js/jquery-confirm.js',
+
 		/* CkEditor */
 		'web/ckeditors/ckeditor/ckeditor.js',
 		/* CkFinder */
 		'web/ckeditors/ckfinder/ckfinder.js?type=Images',
 
+		'web/js/common/common.js',
 		'web/js/common/service.js',
 		'web/js/admin/admin.js',
 	];
