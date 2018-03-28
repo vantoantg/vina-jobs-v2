@@ -11,5 +11,7 @@ namespace app\models;
 
 class Product extends \app\models\base\Product
 {
-    
+    public function getCategoryName(){
+    	return ProductCategory::findOne($this->id)->name;
+    }
 }

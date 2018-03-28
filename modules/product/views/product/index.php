@@ -37,7 +37,15 @@ $this->params['breadcrumbs'][] = $this->title;
 				        ['height' => '80px']);
 		        },
 	        ],
-	        'category_id',
+//	        'category_id',
+            [
+	            'attribute' => 'category_id',
+	            'format' => 'html',
+	            'label' => 'Category',
+	            'value' => function ($data) {
+		            return $data->getCategoryName();
+	            },
+            ],
 	        'name',
 	        'description:ntext',
 //            'content:ntext',

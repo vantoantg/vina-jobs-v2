@@ -18,9 +18,9 @@ class Product extends ProductModel
     public function rules()
     {
         return [
-            [['id', 'category_id', 'view', 'is_comment', 'arranged', 'status', 'is_deleted', 'created_by', 'updated_by'], 'integer'],
-            [['name', 'description', 'content', 'image', 'slug', 'created_at', 'updated_at'], 'safe'],
-            [['price_in', 'price_out', 'price_sale', 'quantity_remaining'], 'number'],
+            [['id', 'category_id'], 'integer'],
+            [['name', 'description', 'content', 'slug', 'created_at', 'updated_at'], 'safe'],
+            [['price_in', 'price_out', 'price_sale'], 'number'],
         ];
     }
 
