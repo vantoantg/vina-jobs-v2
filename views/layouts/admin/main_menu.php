@@ -146,6 +146,19 @@ use app\library\helper\Helper;
 	</li><!--end /menu-li -->
 	<!-- END TAGS -->
 
+	<!-- BEGIN EMAIL -->
+	<li class="gui-folder">
+		<a>
+			<div class="gui-icon"><i class="md md-web"></i></div>
+			<span class="title">Layouts</span>
+		</a>
+		<!--start submenu -->
+		<ul>
+			<li><a href="<?= Url::toRoute('/admin/layout/footer') ?>"><span class="title">Footer</span></a></li>
+		</ul><!--end /submenu -->
+	</li><!--end /menu-li -->
+	<!-- END EMAIL -->
+
     <!-- BEGIN EMAIL -->
     <li class="gui-folder">
         <a>

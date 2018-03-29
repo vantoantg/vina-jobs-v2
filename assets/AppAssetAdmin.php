@@ -58,6 +58,8 @@ class AppAssetAdmin extends AssetBundle
 		'web/template/admin/assets/js/core/demo/DemoDashboard.js',
 
 		'vendor/bower-asset/jquery-confirm2/js/jquery-confirm.js',
+		'https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js',
+		'https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ext-language_tools.js',
 
 		/* CkEditor */
 		'web/ckeditors/ckeditor/ckeditor.js',

@@ -19,6 +19,7 @@ var Admin = function () {
             this.doCallPHPWorking();
             this.doSearchText();
             this.doConfirmDelete();
+            this.extACE();
         },
         events: function () {
             var pageCt = $("#page-content");
@@ -114,6 +115,20 @@ var Admin = function () {
                     });
                 });
             }
+        },
+        extACE: function () {
+            ace.require("ace/ext/language_tools");
+            var editor = ace.edit("editor");
+            editor.session.setMode("ace/mode/twig");
+            editor.setTheme("ace/theme/tomorrow");
+            editor.setOptions({enableBasicAutocompletion: true});
+            // uses http://rhymebrain.com/api.html
+            editor.setOptions({
+                enableBasicAutocompletion: true,
+                enableSnippets: true,
+                enableLiveAutocompletion: true,
+                showInvisibles: true
+            });
         }
     }
 }();
