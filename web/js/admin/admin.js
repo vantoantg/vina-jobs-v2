@@ -40,19 +40,11 @@ var Admin = function () {
             });
         },
         initSlug: function () {
-            var timer, delay = 1000;
             $('input.createSlug').on('keyup change', function () {
                 var _this = $(this);
                 var _put = _this.attr('data-target');
                 var _val = _this.val();
                 $('body').find(_put).val(Common.createSlug(Common.removeMark(_val)));
-                /*clearTimeout(timer);
-                timer = setTimeout(function() {
-                    _TNSERVICE.postCallback(_rootUrl + 'admin/ajax/create-slug', {'name' : _val}, function (res) {
-
-                        $('body').find(_put).val(res.slug);
-                    });
-                }, delay);*/
             });
         },
         //TODO
@@ -118,6 +110,9 @@ var Admin = function () {
         },
         extACE: function () {
             var editor_hd = $('textarea#editor_hd');
+            if(editor_hd.length == 0){
+                return;
+            }
             ace.require("ace/ext/language_tools");
             var editor = ace.edit("editor");
             editor.session.setMode("ace/mode/twig");

@@ -2,6 +2,7 @@
 
 namespace app\modules\front\controllers;
 
+use app\components\UserOnlineWidget;
 use app\forms\SearchForm;
 use app\library\helper\Helper;
 use app\models\Pages;
@@ -23,4 +24,13 @@ class DefaultController extends FrontController
         	'search' => $form
         ]);
     }
+
+	/**
+	 * Renders the index view for the module
+	 * @return string
+	 */
+	public function actionCallback()
+	{
+
+	}
 }

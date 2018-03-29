@@ -12,7 +12,6 @@ use Yii;
 use app\forms\LoginForm;
 use app\forms\ProfilePasswordForm;
 use app\forms\RequireResetPasswordForm;
-use app\forms\ResetProfilePasswordForm;
 use app\library\helper\Helper;
 use app\models\Users;
 use yii\helpers\Url;

@@ -73,7 +73,7 @@ use app\library\helper\Helper;
     <!-- END LEVELS -->
 
     <!-- BEGIN Products -->
-    <li class="gui-folder">
+    <li class="gui-folder <?= Helper::activeMenu(['product/index', 'product/create', '/product-category/index', 'product-category/create'])?>">
         <a>
             <div class="gui-icon"><i class="md md-computer"></i></div>
             <span class="title">Products</span>
@@ -89,7 +89,7 @@ use app\library\helper\Helper;
     <!-- END Products -->
 
     <!-- BEGIN Pages -->
-    <li class="gui-folder">
+    <li class="gui-folder <?= Helper::activeMenu(['pages/index', 'pages/create', 'pages/update'])?>">
         <a>
             <div class="gui-icon"><i class="md md-computer"></i></div>
             <span class="title">Pages</span>
@@ -103,7 +103,7 @@ use app\library\helper\Helper;
     <!-- END Pages -->
 
     <!-- BEGIN SYSTEM -->
-    <li class="gui-folder expanded">
+    <li class="gui-folder <?= Helper::activeMenu(['migration/index', 'log-system/index', 'system/index', 'setting/index'])?>">
         <a>
             <div class="gui-icon"><i class="fa fa-folder-open fa-fw"></i></div>
             <span class="title">System</span>
@@ -147,7 +147,7 @@ use app\library\helper\Helper;
 	<!-- END TAGS -->
 
 	<!-- BEGIN EMAIL -->
-	<li class="gui-folder">
+	<li class="gui-folder <?= Helper::activeMenu(['layout/footer'])?>">
 		<a>
 			<div class="gui-icon"><i class="md md-web"></i></div>
 			<span class="title">Layouts</span>

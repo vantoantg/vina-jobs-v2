@@ -392,4 +392,21 @@ class Helper
         Yii::$app->params['seo']['description'] = $page->seo_description;
         Yii::$app->params['seo']['keywords'] = $page->seo_keyword;
     }
+
+
+	/**
+	 * @param array $items
+	 * @param string $activeClass
+	 * @return string
+	 */
+    public static function activeMenu($items = [], $activeClass = 'expanded'){
+		if($items){
+			foreach ($items as $item){
+				if($item == Yii::$app->controller->id.'/'.Yii::$app->controller->action->id){
+					return $activeClass;
+				}
+			}
+		}
+		return '';
+    }
 }

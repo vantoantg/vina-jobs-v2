@@ -2,6 +2,8 @@
 
 namespace app\modules\front\controllers;
 
+use app\components\LogSystemWidget;
+use app\components\UserOnlineWidget;
 use yii\web\Controller;
 
 /**

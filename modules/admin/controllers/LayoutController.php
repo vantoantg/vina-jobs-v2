@@ -33,7 +33,7 @@ class LayoutController extends AdminController
      * Lists all Tags models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionFooter()
     {
         $file = Yii::$app->getLayoutPath().'/jobs/footer.php';
 
