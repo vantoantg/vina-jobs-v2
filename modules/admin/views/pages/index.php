@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="pages-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php Pjax::begin(); ?>
+    <?php Pjax::begin(['timeout' => 15000]); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
@@ -21,12 +21,13 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?= GridView::widget([
+	    'layout' => "{pager} {summary} {items} {pager}",
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
             'parent_id',
             'name',
             'slug',
@@ -52,32 +53,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'updated_at',
             'status',
 
-            ['class' => 'yii\grid\ActionColumn'],
-            [
-                'class' => 'yii\grid\ActionColumn',
-                'header' => 'Actions',
-                'headerOptions' => ['style' => 'color:#337ab7'],
-                'template' => '{view}{update}',
-                'buttons' => [
-                    'view' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
-                            'title' => Yii::t('app', 'lead-view'),
-                        ]);
-                    },
-
-                    'update' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
-                            'title' => Yii::t('app', 'lead-update'),
-                        ]);
-                    },
-                    'delete' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
-                            'title' => Yii::t('app', 'lead-delete'),
-                        ]);
-                    }
-
-                ]
-            ],
+//            ['class' => 'yii\grid\ActionColumn'],
+            \app\library\helper\ActionColumn::link(),
         ],
     ]); ?>
     <?php Pjax::end(); ?>

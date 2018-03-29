@@ -1,6 +1,8 @@
 <?php
 /**
- *
+ * Created by Tona Nguyen.
+ * Date: 3/28/2017
+ * Time: 11:35 AM
  */
 
 namespace app\library\helper;
@@ -85,11 +87,15 @@ class Helper
     }
 
     /**
-     * @param array $params
+     * @param $params
      * @return string
      */
-    public static function createUrl($params = [])
+    public static function createUrl($params)
     {
+        if(!is_array($params)){
+            $params = [$params];
+        }
+
         return Yii::$app->getUrlManager()->createUrl($params);
     }
 

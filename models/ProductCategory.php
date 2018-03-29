@@ -26,12 +26,12 @@ class ProductCategory extends \app\models\base\ProductCategory
 			$trees = [];
 		}
 		$sql = "SELECT * FROM $table WHERE (parent_id = {$parent_id}) order by arranged asc";
-		if (\Yii::$app->request->getQueryParam('id') && $is_category) {
-			$id = Yii::$app->request->getQueryParam('id');
+		/*if (\Yii::$app->request->getQueryParam('id') && $is_category) {
+			$id = \Yii::$app->request->getQueryParam('id');
 			if ($id > 0) {
 				$sql = "SELECT * FROM $table WHERE (parent_id = {$parent_id} AND id != {$id}) order by arranged asc";
 			}
-		}
+		}*/
 		$data = \Yii::$app->db->createCommand($sql)->queryAll();
 		foreach ($data as $k => $rs) {
 			$trees[] = array(
@@ -44,5 +44,17 @@ class ProductCategory extends \app\models\base\ProductCategory
 		}
 
 		return $trees;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getCategoryName(){
+		$model = ProductCategory::findOne($this->parent_id);
+		if($model){
+			return $model->name;
+		}
+
+		return '--';
 	}
 }

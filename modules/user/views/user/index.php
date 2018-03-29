@@ -26,23 +26,32 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'username',
-            'password',
-            'auth_key',
-            'access_token',
-            //'password_reset_token',
-            //'role',
-            //'name',
-            //'slug_name',
-            //'avatar',
+//            'id',
+	        //'avatar',
+	        [
+		        'attribute' => 'avatar',
+		        'format' => 'html',
+		        'label' => 'Avatar',
+		        'value' => function ($data) {
+			        return Html::img(\app\library\helper\Helper::webImgs($data['avatar']),
+				        ['height' => '80px']);
+		        },
+	        ],
+	        'username',
+//	        'password',
+//	        'auth_key',
+//	        'access_token',
+	        //'password_reset_token',
+	        'role',
+	        'name',
+	        //'slug_name',
             //'archive',
             //'type',
             //'lang',
-            //'timezone',
-            //'status',
+            'timezone',
+            'status',
 
-            ['class' => 'yii\grid\ActionColumn'],
+	        \app\library\helper\ActionColumn::link(),
         ],
     ]); ?>
     <?php Pjax::end(); ?>

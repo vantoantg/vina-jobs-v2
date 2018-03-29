@@ -79,3 +79,6 @@ form div.buttons-fx > div {
 .form-group .control-label {
   opacity: 1;
 }
+ul.pagination {
+  margin: 0;
+}

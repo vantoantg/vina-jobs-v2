@@ -18,8 +18,8 @@ class Pages extends PagesModel
     public function rules()
     {
         return [
-            [['id', 'parent_id', 'view', 'pape_template', 'created_by', 'updated_by', 'status'], 'integer'],
-            [['name', 'slug', 'content', 'seo_title', 'seo_keyword', 'seo_description', 'img', 'created_at', 'updated_at'], 'safe'],
+            [['id', 'parent_id', 'pape_template', 'created_by', 'updated_by'], 'integer'],
+            [['name', 'slug', 'content', 'seo_title', 'seo_keyword', 'seo_description', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 

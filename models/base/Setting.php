@@ -7,11 +7,13 @@ use Yii;
 /**
  * This is the model class for table "tn_setting".
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property string $code
  * @property string $value
  * @property string $default
+ * @property int $sorted
+ * @property string $input
  */
 class Setting extends \yii\db\ActiveRecord
 {
@@ -30,6 +32,8 @@ class Setting extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'code'], 'required'],
+            [['sorted'], 'integer'],
+            [['input'], 'string'],
             [['name'], 'string', 'max' => 255],
             [['code', 'value', 'default'], 'string', 'max' => 55],
         ];
@@ -46,6 +50,8 @@ class Setting extends \yii\db\ActiveRecord
             'code' => 'Code',
             'value' => 'Value',
             'default' => 'Default',
+            'sorted' => 'Sorted',
+            'input' => 'Input',
         ];
     }
 }

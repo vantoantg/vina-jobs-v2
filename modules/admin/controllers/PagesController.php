@@ -36,6 +36,7 @@ class PagesController extends AdminController
     {
         $searchModel = new PagesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+	    $dataProvider->pagination->pageSize = $this->setting['page_size'];
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -66,7 +67,10 @@ class PagesController extends AdminController
         $model = new Pages();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+	        if(Yii::$app->request->post('save') == 'saveedit'){
+		        return $this->redirect(['update', 'id' => $model->id]);
+	        }
+	        return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -106,7 +110,8 @@ class PagesController extends AdminController
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        // TODO: add field is_deleted
+//        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }

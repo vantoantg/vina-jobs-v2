@@ -31,9 +31,10 @@ AppAssetAdmin::register($this);
     <script type="text/javascript" src="web/template/admin/assets/js/libs/utils/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="menubar-hoverable header-fixed ">
+<body class="menubar-hoverable header-fixed menubar-pin">
 <input type="hidden" id="setting-common"
        data-site="<?= \app\library\helper\Helper::homeUrl() ?>"
+       data-page-current="<?= Yii::$app->controller->module->id.'/'.Yii::$app->controller->id ?>"
 >
 <?php $this->beginBody() ?>
 <!-- BEGIN HEADER-->

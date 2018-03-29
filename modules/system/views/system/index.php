@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'value_number',
             //'default',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            \app\library\helper\ActionColumn::link('{update}'),
         ],
     ]); ?>
     <?php Pjax::end(); ?>

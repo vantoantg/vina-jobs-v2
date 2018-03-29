@@ -26,28 +26,46 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'category_id',
-            'name',
-            'description:ntext',
-            'content:ntext',
-            //'image',
+//            'id',
+//            'image',
+	        [
+		        'attribute' => 'image',
+		        'format' => 'html',
+		        'label' => 'Image',
+		        'value' => function ($data) {
+			        return Html::img(\app\library\helper\Helper::webImgs($data['image']),
+				        ['height' => '80px']);
+		        },
+	        ],
+//	        'category_id',
+            [
+	            'attribute' => 'category_id',
+	            'format' => 'html',
+	            'label' => 'Category',
+	            'value' => function ($data) {
+		            return $data->getCategoryName();
+	            },
+            ],
+	        'name',
+	        'description:ntext',
+//            'content:ntext',
+
             //'slug',
             //'price_in',
             //'price_out',
             //'price_sale',
-            //'quantity_remaining',
-            //'view',
+            'quantity_remaining',
+            'view',
             //'is_comment',
-            //'arranged',
-            //'status',
+            'arranged',
+            'status',
             //'is_deleted',
             //'created_by',
             //'updated_by',
             //'created_at',
             //'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            \app\library\helper\ActionColumn::link(),
         ],
     ]); ?>
     <?php Pjax::end(); ?>

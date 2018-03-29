@@ -18,8 +18,8 @@ class User extends Users
     public function rules()
     {
         return [
-            [['id', 'role', 'archive', 'type', 'status'], 'integer'],
-            [['username', 'password', 'auth_key', 'access_token', 'password_reset_token', 'name', 'slug_name', 'avatar', 'lang', 'timezone'], 'safe'],
+            [['id', 'role', 'archive', 'type'], 'integer'],
+            [['username', 'name', 'slug_name', 'avatar', 'lang', 'timezone'], 'safe'],
         ];
     }
 

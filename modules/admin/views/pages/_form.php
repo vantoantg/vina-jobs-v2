@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use \app\library\helper\Helper;
+use \app\library\helper\Cons;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Pages */
@@ -13,7 +15,7 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 	<div class="buttons-fx col-sm-12 col-md-4 col-lg-3">
 		<div class="col-sm-12 bg-white">
-            <?= Html::submitButton('Back', ['class' => 'btn btn-default', 'name' => 'save', 'value' => 'saveback']) ?>
+            <?= Html::a('Back', Helper::createUrl(Cons::ROUTE_AD_PAGE_LIST), ['class' => 'btn btn-default']) ?>
             <?= Html::submitButton('Save', ['class' => 'btn btn-primary', 'name' => 'save', 'value' => 'saveback']) ?>
             <?= Html::submitButton('Save & Edit', ['class' => 'btn btn-success', 'name' => 'save', 'value' => 'saveedit']) ?>
 		</div>

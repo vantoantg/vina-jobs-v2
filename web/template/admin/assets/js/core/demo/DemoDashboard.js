@@ -5,9 +5,15 @@
 		// Create reference to this instance
 		var o = this;
 		// Initialize app when document is ready
-		$(document).ready(function () {
-			o.initialize();
-		});
+        $(document).ready(function () {
+        	var _home_page = $('input#setting-common');
+            if(_home_page.length && _home_page.attr('data-page-current') == 'admin/default'
+            ){
+                o.initialize();
+            }else{
+            	return;
+			}
+        });
 
 	};
 	var p = DemoDashboard.prototype;

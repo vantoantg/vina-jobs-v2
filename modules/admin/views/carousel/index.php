@@ -32,7 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'slug',
             'status',
 
-            ['class' => 'yii\grid\ActionColumn'],
+//            ['class' => 'yii\grid\ActionColumn'],
+            \app\library\helper\ActionColumn::link(),
         ],
     ]); ?>
     <?php Pjax::end(); ?>

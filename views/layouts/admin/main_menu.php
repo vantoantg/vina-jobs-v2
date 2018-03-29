@@ -29,7 +29,7 @@ use app\library\helper\Helper;
 
     <!-- BEGIN DASHBOARD -->
     <li>
-        <a href="<?= \app\library\helper\Helper::homeUrl() ?>" class="active">
+        <a href="<?= \app\library\helper\Helper::homeUrl().\app\library\helper\Cons::ROUTE_ADMIN_ROOT ?>" class="active">
             <div class="gui-icon"><i class="md md-home"></i></div>
             <span class="title">Dashboard</span>
         </a>
@@ -103,7 +103,7 @@ use app\library\helper\Helper;
     <!-- END Pages -->
 
     <!-- BEGIN SYSTEM -->
-    <li class="gui-folder">
+    <li class="gui-folder expanded">
         <a>
             <div class="gui-icon"><i class="fa fa-folder-open fa-fw"></i></div>
             <span class="title">System</span>
@@ -113,6 +113,7 @@ use app\library\helper\Helper;
             <li><a href="<?= Url::toRoute('/system/migration') ?>" ><span class="title">Migrations</span></a></li>
             <li><a href="<?= Url::toRoute('/system/log-system') ?>" ><span class="title">Log system</span></a></li>
             <li><a href="<?= Url::toRoute('/system/system') ?>" ><span class="title">System</span></a></li>
+            <li><a href="<?= Url::toRoute('/system/setting') ?>" ><span class="title">Setting</span></a></li>
         </ul><!--end /submenu -->
     </li><!--end /menu-li -->
     <!-- END SYSTEM -->
