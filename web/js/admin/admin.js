@@ -117,11 +117,13 @@ var Admin = function () {
             }
         },
         extACE: function () {
+            var editor_hd = $('textarea#editor_hd');
             ace.require("ace/ext/language_tools");
             var editor = ace.edit("editor");
             editor.session.setMode("ace/mode/twig");
             editor.setTheme("ace/theme/tomorrow");
             editor.setOptions({enableBasicAutocompletion: true});
+            editor.setValue(editor_hd.val());
             // uses http://rhymebrain.com/api.html
             editor.setOptions({
                 enableBasicAutocompletion: true,

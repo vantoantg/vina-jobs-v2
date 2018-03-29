@@ -1,9 +1,3 @@
-<?php
-
-
-echo 'hello world!';
-?>
-
 <div class="container">
     <div class="row footer">
         <div class="col-md-4">
