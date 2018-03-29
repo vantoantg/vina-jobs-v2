@@ -246,7 +246,15 @@ class UserController extends FrontController
 
 	public function actionViewProfile($id)
 	{
-		return $this->render('view_profile');
+        if(!Common::isLoginned()){
+            return $this->goHome();
+        }
+
+        if(Common::currentUser('type') == Users::USER_TYPE_CONTACT_OF_COMPANY){
+            return $this->render('view_contact');
+        }else{
+            return $this->render('view_profile');
+        }
 	}
 
     /**
@@ -257,7 +265,12 @@ class UserController extends FrontController
 	    if(!Common::isLoginned()){
             return $this->goHome();
         }
-		return $this->render('profile');
+
+        if(Common::currentUser('type') == Users::USER_TYPE_CONTACT_OF_COMPANY){
+            return $this->render('profile_contact');
+        }else{
+            return $this->render('profile_user');
+        }
 	}
 
 	/**
