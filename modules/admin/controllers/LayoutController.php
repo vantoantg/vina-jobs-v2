@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\forms\LayoutForm;
 use Yii;
 use app\models\Tags;
 use app\models\search\Tags as TagsSearch;
@@ -36,14 +37,17 @@ class LayoutController extends AdminController
     public function actionFooter()
     {
         $file = Yii::$app->getLayoutPath().'/jobs/footer.php';
+	    @chmod($file, 0777);
 
-        $filecontent = file_get_contents($file);
-
-/*        $pos = strpos($filecontent, '?>');*/
-//        file_put_contents($file, $filecontent);
+		$form = new LayoutForm();
+	    $form->textarea = file_get_contents($file);
+		if($form->load(Yii::$app->request->post())){
+			file_put_contents($file, $form->textarea);
+		}
 
         return $this->render('index', [
-            'file_content' =>  $filecontent,
+            'file_name' =>  'footer.php',
+            'model' =>  $form,
             'files' =>  null,
         ]);
     }

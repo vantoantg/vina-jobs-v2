@@ -126,6 +126,10 @@ var Admin = function () {
                 enableLiveAutocompletion: true,
                 showInvisibles: true
             });
+
+            editor_hd.closest('form').on('click', 'button[type="submit"]', function () {
+                editor_hd.val(editor.getValue());
+            })
         }
     }
 }();

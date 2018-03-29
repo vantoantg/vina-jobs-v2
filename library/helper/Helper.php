@@ -8,6 +8,7 @@
 namespace app\library\helper;
 
 use app\models\Pages;
+use Carbon\Carbon;
 use Yii;
 use yii\helpers\Url;
 use \yii\web\Response;
@@ -328,8 +329,7 @@ class Helper
 			$name = Helper::getConfigDb()['db_name'];
 		}
 
-		$path = Yii::$app->basePath.'/db/backups';
-		@chmod($path, 0777);
+		$path = Yii::$app->basePath.'/web/backups';
 
 		/* backup the db OR just a table */
 		$link = mysqli_connect($host, $user, $pass);
@@ -409,4 +409,10 @@ class Helper
 		}
 		return '';
     }
+
+	public static function humanFilesize($bytes, $decimals = 2) {
+		$size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
+		$factor = floor((strlen($bytes) - 1) / 3);
+		return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
+	}
 }

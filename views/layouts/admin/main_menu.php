@@ -103,7 +103,7 @@ use app\library\helper\Helper;
     <!-- END Pages -->
 
     <!-- BEGIN SYSTEM -->
-    <li class="gui-folder <?= Helper::activeMenu(['migration/index', 'log-system/index', 'system/index', 'setting/index'])?>">
+    <li class="gui-folder <?= Helper::activeMenu(['migration/index', 'log-system/index', 'system/index', 'setting/index', 'system/backup-db'])?>">
         <a>
             <div class="gui-icon"><i class="fa fa-folder-open fa-fw"></i></div>
             <span class="title">System</span>
@@ -114,6 +114,7 @@ use app\library\helper\Helper;
             <li><a href="<?= Url::toRoute('/system/log-system') ?>" ><span class="title">Log system</span></a></li>
             <li><a href="<?= Url::toRoute('/system/system') ?>" ><span class="title">System</span></a></li>
             <li><a href="<?= Url::toRoute('/system/setting') ?>" ><span class="title">Setting</span></a></li>
+            <li><a href="<?= Url::toRoute('/system/system/backup-db') ?>" ><span class="title">Backup Database</span></a></li>
         </ul><!--end /submenu -->
     </li><!--end /menu-li -->
     <!-- END SYSTEM -->

@@ -66,10 +66,20 @@ form .form-control {
 form div.buttons-fx {
   position: fixed;
   right: 0;
+  top: 65px;
+  padding-right: 0;
   z-index: 2;
+}
+form div.buttons-fx:hover .btn {
+  opacity: 1;
 }
 form div.buttons-fx > div {
   padding: 15px;
+  text-align: center;
+}
+form div.buttons-fx > div .btn {
+  min-width: 80px;
+  opacity: 0.8;
 }
 .sidebar-admin {
   padding-top: 75px;

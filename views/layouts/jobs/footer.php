@@ -39,6 +39,10 @@
         </div>
     </div>
     <div class="row footer-copy">
-        <p><span>(C) webstie, All rights reserved</span> | <span>Graphic Designed by <a href="https://dribbble.com/siblu">Eftakher Alam</a></span> | <span> Web Designed by <a href="http://ohidul.me">Ohidul Islam</a></span> </p>
+        <p>
+            <span>(C) webstie, All rights reserved</span> |
+            <span>Graphic Designed by <a href="https://dribbble.com/siblu">Eftakher Alam</a></span> |
+            <span> Web Designed by <a href="http://ohidul.me">Ohidul Islam</a></span>
+        </p>
     </div>
 </div><!-- ./container -->
