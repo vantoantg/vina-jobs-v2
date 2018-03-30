@@ -36,19 +36,35 @@ class LayoutController extends AdminController
      */
     public function actionFooter()
     {
-        $file = Yii::$app->getLayoutPath().'/jobs/footer.php';
-	    @chmod($file, 0777);
+        $file_id = 2;
+        $files = [
+            1 => [
+                'id' => 1,
+                'name' => 'footer.php',
+                'path' => Yii::$app->getLayoutPath().'/jobs/footer.php',
+            ],
+            2 => [
+                'id' => 2,
+                'name' => 'site.css',
+                'path' => Yii::$app->basePath.'/web/css/site.css',
+            ]
+        ];
+
+
+        foreach($files as $file){
+            @chmod($file, 0777);
+        }
 
 		$form = new LayoutForm();
-	    $form->textarea = file_get_contents($file);
+	    $form->textarea = file_get_contents($files[$file_id]['path']);
 		if($form->load(Yii::$app->request->post())){
-			file_put_contents($file, $form->textarea);
+			file_put_contents($files[$file_id]['path'], $form->textarea);
 		}
 
         return $this->render('index', [
-            'file_name' =>  'footer.php',
+            'file_name' =>  $files[$file_id]['name'],
+            'files' => $files,
             'model' =>  $form,
-            'files' =>  null,
         ]);
     }
 }

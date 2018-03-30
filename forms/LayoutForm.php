@@ -12,8 +12,8 @@ use yii\base\Model;
  */
 class LayoutForm extends Model
 {
+    public $files;
     public $textarea;
-
 
     /**
      * @return array the validation rules.
