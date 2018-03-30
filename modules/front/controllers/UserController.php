@@ -5,8 +5,10 @@ namespace app\modules\front\controllers;
 use app\library\helper\Common;
 use app\library\helper\Datetime;
 use app\library\helper\Image;
+use app\models\Candidate;
 use app\models\Company;
 use app\models\Dropdown;
+use app\models\JobSkill;
 use app\models\UserDetails;
 use Yii;
 use app\forms\LoginForm;
@@ -41,6 +43,8 @@ class UserController extends FrontController
 	{
         $model = new Users();
         $userDetail = new UserDetails();
+		$candidate = new Candidate();
+		$candidate->scenario = 'form';
 	    if(Common::isLoginned()){
             $model = Users::findOne(Common::currentUser());
             $userDetail = UserDetails::find()->where(['user_id' => $model->getId()])->one();
@@ -51,7 +55,8 @@ class UserController extends FrontController
             $model->load(Yii::$app->request->post()) &&
             $userDetail->load(Yii::$app->request->post()) &&
             $model->validate() &&
-            $userDetail->validate())
+            $userDetail->validate() &&
+			$candidate->load(Yii::$app->request->post()))
 		{
             $img = Yii::$app->request->post();
             if($img['Users']['avatar']){
@@ -68,7 +73,13 @@ class UserController extends FrontController
 	            $userDetail->user_id = $model->getId();
 	            $userDetail->email = $model->email;
 	            $userDetail->saveInfo();
-	            if($userDetail->save()){
+
+				//save candidate
+				$candidate->user_id = $model->getId();
+				$candidate->skill = $candidate->array2String($candidate->skill);
+				$candidate->scenario = "register";
+
+	            if($userDetail->save() && $candidate->save()){
                     // TODO: Send email
                     $data['name'] = $model->name;
                     $data['link'] = Url::to('/candidate/active/token/' . $token_waiting_active . '.html', true);
@@ -77,15 +88,19 @@ class UserController extends FrontController
                     // TODO: comment out
 //	            Email::sendMail('Reset password - '. Helper::siteURL(), $temp);
                 }
+
 	            return $this->render('register_candidate_success', [
 		            'success' => true,
 		            'message' => "",
 	            ]);
             }
 		}
+		$jobSkill = JobSkill::getAllGroupSkill();
 		return $this->render('register_candidate', [
 			'model' => $model,
 			'userDetail' => $userDetail,
+			'candidate' => $candidate,
+			'jobSkill' => $jobSkill
 		]);
 	}
 

@@ -44,9 +44,12 @@ class AppAsset extends AssetBundle
         'vendor/bower-asset/select2/dist/js/select2.min.js',
         'vendor/bower-asset/cropit/dist/jquery.cropit.js',
         'web/template/jobs/js/main.js',
+        'web/template/jobs/js/underscore-min.js',
+        'web/js/common/service.js',
         'web/js/common/service.js',
         'web/js/site/login.js',
         'web/js/site/main.js',
+        'web/js/site/candidate.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

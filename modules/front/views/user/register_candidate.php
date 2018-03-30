@@ -7,6 +7,7 @@ use \app\models\Dropdown;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Users */
+/* @var $candidate app\models\Candidate */
 
 $this->title = 'Đăng kí tài khoản - ' . \app\library\helper\Helper::siteURL();
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
@@ -52,7 +53,7 @@ $dropdowns = new Dropdown();
 </div>
 
 
-<div class="container">
+<div class="container" id="register-candidate">
 	<div class="col-12 col-sm-8">
 		<div class="row main">
 			<div class="main-login main-center">
@@ -191,7 +192,7 @@ $dropdowns = new Dropdown();
                             <div class="cols-sm-10">
 	                            <?php $lel = $dropdowns->getDropdown(Dropdown::TYPE_LEVEL);
 	                            ?>
-	                            <?= $form->field($userDetail, 'level', [
+	                            <?= $form->field($candidate, 'education', [
 		                            'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-align-center"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
 	                            ])->dropDownList(\yii\helpers\ArrayHelper::map($lel, 'id', 'name'),
@@ -207,7 +208,7 @@ $dropdowns = new Dropdown();
                             <label for="email" class="cols-sm-2 control-label">Kinh nghiệm</label>
                             <div class="cols-sm-10">
 	                            <?php $gender = $dropdowns->getDropdown(Dropdown::TYPE_EXP); ?>
-	                            <?= $form->field($userDetail, 'experience', [
+	                            <?= $form->field($candidate, 'experience', [
 		                            'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-list-ol"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
 	                            ])->dropDownList(\yii\helpers\ArrayHelper::map($gender, 'id', 'name'),
@@ -223,7 +224,7 @@ $dropdowns = new Dropdown();
                             <label for="email" class="cols-sm-2 control-label">Lĩnh vực</label>
                             <div class="cols-sm-10">
 	                            <?php $data = \app\models\JobCategories::categoriesMenus(); ?>
-	                            <?= $form->field($userDetail, 'job_title_id', [
+	                            <?= $form->field($candidate, 'job_category_id', [
 		                            'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-genderless"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
 	                            ])->dropDownList(\yii\helpers\ArrayHelper::map($data, 'id', 'name'),
@@ -234,6 +235,23 @@ $dropdowns = new Dropdown();
                             </div>
                         </div>
                     </div>
+					<div class="col-xs-12 col-sm-12">
+						<div class="form-group">
+							<label for="email" class="cols-sm-2 control-label">Kĩ năng</label>
+							<div class="cols-sm-10">
+								<?php $data = \app\models\JobSkill::getAllSkill(); ?>
+								<?= $form->field($candidate, 'skill[]', [
+									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-genderless"
+                                                                   aria-hidden="true"></i></span>{input}</div>{error}{hint}'
+								])->dropDownList(\yii\helpers\ArrayHelper::map($data, 'name', 'name'),
+									[
+										'prompt' => '-- Chọn --',
+										'class' => 'job-select2 form-control',
+										'multiple' => 'multiple'
+									])->label(false) ?>
+							</div>
+						</div>
+					</div>
                 </div>
 				<div class="row">
 					<div class="col-xs-12">
@@ -286,4 +304,13 @@ $dropdowns = new Dropdown();
 	<div class="col-12 col-sm-4">
 		<?= (new \app\components\SidebarWidget())->recentJobs(); ?>
 	</div>
+	<script type="text/javascript">
+		var keyTest = <?= \yii\helpers\Json::encode($jobSkill); ?>
+	</script>
+
+	<script type="text/template" id="skill-template">
+		<% _.each(list, function(item) { %>
+		<option value="<%= item.name %>"><%= item.name %></option>
+		<% }) %>
+	</script>
 </div>
