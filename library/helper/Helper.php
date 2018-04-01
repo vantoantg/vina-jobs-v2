@@ -384,12 +384,21 @@ class Helper
 		fclose($handle);
 	}
 
+	/**
+	 * @param $page
+	 * @return string
+	 */
+	public static function titleSeo($page){
+        /** @var $page Pages */
+        return $page->seo_title . ' | ' . self::siteURL();
+    }
     /**
      * @param $page
      */
 	public static function generateSeo($page){
         /** @var $page Pages */
         Yii::$app->params['seo']['description'] = $page->seo_description;
+        Yii::$app->params['seo']['keywords'] = $page->seo_keyword;
         Yii::$app->params['seo']['keywords'] = $page->seo_keyword;
     }
 

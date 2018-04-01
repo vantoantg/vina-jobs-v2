@@ -16,6 +16,9 @@ var Login = function () {
             this.events();
         },
         events: function () {
+            setTimeout(function () {
+                $('form input').val('');
+            }, 300);
             $(_form).on('click', 'button#login', function (e) {
                 e.preventDefault();
                 Login.ajaxSubmitForm($(this).closest('form'));

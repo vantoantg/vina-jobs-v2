@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="auth-item-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php Pjax::begin(); ?>
+    <?php Pjax::begin(['timeout' => 15000]); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>

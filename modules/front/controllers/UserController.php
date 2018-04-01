@@ -41,22 +41,27 @@ class UserController extends FrontController
 	 */
 	public function actionRegisterCandidate()
 	{
-        $model = new Users();
-        $userDetail = new UserDetails();
-		$candidate = new Candidate();
-		$candidate->scenario = 'form';
-	    if(Common::isLoginned()){
-            $model = Users::findOne(Common::currentUser());
-            $userDetail = UserDetails::find()->where(['user_id' => $model->getId()])->one();
-            $model->scenario = Users::SCENARIO_UPDATE;
-        }
+		if (Common::isLoginned()) {
+			$model = Users::findOne(Common::currentUser());
+			$model->scenario = Users::SCENARIO_UPDATE;
+			$userDetail = UserDetails::find()->where(['user_id' => $model->getId()])->one();
+			$candidate = Candidate::find()->where(['user_id' => $model->getId()])->one();
+		} else {
+			$model = new Users();
+			$userDetail = new UserDetails();
+			$candidate = new Candidate();
+			$candidate->scenario = 'form';
+		}
 
 		if (
             $model->load(Yii::$app->request->post()) &&
             $userDetail->load(Yii::$app->request->post()) &&
+            $candidate->load(Yii::$app->request->post()) &&
+
             $model->validate() &&
             $userDetail->validate() &&
-			$candidate->load(Yii::$app->request->post()))
+			$candidate->validate()
+			)
 		{
             $img = Yii::$app->request->post();
             if($img['Users']['avatar']){
@@ -86,7 +91,7 @@ class UserController extends FrontController
                     $temp = $this->renderPartial('@app/mail/layouts/active_user_register', ['data' => $data]);
 
                     // TODO: comment out
-//	            Email::sendMail('Reset password - '. Helper::siteURL(), $temp);
+	                Email::sendMail('Instructions to activate your account - '. Helper::siteURL(), $temp);
                 }
 
 	            return $this->render('register_candidate_success', [

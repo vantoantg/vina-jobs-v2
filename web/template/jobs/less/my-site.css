@@ -233,6 +233,17 @@ button {
   height: 34px;
   top: 0;
 }
+.select2-container--default .select2-selection--multiple,
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  border-radius: 0;
+}
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
 .search-form #searchform-keys {
   margin-right: 0;
   margin-top: -1px;

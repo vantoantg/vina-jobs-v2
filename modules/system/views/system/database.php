@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="system-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php Pjax::begin(); ?>
+    <?php Pjax::begin(['timeout' => 15000]); ?>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">

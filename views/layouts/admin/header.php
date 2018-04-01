@@ -1,6 +1,6 @@
 <?php
 
-use \app\library\helper\User;
+use \app\library\helper\Common;
 
 ?>
 <header id="header" >
@@ -100,7 +100,7 @@ use \app\library\helper\User;
                     <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
                         <img src="<?= \app\library\helper\Helper::homeUrl()?>web/template/admin/assets/img/avatar1.jpg?1403934956" alt="" />
                         <span class="profile-info">
-									<?= User::currentUser('name') ?>
+									<?= Common::currentUser('name') ?>
 									<small>Administrator</small>
 								</span>
                     </a>
