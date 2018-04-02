@@ -21,7 +21,8 @@ use \app\library\helper\Cons;
             $listData,
             [
                 'class' => 'form-control select2-list',
-                'data-placeholder' => "Select an item"
+                'data-placeholder' => "Select an item",
+	            'data-root-url' => Helper::createUrl(['admin/layout/page']).'?id='
             ]
         )->label(false);
         ?>

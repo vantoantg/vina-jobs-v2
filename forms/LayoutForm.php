@@ -13,6 +13,7 @@ use yii\base\Model;
 class LayoutForm extends Model
 {
     public $files;
+    public $id;
     public $textarea;
 
     /**
