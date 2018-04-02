@@ -8,8 +8,9 @@ use app\library\helper\Helper;
 $page = \app\models\Pages::get(\app\library\helper\Cons::PAGE_JOB_SEEKERS);
 
 $this->title = Helper::titleSeo($page);
-$this->params['breadcrumbs'][] = $this->title;
 Helper::generateSeo($page);
+
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 

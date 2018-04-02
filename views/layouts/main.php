@@ -52,7 +52,7 @@ AppAsset::register($this);
 
     <?php $this->head() ?>
 </head>
-<body>
+<body class="<?= Yii::$app->controller->id ?>-<?= Yii::$app->controller->action->id ?>">
 <input type="hidden" id="setting-common"
        data-site="<?= \app\library\helper\Helper::homeUrl() ?>"
        data-page-current="<?= Yii::$app->controller->module->id . '/' . Yii::$app->controller->id ?>"

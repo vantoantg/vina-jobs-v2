@@ -148,14 +148,15 @@ use app\library\helper\Helper;
 	<!-- END TAGS -->
 
 	<!-- BEGIN EMAIL -->
-	<li class="gui-folder <?= Helper::activeMenu(['layout/footer'])?>">
+	<li class="gui-folder <?= Helper::activeMenu(['layout/page', 'layout/style'])?>">
 		<a>
 			<div class="gui-icon"><i class="md md-web"></i></div>
 			<span class="title">Layouts</span>
 		</a>
 		<!--start submenu -->
 		<ul>
-			<li><a href="<?= Url::toRoute('/admin/layout/footer') ?>"><span class="title">Footer</span></a></li>
+			<li><a href="<?= Url::toRoute('/admin/layout/page') ?>"><span class="title">Page</span></a></li>
+			<li><a href="<?= Url::toRoute('/admin/layout/style') ?>"><span class="title">Stylesheet</span></a></li>
 		</ul><!--end /submenu -->
 	</li><!--end /menu-li -->
 	<!-- END EMAIL -->

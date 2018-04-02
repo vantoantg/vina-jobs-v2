@@ -34,19 +34,20 @@ class LayoutController extends AdminController
      * Lists all Tags models.
      * @return mixed
      */
-    public function actionFooter()
+    public function actionPage()
     {
-        $file_id = 2;
+    	$x = DIRECTORY_SEPARATOR;
+        $file_id = 1;
         $files = [
             1 => [
                 'id' => 1,
-                'name' => 'footer.php',
-                'path' => Yii::$app->getLayoutPath().'/jobs/footer.php',
+                'name' => 'Home',
+                'path' => Yii::$app->basePath.$x.'modules'.$x.'front'.$x.'views'.$x.'default'.$x.'index.php',
             ],
             2 => [
                 'id' => 2,
-                'name' => 'site.css',
-                'path' => Yii::$app->basePath.'/web/css/site.css',
+                'name' => 'Footer',
+                'path' => Yii::$app->getLayoutPath().'/jobs'.$x.'footer.php',
             ]
         ];
 
@@ -61,10 +62,49 @@ class LayoutController extends AdminController
 			file_put_contents($files[$file_id]['path'], $form->textarea);
 		}
 
-        return $this->render('index', [
+        return $this->render('page', [
             'file_name' =>  $files[$file_id]['name'],
             'files' => $files,
             'model' =>  $form,
         ]);
     }
+
+	/**
+	 * Lists all Tags models.
+	 * @return mixed
+	 */
+	public function actionStyle()
+	{
+		$x = DIRECTORY_SEPARATOR;
+		$file_id = 2;
+		$files = [
+			1 => [
+				'id' => 1,
+				'name' => 'footer.php',
+				'path' => Yii::$app->getLayoutPath().'/jobs'.$x.'footer.php',
+			],
+			2 => [
+				'id' => 2,
+				'name' => 'site.css',
+				'path' => Yii::$app->basePath.$x.'/web'.$x.'css'.$x.'site.css',
+			]
+		];
+
+
+		foreach($files as $file){
+			@chmod($file, 0777);
+		}
+
+		$form = new LayoutForm();
+		$form->textarea = file_get_contents($files[$file_id]['path']);
+		if($form->load(Yii::$app->request->post())){
+			file_put_contents($files[$file_id]['path'], $form->textarea);
+		}
+
+		return $this->render('style', [
+			'file_name' =>  $files[$file_id]['name'],
+			'files' => $files,
+			'model' =>  $form,
+		]);
+	}
 }
