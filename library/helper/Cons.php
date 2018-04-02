@@ -29,6 +29,16 @@ class Cons
         ROUTE_AD_SYSTEM_SETTING_LIST = '/system/setting',
         ROUTE_AD_USER_LIST = '/user';
 
+	const
+		PAGE_HOME = 'home',
+		PAGE_JOB_ABOUT_US = 'about-us.html',
+		PAGE_BLOG = 'blog.html',
+		PAGE_CONTACT = 'contact.html',
+		PAGE_USER_PROFILE = 'user-profile-html',
+		PAGE_REGISTER_CANDIDATE = 'register-candidate-html',
+		PAGE_REGISTER_COMPANY = 'register-company-html',
+		PAGE_JOB_SEEKERS = 'job-seekers-html',
+		PAGE_EMPLOYEERS = 'employeers-html';
     /**
      * @var array
      */

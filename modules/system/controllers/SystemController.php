@@ -2,7 +2,10 @@
 
 namespace app\modules\system\controllers;
 
+use app\library\helper\Datetime;
+use app\library\helper\Helper;
 use app\modules\admin\controllers\AdminController;
+use Carbon\Carbon;
 use Yii;
 use app\models\System;
 use app\models\search\System as SystemSearch;
@@ -125,4 +128,44 @@ class SystemController extends AdminController
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+	public function actionBackupDb(){
+    	$path = Yii::$app->basePath.'/web/backups';
+		if(!file_exists($path)){
+			mkdir($path);
+		}
+		@chmod($path, 0777);
+
+		if(Yii::$app->request->isPost){
+			$backup = Yii::$app->request->post('backup_db');
+			if(isset($backup)){
+				Helper::backupDB();
+			}
+		}
+		if(Yii::$app->request->get('delete')){
+			@unlink(Yii::$app->basePath.'/web/backups/'.Yii::$app->request->get('delete'));
+			return $this->redirect(['/admin/admin/backup-db']);
+		}
+		$file = [];
+		if ($handle = opendir(Yii::$app->basePath.'/web/backups')) {
+			while (false !== ($entry = readdir($handle))) {
+				if ($entry != "." && $entry != "..") {
+					$time = explode('-', $entry);
+					$time = str_replace('.sql', '', $time[3]);
+					$file[] = [
+						'name' => $entry,
+						'size' => filesize($path.'/'.$entry),
+						'time' => Carbon::createFromFormat(Datetime::FILE_TIME, $time)->format(Datetime::VIEW_DATETIME_dmYHis),
+						'path'  => Helper::siteURL().'/web/backups/'.$entry
+					];
+				}
+			}
+			closedir($handle);
+		}
+		rsort($file);
+
+		return $this->render('database', [
+			'files' => $file
+		]);
+	}
 }

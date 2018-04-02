@@ -41,7 +41,7 @@ class UserOnlineWidget extends Widget
 			$u->browser = Helper::getBrowser();
 			$u->url = Helper::getCurrentUrl();
 			$u->ip = Helper::getIpClient();
-			$u->controller = Yii::$app->controller->id;
+			$u->controller = Yii::$app->controller->id ? Yii::$app->controller->id : "";
 			$u->action = Yii::$app->controller->action->id;
 			$u->method = Helper::getMethod();
 			$u->save();
@@ -75,6 +75,7 @@ class UserOnlineWidget extends Widget
 			$uo->save();
 			return true;
 		}
+
 		return false;
 	}
 

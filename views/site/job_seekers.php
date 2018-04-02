@@ -5,8 +5,11 @@
 use yii\helpers\Html;
 use app\library\helper\Helper;
 
-$this->title = 'Job seekers';
+$page = \app\models\Pages::get(\app\library\helper\Cons::PAGE_JOB_SEEKERS);
+
+$this->title = Helper::titleSeo($page);
 $this->params['breadcrumbs'][] = $this->title;
+Helper::generateSeo($page);
 ?>
 
 

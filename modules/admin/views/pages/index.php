@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
-            'parent_id',
+//            'parent_id',
             'name',
             'slug',
 //            'content:ntext',
@@ -52,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'created_at',
             //'updated_at',
             'status',
-
+	        \app\library\helper\ActionColumn::changeStatus(),
 //            ['class' => 'yii\grid\ActionColumn'],
             \app\library\helper\ActionColumn::link(),
         ],

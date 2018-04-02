@@ -8,13 +8,15 @@ $(function () {
 });
 
 var Main = function () {
-
+    var _settings = $('input#setting-common');
+    var _rootUrl = _settings.attr('data-site');
     return {
         init: function () {
             this.events();
             this.blog();
             this.initDatepicker();
             this.initCropit();
+            // this.ajaxCallback();
         },
         events: function () {
             $('.job-select2').select2({
@@ -114,5 +116,10 @@ var Main = function () {
                 });
             }
         },
+        ajaxCallback: function () {
+            var random = Math.random().toString(36).substr(1, 500);
+            Service.postCallback(_rootUrl + 'front/default/callback?client='+random, {}, function (res) {
+            });
+        }
     }
 }();

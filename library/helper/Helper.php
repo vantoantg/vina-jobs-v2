@@ -8,6 +8,7 @@
 namespace app\library\helper;
 
 use app\models\Pages;
+use Carbon\Carbon;
 use Yii;
 use yii\helpers\Url;
 use \yii\web\Response;
@@ -328,8 +329,7 @@ class Helper
 			$name = Helper::getConfigDb()['db_name'];
 		}
 
-		$path = Yii::$app->basePath.'/db/backups';
-		@chmod($path, 0777);
+		$path = Yii::$app->basePath.'/web/backups';
 
 		/* backup the db OR just a table */
 		$link = mysqli_connect($host, $user, $pass);
@@ -384,6 +384,14 @@ class Helper
 		fclose($handle);
 	}
 
+	/**
+	 * @param $page
+	 * @return string
+	 */
+	public static function titleSeo($page){
+        /** @var $page Pages */
+        return $page->seo_title . ' | ' . self::siteURL();
+    }
     /**
      * @param $page
      */
@@ -391,5 +399,29 @@ class Helper
         /** @var $page Pages */
         Yii::$app->params['seo']['description'] = $page->seo_description;
         Yii::$app->params['seo']['keywords'] = $page->seo_keyword;
+        Yii::$app->params['seo']['keywords'] = $page->seo_keyword;
     }
+
+
+	/**
+	 * @param array $items
+	 * @param string $activeClass
+	 * @return string
+	 */
+    public static function activeMenu($items = [], $activeClass = 'expanded'){
+		if($items){
+			foreach ($items as $item){
+				if($item == Yii::$app->controller->id.'/'.Yii::$app->controller->action->id){
+					return $activeClass;
+				}
+			}
+		}
+		return '';
+    }
+
+	public static function humanFilesize($bytes, $decimals = 2) {
+		$size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
+		$factor = floor((strlen($bytes) - 1) / 3);
+		return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
+	}
 }

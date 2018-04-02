@@ -5,14 +5,15 @@ namespace app\modules\front\controllers;
 use app\library\helper\Common;
 use app\library\helper\Datetime;
 use app\library\helper\Image;
+use app\models\Candidate;
 use app\models\Company;
 use app\models\Dropdown;
+use app\models\JobSkill;
 use app\models\UserDetails;
 use Yii;
 use app\forms\LoginForm;
 use app\forms\ProfilePasswordForm;
 use app\forms\RequireResetPasswordForm;
-use app\forms\ResetProfilePasswordForm;
 use app\library\helper\Helper;
 use app\models\Users;
 use yii\helpers\Url;
@@ -40,19 +41,27 @@ class UserController extends FrontController
 	 */
 	public function actionRegisterCandidate()
 	{
-        $model = new Users();
-        $userDetail = new UserDetails();
-	    if(Common::isLoginned()){
-            $model = Users::findOne(Common::currentUser());
-            $userDetail = UserDetails::find()->where(['user_id' => $model->getId()])->one();
-            $model->scenario = Users::SCENARIO_UPDATE;
-        }
+		if (Common::isLoginned()) {
+			$model = Users::findOne(Common::currentUser());
+			$model->scenario = Users::SCENARIO_UPDATE;
+			$userDetail = UserDetails::find()->where(['user_id' => $model->getId()])->one();
+			$candidate = Candidate::find()->where(['user_id' => $model->getId()])->one();
+		} else {
+			$model = new Users();
+			$userDetail = new UserDetails();
+			$candidate = new Candidate();
+			$candidate->scenario = 'form';
+		}
 
 		if (
             $model->load(Yii::$app->request->post()) &&
             $userDetail->load(Yii::$app->request->post()) &&
+            $candidate->load(Yii::$app->request->post()) &&
+
             $model->validate() &&
-            $userDetail->validate())
+            $userDetail->validate() &&
+			$candidate->validate()
+			)
 		{
             $img = Yii::$app->request->post();
             if($img['Users']['avatar']){
@@ -69,24 +78,34 @@ class UserController extends FrontController
 	            $userDetail->user_id = $model->getId();
 	            $userDetail->email = $model->email;
 	            $userDetail->saveInfo();
-	            if($userDetail->save()){
+
+				//save candidate
+				$candidate->user_id = $model->getId();
+				$candidate->skill = $candidate->array2String($candidate->skill);
+				$candidate->scenario = "register";
+
+	            if($userDetail->save() && $candidate->save()){
                     // TODO: Send email
                     $data['name'] = $model->name;
                     $data['link'] = Url::to('/candidate/active/token/' . $token_waiting_active . '.html', true);
                     $temp = $this->renderPartial('@app/mail/layouts/active_user_register', ['data' => $data]);
 
                     // TODO: comment out
-//	            Email::sendMail('Reset password - '. Helper::siteURL(), $temp);
+	                Email::sendMail('Instructions to activate your account - '. Helper::siteURL(), $temp);
                 }
+
 	            return $this->render('register_candidate_success', [
 		            'success' => true,
 		            'message' => "",
 	            ]);
             }
 		}
+		$jobSkill = JobSkill::getAllGroupSkill();
 		return $this->render('register_candidate', [
 			'model' => $model,
 			'userDetail' => $userDetail,
+			'candidate' => $candidate,
+			'jobSkill' => $jobSkill
 		]);
 	}
 
@@ -246,7 +265,15 @@ class UserController extends FrontController
 
 	public function actionViewProfile($id)
 	{
-		return $this->render('view_profile');
+        if(!Common::isLoginned()){
+            return $this->goHome();
+        }
+
+        if(Common::currentUser('type') == Users::USER_TYPE_CONTACT_OF_COMPANY){
+            return $this->render('view_contact');
+        }else{
+            return $this->render('view_profile');
+        }
 	}
 
     /**
@@ -257,7 +284,12 @@ class UserController extends FrontController
 	    if(!Common::isLoginned()){
             return $this->goHome();
         }
-		return $this->render('profile');
+
+        if(Common::currentUser('type') == Users::USER_TYPE_CONTACT_OF_COMPANY){
+            return $this->render('profile_contact');
+        }else{
+            return $this->render('profile_user');
+        }
 	}
 
 	/**

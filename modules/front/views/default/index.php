@@ -6,8 +6,7 @@ use \yii\widgets\ActiveForm;
 $page = \app\models\Pages::get();
 /** @var $page \app\models\Pages title */
 /** @var $this \yii\web\View title */
-$this->title = $page->seo_title . ' | ' . Helper::siteURL();
-
+$this->title = Helper::titleSeo($page);
 Helper::generateSeo($page);
 ?>
 <div class="slider-area">

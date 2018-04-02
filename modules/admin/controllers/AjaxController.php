@@ -62,12 +62,6 @@ class AjaxController extends AdminController
             }
         }
     }
-    public function actionCreateSlug(){
-        if(Yii::$app->request->isAjax){
-            $name = trim(Yii::$app->request->post('name'));
-            return $this->jsonData(['slug' => \app\library\helper\Helper::createSlug($name)]);
-        }
-    }
 
     public function actionPhpWorking(){
         UserOnlineWidget::clearUserOnline();
