@@ -27,17 +27,21 @@ class LogSystemWidget extends Widget
 	}
 
 	public static function createLogs(){
-		$u = new LogSystem();
-		$user_id = Common::currentUser('id');
-		$u->user_id = $user_id ? $user_id : 0;
-		$u->time = Carbon::now()->format(Datetime::SQL_DATETIME);
-		$u->browser = Helper::getBrowser();
-		$u->url = Helper::getCurrentUrl();
-		$u->ip = Helper::getIpClient();
-		$u->controller = Yii::$app->controller->id;
-		$u->action = Yii::$app->controller->action->id;
-		$u->method = Helper::getMethod();
-		$u->user_timezone = Common::currentUser('timezone');
-		$u->save();
+//        ini_set('memory_limit', '512M');
+//        set_time_limit(3000);
+//	    $transaction = Yii::$app->db->beginTransaction();
+            $u = new LogSystem();
+            $user_id = Common::currentUser('id');
+            $u->user_id = $user_id ? $user_id : random_int(1, 999999999);
+            $u->time = Carbon::now()->format(Datetime::SQL_DATETIME);
+            $u->browser = Helper::getBrowser();
+            $u->url = Helper::getCurrentUrl().random_int(1, 999999);
+            $u->ip = Helper::getIpClient();
+            $u->controller = Yii::$app->controller->id;
+            $u->action = Yii::$app->controller->action->id;
+            $u->method = Helper::getMethod();
+            $u->user_timezone = Common::currentUser('timezone');
+            $u->save();
+//        $transaction->rollBack();
 	}
 }
