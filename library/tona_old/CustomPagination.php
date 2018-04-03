@@ -1,7 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: vantoantg
+ * Created by Tona Nguyễn
  * Date: 5/5/2017
  * Time: 1:18 PM
  */
