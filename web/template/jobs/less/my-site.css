@@ -291,3 +291,6 @@ section#blog-section .content-footer span {
 section#blog-section .content-footer span.pull-right {
   margin-top: -15px;
 }
+table.table.list-jobs tr:hover {
+  background: #E5F6FD;
+}

@@ -92,7 +92,7 @@ $userInfo = \app\models\UserDetails::getInfo();
         </div>
 		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 jobs">
 			<div class="job-posts table-responsive">
-				<table class="table">
+				<table class="table list-jobs">
 					<tr class="odd wow fadeInUp" data-wow-delay="1s">
 						<td class="tbl-logo"><img src="<?= Helper::homeUrl()?>web/template/jobs/img/job-logo1.png" alt=""></td>
 						<td class="tbl-title"><h4>Web Designer <br><span class="job-type">full time</span></h4></td>

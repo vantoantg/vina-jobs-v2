@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 use \app\library\helper\Helper;
 
 /** @var $page \app\models\Pages title */
-$page = \app\models\Pages::get('jobs');
+$page = \app\models\Pages::get('jobs-detail');
 /** @var $this \yii\web\View title */
 $this->title = Helper::titleSeo($page);
 Helper::generateSeo($page);

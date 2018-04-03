@@ -216,12 +216,17 @@ Helper::generateSeo($page);
 		<div class="row jobs">
 			<div class="col-md-9">
 				<div class="job-posts table-responsive">
-					<table class="table">
+					<table class="table list-jobs">
 						<tr class="odd wow fadeInUp" data-wow-delay="1s">
-							<td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo1.png"
-							                          alt=""></td>
-							<td class="tbl-title"><h4>Web Designer <br><span class="job-type">full time</span></h4></td>
-							<td><p>dribbble community</p></td>
+							<td class="tbl-logo">
+								<a href="#"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo1.png" alt=""></a>
+							</td>
+							<td class="tbl-title">
+								<h4><a href="#">Web Designer</a> <br><span class="job-type">full time</span></h4>
+							</td>
+							<td>
+								<p>dribbble community</p>
+							</td>
 							<td><p><i class="icon-location"></i>San Franciso, USA</p></td>
 							<td><p>&dollar; 14000</p></td>
 							<td class="tbl-apply"><a href="#">Apply now</a></td>

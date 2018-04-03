@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="row jobs">
                 <div class="col-md-12">
                     <div class="job-posts table-responsive">
-                        <table class="table">
+                        <table class="table list-jobs">
                             <tr class="odd wow fadeInUp" data-wow-delay="1s">
                                 <td class="tbl-logo"><img
                                             src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo1.png" alt="">

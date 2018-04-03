@@ -22,7 +22,9 @@ return [
 	'register/company.html' => 'front/user/register-company',
 	'company/update.html' => 'front/user/update-company',
 
-	'user/profile.html' => 'front/user/profile',
+	'user/profile.html' => 'front/user/user-profile',
+	'client/profile.html' => 'front/user/contact-profile',
+
 	'user/profile/<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/user/view-profile',
 	'user/forgot-password.html' => 'front/user/forgot',
 	'user/change-password.html' => 'front/user/profile-change-password',

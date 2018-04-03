@@ -102,7 +102,12 @@ AppAsset::register($this);
 								<a role="menuitem" tabindex="-1" href="<?= Helper::createUrl(['front/jobs/post-jobs']) ?>">Post a Job</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Change password</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Update profile</a></li>
-							<li role="presentation"><a href="<?= Helper::createUrl(['front/user/profile']) ?>">My page</a></li>
+
+							<?php if(\app\library\helper\Common::currentUser('type') == \app\models\Users::USER_TYPE_CONTACT_OF_COMPANY){ ?>
+							<li role="presentation"><a href="<?= Helper::createUrl(['front/user/user-profile']) ?>">My page</a></li>
+							<?php }else{ ?>
+							<li role="presentation"><a href="<?= Helper::createUrl(['front/user/contact-profile']) ?>">My page</a></li>
+                            <?php } ?>
 							<li role="presentation" class="divider"></li>
 							<li role="presentation"><a href="<?= Helper::createUrl(['front/user/logout']) ?>">Logout</a>
 							</li>

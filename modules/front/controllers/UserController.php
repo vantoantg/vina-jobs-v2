@@ -17,6 +17,7 @@ use app\forms\RequireResetPasswordForm;
 use app\library\helper\Helper;
 use app\models\Users;
 use yii\helpers\Url;
+use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 use app\models\Email;
@@ -278,19 +279,37 @@ class UserController extends FrontController
 
     /**
      * @return string|\yii\web\Response
+     * @throws BadRequestHttpException
      */
-	public function actionProfile()
+	public function actionUserProfile()
 	{
 	    if(!Common::isLoginned()){
+            if(Common::currentUser('type') == Users::USER_TYPE_CONTACT_OF_COMPANY){
+                throw new BadRequestHttpException();
+            }
+
             return $this->goHome();
         }
 
-        if(Common::currentUser('type') == Users::USER_TYPE_CONTACT_OF_COMPANY){
-            return $this->render('profile_contact');
-        }else{
-            return $this->render('profile_user');
-        }
+        return $this->render('profile_user');
 	}
+
+    /**
+     * @return \yii\web\Response
+     * @throws BadRequestHttpException
+     */
+    public function actionContactProfile()
+    {
+        if(!Common::isLoginned()){
+            if(Common::currentUser('type') != Users::USER_TYPE_CONTACT_OF_COMPANY){
+                throw new BadRequestHttpException();
+            }
+
+            return $this->goHome();
+        }
+
+        return $this->render('profile_contact');
+    }
 
 	/**
 	 * @return array|\yii\web\Response
