@@ -21,7 +21,15 @@ class Candidate extends \app\models\base\Candidate
         ];
     }
 
-    public function array2String($array){
-        return ",".implode(",", $array).",";
+    /**
+     * @param array $array
+     * @return null|string
+     */
+    public function array2String($array = []){
+        if(!$array || !is_array($array)){
+            return null;
+        }
+
+        return implode(",", $array);
     }
 }

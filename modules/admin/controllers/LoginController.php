@@ -16,6 +16,7 @@ class LoginController extends BaseController
 	{
 		parent::init();
 		$this->layout = '/login';
+		\Yii::$app->language = 'en';
 	}
 
 	/**

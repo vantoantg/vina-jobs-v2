@@ -89,15 +89,16 @@ use app\library\helper\Helper;
     <!-- END Products -->
 
     <!-- BEGIN Pages -->
-    <li class="gui-folder <?= Helper::activeMenu(['pages/index', 'pages/create', 'pages/update'])?>">
+    <li class="gui-folder <?= Helper::activeMenu(['pages/index', 'pages/create', 'pages/update', 'post/index', 'post/create', 'post/update', 'post-category/index', 'post-category/create', 'post-category/update'])?>">
         <a>
             <div class="gui-icon"><i class="md md-computer"></i></div>
-            <span class="title">Pages</span>
+            <span class="title">Content</span>
         </a>
         <!--start submenu -->
         <ul>
-            <li><a href="<?= Url::toRoute('/admin/pages') ?>" ><span class="title">List</span></a></li>
-            <li><a href="<?= Url::toRoute('/admin/pages/create') ?>" ><span class="title">Create</span></a></li>
+            <li><a href="<?= Url::toRoute('/admin/pages') ?>" ><span class="title">Page</span></a></li>
+            <li><a href="<?= Url::toRoute('/admin/post') ?>" ><span class="title">Blog</span></a></li>
+            <li><a href="<?= Url::toRoute('/admin/post-category') ?>" ><span class="title">Blog - category</span></a></li>
         </ul><!--end /submenu -->
     </li><!--end /menu-li -->
     <!-- END Pages -->

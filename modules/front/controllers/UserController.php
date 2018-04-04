@@ -64,6 +64,8 @@ class UserController extends FrontController
 			$candidate->validate()
 			)
 		{
+            $transaction = Yii::$app->db->beginTransaction();
+
             $img = Yii::$app->request->post();
             if($img['Users']['avatar']){
 	            $model->avatar = Image::base64ToImage($img['Users']['avatar']);
@@ -85,14 +87,17 @@ class UserController extends FrontController
 				$candidate->skill = $candidate->array2String($candidate->skill);
 				$candidate->scenario = "register";
 
-	            if($userDetail->save() && $candidate->save()){
+                if ($userDetail->save() && $candidate->save()) {
+                    $transaction->commit();
                     // TODO: Send email
                     $data['name'] = $model->name;
                     $data['link'] = Url::to('/candidate/active/token/' . $token_waiting_active . '.html', true);
                     $temp = $this->renderPartial('@app/mail/layouts/active_user_register', ['data' => $data]);
 
                     // TODO: comment out
-	                Email::sendMail('Instructions to activate your account - '. Helper::siteURL(), $temp);
+                    Email::sendMail('Instructions to activate your account - ' . Helper::siteURL(), $temp);
+                } else {
+                    $transaction->rollBack();
                 }
 
 	            return $this->render('register_candidate_success', [
