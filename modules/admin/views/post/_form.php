@@ -36,17 +36,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'sorted')->textInput() ?>
 
-    <?= $form->field($model, 'created_by')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_by')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
     <?= $form->field($model, 'arranged')->textInput() ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status', [
+        'template' => '<label class="checkbox-inline checkbox-styled" >{input}</label>{label}{error}{hint}'
+    ])->checkbox() ?>
 
     <?php ActiveForm::end(); ?>
 
