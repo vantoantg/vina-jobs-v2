@@ -129,14 +129,14 @@ class UserController extends FrontController
 		$model->scenario = Users::SCENARIO_REGISTER;
 
 		$userDetail = new UserDetails();
-		$company = new Company();
+		$com = new Company();
 
 		if (
 			$model->load(Yii::$app->request->post()) &&
-			$company->load(Yii::$app->request->post()) &&
+			$com->load(Yii::$app->request->post()) &&
             $userDetail->load(Yii::$app->request->post()) &&
             $model->validate() &&
-            $company->validate() &&
+			$com->validate() &&
             $userDetail->validate())
 		{
 			$model->username = $model->email;
@@ -144,9 +144,23 @@ class UserController extends FrontController
 			$token_waiting_active = \Yii::$app->getSecurity()->generateRandomString();
 			$model->token_waiting_active = $token_waiting_active;
 			if ($model->save()) {
-				if ($company->save()) {
-					$company->created_by = $model->getId();
-					$company->update();
+				// Upload logo
+				$image = UploadedFile::getInstance($com, 'logo');
+				if (!is_null($image)) {
+					$com->logo = $image->name;
+					$ex = explode(".", $image->name);
+					$ext = end($ex);
+
+					// TODO: add new fild to save origin file name, generate a unique file name to prevent duplicate filenames
+					/*$com->logo = Yii::$app->security->generateRandomString().".{$ext}";
+					$path = Yii::$app->basePath.Yii::$app->params['companyLogoPath'] . $com->logo;*/
+
+					$path = Yii::$app->basePath . Yii::$app->params['companyLogoPath'] . $image->name;
+					$image->saveAs($path);
+				}
+				if ($com->save()) {
+					$com->created_by = $model->getId();
+					$com->update();
 				}
 				$userDetail->birthday = Datetime::todateSql($userDetail->birthday);
 				$userDetail->user_id = $model->getId();
@@ -157,15 +171,15 @@ class UserController extends FrontController
 				$temp = $this->renderPartial('@app/mail/layouts/active_company_register', ['data' => $data]);
 
 				// TODO: comment out
-	            Email::sendMail('Register account - '. Helper::siteURL(), $temp);
+//	            Email::sendMail('Register account - '. Helper::siteURL(), $temp);
 			}
 
             return $this->render('register_company_success', [
                 'email' => $model->email
             ]);
 		} else {
-			$errs = array_merge($model->getErrors(), $company->getErrors(), $userDetail->getErrors());
-			foreach ($errs as $error) {
+			$erros = array_merge($model->getErrors(), $com->getErrors(), $userDetail->getErrors());
+			foreach ($erros as $error) {
 				$errors[] = $error[0];
 			}
 		}
@@ -173,7 +187,7 @@ class UserController extends FrontController
 		return $this->render('register_company', [
 			'model' => $model,
 			'userDetail' => $userDetail,
-			'com' => $company,
+			'com' => $com,
 			'errors' => $errors,
 
 			'gender' => $gender

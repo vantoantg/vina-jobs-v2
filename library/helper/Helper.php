@@ -424,4 +424,35 @@ class Helper
 		$factor = floor((strlen($bytes) - 1) / 3);
 		return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
 	}
+
+	public static function redactorOps($placeholder = ''){
+		return [
+			'placeholder' => $placeholder,
+			'observeLinks' => true,
+			'convertVideoLinks' => true,
+			'imageUpload' => ['/web/uploads/image'],
+			'fileUpload' => ['/web/uploads/file'],
+			'plugins' => ['clips', 'fontcolor', 'imagemanager'],
+			'toolbar' => true,
+			'buttons' => [
+				'html',
+				'format',
+				'formatting',
+				'lists',
+				'bold',
+				'italic',
+				'deleted',
+				'underline',
+				'horizontalrule',
+				'alignment',
+				'unorderedlist',
+				'orderedlist',
+				'outdent',
+				'indent',
+				'link',
+				/*'image',
+				'file'*/
+			],
+		];
+	}
 }

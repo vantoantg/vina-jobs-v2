@@ -2,6 +2,8 @@ INSTALL:
 bower install select2
 bower install cropit
 bower install craftpip/jquery-confirm
+bower install iCheck
+
 
 http://www.yiiframework.com/extension/yii2-migration-creator/
 php yii migrate
@@ -42,3 +44,6 @@ INSTALL-DOC
 
 bootsnipp
     https://bootsnipp.com/snippets/gN1X1 // my page (card)
+
+Deploy:
+chmod: web/uploads/_company

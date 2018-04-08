@@ -20,9 +20,9 @@ Helper::generateSeo($page);
         <div class="front-jobs">
 
             <div class="row page-title text-center wow bounce animated" data-wow-delay="1s" style="visibility: visible; animation-delay: 1s; animation-name: bounce;">
-                <h5>Post Jobs</h5>
+                <h5>ĐĂNG TUYỂN DỤNG</h5>
                 <h2><span>54716</span> Available jobs for you</h2>
-                <p>Using the outcomes from the job, we will put together a plan for the most effective marketing strategy to get the best results.</p>
+                <p>Hãy liệt kế tất cả các chính sách đang có, và cơ hội cho hấp dẫn, để có thể thu hút ứng viên apply vào các vị trí mà công ty muốn tuyển.</p>
             </div>
 
             <?php $form = ActiveForm::begin(); ?>
@@ -35,48 +35,27 @@ Helper::generateSeo($page);
             echo $form->field($model, 'categories_id')->dropDownList(
                 $listData,
                 [
-                    'prompt' => 'Select...',
+                    'prompt' => '-- Chọn --',
                     'class' => 'job-select2 form-control'
                 ]
             );
             ?>
             <?= $form->field($model, 'description')->textarea() ?>
             <?= $form->field($model, 'content')->widget(\yii\redactor\widgets\Redactor::className(), [
-                'clientOptions' => [
-                    'placeholder' => 'Redactor placeholder text',
-                    'observeLinks' => true,
-                    'convertVideoLinks' => true,
-                    'imageUpload' => ['/web/uploads/image'],
-                    'fileUpload' => ['/web/uploads/file'],
-                    'plugins' => ['clips', 'fontcolor', 'imagemanager'],
-                    'toolbar' => true,
-                    'buttons' => [
-                        'html',
-                        'format',
-                        'formatting',
-                        'lists',
-                        'bold',
-                        'italic',
-                        'deleted',
-                        'underline',
-                        'horizontalrule',
-                        'alignment',
-                        'unorderedlist',
-                        'orderedlist',
-                        'outdent',
-                        'indent',
-                        'link',
-                        /*'image',
-                        'file'*/
-                    ],
-                ]
+                'clientOptions' => Helper::redactorOps('Hãy mô tả yêu cầu, kỹ năng, chính sách hấp dẫn cho ứng viên,....')
             ]) ?>
             <div class="row">
                 <div class="col-xs-6">
-                    <?= $form->field($model, 'salary') ?>
+                    <?= $form->field($model, 'salary')->textInput(['placeholder' => '900$ - 200$']) ?>
                 </div>
                 <div class="col-xs-6">
-                    <?= $form->field($model, 'address') ?>
+                    <?php
+                    $loca = \app\models\Locations::getLocations();
+                    ?>
+                    <?= $form->field($model, 'address')->dropDownList(\yii\helpers\ArrayHelper::map($loca, 'id', 'name'),
+	                    [
+		                    'class' => 'job-select2 form-control'
+	                    ]) ?>
                 </div>
             </div>
 

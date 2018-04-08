@@ -17,9 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="container">
     <div class="users-create">
-
-        <h1><?= Html::encode($this->title) ?></h1>
-
+        <h1>ĐĂNG KÝ TÀI KHOẢN CÔNG TY</h1>
     </div>
 </div>
 
@@ -41,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php $form = ActiveForm::begin(); ?>
                 <div class="row">
                     <div class="col-xs-12">
-                        <h3>Thông tin công ty</h3>
+                        <h3>THÔNG TIN CÔNG TY</h3>
                     </div>
 
                     <div class="col-xs-12">
@@ -104,7 +102,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <hr>
 
                     <div class="col-xs-12">
-                        <h3>Người liên hệ</h3>
+                        <h3>NGƯỜI LIÊN HỆ</h3>
                     </div>
 
                     <div class="col-xs-12 col-sm-6">
