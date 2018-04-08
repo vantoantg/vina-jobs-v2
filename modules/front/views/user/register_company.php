@@ -3,11 +3,14 @@
 use yii\helpers\Html;
 use \yii\widgets\ActiveForm;
 use dosamigos\fileupload\FileUploadUI; // https://github.com/2amigos/yii2-file-upload-widget
+use \app\library\helper\Helper;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Users */
+/** @var $page \app\models\Pages title */
+/** @var $this \yii\web\View title */
+$page = \app\models\Pages::get('register-company');
+$this->title = Helper::titleSeo($page);
+Helper::generateSeo($page);
 
-$this->title = 'Đăng kí tài khoản - '. \app\library\helper\Helper::siteURL();
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

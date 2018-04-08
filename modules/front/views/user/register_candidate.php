@@ -3,13 +3,20 @@
 use yii\helpers\Html;
 use \yii\widgets\ActiveForm;
 use \app\models\Dropdown;
-
+use \app\library\helper\Helper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Users */
 /* @var $candidate app\models\Candidate */
+/** @var $page \app\models\Pages title */
+/** @var $this \yii\web\View title */
 
-$this->title = 'Đăng kí tài khoản - ' . \app\library\helper\Helper::siteURL();
+$page = \app\models\Pages::get('register-candidate');
+$this->title = Helper::titleSeo($page);
+Helper::generateSeo($page);
+
+
+
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $dropdowns = new Dropdown();
