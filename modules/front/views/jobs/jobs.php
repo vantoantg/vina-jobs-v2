@@ -14,7 +14,6 @@ Helper::generateSeo($page);
 /* @var $model app\models\Job */
 /* @var $form ActiveForm */
 
-$this->title = 'Post a Job';
 ?>
 <div class="container">
     <div class="col-12 col-sm-8">
@@ -82,11 +81,10 @@ $this->title = 'Post a Job';
             </div>
 
             <?= $form->field($model, 'tags') ?>
-            <?= $form->field($model, 'keyword') ?>
 
             <div class="form-group">
-                <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
-                <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+                <?= Html::resetButton('Xóa hết', ['class' => 'btn btn-default']) ?>
+                <?= Html::submitButton('Lưu thông tin tuyển dụng', ['class' => 'btn btn-primary']) ?>
             </div>
             <?php ActiveForm::end(); ?>
 
