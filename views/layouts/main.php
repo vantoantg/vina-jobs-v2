@@ -96,20 +96,20 @@ AppAsset::register($this);
                             <?= \app\library\helper\Common::currentUser('name') ?> <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-							<li role="presentation">
-								<a role="menuitem" tabindex="-1" href="<?= Helper::createUrl(['front/jobs/post-cv']) ?>">Post a CV</a></li>
-							<li role="presentation">
-								<a role="menuitem" tabindex="-1" href="<?= Helper::createUrl(['front/jobs/post-jobs']) ?>">Post a Job</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Change password</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Update profile</a></li>
-
 							<?php if(\app\library\helper\Common::currentUser('type') == \app\models\Users::USER_TYPE_CONTACT_OF_COMPANY){ ?>
-							<li role="presentation"><a href="<?= Helper::createUrl(['front/user/user-profile']) ?>">My page</a></li>
+							<li role="presentation">
+								<a role="menuitem" tabindex="-1" href="<?= Helper::createUrl(['front/jobs/post-jobs']) ?>">Tạo công việc</a>
+							</li>
+							<?php } ?>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Thay đổi mật khẩu</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Thay đổi thông tin</a></li>
+							<?php if(\app\library\helper\Common::currentUser('type') == \app\models\Users::USER_TYPE_CONTACT_OF_COMPANY){ ?>
+							<li role="presentation"><a href="<?= Helper::createUrl(['front/user/user-profile']) ?>">Trang cá nhân</a></li>
 							<?php }else{ ?>
-							<li role="presentation"><a href="<?= Helper::createUrl(['front/user/contact-profile']) ?>">My page</a></li>
+							<li role="presentation"><a href="<?= Helper::createUrl(['front/user/contact-profile']) ?>">Trang cá nhân</a></li>
                             <?php } ?>
 							<li role="presentation" class="divider"></li>
-							<li role="presentation"><a href="<?= Helper::createUrl(['front/user/logout']) ?>">Logout</a>
+							<li role="presentation"><a href="<?= Helper::createUrl(['front/user/logout']) ?>">Đăng xuất</a>
 							</li>
 						</ul>
 					</div>
