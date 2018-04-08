@@ -7,11 +7,17 @@ use Yii;
 /**
  * This is the model class for table "tn_company".
  *
- * @property int $id
+ * @property string $id
  * @property int $location_id
  * @property string $name
  * @property string $logo
+ * @property string $website
  * @property string $content
+ * @property int $scale
+ * @property string $address
+ * @property string $phone
+ * @property string $fax
+ * @property string $tax_id
  * @property int $created_by
  * @property string $created_at
  * @property int $status
@@ -33,10 +39,10 @@ class Company extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['location_id', 'created_by', 'status', 'arranged'], 'integer'],
+            [['location_id', 'scale', 'created_by', 'status', 'arranged'], 'integer'],
             [['content'], 'string'],
             [['created_at'], 'safe'],
-            [['name', 'logo'], 'string', 'max' => 255],
+            [['name', 'logo', 'website', 'address', 'phone', 'fax', 'tax_id'], 'string', 'max' => 255],
         ];
     }
 
@@ -50,7 +56,13 @@ class Company extends \yii\db\ActiveRecord
             'location_id' => 'Location ID',
             'name' => 'Name',
             'logo' => 'Logo',
+            'website' => 'Website',
             'content' => 'Content',
+            'scale' => 'Scale',
+            'address' => 'Address',
+            'phone' => 'Phone',
+            'fax' => 'Fax',
+            'tax_id' => 'Tax ID',
             'created_by' => 'Created By',
             'created_at' => 'Created At',
             'status' => 'Status',

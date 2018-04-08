@@ -153,11 +153,11 @@ $dropdowns = new Dropdown();
 						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">Giới tính</label>
 							<div class="cols-sm-10">
-                                <?php $gender = $dropdowns->getDropdown(Dropdown::TYPE_GENDER); ?>
+								<?php $gender = \app\library\helper\Cons::$gender; ?>
 								<?= $form->field($userDetail, 'gender', [
 									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-intersex"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-								])->dropDownList(\yii\helpers\ArrayHelper::map($gender, 'id', 'name'))->label(false) ?>
+								])->dropDownList($gender)->label(false) ?>
 							</div>
 						</div>
 					</div>
@@ -190,14 +190,12 @@ $dropdowns = new Dropdown();
                         <div class="form-group">
                             <label for="email" class="cols-sm-2 control-label">Trình độ</label>
                             <div class="cols-sm-10">
-	                            <?php $lel = $dropdowns->getDropdown(Dropdown::TYPE_LEVEL);
-	                            ?>
+	                            <?php $lel = \app\library\helper\Cons::$levels; ?>
 	                            <?= $form->field($candidate, 'education', [
 		                            'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-align-center"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-	                            ])->dropDownList(\yii\helpers\ArrayHelper::map($lel, 'id', 'name'),
+	                            ])->dropDownList($lel,
                                     [
-                                        'prompt' => '-- Chọn --',
                                         'class' => 'job-select2 form-control'
                                     ])->label(false) ?>
                             </div>
@@ -207,13 +205,12 @@ $dropdowns = new Dropdown();
                         <div class="form-group">
                             <label for="email" class="cols-sm-2 control-label">Kinh nghiệm</label>
                             <div class="cols-sm-10">
-	                            <?php $gender = $dropdowns->getDropdown(Dropdown::TYPE_EXP); ?>
+	                            <?php $experience = \app\library\helper\Cons::$experience; ?>
 	                            <?= $form->field($candidate, 'experience', [
 		                            'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-list-ol"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-	                            ])->dropDownList(\yii\helpers\ArrayHelper::map($gender, 'id', 'name'),
+	                            ])->dropDownList($experience,
                                     [
-                                        'prompt' => '-- Chọn --',
                                         'class' => 'job-select2 form-control'
                                     ])->label(false) ?>
                             </div>

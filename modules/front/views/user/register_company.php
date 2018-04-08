@@ -11,6 +11,7 @@ $this->title = 'Đăng kí tài khoản - '. \app\library\helper\Helper::siteURL
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="container">
     <div class="users-create">
 
@@ -47,10 +48,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'template' => '{label}<div class="input-group"><span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>{input}</div>{error}{hint}'
                                 ])->textInput(['placeholder' => 'Tên công ty']) ?>
                             </div>
+
                             <div class="cols-sm-10">
                                 <?= $form->field($com, 'logo', [
                                     'template' => '{label}<div class="input-group">{input}</div>{error}{hint}'
                                 ])->label('Logo')->fileInput() ?>
+                            </div>
+
+                            <div class="cols-sm-10">
+		                        <?= $form->field($com, 'website', [
+			                        'template' => '{label}<div class="input-group"><span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>{input}</div>{error}{hint}'
+		                        ])->textInput(['placeholder' => 'Website']) ?>
                             </div>
 
                             <div class="cols-sm-10">
@@ -189,10 +197,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="form-group">
                             <label for="email" class="cols-sm-2 control-label">Giới tính</label>
                             <div class="cols-sm-10">
+	                            <?php $gender = \app\library\helper\Cons::$gender; ?>
                                 <?= $form->field($userDetail, 'gender', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-intersex"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                                ])->dropDownList(\yii\helpers\ArrayHelper::map($gender, 'id', 'name'))->label(false) ?>
+                                ])->dropDownList($gender)->label(false) ?>
                             </div>
                         </div>
                     </div>
@@ -218,6 +227,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="form-group ">
+                    Tôi đã đọc và đồng ý chính sách của <a href="<?= \app\library\helper\Helper::createUrl(['site/policy'])?>"><?= \app\library\helper\Helper::siteURL()?></a>
                 </div>
 
                 <div class="form-group ">
