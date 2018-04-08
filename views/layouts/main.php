@@ -95,10 +95,10 @@ AppAsset::register($this);
 						        aria-haspopup="true" aria-expanded="false">
                             <?= \app\library\helper\Common::currentUser('name') ?> <span class="caret"></span>
 						</button>
-						<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+						<ul class="dropdown-menu wow fadeInUp" data-wow-delay="0.0001s" role="menu" aria-labelledby="menu1">
 							<?php if(\app\library\helper\Common::currentUser('type') == \app\models\Users::USER_TYPE_CONTACT_OF_COMPANY){ ?>
 							<li role="presentation">
-								<a role="menuitem" tabindex="-1" href="<?= Helper::createUrl(['front/jobs/post-jobs']) ?>">Tạo công việc</a>
+								<a role="menuitem" tabindex="-1" href="<?= Helper::createUrl(['front/jobs/post-jobs']) ?>">Đăng tuyển dụng</a>
 							</li>
 							<?php } ?>
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Thay đổi mật khẩu</a></li>
