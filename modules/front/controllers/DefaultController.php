@@ -6,6 +6,8 @@ use app\components\UserOnlineWidget;
 use app\forms\SearchForm;
 use app\library\helper\Helper;
 use app\models\Pages;
+use yii\base\Response;
+use yii\web\BadRequestHttpException;
 
 
 /**
@@ -23,6 +25,18 @@ class DefaultController extends FrontController
         return $this->render('index', [
         	'search' => $form
         ]);
+    }
+
+    public function actionAjaxSearch(){
+		if(\Yii::$app->request->isAjax){
+			$postForm = \Yii::$app->request->post('data');
+			// TODO: search query and reurn ...
+
+
+			return $this->asJson([$postForm]);
+		}
+
+		throw new BadRequestHttpException('Not found your request !');
     }
 
 	/**

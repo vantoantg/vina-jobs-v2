@@ -3,19 +3,21 @@
 use yii\helpers\Html;
 use \yii\widgets\ActiveForm;
 use dosamigos\fileupload\FileUploadUI; // https://github.com/2amigos/yii2-file-upload-widget
+use \app\library\helper\Helper;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Users */
+/** @var $page \app\models\Pages title */
+/** @var $this \yii\web\View title */
+$page = \app\models\Pages::get('register-company');
+$this->title = Helper::titleSeo($page);
+Helper::generateSeo($page);
 
-$this->title = 'Đăng kí tài khoản - '. \app\library\helper\Helper::siteURL();
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="container">
     <div class="users-create">
-
-        <h1><?= Html::encode($this->title) ?></h1>
-
+        <h1>ĐĂNG KÝ TÀI KHOẢN CÔNG TY</h1>
     </div>
 </div>
 
@@ -37,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php $form = ActiveForm::begin(); ?>
                 <div class="row">
                     <div class="col-xs-12">
-                        <h3>Thông tin công ty</h3>
+                        <h3>THÔNG TIN CÔNG TY</h3>
                     </div>
 
                     <div class="col-xs-12">
@@ -47,10 +49,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'template' => '{label}<div class="input-group"><span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>{input}</div>{error}{hint}'
                                 ])->textInput(['placeholder' => 'Tên công ty']) ?>
                             </div>
+
                             <div class="cols-sm-10">
                                 <?= $form->field($com, 'logo', [
                                     'template' => '{label}<div class="input-group">{input}</div>{error}{hint}'
                                 ])->label('Logo')->fileInput() ?>
+                            </div>
+
+                            <div class="cols-sm-10">
+		                        <?= $form->field($com, 'website', [
+			                        'template' => '{label}<div class="input-group"><span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>{input}</div>{error}{hint}'
+		                        ])->textInput(['placeholder' => 'Website']) ?>
                             </div>
 
                             <div class="cols-sm-10">
@@ -93,7 +102,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <hr>
 
                     <div class="col-xs-12">
-                        <h3>Người liên hệ</h3>
+                        <h3>NGƯỜI LIÊN HỆ</h3>
                     </div>
 
                     <div class="col-xs-12 col-sm-6">
@@ -189,10 +198,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="form-group">
                             <label for="email" class="cols-sm-2 control-label">Giới tính</label>
                             <div class="cols-sm-10">
+	                            <?php $gender = \app\library\helper\Cons::$gender; ?>
                                 <?= $form->field($userDetail, 'gender', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-intersex"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                                ])->dropDownList(\yii\helpers\ArrayHelper::map($gender, 'id', 'name'))->label(false) ?>
+                                ])->dropDownList($gender)->label(false) ?>
                             </div>
                         </div>
                     </div>
@@ -218,6 +228,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="form-group ">
+                    Tôi đã đọc và đồng ý chính sách của <a href="<?= \app\library\helper\Helper::createUrl(['site/policy'])?>"><?= \app\library\helper\Helper::siteURL()?></a>
                 </div>
 
                 <div class="form-group ">

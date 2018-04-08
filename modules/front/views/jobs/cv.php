@@ -2,6 +2,13 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use \app\library\helper\Helper;
+
+/** @var $page \app\models\Pages title */
+$page = \app\models\Pages::get('candidate');
+/** @var $this \yii\web\View title */
+$this->title = Helper::titleSeo($page);
+Helper::generateSeo($page);
 
 /* @var $this yii\web\View */
 /* @var $model app\models\CurriculumVitae */
@@ -9,6 +16,8 @@ use yii\widgets\ActiveForm;
 
 $this->title = 'Post a Curriculum Vitae';
 ?>
+
+
 <div class="container">
     <div class="col-12 col-sm-8">
         <div class="modules-front-jobs">

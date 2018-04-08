@@ -17,6 +17,7 @@ use app\forms\RequireResetPasswordForm;
 use app\library\helper\Helper;
 use app\models\Users;
 use yii\helpers\Url;
+use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 use app\models\Email;
@@ -63,6 +64,8 @@ class UserController extends FrontController
 			$candidate->validate()
 			)
 		{
+            $transaction = Yii::$app->db->beginTransaction();
+
             $img = Yii::$app->request->post();
             if($img['Users']['avatar']){
 	            $model->avatar = Image::base64ToImage($img['Users']['avatar']);
@@ -84,14 +87,17 @@ class UserController extends FrontController
 				$candidate->skill = $candidate->array2String($candidate->skill);
 				$candidate->scenario = "register";
 
-	            if($userDetail->save() && $candidate->save()){
+                if ($userDetail->save() && $candidate->save()) {
+                    $transaction->commit();
                     // TODO: Send email
                     $data['name'] = $model->name;
                     $data['link'] = Url::to('/candidate/active/token/' . $token_waiting_active . '.html', true);
                     $temp = $this->renderPartial('@app/mail/layouts/active_user_register', ['data' => $data]);
 
                     // TODO: comment out
-	                Email::sendMail('Instructions to activate your account - '. Helper::siteURL(), $temp);
+                    Email::sendMail('Instructions to activate your account - ' . Helper::siteURL(), $temp);
+                } else {
+                    $transaction->rollBack();
                 }
 
 	            return $this->render('register_candidate_success', [
@@ -123,14 +129,14 @@ class UserController extends FrontController
 		$model->scenario = Users::SCENARIO_REGISTER;
 
 		$userDetail = new UserDetails();
-		$company = new Company();
+		$com = new Company();
 
 		if (
 			$model->load(Yii::$app->request->post()) &&
-			$company->load(Yii::$app->request->post()) &&
+			$com->load(Yii::$app->request->post()) &&
             $userDetail->load(Yii::$app->request->post()) &&
             $model->validate() &&
-            $company->validate() &&
+			$com->validate() &&
             $userDetail->validate())
 		{
 			$model->username = $model->email;
@@ -138,9 +144,23 @@ class UserController extends FrontController
 			$token_waiting_active = \Yii::$app->getSecurity()->generateRandomString();
 			$model->token_waiting_active = $token_waiting_active;
 			if ($model->save()) {
-				if ($company->save()) {
-					$company->created_by = $model->getId();
-					$company->update();
+				// Upload logo
+				$image = UploadedFile::getInstance($com, 'logo');
+				if (!is_null($image)) {
+					$com->logo = $image->name;
+					$ex = explode(".", $image->name);
+					$ext = end($ex);
+
+					// TODO: add new fild to save origin file name, generate a unique file name to prevent duplicate filenames
+					/*$com->logo = Yii::$app->security->generateRandomString().".{$ext}";
+					$path = Yii::$app->basePath.Yii::$app->params['companyLogoPath'] . $com->logo;*/
+
+					$path = Yii::$app->basePath . Yii::$app->params['companyLogoPath'] . $image->name;
+					$image->saveAs($path);
+				}
+				if ($com->save()) {
+					$com->created_by = $model->getId();
+					$com->update();
 				}
 				$userDetail->birthday = Datetime::todateSql($userDetail->birthday);
 				$userDetail->user_id = $model->getId();
@@ -151,15 +171,15 @@ class UserController extends FrontController
 				$temp = $this->renderPartial('@app/mail/layouts/active_company_register', ['data' => $data]);
 
 				// TODO: comment out
-	            Email::sendMail('Register account - '. Helper::siteURL(), $temp);
+//	            Email::sendMail('Register account - '. Helper::siteURL(), $temp);
 			}
 
             return $this->render('register_company_success', [
                 'email' => $model->email
             ]);
 		} else {
-			$errs = array_merge($model->getErrors(), $company->getErrors(), $userDetail->getErrors());
-			foreach ($errs as $error) {
+			$erros = array_merge($model->getErrors(), $com->getErrors(), $userDetail->getErrors());
+			foreach ($erros as $error) {
 				$errors[] = $error[0];
 			}
 		}
@@ -167,7 +187,7 @@ class UserController extends FrontController
 		return $this->render('register_company', [
 			'model' => $model,
 			'userDetail' => $userDetail,
-			'com' => $company,
+			'com' => $com,
 			'errors' => $errors,
 
 			'gender' => $gender
@@ -278,19 +298,37 @@ class UserController extends FrontController
 
     /**
      * @return string|\yii\web\Response
+     * @throws BadRequestHttpException
      */
-	public function actionProfile()
+	public function actionUserProfile()
 	{
 	    if(!Common::isLoginned()){
+            if(Common::currentUser('type') == Users::USER_TYPE_CONTACT_OF_COMPANY){
+                throw new BadRequestHttpException();
+            }
+
             return $this->goHome();
         }
 
-        if(Common::currentUser('type') == Users::USER_TYPE_CONTACT_OF_COMPANY){
-            return $this->render('profile_contact');
-        }else{
-            return $this->render('profile_user');
-        }
+        return $this->render('profile_user');
 	}
+
+    /**
+     * @return \yii\web\Response
+     * @throws BadRequestHttpException
+     */
+    public function actionContactProfile()
+    {
+        if(!Common::isLoginned()){
+            if(Common::currentUser('type') != Users::USER_TYPE_CONTACT_OF_COMPANY){
+                throw new BadRequestHttpException();
+            }
+
+            return $this->goHome();
+        }
+
+        return $this->render('profile_contact');
+    }
 
 	/**
 	 * @return array|\yii\web\Response

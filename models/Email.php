@@ -1,7 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: HP570
+ * Created by Tona Nguyễn
  * Date: 1/29/2018
  * Time: 5:32 PM
  */
@@ -19,20 +18,23 @@ use yii\db\Exception;
  * Tona DOC:
  * Setting gmail become mailserver: https://myaccount.google.com/u/1/apppasswords?rapt=AEjHL4O3T2Xk2UwwABN-Ca9GaqNigTxOSJhaTVOmee4otcVVKU65s9SflsgQRpoKde55TnFXjqZfvJHxvULa4uVQAKkWEMis_A
  * + Create new password for account https://support.google.com/accounts/answer/185833
- * Ex: vanvan.vt88@gmail.com / jkwdqrpqozpdhgqw
+ * Ex: vanvan.vt88@gmail.com / anwizqatmdosqwlt
  */
 class Email
 {
     public static function sendMail($subject = 'Subject', $body){
 	    $mail = new PHPMailer();                              // Passing `true` enables exceptions
 	    try {
-		    //Server settings
-//		    $mail->SMTPDebug = 1;                                 // Enable verbose debug output
+	        if(YII_DEBUG){
+                //Server settings
+                $mail->SMTPDebug = 1;
+            }
+            // Enable verbose debug output
 		    $mail->isSMTP();                                      // Set mailer to use SMTP
 		    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 		    $mail->SMTPAuth = true;                               // Enable SMTP authentication
 		    $mail->Username = 'vanvan.vt88@gmail.com';                 // SMTP username
-		    $mail->Password = 'jkwdqrpqozpdhgqw';                           // SMTP password
+		    $mail->Password = 'anwizqatmdosqwlt';                           // SMTP password
 		    $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 		    $mail->Port = 465;                                    // TCP port to connect to
 

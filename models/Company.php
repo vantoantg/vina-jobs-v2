@@ -1,7 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: HP570
+ * Created by Tona Nguyễn
  * Date: 1/29/2018
  * Time: 5:32 PM
  */
@@ -21,6 +20,7 @@ class Company extends \app\models\base\Company
             [['location_id', 'created_by', 'status', 'arranged'], 'integer'],
             [['content'], 'string'],
             [['created_at'], 'safe'],
+	        [['website'],'url', 'defaultScheme' => ''],
             [['logo'], 'file', 'extensions' => 'gif, jpg, png, jpeg',],
             [['name', 'logo'], 'string', 'max' => 255],
         ];

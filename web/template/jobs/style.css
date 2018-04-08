@@ -464,7 +464,7 @@ body {
     font-size: 13px
 }
 
-.table tr td a {
+.table tr td.tbl-apply a {
     color: #fff;
     background: #00AEEF;
     padding: 12px 15px;
@@ -480,12 +480,12 @@ body {
 }
 
 .table tr:hover td a {
-    background: #0486B7
+    /*background: #E5F6FD*/
 }
 
 .jobs .table tr:hover td a:hover {
-    background: #fff;
-    color: #00AEEF
+    /*background: #fff;*/
+    /*color: #00AEEF*/
 }
 
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
@@ -516,8 +516,8 @@ body {
 }
 
 .table tr:hover {
-    background: #00AEEF;
-    color: #fff
+    /*background: #00AEEF;*/
+    /*color: #fff*/
 }
 
 .more-jobs {

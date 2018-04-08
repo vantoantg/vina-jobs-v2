@@ -130,6 +130,9 @@ class SystemController extends AdminController
     }
 
 	public function actionBackupDb(){
+        @ini_set('memory_limit', '2048M');
+        @set_time_limit(3000);
+
     	$path = Yii::$app->basePath.'/web/backups';
 		if(!file_exists($path)){
 			mkdir($path);

@@ -1,7 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Administrator
+ * Created by Tona Nguyễn
  * Date: 3/7/2018
  * Time: 9:49 PM
  */

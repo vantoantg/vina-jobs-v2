@@ -8,8 +8,9 @@ use app\library\helper\Helper;
 $page = \app\models\Pages::get(\app\library\helper\Cons::PAGE_JOB_SEEKERS);
 
 $this->title = Helper::titleSeo($page);
-$this->params['breadcrumbs'][] = $this->title;
 Helper::generateSeo($page);
+
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 
@@ -21,7 +22,7 @@ Helper::generateSeo($page);
     <div class="row jobs">
         <div class="col-md-9">
             <div class="job-posts table-responsive">
-                <table class="table">
+                <table class="table list-jobs">
                     <tr class="odd wow fadeInUp" data-wow-delay="1s">
                         <td class="tbl-logo"><img src="<?= Helper::homeUrl()?>web/template/jobs/img/job-logo1.png" alt=""></td>
                         <td class="tbl-title"><h4>Web Designer <br><span class="job-type">full time</span></h4></td>

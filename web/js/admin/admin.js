@@ -20,6 +20,7 @@ var Admin = function () {
             this.doSearchText();
             this.doConfirmDelete();
             this.extACE();
+            this.chageSelectBoxGoToUrl();
         },
         events: function () {
             var pageCt = $("#page-content");
@@ -130,6 +131,15 @@ var Admin = function () {
             editor_hd.closest('form').on('click', 'button[type="submit"]', function () {
                 editor_hd.val(editor.getValue());
             })
+        },
+        chageSelectBoxGoToUrl: function () {
+            $('select[data-root-url]').on('change', function () {
+                var url = $(this).val();
+                if (url) {
+                    window.location = $(this).attr('data-root-url')+url;
+                }
+                return false;
+            });
         }
     }
 }();

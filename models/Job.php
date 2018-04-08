@@ -27,7 +27,26 @@ class Job extends Jobs
     public function attributeLabels()
     {
         return [
-            'categories_id' => 'Categories',
+            'title' => 'Tên việc làm',
+            'categories_id' => 'Danh mục',
+	        'name' => 'Tên',
+	        'description' => 'Mô tả',
+	        'content' => 'Chi tiết thông tin cần tuyển',
+	        'tags' => 'Kỹ năng',
+	        'keyword' => 'Keyword',
+	        'salary' => 'Mức lương',
+	        'address' => 'Nơi làm việc',
+	        'created_by' => 'Created By',
+	        'updated_by' => 'Updated By',
+	        'created_at' => 'Created At',
+	        'updated_at' => 'Updated At',
+	        'effect_date' => 'Effect Date',
+	        'end_date' => 'End Date',
+	        'approved_at' => 'Approved At',
+	        'approved_by' => 'Approved By',
+	        'arrange' => 'Arrange',
+	        'star' => 'Star',
+	        'status' => 'Status',
         ];
     }
 }

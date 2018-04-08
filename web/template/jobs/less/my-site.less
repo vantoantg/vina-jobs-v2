@@ -1,5 +1,8 @@
 /****** LOGIN MODAL ******/
 body.modal-open{ padding-right: 0!important;}
+.pd-left-0{ padding-left: 0!important;}
+.pd-right-0{ padding-right: 0!important;}
+
 .loginmodal-container {
 	padding: 30px;
 	max-width: 350px;
@@ -226,7 +229,9 @@ input, .export {
 button {
 	margin-top: 10px;
 }
-
+.form-inline .form-control{
+	font-style: normal;
+}
 // Select2
 .select2-container .select2-selection--single{
 	height: 34px;
@@ -236,11 +241,14 @@ button {
 	-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
+.select2-container--default .select2-selection--single{
+	border-color: #ccc;
+	border-radius: 1px;
+	text-align: left;
+	color: #333;
+}
 .select2-container--default .select2-selection--single .select2-selection__rendered{
 	line-height: 33px;
-}
-.select2-container--default .select2-selection--single{
-	border-radius: 1px;
 }
 .select2-container--default .select2-selection--single .select2-selection__arrow{
 	height: 34px;
@@ -309,6 +317,18 @@ section#blog-section{
 		}
 		span.pull-right{
 			margin-top: -15px;
+		}
+	}
+}
+
+table.table.list-jobs{
+	tr{
+		&:hover{
+			//border: 1px solid red;
+			background: #E5F6FD;
+			h4,p{
+				//color: inherit;
+			}
 		}
 	}
 }

@@ -9,8 +9,7 @@ use yii\base\Widget;
 use Yii;
 
 /**
- * Created by PhpStorm.
- * User: Administrator
+ * Created by Tona Nguyễn
  * Date: 6/12/2016
  * Time: 8:20 PM
  */
@@ -28,6 +27,10 @@ class LogSystemWidget extends Widget
 	}
 
 	public static function createLogs(){
+//        ini_set('memory_limit', '4096M');
+//        set_time_limit(300000);
+//	    $transaction = Yii::$app->db->beginTransaction();
+//        for($i=0; $i<= 1000000000; $i++) {
 		$u = new LogSystem();
 		$user_id = Common::currentUser('id');
 		$u->user_id = $user_id ? $user_id : 0;
@@ -40,5 +43,7 @@ class LogSystemWidget extends Widget
 		$u->method = Helper::getMethod();
 		$u->user_timezone = Common::currentUser('timezone');
 		$u->save();
+//        }
+//        $transaction->rollBack();
 	}
 }
