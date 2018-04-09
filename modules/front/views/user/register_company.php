@@ -65,34 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="cols-sm-10">
 
                                 <?= $form->field($com, 'content')->widget(\yii\redactor\widgets\Redactor::className(), [
-                                    'clientOptions' => [
-                                        'placeholder' => 'Giới thiệu về công ty',
-                                        'observeLinks' => true,
-                                        'convertVideoLinks' => true,
-                                        'imageUpload' => ['/web/uploads/image'],
-                                        'fileUpload' => ['/web/uploads/file'],
-                                        'plugins' => ['clips', 'fontcolor', 'imagemanager'],
-                                        'toolbar' => true,
-                                        'buttons' => [
-                                            'html',
-                                            'format',
-                                            'formatting',
-                                            'lists',
-                                            'bold',
-                                            'italic',
-                                            'deleted',
-                                            'underline',
-                                            'horizontalrule',
-                                            'alignment',
-                                            'unorderedlist',
-                                            'orderedlist',
-                                            'outdent',
-                                            'indent',
-                                            'link',
-                                            /*'image',
-                                            'file'*/
-                                        ],
-                                    ]
+                                    'clientOptions' => Helper::redactorOps('Giới thiệu về công ty')
                                 ]) ?>
                             </div>
 

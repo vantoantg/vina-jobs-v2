@@ -30,17 +30,27 @@ Rich Text Input With Redactor:
 composer require --prefer-dist yiidoc/yii2-redactor "*"
 
 SENTORA SERVER:
- https://chip.vina-jobs.com:8083
-    username: admin
-    password: cYjHYVpIn5
- email:
-    admin@vina-jobs.com/IM5znxBZ9i
- db:
-    vina-jobs_vnj/vina-jobs_vnj/ROy2PzKot5
+########################################################
+ Congratulations Sentora has now been installed on your
+ server. Please review the log file left in /root/ for
+ any errors encountered during installation.
+
+ Login to Sentora at http://tona.vina-jobs.com
+ Sentora Username  : zadmin
+ Sentora Password  : yxY1szZc29yL0bZh
+
+ MySQL Root Password      : DIYcW5JDUN75io6f
+ MySQL Postfix Password   : 2M2abixIzzK1x4qD
+ MySQL ProFTPd Password   : bETrPcYg8n57jzNm
+ MySQL Roundcube Password : I8obIR5ZwnPhqysL
+   (theses passwords are saved in /root/passwords.txt)
+########################################################
+vina-jobs.com => /var/zpanel/hostdata/zadmin/public_html/vina-jobs_com#
+########################################################
 
 INSTALL-DOC
     https://docs.google.com/document/d/1eVkRyi6j5h4d9c65bo_5vm126QcwT_f_D8EWGBd-9s8/edit
-    ssh -i "tonanguyenswe.pem" ubuntu@ec2-18-217-150-155.us-east-2.compute.amazonaws.com
+    ssh -i "tonanguyenswe.pem" ubuntu@ec2-18-188-166-175.us-east-2.compute.amazonaws.com
 
 bootsnipp
     https://bootsnipp.com/snippets/gN1X1 // my page (card)

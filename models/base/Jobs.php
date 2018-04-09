@@ -11,7 +11,7 @@ use Yii;
  * @property int $categories_id
  * @property int $company_id
  * @property string $title
- * @property string $name
+ * @property string $slug
  * @property string $description
  * @property string $content
  * @property string $tags
@@ -28,6 +28,7 @@ use Yii;
  * @property int $approved_by
  * @property int $arrange
  * @property int $star
+ * @property int $client_status
  * @property int $status
  */
 class Jobs extends \yii\db\ActiveRecord
@@ -46,10 +47,10 @@ class Jobs extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['categories_id', 'company_id', 'created_by', 'updated_by', 'approved_by', 'arrange', 'star', 'status'], 'integer'],
+            [['categories_id', 'company_id', 'created_by', 'updated_by', 'approved_by', 'arrange', 'star', 'client_status', 'status'], 'integer'],
             [['description', 'content'], 'string'],
             [['created_at', 'updated_at', 'effect_date', 'end_date', 'approved_at'], 'safe'],
-            [['title', 'name', 'tags', 'keyword', 'salary', 'address'], 'string', 'max' => 255],
+            [['title', 'slug', 'tags', 'keyword', 'salary', 'address'], 'string', 'max' => 255],
         ];
     }
 
@@ -63,7 +64,7 @@ class Jobs extends \yii\db\ActiveRecord
             'categories_id' => 'Categories ID',
             'company_id' => 'Company ID',
             'title' => 'Title',
-            'name' => 'Name',
+            'slug' => 'Slug',
             'description' => 'Description',
             'content' => 'Content',
             'tags' => 'Tags',
@@ -80,6 +81,7 @@ class Jobs extends \yii\db\ActiveRecord
             'approved_by' => 'Approved By',
             'arrange' => 'Arrange',
             'star' => 'Star',
+            'client_status' => 'Client Status',
             'status' => 'Status',
         ];
     }
