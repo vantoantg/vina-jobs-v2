@@ -7,6 +7,13 @@ use app\models\base\Jobs;
 class Job extends Jobs
 {
 
+    const
+        STATUS_WAITING_APPROVE = 0,
+        STATUS_ACTIVE = 1,
+
+        STATUS_CLIENT_PUBLISH = 7,
+        STATUS_CLIENT_DRAFT = 8;
+
     /**
      * @inheritdoc
      */
@@ -14,10 +21,10 @@ class Job extends Jobs
     {
         return [
             [['categories_id', 'title', 'salary', 'address'], 'required'],
-            [['categories_id', 'company_id', 'created_by', 'updated_by', 'approved_by', 'arrange', 'star', 'status'], 'integer'],
+            [['categories_id', 'company_id', 'created_by', 'updated_by', 'approved_by', 'arrange', 'star', 'client_status', 'status'], 'integer'],
             [['description', 'content'], 'string'],
             [['created_at', 'updated_at', 'effect_date', 'end_date', 'approved_at'], 'safe'],
-            [['title', 'name', 'tags', 'keyword', 'salary', 'address'], 'string', 'max' => 255],
+            [['title', 'slug', 'tags', 'keyword', 'salary', 'address'], 'string', 'max' => 255],
         ];
     }
 
@@ -29,7 +36,7 @@ class Job extends Jobs
         return [
             'title' => 'Tên việc làm',
             'categories_id' => 'Danh mục',
-	        'name' => 'Tên',
+	        'slug' => 'slug',
 	        'description' => 'Mô tả',
 	        'content' => 'Chi tiết thông tin cần tuyển',
 	        'tags' => 'Kỹ năng',

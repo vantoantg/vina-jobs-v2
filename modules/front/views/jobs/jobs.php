@@ -61,10 +61,22 @@ Helper::generateSeo($page);
 
             <?= $form->field($model, 'tags') ?>
 
+	        <div class="row">
+		        <div class="col-xs-6">
+                    <?= $form->field($model, 'client_status')->radioList([\app\models\Job::STATUS_CLIENT_DRAFT => 'Lưu tạm', \app\models\Job::STATUS_CLIENT_PUBLISH => 'Công bố'])->label('Trạng thái lưu') ?>
+		        </div>
+	        </div>
+
+	        <?php if($model->isNewRecord){ ?>
             <div class="form-group">
-                <?= Html::resetButton('Xóa hết', ['class' => 'btn btn-default']) ?>
                 <?= Html::submitButton('Lưu thông tin tuyển dụng', ['class' => 'btn btn-primary']) ?>
+                <?= Html::resetButton('Xóa hết', ['class' => 'btn btn-default']) ?>
             </div>
+	        <?php }else{ ?>
+	        <div class="form-group">
+                <?= Html::submitButton('Cập nhật thông tin tuyển dụng', ['class' => 'btn btn-primary']) ?>
+	        </div>
+	        <?php } ?>
             <?php ActiveForm::end(); ?>
 
         </div><!-- front-jobs -->

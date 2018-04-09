@@ -3,8 +3,12 @@
 namespace app\modules\front\controllers;
 
 use app\library\helper\Common;
+use app\library\helper\Datetime;
+use app\library\helper\Helper;
+use app\models\Company;
 use app\models\CurriculumVitae;
 use app\models\Job;
+use app\models\Users;
 use Yii;
 use yii\web\NotFoundHttpException;
 
@@ -27,11 +31,30 @@ class JobsController extends FrontController
      * @return string|\yii\web\Response
      */
     public function actionPostJobs(){
-        $model = new Job();
-        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
+        if (!Common::isLoginned() || Common::currentUsers()->type != Users::USER_TYPE_CONTACT_OF_COMPANY) {
+            return $this->goHome();
+        }
 
-            $url = Yii::$app->getUrlManager()->createUrl(['front/jobs/edit-jobs', 'id' => $model->id]);
-            return $this->redirect($url);
+        $model = new Job();
+        $model->client_status = Job::STATUS_CLIENT_DRAFT;
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->company_id = Company::findOne(['created_by' => Common::currentUser()])->id;
+            $model->slug = Helper::createSlug($model->title);
+            $model->created_by = Common::currentUsers()->getId();
+            $model->updated_by = Common::currentUsers()->getId();
+            $model->created_at = Datetime::getDateNow(Datetime::SQL_DATETIME);
+            $model->updated_at = Datetime::getDateNow(Datetime::SQL_DATETIME);
+
+            // TODO: will make func approve
+            $model->effect_date = Datetime::getDateNow(Datetime::SQL_DATETIME);
+            $model->approved_by = 1;
+            $model->approved_at = Datetime::getDateNow(Datetime::SQL_DATETIME);
+            $model->status = Job::STATUS_ACTIVE;
+
+            if ($model->save()) {
+                $url = Yii::$app->getUrlManager()->createUrl(['front/jobs/edit-jobs', 'id' => $model->id]);
+                return $this->redirect($url);
+            }
         }
 
         return $this->render('jobs', [
