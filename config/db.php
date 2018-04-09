@@ -2,9 +2,9 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=vina-jobs_vnj',
-    'username' => 'vina-jobs_vnj',
-    'password' => 'ROy2PzKot5',
+    'dsn' => 'mysql:host=localhost;dbname=zadmin_vnjobs',
+    'username' => 'vnjobs',
+    'password' => 'apy9yzavu',
     'charset' => 'utf8',
 
 //    Schema cache options (for production environment)
