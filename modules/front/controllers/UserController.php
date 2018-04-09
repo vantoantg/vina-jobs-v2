@@ -46,7 +46,7 @@ class UserController extends FrontController
 		$data['name'] = 'Name test';
 		$data['link'] = Url::to('/candidate/active/token/' . \Yii::$app->getSecurity()->generateRandomString() . '.html', true);
 		$temp = $this->renderPartial('@app/mail/layouts/active_user_register', ['data' => $data]);
-		Email::sendMail('Instructions to activate your account - ' . Helper::siteURL(), $temp);
+//		Email::sendMail('Instructions to activate your account - ' . Helper::siteURL(), $temp);
 		// End test mail
 
 
