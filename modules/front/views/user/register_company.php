@@ -171,7 +171,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="form-group">
                             <label for="email" class="cols-sm-2 control-label">Giới tính</label>
                             <div class="cols-sm-10">
-	                            <?php $gender = \app\library\helper\Cons::$gender; ?>
+	                            <?php $gender = \app\library\helper\Dropdowns::$gender; ?>
                                 <?= $form->field($userDetail, 'gender', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-intersex"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'

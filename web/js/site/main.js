@@ -19,14 +19,46 @@ var Main = function () {
             // this.ajaxCallback();
         },
         events: function () {
-            $('.job-select2').select2({
-                // placeholder: 'Select an option'
-            });
+            var select2 = $('.job-select2');
+            if(select2.length){
+                select2.each(function () {
+                    var _this = $(this);
+                    _this.select2({
+                        placeholder: _this.data('placeholder')
+                    });
+                });
+            }
 
-            $(".js-example-tokenizer").select2({
+            $(".select-tags").select2({
                 tags: true,
+                placeholder: 'Select an option',
                 tokenSeparators: [',', ' ']
             })
+
+            var radioCheck = $('div.iCheck input');
+            radioCheck.each(function () {
+                var _this = $(this);
+                if(_this.attr('data-style') != undefined){
+                    var _radioClass = 'iradio_square-'+_this.attr('data-style')
+                }else{
+                    var _radioClass = 'iradio_square-blue'
+                }
+                _this.iCheck({
+                    checkboxClass: 'icheckbox_square',
+                    radioClass: _radioClass,
+                    increaseArea: '20%' // optional
+                })
+            });
+
+            var inputCheck = $('input.iCheck');
+            inputCheck.each(function () {
+                var _this = $(this);
+                _this.iCheck({
+                    checkboxClass: 'icheckbox_square-blue',
+                    radioClass: 'iradio_square',
+                    increaseArea: '20%' // optional
+                })
+            });
 
         },
         blog: function () {

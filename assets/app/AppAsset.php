@@ -3,7 +3,7 @@
  *
  */
 
-namespace app\assets;
+namespace app\assets\app;
 
 use yii\web\AssetBundle;
 
@@ -30,6 +30,7 @@ class AppAsset extends AssetBundle
         'web/template/jobs/css/owl.theme.css',
         'web/template/jobs/css/owl.transitions.css',
         'vendor/bower-asset/select2/dist/css/select2.min.css',
+        'vendor/bower-asset/iCheck/skins/all.css',
         'web/template/jobs/style.css',
         'web/template/jobs/responsive.css',
         'web/template/jobs/less/my-site.css',
@@ -42,6 +43,7 @@ class AppAsset extends AssetBundle
         'web/template/jobs/js/owl.carousel.min.js',
         'web/template/jobs/js/wow.js',
         'vendor/bower-asset/select2/dist/js/select2.min.js',
+        'vendor/bower-asset/iCheck/icheck.min.js',
         'vendor/bower-asset/cropit/dist/jquery.cropit.js',
         'web/template/jobs/js/main.js',
         'web/template/jobs/js/underscore-min.js',

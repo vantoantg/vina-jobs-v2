@@ -9,7 +9,7 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use app\assets\AppAsset;
+use app\assets\app\AppAsset;
 use \app\library\helper\Helper;
 
 AppAsset::register($this);
@@ -31,10 +31,10 @@ AppAsset::register($this);
 	<link rel="shortcut icon" type="image/png" href="<?= \app\library\helper\Helper::homeUrl() ?>favicon.ico"/>
 
 	<!-- Jetpack Open Graph Tags -->
-	<meta property="og:type" content="article"/>
-	<meta property="og:title" content="Marketing &#8211; Create your stunning website"/>
+	<meta property="og:type" content="Tìm kiếm việc làm"/>
+	<meta property="og:title" content="<?= Html::encode($this->title) ?>"/>
 	<meta property="og:url" content="<?= \app\library\helper\Helper::siteURL() ?>"/>
-	<meta property="og:description" content="Visit the post for more."/>
+	<meta property="og:description" content="<?= Yii::$app->params['seo']['description'] ?>"/>
 	<meta property="article:published_time" content="2015-11-09T16:39:31+00:00"/>
 	<meta property="article:modified_time" content="2017-08-01T18:22:52+00:00"/>
 	<meta property="og:site_name" content="<?= \app\library\helper\Helper::siteURL() ?>"/>
@@ -42,12 +42,12 @@ AppAsset::register($this);
 	<meta property="og:image:width" content="200"/>
 	<meta property="og:image:height" content="200"/>
 	<meta property="og:locale" content="<?= Yii::$app->language ?>"/>
-	<meta name="twitter:site" content="@vina-jobsDotCom"/>
-	<meta name="twitter:text:title" content="Marketing &#8211; Create your stunning&nbsp;website"/>
+	<meta name="twitter:site" content="<?= \app\library\helper\Helper::siteURL() ?>"/>
+	<meta name="twitter:text:title" content="<?= Html::encode($this->title) ?>"/>
 	<meta name="twitter:image" content="<?= \app\library\helper\Helper::homeUrl() ?>favicon.ico?w=240"/>
 	<meta name="twitter:card" content="summary"/>
-	<meta name="twitter:creator" content="@vina-jobsDotCom"/>
-	<meta name="twitter:description" content="Post by @vina-jobsDotCom."/>
+	<meta name="twitter:creator" content="Viet Nam Jobs"/>
+	<meta name="twitter:description" content="<?= Yii::$app->params['seo']['description'] ?>"/>
 	<meta property="article:publisher" content="https://www.facebook.com/vina-jobs.com"/>
 
     <?php $this->head() ?>

@@ -4,8 +4,10 @@ namespace app\modules\front\controllers;
 
 use app\components\UserOnlineWidget;
 use app\forms\SearchForm;
+use app\library\helper\Device;
 use app\library\helper\Helper;
 use app\models\Pages;
+use Detection\MobileDetect;
 use yii\base\Response;
 use yii\web\BadRequestHttpException;
 
@@ -21,6 +23,10 @@ class DefaultController extends FrontController
      */
     public function actionIndex()
     {
+        if(Device::getInstance()->isMoble()){
+
+        }
+
         $form = new SearchForm();
         return $this->render('index', [
         	'search' => $form

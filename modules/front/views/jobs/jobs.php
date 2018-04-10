@@ -63,7 +63,7 @@ Helper::generateSeo($page);
 
 	        <div class="row">
 		        <div class="col-xs-6">
-                    <?= $form->field($model, 'client_status')->radioList([\app\models\Job::STATUS_CLIENT_DRAFT => 'Lưu tạm', \app\models\Job::STATUS_CLIENT_PUBLISH => 'Công bố'])->label('Trạng thái lưu') ?>
+                    <?= $form->field($model, 'client_status')->radioList([\app\models\Job::STATUS_CLIENT_DRAFT => 'Lưu tạm', \app\models\Job::STATUS_CLIENT_PUBLISH => 'Công bố'], ['class' => 'iCheck'])->label('Trạng thái lưu') ?>
 		        </div>
 	        </div>
 

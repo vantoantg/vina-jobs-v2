@@ -1,7 +1,8 @@
 # phpstorm project files
 .idea
 #/config/db.php
-assets/cache/*
+assets/*
+!assets/app/*
 /vendor
 # netbeans project files
 nbproject

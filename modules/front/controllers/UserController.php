@@ -42,6 +42,14 @@ class UserController extends FrontController
 	 */
 	public function actionRegisterCandidate()
 	{
+		// TEST: Send email
+		$data['name'] = 'Name test';
+		$data['link'] = Url::to('/candidate/active/token/' . \Yii::$app->getSecurity()->generateRandomString() . '.html', true);
+		$temp = $this->renderPartial('@app/mail/layouts/active_user_register', ['data' => $data]);
+//		Email::sendMail('Instructions to activate your account - ' . Helper::siteURL(), $temp);
+		// End test mail
+
+
 		if (Common::isLoginned()) {
 			$model = Users::findOne(Common::currentUser());
 			$model->scenario = Users::SCENARIO_UPDATE;

@@ -24,80 +24,83 @@
 
 <div class="widget-sidebar jobs pd-left-0">
     <form id="search-jobs">
-        <h2 class="title-widget-sidebar">Tìm kiếm</h2>
+        <h2 class="title-widget-sidebar">TÌM VIỆC LÀM</h2>
         <div class="content-widget-sidebar">
-            <input name="" class="form-control">
+            <input name="" class="form-control" placeholder="Nhập từ khóa">
         </div>
 
-        <h2 class="title-widget-sidebar">Giờ làm việc</h2>
+	    <div class="content-widget-sidebar">
+            <?php
+            $data = \app\models\JobCategories::categoriesMenus()
+            ?>
+		    <select class="form-control job-select2" data-placeholder="Chọn ngành nghề" multiple>
+                <?php
+                foreach ($data as $value) {
+                    ?>
+				    <option value="<?= $value['id'] ?>"> <?= $value['name'] ?></option>
+                <?php } ?>
+		    </select>
+	    </div>
+
+	    <div class="content-widget-sidebar">
+            <?php
+            $data = \app\models\Locations::getAll();
+            ?>
+		    <select class="form-control job-select2" data-placeholder="Nơi làm việc mong muốn" multiple>
+                <?php
+                foreach ($data as $value) {
+                    ?>
+				    <option value="<?= $value['id'] ?>"> <?= $value['name'] ?></option>
+                <?php } ?>
+		    </select>
+	    </div>
+
+        <h2 class="title-widget-sidebar">Thời gian làm việc</h2>
         <div class="content-widget-sidebar">
 			<?php
-			$data = \app\models\JobCategories::categoriesMenus()
+			$data = \app\library\helper\Dropdowns::$working_time;
 			?>
             <ul>
 				<?php
-				foreach ($data as $value) {
+				foreach ($data as $k => $value) {
+					if($k > 0){
 					?>
-                    <li><label><input type="checkbox" value="<?= $value['id'] ?>"> <?= $value['name'] ?></label></li>
-				<?php } ?>
+                    <li><label><input type="checkbox" class="iCheck" value="<?= $k ?>"> <?= $value ?></label></li>
+				<?php }} ?>
             </ul>
         </div>
 
         <h2 class="title-widget-sidebar">Mức lương</h2>
         <div class="content-widget-sidebar">
 			<?php
-			$data = \app\models\JobCategories::categoriesMenus()
+            $data = \app\library\helper\Dropdowns::$salary;
 			?>
             <ul>
-				<?php
-				foreach ($data as $value) {
-					?>
-                    <li><label><input type="checkbox" value="<?= $value['id'] ?>"> <?= $value['name'] ?></label></li>
-				<?php } ?>
+                <?php
+                foreach ($data as $k => $value) {
+                    if($k > 0){
+                        ?>
+			            <li><label><input type="checkbox" class="iCheck" value="<?= $k ?>"> <?= $value ?></label></li>
+                    <?php }} ?>
             </ul>
         </div>
 
         <h2 class="title-widget-sidebar">Kinh nghiệm làm việc</h2>
         <div class="content-widget-sidebar">
 			<?php
-			$data = \app\models\JobCategories::categoriesMenus()
+            $data = \app\library\helper\Dropdowns::$experience;
 			?>
             <ul>
 				<?php
-				foreach ($data as $value) {
+				foreach ($data as $k => $value) {
+                if($k > 0){
 					?>
-                    <li><label><input type="checkbox" value="<?= $value['id'] ?>"> <?= $value['name'] ?></label></li>
-				<?php } ?>
+                    <li><label><input type="checkbox" class="iCheck" value="<?= $k ?>"> <?= $value ?></label></li>
+				<?php } } ?>
             </ul>
         </div>
 
-        <h2 class="title-widget-sidebar">Danh mục</h2>
-        <div class="content-widget-sidebar">
-			<?php
-			$data = \app\models\JobCategories::categoriesMenus()
-			?>
-            <select class="form-control js-example-tokenizer" multiple>
-				<?php
-				foreach ($data as $value) {
-					?>
-                    <option value="<?= $value['id'] ?>"> <?= $value['name'] ?></option>
-				<?php } ?>
-            </select>
-        </div>
 
-        <h2 class="title-widget-sidebar">Địa điểm</h2>
-        <div class="content-widget-sidebar">
-			<?php
-			$data = \app\models\Locations::categoriesMenus();
-			?>
-            <select class="form-control js-example-tokenizer" multiple>
-				<?php
-				foreach ($data as $value) {
-					?>
-                    <option value="<?= $value['id'] ?>"> <?= $value['name'] ?></option>
-				<?php } ?>
-            </select>
-        </div>
-        <button class="btn btn-primary">Tìm</button>
+        <button class="btn btn-primary w100"><i class="fa fa-search" style="top:3px"></i> TÌM KIẾM</button>
     </form>
 </div>
