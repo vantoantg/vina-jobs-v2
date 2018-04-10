@@ -26,9 +26,7 @@ var Login = function () {
             });
         },
         ajaxSubmitForm: function (form) {
-            console.log(form.attr('action'));
             Service.postCallback(form.attr('action'), form.serialize(), function (respone) {
-
                 if(respone.error == true && !form.find('.required').hasClass('has-error')){
                     Login.showError(respone.message);
                 }else{

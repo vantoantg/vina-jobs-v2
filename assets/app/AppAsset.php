@@ -3,7 +3,7 @@
  *
  */
 
-namespace app\assets;
+namespace app\assets\app;
 
 use yii\web\AssetBundle;
 
