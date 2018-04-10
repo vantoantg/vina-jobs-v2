@@ -10,12 +10,14 @@ $(function () {
 var Main = function () {
     var _settings = $('input#setting-common');
     var _rootUrl = _settings.attr('data-site');
+
     return {
         init: function () {
             this.events();
             this.blog();
             this.initDatepicker();
             this.initCropit();
+            this.initSearchJobsPage();
             // this.ajaxCallback();
         },
         events: function () {
@@ -152,6 +154,42 @@ var Main = function () {
             var random = Math.random().toString(36).substr(1, 500);
             Service.postCallback(_rootUrl + 'front/default/callback?client='+random, {}, function (res) {
             });
+        },
+        initSearchJobsPage: function () {
+            var searchJobs = $('#search-jobs');
+            if(searchJobs.length){
+                var loaded = true;
+                // var url = Common.buildUrl('http://localhost/search/result.html', 'keywords', $(this).val());
+                // history.pushState(null, null, '/en/step2');
+
+                var _timer = 500;
+                searchJobs.on('change', function () {
+                    search();
+                });
+
+                $('input', searchJobs).on('ifChecked', function(event){
+                    search();
+                });
+
+                $('select', searchJobs).on('change', function(event){
+                    search();
+                });
+
+                var search = function () {
+                    var url = searchJobs.serializeArray();
+                    console.log($.param(url));
+                    history.pushState(null, null, '?' + url);
+                    var newUrl = _rootUrl + 'search/result.html?'+ url;
+                    if(loaded){
+                        loaded = false;
+                        Service.postCallback(newUrl, {'data': searchJobs.serialize()}, function (data) {
+                            // console.log(data);
+                            loaded = true;
+                        });
+                    }
+
+                };
+            }
         }
     }
 }();

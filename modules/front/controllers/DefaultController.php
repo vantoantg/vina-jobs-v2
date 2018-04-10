@@ -27,6 +27,7 @@ class DefaultController extends FrontController
 
         }
 
+
         $form = new SearchForm();
         return $this->render('index', [
         	'search' => $form

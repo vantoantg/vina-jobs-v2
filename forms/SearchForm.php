@@ -16,7 +16,7 @@ class SearchForm extends Model
 {
     public $keys;
     public $location;
-    public $categories = true;
+    public $categories;
 
 
     /**

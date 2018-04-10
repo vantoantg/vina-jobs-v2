@@ -48,7 +48,7 @@ class AppAsset extends AssetBundle
         'web/template/jobs/js/main.js',
         'web/template/jobs/js/underscore-min.js',
         'web/js/common/service.js',
-        'web/js/common/service.js',
+        'web/js/common/common.js',
         'web/js/site/login.js',
         'web/js/site/main.js',
         'web/js/site/candidate.js',

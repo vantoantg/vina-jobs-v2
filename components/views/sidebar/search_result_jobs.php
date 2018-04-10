@@ -26,14 +26,14 @@
     <form id="search-jobs">
         <h2 class="title-widget-sidebar">TÌM VIỆC LÀM</h2>
         <div class="content-widget-sidebar">
-            <input name="" class="form-control" placeholder="Nhập từ khóa">
+            <input name="keywords" class="form-control keywords" placeholder="Nhập từ khóa">
         </div>
 
 	    <div class="content-widget-sidebar">
             <?php
             $data = \app\models\JobCategories::categoriesMenus()
             ?>
-		    <select class="form-control job-select2" data-placeholder="Chọn ngành nghề" multiple>
+		    <select class="form-control job-select2" name="jobs" data-placeholder="Chọn ngành nghề" multiple>
                 <?php
                 foreach ($data as $value) {
                     ?>
@@ -46,7 +46,7 @@
             <?php
             $data = \app\models\Locations::getAll();
             ?>
-		    <select class="form-control job-select2" data-placeholder="Nơi làm việc mong muốn" multiple>
+		    <select class="form-control job-select2" name="loca" data-placeholder="Nơi làm việc mong muốn" multiple>
                 <?php
                 foreach ($data as $value) {
                     ?>
@@ -65,7 +65,7 @@
 				foreach ($data as $k => $value) {
 					if($k > 0){
 					?>
-                    <li><label><input type="checkbox" class="iCheck" value="<?= $k ?>"> <?= $value ?></label></li>
+                    <li><label><input type="checkbox" name="wkt" class="iCheck" value="<?= $k ?>"> <?= $value ?></label></li>
 				<?php }} ?>
             </ul>
         </div>
@@ -80,7 +80,7 @@
                 foreach ($data as $k => $value) {
                     if($k > 0){
                         ?>
-			            <li><label><input type="checkbox" class="iCheck" value="<?= $k ?>"> <?= $value ?></label></li>
+			            <li><label><input type="checkbox" name="salary" class="iCheck" value="<?= $k ?>"> <?= $value ?></label></li>
                     <?php }} ?>
             </ul>
         </div>
@@ -95,7 +95,7 @@
 				foreach ($data as $k => $value) {
                 if($k > 0){
 					?>
-                    <li><label><input type="checkbox" class="iCheck" value="<?= $k ?>"> <?= $value ?></label></li>
+                    <li><label><input type="checkbox" name="exp" class="iCheck" value="<?= $k ?>"> <?= $value ?></label></li>
 				<?php } } ?>
             </ul>
         </div>
