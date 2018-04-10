@@ -87,4 +87,13 @@ class Cons
 		7 => '5 năm',
 		8 => 'Trên 5 năm',
 	];
+
+    /**
+     * @var array
+     */
+    public static $working_time = [
+        0 => '-- Chọn --',
+        1 => 'Full time',
+        2 => 'Part time',
+    ];
 }

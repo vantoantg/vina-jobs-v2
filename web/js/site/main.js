@@ -28,6 +28,31 @@ var Main = function () {
                 tokenSeparators: [',', ' ']
             })
 
+            var radioCheck = $('div.iCheck input');
+            radioCheck.each(function () {
+                var _this = $(this);
+                if(_this.attr('data-style') != undefined){
+                    var _radioClass = 'iradio_square-'+_this.attr('data-style')
+                }else{
+                    var _radioClass = 'iradio_square-blue'
+                }
+                _this.iCheck({
+                    checkboxClass: 'icheckbox_square',
+                    radioClass: _radioClass,
+                    increaseArea: '20%' // optional
+                })
+            });
+
+            var inputCheck = $('input.iCheck');
+            inputCheck.each(function () {
+                var _this = $(this);
+                _this.iCheck({
+                    checkboxClass: 'icheckbox_square-blue',
+                    radioClass: 'iradio_square',
+                    increaseArea: '20%' // optional
+                })
+            });
+
         },
         blog: function () {
 

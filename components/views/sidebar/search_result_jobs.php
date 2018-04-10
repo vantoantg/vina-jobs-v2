@@ -32,28 +32,30 @@
         <h2 class="title-widget-sidebar">Giờ làm việc</h2>
         <div class="content-widget-sidebar">
 			<?php
-			$data = \app\models\JobCategories::categoriesMenus()
+			$data = \app\library\helper\Cons::$working_time;
 			?>
             <ul>
 				<?php
-				foreach ($data as $value) {
+				foreach ($data as $k => $value) {
+					if($k > 0){
 					?>
-                    <li><label><input type="checkbox" value="<?= $value['id'] ?>"> <?= $value['name'] ?></label></li>
-				<?php } ?>
+                    <li><label><input type="checkbox" class="iCheck" value="<?= $k ?>"> <?= $value ?></label></li>
+				<?php }} ?>
             </ul>
         </div>
 
         <h2 class="title-widget-sidebar">Mức lương</h2>
         <div class="content-widget-sidebar">
 			<?php
-			$data = \app\models\JobCategories::categoriesMenus()
+            $data = \app\library\helper\Cons::$experience
 			?>
             <ul>
-				<?php
-				foreach ($data as $value) {
-					?>
-                    <li><label><input type="checkbox" value="<?= $value['id'] ?>"> <?= $value['name'] ?></label></li>
-				<?php } ?>
+                <?php
+                foreach ($data as $k => $value) {
+                    if($k > 0){
+                        ?>
+			            <li><label><input type="checkbox" class="iCheck" value="<?= $k ?>"> <?= $value ?></label></li>
+                    <?php }} ?>
             </ul>
         </div>
 
@@ -66,7 +68,7 @@
 				<?php
 				foreach ($data as $value) {
 					?>
-                    <li><label><input type="checkbox" value="<?= $value['id'] ?>"> <?= $value['name'] ?></label></li>
+                    <li><label><input type="checkbox" class="iCheck" value="<?= $value['id'] ?>"> <?= $value['name'] ?></label></li>
 				<?php } ?>
             </ul>
         </div>
