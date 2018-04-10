@@ -26,36 +26,24 @@ class Locations extends \app\models\base\Locations
     }
 
     /**
-     * @param bool $is_category
-     * @param int $parent_id
-     * @param string $space
-     * @param array $trees
      * @return array
      */
-    static public function categoriesMenus($is_category = true, $parent_id = 64, $space = "", $trees = [])
+    static public function getAll()
     {
+        $data = [];
         $type = 3;
         $table = self::tableName();
-        if (!$trees) {
-            $trees = [];
-        }
-        $sql = "SELECT * FROM $table WHERE (parent_id = {$parent_id}) and type = $type order by name asc";
-        if (\Yii::$app->request->getQueryParam('id') && $is_category) {
-            $id = \Yii::$app->request->getQueryParam('id');
-            if ($id > 0) {
-                $sql = "SELECT * FROM $table WHERE (parent_id = {$parent_id} AND id != {$id}) and type = $type order by name asc";
-            }
-        }
-        $data = \Yii::$app->db->createCommand($sql)->queryAll();
+        // TODO: Resort data in table
+        $sql = "SELECT `id`, `name` FROM $table WHERE (`parent_id` = 64 and `type` = $type AND `id` != 84) order by `arranged` ASC, `name` ASC";
+        $datas = \Yii::$app->db->createCommand($sql)->queryAll();
 
-        foreach ($data as $k => $rs) {
-            $trees[] = array(
+        foreach ($datas as $k => $rs) {
+            $data[] = array(
                 'id' => $rs['id'],
-                'name' => $space . $rs['name'],
+                'name' => $rs['name'],
             );
-            $trees = self::categoriesMenus($is_category, $rs['id'], $space . ' - ', $trees);
         }
 
-        return $trees;
+        return $data;
     }
 }

@@ -8,6 +8,9 @@ body.modal-open {
 .pd-right-0 {
   padding-right: 0!important;
 }
+.w100 {
+  width: 100%;
+}
 .loginmodal-container {
   padding: 30px;
   max-width: 350px;
@@ -299,6 +302,16 @@ section#blog-section .content-footer span.pull-right {
 }
 table.table.list-jobs tr:hover {
   background: #E5F6FD;
+}
+#search-jobs .content-widget-sidebar label {
+  font-weight: normal;
+}
+#search-jobs .content-widget-sidebar label:hover {
+  color: #00AEEF;
+  cursor: pointer;
+}
+#search-jobs .content-widget-sidebar label > div {
+  margin-right: 10px;
 }
 #search-jobs .select2-container .select2-selection--multiple {
   min-height: 34px;

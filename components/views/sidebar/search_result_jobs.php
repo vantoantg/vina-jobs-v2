@@ -44,7 +44,7 @@
 
 	    <div class="content-widget-sidebar">
             <?php
-            $data = \app\models\Locations::categoriesMenus();
+            $data = \app\models\Locations::getAll();
             ?>
 		    <select class="form-control job-select2" data-placeholder="Nơi làm việc mong muốn" multiple>
                 <?php
@@ -101,6 +101,6 @@
         </div>
 
 
-        <button class="btn btn-primary">Tìm</button>
+        <button class="btn btn-primary w100"><i class="fa fa-search" style="top:3px"></i> TÌM KIẾM</button>
     </form>
 </div>
