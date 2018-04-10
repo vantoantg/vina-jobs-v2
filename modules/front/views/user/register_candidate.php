@@ -160,7 +160,7 @@ $dropdowns = new Dropdown();
 						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">Giới tính</label>
 							<div class="cols-sm-10">
-								<?php $gender = \app\library\helper\Cons::$gender; ?>
+								<?php $gender = \app\library\helper\Dropdowns::$gender; ?>
 								<?= $form->field($userDetail, 'gender', [
 									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-intersex"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
@@ -197,7 +197,7 @@ $dropdowns = new Dropdown();
                         <div class="form-group">
                             <label for="email" class="cols-sm-2 control-label">Trình độ</label>
                             <div class="cols-sm-10">
-	                            <?php $lel = \app\library\helper\Cons::$levels; ?>
+	                            <?php $lel = \app\library\helper\Dropdowns::$education; ?>
 	                            <?= $form->field($candidate, 'education', [
 		                            'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-align-center"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
@@ -212,7 +212,7 @@ $dropdowns = new Dropdown();
                         <div class="form-group">
                             <label for="email" class="cols-sm-2 control-label">Kinh nghiệm</label>
                             <div class="cols-sm-10">
-	                            <?php $experience = \app\library\helper\Cons::$experience; ?>
+	                            <?php $experience = \app\library\helper\Dropdowns::$experience; ?>
 	                            <?= $form->field($candidate, 'experience', [
 		                            'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-list-ol"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'

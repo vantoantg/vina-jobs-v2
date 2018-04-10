@@ -19,12 +19,19 @@ var Main = function () {
             // this.ajaxCallback();
         },
         events: function () {
-            $('.job-select2').select2({
-                // placeholder: 'Select an option'
-            });
+            var select2 = $('.job-select2');
+            if(select2.length){
+                select2.each(function () {
+                    var _this = $(this);
+                    _this.select2({
+                        placeholder: _this.data('placeholder')
+                    });
+                });
+            }
 
-            $(".js-example-tokenizer").select2({
+            $(".select-tags").select2({
                 tags: true,
+                placeholder: 'Select an option',
                 tokenSeparators: [',', ' ']
             })
 
