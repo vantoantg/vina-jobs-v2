@@ -32,7 +32,7 @@
         <h2 class="title-widget-sidebar">Giờ làm việc</h2>
         <div class="content-widget-sidebar">
 			<?php
-			$data = \app\library\helper\Cons::$working_time;
+			$data = \app\library\helper\Dropdowns::$working_time;
 			?>
             <ul>
 				<?php
@@ -47,7 +47,7 @@
         <h2 class="title-widget-sidebar">Mức lương</h2>
         <div class="content-widget-sidebar">
 			<?php
-            $data = \app\library\helper\Cons::$experience
+            $data = \app\library\helper\Dropdowns::$experience
 			?>
             <ul>
                 <?php
