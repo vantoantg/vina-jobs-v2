@@ -50,7 +50,7 @@ Helper::generateSeo($page);
                 </div>
                 <div class="col-xs-6">
                     <?php
-                    $loca = \app\models\Locations::getLocations();
+                    $loca = \app\models\Locations::getAll();
                     ?>
                     <?= $form->field($model, 'address')->dropDownList(\yii\helpers\ArrayHelper::map($loca, 'id', 'name'),
 	                    [

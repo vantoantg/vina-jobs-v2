@@ -103,6 +103,10 @@ var Common = {
         str = str.replace(/\W+/g, ' ');
         str = str.replace(/\s/g, '-');
         return str;
+    },
+    buildUrl: function(base, key, value) {
+        var sep = (base.indexOf('?') > -1) ? '&' : '?';
+        return base + sep + key + '=' + value;
     }
 
 };

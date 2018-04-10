@@ -11,6 +11,7 @@ namespace app\models;
 class Locations extends \app\models\base\Locations
 {
     /**
+     *
      * @return array|\yii\db\ActiveRecord[]
      */
     public static function getLocations()

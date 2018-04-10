@@ -151,7 +151,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <label for="email" class="cols-sm-2 control-label">Tỉnh / TP</label>
                             <div class="cols-sm-10">
                                 <?php
-                                $loca = \app\models\Locations::getLocations();
+                                $loca = \app\models\Locations::getAll();
                                 ?>
                                 <?= $form->field($userDetail, 'city_id', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-map-pin"

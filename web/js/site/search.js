@@ -17,16 +17,16 @@ var Search = function(){
         events: function(){
             var _timer = 2000;
 
-            Form.on('change', function () {
+            /*Form.on('change', function () {
                 clearTimeout($.data(this, 'timer'));
                 $(this).data('timer', setTimeout(search, _timer));
-            });
+            });*/
 
-            function search() {
+            /*function search() {
                 Service.postCallback(siteUrl+'search-jobs.html', {'data': Form.serialize()}, function (data) {
                     console.log(data);
                 });
-            }
+            }*/
         }
     }
 }();
