@@ -283,6 +283,9 @@ button {
   height: 40px;
   top: 0;
 }
+.widget-sidebar.jobs {
+  padding-right: 0;
+}
 .widget-sidebar.jobs ul li {
   list-style: none;
 }

@@ -16,17 +16,18 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="container <?= $page->slug; ?>">
-	<div class="col-12 col-sm-4">
+	<div class="col-12 col-sm-3">
 		<div class="row">
             <?= (new \app\components\SidebarWidget())->searchResultJobs(); ?>
 		</div>
 	</div>
 
-	<div class="col-12 col-sm-8 search-results">
+	<div class="col-12 col-sm-9 search-results">
 		<div class="row">
-			<h2>Có 365 kết quả</h2>
-			<div class="row jobs">
-				<div class="col-md-12">
+			<div class="jobs">
+				<div class="pd-right-0 col-xs-12">
+					<h2>CÓ 365 KẾT QUẢ</h2>
+
 					<div class="job-posts table-responsive">
 						<table class="table list-jobs">
 							<tr class="odd wow fadeInUp" data-wow-delay="1s">
