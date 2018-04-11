@@ -30,7 +30,7 @@ AppAsset::register($this);
 
 	<link rel="shortcut icon" type="image/png" href="<?= \app\library\helper\Helper::homeUrl() ?>favicon.ico"/>
 
-	<!-- Jetpack Open Graph Tags -->
+	<!-- Vina - Jobs -->
 	<meta property="og:type" content="Tìm kiếm việc làm"/>
 	<meta property="og:title" content="<?= Html::encode($this->title) ?>"/>
 	<meta property="og:url" content="<?= \app\library\helper\Helper::siteURL() ?>"/>
@@ -46,7 +46,7 @@ AppAsset::register($this);
 	<meta name="twitter:text:title" content="<?= Html::encode($this->title) ?>"/>
 	<meta name="twitter:image" content="<?= \app\library\helper\Helper::homeUrl() ?>favicon.ico?w=240"/>
 	<meta name="twitter:card" content="summary"/>
-	<meta name="twitter:creator" content="Viet Nam Jobs"/>
+	<meta name="twitter:creator" content="Vina - Jobs"/>
 	<meta name="twitter:description" content="<?= Yii::$app->params['seo']['description'] ?>"/>
 	<meta property="article:publisher" content="https://www.facebook.com/vina-jobs.com"/>
 
@@ -58,11 +58,9 @@ AppAsset::register($this);
        data-page-current="<?= Yii::$app->controller->module->id . '/' . Yii::$app->controller->id ?>"
 >
 <?php $this->beginBody() ?>
-<div id="preloader">
-	<div id="status">&nbsp;</div>
-</div>
-<!-- Body content -->
+<div id="preloader"><div id="status">&nbsp;</div></div>
 
+<!-- Body content -->
 <div class="header-connect">
     <?= $this->render('//layouts/jobs/header'); ?>
 </div>
@@ -73,7 +71,7 @@ AppAsset::register($this);
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
 			        data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span>
+				<span class="sr-only">&nbsp;</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
@@ -141,7 +139,9 @@ AppAsset::register($this);
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
 </nav>
+
 <?= $content ?>
+
 <?= (new \app\components\UserWidget())->optionsRegister() ?>
 <?= (new \app\components\UserWidget())->login() ?>
 
