@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\library\helper\Cons;
+use app\library\helper\Helper;
 use app\library\helper\Role;
 use yii\base\Security;
 use yii\web\IdentityInterface;
@@ -43,7 +44,8 @@ class Users extends \app\models\base\User implements IdentityInterface
     {
         return [
             [['name', 'email', 'password', 'repassword', 'iread'], 'required'],
-            [['role', 'archive', 'type', 'status'], 'integer'],
+            ['iread', 'checkIsRead'],
+            [['role', 'archive', 'type', 'status', 'iread'], 'integer'],
             [['attributes', 'avatar'], 'string'],
             [['username', 'name'], 'string', 'max' => 32],
             [['email', 'avatar_url'], 'string', 'max' => 255],
@@ -64,7 +66,7 @@ class Users extends \app\models\base\User implements IdentityInterface
     {
         $scenarios = parent::scenarios();
         $scenarios[self::SCENARIO_UPDATE] = ['name'];
-        $scenarios[self::SCENARIO_REGISTER] = ['name', 'email', 'password', 'repassword'];
+        $scenarios[self::SCENARIO_REGISTER] = ['name', 'iread', 'email', 'password', 'repassword'];
         return $scenarios;
     }
 
@@ -97,6 +99,15 @@ class Users extends \app\models\base\User implements IdentityInterface
 
 	        'as_employers' => 'Như là nhà tuyển dụng'
         ];
+    }
+
+    public function checkIsRead($attribute, $params)
+    {
+        $title = \Yii::$app->params['siteName'];
+        $policyUrl = Helper::siteURL();
+        if (!$this->iread) {
+            $this->addError($this->attributes, 'Bạn chưa đồng ý với <a href="'.$policyUrl.'" target="_blank" title="'.$title.'">quy định</a> của ' . \Yii::$app->params['siteName']);
+        }
     }
 
 	/**
