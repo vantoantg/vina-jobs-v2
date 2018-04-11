@@ -73,17 +73,15 @@ Helper::generateSeo($page);
 	<div class="container">
 		<div class="row page-title text-center wow zoomInDown" data-wow-delay="1s">
 			<h5>Niềm vui của chúng tôi</h5>
-			<h2>Là sự hài lòng của bạn.</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae illum dolorem, rem officia, id explicabo
-                sapiente</p>
+			<h2>Là sự hài lòng của bạn</h2>
+            <p> Nếu bạn muốn phát triển, hãy tìm kiếm một cơ hội thật tốt. Nếu bạn muốn có một công ty lớn, bạn hãy nghĩ đến những vấn đề mà bạn phải đối mặt trước khi nghĩ đến thành công – Jack Ma</p>
 		</div>
 		<div class="row how-it-work text-center">
 			<div class="col-md-4">
 				<div class="single-work wow fadeInUp" data-wow-delay="0.8s">
 					<img src="<?= Helper::homeUrl() ?>web/template/jobs/img/how-work1.png" alt="">
 					<h3>Hướng đến sự đơn giản</h3>
-					<p>Trang web không đòi hỏi đăng kí phức tạp. Các tính năng rõ ràng thuận tiện thao tác cho cả những ai không
-					nắm nhiều kiến thức về máy tính.</p>
+					<p>Trang web không đòi hỏi đăng kí phức tạp. Các tính năng rõ ràng thuận tiện thao tác cho cả những ai không nắm nhiều kiến thức về máy tính.</p>
 				</div>
 			</div>
 			<div class="col-md-4">

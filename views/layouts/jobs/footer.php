@@ -3,8 +3,7 @@
         <div class="col-md-5">
             <div class="single-footer">
                 <img src="<?= \app\library\helper\Helper::homeUrl()?>web/template/jobs/img/logo-ft.png" alt="" class="wow pulse" style="max-height: 60px" data-wow-delay="1s">
-                <p>Vina-Jobs được xây dựng dựa trên nhu cầu tìm kiếm việc làm của các bạn trẻ và nhu cầu tìm kiếm nguồn nhân lực của
-                các công ti. Với mong muốn là cầu nối giữa các doanh nghiệp và nguồn lao động chúng tôi sẽ nỗ lực hết sức để làm hài lòng
+                <p>Vina-Jobs được xây dựng dựa trên nhu cầu tìm kiếm việc làm của các bạn trẻ và nhu cầu tìm kiếm nguồn nhân lực của các công ty. Với mong muốn là cầu nối giữa các doanh nghiệp và nguồn lao động chúng tôi sẽ nỗ lực hết sức để làm hài lòng
                 các bạn.</p>
             </div>
         </div>
@@ -24,7 +23,7 @@
     </div>
     <div class="row footer-copy">
         <p style="text-align: center">
-            <span>&#169; VINA_JOBS 2018, All rights reserved.</span>
+            <span>&#169; <?= Yii::$app->params['siteName']; ?> 2018, All rights reserved.</span>
         </p>
     </div>
 </div><!-- ./container -->
