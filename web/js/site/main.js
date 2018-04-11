@@ -177,12 +177,23 @@ var Main = function () {
 
                 var search = function () {
                     var url = searchJobs.serializeArray();
-                    console.log($.param(url));
-                    history.pushState(null, null, '?' + url);
-                    var newUrl = _rootUrl + 'search/result.html?'+ url;
-                    if(loaded){
+                    var makeUrl = {};
+                    if (url) {
+                        $.each(url, function (k, v) {
+                            console.log(v.name, v.value);
+                            if (makeUrl[v.name]) {
+                                makeUrl[v.name] = makeUrl[v.name] + ',' + v.value;
+                            } else {
+                                makeUrl[v.name] = v.value;
+                            }
+                        })
+                    }
+                    var _hash = $.param(makeUrl);
+                    history.pushState(null, null, '?' + _hash);
+                    var newUrl = _rootUrl + 'search/result.html?' + _hash;
+                    if (loaded) {
                         loaded = false;
-                        Service.postCallback(newUrl, {'data': searchJobs.serialize()}, function (data) {
+                        Service.getCallback(newUrl, function (data) {
                             // console.log(data);
                             loaded = true;
                         });

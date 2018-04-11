@@ -22,7 +22,7 @@ use yii\db\Exception;
  */
 class Email
 {
-    public static function sendMail($subject = 'Subject', $body){
+    public static function sendMail($subject = 'Subject', $body, $toEmail = 'nguyennguyen.vt88@gmail.com', $toName = 'Tona Nguyễn'){
 	    $mail = new PHPMailer();                              // Passing `true` enables exceptions
 	    try {
 		    $mail->SMTPDebug = 0;
@@ -40,8 +40,8 @@ class Email
 		    $mail->Port = 25;                                    // TCP port to connect to
 
 		    //Recipients
-		    $mail->setFrom('system@vina-jobs.com', 'Viet Nam Jobs');
-		    $mail->addAddress('nguyennguyen.vt88@gmail.com', 'Joe User');     // Add a recipient
+		    $mail->setFrom('system@vina-jobs.com', \Yii::$app->params['siteName']);
+		    $mail->addAddress($toEmail, $toName);     // Add a recipient
 //		    $mail->addAddress('admin@vina-jobs.com');               // Name is optional
 		    $mail->addReplyTo('noreply@vina-jobs.com', 'noreply ');
 //		    $mail->addCC('cc@example.com');

@@ -1,2 +1,13 @@
+DATA REFERENCE:
 https://www.vietnamworks.com/tim-viec-lam  => list catagory jobs
 https://viblo.asia/p/training-lap-trinh-vien-phat-trien-su-nghiep-nhu-the-nao-ByEZk3JYZQ0
+
+
+
+TODO:
+- Traffic info(keywords,jobs,local) user search
+- Send email confirm
+- Add field - hạn nộp hồ sơ
+- Company upload some image, clip to intro
+
+- Admin: when approve or reject should send email confirm or report to user/contact

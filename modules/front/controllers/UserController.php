@@ -46,7 +46,7 @@ class UserController extends FrontController
 		$data['name'] = 'Name test';
 		$data['link'] = Url::to('/candidate/active/token/' . \Yii::$app->getSecurity()->generateRandomString() . '.html', true);
 		$temp = $this->renderPartial('@app/mail/layouts/active_user_register', ['data' => $data]);
-//		Email::sendMail('Instructions to activate your account - ' . Helper::siteURL(), $temp);
+//		Email::sendMail('Test email - ' . Helper::siteURL(), $temp);
 		// End test mail
 
 
@@ -103,7 +103,7 @@ class UserController extends FrontController
                     $temp = $this->renderPartial('@app/mail/layouts/active_user_register', ['data' => $data]);
 
                     // TODO: comment out
-                    Email::sendMail('Instructions to activate your account - ' . Helper::siteURL(), $temp);
+//                    Email::sendMail('Instructions to activate your account - ' . Helper::siteURL(), $temp);
                 } else {
                     $transaction->rollBack();
                 }
@@ -130,8 +130,9 @@ class UserController extends FrontController
 	public function actionRegisterCompany()
 	{
 		$errors = [];
-		$dropdowns = new Dropdown();
-		$gender = $dropdowns->getDropdown(Dropdown::TYPE_GENDER);
+
+		// TODO: remove  this class
+//		$dropdowns = new Dropdown();
 
 		$model = new Users();
 		$model->scenario = Users::SCENARIO_REGISTER;
@@ -179,7 +180,12 @@ class UserController extends FrontController
 				$temp = $this->renderPartial('@app/mail/layouts/active_company_register', ['data' => $data]);
 
 				// TODO: comment out
-//	            Email::sendMail('Register account - '. Helper::siteURL(), $temp);
+//	            Email::sendMail('Register account - '. Yii::$app->params['siteName'], $temp);
+
+                // Send email when register success
+                $data['homeUrl'] = Helper::siteURL();
+                $temp = $this->renderPartial('@app/mail/layouts/company_register_success', ['data' => $data]);
+	            Email::sendMail('Register account - '. Yii::$app->params['siteName'], $temp, $model->email, $model->name);
 			}
 
             return $this->render('register_company_success', [
@@ -198,7 +204,6 @@ class UserController extends FrontController
 			'com' => $com,
 			'errors' => $errors,
 
-			'gender' => $gender
 		]);
 	}
 
@@ -420,7 +425,7 @@ class UserController extends FrontController
 				$model->password = md5($_POST['Ganti']['password']);
 				$model->token = "null";
 				$model->save();
-				Yii::app()->user->setFlash('ganti', '<b>Password has been successfully changed! please login</b>');
+				Yii::$app->user->setFlash('ganti', '<b>Password has been successfully changed! please login</b>');
 				$this->redirect('?r=site/login');
 				$this->refresh();
 			}

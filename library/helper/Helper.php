@@ -495,7 +495,7 @@ class Helper
     public static function titleSeo($page)
     {
         /** @var $page Pages */
-        return $page->seo_title . ' | ' . self::siteURL();
+        return $page->seo_title . ' | Vina - Jobs';
     }
 
     /**
