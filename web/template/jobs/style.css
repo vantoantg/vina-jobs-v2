@@ -622,7 +622,7 @@ body {
 }
 
 .footer {
-    padding: 0px 0 80px 0;
+    padding: 0px 0 40px 0;
 }
 
 .single-footer {
@@ -642,7 +642,8 @@ body {
     color: #fff;
     font-weight: 700;
     margin-top: 0px;
-    margin-bottom: 45px
+    margin-bottom: 30px;
+    padding-top: 25px;
 }
 
 .single-footer h5 {
