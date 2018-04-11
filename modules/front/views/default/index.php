@@ -27,12 +27,7 @@ Helper::generateSeo($page);
 				<h2>TÌM KIẾM CÔNG VIỆC TRỞ NÊN <br> DỄ DÀNG HƠN</h2>
 				<p>Đăng kí tìm việc và tạo công việc đơn giản. Nhận email phù hợp với mục đích đăng kí.</p>
 				<div class="search-form wow pulse" data-wow-delay="0.8s">
-                    <?php $form = ActiveForm::begin(['action' => Helper::createUrl(['site/search']), 'options' => ['class' => 'form-inline']]); ?>
-                    <?= $form->field($search, 'keys', [
-                        'template' => '{input}'
-                    ])->textInput(['placeholder' => 'Nhập từ khóa...'])->label(false) ?>
-
-                    <form id="top-search" class="form-inline" action="/search/result.html" method="get">
+                    <form id="top-search" class="form-inline" action="<?= Helper::createUrl(['site/search']) ?>" method="get">
                         <div class="form-group field-searchform-keywords">
                             <input type="text" name="keywords" id="searchform-keys" class="form-control"
                                    placeholder="Nhập từ khóa..." aria-invalid="false">
@@ -79,6 +74,8 @@ Helper::generateSeo($page);
 		<div class="row page-title text-center wow zoomInDown" data-wow-delay="1s">
 			<h5>Niềm vui của chúng tôi</h5>
 			<h2>Là sự hài lòng của bạn.</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae illum dolorem, rem officia, id explicabo
+                sapiente</p>
 		</div>
 		<div class="row how-it-work text-center">
 			<div class="col-md-4">
@@ -376,6 +373,16 @@ Helper::generateSeo($page);
 						</div>
 						<div class="client-face">
 							<img src="<?= Helper::homeUrl() ?>web/template/jobs/img/client-face1.png" alt="">
+						</div>
+					</div>
+					<div class="item">
+						<div class="client-text">
+							<p>Jobify offer an amazing service and I couldn’t be happier! They
+								are dedicated to helping recruiters find great candidates, wonderful service!</p>
+							<h4><strong>Ohidul Islam, </strong><i>Web Designer</i></h4>
+						</div>
+						<div class="client-face">
+							<img src="<?= Helper::homeUrl() ?>web/template/jobs/img/client-face2.png" alt="">
 						</div>
 					</div>
 				</div>
