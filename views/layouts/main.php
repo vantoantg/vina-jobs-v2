@@ -117,7 +117,7 @@ AppAsset::register($this);
 					        data-target="#register-modal" data-wow-delay="0.6s">Đăng ký
 					</button>
 					<button class="navbar-btn nav-button wow bounceInRight login" data-toggle="modal"
-					        data-target="#login-modal" data-wow-delay="0.8s">Đăng nhập
+					        data-target="#login-modal" data-wow-delay="0.6s">Đăng nhập
 					</button>
                 <?php } ?>
 			</div>

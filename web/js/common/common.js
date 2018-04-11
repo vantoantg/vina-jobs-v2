@@ -107,7 +107,8 @@ var Common = {
     buildUrl: function(base, key, value) {
         var sep = (base.indexOf('?') > -1) ? '&' : '?';
         return base + sep + key + '=' + value;
-    }
+    },
+
 
 };
 

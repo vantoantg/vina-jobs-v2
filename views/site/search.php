@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container <?= $page->slug; ?>">
 	<div class="col-12 col-sm-3">
 		<div class="row">
-            <?= (new \app\components\SidebarWidget())->searchResultJobs($_url); ?>
+            <?= (new \app\components\SidebarWidget())->searchResultJobs($_url, $queryParams); ?>
 		</div>
 	</div>
 

@@ -18,6 +18,7 @@ var Main = function () {
             this.initDatepicker();
             this.initCropit();
             this.initFirstLoadSearchJobsPage();
+            this.handleTopSearch();
             this.initSearchJobsPage();
             // this.ajaxCallback();
         },
@@ -165,6 +166,32 @@ var Main = function () {
                 });
             }
         },
+        createUrlParams: function (formData) {
+            var makeUrl = {};
+            if (formData) {
+                $.each(formData, function (k, v) {
+                    if (makeUrl[v.name]) {
+                        makeUrl[v.name] = makeUrl[v.name] + ',' + v.value;
+                    } else {
+                        makeUrl[v.name] = v.value;
+                    }
+                })
+            }
+            return $.param(makeUrl);
+        },
+        handleTopSearch: function () {
+            var topSearch = $('#top-search');
+            if(topSearch.length){
+                var action = topSearch.attr('action');
+                topSearch.on('click', 'input.search', function (e) {
+                    e.preventDefault();
+                    var formData = topSearch.serializeArray();
+                    var _hash = Main.createUrlParams(formData);
+                    topSearch.attr('action', action+'?'+ _hash);
+                    topSearch.submit();
+                });
+            }
+        },
         initSearchJobsPage: function () {
             var searchJobs = $('#search-jobs');
             if(searchJobs.length){
@@ -176,9 +203,11 @@ var Main = function () {
                     search();
                 });
 
-                $('input', searchJobs).on('ifChecked', function(event){
+                $('input', searchJobs).on('ifClicked', function(event){
                     search();
                 });
+
+
 
                 $('select', searchJobs).on('change', function(event){
                     search();
@@ -186,18 +215,8 @@ var Main = function () {
 
                 var search = function () {
                     var loaded = true;
-                    var url = searchJobs.serializeArray();
-                    var makeUrl = {};
-                    if (url) {
-                        $.each(url, function (k, v) {
-                            if (makeUrl[v.name]) {
-                                makeUrl[v.name] = makeUrl[v.name] + ',' + v.value;
-                            } else {
-                                makeUrl[v.name] = v.value;
-                            }
-                        })
-                    }
-                    var _hash = $.param(makeUrl);
+                    var formData = searchJobs.serializeArray();
+                    var _hash = Main.createUrlParams(formData);
                     history.pushState(null, null, '?' + _hash);
                     var newUrl = _rootUrl + 'search/result.html?' + _hash;
                     if (loaded) {
