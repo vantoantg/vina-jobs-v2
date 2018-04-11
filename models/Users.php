@@ -34,6 +34,7 @@ class Users extends \app\models\base\User implements IdentityInterface
     public $repassword;
     public $new_password;
     public $renew_password;
+    public $iread;
 
     /**
      * @inheritdoc
@@ -41,7 +42,7 @@ class Users extends \app\models\base\User implements IdentityInterface
     public function rules()
     {
         return [
-            [['name', 'email', 'password', 'repassword'], 'required'],
+            [['name', 'email', 'password', 'repassword', 'iread'], 'required'],
             [['role', 'archive', 'type', 'status'], 'integer'],
             [['attributes', 'avatar'], 'string'],
             [['username', 'name'], 'string', 'max' => 32],
@@ -91,6 +92,7 @@ class Users extends \app\models\base\User implements IdentityInterface
             'lang' => 'Lang',
             'timezone' => 'Timezone',
             'attributes' => 'Attributes',
+            'iread' => 'Tôi đã đọc',
             'status' => 'Status',
 
 	        'as_employers' => 'Như là nhà tuyển dụng'
