@@ -83,13 +83,12 @@ class SiteController extends Controller
      *
      */
     public function actionSearch(){
-        $keys = Yii::$app->request->get('keys');
-	    if(\Yii::$app->request->isAjax){
-		    echo '<pre>';
-		    print_r(\Yii::$app->request->queryParams);
-		    echo '</pre>';
-		    die;
-	    }
+        $params = \Yii::$app->request->queryParams;
+
+
+	    if(Yii::$app->request->isAjax){
+	        return $this->asJson($params);
+        }
 
         return $this->render('search');
     }
