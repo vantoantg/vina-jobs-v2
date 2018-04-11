@@ -23,7 +23,7 @@
 ?>
 
 <div class="widget-sidebar jobs pd-left-0">
-    <form id="search-jobs">
+    <form id="search-jobs" action="<?= $_url ?>" method="get">
         <h2 class="title-widget-sidebar">TÌM VIỆC LÀM</h2>
         <div class="content-widget-sidebar">
             <input name="keywords" class="form-control keywords" placeholder="Nhập từ khóa">

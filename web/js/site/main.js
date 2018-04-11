@@ -17,6 +17,7 @@ var Main = function () {
             this.blog();
             this.initDatepicker();
             this.initCropit();
+            this.initFirstLoadSearchJobsPage();
             this.initSearchJobsPage();
             // this.ajaxCallback();
         },
@@ -155,10 +156,18 @@ var Main = function () {
             Service.postCallback(_rootUrl + 'front/default/callback?client='+random, {}, function (res) {
             });
         },
+        initFirstLoadSearchJobsPage: function () {
+            var searchJobs = $('#search-jobs');
+            if(searchJobs.length){
+                Service.getCallback(searchJobs.attr('action'), function (data) {
+                    // console.log(data);
+
+                });
+            }
+        },
         initSearchJobsPage: function () {
             var searchJobs = $('#search-jobs');
             if(searchJobs.length){
-                var loaded = true;
                 // var url = Common.buildUrl('http://localhost/search/result.html', 'keywords', $(this).val());
                 // history.pushState(null, null, '/en/step2');
 
@@ -176,11 +185,11 @@ var Main = function () {
                 });
 
                 var search = function () {
+                    var loaded = true;
                     var url = searchJobs.serializeArray();
                     var makeUrl = {};
                     if (url) {
                         $.each(url, function (k, v) {
-                            console.log(v.name, v.value);
                             if (makeUrl[v.name]) {
                                 makeUrl[v.name] = makeUrl[v.name] + ',' + v.value;
                             } else {
