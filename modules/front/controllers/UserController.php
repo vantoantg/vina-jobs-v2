@@ -185,7 +185,7 @@ class UserController extends FrontController
                 // Send email when register success
                 $data['homeUrl'] = Helper::siteURL();
                 $temp = $this->renderPartial('@app/mail/layouts/company_register_success', ['data' => $data]);
-	            Email::sendMail('Register account - '. Yii::$app->params['siteName'], $temp, $model->email, $model->name);
+//	            Email::sendMail('Register account - '. Yii::$app->params['siteName'], $temp, $model->email, $model->name);
 			}
 
             return $this->render('register_company_success', [

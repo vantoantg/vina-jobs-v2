@@ -45,7 +45,7 @@ SENTORA SERVER:
  MySQL Roundcube Password : I8obIR5ZwnPhqysL
    (theses passwords are saved in /root/passwords.txt)
 ########################################################
-vina-jobs.com => /var/zpanel/hostdata/zadmin/public_html/vina-jobs_com#
+vina-jobs.com => /var/zpanel/hostdata/zadmin/public_html/vina-jobs_com
 email: system@vina-jobs.com/12345678090
 ########################################################
 

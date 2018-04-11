@@ -49,9 +49,10 @@ class SidebarWidget extends Widget
     }
 
 
-    public function searchResultJobs(){
+    public function searchResultJobs($_url, $queryParams){
         return $this->render('sidebar/search_result_jobs', [
-
+            '_url' => $_url,
+            'queryParams' => $queryParams,
         ]);
     }
 }

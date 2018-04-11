@@ -17,6 +17,8 @@ var Main = function () {
             this.blog();
             this.initDatepicker();
             this.initCropit();
+            this.initFirstLoadSearchJobsPage();
+            this.handleTopSearch();
             this.initSearchJobsPage();
             // this.ajaxCallback();
         },
@@ -155,10 +157,44 @@ var Main = function () {
             Service.postCallback(_rootUrl + 'front/default/callback?client='+random, {}, function (res) {
             });
         },
+        initFirstLoadSearchJobsPage: function () {
+            var searchJobs = $('#search-jobs');
+            if(searchJobs.length){
+                Service.getCallback(searchJobs.attr('action'), function (data) {
+                    // console.log(data);
+
+                });
+            }
+        },
+        createUrlParams: function (formData) {
+            var makeUrl = {};
+            if (formData) {
+                $.each(formData, function (k, v) {
+                    if (makeUrl[v.name]) {
+                        makeUrl[v.name] = makeUrl[v.name] + ',' + v.value;
+                    } else {
+                        makeUrl[v.name] = v.value;
+                    }
+                })
+            }
+            return $.param(makeUrl);
+        },
+        handleTopSearch: function () {
+            var topSearch = $('#top-search');
+            if(topSearch.length){
+                var action = topSearch.attr('action');
+                topSearch.on('click', 'input.search', function (e) {
+                    e.preventDefault();
+                    var formData = topSearch.serializeArray();
+                    var _hash = Main.createUrlParams(formData);
+                    topSearch.attr('action', action+'?'+ _hash);
+                    topSearch.submit();
+                });
+            }
+        },
         initSearchJobsPage: function () {
             var searchJobs = $('#search-jobs');
             if(searchJobs.length){
-                var loaded = true;
                 // var url = Common.buildUrl('http://localhost/search/result.html', 'keywords', $(this).val());
                 // history.pushState(null, null, '/en/step2');
 
@@ -167,28 +203,20 @@ var Main = function () {
                     search();
                 });
 
-                $('input', searchJobs).on('ifChecked', function(event){
+                $('input', searchJobs).on('ifClicked', function(event){
                     search();
                 });
+
+
 
                 $('select', searchJobs).on('change', function(event){
                     search();
                 });
 
                 var search = function () {
-                    var url = searchJobs.serializeArray();
-                    var makeUrl = {};
-                    if (url) {
-                        $.each(url, function (k, v) {
-                            console.log(v.name, v.value);
-                            if (makeUrl[v.name]) {
-                                makeUrl[v.name] = makeUrl[v.name] + ',' + v.value;
-                            } else {
-                                makeUrl[v.name] = v.value;
-                            }
-                        })
-                    }
-                    var _hash = $.param(makeUrl);
+                    var loaded = true;
+                    var formData = searchJobs.serializeArray();
+                    var _hash = Main.createUrlParams(formData);
                     history.pushState(null, null, '?' + _hash);
                     var newUrl = _rootUrl + 'search/result.html?' + _hash;
                     if (loaded) {

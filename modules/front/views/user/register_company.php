@@ -204,7 +204,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
 
                 <div class="form-group ">
-                    Tôi đã đọc và đồng ý chính sách của <a href="<?= \app\library\helper\Helper::createUrl(['site/policy'])?>"><?= \app\library\helper\Helper::siteURL()?></a>
+	                Các chính sách và quy địn của <?= Yii::$app->params['siteName']; ?> <a href="<?= \app\library\helper\Helper::siteURL()?>">tại đây</a>
+                    <?= $form->field($model, 'iread', [
+                        'template' => '{input}'
+                    ])->checkbox(['class' => 'iCheck'])->label(false) ?>
                 </div>
 
                 <div class="form-group ">

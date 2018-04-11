@@ -4,7 +4,9 @@ namespace app\controllers;
 
 use app\library\helper\Helper;
 use app\models\Auth;
+use app\models\Job;
 use app\models\LoginForm;
+use app\models\search\JobCustomSearch;
 use app\models\Users;
 use Codeception\Lib\ParamsLoader;
 use Symfony\Component\Translation\Loader\FileLoader;
@@ -80,17 +82,28 @@ class SiteController extends Controller
 
 
     /**
-     *
+     * @return string|Response
      */
-    public function actionSearch(){
-        $params = \Yii::$app->request->queryParams;
+    public function actionSearch()
+    {
+        $queryParams = Yii::$app->request->queryParams;
 
+        if (Yii::$app->request->isAjax) {
+            $searchModel = new JobCustomSearch();
+            $dataProvider = $searchModel->search($queryParams);
+            $dataProvider->pagination->pageSize = 10;
+            $data = [
+                'datas' => $dataProvider->getModels(),
+                'pagination' => $dataProvider->pagination
+            ];
 
-	    if(Yii::$app->request->isAjax){
-	        return $this->asJson($params);
+            return $this->asJson($data);
         }
 
-        return $this->render('search');
+        return $this->render('search', [
+            '_url' => Yii::$app->request->getUrl(),
+            'queryParams' => $queryParams,
+        ]);
     }
 
     /**
