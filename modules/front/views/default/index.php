@@ -221,8 +221,7 @@ Helper::generateSeo($page);
                     <table class="table list-jobs">
                         <tr class="odd wow fadeInUp" data-wow-delay="1s">
                             <td class="tbl-logo">
-                                <a href="#"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo1.png"
-                                                 alt=""></a>
+                                <a href="#"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo1.png" alt=""></a>
                             </td>
                             <td class="tbl-title">
                                 <h4><a href="#">Web Designer</a> <br><span class="job-type">full time</span></h4>
@@ -235,8 +234,7 @@ Helper::generateSeo($page);
                             <td class="tbl-apply"><a href="#">Apply now</a></td>
                         </tr>
                         <tr class="even wow fadeInUp" data-wow-delay="1.1s">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo2.png"
-                                                      alt=""></td>
+                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo2.png" alt=""></td>
                             <td class="tbl-title"><h4>Front End Developer <br><span class="job-type">full time</span>
                                 </h4></td>
                             <td><p>Jolil corporation</p></td>
@@ -245,8 +243,7 @@ Helper::generateSeo($page);
                             <td class="tbl-apply"><a href="#">Apply now</a></td>
                         </tr>
                         <tr class="odd wow fadeInUp" data-wow-delay="1.2s">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo3.png"
-                                                      alt=""></td>
+                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo3.png" alt=""></td>
                             <td class="tbl-title"><h4>HR Manager <br><span class="job-type">full time</span></h4></td>
                             <td><p>Fanta bevarage</p></td>
                             <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
@@ -254,8 +251,7 @@ Helper::generateSeo($page);
                             <td class="tbl-apply"><a href="#">Apply now</a></td>
                         </tr>
                         <tr class="even wow fadeInUp" data-wow-delay="1.3s">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo4.png"
-                                                      alt=""></td>
+                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo4.png" alt=""></td>
                             <td class="tbl-title"><h4>Internship Designer <br><span class="job-type">full time</span>
                                 </h4></td>
                             <td><p>Google</p></td>
@@ -264,8 +260,7 @@ Helper::generateSeo($page);
                             <td class="tbl-apply"><a href="#">Apply now</a></td>
                         </tr>
                         <tr class="odd wow fadeInUp" data-wow-delay="1.4s">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo5.png"
-                                                      alt=""></td>
+                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo5.png" alt=""></td>
                             <td class="tbl-title"><h4>Software Designer <br><span class="job-type">full time</span></h4>
                             </td>
                             <td><p>Microsoft</p></td>
@@ -274,8 +269,7 @@ Helper::generateSeo($page);
                             <td class="tbl-apply"><a href="#">Apply now</a></td>
                         </tr>
                         <tr class="even hide-jobs">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo4.png"
-                                                      alt=""></td>
+                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo4.png" alt=""></td>
                             <td class="tbl-title"><h4>Internship Designer <br><span class="job-type">full time</span>
                                 </h4></td>
                             <td><p>Google</p></td>
@@ -284,8 +278,7 @@ Helper::generateSeo($page);
                             <td class="tbl-apply"><a href="#">Apply now</a></td>
                         </tr>
                         <tr class="odd hide-jobs">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo5.png"
-                                                      alt=""></td>
+                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo5.png" alt=""></td>
                             <td class="tbl-title"><h4>Software Designer <br><span class="job-type">full time</span></h4>
                             </td>
                             <td><p>Microsoft</p></td>
@@ -316,13 +309,13 @@ Helper::generateSeo($page);
                     </table>
                 </div>
                 <div class="more-jobs">
-                    <a href=""> <i class="fa fa-refresh"></i>View more jobs</a>
+                    <a href=""><i class="fa fa-refresh"></i>Xem thêm</a>
                 </div>
             </div>
             <div class="col-md-3 hidden-sm">
                 <div class="job-add wow fadeInRight" data-wow-delay="1.5s">
-                    <h2>Seeking a job?</h2>
-                    <a href="#">Create a Account</a>
+                    <h2>Tìm việc ?</h2>
+                    <a href="#" data-toggle="modal" data-target="#register-modal">TẠO TÀI KHOẢN</a>
                 </div>
             </div>
         </div>
