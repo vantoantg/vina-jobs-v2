@@ -25,6 +25,13 @@ Helper::generateSeo($page);
                 <p>Hãy liệt kế tất cả các chính sách đang có, và cơ hội cho hấp dẫn, để có thể thu hút ứng viên apply vào các vị trí mà công ty muốn tuyển.</p>
             </div>
 
+            <?php if (Yii::$app->session->hasFlash('success')): ?>
+		        <div class="alert alert-success alert-dismissable">
+			        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+			        <i class="icon fa fa-check"></i> <?= Yii::$app->session->getFlash('success') ?>
+		        </div>
+            <?php endif; ?>
+
             <?php $form = ActiveForm::begin(); ?>
 
             <?= $form->field($model, 'title') ?>

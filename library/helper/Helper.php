@@ -542,11 +542,11 @@ class Helper
             'convertVideoLinks' => true,
             'imageUpload' => ['/web/uploads/image'],
             'fileUpload' => ['/web/uploads/file'],
-            'plugins' => ['clips', 'fontcolor', 'imagemanager'],
+            'plugins' => ['fontcolor', 'fontsize', 'fontfamily', 'fullscreen', 'table', 'video', 'counter', 'textdirection', 'clips'],
             'toolbar' => true,
             'buttons' => [
                 'html',
-                'format',
+//                'format',
                 'formatting',
                 'lists',
                 'bold',

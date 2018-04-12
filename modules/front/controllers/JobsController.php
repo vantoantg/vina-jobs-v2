@@ -52,6 +52,7 @@ class JobsController extends FrontController
             $model->status = Job::STATUS_ACTIVE;
 
             if ($model->save()) {
+                Yii::$app->session->setFlash('success', "Tin tuyển dụng đã được lưu.");
                 $url = Yii::$app->getUrlManager()->createUrl(['front/jobs/edit-jobs', 'id' => $model->id]);
                 return $this->redirect($url);
             }
@@ -77,9 +78,10 @@ class JobsController extends FrontController
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
+
             $this->refresh();
         }
-
+        Yii::$app->session->setFlash('success', "Tin tuyển dụng đã được cập nhật.");
         return $this->render('jobs', [
             'model' => $model,
         ]);
