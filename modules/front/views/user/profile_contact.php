@@ -10,7 +10,7 @@ use \app\library\helper\Helper;
 /* @var $searchModel app\models\search\User */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Common::currentUser('name');
+$this->title = Common::currentUser('profile-contact');
 $this->params['breadcrumbs'][] = $this->title;
 
 /** @var $userInfo \app\models\UserDetails $userInfo */
@@ -26,20 +26,18 @@ $userInfo = \app\models\UserDetails::getInfo();
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <!-- Nav tabs -->
+
             <div class="card">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
-                                                              data-toggle="tab">Thông tin nguời liên hệ</a></li>
-                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Tin
-                            đã đăng</a></li>
-                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Ứng
-                            viên đang theo dõi</a></li>
+                    <li role="presentation" class="active">
+	                    <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Thông tin nguời liên hệ</a></li>
+                    <li role="presentation"><a href="#company" aria-controls="company" role="tab" data-toggle="tab">Thông tin công ty</a></li>
+                    <li role="presentation"><a href="#jobs" aria-controls="jobs" role="tab" data-toggle="tab">Tin đã đăng</a></li>
+                    <li role="presentation"><a href="#candidate" aria-controls="candidate" role="tab" data-toggle="tab">Ứng viên đang theo dõi</a></li>
                 </ul>
 
-                <!-- Tab panes -->
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="home">
+                    <div role="tabpanel" class="tab-pane active" id="profile">
                         <div class="row">
                             <div class="col-xs-12 toppad wow fadeInUp" data-wow-delay="0.5s">
                                 <div class="panel panel-info">
@@ -111,7 +109,79 @@ $userInfo = \app\models\UserDetails::getInfo();
                             </div>
                         </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="profile">
+                    <div role="tabpanel" class="tab-pane" id="company">
+                        <div class="row">
+                            <div class="col-xs-12 toppad wow fadeInUp" data-wow-delay="0.5s">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title"><?= Common::currentUser('name') ?></h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class=" col-md-9 col-lg-9">
+                                                <table class="table table-user-information">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>Department:</td>
+                                                        <td>
+                                                            <img alt="User Pic" src="<?= Helper::webImgs(Common::currentUser('avatar')); ?>" class="img-circle img-responsive"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Department:</td>
+                                                        <td>Programming</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Đăng ký:</td>
+                                                        <td><?= $userInfo->registration_date; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Sinh nhật</td>
+                                                        <td><?= $userInfo->birthday; ?></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                    <tr>
+                                                        <td>Giới tính</td>
+                                                        <td>Female</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Địa chỉ</td>
+                                                        <td><?= $userInfo->address; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Email</td>
+                                                        <td>
+                                                            <a href="mailto:<?= $userInfo->email ?>"><?= $userInfo->email ?></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Điện thoại</td>
+                                                        <td><?= $userInfo->phone; ?></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <a href="#" class="btn btn-primary">My Sales Performance</a>
+                                                <a href="#" class="btn btn-primary">Team Sales Performance</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                                        <span class="pull-right">
+                                            <a href="<?= Helper::createUrl(['company/update.html']) ?>"
+                               data-original-title="Edit this user" data-toggle="tooltip" type="button"
+                               class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a href="<?= Helper::createUrl(['front/user/logout']) ?>" data-original-title="Logout"
+                               data-toggle="tooltip" type="button"
+                               class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="jobs">
                         <div class="col-xs-12 jobs">
                             <div class="job-posts table-responsive">
                                 <table class="table list-jobs">
@@ -192,7 +262,7 @@ $userInfo = \app\models\UserDetails::getInfo();
                             </div>
                         </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="messages">
+                    <div role="tabpanel" class="tab-pane" id="candidate">
                         <div class="col-xs-12 jobs">
                             <div class="job-posts table-responsive">
                                 <table class="table list-jobs">
