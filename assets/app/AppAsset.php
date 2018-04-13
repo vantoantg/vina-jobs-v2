@@ -17,11 +17,11 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
 //        'web/css/site.css',
-        'http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800',
-        'http://fonts.googleapis.com/css?family=Roboto',
-        'http://fonts.googleapis.com/css?family=Lato:400,700',
+//        'http://fonts.googleapis.com/css?family=Roboto',
+//        'http://fonts.googleapis.com/css?family=Lato:400,700',
+	    'web/template/jobs/fontawesome-free-5.0.10/web-fonts-with-css/css/fontawesome-all.css',
+	    'web/template/jobs/css/gg-opensans/css.css',
         'web/template/jobs/css/normalize.css',
-        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
         'web/template/jobs/css/fontello.css',
         'web/template/jobs/css/animate.css',
         'web/template/jobs/css/bootstrap.min.css',
