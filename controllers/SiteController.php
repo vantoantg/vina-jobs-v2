@@ -87,6 +87,7 @@ class SiteController extends Controller
     public function actionSearch()
     {
         $queryParams = Yii::$app->request->queryParams;
+		// TODO: save $queryParams (JSON) to strafic user want ...?
 
         if (Yii::$app->request->isAjax) {
             $searchModel = new JobCustomSearch();

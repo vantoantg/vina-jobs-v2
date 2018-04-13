@@ -148,7 +148,7 @@ $dropdowns = new Dropdown();
 							<label for="email" class="cols-sm-2 control-label">Điện thoại liên hệ<span class="text-danger"> (*)</span></label>
 							<div class="cols-sm-10">
 								<?= $form->field($userDetail, 'phone', [
-									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-mobile-phone"
+									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-mobile-alt"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
 								])->label(false) ?>
 							</div>
@@ -210,7 +210,7 @@ $dropdowns = new Dropdown();
 							<div class="cols-sm-10">
 								<?php $gender = \app\library\helper\Dropdowns::$gender; ?>
 								<?= $form->field($userDetail, 'gender', [
-									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-intersex"
+									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-transgender"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
 								])->dropDownList($gender)->label(false) ?>
 							</div>

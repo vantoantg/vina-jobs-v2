@@ -5,6 +5,10 @@ body {
 body.modal-open {
   padding-right: 0!important;
 }
+.pd-lr-0 {
+  padding-left: 0!important;
+  padding-right: 0!important;
+}
 .pd-left-0 {
   padding-left: 0!important;
 }
@@ -13,6 +17,9 @@ body.modal-open {
 }
 .w100 {
   width: 100%;
+}
+.navbar-collapse.in {
+  overflow-y: hidden!important;
 }
 .loginmodal-container {
   padding: 30px;
@@ -349,7 +356,9 @@ footer {
 }
 footer .footerleft {
   margin-top: 50px;
-  padding: 0 36px;
+}
+footer .footerleft p {
+  text-align: justify;
 }
 footer .logofooter {
   margin-bottom: 10px;
@@ -388,7 +397,7 @@ footer .footer-ul i {
 }
 footer .footer-ul li a:hover {
   transition: color 0.2s linear 0s, background 0.2s linear 0s;
-  color: #ff670f;
+  color: #00AEEF;
 }
 footer .social:hover {
   -webkit-transform: scale(1.1);
@@ -409,6 +418,12 @@ footer .icon {
   float: left;
   margin-right: 5px;
 }
+footer blockquote {
+  border-left-color: #00AEEF;
+}
+footer blockquote a:hover {
+  text-decoration: none;
+}
 .copyright {
   min-height: 40px;
   background-color: #000000;
@@ -425,10 +440,14 @@ footer .icon {
   color: #d9d6d6;
   margin-bottom: 22px;
 }
-.post p {
+.post p,
+.post a {
   font-size: 12px;
   color: #FFF;
   line-height: 20px;
+}
+.post a:hover {
+  color: #00AEEF;
 }
 .post p span {
   display: block;
@@ -452,4 +471,26 @@ footer .icon {
 .bottom_ul li a {
   color: #FFF;
   font-size: 12px;
+}
+#back-to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 9999;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  line-height: 30px;
+  background: #00AEEF;
+  color: #FFF;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s ease-out;
+  opacity: 0;
+}
+#back-to-top:hover {
+  background: #e9ebec;
+}
+#back-to-top.show {
+  opacity: 1;
 }

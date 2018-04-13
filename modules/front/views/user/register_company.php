@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 				            <div class="cols-sm-10">
                                 <?= $form->field($com, 'website', [
-                                    'template' => '{label}<div class="input-group"><span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>{input}</div>{error}{hint}'
+                                    'template' => '{label}<div class="input-group"><span class="input-group-addon"><i class="fa fa-link" aria-hidden="true"></i></span>{input}</div>{error}{hint}'
                                 ])->textInput(['placeholder' => 'Website']) ?>
 				            </div>
 
@@ -173,7 +173,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				            <div class="cols-sm-10">
                                 <?php $gender = \app\library\helper\Dropdowns::$gender; ?>
                                 <?= $form->field($userDetail, 'gender', [
-                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-intersex"
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-transgender"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
                                 ])->dropDownList($gender)->label(false) ?>
 				            </div>
@@ -195,7 +195,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				            <label for="email" class="cols-sm-2 control-label">Điện thoại liên hệ</label>
 				            <div class="cols-sm-10">
                                 <?= $form->field($userDetail, 'phone', [
-                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-mobile-phone"
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-mobile-alt"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
                                 ])->label(false) ?>
 				            </div>

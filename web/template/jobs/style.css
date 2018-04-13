@@ -179,7 +179,7 @@ body {
     background: #fff
 }
 
-.search-form {
+.search-form.top {
     background-color: #fff;
     /*border-radius: 5px;*/
     padding: 20px 0;
@@ -682,10 +682,6 @@ body {
 .footer-copy span a {
     color: #00aeef;
     font-weight: 800;
-}
-
-body {
-    overflow: hidden;
 }
 
 #blog-section {
