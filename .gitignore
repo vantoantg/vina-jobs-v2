@@ -2,8 +2,8 @@
 .idea
 #/config/db.php
 assets/*
-node_modules/*
-!assets/app/*
+/node_modules
+!/assets/app
 /vendor
 # netbeans project files
 nbproject

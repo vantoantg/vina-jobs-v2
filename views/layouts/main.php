@@ -58,8 +58,6 @@ if(YII_DEBUG){
        data-page-current="<?= Yii::$app->controller->module->id . '/' . Yii::$app->controller->id ?>"
 >
 <?php $this->beginBody() ?>
-<div id="preloader"><div id="status">&nbsp;</div></div>
-
 <!-- Body content -->
 <div class="header-connect">
     <?= $this->render('//layouts/jobs/header'); ?>
