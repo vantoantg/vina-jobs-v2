@@ -25,7 +25,7 @@ Helper::generateSeo($page);
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
 				<h2>TÌM KIẾM CÔNG VIỆC TRỞ NÊN <br> DỄ DÀNG HƠN</h2>
-				<p>Đăng kí tìm việc và tạo công việc đơn giản. Nhận email phù hợp với mục đích đăng kí.</p>
+				<p>Đăng ký tìm việc và tạo công việc tốt thật đơn giản và tiện lợi. Đăng ký nhận email phù hợp với mục đích đăng ký.</p>
 				<div class="search-form wow pulse" data-wow-delay="0.2s">
                     <form id="top-search" class="form-inline" action="<?= Helper::createUrl(['site/search']) ?>" method="get">
                         <div class="form-group field-searchform-keywords">
@@ -74,18 +74,18 @@ Helper::generateSeo($page);
 		<div class="row page-title text-center wow zoomInDown" data-wow-delay="0.2s">
 			<h5>Niềm vui của chúng tôi</h5>
 			<h2>Là sự hài lòng của bạn</h2>
-            <p> Nếu bạn muốn phát triển, hãy tìm kiếm một cơ hội thật tốt. Nếu bạn muốn có một công ty lớn, bạn hãy nghĩ đến những vấn đề mà bạn phải đối mặt trước khi nghĩ đến thành công – Jack Ma</p>
+            <p>Sử dụng các kết quả từ công việc, chúng tôi sẽ đưa ra một kế hoạch cho chiến lược tiếp thị hiệu quả nhất để có được kết quả tốt nhất.</p>
 		</div>
 		<div class="row how-it-work text-center">
 			<div class="col-md-4">
-				<div class="single-work wow fadeInUp" data-wow-delay="0.8s">
+				<div class="single-work wow fadeInUp" data-wow-delay="0.7s">
 					<img src="<?= Helper::homeUrl() ?>web/template/jobs/img/how-work1.png" alt="">
 					<h3>Hướng đến sự đơn giản</h3>
-					<p>Trang web không đòi hỏi đăng kí phức tạp. Các tính năng rõ ràng thuận tiện thao tác cho cả những ai không nắm nhiều kiến thức về máy tính.</p>
+					<p>Website không đòi hỏi đăng ký quá phức tạp. Các tính năng rõ ràng thuận tiện thao tác cho cả những ai không nắm nhiều kiến thức về máy tính.</p>
 				</div>
 			</div>
 			<div class="col-md-4">
-				<div class="single-work  wow fadeInUp" data-wow-delay="0.9s">
+				<div class="single-work  wow fadeInUp" data-wow-delay="0.8s">
 					<img src="<?= Helper::homeUrl() ?>web/template/jobs/img/how-work2.png" alt="">
 					<h3>Tạo sự thỏa mãn</h3>
 					<p>Luôn chọn lọc công việc và ứng viên phù hợp nhất để gửi đến bạn. Không spam mail với những tin nhắn quảng cáo
@@ -93,7 +93,7 @@ Helper::generateSeo($page);
 				</div>
 			</div>
 			<div class="col-md-4">
-				<div class="single-work wow fadeInUp" data-wow-delay="1s">
+				<div class="single-work wow fadeInUp" data-wow-delay="0.9s">
 					<img src="<?= Helper::homeUrl() ?>web/template/jobs/img/how-work3.png" alt="">
 					<h3>Luôn luôn tức thời</h3>
 					<p>Thông tin sẽ cập nhật tức thời khi có một công việc hoặc ứng viên phù hợp với nhu cầu của bạn. Bạn có thể trao đổi
@@ -196,7 +196,7 @@ Helper::generateSeo($page);
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="#">
                                     <img src="<?= Helper::homeUrl() ?>web/template/jobs/img/employee3.png" alt="">
                                     <div class="overlay"><h3>Twitter</h3></div>
                                 </a>
@@ -308,12 +308,12 @@ Helper::generateSeo($page);
                         </tr>
                     </table>
                 </div>
-                <div class="more-jobs">
-                    <a href=""><i class="fa fa-refresh"></i>Xem thêm</a>
+                <div class="more-jobs text-center">
+                    <a href=""><i class="fa fa-download"></i>Xem thêm</a>
                 </div>
             </div>
             <div class="col-md-3 hidden-sm">
-                <div class="job-add wow fadeInRight" data-wow-delay="1.5s">
+                <div class="job-add wow fadeInRight" data-wow-delay="1s">
                     <h2>Tìm việc ?</h2>
                     <a href="#" data-toggle="modal" data-target="#register-modal">TẠO TÀI KHOẢN</a>
                 </div>

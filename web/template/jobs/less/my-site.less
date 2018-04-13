@@ -1,10 +1,13 @@
 /****** LOGIN MODAL ******/
 body{ overflow-y: auto;}
 body.modal-open{ padding-right: 0!important;}
+.pd-lr-0{ padding-left: 0!important; padding-right: 0!important;}
 .pd-left-0{ padding-left: 0!important;}
 .pd-right-0{ padding-right: 0!important;}
 .w100{ width: 100%}
-
+.navbar-collapse.in{
+	overflow-y: hidden!important;
+}
 .loginmodal-container {
 	padding: 30px;
 	max-width: 350px;
@@ -371,7 +374,11 @@ table.table.list-jobs{
 
 footer {
 	background-color:#0c1a1e; min-height:350px; font-family: 'Open Sans', sans-serif;
-	.footerleft { margin-top:50px; padding:0 36px; }
+	.footerleft { margin-top:50px;
+		p{
+			text-align: justify;
+		}
+	}
 	.logofooter { margin-bottom:10px; font-size:25px; color:#fff; font-weight:700;}
 
 	.footerleft p { color:#fff; font-size:12px !important; font-family: 'Open Sans', sans-serif; margin-bottom:15px;}
@@ -383,7 +390,7 @@ footer {
 	.footer-ul li { line-height:29px; font-size:12px;}
 	.footer-ul li a { color:#a0a3a4; transition: color 0.2s linear 0s, background 0.2s linear 0s; }
 	.footer-ul i { margin-right:10px;}
-	.footer-ul li a:hover {transition: color 0.2s linear 0s, background 0.2s linear 0s; color:#ff670f; }
+	.footer-ul li a:hover {transition: color 0.2s linear 0s, background 0.2s linear 0s; color:#00AEEF; }
 
 	.social:hover {
 		-webkit-transform: scale(1.1);
@@ -394,7 +401,11 @@ footer {
 	.icon-ul { list-style-type:none !important; margin:0px; padding:0px;}
 	.icon-ul li { line-height:75px; width:100%; float:left;}
 	.icon { float:left; margin-right:5px;}
-
+	blockquote{ border-left-color: #00AEEF;
+		a:hover{
+			text-decoration: none;
+		}
+	}
 }
 
 .copyright { min-height:40px; background-color:#000000;}
@@ -406,3 +417,26 @@ footer {
 .bottom_ul li { float:left; line-height:40px;}
 .bottom_ul li:after { content:"/"; color:#FFF; margin-right:8px; margin-left:8px;}
 .bottom_ul li a { color:#FFF;  font-size:12px;}
+
+#back-to-top {
+	position: fixed;
+	bottom: 40px;
+	right: 40px;
+	z-index: 9999;
+	width: 32px;
+	height: 32px;
+	text-align: center;
+	line-height: 30px;
+	background: #00AEEF;
+	color: #FFF;
+	cursor: pointer;
+	text-decoration: none;
+	transition: opacity 0.2s ease-out;
+	opacity: 0;
+}
+#back-to-top:hover {
+	background: #e9ebec;
+}
+#back-to-top.show {
+	opacity: 1;
+}

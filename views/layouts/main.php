@@ -114,7 +114,7 @@ if(YII_DEBUG){
 					<button class="navbar-btn nav-button wow fadeInRight" data-toggle="modal"
 					        data-target="#register-modal" data-wow-delay="0.6s">Đăng ký
 					</button>
-					<button class="navbar-btn nav-button wow bounceInRight login" data-toggle="modal"
+					<button class="navbar-btn nav-button wow fadeInRight login" data-toggle="modal"
 					        data-target="#login-modal" data-wow-delay="0.6s">Đăng nhập
 					</button>
                 <?php } ?>
