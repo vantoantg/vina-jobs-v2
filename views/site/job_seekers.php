@@ -16,8 +16,49 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="container">
     <div class="row page-title text-center wow bounce"  data-wow-delay="1s">
-        <h5>Recent Jobs</h5>
-        <h2><span>54716</span> Available jobs for you</h2>
+        <h5>Tất cả các ứng viên</h5>
+        <h2><span>54.716</span> ứng viên đã đăng hồ sơ tìm việc</h2>
+    </div>
+    <div class="row text-center">
+        <div class="search-form wow pulse" data-wow-delay="0.8s">
+            <form id="employeers-search" class="form-inline" action="<?= Helper::createUrl(['site/search']) ?>"
+                  method="get">
+                <div class="form-group field-searchform-keywords">
+                    <input type="text" name="keywords" id="searchform-keys" class="form-control"
+                           placeholder="Nhập từ khóa..." aria-invalid="false">
+                </div>
+
+                <div class="form-group field-searchform-jobs">
+				    <?php
+				    $data = \app\models\JobCategories::categoriesMenus();
+				    ?>
+                    <select class="job-select2 form-control" name="jobs">
+                        <option value="0">-- Chọn --</option>
+					    <?php
+					    foreach ($data as $datum) {
+						    echo '<option value="' . $datum['id'] . '">' . $datum['name'] . '</option>';
+					    }
+					    ?>
+                    </select>
+                </div>
+
+                <div class="form-group field-searchform-loca">
+				    <?php
+				    $data = \app\models\Locations::getAll();
+				    ?>
+                    <select class="job-select2 form-control" name="loca">
+                        <option value="0">-- Chọn --</option>
+					    <?php
+					    foreach ($data as $datum) {
+						    echo '<option value="' . $datum['id'] . '">' . $datum['name'] . '</option>';
+					    }
+					    ?>
+                    </select>
+                </div>
+
+                <input type="submit" class="btn search" value="TÌM">
+            </form>
+        </div>
     </div>
     <div class="row jobs">
         <div class="col-md-9">

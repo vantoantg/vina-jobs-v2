@@ -9431,7 +9431,7 @@ body {
     background: #fff
 }
 
-.search-form {
+.search-form.top {
     background-color: #fff;
     /*border-radius: 5px;*/
     padding: 20px 0;
@@ -11576,10 +11576,14 @@ footer blockquote a:hover {
   color: #d9d6d6;
   margin-bottom: 22px;
 }
-.post p {
+.post p,
+.post a {
   font-size: 12px;
   color: #FFF;
   line-height: 20px;
+}
+.post a:hover {
+  color: #00AEEF;
 }
 .post p span {
   display: block;

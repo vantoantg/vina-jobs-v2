@@ -179,7 +179,7 @@ body {
     background: #fff
 }
 
-.search-form {
+.search-form.top {
     background-color: #fff;
     /*border-radius: 5px;*/
     padding: 20px 0;

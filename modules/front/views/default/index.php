@@ -26,7 +26,7 @@ Helper::generateSeo($page);
 			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
 				<h2>TÌM KIẾM CÔNG VIỆC TRỞ NÊN <br> DỄ DÀNG HƠN</h2>
 				<p>Đăng ký tìm việc và tạo công việc tốt thật đơn giản và tiện lợi. Đăng ký nhận email phù hợp với mục đích đăng ký.</p>
-				<div class="search-form wow pulse" data-wow-delay="0.2s">
+				<div class="search-form top wow pulse" data-wow-delay="0.2s">
                     <form id="top-search" class="form-inline" action="<?= Helper::createUrl(['site/search']) ?>" method="get">
                         <div class="form-group field-searchform-keywords">
                             <input type="text" name="keywords" id="searchform-keys" class="form-control"

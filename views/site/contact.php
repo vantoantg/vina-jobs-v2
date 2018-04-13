@@ -40,7 +40,9 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php else: ?>
 
                 <p>
-	                Nếu bạn có yêu cầu kinh doanh hoặc các câu hỏi khác, vui lòng điền vào mẫu dưới đây để liên hệ với chúng tôi. Cảm ơn bạn.
+	                - Nếu bạn có yêu cầu kinh doanh hoặc các câu hỏi khác, vui lòng điền vào mẫu dưới đây để liên hệ với chúng tôi.
+                    <br>
+                    - Hoặc bạn cũng có thể góp ý để website càng hoàn thiện tốt hơn, có thể phục vụ nhu cầu tuyển dụng và tìm việc. Cảm ơn bạn.
                 </p>
 
                 <div class="row">
@@ -65,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]) ?>
 
                         <div class="form-group">
-                            <?= Html::submitButton('Gửi',
+                            <?= Html::submitButton('Gửi đi',
                                 ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
                         </div>
 

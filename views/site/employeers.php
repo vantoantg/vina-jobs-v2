@@ -11,8 +11,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="container">
     <div class="row page-title text-center wow bounce" data-wow-delay="1s">
-        <h5>Recent Jobs</h5>
-        <h2><span>54716</span> Available jobs for you</h2>
+        <h5>Tin của nhà tuyển dụng</h5>
+        <h2><span>54.716</span> việc làm sẵn có cho bạn</h2>
     </div>
     <div class="row text-center">
         <div class="search-form wow pulse" data-wow-delay="0.8s">
@@ -55,6 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </form>
         </div>
     </div>
+
     <div class="row jobs">
         <div class="col-md-9">
             <div class="job-posts table-responsive">
@@ -149,14 +150,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     </tr>
                 </table>
             </div>
-            <div class="more-jobs">
-                <a href=""> <i class="fa fa-refresh"></i>View more jobs</a>
+            <div class="more-jobs text-center">
+                <a href=""><i class="fa fa-download"></i>Xem thêm</a>
             </div>
         </div>
         <div class="col-md-3 hidden-sm">
-            <div class="job-add wow fadeInRight" data-wow-delay="1.5s">
-                <h2>Seeking a job?</h2>
-                <a href="#">Create a Account</a>
+            <div class="job-add wow fadeInRight" data-wow-delay="1s">
+                <h2>Tìm việc ?</h2>
+                <a href="#" data-toggle="modal" data-target="#register-modal">TẠO TÀI KHOẢN</a>
             </div>
         </div>
     </div>
