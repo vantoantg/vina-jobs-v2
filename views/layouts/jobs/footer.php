@@ -11,7 +11,7 @@
 
 			</div>
 			<div class="col-md-2 col-sm-6 paddingtop-bottom">
-				<h6 class="heading7">Bạn muốn</h6>
+				<h6 class="heading7">BẠN MUỐN</h6>
 				<ul class="footer-ul">
 					<li><a href="#"> Đăng tin tìm việc</a></li>
 					<li><a href="#"> Đăng tin tuyển dụng</a></li>
@@ -23,11 +23,12 @@
 				</ul>
 			</div>
 			<div class="col-md-3 col-sm-6 paddingtop-bottom">
-				<h6 class="heading7">LATEST POST</h6>
+				<h6 class="heading7">CÁC VIỆC LÀM MỚI</h6>
 				<div class="post">
-					<p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
-					<p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
-					<p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+					<p>Tuyển lập trình backend - 3 năm kinh nghiệm - Công ty LOCKON VN<span>Hạn nộp HS: 01/06</span></p>
+					<p>Tuyển lập trình fontend - biết react<span>Hạn nộp HS: 01/06</span></p>
+					<p>Tuyển lập trình backend - 3 năm kinh nghiệm <span>Hạn nộp HS: 15/06</span></p>
+					<p>Tuyển lập trình backend - 3 năm kinh nghiệm <span>Hạn nộp HS: 01/06</span></p>
 				</div>
 			</div>
 			<div class="col-md-3 col-sm-6 paddingtop-bottom">
