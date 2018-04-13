@@ -120,18 +120,18 @@ if(YII_DEBUG){
                 <?php } ?>
 			</div>
 			<ul class="main-nav nav navbar-nav navbar-right">
-				<li class="wow fadeInDown" data-wow-delay="0s">
+				<li class="wow fadeInUp" data-wow-delay="0s">
 					<a class="<?= Helper::active('front/default/index') ?>" href="<?= Helper::createUrl(['front/default/index']) ?>">Trang chủ</a></li>
-				<li class="wow fadeInDown" data-wow-delay="0.1s">
+				<li class="wow fadeInUp" data-wow-delay="0s">
 					<a class="<?= Helper::active('site/job-seekers') ?>" href="<?= Helper::createUrl(['site/job-seekers']) ?>">Người tìm việc</a></li>
-				<li class="wow fadeInDown" data-wow-delay="0.2s">
+				<li class="wow fadeInUp" data-wow-delay="0s">
 					<a class="<?= Helper::active('site/employeers') ?>" href="<?= Helper::createUrl(['site/employeers']) ?>">Nhà tuyển dụng</a></li>
-				<li class="wow fadeInDown" data-wow-delay="0.3s">
+				<li class="wow fadeInUp" data-wow-delay="0s">
 					<a class="<?= Helper::active('site/about-us') ?>" href="<?= Helper::createUrl(['site/about-us']) ?>">Giới thiệu</a></li>
-				<li class="wow fadeInDown" data-wow-delay="0.4s">
+				<li class="wow fadeInUp" data-wow-delay="0s">
 					<a class="<?= Helper::active('site/blog') ?>" href="<?= Helper::createUrl(['site/blog']) ?>">Blog</a>
 				</li>
-				<li class="wow fadeInDown" data-wow-delay="0.5s">
+				<li class="wow fadeInUp" data-wow-delay="0s">
 					<a class="<?= Helper::active('site/contact') ?>" href="<?= Helper::createUrl(['site/contact']) ?>">Liên hệ</a></li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
