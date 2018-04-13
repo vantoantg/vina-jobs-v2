@@ -26,7 +26,7 @@ Helper::generateSeo($page);
 			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
 				<h2>TÌM KIẾM CÔNG VIỆC TRỞ NÊN <br> DỄ DÀNG HƠN</h2>
 				<p>Đăng kí tìm việc và tạo công việc đơn giản. Nhận email phù hợp với mục đích đăng kí.</p>
-				<div class="search-form wow pulse" data-wow-delay="0.8s">
+				<div class="search-form wow pulse" data-wow-delay="0.2s">
                     <form id="top-search" class="form-inline" action="<?= Helper::createUrl(['site/search']) ?>" method="get">
                         <div class="form-group field-searchform-keywords">
                             <input type="text" name="keywords" id="searchform-keys" class="form-control"
@@ -71,7 +71,7 @@ Helper::generateSeo($page);
 
 <div class="content-area">
 	<div class="container">
-		<div class="row page-title text-center wow zoomInDown" data-wow-delay="1s">
+		<div class="row page-title text-center wow zoomInDown" data-wow-delay="0.2s">
 			<h5>Niềm vui của chúng tôi</h5>
 			<h2>Là sự hài lòng của bạn</h2>
             <p> Nếu bạn muốn phát triển, hãy tìm kiếm một cơ hội thật tốt. Nếu bạn muốn có một công ty lớn, bạn hãy nghĩ đến những vấn đề mà bạn phải đối mặt trước khi nghĩ đến thành công – Jack Ma</p>
@@ -105,14 +105,14 @@ Helper::generateSeo($page);
 	<hr>
 
     <div class="container">
-        <div class="row job-posting wow fadeInUp" data-wow-delay="1s">
+        <div class="row job-posting wow fadeInUp" data-wow-delay="0.2s">
             <div role="tabpanel">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#job-seekers" aria-controls="home" role="tab"
-                                                              data-toggle="tab">Người tìm việc</a></li>
-                    <li role="presentation"><a href="#employeers" aria-controls="profile" role="tab" data-toggle="tab">Nhà
-                            tuyển dụng</a></li>
+                    <li role="presentation" class="active">
+	                    <a href="#job-seekers" aria-controls="home" role="tab" data-toggle="tab">Người tìm việc</a></li>
+                    <li role="presentation">
+	                    <a href="#employeers" aria-controls="profile" role="tab" data-toggle="tab">Nhà tuyển dụng</a></li>
                 </ul>
 
                 <!-- Tab panes -->
@@ -219,7 +219,7 @@ Helper::generateSeo($page);
             <div class="col-md-9">
                 <div class="job-posts table-responsive">
                     <table class="table list-jobs">
-                        <tr class="odd wow fadeInUp" data-wow-delay="1s">
+                        <tr class="odd wow fadeInUp" data-wow-delay="0.1s">
                             <td class="tbl-logo">
                                 <a href="#"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo1.png" alt=""></a>
                             </td>
@@ -233,7 +233,7 @@ Helper::generateSeo($page);
                             <td><p>&dollar; 14000</p></td>
                             <td class="tbl-apply"><a href="#">Apply now</a></td>
                         </tr>
-                        <tr class="even wow fadeInUp" data-wow-delay="1.1s">
+                        <tr class="even wow fadeInUp" data-wow-delay="0.2s">
                             <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo2.png" alt=""></td>
                             <td class="tbl-title"><h4>Front End Developer <br><span class="job-type">full time</span>
                                 </h4></td>
@@ -242,7 +242,7 @@ Helper::generateSeo($page);
                             <td><p>&dollar; 14000</p></td>
                             <td class="tbl-apply"><a href="#">Apply now</a></td>
                         </tr>
-                        <tr class="odd wow fadeInUp" data-wow-delay="1.2s">
+                        <tr class="odd wow fadeInUp" data-wow-delay="0.3s">
                             <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo3.png" alt=""></td>
                             <td class="tbl-title"><h4>HR Manager <br><span class="job-type">full time</span></h4></td>
                             <td><p>Fanta bevarage</p></td>
@@ -250,7 +250,7 @@ Helper::generateSeo($page);
                             <td><p>&dollar; 14000</p></td>
                             <td class="tbl-apply"><a href="#">Apply now</a></td>
                         </tr>
-                        <tr class="even wow fadeInUp" data-wow-delay="1.3s">
+                        <tr class="even wow fadeInUp" data-wow-delay="0.4s">
                             <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo4.png" alt=""></td>
                             <td class="tbl-title"><h4>Internship Designer <br><span class="job-type">full time</span>
                                 </h4></td>
@@ -259,7 +259,7 @@ Helper::generateSeo($page);
                             <td><p>&dollar; 14000</p></td>
                             <td class="tbl-apply"><a href="#">Apply now</a></td>
                         </tr>
-                        <tr class="odd wow fadeInUp" data-wow-delay="1.4s">
+                        <tr class="odd wow fadeInUp" data-wow-delay="0.5s">
                             <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo5.png" alt=""></td>
                             <td class="tbl-title"><h4>Software Designer <br><span class="job-type">full time</span></h4>
                             </td>
