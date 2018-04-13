@@ -9,5 +9,8 @@ TODO:
 - Send email confirm
 - Add field - hạn nộp hồ sơ
 - Company upload some image, clip to intro
+- Khi user login:
+    + là candidate thì những chỗ có widget hoặc tin liên quan nên show tin của company
+    + là contact of company thì những chỗ có widget hoặc tin liên quan nên show những candidate(có thể có catogory giống với company đó, hoặc những lĩnh vực và user đã từng search)
 
 - Admin: when approve or reject should send email confirm or report to user/contact
