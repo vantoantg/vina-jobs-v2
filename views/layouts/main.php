@@ -4,15 +4,15 @@
 
 /* @var $content string */
 
-use app\widgets\Alert;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use app\assets\app\AppAsset;
+use app\assets\app\AppProdAsset;
 use \app\library\helper\Helper;
-
-AppAsset::register($this);
+if(YII_DEBUG){
+    AppAsset::register($this);
+}else{
+	AppProdAsset::register($this);
+}
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
