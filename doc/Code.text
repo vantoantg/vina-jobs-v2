@@ -10,6 +10,8 @@ php yii migrate
 php yii migrate/create table_name
 php yii migrate/update table_name
 
+GRUNT-js:
+
 
 http://www.bsourcecode.com/2013/04/render-and-renderpartial-in-yii/#renderPartial
 
