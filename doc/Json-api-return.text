@@ -1,0 +1,48 @@
+google:
+Array
+        (
+            [kind] => plus#person
+            [etag] => "EhMivDE25UysA1ltNG8tqFM2v-A/67v32i6vXPrugsCQEg3MtJy4-xA"
+            [gender] => male
+            [emails] => Array
+                (
+                    [0] => Array
+                        (
+                            [value] => nguyennguyen.vt88@gmail.com
+                            [type] => account
+                        )
+
+                )
+
+            [urls] => Array
+                (
+                    [0] => Array
+                        (
+                            [value] => http://vina-jobs.com
+                            [type] => other
+                            [label] => Jobs
+                        )
+
+                )
+
+            [objectType] => person
+            [id] => 116648607673290367110
+            [displayName] => Tona Nguyễn
+            [name] => Array
+                (
+                    [familyName] => Nguyễn
+                    [givenName] => Tona
+                )
+
+            [url] => https://plus.google.com/116648607673290367110
+            [image] => Array
+                (
+                    [url] => https://lh6.googleusercontent.com/-gIWTrccPI6g/AAAAAAAAAAI/AAAAAAAAU9s/fuDXB0jXBms/photo.jpg?sz=50
+                    [isDefault] =>
+                )
+
+            [isPlusUser] => 1
+            [language] => en
+            [circledByCount] => 98
+            [verified] =>
+        )

@@ -21,17 +21,21 @@ class Auth extends \yii\db\ActiveRecord
     {
         $clientId = $client->getId();
         $userAttributes = $client->getUserAttributes();
-        $this->email = $userAttributes['email'];
-
         switch ($clientId) {
             case 'facebook':
+	            $this->email = $userAttributes['email'];
                 return $this->userFacebook($userAttributes);
 
             case 'twitter':
+	            $this->email = $userAttributes['email'];
                 return $this->userTwitter($userAttributes);
 
             case 'github':
+	            $this->email = $userAttributes['email'];
                 return $this->userGitHub($userAttributes);
+	        case 'google':
+		        $this->email = $userAttributes['emails'][0]['value'];
+		        return $this->userGoogle($userAttributes);
         }
     }
 
@@ -63,11 +67,50 @@ class Auth extends \yii\db\ActiveRecord
         if ($user) {
             \Yii::$app->user->login(Users::findOne($user->id));
         } else {
+	        $transaction = \Yii::$app->db->beginTransaction();
             $user = $this->newUser($userData);
+	        if($user){
+		        $userDetail = UserDetails::checkAndCreateUser($user->id);
+		        $userDetail->setNames($userData['name']);
+		        if($userDetail->update()){
+			        $transaction->commit();
+		        }else{
+			        $transaction->rollBack();
+		        }
+	        }
             \Yii::$app->user->login(Users::findOne($user->id));
         }
         return true;
     }
+
+	/**
+	 * @param array $userData
+	 * @return bool
+	 */
+	public function userGoogle($userData = []){
+		$this->userType = Users::USER_TYPE_GOOGLE;
+
+		$user = Users::find()->where(['email' => $this->email])->one();
+		if ($user) {
+			\Yii::$app->user->login(Users::findOne($user->id));
+		} else {
+			$userData['name'] = $userData['displayName'];
+			$userData['avatar_url'] = $userData['image']['url'];
+			$transaction = \Yii::$app->db->beginTransaction();
+			$user = $this->newUser($userData);
+			if($user){
+				$userDetail = UserDetails::checkAndCreateUser($user->id);
+				$userDetail->setNames($userData['name']);
+				if($userDetail->update()){
+					$transaction->commit();
+				}else{
+					$transaction->rollBack();
+				}
+			}
+			\Yii::$app->user->login(Users::findOne($user->id));
+		}
+		return true;
+	}
 
     /**
      * @param $userData
@@ -83,7 +126,17 @@ class Auth extends \yii\db\ActiveRecord
             \Yii::$app->user->login(Users::findOne($user->id));
         } else {
             // Save session attribute user from FB
+	        $transaction = \Yii::$app->db->beginTransaction();
             $user = $this->newUser($userData);
+	        if($user){
+		        $userDetail = UserDetails::checkAndCreateUser($user->id);
+		        $userDetail->setNames($userData['name']);
+		        if($userDetail->update()){
+			        $transaction->commit();
+		        }else{
+			        $transaction->rollBack();
+		        }
+	        }
             \Yii::$app->user->login(Users::findOne($user->id));
         }
 
@@ -96,6 +149,7 @@ class Auth extends \yii\db\ActiveRecord
      */
     public function newUser($userData){
         $model = new Users();
+        $model->scenario = Users::SCENARIO_UPDATE;
         $model->username = $this->email;
         $model->email = $this->email;
         $model->generateAuthKey();
@@ -104,11 +158,14 @@ class Auth extends \yii\db\ActiveRecord
         $model->avatar_url = isset($userData['avatar_url']) ? $userData['avatar_url'] : null;
         $model->attributes = json_encode($userData);
         $model->type = $this->userType;
-        $model->save();
+        if($model->save()){
+	        //Todo: send email to user
+	        // $this->sendEmail();
 
-        //Todo: send email to user
-        // $this->sendEmail();
-        return $model;
+	        return $model;
+        }
+
+        return false;
     }
 
     public function sendEmail(){
