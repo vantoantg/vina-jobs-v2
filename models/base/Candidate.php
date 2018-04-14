@@ -30,6 +30,7 @@ use Yii;
  * @property int $view
  * @property int $sorted
  * @property int $star
+ * @property int $client_status
  * @property int $status
  */
 class Candidate extends \yii\db\ActiveRecord
@@ -54,7 +55,7 @@ class Candidate extends \yii\db\ActiveRecord
             [['created_at', 'updated_at', 'approved_at'], 'safe'],
             [['title', 'slug', 'video', 'resume_file'], 'string', 'max' => 255],
             [['skill_tags', 'social_network', 'education', 'experience'], 'string', 'max' => 1000],
-            [['star', 'status'], 'string', 'max' => 1],
+            [['star', 'client_status', 'status'], 'string', 'max' => 1],
         ];
     }
 
@@ -87,6 +88,7 @@ class Candidate extends \yii\db\ActiveRecord
             'view' => 'View',
             'sorted' => 'Sorted',
             'star' => 'Star',
+            'client_status' => 'Client Status',
             'status' => 'Status',
         ];
     }

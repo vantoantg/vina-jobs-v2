@@ -110,26 +110,20 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php if ($model->isNewRecord) { ?>
 		            <div class="row">
 			            <div class="col-xs-12 col-sm-6">
-				            <div class="form-group">
-					            <label for="email" class="cols-sm-2 control-label">Mật khẩu</label>
-					            <div class="cols-sm-10">
-                                    <?= $form->field($model, 'password', [
-                                        'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
+                            <div class="cols-sm-10">
+					            <?= $form->field($model, 'password', [
+						            'template' => '{label}<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
                                                                        aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                                    ])->passwordInput()->label(false) ?>
-					            </div>
-				            </div>
+					            ])->passwordInput()->label('Mật khẩu') ?>
+                            </div>
 			            </div>
 			            <div class="col-xs-12 col-sm-6">
-				            <div class="form-group">
-					            <label for="email" class="cols-sm-2 control-label">Nhập lại mật khẩu</label>
-					            <div class="cols-sm-10">
-                                    <?= $form->field($model, 'repassword', [
-                                        'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
+                            <div class="cols-sm-10">
+					            <?= $form->field($model, 'repassword', [
+						            'template' => '{label}<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
                                                                        aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                                    ])->passwordInput()->label(false) ?>
-					            </div>
-				            </div>
+					            ])->passwordInput()->label('Nhập lại mật khẩu') ?>
+                            </div>
 			            </div>
 		            </div>
                 <?php } ?>
@@ -191,15 +185,11 @@ $this->params['breadcrumbs'][] = $this->title;
 			            </div>
 		            </div>
 		            <div class="col-xs-12 col-sm-4">
-			            <div class="form-group">
-				            <label for="email" class="cols-sm-2 control-label">Điện thoại liên hệ</label>
-				            <div class="cols-sm-10">
-                                <?= $form->field($userDetail, 'phone', [
-                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-mobile-alt"
-                                                                   aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                                ])->label(false) ?>
-				            </div>
-			            </div>
+                        <div class="cols-sm-10">
+                            <?= $form->field($userDetail, 'phone', [
+                                'template' => '{label}<div class="input-group"><span class="input-group-addon"><i class="fa fa-mobile-alt" aria-hidden="true"></i></span>{input}</div>{error}{hint}'
+                            ])->label('Điện thoại liên hệ') ?>
+                        </div>
 		            </div>
 	            </div>
 
@@ -212,7 +202,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	            </div>
 
 	            <div class="form-group ">
-                    <?= Html::submitButton('Đăng ký', ['class' => 'btn btn-primary login-button']) ?>
+                    <?= Html::submitButton('<i class="fas fa-hdd"></i> Lưu thông tin', ['class' => 'btn btn-primary login-button']) ?>
 	            </div>
 
                 <?php ActiveForm::end(); ?>

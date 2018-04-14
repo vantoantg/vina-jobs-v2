@@ -179,10 +179,13 @@ body {
     background: #fff
 }
 
+.search-form.top #searchform-keys{
+    margin-top: 0;
+}
 .search-form.top {
     background-color: #fff;
     /*border-radius: 5px;*/
-    padding: 20px 0;
+    padding: 20px;
     -webkit-box-shadow: 1px 4px 16px 3px rgba(000, 000, 000, .5);
     -moz-box-shadow: 1px 4px 16px 3px rgba(000, 000, 000, .5);
     box-shadow: 1px 4px 16px 3px rgba(000, 000, 000, .5);

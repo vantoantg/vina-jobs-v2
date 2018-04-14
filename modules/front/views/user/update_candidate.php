@@ -40,13 +40,11 @@ $dropdowns = new Dropdown();
 				     data-default-img="<?= \app\library\helper\Helper::webImgs('no-image-u.jpg'); ?>">
 					<input type="file" class="cropit-image-input">
 					<div class="cropit-preview text-center"></div>
-					<div class="image-size-label">
-						Resize image
-					</div>
-					<input type="range" class="cropit-image-zoom-input">
-                    <button class="add-img"><i class="fas fa-file-alt"></i></button>
-                    <button class="rotate-ccw"><i class="fas fa-undo"></i></button>
-                    <button class="rotate-cw"><i class="fas fa-redo"></i></button>
+                    <div class="image-size-label">Phóng to/thu nhỏ</div>
+                    <input type="range" class="cropit-image-zoom-input" title="Kéo sang trái/phải để phóng to/thu nhỏ ảnh">
+                    <button class="add-img" title="Chọn ảnh"><i class="fas fa-file-alt"></i></button>
+                    <button class="rotate-ccw" title="Xoay qua trái"><i class="fas fa-undo"></i></button>
+                    <button class="rotate-cw" title="Xoay qua phải"><i class="fas fa-redo"></i></button>
 					<button class="save-cropit" data-dismiss="modal"><i class="fa fa fa-save"></i></button>
 				</div>
 			</div>
@@ -73,7 +71,7 @@ $dropdowns = new Dropdown();
 				<div class="row">
 					<div class="col-xs-12 col-sm-6">
 						<div class="form-group">
-							<label for="name" class="cols-sm-2 control-label">Họ & Tên<span class="text-danger"> (*)</span></label>
+							<label for="name" class="cols-sm-2 control-label">Họ & Tên<span class="red"> (*)</span></label>
 							<div class="cols-sm-10">
                                 <?= $form->field($model, 'name', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>{input}</div>{error}{hint}'
@@ -83,7 +81,7 @@ $dropdowns = new Dropdown();
 					</div>
 					<div class="col-xs-12 col-sm-6">
 						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Email<span class="text-danger"> (*)</span></label>
+							<label for="email" class="cols-sm-2 control-label">Email<span class="red"> (*)</span></label>
 							<div class="cols-sm-10">
                                 <?= $form->field($model, 'email', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
@@ -97,7 +95,7 @@ $dropdowns = new Dropdown();
 				<div class="row">
 					<div class="col-xs-12 col-sm-6">
 						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Mật khẩu<span class="text-danger"> (*)</span></label>
+							<label for="email" class="cols-sm-2 control-label">Mật khẩu<span class="red"> (*)</span></label>
 							<div class="cols-sm-10">
                                 <?= $form->field($model, 'password', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
@@ -108,7 +106,7 @@ $dropdowns = new Dropdown();
 					</div>
 					<div class="col-xs-12 col-sm-6">
 						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Nhập lại mật khẩu<span class="text-danger"> (*)</span></label>
+							<label for="email" class="cols-sm-2 control-label">Nhập lại mật khẩu<span class="red"> (*)</span></label>
 							<div class="cols-sm-10">
                                 <?= $form->field($model, 'repassword', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
@@ -122,7 +120,7 @@ $dropdowns = new Dropdown();
 				<div class="row">
 					<div class="col-xs-12 col-sm-8">
 						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Tỉnh / TP có thể làm việc<span class="text-danger"> (*)</span></label>
+							<label for="email" class="cols-sm-2 control-label">Tỉnh / TP có thể làm việc<span class="red"> (*)</span></label>
 							<div class="cols-sm-10">
 								<?php
 								$loca = \app\models\Locations::getAll();
@@ -141,7 +139,7 @@ $dropdowns = new Dropdown();
 					</div>
 					<div class="col-xs-12 col-sm-4">
 						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Điện thoại liên hệ<span class="text-danger"> (*)</span></label>
+							<label for="email" class="cols-sm-2 control-label">Điện thoại liên hệ<span class="red"> (*)</span></label>
 							<div class="cols-sm-10">
 								<?= $form->field($userDetail, 'phone', [
 									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-mobile-alt"
@@ -155,9 +153,9 @@ $dropdowns = new Dropdown();
 				<div class="row">
 					<div class="col-xs-12 col-sm-4">
 						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Lĩnh vực<span class="text-danger"> (*)</span></label>
+							<label for="email" class="cols-sm-2 control-label">Lĩnh vực<span class="red"> (*)</span></label>
 							<div class="cols-sm-10">
-								<?php $data = \app\models\JobCategories::categoriesMenus(); ?>
+								<?php $data = \app\models\JobCategories::getAll(); ?>
 								<?= $form->field($candidate, 'job_category_id', [
 									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-genderless"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
@@ -171,7 +169,7 @@ $dropdowns = new Dropdown();
 					</div>
 					<div class="col-xs-12 col-sm-8">
 						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Kĩ năng<span class="text-danger"> (*)</span></label>
+							<label for="email" class="cols-sm-2 control-label">Kĩ năng<span class="red"> (*)</span></label>
 							<div class="cols-sm-10">
 								<?php $data = \app\models\JobSkill::getAllSkill(); ?>
 								<?= $form->field($candidate, 'skill[]', [
@@ -260,34 +258,7 @@ $dropdowns = new Dropdown();
 				<div class="row">
 					<div class="col-xs-12">
 	                    <?= $form->field($userDetail, 'about_me')->widget(\yii\redactor\widgets\Redactor::className(), [
-	                        'clientOptions' => [
-	                            'placeholder' => 'Hãy giới thiệu bản thân mình, điểm mạnh, điểm yếu, tính cách,... tạo sự chú ý cho nhà tuyển dụng nhanh nhất.',
-	                            'observeLinks' => true,
-	                            'convertVideoLinks' => true,
-	                            'imageUpload' => ['/web/uploads/image'],
-	                            'fileUpload' => ['/web/uploads/file'],
-	                            'plugins' => ['clips', 'fontcolor', 'imagemanager'],
-	                            'toolbar' => true,
-	                            'buttons' => [
-	                                'html',
-	                                'format',
-	                                'formatting',
-	                                'lists',
-	                                'bold',
-	                                'italic',
-	                                'deleted',
-	                                'underline',
-	                                'horizontalrule',
-	                                'alignment',
-	                                'unorderedlist',
-	                                'orderedlist',
-	                                'outdent',
-	                                'indent',
-	                                'link',
-	                                /*'image',
-	                                'file'*/
-	                            ],
-	                        ]
+	                        'clientOptions' => Helper::redactorOps('Hãy giới thiệu bản thân mình, điểm mạnh, điểm yếu, tính cách,... tạo sự chú ý cho nhà tuyển dụng nhanh nhất.'),
 	                    ])->label('Đôi nét về bản thân') ?>
 					</div>
 				</div>

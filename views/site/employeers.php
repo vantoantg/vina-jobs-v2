@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <div class="form-group field-searchform-jobs">
 					<?php
-					$data = \app\models\JobCategories::categoriesMenus();
+					$data = \app\models\JobCategories::getAll();
 					?>
                     <select class="job-select2 form-control" name="jobs">
                         <option value="0">-- Chọn --</option>

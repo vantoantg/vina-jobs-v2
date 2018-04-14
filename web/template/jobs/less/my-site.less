@@ -8,6 +8,7 @@ body.modal-open{ padding-right: 0!important;}
 .navbar-collapse.in{
 	overflow-y: hidden!important;
 }
+.red{color: red}
 .loginmodal-container {
 	padding: 30px;
 	max-width: 350px;
@@ -81,7 +82,8 @@ body.modal-open{ padding-right: 0!important;}
 	color: #fff;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.1);
 	background-color: #4d90fe;
-	padding: 16px 0px;
+	padding: 0px;
+	height: 36px;
 	font-family: roboto;
 	font-size: 14px;
 	/* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
@@ -446,4 +448,14 @@ footer {
 }
 #back-to-top.show {
 	opacity: 1;
+}
+
+form{
+	div.required label:after {
+		content: " (*)";
+		color: red;
+	}
+}
+input.cropit-image-zoom-input{
+	margin-bottom: 15px;
 }

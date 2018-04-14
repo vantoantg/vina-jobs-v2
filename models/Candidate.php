@@ -11,13 +11,23 @@ namespace app\models;
 
 class Candidate extends \app\models\base\Candidate
 {
+	const
+		STATUS_WAITING_APPROVE = 0,
+		STATUS_ACTIVE = 1,
+
+		STATUS_CLIENT_PUBLISH = 7,
+		STATUS_CLIENT_DRAFT = 8;
+
     public function rules()
     {
         return [
-            [['job_category_id'], 'integer'],
-            [['skill'], 'integer', 'on' => 'form'],
-            [['skill'], 'string','on'=>'register'],
-            [['education', 'experience'], 'string', 'max' => 1000]
+            [['user_id'], 'required'],
+            [['user_id', 'job_category_id', 'location', 'created_by', 'updated_by', 'approved_by', 'view', 'sorted'], 'integer'],
+            [['resume_content'], 'string'],
+            [['created_at', 'updated_at', 'approved_at', 'skill'], 'safe'],
+            [['title', 'slug', 'video', 'resume_file'], 'string', 'max' => 255],
+            [['skill_tags', 'social_network', 'education', 'experience'], 'string', 'max' => 1000],
+            [['star', 'client_status', 'status'], 'string', 'max' => 1],
         ];
     }
 

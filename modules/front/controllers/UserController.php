@@ -42,6 +42,7 @@ class UserController extends FrontController
 	 */
 	public function actionRegisterCandidate()
 	{
+		$errors = [];
 		if (Common::isLoginned()) {
 			$model = Users::findOne(Common::currentUser());
 			$model->scenario = Users::SCENARIO_UPDATE;
@@ -51,13 +52,15 @@ class UserController extends FrontController
 			$model = new Users();
 			$userDetail = new UserDetails();
 			$candidate = new Candidate();
-			$candidate->scenario = 'form';
+			$candidate->user_id = 0; // Set to validate, after that set new user_id
+			$candidate->client_status = Candidate::STATUS_CLIENT_PUBLISH;
+//			$candidate->scenario = 'form';
 		}
 
 		if (
-            $model->load(Yii::$app->request->post()) &&
+			$candidate->load(Yii::$app->request->post()) &&
+			$model->load(Yii::$app->request->post()) &&
             $userDetail->load(Yii::$app->request->post()) &&
-            $candidate->load(Yii::$app->request->post()) &&
 
             $model->validate() &&
             $userDetail->validate() &&
@@ -85,8 +88,8 @@ class UserController extends FrontController
 				//save candidate
 				$candidate->user_id = $model->getId();
 				$candidate->skill = $candidate->array2String($candidate->skill);
-				$candidate->scenario = "register";
-
+//				$candidate->scenario = "register";
+	            $candidate->user_id = $model->getId();
                 if ($userDetail->save() && $candidate->save()) {
                     $transaction->commit();
                     // TODO: Send email
@@ -104,6 +107,7 @@ class UserController extends FrontController
 	            ]);
             }
 		}else {
+
 			$erros = array_merge($model->getErrors(), $candidate->getErrors(), $userDetail->getErrors());
 			foreach ($erros as $error) {
 				$errors[] = $error[0];
@@ -121,6 +125,7 @@ class UserController extends FrontController
 	}
 	public function actionUpdateCandidate()
 	{
+		$errors = [];
 		if (Common::isLoginned()) {
 			$model = Users::findOne(Common::currentUser());
 			$model->scenario = Users::SCENARIO_UPDATE;
@@ -130,13 +135,15 @@ class UserController extends FrontController
 			$model = new Users();
 			$userDetail = new UserDetails();
 			$candidate = new Candidate();
-			$candidate->scenario = 'form';
+			$candidate->user_id = 0; // Set to validate, after that set new user_id
+			$candidate->client_status = Candidate::STATUS_CLIENT_PUBLISH;
+//			$candidate->scenario = 'form';
 		}
 
 		if (
+			$candidate->load(Yii::$app->request->post()) &&
 			$model->load(Yii::$app->request->post()) &&
 			$userDetail->load(Yii::$app->request->post()) &&
-			$candidate->load(Yii::$app->request->post()) &&
 
 			$model->validate() &&
 			$userDetail->validate() &&
@@ -164,8 +171,8 @@ class UserController extends FrontController
 				//save candidate
 				$candidate->user_id = $model->getId();
 				$candidate->skill = $candidate->array2String($candidate->skill);
-				$candidate->scenario = "register";
-
+//				$candidate->scenario = "register";
+				$candidate->user_id = $model->getId();
 				if ($userDetail->save() && $candidate->save()) {
 					$transaction->commit();
 					// TODO: Send email
@@ -175,8 +182,6 @@ class UserController extends FrontController
 
 					// TODO: comment out
 //                    Email::sendMail('Instructions to activate your account - ' . Helper::siteURL(), $temp);
-				} else {
-					$transaction->rollBack();
 				}
 
 				return $this->render('register_candidate_success', [
@@ -184,14 +189,21 @@ class UserController extends FrontController
 					'message' => "",
 				]);
 			}
+		}else {
+
+			$erros = array_merge($model->getErrors(), $candidate->getErrors(), $userDetail->getErrors());
+			foreach ($erros as $error) {
+				$errors[] = $error[0];
+			}
 		}
 
 		$jobSkill = JobSkill::getAllGroupSkill();
-		return $this->render('update_candidate', [
+		return $this->render('register_candidate', [
 			'model' => $model,
 			'userDetail' => $userDetail,
 			'candidate' => $candidate,
-			'jobSkill' => $jobSkill
+			'jobSkill' => $jobSkill,
+			'errors' => $errors
 		]);
 	}
 

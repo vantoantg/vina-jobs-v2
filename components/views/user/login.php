@@ -13,7 +13,7 @@ use app\library\helper\Helper;
                 <span aria-hidden="true">&times;</span>
             </button>
 
-            <h1>Đăng nhập</h1><br>
+            <h1>ĐĂNG NHẬP</h1><br>
             <?php $form = ActiveForm::begin([
                 'action' => \app\library\helper\Helper::createUrl(['front/user/login']),
                 'method' => "post",
@@ -27,11 +27,11 @@ use app\library\helper\Helper;
             <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'autocomplete' => 'off', 'placeholder' => 'Tài khoản hoặc email']) ?>
             <?= $form->field($model, 'password')->passwordInput(['placeholder' => 'Mật khẩu']) ?>
             <div class="hide error-login"><p class="text-danger"></p></div>
-            <input type="submit" id="login" class="login loginmodal-submit" value="Login">
+            <input type="submit" id="login" class="login loginmodal-submit" value="ĐĂNG NHẬP">
             <?php ActiveForm::end(); ?>
 
             <div class="login-help">
-                <a href="<?= Helper::createUrl(['front/user/register']) ?>">Đăng ký</a>
+                <a href="#" id="form-register" data-dismiss="modal">Đăng ký</a>
                 -
                 <a href="<?= Helper::createUrl(['front/user/forgot']) ?>">Quên mật khẩu</a>
             </div>
