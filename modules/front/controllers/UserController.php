@@ -198,7 +198,7 @@ class UserController extends FrontController
 		}
 
 		$jobSkill = JobSkill::getAllGroupSkill();
-		return $this->render('register_candidate', [
+		return $this->render('update_candidate', [
 			'model' => $model,
 			'userDetail' => $userDetail,
 			'candidate' => $candidate,

@@ -93,31 +93,6 @@ $dropdowns = new Dropdown();
 				</div>
 
 				<div class="row">
-					<div class="col-xs-12 col-sm-6">
-						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Mật khẩu<span class="red"> (*)</span></label>
-							<div class="cols-sm-10">
-                                <?= $form->field($model, 'password', [
-                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
-                                                                       aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                                ])->passwordInput()->label(false) ?>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-12 col-sm-6">
-						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Nhập lại mật khẩu<span class="red"> (*)</span></label>
-							<div class="cols-sm-10">
-                                <?= $form->field($model, 'repassword', [
-                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
-                                                                       aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                                ])->passwordInput()->label(false) ?>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
 					<div class="col-xs-12 col-sm-8">
 						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">Tỉnh / TP có thể làm việc<span class="red"> (*)</span></label>
@@ -178,8 +153,9 @@ $dropdowns = new Dropdown();
 								])->dropDownList(\yii\helpers\ArrayHelper::map($data, 'name', 'name'),
 									[
 										'prompt' => '-- Chọn --',
-										'class' => 'job-select2 form-control',
-										'multiple' => 'multiple'
+										'class' => 'select-tags form-control',
+										'multiple' => 'multiple',
+										'data-placeholder' => 'Chọn từ khóa có sẵn, hoặc thêm mới'
 									])->label(false) ?>
 							</div>
 						</div>
@@ -269,7 +245,7 @@ $dropdowns = new Dropdown();
                     Tôi đã đọc và đồng ý chính sách của <a href="<?= \app\library\helper\Helper::createUrl(['site/policy'])?>"><?= \app\library\helper\Helper::siteURL()?></a>
                 </div>
 				<div class="form-group ">
-                    <?= Html::submitButton('Đăng ký', ['class' => 'btn btn-primary login-button']) ?>
+                    <?= Html::submitButton('<i class="fas fa-hdd"></i> Cập nhật hồ sơ', ['class' => 'btn btn-primary login-button']) ?>
 				</div>
 
                 <?php ActiveForm::end(); ?>
