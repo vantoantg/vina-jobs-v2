@@ -42,30 +42,25 @@ class UserController extends FrontController
 	 */
 	public function actionRegisterCandidate()
 	{
-		// TEST: Send email
-		$data['name'] = 'Name test';
-		$data['link'] = Url::to('/candidate/active/token/' . \Yii::$app->getSecurity()->generateRandomString() . '.html', true);
-		$temp = $this->renderPartial('@app/mail/layouts/active_user_register', ['data' => $data]);
-//		Email::sendMail('Test email - ' . Helper::siteURL(), $temp);
-		// End test mail
-
-
+		$errors = [];
 		if (Common::isLoginned()) {
 			$model = Users::findOne(Common::currentUser());
 			$model->scenario = Users::SCENARIO_UPDATE;
 			$userDetail = UserDetails::find()->where(['user_id' => $model->getId()])->one();
-			$candidate = Candidate::find()->where(['user_id' => $model->getId()])->one();
+			$candidate = Candidate::getCandidate(Common::currentUser());
 		} else {
 			$model = new Users();
 			$userDetail = new UserDetails();
 			$candidate = new Candidate();
-			$candidate->scenario = 'form';
+			$candidate->user_id = 0; // Set to validate, after that set new user_id
+			$candidate->client_status = Candidate::STATUS_CLIENT_PUBLISH;
+//			$candidate->scenario = 'form';
 		}
 
 		if (
-            $model->load(Yii::$app->request->post()) &&
+			$candidate->load(Yii::$app->request->post()) &&
+			$model->load(Yii::$app->request->post()) &&
             $userDetail->load(Yii::$app->request->post()) &&
-            $candidate->load(Yii::$app->request->post()) &&
 
             $model->validate() &&
             $userDetail->validate() &&
@@ -93,8 +88,8 @@ class UserController extends FrontController
 				//save candidate
 				$candidate->user_id = $model->getId();
 				$candidate->skill = $candidate->array2String($candidate->skill);
-				$candidate->scenario = "register";
-
+//				$candidate->scenario = "register";
+	            $candidate->user_id = $model->getId();
                 if ($userDetail->save() && $candidate->save()) {
                     $transaction->commit();
                     // TODO: Send email
@@ -104,8 +99,6 @@ class UserController extends FrontController
 
                     // TODO: comment out
 //                    Email::sendMail('Instructions to activate your account - ' . Helper::siteURL(), $temp);
-                } else {
-                    $transaction->rollBack();
                 }
 
 	            return $this->render('register_candidate_success', [
@@ -113,13 +106,104 @@ class UserController extends FrontController
 		            'message' => "",
 	            ]);
             }
+		}else {
+
+			$erros = array_merge($model->getErrors(), $candidate->getErrors(), $userDetail->getErrors());
+			foreach ($erros as $error) {
+				$errors[] = $error[0];
+			}
 		}
+
 		$jobSkill = JobSkill::getAllGroupSkill();
 		return $this->render('register_candidate', [
 			'model' => $model,
 			'userDetail' => $userDetail,
 			'candidate' => $candidate,
-			'jobSkill' => $jobSkill
+			'jobSkill' => $jobSkill,
+			'errors' => $errors
+		]);
+	}
+	public function actionUpdateCandidate()
+	{
+		$errors = [];
+		if (Common::isLoginned()) {
+			$model = Users::findOne(Common::currentUser());
+			$model->scenario = Users::SCENARIO_UPDATE;
+			$userDetail = UserDetails::find()->where(['user_id' => $model->getId()])->one();
+			$candidate = Candidate::getCandidate(Common::currentUser());
+		} else {
+			$model = new Users();
+			$userDetail = new UserDetails();
+			$candidate = new Candidate();
+			$candidate->user_id = 0; // Set to validate, after that set new user_id
+			$candidate->client_status = Candidate::STATUS_CLIENT_PUBLISH;
+//			$candidate->scenario = 'form';
+		}
+
+		if (
+			$candidate->load(Yii::$app->request->post()) &&
+			$model->load(Yii::$app->request->post()) &&
+			$userDetail->load(Yii::$app->request->post()) &&
+
+			$model->validate() &&
+			$userDetail->validate() &&
+			$candidate->validate()
+		)
+		{
+			$transaction = Yii::$app->db->beginTransaction();
+
+			$img = Yii::$app->request->post();
+			if($img['Users']['avatar']){
+				$model->avatar = Image::base64ToImage($img['Users']['avatar']);
+			}
+
+			$model->type = Users::USER_TYPE_DEFAULT;
+			$model->username = $model->email;
+			$token_waiting_active = \Yii::$app->getSecurity()->generateRandomString();
+			$model->token_waiting_active = $token_waiting_active;
+			$model->newCandidate();
+			if($model->save()){
+				$userDetail->setNames($model->name);
+				$userDetail->user_id = $model->getId();
+				$userDetail->email = $model->email;
+				$userDetail->saveInfo();
+
+				//save candidate
+				$candidate->user_id = $model->getId();
+				$candidate->skill = $candidate->array2String($candidate->skill);
+//				$candidate->scenario = "register";
+				$candidate->user_id = $model->getId();
+				if ($userDetail->save() && $candidate->save()) {
+					$transaction->commit();
+					// TODO: Send email
+					$data['name'] = $model->name;
+					$data['link'] = Url::to('/candidate/active/token/' . $token_waiting_active . '.html', true);
+					$temp = $this->renderPartial('@app/mail/layouts/active_user_register', ['data' => $data]);
+
+					// TODO: comment out
+//                    Email::sendMail('Instructions to activate your account - ' . Helper::siteURL(), $temp);
+				}
+
+				return $this->render('register_candidate_success', [
+					'success' => true,
+					'message' => "",
+				]);
+			}
+		}else {
+
+			$erros = array_merge($model->getErrors(), $candidate->getErrors(), $userDetail->getErrors());
+			foreach ($erros as $error) {
+				$errors[] = $error[0];
+			}
+		}
+
+		$jobSkill = JobSkill::getAllGroupSkill();
+		return $this->render('update_candidate', [
+			'model' => $model,
+			'userDetail' => $userDetail,
+			'candidate' => $candidate,
+			'jobSkill' => $jobSkill,
+			'errors' => $errors
 		]);
 	}
 

@@ -5218,6 +5218,7 @@ var Main = function () {
     return {
         init: function () {
             this.events();
+            this.handleFormRegister();
             this.backToTop();
             this.blog();
             this.initDatepicker();
@@ -5238,11 +5239,17 @@ var Main = function () {
                 });
             }
 
-            $(".select-tags").select2({
-                tags: true,
-                placeholder: 'Select an option',
-                tokenSeparators: [',', ' ']
-            })
+            var select22 = $('.select-tags');
+            if(select22.length){
+                select22.each(function () {
+                    var _this = $(this);
+                    _this.select2({
+                        placeholder: _this.data('placeholder'),
+                        tags: true,
+                        tokenSeparators: [',', '12312']
+                    });
+                });
+            }
 
             var radioCheck = $('div.iCheck input');
             radioCheck.each(function () {
@@ -5269,6 +5276,14 @@ var Main = function () {
                 })
             });
 
+        },
+        handleFormRegister: function () {
+            var _links = $('a#form-register');
+            if(_links.length){
+                _links.on('click', function () {
+                    $('#register-modal').modal('show');
+                });
+            }
         },
         backToTop: function () {
             if ($('#back-to-top').length) {

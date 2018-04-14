@@ -37,8 +37,8 @@ class UserDetails extends \app\models\base\UserDetails
     {
         return [
             [['phone'], 'required'],
-            [['user_id', 'gender', 'job_title_id', 'experience', 'level', 'direct_manager_id', 'city_id', 'approved_by', 'active_tour_guide'], 'integer'],
-            [['birthday', 'changed_password_date', 'registration_date', 'approved_at'], 'safe'],
+            [['user_id', 'gender', 'job_title_id', 'experience', 'level', 'direct_manager_id', 'approved_by', 'active_tour_guide'], 'integer'],
+            [['birthday', 'changed_password_date', 'registration_date', 'approved_at', 'city_id'], 'safe'],
 	        [['birthday', 'about_me'], 'string'],
             [['email', 'address'], 'string', 'max' => 255],
             [['first_name', 'middle_name', 'last_name'], 'string', 'max' => 50],

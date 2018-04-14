@@ -41,7 +41,7 @@ class JobCategories extends \yii\db\ActiveRecord
             [['parent_id', 'created_by', 'updated_by', 'arranged', 'total_jobs', 'total_cv', 'status'], 'integer'],
             [['description'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
-            [['name'], 'string', 'max' => 11],
+            [['name'], 'string', 'max' => 255],
             [['icon_class', 'image'], 'string', 'max' => 255],
         ];
     }

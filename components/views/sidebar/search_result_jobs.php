@@ -31,7 +31,7 @@
 
 	    <div class="content-widget-sidebar">
             <?php
-            $data = \app\models\JobCategories::categoriesMenus()
+            $data = \app\models\JobCategories::getAll()
             ?>
 		    <select class="form-control job-select2" name="jobs" data-placeholder="Chọn ngành nghề" multiple>
                 <?php

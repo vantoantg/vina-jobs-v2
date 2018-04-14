@@ -35,10 +35,10 @@ Helper::generateSeo($page);
 
                         <div class="form-group field-searchform-jobs">
 							<?php
-							$data = \app\models\JobCategories::categoriesMenus();
+							$data = \app\models\JobCategories::getAll();
 							?>
                             <select class="job-select2 form-control" name="jobs">
-                                <option value="0">-- Chọn --</option>
+                                <option value="0">Chọn ngành - nghề</option>
 								<?php
 								foreach ($data as $datum) {
 									echo '<option value="' . $datum['id'] . '">' . $datum['name'] . '</option>';
@@ -52,7 +52,7 @@ Helper::generateSeo($page);
 							$data = \app\models\Locations::getAll();
 							?>
                             <select class="job-select2 form-control" name="loca">
-                                <option value="0">-- Chọn --</option>
+                                <option value="0">Nơi làm việc</option>
 								<?php
 								foreach ($data as $datum) {
 									echo '<option value="' . $datum['id'] . '">' . $datum['name'] . '</option>';

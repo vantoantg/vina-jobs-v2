@@ -18,11 +18,10 @@ Helper::generateSeo($page);
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $dropdowns = new Dropdown();
-
 ?>
 <div class="container">
 	<div class="users-create">
-		<h1>ĐĂNG KÝ ỨNG VIÊN | <?= Yii::$app->params['siteName'] ?></h1>
+        <h1>CẬP NHẬT HỒ SƠ ỨNG VIÊN</h1>
 	</div>
 </div>
 
@@ -41,12 +40,12 @@ $dropdowns = new Dropdown();
 				     data-default-img="<?= \app\library\helper\Helper::webImgs('no-image-u.jpg'); ?>">
 					<input type="file" class="cropit-image-input">
 					<div class="cropit-preview text-center"></div>
-					<div class="image-size-label">Phóng to/thu nhỏ</div>
-					<input type="range" class="cropit-image-zoom-input" title="Kéo sang trái/phải để phóng to/thu nhỏ ảnh">
-					<button class="add-img" title="Chọn ảnh"><i class="fas fa-file-alt"></i></button>
-					<button class="rotate-ccw" title="Xoay qua trái"><i class="fas fa-undo"></i></button>
-					<button class="rotate-cw" title="Xoay qua phải"><i class="fas fa-redo"></i></button>
-					<button class="save-cropit" data-dismiss="modal" title="Lưu chỉnh sửa"><i class="fa fa fa-save"></i></button>
+                    <div class="image-size-label">Phóng to/thu nhỏ</div>
+                    <input type="range" class="cropit-image-zoom-input" title="Kéo sang trái/phải để phóng to/thu nhỏ ảnh">
+                    <button class="add-img" title="Chọn ảnh"><i class="fas fa-file-alt"></i></button>
+                    <button class="rotate-ccw" title="Xoay qua trái"><i class="fas fa-undo"></i></button>
+                    <button class="rotate-cw" title="Xoay qua phải"><i class="fas fa-redo"></i></button>
+					<button class="save-cropit" data-dismiss="modal"><i class="fa fa fa-save"></i></button>
 				</div>
 			</div>
 		</div>
@@ -58,23 +57,14 @@ $dropdowns = new Dropdown();
 	<div class="col-12 col-sm-8">
 		<div class="row main">
 			<div class="main-login main-center">
-				<h5>Vui lòng điền đúng địa chỉ email, hệ thống sẽ gửi link kích hoạt tài khoản vào email.</h5>
-
-				<?php if ($errors) {
-					echo '<div class="alert alert-danger">';
-					echo '<strong>Có lỗi trong quá trình đăng ký:</strong>';
-					foreach ($errors as $error) {
-						echo '<br>- ' . $error;
-					}
-					echo '</div>';
-				} ?>
-
+				<h5>Vui lòng điền đầy đủ các thông tin để hồ sơ của bạn có thể hiển thị tốt nhất với nhà tuyển dụng.</h5>
                 <?php $form = ActiveForm::begin(); ?>
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 avatar-view">
                         <?= $form->field($model, 'avatar')->hiddenInput(['class' => 'hidden_base64'])->label(false) ?>
 						<a href="#" data-toggle="modal" data-target="#register-avatar" data-wow-delay="0.6s" title="Nhấp vào đây để tải ảnh lên">
-							<img class="imgs" src="<?= \app\library\helper\Helper::webImgs('no_image_user.png'); ?>">
+							<img class="imgs"
+                                 src="<?= $model->avatar ? $model->avatar : ($model->avatar_url ? $model->avatar_url : \app\library\helper\Helper::webImgs('no_image_user.png')) ?>">
 						</a>
 					</div>
 				</div>
@@ -97,31 +87,6 @@ $dropdowns = new Dropdown();
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
                                 ])->label(false) ?>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-xs-12 col-sm-6">
-						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Mật khẩu<span class="red"> (*)</span></label>
-							<div class="cols-sm-10">
-                                <?= $form->field($model, 'password', [
-                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
-                                                                       aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                                ])->passwordInput()->label(false) ?>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-12 col-sm-6">
-						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Nhập lại mật khẩu<span class="red"> (*)</span></label>
-							<div class="cols-sm-10">
-                                <?= $form->field($model, 'repassword', [
-                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
-                                                                       aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                                ])->passwordInput()->label(false) ?>
 							</div>
 						</div>
 					</div>
@@ -182,7 +147,7 @@ $dropdowns = new Dropdown();
 							<label for="email" class="cols-sm-2 control-label">Kĩ năng<span class="red"> (*)</span></label>
 							<div class="cols-sm-10">
 								<?php $data = \app\models\JobSkill::getAllSkill(); ?>
-								<?= $form->field($candidate, 'skill', [
+								<?= $form->field($candidate, 'skill[]', [
 									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-genderless"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
 								])->dropDownList(\yii\helpers\ArrayHelper::map($data, 'name', 'name'),
@@ -190,7 +155,7 @@ $dropdowns = new Dropdown();
 										'prompt' => '-- Chọn --',
 										'class' => 'select-tags form-control',
 										'multiple' => 'multiple',
-                                        'data-placeholder' => 'Chọn từ khóa có sẵn, hoặc thêm mới'
+										'data-placeholder' => 'Chọn từ khóa có sẵn, hoặc thêm mới'
 									])->label(false) ?>
 							</div>
 						</div>
@@ -269,27 +234,18 @@ $dropdowns = new Dropdown();
 				<div class="row">
 					<div class="col-xs-12">
 	                    <?= $form->field($userDetail, 'about_me')->widget(\yii\redactor\widgets\Redactor::className(), [
-	                        'clientOptions' => Helper::redactorOps('Hãy giới thiệu bản thân mình, điểm mạnh, điểm yếu, tính cách,... tạo sự chú ý cho nhà tuyển dụng nhanh nhất.')
-	                        ])->label('Đôi nét về bản thân') ?>
+	                        'clientOptions' => Helper::redactorOps('Hãy giới thiệu bản thân mình, điểm mạnh, điểm yếu, tính cách,... tạo sự chú ý cho nhà tuyển dụng nhanh nhất.'),
+	                    ])->label('Đôi nét về bản thân') ?>
 					</div>
 				</div>
 
-                <div class="row">
-                    <div class="col-xs-6">
-						<?= $form->field($candidate, 'client_status')->radioList([\app\models\Candidate::STATUS_CLIENT_DRAFT => 'Chưa sẵn sàng', \app\models\Candidate::STATUS_CLIENT_PUBLISH => 'Đã sẵn sàng'], ['class' => 'iCheck'])->label('Bạn có muốn hiện thị khi nguời dùng tìm kiếm ?') ?>
-                    </div>
-                </div>
-
 				<hr>
 
-                <div class="form-group ">
-                    Các chính sách và quy địn của <?= Yii::$app->params['siteName']; ?> <a href="<?= \app\library\helper\Helper::createUrl(['site/policy'])?>" target="_blank">tại đây</a>
-					<?= $form->field($model, 'iread', [
-						'template' => '{input}'
-					])->checkbox(['class' => 'iCheck'])->label(false) ?>
+				<div class="form-group ">
+                    Tôi đã đọc và đồng ý chính sách của <a href="<?= \app\library\helper\Helper::createUrl(['site/policy'])?>"><?= \app\library\helper\Helper::siteURL()?></a>
                 </div>
 				<div class="form-group ">
-                    <?= Html::submitButton('<i class="fas fa-hdd"></i> Đăng ký hồ sơ', ['class' => 'btn btn-primary login-button']) ?>
+                    <?= Html::submitButton('<i class="fas fa-hdd"></i> Cập nhật hồ sơ', ['class' => 'btn btn-primary login-button']) ?>
 				</div>
 
                 <?php ActiveForm::end(); ?>
