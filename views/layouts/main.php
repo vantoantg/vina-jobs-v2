@@ -94,9 +94,15 @@ if(YII_DEBUG){
 						<ul class="dropdown-menu wow fadeInUp" data-wow-delay="0.0001s" role="menu" aria-labelledby="menu1">
 							<?php if(\app\library\helper\Common::currentUser('type') == \app\models\Users::USER_TYPE_CONTACT_OF_COMPANY){ ?>
 							<li role="presentation">
-								<a role="menuitem" tabindex="-1" href="<?= Helper::createUrl(['front/jobs/post-jobs']) ?>">Đăng tuyển dụng</a>
+								<a role="menuitem" tabindex="-1"
+                                   href="<?= Helper::createUrl(['front/jobs/post-jobs']) ?>">Đăng tuyển dụng</a>
 							</li>
-							<?php } ?>
+							<?php }else{ ?>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1"
+                                       href="<?= Helper::createUrl(['front/user/update-candidate']) ?>">Cập nhật hồ sơ</a>
+                                </li>
+                            <?php } ?>
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Thay đổi mật khẩu</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Thay đổi thông tin</a></li>
 							<?php if(\app\library\helper\Common::currentUser('type') == \app\models\Users::USER_TYPE_CONTACT_OF_COMPANY){ ?>

@@ -18,11 +18,10 @@ Helper::generateSeo($page);
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $dropdowns = new Dropdown();
-
 ?>
 <div class="container">
 	<div class="users-create">
-		<h1>ĐĂNG KÝ ỨNG VIÊN | <?= Yii::$app->params['siteName'] ?></h1>
+        <h1>CẬP NHẬT HỒ SƠ ỨNG VIÊN</h1>
 	</div>
 </div>
 
@@ -45,9 +44,9 @@ $dropdowns = new Dropdown();
 						Resize image
 					</div>
 					<input type="range" class="cropit-image-zoom-input">
-					<button class="add-img"><i class="fas fa-file-alt"></i></button>
-					<button class="rotate-ccw"><i class="fas fa-undo"></i></button>
-					<button class="rotate-cw"><i class="fas fa-redo"></i></button>
+                    <button class="add-img"><i class="fas fa-file-alt"></i></button>
+                    <button class="rotate-ccw"><i class="fas fa-undo"></i></button>
+                    <button class="rotate-cw"><i class="fas fa-redo"></i></button>
 					<button class="save-cropit" data-dismiss="modal"><i class="fa fa fa-save"></i></button>
 				</div>
 			</div>
@@ -60,23 +59,14 @@ $dropdowns = new Dropdown();
 	<div class="col-12 col-sm-8">
 		<div class="row main">
 			<div class="main-login main-center">
-				<h5>Vui lòng điền đúng địa chỉ email, hệ thống sẽ gửi link kích hoạt tài khoản vào email.</h5>
-
-				<?php if ($errors) {
-					echo '<div class="alert alert-danger">';
-					echo '<strong>Có lỗi trong quá trình đăng ký:</strong>';
-					foreach ($errors as $error) {
-						echo '<br>- ' . $error;
-					}
-					echo '</div>';
-				} ?>
-
+				<h5>Vui lòng điền đầy đủ các thông tin để hồ sơ của bạn có thể hiển thị tốt nhất với nhà tuyển dụng.</h5>
                 <?php $form = ActiveForm::begin(); ?>
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 avatar-view">
                         <?= $form->field($model, 'avatar')->hiddenInput(['class' => 'hidden_base64'])->label(false) ?>
 						<a href="#" data-toggle="modal" data-target="#register-avatar" data-wow-delay="0.6s" title="Nhấp vào đây để tải ảnh lên">
-							<img class="imgs" src="<?= \app\library\helper\Helper::webImgs('no_image_user.png'); ?>">
+							<img class="imgs"
+                                 src="<?= $model->avatar ? $model->avatar : ($model->avatar_url ? $model->avatar_url : \app\library\helper\Helper::webImgs('no_image_user.png')) ?>">
 						</a>
 					</div>
 				</div>
@@ -304,11 +294,8 @@ $dropdowns = new Dropdown();
 
 				<hr>
 
-                <div class="form-group ">
-                    Các chính sách và quy địn của <?= Yii::$app->params['siteName']; ?> <a href="<?= \app\library\helper\Helper::createUrl(['site/policy'])?>" target="_blank">tại đây</a>
-					<?= $form->field($model, 'iread', [
-						'template' => '{input}'
-					])->checkbox(['class' => 'iCheck'])->label(false) ?>
+				<div class="form-group ">
+                    Tôi đã đọc và đồng ý chính sách của <a href="<?= \app\library\helper\Helper::createUrl(['site/policy'])?>"><?= \app\library\helper\Helper::siteURL()?></a>
                 </div>
 				<div class="form-group ">
                     <?= Html::submitButton('Đăng ký', ['class' => 'btn btn-primary login-button']) ?>

@@ -17,6 +17,7 @@ return [
 	'user/login.html' => 'front/user/login',
 
 	'register/candidate.html' => 'front/user/register-candidate',
+	'update/candidate.html' => 'front/user/update-candidate',
 	'candidate/active/token/<token:[a-zA-Z0-9_ -@.]+>.html' => 'front/user/candidate-active',
 
 	'register/company.html' => 'front/user/register-company',

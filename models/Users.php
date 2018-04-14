@@ -104,7 +104,7 @@ class Users extends \app\models\base\User implements IdentityInterface
     public function checkIsRead($attribute, $params)
     {
         $title = \Yii::$app->params['siteName'];
-        $policyUrl = Helper::siteURL();
+        $policyUrl = Helper::createUrl(['site/policy']);
         if (!$this->iread) {
             $this->addError($this->attributes, 'Bạn chưa đồng ý với <a href="'.$policyUrl.'" target="_blank" title="'.$title.'">quy định</a> của ' . \Yii::$app->params['siteName']);
         }
