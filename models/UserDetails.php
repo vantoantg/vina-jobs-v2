@@ -13,6 +13,23 @@ use app\library\helper\Datetime;
 
 class UserDetails extends \app\models\base\UserDetails
 {
+	/**
+	 * @var Object Helper
+	 */
+	protected static $_instance;
+
+	/**
+	 * @return Device
+	 */
+	public static function getInstance()
+	{
+		if (!(self::$_instance instanceof self)) {
+			self::$_instance = new self();
+		}
+
+		return self::$_instance;
+	}
+
     /**
      * @inheritdoc
      */
@@ -88,6 +105,22 @@ class UserDetails extends \app\models\base\UserDetails
 	    }
     }
 
+	/**
+	 * @param $userId
+	 * @return UserDetails|array|null|\yii\db\ActiveRecord
+	 */
+    public static function checkAndCreateUser($userId){
+	    $userDetail = self::find()->where(['user_id' => $userId])->one();
+	    if(!$userDetail){
+	    	$userDetail = new UserDetails();
+	    	$userDetail->user_id = $userId;
+	    	$userDetail->phone = '--'; // Field is require
+	    	$userDetail->save();
+	    }
+
+	    return $userDetail;
+    }
+
     /**
      * @param $userId
      * @return UserDetails|array|null|\yii\db\ActiveRecord
@@ -98,10 +131,7 @@ class UserDetails extends \app\models\base\UserDetails
         }
 
         /** @var $userDetail self $userDetail */
-        $userDetail = self::find()->where(['user_id' => $userId])->one();
-        if(!$userDetail){
-            return new self();
-        }
+        $userDetail = UserDetails::checkAndCreateUser($userId);
 
         $userDetail->birthday = Datetime::sqlDateToFormat($userDetail->birthday);
         $userDetail->registration_date = Datetime::sqlDatetimeDiffForHumans($userDetail->registration_date);
