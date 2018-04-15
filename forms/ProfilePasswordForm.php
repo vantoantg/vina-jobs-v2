@@ -26,9 +26,9 @@ class ProfilePasswordForm extends Model
         return [
             //'user_profile_id' => 'User Profile ID',
             //'user_ref_id' => 'User Ref ID',
-            'password' => 'Password',
-            'changepassword' => 'Change Password',
-            'reenterpassword' => 'Re-enter Password',
+            'password' => 'Mật khẩu hiện tại',
+            'changepassword' => 'Mật khẩu mới',
+            'reenterpassword' => 'Nhập lại mật khẩu mới',
         ];
     }
 

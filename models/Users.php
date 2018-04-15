@@ -29,6 +29,7 @@ class Users extends \app\models\base\User implements IdentityInterface
 
     const SCENARIO_REGISTER = 'register';
     const SCENARIO_UPDATE = 'update';
+    const SCENARIO_RESET_PW = 'reset_pw';
 
     public $slug_name;
     public $as_employers;
@@ -67,6 +68,7 @@ class Users extends \app\models\base\User implements IdentityInterface
         $scenarios = parent::scenarios();
         $scenarios[self::SCENARIO_UPDATE] = ['name'];
         $scenarios[self::SCENARIO_REGISTER] = ['name', 'iread', 'email', 'password', 'repassword'];
+        $scenarios[self::SCENARIO_RESET_PW] = [];
         return $scenarios;
     }
 

@@ -448,17 +448,31 @@ class UserController extends FrontController
 		]);
 	}*/
 
+	/**
+	 * Url: http://www.localhost/user/reset-password/dvtyKtsPJZfAYN-cdA_bGUFT_Tn1NRkT.html
+	 * @param $token
+	 * @return string
+	 * @throws BadRequestHttpException
+	 */
 	public function actionProfileResetPassword($token)
 	{
 		$resetpasswordmodel = new ProfilePasswordForm();
+		$user = Users::findOne(array('password_reset_token' => $token));
+		if (!$user) {
+			$url = Helper::siteURL();
+			throw new BadRequestHttpException('Liên kết này đã hết hạn hoặc không tồi tại. <a href="'.$url.'">Quay lại trang chủ!</a>');
+		}
+
 		if ($resetpasswordmodel->load(Yii::$app->request->post())) {
-			$user = Users::find()->where(['password_reset_token' => $token])->one();
+			$user = Users::findOne(array('password_reset_token' => $token));
+			$user->password_reset_token = $user->password_reset_token . '@' . Datetime::getDateNow(Datetime::SQL_DATETIME);
+			$user->scenario = Users::SCENARIO_RESET_PW;
 			if ($resetpasswordmodel->validate()) {
-				$user->password = $resetpasswordmodel->changepassword;
-				$user->status = Users::STATUS_ACTIVED;
+				$user->setPassword($resetpasswordmodel->changepassword);
 				$user->save();
 			}
 		}
+
 		return $this->render('profile_reset_password', [
 			'resetpasswordmodel' => $resetpasswordmodel
 		]);
@@ -477,7 +491,7 @@ class UserController extends FrontController
 				$user->save();
 			}
 		}
-		return $this->render('profile_reset_password', [
+		return $this->render('profile_change_password', [
 			'resetpasswordmodel' => $resetpasswordmodel
 		]);
 	}
@@ -519,31 +533,34 @@ class UserController extends FrontController
 		));
 	}
 
-
+	/**
+	 * @return string
+	 */
 	public function actionForgot()
 	{
 		$form = new RequireResetPasswordForm();
-
 		if (Yii::$app->request->isPost) {
 			if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+
 				$data = Yii::$app->request->post($form->formName());
 				$User = Users::findOne(array('username' => $data['email']));
+				$User->scenario = Users::SCENARIO_RESET_PW;
 				if ($User) {
 					$token_reset_password = \Yii::$app->getSecurity()->generateRandomString();
-					$User->password_reset_token = $token_reset_password;
-					$User->status = Users::STATUS_WAITING_RESET_PASSWORD;
-					$User->save();
+					$User->password_reset_token  = $token_reset_password;
+					$User->update();
 					$data['name'] = $User->name;
 					$data['link'] = Url::to('/user/reset-password/' . $token_reset_password . '.html', true);
-					$temp = $this->renderPartial('@app/mail/layouts/email', ['data' => $data]);
-					$send = Email::sendMail('Reset password - ' . Helper::siteURL(), $temp);
+					$temp = $this->renderPartial('@app/mail/layouts/reset_password', ['data' => $data]);
+//					$send = Email::sendMail('Reset password - ' . Yii::$app->params['siteName'], $temp);
+					$send = true;
 					if ($send) {
 						return $this->render('forgot_success', [
 							'email' => $User->email
 						]);
 					}
 				} else {
-
+					$form->addError('email', 'Xin lỗi, chúng tôi không tìm thấy địa chỉ email này trong hệ thống!');
 				}
 			}
 		}
