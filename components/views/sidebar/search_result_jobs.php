@@ -120,7 +120,7 @@
             </ul>
         </div>
 
-
+        <input type="hidden" name="mode" value="search-jobs">
         <button class="btn btn-primary w100"><i class="fa fa-search" style="top:3px"></i> TÌM KIẾM</button>
     </form>
 </div>

@@ -89,7 +89,7 @@ class SiteController extends Controller
         $queryParams = Yii::$app->request->queryParams;
 		// TODO: save $queryParams (JSON) to strafic user want ...?
 
-        if (Yii::$app->request->isAjax) {
+        if (Yii::$app->request->isAjax && isset($queryParams['mode']) && $queryParams['mode'] == 'search-jobs') {
             $searchModel = new JobCustomSearch();
             $dataProvider = $searchModel->search($queryParams);
             $dataProvider->pagination->pageSize = 10;
