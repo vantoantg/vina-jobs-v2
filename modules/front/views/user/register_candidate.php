@@ -22,7 +22,7 @@ $dropdowns = new Dropdown();
 ?>
 <div class="container">
 	<div class="users-create">
-		<h1>ĐĂNG KÝ ỨNG VIÊN | <?= Yii::$app->params['siteName'] ?></h1>
+		<h1>ĐĂNG KÝ ỨNG VIÊN</h1>
 	</div>
 </div>
 
@@ -58,7 +58,7 @@ $dropdowns = new Dropdown();
 	<div class="col-12 col-sm-8">
 		<div class="row main">
 			<div class="main-login main-center">
-				<h5>Vui lòng điền đúng địa chỉ email, hệ thống sẽ gửi link kích hoạt tài khoản vào email.</h5>
+				<h5>Vui lòng điền đúng địa chỉ email, hệ thống sẽ gửi link kích hoạt tài khoản hoặc thông báo tuyển dụng vào email.</h5>
 
 				<?php if ($errors) {
 					echo '<div class="alert alert-danger">';
@@ -288,6 +288,7 @@ $dropdowns = new Dropdown();
 						'template' => '{input}'
 					])->checkbox(['class' => 'iCheck'])->label(false) ?>
                 </div>
+
 				<div class="form-group ">
                     <?= Html::submitButton('<i class="fas fa-hdd"></i> Đăng ký hồ sơ', ['class' => 'btn btn-primary login-button']) ?>
 				</div>

@@ -21,7 +21,7 @@ class Candidate extends \app\models\base\Candidate
     public function rules()
     {
         return [
-            [['user_id'], 'required'],
+            [['user_id', 'job_category_id', 'skill'], 'required'],
             [['user_id', 'job_category_id', 'location', 'created_by', 'updated_by', 'approved_by', 'view', 'sorted'], 'integer'],
             [['resume_content'], 'string'],
             [['created_at', 'updated_at', 'approved_at', 'skill'], 'safe'],
@@ -30,6 +30,40 @@ class Candidate extends \app\models\base\Candidate
             [['star', 'client_status', 'status'], 'string', 'max' => 1],
         ];
     }
+
+	/**
+	 * @inheritdoc
+	 */
+	public function attributeLabels()
+	{
+		return [
+			'id' => 'ID',
+			'user_id' => 'User ID',
+			'title' => 'Title',
+			'slug' => 'Slug',
+			'job_category_id' => 'Lĩnh vực',
+			'skill_tags' => 'Các kỹ năng',
+			'skill' => 'Kỹ năng',
+			'location' => 'Location',
+			'video' => 'Video',
+			'resume_content' => 'Resume Content',
+			'resume_file' => 'Resume File',
+			'social_network' => 'Social Network',
+			'education' => 'Education',
+			'experience' => 'Experience',
+			'created_by' => 'Created By',
+			'created_at' => 'Created At',
+			'updated_by' => 'Updated By',
+			'updated_at' => 'Updated At',
+			'approved_by' => 'Approved By',
+			'approved_at' => 'Approved At',
+			'view' => 'View',
+			'sorted' => 'Sorted',
+			'star' => 'Star',
+			'client_status' => 'Client Status',
+			'status' => 'Status',
+		];
+	}
 
     /**
      * @param array $array

@@ -86,7 +86,7 @@ $dropdowns = new Dropdown();
                                 <?= $form->field($model, 'email', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                                ])->label(false) ?>
+                                ])->textInput(['readonly' => true])->label(false) ?>
 							</div>
 						</div>
 					</div>
@@ -241,9 +241,6 @@ $dropdowns = new Dropdown();
 
 				<hr>
 
-				<div class="form-group ">
-                    Tôi đã đọc và đồng ý chính sách của <a href="<?= \app\library\helper\Helper::createUrl(['site/policy'])?>"><?= \app\library\helper\Helper::siteURL()?></a>
-                </div>
 				<div class="form-group ">
                     <?= Html::submitButton('<i class="fas fa-hdd"></i> Cập nhật hồ sơ', ['class' => 'btn btn-primary login-button']) ?>
 				</div>

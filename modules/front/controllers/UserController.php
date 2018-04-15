@@ -129,15 +129,11 @@ class UserController extends FrontController
 		if (Common::isLoginned()) {
 			$model = Users::findOne(Common::currentUser());
 			$model->scenario = Users::SCENARIO_UPDATE;
-			$userDetail = UserDetails::find()->where(['user_id' => $model->getId()])->one();
+			$userDetail = UserDetails::findOne(['user_id' => $model->getId()]);
+			$userDetail->phone = ($userDetail->phone == '--') ? '' : $userDetail->phone;
 			$candidate = Candidate::getCandidate(Common::currentUser());
 		} else {
-			$model = new Users();
-			$userDetail = new UserDetails();
-			$candidate = new Candidate();
-			$candidate->user_id = 0; // Set to validate, after that set new user_id
-			$candidate->client_status = Candidate::STATUS_CLIENT_PUBLISH;
-//			$candidate->scenario = 'form';
+			return $this->redirect(['register-candidate']);
 		}
 
 		if (
