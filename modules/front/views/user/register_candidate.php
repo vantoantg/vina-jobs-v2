@@ -58,7 +58,10 @@ $dropdowns = new Dropdown();
 	<div class="col-12 col-sm-8">
 		<div class="row main">
 			<div class="main-login main-center">
-				<h5>Vui lòng điền đúng địa chỉ email, hệ thống sẽ gửi link kích hoạt tài khoản hoặc thông báo tuyển dụng vào email.</h5>
+                <div class="alert-message alert-message-info wow zoomInDown animated" data-wow-delay="0.2s">
+                    <h4>Lưu ý:</h4>
+                    <p>Vui lòng điền đúng địa chỉ email, hệ thống sẽ gửi link kích hoạt tài khoản hoặc thông báo tuyển dụng vào <strong>email của bạn đăng ký</strong>.</p>
+                </div>
 
 				<?php if ($errors) {
 					echo '<div class="alert alert-danger">';

@@ -132,6 +132,9 @@ class UserController extends FrontController
 			$userDetail = UserDetails::findOne(['user_id' => $model->getId()]);
 			$userDetail->phone = ($userDetail->phone == '--') ? '' : $userDetail->phone;
 			$candidate = Candidate::getCandidate(Common::currentUser());
+			$candidate->client_status = ($candidate->client_status != Candidate::STATUS_CLIENT_PUBLISH &&
+					$candidate->client_status != Candidate::STATUS_CLIENT_PUBLISH
+				) ? Candidate::STATUS_CLIENT_PUBLISH : $candidate->client_status;
 		} else {
 			return $this->redirect(['register-candidate']);
 		}
@@ -452,43 +455,54 @@ class UserController extends FrontController
 	 */
 	public function actionProfileResetPassword($token)
 	{
-		$resetpasswordmodel = new ProfilePasswordForm();
+		$model = new ProfilePasswordForm();
+		$model->scenario = ProfilePasswordForm::SCENARIO_RESET_PW;
 		$user = Users::findOne(array('password_reset_token' => $token));
 		if (!$user) {
 			$url = Helper::siteURL();
-			throw new BadRequestHttpException('Liên kết này đã hết hạn hoặc không tồi tại. <a href="'.$url.'">Quay lại trang chủ!</a>');
+			throw new BadRequestHttpException('Liên kết này đã hết hạn hoặc không tồi tại. <a href="' . $url . '">Quay lại trang chủ!</a>');
 		}
 
-		if ($resetpasswordmodel->load(Yii::$app->request->post())) {
+		if ($model->load(Yii::$app->request->post())) {
 			$user = Users::findOne(array('password_reset_token' => $token));
 			$user->password_reset_token = $user->password_reset_token . '@' . Datetime::getDateNow(Datetime::SQL_DATETIME);
 			$user->scenario = Users::SCENARIO_RESET_PW;
-			if ($resetpasswordmodel->validate()) {
-				$user->setPassword($resetpasswordmodel->changepassword);
+			if ($model->validate()) {
+				$user->setPassword($model->changepassword);
 				$user->save();
 			}
 		}
 
 		return $this->render('profile_reset_password', [
-			'resetpasswordmodel' => $resetpasswordmodel
+			'model' => $model
 		]);
 	}
 
-	public function actionProfileChangePassword($token)
+	/**
+	 * @return string
+	 */
+	public function actionProfileChangePassword()
 	{
-		$resetpasswordmodel = new ProfilePasswordForm();
-		if ($resetpasswordmodel->load(Yii::$app->request->post())) {
-			$user = Users::find()->where(['id' => \Yii::$app->user->identity->id])->one();
+		$form = new ProfilePasswordForm();
+		$form->scenario = ProfilePasswordForm::SCENARIO_UPDATE;
+		if ($form->load(Yii::$app->request->post())) {
+			$user = Users::findOne(['id' => \Yii::$app->user->identity->id]);
+			$user->scenario = Users::SCENARIO_RESET_PW;
 			# here we run our validation rules on the model
-			if ($resetpasswordmodel->validate()) {
+
+			if ($form->validatePassword('password')) {
 				# if it is ok - setting the password property of user
-				$user->password = $resetpasswordmodel->changepassword;
+				$user->setPassword($form->changepassword);
 				# and finally save it
-				$user->save();
+				if ($user->update()) {
+					$form = new ProfilePasswordForm();
+					$form->scenario = ProfilePasswordForm::SCENARIO_UPDATE;
+					Yii::$app->session->setFlash('update_pw_success', "Mật khẩu mới đã được lưu.");
+				}
 			}
 		}
 		return $this->render('profile_change_password', [
-			'resetpasswordmodel' => $resetpasswordmodel
+			'model' => $form
 		]);
 	}
 

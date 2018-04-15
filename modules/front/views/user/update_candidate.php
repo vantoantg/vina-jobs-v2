@@ -57,7 +57,11 @@ $dropdowns = new Dropdown();
 	<div class="col-12 col-sm-8">
 		<div class="row main">
 			<div class="main-login main-center">
-				<h5>Vui lòng điền đầy đủ các thông tin để hồ sơ của bạn có thể hiển thị tốt nhất với nhà tuyển dụng.</h5>
+                <div class="alert-message alert-message-info wow zoomInDown animated" data-wow-delay="0.2s">
+                    <h4>Lưu ý:</h4>
+                    <p>Vui lòng điền đúng địa chỉ email, hệ thống sẽ gửi link kích hoạt tài khoản hoặc thông báo tuyển dụng vào <strong>email của bạn đăng ký</strong>.</p>
+                </div>
+
                 <?php $form = ActiveForm::begin(); ?>
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 avatar-view">
@@ -238,6 +242,12 @@ $dropdowns = new Dropdown();
 	                    ])->label('Đôi nét về bản thân') ?>
 					</div>
 				</div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+						<?= $form->field($candidate, 'client_status')->radioList([\app\models\Candidate::STATUS_CLIENT_DRAFT => 'Chưa sẵn sàng', \app\models\Candidate::STATUS_CLIENT_PUBLISH => 'Đã sẵn sàng'], ['class' => 'iCheck'])->label('Bạn có muốn hiện thị khi nguời dùng tìm kiếm ?') ?>
+                    </div>
+                </div>
 
 				<hr>
 

@@ -27,8 +27,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-12 col-sm-8">
 		<?php $form = \yii\widgets\ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 		<?php
-		echo $form->field($resetpasswordmodel, 'changepassword')->passwordInput();
-		echo $form->field($resetpasswordmodel, 'reenterpassword')->passwordInput();
+		echo $form->field($model, 'changepassword')->passwordInput(['placeholder' => 'Mật khẩu mới']);
+		echo $form->field($model, 'reenterpassword')->passwordInput(['placeholder' => 'Nhập lại khẩu mới']);
 		?>
         <div class="form-group">
 			<?= \yii\helpers\Html::submitButton('<i class="far fa-hdd"></i> Lưu mật khẩu', ['class' => 'btn btn-primary']) ?>

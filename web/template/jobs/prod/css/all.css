@@ -9793,7 +9793,7 @@ body {
 }
 
 .job-add {
-    background: url(img/job-add.png);
+    background: url(img/job-add.jpg);
     height: 500px;
 }
 
@@ -11137,6 +11137,14 @@ button.accordion.active:after {
     padding-left: 0;
 }
 
+/* Fix */
+@media (max-width: 767px){
+    .container .widget-sidebar{ margin-bottom: 0;}
+    .container .jobs{ margin-top: 0;}
+    .footer-area{margin-top: 30px;}
+    footer .logofooter{ text-align: center}
+    form .form-group button{ width: 100%}
+}
 /****** LOGIN MODAL ******/
 body {
   overflow-y: auto;
@@ -11643,4 +11651,28 @@ form div.required label:after {
 }
 input.cropit-image-zoom-input {
   margin-bottom: 15px;
+}
+.tooltip {
+  display: block!important;
+}
+/* Tooltip text */
+.tooltip .tooltiptext {
+  background: #00AEEF;
+}
+.alert-message {
+  margin: 20px 0;
+  padding: 20px;
+  border-left: 3px solid #eee;
+}
+.alert-message h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #00AEEF;
+}
+.alert-message p:last-child {
+  margin-bottom: 0;
+}
+.alert-message.alert-message-info {
+  background-color: #f4f8fa;
+  border-color: #00AEEF;
 }

@@ -21,7 +21,7 @@ return [
 	'candidate/active/token/<token:[a-zA-Z0-9_ -@.]+>.html' => 'front/user/candidate-active',
 
 	'register/company.html' => 'front/user/register-company',
-	'company/update.html' => 'front/user/update-company',
+	'client/update.html' => 'front/user/update-company',
 
 	'user/profile.html' => 'front/user/user-profile',
 	'client/profile.html' => 'front/user/contact-profile',
