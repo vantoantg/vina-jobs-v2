@@ -57,7 +57,11 @@ $dropdowns = new Dropdown();
 	<div class="col-12 col-sm-8">
 		<div class="row main">
 			<div class="main-login main-center">
-				<h5>Vui lòng điền đầy đủ các thông tin để hồ sơ của bạn có thể hiển thị tốt nhất với nhà tuyển dụng.</h5>
+                <div class="alert-message alert-message-info wow zoomInDown animated" data-wow-delay="0.2s">
+                    <h4>Lưu ý:</h4>
+                    <p>Vui lòng điền đúng địa chỉ email, hệ thống sẽ gửi link kích hoạt tài khoản hoặc thông báo tuyển dụng vào <strong>email của bạn đăng ký</strong>.</p>
+                </div>
+
                 <?php $form = ActiveForm::begin(); ?>
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 avatar-view">
@@ -86,7 +90,7 @@ $dropdowns = new Dropdown();
                                 <?= $form->field($model, 'email', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                                ])->label(false) ?>
+                                ])->textInput(['readonly' => true])->label(false) ?>
 							</div>
 						</div>
 					</div>
@@ -239,11 +243,14 @@ $dropdowns = new Dropdown();
 					</div>
 				</div>
 
+                <div class="row">
+                    <div class="col-xs-12">
+						<?= $form->field($candidate, 'client_status')->radioList([\app\models\Candidate::STATUS_CLIENT_DRAFT => 'Chưa sẵn sàng', \app\models\Candidate::STATUS_CLIENT_PUBLISH => 'Đã sẵn sàng'], ['class' => 'iCheck'])->label('Bạn có muốn hiện thị khi nguời dùng tìm kiếm ?') ?>
+                    </div>
+                </div>
+
 				<hr>
 
-				<div class="form-group ">
-                    Tôi đã đọc và đồng ý chính sách của <a href="<?= \app\library\helper\Helper::createUrl(['site/policy'])?>"><?= \app\library\helper\Helper::siteURL()?></a>
-                </div>
 				<div class="form-group ">
                     <?= Html::submitButton('<i class="fas fa-hdd"></i> Cập nhật hồ sơ', ['class' => 'btn btn-primary login-button']) ?>
 				</div>

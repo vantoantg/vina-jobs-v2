@@ -1,6 +1,6 @@
 <?php
 //or, if you DO want a file to cache, use:
-header("Cache-Control: max-age=2592000"); //30days (60sec * 60min * 24hours * 30days)
+header("Cache-Control: public, max-age=31536000"); //30days (60sec * 60min * 24hours * 30days)
 
 // comment out the following two lines when deployed to production
 //defined('YII_DEBUG') or define('YII_DEBUG', true);

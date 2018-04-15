@@ -236,13 +236,17 @@
 		<tr>
 			<td bgcolor="#ffffff" style="padding: 40px 40px 20px; text-align: center;">
 				<h1 style="margin: 0; font-family: sans-serif; font-size: 24px; line-height: 125%; color: #333333; font-weight: normal;">
-					Hệ thống vừa nhận được yêu cầu nhập lại mật khẩu website <?= \app\library\helper\Helper::siteURL(); ?>
+					HỆ THỐNG VỪA NHẬN ĐƯỢC YÊU CẦU NHẬP LẠI MẬT KHẨU WEBSITE <?= Yii::$app->params['siteName'] ?>
 				</h1>
 			</td>
 		</tr>
 		<tr>
 			<td bgcolor="#ffffff" style="padding: 0 40px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: center;">
-				<p style="margin: 0;">Chào bạn <?= $data['name'] ?>! Có một yêu cầu .... Maecenas sed ante pellentesque, posuere leo id, eleifend dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent laoreet malesuada cursus. Maecenas scelerisque congue eros eu posuere. Praesent in felis ut velit pretium lobortis rhoncus ut&nbsp;erat.</p>
+				<p style="margin: 0;">Chào bạn <?= $data['name'] ?>! Hệ thống vừa nhận được yêu cầu: có ai đó đã yêu cầu thiết lập lại mật khẩu với tài khoản là email của bạn. Chúng tôi đã gửi liên kết bên dưới để bạn có thể nhấp vào và đặt lại mật khẩu mới.</p>
+                <p>Lưu ý:</p>
+                <p>- Đến thời điểm hiện tại bạn vẫn có thể đăng nhập tài khoản là email này với mật khẩu trước đó.</p>
+                <p>- Nếu bạn không muốn đặt lại mật khẩu thì có thể bỏ qua email thông báo này.</p>
+                <p>Cảm ơn bạn !</p>
 			</td>
 		</tr>
 		<tr>
@@ -252,7 +256,7 @@
 					<tr>
 						<td style="border-radius: 3px; background: #00AEEF; text-align: center;" class="button-td">
 							<a href="<?= $data['link'] ?>" style="background: #00AEEF; border: 15px solid #00AEEF; font-family: sans-serif; font-size: 13px; line-height: 110%; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a">
-								&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff;">Nhấp vào đây</span>&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff;">ĐẶT LẠI MẬT KHẨU</span>&nbsp;&nbsp;&nbsp;&nbsp;
 							</a>
 						</td>
 					</tr>
@@ -273,9 +277,10 @@
 	<table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 680px; font-family: sans-serif; color: #888888; font-size: 12px; line-height: 140%;">
 		<tr>
 			<td style="padding: 0px 10px; width: 100%; font-family: sans-serif; font-size: 12px; line-height: 140%; text-align: center; color: #888888;" class="x-gmail-data-detectors">
-				<webversion style="color: #cccccc; text-decoration: underline; font-weight: bold;">http://www.vina-jobs.com</webversion>
-				<br><br>
-				www.vina-jobs.com<br>Tân Phú, Hồ Chí Minh<br>0932.252.414
+                <webversion style="color: #cccccc; text-decoration: underline; font-weight: bold;"><?= \app\library\helper\Helper::siteURL()?></webversion>
+                <br><br>
+                www.vina-jobs.com<br><?= \app\library\helper\Helper::params('address')?><br><?= \app\library\helper\Helper::params('hotline'); ?>
+                <br><br>
 				<br><br>
 				<!--<unsubscribe style="color: #888888; text-decoration: underline;">unsubscribe</unsubscribe>-->
 			</td>
@@ -296,7 +301,7 @@
 					<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
 						<tr>
 							<td style="padding: 15px; text-align: center; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #ffffff;">
-								<p style="margin: 0;">GÍUP BẠN TÌM KIẾM CÔNG VIỆC TRỞ NÊN DỄ DÀNG HƠN.</p>
+								<p style="margin: 0;">GIÚP BẠN TÌM KIẾM CÔNG VIỆC TRỞ NÊN DỄ DÀNG HƠN.</p>
 							</td>
 						</tr>
 					</table>

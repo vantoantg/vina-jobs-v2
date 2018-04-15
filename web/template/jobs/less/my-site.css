@@ -505,3 +505,27 @@ form div.required label:after {
 input.cropit-image-zoom-input {
   margin-bottom: 15px;
 }
+.tooltip {
+  display: block!important;
+}
+/* Tooltip text */
+.tooltip .tooltiptext {
+  background: #00AEEF;
+}
+.alert-message {
+  margin: 20px 0;
+  padding: 20px;
+  border-left: 3px solid #eee;
+}
+.alert-message h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #00AEEF;
+}
+.alert-message p:last-child {
+  margin-bottom: 0;
+}
+.alert-message.alert-message-info {
+  background-color: #f4f8fa;
+  border-color: #00AEEF;
+}

@@ -11,19 +11,19 @@ use app\library\helper\Helper;
     <div class="modal-dialog vertical-align-center">
 
         <div class="modal-content loginmodal-container switch-register">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" title="Đóng lại">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-toggle="tooltip" title="Đóng lại" data-placement="left">
                 <span aria-hidden="true">&times;</span>
             </button>
             <div class="clearfix"></div>
             <ul class="ds-btn">
                 <li>
                     <a class="btn btn-lg btn-primary" href="<?= $candidate ?>">
-                        <i class="glyphicon glyphicon-user pull-left"></i><span>Cá nhân<br><small>Người tìm việc</small></span></a>
+                        <i class="far fa-address-card pull-left"></i><span>Cá nhân<br><small>Người tìm việc</small></span></a>
 
                 </li>
                 <li>
                     <a class="btn btn-lg btn-success " href="<?= $company ?>">
-                        <i class="glyphicon glyphicon-dashboard pull-left"></i><span>Công ty<br><small>Nhà tuyển dụng</small></span></a>
+                        <i class="far fa-building pull-left"></i><span>Công ty<br><small>Nhà tuyển dụng</small></span></a>
 
                 </li>
             </ul>

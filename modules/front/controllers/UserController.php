@@ -129,15 +129,14 @@ class UserController extends FrontController
 		if (Common::isLoginned()) {
 			$model = Users::findOne(Common::currentUser());
 			$model->scenario = Users::SCENARIO_UPDATE;
-			$userDetail = UserDetails::find()->where(['user_id' => $model->getId()])->one();
+			$userDetail = UserDetails::findOne(['user_id' => $model->getId()]);
+			$userDetail->phone = ($userDetail->phone == '--') ? '' : $userDetail->phone;
 			$candidate = Candidate::getCandidate(Common::currentUser());
+			$candidate->client_status = ($candidate->client_status != Candidate::STATUS_CLIENT_PUBLISH &&
+					$candidate->client_status != Candidate::STATUS_CLIENT_PUBLISH
+				) ? Candidate::STATUS_CLIENT_PUBLISH : $candidate->client_status;
 		} else {
-			$model = new Users();
-			$userDetail = new UserDetails();
-			$candidate = new Candidate();
-			$candidate->user_id = 0; // Set to validate, after that set new user_id
-			$candidate->client_status = Candidate::STATUS_CLIENT_PUBLISH;
-//			$candidate->scenario = 'form';
+			return $this->redirect(['register-candidate']);
 		}
 
 		if (
@@ -448,37 +447,62 @@ class UserController extends FrontController
 		]);
 	}*/
 
+	/**
+	 * Url: http://www.localhost/user/reset-password/dvtyKtsPJZfAYN-cdA_bGUFT_Tn1NRkT.html
+	 * @param $token
+	 * @return string
+	 * @throws BadRequestHttpException
+	 */
 	public function actionProfileResetPassword($token)
 	{
-		$resetpasswordmodel = new ProfilePasswordForm();
-		if ($resetpasswordmodel->load(Yii::$app->request->post())) {
-			$user = Users::find()->where(['password_reset_token' => $token])->one();
-			if ($resetpasswordmodel->validate()) {
-				$user->password = $resetpasswordmodel->changepassword;
-				$user->status = Users::STATUS_ACTIVED;
+		$model = new ProfilePasswordForm();
+		$model->scenario = ProfilePasswordForm::SCENARIO_RESET_PW;
+		$user = Users::findOne(array('password_reset_token' => $token));
+		if (!$user) {
+			$url = Helper::siteURL();
+			throw new BadRequestHttpException('Liên kết này đã hết hạn hoặc không tồi tại. <a href="' . $url . '">Quay lại trang chủ!</a>');
+		}
+
+		if ($model->load(Yii::$app->request->post())) {
+			$user = Users::findOne(array('password_reset_token' => $token));
+			$user->password_reset_token = $user->password_reset_token . '@' . Datetime::getDateNow(Datetime::SQL_DATETIME);
+			$user->scenario = Users::SCENARIO_RESET_PW;
+			if ($model->validate()) {
+				$user->setPassword($model->changepassword);
 				$user->save();
 			}
 		}
+
 		return $this->render('profile_reset_password', [
-			'resetpasswordmodel' => $resetpasswordmodel
+			'model' => $model
 		]);
 	}
 
-	public function actionProfileChangePassword($token)
+	/**
+	 * @return string
+	 */
+	public function actionProfileChangePassword()
 	{
-		$resetpasswordmodel = new ProfilePasswordForm();
-		if ($resetpasswordmodel->load(Yii::$app->request->post())) {
-			$user = Users::find()->where(['id' => \Yii::$app->user->identity->id])->one();
+		$form = new ProfilePasswordForm();
+		$form->scenario = ProfilePasswordForm::SCENARIO_UPDATE;
+		if ($form->load(Yii::$app->request->post())) {
+			$user = Users::findOne(['id' => \Yii::$app->user->identity->id]);
+			$user->scenario = Users::SCENARIO_RESET_PW;
 			# here we run our validation rules on the model
-			if ($resetpasswordmodel->validate()) {
+
+			if ($form->validatePassword('password')) {
 				# if it is ok - setting the password property of user
-				$user->password = $resetpasswordmodel->changepassword;
+				$user->setPassword($form->changepassword);
 				# and finally save it
-				$user->save();
+				if ($user->update()) {
+					$form = new ProfilePasswordForm();
+					$form->scenario = ProfilePasswordForm::SCENARIO_UPDATE;
+					Yii::$app->session->setFlash('update_pw_success', "Mật khẩu mới đã được lưu.");
+				}
 			}
 		}
-		return $this->render('profile_reset_password', [
-			'resetpasswordmodel' => $resetpasswordmodel
+		return $this->render('profile_change_password', [
+			'model' => $form
 		]);
 	}
 
@@ -519,31 +543,34 @@ class UserController extends FrontController
 		));
 	}
 
-
+	/**
+	 * @return string
+	 */
 	public function actionForgot()
 	{
 		$form = new RequireResetPasswordForm();
-
 		if (Yii::$app->request->isPost) {
 			if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+
 				$data = Yii::$app->request->post($form->formName());
 				$User = Users::findOne(array('username' => $data['email']));
+				$User->scenario = Users::SCENARIO_RESET_PW;
 				if ($User) {
 					$token_reset_password = \Yii::$app->getSecurity()->generateRandomString();
-					$User->password_reset_token = $token_reset_password;
-					$User->status = Users::STATUS_WAITING_RESET_PASSWORD;
-					$User->save();
+					$User->password_reset_token  = $token_reset_password;
+					$User->update();
 					$data['name'] = $User->name;
 					$data['link'] = Url::to('/user/reset-password/' . $token_reset_password . '.html', true);
-					$temp = $this->renderPartial('@app/mail/layouts/email', ['data' => $data]);
-					$send = Email::sendMail('Reset password - ' . Helper::siteURL(), $temp);
+					$temp = $this->renderPartial('@app/mail/layouts/reset_password', ['data' => $data]);
+//					$send = Email::sendMail('Reset password - ' . Yii::$app->params['siteName'], $temp);
+					$send = true;
 					if ($send) {
 						return $this->render('forgot_success', [
 							'email' => $User->email
 						]);
 					}
 				} else {
-
+					$form->addError('email', 'Xin lỗi, chúng tôi không tìm thấy địa chỉ email này trong hệ thống!');
 				}
 			}
 		}

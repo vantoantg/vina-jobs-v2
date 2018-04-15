@@ -23,7 +23,7 @@
 ?>
 
 <div class="widget-sidebar">
-    <h2 class="title-widget-sidebar">RECENT JOBS</h2>
+    <h2 class="title-widget-sidebar">CÁC VIỆC LÀM MỚI</h2>
     <div class="content-widget-sidebar">
         <ul>
             <li class="recent-post">

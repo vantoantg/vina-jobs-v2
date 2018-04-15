@@ -565,4 +565,21 @@ class Helper
             ],
         ];
     }
+
+	/**
+	 * @param string $param
+	 * @param string $param2
+	 * @param string $param3
+	 * @return mixed
+	 */
+	public static function params($param = 'siteName', $param2 = '', $param3 = '')
+	{
+		if ($param2) {
+			return Yii::$app->params[$param][$param2];
+		}
+		if ($param3) {
+			return Yii::$app->params[$param][$param3];
+		}
+		return Yii::$app->params[$param];
+	}
 }
