@@ -11,12 +11,14 @@ Helper::generateSeo($page);
 <div class="slider-area">
     <div class="slider">
         <div id="bg-slider" class="owl-carousel owl-theme">
-
-            <div class="item"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/slider-image-3.jpg"
-                                   alt="Mirror Edge"></div>
-            <div class="item"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/slider-image-2.jpg"
-                                   alt="The Last of us"></div>
-            <div class="item"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/slider-image-1.jpg" alt="GTA V">
+            <div class="item">
+	            <img src="<?= Helper::homeUrl() ?>web/template/jobs/img/slider-image-3.jpg"
+                                   alt="<?= Helper::params(); ?>"></div>
+            <div class="item">
+	            <img src="<?= Helper::homeUrl() ?>web/template/jobs/img/slider-image-2.jpg"
+                                   alt="<?= Helper::params(); ?>"></div>
+            <div class="item">
+	            <img src="<?= Helper::homeUrl() ?>web/template/jobs/img/slider-image-1.jpg" alt="<?= Helper::params(); ?>">
             </div>
 
 		</div>
@@ -79,14 +81,14 @@ Helper::generateSeo($page);
 		<div class="row how-it-work text-center">
 			<div class="col-md-4">
 				<div class="single-work wow fadeInUp" data-wow-delay="0.7s">
-					<img src="<?= Helper::homeUrl() ?>web/template/jobs/img/how-work1.png" alt="">
+					<img src="<?= Helper::homeUrl() ?>web/template/jobs/img/how-work1.png" alt="<?= Helper::params(); ?>">
 					<h3>Hướng đến sự đơn giản</h3>
 					<p>Website không đòi hỏi đăng ký quá phức tạp. Các tính năng rõ ràng thuận tiện thao tác cho cả những ai không nắm nhiều kiến thức về máy tính.</p>
 				</div>
 			</div>
 			<div class="col-md-4">
 				<div class="single-work  wow fadeInUp" data-wow-delay="0.8s">
-					<img src="<?= Helper::homeUrl() ?>web/template/jobs/img/how-work2.png" alt="">
+					<img src="<?= Helper::homeUrl() ?>web/template/jobs/img/how-work2.png" alt="<?= Helper::params(); ?>">
 					<h3>Tạo sự thỏa mãn</h3>
 					<p>Luôn chọn lọc công việc và ứng viên phù hợp nhất để gửi đến bạn. Không spam mail với những tin nhắn quảng cáo
 					và những tin tức không liên quan.</p>
