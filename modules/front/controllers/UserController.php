@@ -554,9 +554,9 @@ class UserController extends FrontController
 
 				$data = Yii::$app->request->post($form->formName());
 				$User = Users::findOne(array('username' => $data['email']));
-				$User->scenario = Users::SCENARIO_RESET_PW;
-				if ($User) {
-					$token_reset_password = \Yii::$app->getSecurity()->generateRandomString();
+                if ($User) {
+                    $User->scenario = Users::SCENARIO_RESET_PW;
+                    $token_reset_password = \Yii::$app->getSecurity()->generateRandomString();
 					$User->password_reset_token  = $token_reset_password;
 					$User->update();
 					$data['name'] = $User->name;

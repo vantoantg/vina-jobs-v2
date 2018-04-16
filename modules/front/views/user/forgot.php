@@ -17,7 +17,7 @@ Helper::generateSeo($page);
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container">
-    <div class="col-12 col-sm-8">
+    <div class="col-12 col-sm-8 wow fadeInUp" data-wow-delay="0.1s">
         <div class="users-index">
 
             <h1>QUÊN MẬT KHẨU</h1>

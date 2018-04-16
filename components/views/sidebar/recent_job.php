@@ -22,7 +22,7 @@
  */
 ?>
 
-<div class="widget-sidebar">
+<div class="widget-sidebar wow fadeInRight" data-wow-delay="0.2s">
     <h2 class="title-widget-sidebar">CÁC VIỆC LÀM MỚI</h2>
     <div class="content-widget-sidebar">
         <ul>

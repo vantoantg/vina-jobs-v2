@@ -17,16 +17,12 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="container">
-    <div class="users-create">
+	<div class="users-create">
+		<h1><?= Html::encode($this->title) ?></h1>
+	</div>
 
-        <h1><?= Html::encode($this->title) ?></h1>
-
-    </div>
-</div>
-
-<div class="container">
     <div class="row">
-        <div class="col-12 col-sm-8">
+        <div class="col-12 col-sm-8 wow fadeInUp" data-wow-delay="0.1s">
 			<?php if (Yii::$app->session->hasFlash('update_pw_success')): ?>
                 <div class="alert alert-success alert-dismissable">
                     <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>

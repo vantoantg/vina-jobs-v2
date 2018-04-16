@@ -15,8 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="container">
     <div class="col-12 col-sm-8">
-
-        <div class="site-contact">
+        <div class="site-contact wow fadeInUp" data-wow-delay="0.1s">
             <h1><?= Html::encode($this->title) ?></h1>
 
             <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
