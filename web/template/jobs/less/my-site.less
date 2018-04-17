@@ -1,5 +1,12 @@
 /****** LOGIN MODAL ******/
-body{ overflow-y: auto;}
+body{
+	overflow-y: auto;
+	p{
+		line-height: 26px;
+	}
+	h1{ font-size: 34px;}
+	h2{ font-size: 28px;}
+}
 body.modal-open{ padding-right: 0!important;}
 .pd-lr-0{ padding-left: 0!important; padding-right: 0!important;}
 .pd-left-0{ padding-left: 0!important;}
@@ -485,5 +492,71 @@ input.cropit-image-zoom-input{
 	{
 		background-color: #f4f8fa;
 		border-color: #00AEEF;
+	}
+}
+
+.btn-sunny {
+	color: #fff;
+	background-color: #f4ad49;
+}
+
+.btn-sunny:hover, .btn-sky.active:focus, .btn-sunny:focus, .open>.dropdown-toggle.btn-sunny {
+	color: #fff;
+	background-color: #f5b75f;
+	outline: none;
+}
+
+
+.btn-sunny:active, .btn-sunny.active {
+	color: #fff;
+	background-color: #d69840;
+	margin-top: 2px;
+}
+
+
+.btn-sky {
+	color: #fff;
+	background-color: #0bacd3;
+}
+
+.btn-sky:hover,.btn-sky.active:focus, .btn-sky:focus, .open>.dropdown-toggle.btn-sky {
+	color: #fff;
+	background-color: #29b6d8;
+	outline: none;
+}
+
+.btn-sky:active, .btn-sky.active {
+	color: #fff;
+	background-color: #0a97b9;
+	margin-top: 2px;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
+	outline: none;
+}
+
+#sidebarfx{
+	.widget-sidebar{
+		ul{
+			li{
+				list-style: none;
+			}
+		}
+		hr{
+			margin: 10px auto;
+		}
+	}
+}
+
+.ft-jobs-detail{
+	margin-top: 50px;
+	min-height: 90px;
+	button{
+		margin-left: 10px;
+		margin-right: 10px;
+		min-width: 125px;
+		font-family: inherit;
 	}
 }

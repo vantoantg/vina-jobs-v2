@@ -189,6 +189,19 @@ class SiteController extends Controller
     }
 
     /**
+     * Displays about page.
+     *
+     * @return string
+     */
+    public function actionEmployeersDetail($slug, $id)
+    {
+    	$model = Job::findOne($id);
+        return $this->render('employeers_detail', [
+        	'model' => $model
+        ]);
+    }
+
+    /**
      * Displays blog page.
      *
      * @return string
