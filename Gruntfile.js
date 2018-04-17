@@ -34,6 +34,7 @@ module.exports = function(grunt) {
                     'web/template/jobs/js/wow.js',
                     'vendor/bower-asset/iCheck/icheck.min.js',
                     'vendor/bower-asset/cropit/dist/jquery.cropit.js',
+                    'vendor/bower-asset/jquery-lazy/jquery.lazy.min.js',
                     'web/template/jobs/js/main.js',
                     'web/template/jobs/js/underscore-min.js',
                     'web/js/common/service.js',

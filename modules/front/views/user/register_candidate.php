@@ -272,7 +272,7 @@ $dropdowns = new Dropdown();
 				<div class="row">
 					<div class="col-xs-12">
 	                    <?= $form->field($userDetail, 'about_me')->widget(\yii\redactor\widgets\Redactor::className(), [
-	                        'clientOptions' => Helper::redactorOps('Hãy giới thiệu bản thân mình, điểm mạnh, điểm yếu, tính cách,... tạo sự chú ý cho nhà tuyển dụng nhanh nhất.')
+	                        'clientOptions' => Helper::redactorOps('Hãy giới thiệu bản thân mình, điểm mạnh, điểm yếu, tính cách, các kỹ năng, trình độ học vấn, kinh nghiệm làm việc... để tạo sự chú ý cho nhà tuyển dụng nhanh nhất.')
 	                        ])->label('Đôi nét về bản thân') ?>
 					</div>
 				</div>
@@ -290,6 +290,10 @@ $dropdowns = new Dropdown();
 					<?= $form->field($model, 'iread', [
 						'template' => '{input}'
 					])->checkbox(['class' => 'iCheck'])->label(false) ?>
+
+                    <?= $form->field($model, 'iread', [
+                        'template' => '{input}'
+                    ])->checkbox(['class' => 'iCheck'])->label('Bạn sẽ nhận các tin tuyển dụng mới nhất ?') ?>
                 </div>
 
 				<div class="form-group ">

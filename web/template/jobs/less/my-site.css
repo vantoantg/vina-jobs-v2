@@ -353,79 +353,79 @@ table.table.list-jobs tr:hover {
 #search-jobs > .content-widget-sidebar {
   margin-bottom: 15px;
 }
-footer {
+.footer-area footer {
   background-color: #0c1a1e;
   min-height: 350px;
   font-family: 'Open Sans', sans-serif;
 }
-footer .footerleft {
+.footer-area footer .footerleft {
   margin-top: 50px;
 }
-footer .footerleft p {
+.footer-area footer .footerleft p {
   text-align: justify;
 }
-footer .logofooter {
+.footer-area footer .logofooter {
   margin-bottom: 10px;
   font-size: 25px;
   color: #fff;
   font-weight: 700;
 }
-footer .footerleft p {
+.footer-area footer .footerleft p {
   color: #fff;
   font-size: 12px !important;
   font-family: 'Open Sans', sans-serif;
   margin-bottom: 15px;
 }
-footer .footerleft p i {
+.footer-area footer .footerleft p i {
   width: 20px;
   color: #999;
 }
-footer .paddingtop-bottom {
+.footer-area footer .paddingtop-bottom {
   margin-top: 50px;
 }
-footer .footer-ul {
+.footer-area footer .footer-ul {
   list-style-type: none;
   padding-left: 0px;
   margin-left: 2px;
 }
-footer .footer-ul li {
+.footer-area footer .footer-ul li {
   line-height: 29px;
   font-size: 12px;
 }
-footer .footer-ul li a {
+.footer-area footer .footer-ul li a {
   color: #a0a3a4;
   transition: color 0.2s linear 0s, background 0.2s linear 0s;
 }
-footer .footer-ul i {
+.footer-area footer .footer-ul i {
   margin-right: 10px;
 }
-footer .footer-ul li a:hover {
+.footer-area footer .footer-ul li a:hover {
   transition: color 0.2s linear 0s, background 0.2s linear 0s;
   color: #00AEEF;
 }
-footer .social:hover {
+.footer-area footer .social:hover {
   -webkit-transform: scale(1.1);
   -moz-transform: scale(1.1);
   -o-transform: scale(1.1);
 }
-footer .icon-ul {
+.footer-area footer .icon-ul {
   list-style-type: none !important;
   margin: 0px;
   padding: 0px;
 }
-footer .icon-ul li {
+.footer-area footer .icon-ul li {
   line-height: 75px;
   width: 100%;
   float: left;
 }
-footer .icon {
+.footer-area footer .icon {
   float: left;
   margin-right: 5px;
 }
-footer blockquote {
+.footer-area footer blockquote {
   border-left-color: #00AEEF;
 }
-footer blockquote a:hover {
+.footer-area footer blockquote a:hover {
   text-decoration: none;
 }
 .copyright {

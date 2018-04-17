@@ -72,6 +72,7 @@ var Main = function () {
                 })
             });
 
+            $('.lazy').Lazy();
         },
         handleFormRegister: function () {
             var _links = $('a#form-register');

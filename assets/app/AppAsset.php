@@ -45,6 +45,7 @@ class AppAsset extends AssetBundle
         'vendor/bower-asset/select2/dist/js/select2.min.js',
         'vendor/bower-asset/iCheck/icheck.min.js',
         'vendor/bower-asset/cropit/dist/jquery.cropit.js',
+        'vendor/bower-asset/jquery-lazy/jquery.lazy.min.js',
         'web/template/jobs/js/main.js',
         'web/template/jobs/js/underscore-min.js',
         'web/js/common/service.js',
