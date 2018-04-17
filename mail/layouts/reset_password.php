@@ -236,12 +236,12 @@
 		<tr>
 			<td bgcolor="#ffffff" style="padding: 40px 40px 20px; text-align: center;">
 				<h1 style="margin: 0; font-family: sans-serif; font-size: 24px; line-height: 125%; color: #333333; font-weight: normal;">
-					HỆ THỐNG VỪA NHẬN ĐƯỢC YÊU CẦU NHẬP LẠI MẬT KHẨU WEBSITE <?= Yii::$app->params['siteName'] ?>
+					Hệ thống vừa nhận được yêu cầu nhập lại mật khẩu website <?= Yii::$app->params['siteName'] ?>
 				</h1>
 			</td>
 		</tr>
 		<tr>
-			<td bgcolor="#ffffff" style="padding: 0 40px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: center;">
+			<td bgcolor="#ffffff" style="padding: 0 40px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: left;">
 				<p style="margin: 0;">Chào bạn <?= $data['name'] ?>! Hệ thống vừa nhận được yêu cầu: có ai đó đã yêu cầu thiết lập lại mật khẩu với tài khoản là email của bạn. Chúng tôi đã gửi liên kết bên dưới để bạn có thể nhấp vào và đặt lại mật khẩu mới.</p>
                 <p>Lưu ý:</p>
                 <p>- Đến thời điểm hiện tại bạn vẫn có thể đăng nhập tài khoản là email này với mật khẩu trước đó.</p>
@@ -277,9 +277,8 @@
 	<table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 680px; font-family: sans-serif; color: #888888; font-size: 12px; line-height: 140%;">
 		<tr>
 			<td style="padding: 0px 10px; width: 100%; font-family: sans-serif; font-size: 12px; line-height: 140%; text-align: center; color: #888888;" class="x-gmail-data-detectors">
-                <webversion style="color: #cccccc; text-decoration: underline; font-weight: bold;"><?= \app\library\helper\Helper::siteURL()?></webversion>
                 <br><br>
-                www.vina-jobs.com<br><?= \app\library\helper\Helper::params('address')?><br><?= \app\library\helper\Helper::params('hotline'); ?>
+				<?= \app\library\helper\Helper::siteURL()?><br><?= \app\library\helper\Helper::params('address')?><br><?= \app\library\helper\Helper::params('hotline'); ?>
                 <br><br>
 				<br><br>
 				<!--<unsubscribe style="color: #888888; text-decoration: underline;">unsubscribe</unsubscribe>-->

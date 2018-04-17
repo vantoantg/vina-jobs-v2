@@ -5401,13 +5401,13 @@ var Main = function () {
             });
         },
         initFirstLoadSearchJobsPage: function () {
-            var searchJobs = $('#search-jobs');
+            /*var searchJobs = $('#search-jobs');
             if(searchJobs.length){
                 Service.getCallback(searchJobs.attr('action'), function (data) {
                     // console.log(data);
 
                 });
-            }
+            }*/
         },
         createUrlParams: function (formData) {
             var makeUrl = {};
@@ -5437,6 +5437,7 @@ var Main = function () {
         },
         initSearchJobsPage: function () {
             var searchJobs = $('#search-jobs');
+
             if(searchJobs.length){
                 // var url = Common.buildUrl('http://localhost/search/result.html', 'keywords', $(this).val());
                 // history.pushState(null, null, '/en/step2');
@@ -5450,8 +5451,6 @@ var Main = function () {
                     search();
                 });
 
-
-
                 $('select', searchJobs).on('change', function(event){
                     search();
                 });
@@ -5461,7 +5460,7 @@ var Main = function () {
                     var formData = searchJobs.serializeArray();
                     var _hash = Main.createUrlParams(formData);
                     history.pushState(null, null, '?' + _hash);
-                    var newUrl = _rootUrl + 'search/result.html?' + _hash;
+                    var newUrl = _rootUrl + 'search/load-data.html?' + _hash;
                     if (loaded) {
                         loaded = false;
                         Service.getCallback(newUrl, function (data) {
@@ -5471,6 +5470,7 @@ var Main = function () {
                     }
 
                 };
+                search();
             }
         }
     }
