@@ -33,13 +33,13 @@ $config = [
             // for the mailer to send real emails.
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'chip.vina-jobs.com',
-                'username' => 'admin@vina-jobs.com',
-                'password' => 'IM5znxBZ9i',
-                'port' => '587',
-                'encryption' => 'STARTTLS',
+                'host' => 'mail.vina-jobs.com',
+                'username' => 'system@vina-jobs.com',
+                'password' => '12345678090',
+                'port' => '25',
+                'encryption' => 'TLS',
             ],
-            'useFileTransport' => true,
+            'useFileTransport' => false,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

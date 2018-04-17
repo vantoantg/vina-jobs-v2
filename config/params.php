@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'adminEmail' => 'admin@vina-jobs.com',
+    'adminEmail' => 'nguyennguyen.vt88@gmail.com',
     'companyLogoPath' => '/web/uploads/_company/',
 
     'siteName' => 'Vina - Jobs',
