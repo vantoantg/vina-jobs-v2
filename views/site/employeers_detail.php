@@ -16,8 +16,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container">
     <div class="col-12 col-sm-8">
         <div class="employeers-detail wow fadeInUp" data-wow-delay="0.1s">
-            <h1><?= Html::encode($this->title) ?></h1>
+
             <div class="row content">
+                <h1><?= Html::encode($this->title) ?></h1>
 				<?= $model->content; ?>
             </div>
             <div class="row ft-jobs-detail">
