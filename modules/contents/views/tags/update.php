@@ -2,15 +2,15 @@
 
 use yii\helpers\Html;
 
-
 /* @var $this yii\web\View */
-/* @var $model app\models\Post */
+/* @var $model app\models\Tags */
 
-$this->title = 'Create Post';
-$this->params['breadcrumbs'][] = ['label' => 'Posts', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Update Tags: {nameAttribute}';
+$this->params['breadcrumbs'][] = ['label' => 'Tags', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Update';
 ?>
-<div class="post-create">
+<div class="tags-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

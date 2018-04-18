@@ -30,6 +30,12 @@ body.modal-open {
 .navbar-collapse.in {
   overflow-y: hidden!important;
 }
+.ovf-x-h {
+  overflow-x: hidden;
+}
+.ovf-y-h {
+  overflow-y: hidden;
+}
 .red {
   color: red;
 }

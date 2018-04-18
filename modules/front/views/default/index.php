@@ -73,7 +73,7 @@ Helper::generateSeo($page);
 
 <div class="content-area">
 	<div class="container">
-		<div class="row page-title text-center wow zoomInDown" data-wow-delay="0.2s">
+		<div class="row page-title text-center wow zoomInDown" data-wow-delay="0.1s">
 			<h5>Niềm vui của chúng tôi</h5>
 			<h2>Là sự hài lòng của bạn</h2>
             <p>Sử dụng các kết quả từ công việc, chúng tôi sẽ đưa ra một kế hoạch cho chiến lược tiếp thị hiệu quả nhất để có được kết quả tốt nhất.</p>

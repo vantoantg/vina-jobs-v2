@@ -77,6 +77,7 @@ class Users extends \app\models\base\User implements IdentityInterface
      */
     public function attributeLabels()
     {
+        $iread = 'Tôi đã đọc các chính sách và quy định của '.\Yii::$app->params['siteName'].' <a href="'.Helper::createUrl(['site/policy']).'" target="_blank">tại đây</a>';
         return [
             'id' => 'ID',
             'username' => 'Email',
@@ -96,7 +97,7 @@ class Users extends \app\models\base\User implements IdentityInterface
             'lang' => 'Lang',
             'timezone' => 'Timezone',
             'attributes' => 'Attributes',
-            'iread' => 'Tôi đã đọc',
+            'iread' => $iread,
             'status' => 'Status',
 
 	        'as_employers' => 'Như là nhà tuyển dụng'

@@ -1,18 +1,19 @@
 <?php
 
-namespace app\modules\admin\controllers;
+namespace app\modules\contents\controllers;
 
+use app\modules\admin\controllers\AdminController;
 use Yii;
-use app\models\CarouselItems;
-use app\models\search\CarouselItems as CarouselItemsSearch;
+use app\models\PostCategory;
+use app\models\search\PostCategory as PostCategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * CarouselItemsController implements the CRUD actions for CarouselItems model.
+ * PostCategoryController implements the CRUD actions for PostCategory model.
  */
-class CarouselItemsController extends AdminController
+class PostCategoryController extends AdminController
 {
     /**
      * @inheritdoc
@@ -30,12 +31,12 @@ class CarouselItemsController extends AdminController
     }
 
     /**
-     * Lists all CarouselItems models.
+     * Lists all PostCategory models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CarouselItemsSearch();
+        $searchModel = new PostCategorySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +46,7 @@ class CarouselItemsController extends AdminController
     }
 
     /**
-     * Displays a single CarouselItems model.
+     * Displays a single PostCategory model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,19 +59,16 @@ class CarouselItemsController extends AdminController
     }
 
     /**
-     * Creates a new CarouselItems model.
+     * Creates a new PostCategory model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new CarouselItems();
+        $model = new PostCategory();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if(Yii::$app->request->post('save') == 'saveedit'){
-                return $this->redirect(['update', 'id' => $model->id]);
-            }
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -79,7 +77,7 @@ class CarouselItemsController extends AdminController
     }
 
     /**
-     * Updates an existing CarouselItems model.
+     * Updates an existing PostCategory model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -90,12 +88,7 @@ class CarouselItemsController extends AdminController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
-            if(Yii::$app->request->post('save') == 'saveedit'){
-                return $this->redirect(['update', 'id' => $model->id]);
-            }
-
-            return $this->redirect(['index', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -104,7 +97,7 @@ class CarouselItemsController extends AdminController
     }
 
     /**
-     * Deletes an existing CarouselItems model.
+     * Deletes an existing PostCategory model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -118,15 +111,15 @@ class CarouselItemsController extends AdminController
     }
 
     /**
-     * Finds the CarouselItems model based on its primary key value.
+     * Finds the PostCategory model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return CarouselItems the loaded model
+     * @return PostCategory the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = CarouselItems::findOne($id)) !== null) {
+        if (($model = PostCategory::findOne($id)) !== null) {
             return $model;
         }
 

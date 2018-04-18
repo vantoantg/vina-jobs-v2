@@ -1,8 +1,9 @@
 <?php
 
-namespace app\modules\admin\controllers;
+namespace app\modules\contents\controllers;
 
 use app\forms\LayoutForm;
+use app\modules\admin\controllers\AdminController;
 use Yii;
 use app\models\Tags;
 use app\models\search\Tags as TagsSearch;

@@ -96,9 +96,9 @@ use app\library\helper\Helper;
         </a>
         <!--start submenu -->
         <ul>
-            <li><a href="<?= Url::toRoute('/admin/pages') ?>" ><span class="title">Page</span></a></li>
-            <li><a href="<?= Url::toRoute('/admin/post') ?>" ><span class="title">Blog</span></a></li>
-            <li><a href="<?= Url::toRoute('/admin/post-category') ?>" ><span class="title">Blog - category</span></a></li>
+            <li><a href="<?= Url::toRoute('/contents/pages') ?>" ><span class="title">Page</span></a></li>
+            <li><a href="<?= Url::toRoute('/contents/post') ?>" ><span class="title">Blog</span></a></li>
+            <li><a href="<?= Url::toRoute('/contents/post-category') ?>" ><span class="title">Blog - category</span></a></li>
         </ul><!--end /submenu -->
     </li><!--end /menu-li -->
     <!-- END Pages -->
@@ -128,8 +128,8 @@ use app\library\helper\Helper;
 		</a>
 		<!--start submenu -->
 		<ul>
-			<li><a href="<?= Url::toRoute('/admin/carousel') ?>" ><span class="title">Carousel</span></a></li>
-			<li><a href="<?= Url::toRoute('/admin/carousel-items') ?>" ><span class="title">Carousel images</span></a></li>
+			<li><a href="<?= Url::toRoute('/contents/carousel') ?>" ><span class="title">Carousel</span></a></li>
+			<li><a href="<?= Url::toRoute('/contents/carousel-items') ?>" ><span class="title">Carousel images</span></a></li>
 		</ul><!--end /submenu -->
 	</li><!--end /menu-li -->
 	<!-- END CAROUSEL -->
@@ -142,8 +142,8 @@ use app\library\helper\Helper;
 		</a>
 		<!--start submenu -->
 		<ul>
-			<li><a href="<?= Url::toRoute('/admin/tags') ?>" ><span class="title">Tags</span></a></li>
-			<li><a href="<?= Url::toRoute('/admin/tags/create') ?>" ><span class="title">Create tag</span></a></li>
+			<li><a href="<?= Url::toRoute('/contents/tags') ?>" ><span class="title">Tags</span></a></li>
+			<li><a href="<?= Url::toRoute('/contents/tags/create') ?>" ><span class="title">Create tag</span></a></li>
 		</ul><!--end /submenu -->
 	</li><!--end /menu-li -->
 	<!-- END TAGS -->
@@ -156,8 +156,8 @@ use app\library\helper\Helper;
 		</a>
 		<!--start submenu -->
 		<ul>
-			<li><a href="<?= Url::toRoute('/admin/layout/page') ?>"><span class="title">Page</span></a></li>
-			<li><a href="<?= Url::toRoute('/admin/layout/style') ?>"><span class="title">Stylesheet</span></a></li>
+			<li><a href="<?= Url::toRoute('/contents/layout/page') ?>"><span class="title">Page</span></a></li>
+			<li><a href="<?= Url::toRoute('/contents/layout/style') ?>"><span class="title">Stylesheet</span></a></li>
 		</ul><!--end /submenu -->
 	</li><!--end /menu-li -->
 	<!-- END EMAIL -->

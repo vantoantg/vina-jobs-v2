@@ -286,14 +286,13 @@ $dropdowns = new Dropdown();
 				<hr>
 
                 <div class="form-group ">
-                    Các chính sách và quy địn của <?= Yii::$app->params['siteName']; ?> <a href="<?= \app\library\helper\Helper::createUrl(['site/policy'])?>" target="_blank">tại đây</a>
 					<?= $form->field($model, 'iread', [
 						'template' => '{input}'
 					])->checkbox(['class' => 'iCheck'])->label(false) ?>
 
-                    <?= $form->field($model, 'iread', [
+                    <?= $form->field($candidate, 'receives', [
                         'template' => '{input}'
-                    ])->checkbox(['class' => 'iCheck'])->label('Bạn sẽ nhận các tin tuyển dụng mới nhất ?') ?>
+                    ])->checkbox(['class' => 'iCheck'])->label(false) ?>
                 </div>
 
 				<div class="form-group ">

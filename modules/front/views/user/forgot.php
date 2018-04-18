@@ -17,9 +17,8 @@ Helper::generateSeo($page);
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container">
-    <div class="col-12 col-sm-8 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="users-index">
-
+    <div class="col-12 col-sm-8 ovf-y-h">
+        <div class="users-index wow fadeInUp" data-wow-delay="0.1s">
             <h1>QUÊN MẬT KHẨU</h1>
             <h5>Vui lòng điền đúng địa chỉ email bạn đã đăng ký, hệ thống sẽ gửi thông tin hướng dẫn để thiết lập mật khẩu mới vào email của bạn.</h5>
             <?php $form = ActiveForm::begin(); ?>
@@ -32,6 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php ActiveForm::end(); ?>
         </div>
     </div>
-    <div class="col-12 col-sm-4">
-    </div>
+	<div class="col-12 col-sm-4">
+        <?= (new \app\components\SidebarWidget())->recentJobs(); ?>
+	</div>
 </div>
