@@ -1,17 +1,19 @@
 <?php
 
-namespace app\modules\admin\controllers;
+namespace app\modules\contents\controllers;
 
+use app\modules\admin\controllers\AdminController;
 use Yii;
-use app\models\Pages;
-use app\models\search\Pages as PagesSearch;
+use app\models\Locations;
+use app\models\search\Locations as LocationsSearch;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PagesController implements the CRUD actions for Pages model.
+ * LocationsController implements the CRUD actions for Locations model.
  */
-class PagesController extends AdminController
+class LocationsController extends AdminController
 {
     /**
      * @inheritdoc
@@ -29,14 +31,13 @@ class PagesController extends AdminController
     }
 
     /**
-     * Lists all Pages models.
+     * Lists all Locations models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new PagesSearch();
+        $searchModel = new LocationsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-	    $dataProvider->pagination->pageSize = $this->setting['page_size'];
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -45,7 +46,7 @@ class PagesController extends AdminController
     }
 
     /**
-     * Displays a single Pages model.
+     * Displays a single Locations model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,19 +59,16 @@ class PagesController extends AdminController
     }
 
     /**
-     * Creates a new Pages model.
+     * Creates a new Locations model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Pages();
+        $model = new Locations();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-	        if(Yii::$app->request->post('save') == 'saveedit'){
-		        return $this->redirect(['update', 'id' => $model->id]);
-	        }
-	        return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -79,7 +77,7 @@ class PagesController extends AdminController
     }
 
     /**
-     * Updates an existing Pages model.
+     * Updates an existing Locations model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -90,19 +88,16 @@ class PagesController extends AdminController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if(Yii::$app->request->post('save') == 'saveback'){
-                return $this->redirect(['index']);
-            }
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
-            'pages' => Pages::getList($id)
         ]);
     }
 
     /**
-     * Deletes an existing Pages model.
+     * Deletes an existing Locations model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,22 +105,21 @@ class PagesController extends AdminController
      */
     public function actionDelete($id)
     {
-        // TODO: add field is_deleted
-//        $this->findModel($id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Pages model based on its primary key value.
+     * Finds the Locations model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Pages the loaded model
+     * @return Locations the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Pages::findOne($id)) !== null) {
+        if (($model = Locations::findOne($id)) !== null) {
             return $model;
         }
 

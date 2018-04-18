@@ -1,18 +1,19 @@
 <?php
 
-namespace app\modules\admin\controllers;
+namespace app\modules\contents\controllers;
 
+use app\modules\admin\controllers\AdminController;
 use Yii;
-use app\models\Carousel;
-use app\models\search\Carousel as CarouselSearch;
+use app\models\Tags;
+use app\models\search\Tags as TagsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * CarouselController implements the CRUD actions for Carousel model.
+ * TagsController implements the CRUD actions for Tags model.
  */
-class CarouselController extends AdminController
+class TagsController extends AdminController
 {
     /**
      * @inheritdoc
@@ -30,12 +31,12 @@ class CarouselController extends AdminController
     }
 
     /**
-     * Lists all Carousel models.
+     * Lists all Tags models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CarouselSearch();
+        $searchModel = new TagsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +46,7 @@ class CarouselController extends AdminController
     }
 
     /**
-     * Displays a single Carousel model.
+     * Displays a single Tags model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +59,13 @@ class CarouselController extends AdminController
     }
 
     /**
-     * Creates a new Carousel model.
+     * Creates a new Tags model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Carousel();
+        $model = new Tags();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if(Yii::$app->request->post('save') == 'saveedit'){
@@ -79,7 +80,7 @@ class CarouselController extends AdminController
     }
 
     /**
-     * Updates an existing Carousel model.
+     * Updates an existing Tags model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -93,8 +94,7 @@ class CarouselController extends AdminController
             if(Yii::$app->request->post('save') == 'saveedit'){
                 return $this->redirect(['update', 'id' => $model->id]);
             }
-
-            return $this->redirect(['index', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [
@@ -103,7 +103,7 @@ class CarouselController extends AdminController
     }
 
     /**
-     * Deletes an existing Carousel model.
+     * Deletes an existing Tags model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -111,21 +111,21 @@ class CarouselController extends AdminController
      */
     public function actionDelete($id)
     {
-//        $this->findModel($id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Carousel model based on its primary key value.
+     * Finds the Tags model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Carousel the loaded model
+     * @return Tags the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Carousel::findOne($id)) !== null) {
+        if (($model = Tags::findOne($id)) !== null) {
             return $model;
         }
 

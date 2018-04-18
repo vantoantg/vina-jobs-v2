@@ -1,18 +1,19 @@
 <?php
 
-namespace app\modules\admin\controllers;
+namespace app\modules\contents\controllers;
 
+use app\modules\admin\controllers\AdminController;
 use Yii;
-use app\models\Locations;
-use app\models\search\Locations as LocationsSearch;
+use app\models\CarouselItems;
+use app\models\search\CarouselItems as CarouselItemsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * LocationsController implements the CRUD actions for Locations model.
+ * CarouselItemsController implements the CRUD actions for CarouselItems model.
  */
-class LocationsController extends Controller
+class CarouselItemsController extends AdminController
 {
     /**
      * @inheritdoc
@@ -30,12 +31,12 @@ class LocationsController extends Controller
     }
 
     /**
-     * Lists all Locations models.
+     * Lists all CarouselItems models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new LocationsSearch();
+        $searchModel = new CarouselItemsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +46,7 @@ class LocationsController extends Controller
     }
 
     /**
-     * Displays a single Locations model.
+     * Displays a single CarouselItems model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,16 +59,19 @@ class LocationsController extends Controller
     }
 
     /**
-     * Creates a new Locations model.
+     * Creates a new CarouselItems model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Locations();
+        $model = new CarouselItems();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if(Yii::$app->request->post('save') == 'saveedit'){
+                return $this->redirect(['update', 'id' => $model->id]);
+            }
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -76,7 +80,7 @@ class LocationsController extends Controller
     }
 
     /**
-     * Updates an existing Locations model.
+     * Updates an existing CarouselItems model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -87,7 +91,12 @@ class LocationsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+
+            if(Yii::$app->request->post('save') == 'saveedit'){
+                return $this->redirect(['update', 'id' => $model->id]);
+            }
+
+            return $this->redirect(['index', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -96,7 +105,7 @@ class LocationsController extends Controller
     }
 
     /**
-     * Deletes an existing Locations model.
+     * Deletes an existing CarouselItems model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +119,15 @@ class LocationsController extends Controller
     }
 
     /**
-     * Finds the Locations model based on its primary key value.
+     * Finds the CarouselItems model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Locations the loaded model
+     * @return CarouselItems the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Locations::findOne($id)) !== null) {
+        if (($model = CarouselItems::findOne($id)) !== null) {
             return $model;
         }
 

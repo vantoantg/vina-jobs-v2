@@ -1,18 +1,18 @@
 <?php
 
-namespace app\modules\admin\controllers;
+namespace app\modules\contents\controllers;
 
+use app\modules\admin\controllers\AdminController;
 use Yii;
-use app\models\Tags;
-use app\models\search\Tags as TagsSearch;
-use yii\web\Controller;
+use app\models\Pages;
+use app\models\search\Pages as PagesSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * TagsController implements the CRUD actions for Tags model.
+ * PagesController implements the CRUD actions for Pages model.
  */
-class TagsController extends AdminController
+class PagesController extends AdminController
 {
     /**
      * @inheritdoc
@@ -30,13 +30,14 @@ class TagsController extends AdminController
     }
 
     /**
-     * Lists all Tags models.
+     * Lists all Pages models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new TagsSearch();
+        $searchModel = new PagesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+	    $dataProvider->pagination->pageSize = $this->setting['page_size'];
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -45,7 +46,7 @@ class TagsController extends AdminController
     }
 
     /**
-     * Displays a single Tags model.
+     * Displays a single Pages model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,19 +59,19 @@ class TagsController extends AdminController
     }
 
     /**
-     * Creates a new Tags model.
+     * Creates a new Pages model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Tags();
+        $model = new Pages();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if(Yii::$app->request->post('save') == 'saveedit'){
-                return $this->redirect(['update', 'id' => $model->id]);
-            }
-            return $this->redirect(['index']);
+	        if(Yii::$app->request->post('save') == 'saveedit'){
+		        return $this->redirect(['update', 'id' => $model->id]);
+	        }
+	        return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -79,7 +80,7 @@ class TagsController extends AdminController
     }
 
     /**
-     * Updates an existing Tags model.
+     * Updates an existing Pages model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -90,19 +91,19 @@ class TagsController extends AdminController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if(Yii::$app->request->post('save') == 'saveedit'){
-                return $this->redirect(['update', 'id' => $model->id]);
+            if(Yii::$app->request->post('save') == 'saveback'){
+                return $this->redirect(['index']);
             }
-            return $this->redirect(['index']);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'pages' => Pages::getList($id)
         ]);
     }
 
     /**
-     * Deletes an existing Tags model.
+     * Deletes an existing Pages model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,21 +111,22 @@ class TagsController extends AdminController
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        // TODO: add field is_deleted
+//        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Tags model based on its primary key value.
+     * Finds the Pages model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Tags the loaded model
+     * @return Pages the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Tags::findOne($id)) !== null) {
+        if (($model = Pages::findOne($id)) !== null) {
             return $model;
         }
 

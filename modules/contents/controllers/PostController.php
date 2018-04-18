@@ -1,7 +1,8 @@
 <?php
 
-namespace app\modules\admin\controllers;
+namespace app\modules\contents\controllers;
 
+use app\modules\admin\controllers\AdminController;
 use Yii;
 use app\models\Post;
 use app\models\search\Post as PostSearch;

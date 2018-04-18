@@ -23,25 +23,28 @@
 
 return [
     'front' => [
-        'class' => \app\modules\front\Module::class,
+        'class' => 'app\modules\front\Module',
     ],
     'admin' => [
-        'class' => \app\modules\admin\Module::class,
+        'class' => 'app\modules\admin\Module',
     ],
     'auth' => [
-        'class' => \app\modules\auth\Module::class,
+        'class' => 'app\modules\auth\Module',
     ],
     'user' => [
-        'class' => \app\modules\user\Module::class,
+        'class' => 'app\modules\user\Module',
     ],
     'system' => [
-        'class' => \app\modules\system\Module::class,
+        'class' => 'app\modules\system\Module',
     ],
     'common' => [
-        'class' => \app\modules\common\Module::class,
+        'class' => 'app\modules\common\Module',
     ],
     'product' => [
-        'class' => \app\modules\product\Module::class,
+        'class' => 'app\modules\product\Module',
+    ],
+    'contents' => [
+        'class' => 'app\modules\contents\Module',
     ],
     'redactor' => [
         'class' => 'yii\redactor\RedactorModule',
