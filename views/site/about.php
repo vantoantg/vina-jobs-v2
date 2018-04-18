@@ -14,8 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="container <?= $page->slug; ?>">
-	<div class="col-12 col-sm-8">
-
+	<div class="col-12 col-sm-8 ovf-y-h">
 		<div class="site-contact wow fadeInUp" data-wow-delay="0.1s">
 			<h1><?= Html::encode($this->title) ?></h1>
 
