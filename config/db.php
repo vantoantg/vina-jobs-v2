@@ -2,9 +2,9 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=testj002', // wampp_loc
+    'dsn' => 'mysql:host=localhost;dbname=zadmin_vnjobs', // wampp_loc
     'username' => 'root',
-    'password' => '123',
+    'password' => 'root',
     'charset' => 'utf8',
 
 //    Schema cache options (for production environment)

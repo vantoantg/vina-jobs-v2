@@ -2,13 +2,14 @@
 
 return [
     'adminEmail' => 'nguyennguyen.vt88@gmail.com',
+    'adminSystemEmail' => 'admin@jobsvina.com',
     'companyLogoPath' => '/web/uploads/_company/',
 
     'siteName' => 'Jobs Vina',
     'hotline' => '0932 252 414',
     'address' => '143/70 Gò Dầu, Phường Tân Quý, Quận Tân Phú, HCM',
     'seo' => [
-        'title' => 'Vina - Jobs',
+        'title' => 'Jobs - Vina',
         'description' => 'description...',
         'keywords' => 'keywords...'
     ],
