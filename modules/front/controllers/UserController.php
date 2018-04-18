@@ -8,6 +8,7 @@ use app\library\helper\Image;
 use app\models\Candidate;
 use app\models\Company;
 use app\models\Dropdown;
+use app\models\FileUploads;
 use app\models\JobSkill;
 use app\models\UserDetails;
 use Yii;
@@ -44,10 +45,7 @@ class UserController extends FrontController
 	{
 		$errors = [];
 		if (Common::isLoginned()) {
-			$model = Users::findOne(Common::currentUser());
-			$model->scenario = Users::SCENARIO_UPDATE;
-			$userDetail = UserDetails::find()->where(['user_id' => $model->getId()])->one();
-			$candidate = Candidate::getCandidate(Common::currentUser());
+            return $this->redirect(['update-candidate']);
 		} else {
 			$model = new Users();
 			$userDetail = new UserDetails();
@@ -80,17 +78,26 @@ class UserController extends FrontController
 			$model->token_waiting_active = $token_waiting_active;
 			$model->newCandidate();
             if($model->save()){
-            	$userDetail->setNames($model->name);
-	            $userDetail->user_id = $model->getId();
-	            $userDetail->email = $model->email;
-	            $userDetail->saveInfo();
+                $userDetail->setNames($model->name);
+                $userDetail->user_id = $model->getId();
+                $userDetail->email = $model->email;
+                $userDetail->saveInfo();
 
-				//save candidate
-				$candidate->user_id = $model->getId();
-				$candidate->skill = $candidate->array2String($candidate->skill);
+                //save candidate
+                $candidate->user_id = $model->getId();
+                $candidate->skill = $candidate->array2String($candidate->skill);
 //				$candidate->scenario = "register";
-	            $candidate->user_id = $model->getId();
+                $candidate->user_id = $model->getId();
                 if ($userDetail->save() && $candidate->save()) {
+                    $candidate->file = UploadedFile::getInstance($candidate, 'file');
+                    if ($candidate->file) {
+                        $file_type = $candidate->file->extension;
+                        $file_name = $candidate->file->baseName;
+                        $path = Yii::$app->basePath . Yii::$app->params['companyCandidatePath'] . $candidate->file->baseName . '.' . $file_type;
+                        $candidate->file->saveAs($path);
+                        FileUploads::saveFile(FileUploads::CANDIDATE, $candidate->id, $path, $file_name, $file_type);
+                    }
+
                     $transaction->commit();
                     // TODO: Send email
                     $data['name'] = $model->name;

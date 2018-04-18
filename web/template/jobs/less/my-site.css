@@ -517,6 +517,12 @@ form div.required label:after {
   content: " (*)";
   color: red;
 }
+form .form-group .iCheck label {
+  margin-right: 20px;
+}
+form .form-group label {
+  font-weight: normal;
+}
 input.cropit-image-zoom-input {
   margin-bottom: 15px;
 }

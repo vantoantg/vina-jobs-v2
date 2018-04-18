@@ -269,6 +269,13 @@ $dropdowns = new Dropdown();
 						</div>
 					</div>
 				</div>
+
+				<div class="row">
+					<div class="col-xs-12">
+                        <?= $form->field($candidate, 'file')->fileInput()->label('Tải CV') ?>
+					</div>
+				</div>
+
 				<div class="row">
 					<div class="col-xs-12">
 	                    <?= $form->field($userDetail, 'about_me')->widget(\yii\redactor\widgets\Redactor::className(), [
