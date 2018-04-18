@@ -2,7 +2,7 @@
 <footer>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4 col-sm-6 footerleft wow fadeInLeft" data-wow-delay="0.8s">
+			<div class="col-md-4 col-sm-6 footerleft wow fadeInLeft" data-wow-delay="0.4s">
 				<div class="logofooter">
                     <a href="<?= \app\library\helper\Helper::siteURL()?>"><img src="<?= \app\library\helper\Helper::homeUrl()?>web/template/jobs/img/logo-ft.png" alt="<?= Yii::$app->params['siteName'] ?>" class="wow pulse" style="max-height: 60px" data-wow-delay="1s"></a>
                 </div>
@@ -12,7 +12,7 @@
 				<p><i class="fa fa-envelope"></i> E-mail: info@vina-jobs.com</p>
 
 			</div>
-			<div class="col-md-3 col-sm-6 paddingtop-bottom wow fadeInLeft" data-wow-delay="0.7s">
+			<div class="col-md-3 col-sm-6 paddingtop-bottom wow fadeInLeft" data-wow-delay="0.3s">
 				<h6 class="heading7">BẠN MUỐN LÀM GÌ ?</h6>
 				<ul class="footer-ul">
 					<li><a href="#"> Đăng tin tìm việc</a></li>
@@ -24,7 +24,7 @@
 					<li><a href="#"> Xem các điều khoản của <?= Yii::$app->params['siteName']; ?></a></li>
 				</ul>
 			</div>
-			<div class="col-md-3 col-sm-6 paddingtop-bottom wow fadeInRight" data-wow-delay="0.7s">
+			<div class="col-md-3 col-sm-6 paddingtop-bottom wow fadeInRight" data-wow-delay="0.3s">
 				<h6 class="heading7">CÁC VIỆC LÀM MỚI</h6>
 				<div class="post">
 					<p>
@@ -44,7 +44,7 @@
                     </p>
 				</div>
 			</div>
-			<div class="col-md-2 col-sm-6 paddingtop-bottom wow fadeInRight" data-wow-delay="0.8s">
+			<div class="col-md-2 col-sm-6 paddingtop-bottom wow fadeInRight" data-wow-delay="0.4s">
 				<h6 class="heading7">MẠNG XÃ HỘI</h6>
 				<div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="300" data-small-header="false" style="margin-bottom:15px;" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
 					<div class="fb-xfbml-parse-ignore">

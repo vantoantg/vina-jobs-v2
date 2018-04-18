@@ -17,12 +17,12 @@ class Candidate extends \app\models\base\Candidate
 
 		STATUS_CLIENT_PUBLISH = 7,
 		STATUS_CLIENT_DRAFT = 8;
-
+    public $receives;
     public function rules()
     {
         return [
             [['user_id', 'job_category_id', 'skill'], 'required'],
-            [['user_id', 'job_category_id', 'location', 'created_by', 'updated_by', 'approved_by', 'view', 'sorted'], 'integer'],
+            [['user_id', 'job_category_id', 'location', 'created_by', 'updated_by', 'approved_by', 'view', 'sorted', 'receives'], 'integer'],
             [['resume_content'], 'string'],
             [['created_at', 'updated_at', 'approved_at', 'skill'], 'safe'],
             [['title', 'slug', 'video', 'resume_file'], 'string', 'max' => 255],
@@ -61,6 +61,7 @@ class Candidate extends \app\models\base\Candidate
 			'sorted' => 'Sorted',
 			'star' => 'Star',
 			'client_status' => 'Client Status',
+			'receives' => 'Bạn sẽ nhận các tin tuyển dụng mới nhất liên quan đến ngành - nghề bạn đã đăng ký ?',
 			'status' => 'Status',
 		];
 	}
