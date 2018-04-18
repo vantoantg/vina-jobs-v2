@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
 
                 <div class="alert alert-success">
-                    Thank you for contacting us. We will respond to you as soon as possible.
+	                Cảm ơn bạn đã liên hệ với chúng tôi. Chúng tôi sẽ trả lời ngay khi có thể.
                 </div>
 
                 <p>

@@ -562,7 +562,7 @@ class UserController extends FrontController
 					$data['name'] = $User->name;
 					$data['link'] = Url::to('/user/reset-password/' . $token_reset_password . '.html', true);
 					$temp = $this->renderPartial('@app/mail/layouts/reset_password', ['data' => $data]);
-//					$send = Email::sendMail('Reset password - ' . Yii::$app->params['siteName'], $temp);
+					$send = Email::sendMail('Reset password - ' . Yii::$app->params['siteName'], $temp);
 					$send = true;
 					if ($send) {
 						return $this->render('forgot_success', [

@@ -25,6 +25,7 @@ class Email
     public static function sendMail($subject = 'Subject', $body, $toEmail = 'nguyennguyen.vt88@gmail.com', $toName = 'Tona Nguyễn'){
 	    $mail = new PHPMailer();                              // Passing `true` enables exceptions
 	    try {
+	    	$m = \Yii::$app->params['mail'];
 		    $mail->SMTPDebug = 0;
 	        if(YII_DEBUG){
                 //Server settings
@@ -32,18 +33,18 @@ class Email
             }
             // Enable verbose debug output
 		    $mail->isSMTP();                                      // Set mailer to use SMTP
-		    $mail->Host = 'mail.vina-jobs.com';  // Specify main and backup SMTP servers
+		    $mail->Host = $m['host'];  // Specify main and backup SMTP servers
 		    $mail->SMTPAuth = true;                               // Enable SMTP authentication
-		    $mail->Username = 'system@vina-jobs.com';                 // SMTP username
-		    $mail->Password = '12345678090';                           // SMTP password
-		    $mail->SMTPSecure = 'TLS';                            // Enable TLS encryption, `ssl` also accepted
-		    $mail->Port = 25;                                    // TCP port to connect to
+		    $mail->Username = $m['username'];                 // SMTP username
+		    $mail->Password = $m['password'];                           // SMTP password
+		    $mail->SMTPSecure = $m['secure'];                            // Enable TLS encryption, `ssl` also accepted
+		    $mail->Port = $m['port'];                                    // TCP port to connect to
 
 		    //Recipients
-		    $mail->setFrom('system@vina-jobs.com', \Yii::$app->params['siteName']);
+		    $mail->setFrom($m['options']['setFrom'], \Yii::$app->params['siteName']);
 		    $mail->addAddress($toEmail, $toName);     // Add a recipient
 //		    $mail->addAddress('admin@vina-jobs.com');               // Name is optional
-		    $mail->addReplyTo('noreply@vina-jobs.com', 'noreply ');
+		    $mail->addReplyTo($m['options']['addReplyTo'], 'noreply');
 //		    $mail->addCC('cc@example.com');
 //		    $mail->addBCC('bcc@example.com');
 

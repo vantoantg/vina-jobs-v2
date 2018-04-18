@@ -3,6 +3,7 @@ bower install select2
 bower install cropit
 bower install craftpip/jquery-confirm
 bower install iCheck
+bower install jquery-lazy
 
 
 http://www.yiiframework.com/extension/yii2-migration-creator/

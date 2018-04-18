@@ -2,6 +2,7 @@
 .idea
 #/config/db.php
 assets/*
+/config/db.php
 /node_modules
 !/assets/app
 /vendor

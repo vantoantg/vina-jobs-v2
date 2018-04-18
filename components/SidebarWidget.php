@@ -30,6 +30,12 @@ class SidebarWidget extends Widget
 	    ]);
     }
 
+	public function recentCompanyInfo(){
+		return $this->render('sidebar/company_info', [
+
+		]);
+	}
+
     public function archives(){
         return $this->render('sidebar/archives', [
 

@@ -333,14 +333,20 @@ class Helper
             ',' => '',
             ';' => '',
             ':' => '-',
-            '@' => '-'
+            '@' => '-',
+            '(' => '-',
+            ')' => '-',
         );
 
         // -- Remove duplicated spaces
         $string = preg_replace(array('/\s{2,}/', '/[\t\n]/'), ' ', $string);
 
         // -- Returns the slug
-        return strtolower(strtr($string, $table));
+        $str = strtolower(strtr($string, $table));
+	    $str = str_replace("--", "-", $str);
+	    $str = str_replace("---", "-", $str);
+	    $str = str_replace("----", "-", $str);
+	    return $str;
     }
 
     /**

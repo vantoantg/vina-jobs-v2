@@ -38,8 +38,8 @@ $this->title = $name;
         <p class="text-center red"><?= $message; ?></p>
         <p class="text-center">
             <small style="font-size: 13px">
-                Đã xảy ra lỗi trên trong khi các máy chủ Web được chế biến theo yêu cầu của bạn.<br>
-                Vui lòng liên hệ với chúng tôi nếu bạn nghĩ rằng đây là một lỗi máy chủ. Cảm ơn bạn.
+                Đã xảy ra lỗi trong khi các máy chủ Web cố gắng xử lý các yêu cầu của bạn.<br>
+                Nếu bạn nghĩ rằng đây là một lỗi máy chủ, vui lòng liên hệ với chúng tôi qua email <?= \app\library\helper\Helper::params('adminSystemEmail'); ?> Cảm ơn bạn.
             </small>
         </p>
 

@@ -28,7 +28,7 @@
 				<h6 class="heading7">CÁC VIỆC LÀM MỚI</h6>
 				<div class="post">
 					<p>
-                        <a href="#" title="Click để xem tin: Tuyển lập trình backend - 3 năm kinh nghiệm">Tuyển lập trình backend - 3 năm kinh nghiệm</a><br>
+                        <a href="<?= \app\library\helper\Helper::createUrl(['site/employeers-detail', 'slug' => 'web-developer-java--javascript--jquery', 'id' => 1])?>" title="Click để xem tin: Tuyển lập trình backend - 3 năm kinh nghiệm">Tuyển lập trình backend - 3 năm kinh nghiệm</a><br>
                         <a href="#" title="Click để xem thông tin Công Ty LOCKON-VN">Công ty LOCKON VN</a>
                         <span>Hạn nộp HS: 01/06</span>
                     </p>

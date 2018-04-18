@@ -22,6 +22,7 @@ var Main = function () {
             this.initFirstLoadSearchJobsPage();
             this.handleTopSearch();
             this.initSearchJobsPage();
+            this.fixedSidebar();
             // this.ajaxCallback();
         },
         events: function () {
@@ -72,6 +73,7 @@ var Main = function () {
                 })
             });
 
+            $('.lazy').Lazy();
         },
         handleFormRegister: function () {
             var _links = $('a#form-register');
@@ -268,6 +270,33 @@ var Main = function () {
                 };
                 search();
             }
+        },
+        fixedSidebar: function () {
+            var sidebarfx = $("#sidebarfx");
+            if(sidebarfx.length){
+                var offset = sidebarfx.offset();
+                var topPadding = 15;
+                var tartgetHeight = sidebarfx.data('follow-scroll')
+                var contentHeight = $(tartgetHeight).height();
+                $(window).scroll(function() {
+                    var wdTop = $(window).scrollTop();
+                    if(wdTop + 400 < contentHeight){
+                        console.log('2343');
+                        Main.doFixedSidebar(sidebarfx, offset, topPadding);
+                    }
+                });
+            }
+        },
+        doFixedSidebar: function (sidebarfx, offset, topPadding) {
+            if ($(window).scrollTop() > offset.top) {
+                sidebarfx.stop().animate({
+                    marginTop: $(window).scrollTop() - offset.top + topPadding
+                });
+            } else {
+                sidebarfx.stop().animate({
+                    marginTop: 0
+                });
+            };
         }
     }
 }();
