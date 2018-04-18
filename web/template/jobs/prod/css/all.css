@@ -9431,9 +9431,9 @@ body {
     background: #fff
 }
 
-.search-form.top #searchform-keys{
+/*.search-form.top #searchform-keys{
     margin-top: 0;
-}
+}*/
 .search-form.top {
     background-color: #fff;
     /*border-radius: 5px;*/
@@ -11177,6 +11177,12 @@ body.modal-open {
 .navbar-collapse.in {
   overflow-y: hidden!important;
 }
+.ovf-x-h {
+  overflow-x: hidden;
+}
+.ovf-y-h {
+  overflow-y: hidden;
+}
 .red {
   color: red;
 }
@@ -11734,7 +11740,9 @@ input.cropit-image-zoom-input {
 }
 .ft-jobs-detail {
   margin-top: 50px;
-  min-height: 90px;
+}
+.ft-jobs-detail > div {
+  min-height: 87px;
 }
 .ft-jobs-detail button {
   margin-left: 10px;
