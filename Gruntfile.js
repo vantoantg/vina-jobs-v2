@@ -42,6 +42,7 @@ module.exports = function(grunt) {
                     'web/js/site/login.js',
                     'web/js/site/main.js',
                     'web/js/site/candidate.js',
+                    'web/js/site/jobs.js',
                     'web/js/site/search.js',
 
                 ],

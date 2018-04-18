@@ -393,7 +393,7 @@ class UserController extends FrontController
         }
 
         if(Common::currentUser('type') == Users::USER_TYPE_CONTACT_OF_COMPANY){
-            return $this->render('view_contact');
+            return $this->render('profile_contact');
         }else{
             return $this->render('view_profile');
         }
@@ -420,7 +420,7 @@ class UserController extends FrontController
      * @return \yii\web\Response
      * @throws BadRequestHttpException
      */
-    public function actionContactProfile()
+    public function actionClientProfile()
     {
         if(!Common::isLoginned()){
             if(Common::currentUser('type') != Users::USER_TYPE_CONTACT_OF_COMPANY){

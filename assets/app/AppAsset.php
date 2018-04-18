@@ -53,6 +53,7 @@ class AppAsset extends AssetBundle
         'web/js/site/login.js',
         'web/js/site/main.js',
         'web/js/site/candidate.js',
+        'web/js/site/jobs.js',
         'web/js/site/search.js',
     ];
     public $depends = [

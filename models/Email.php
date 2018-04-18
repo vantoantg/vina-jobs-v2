@@ -65,7 +65,13 @@ class Email
 	    }
     }
 
-    public static function body(){
+    public function validateRmailType()
+    {
+
+    }
+
+    public static function body()
+    {
 
     }
 }

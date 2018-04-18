@@ -87,10 +87,13 @@ $dropdowns = new Dropdown();
 						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">Email<span class="red"> (*)</span></label>
 							<div class="cols-sm-10">
+								<?php
+                                $readonly = $model->email ? true : false;
+								?>
                                 <?= $form->field($model, 'email', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                                ])->textInput(['readonly' => true])->label(false) ?>
+                                ])->textInput(['readonly' => $readonly])->label(false) ?>
 							</div>
 						</div>
 					</div>

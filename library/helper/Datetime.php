@@ -133,14 +133,13 @@ class Datetime
 
     /**
      * @param $datetime
-     * @param string $lang
      * @return string
      */
-    public static function sqlDatetimeDiffForHumans($datetime, $lang = 'vi'){
+    public static function sqlDatetimeDiffForHumans($datetime){
         if(!$datetime){
             return '';
         }
-        Carbon::setLocale($lang);
+        Carbon::setLocale(Yii::$app->language);
         return Carbon::createFromFormat(self::SQL_DATETIME, $datetime)->diffForHumans();
     }
 }

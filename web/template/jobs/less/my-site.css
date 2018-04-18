@@ -30,6 +30,9 @@ body.modal-open {
 .navbar-collapse.in {
   overflow-y: hidden!important;
 }
+.ovf-h {
+  overflow: hidden;
+}
 .ovf-x-h {
   overflow-x: hidden;
 }
@@ -606,6 +609,6 @@ input.cropit-image-zoom-input {
 .ft-jobs-detail button {
   margin-left: 10px;
   margin-right: 10px;
-  min-width: 125px;
+  min-width: 161px;
   font-family: inherit;
 }
