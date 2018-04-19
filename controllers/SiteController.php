@@ -61,7 +61,7 @@ class SiteController extends FrontController
             'auth' => [
                 'class' => 'yii\authclient\AuthAction',
                 'successCallback' => [$this, 'successCallback'],
-                'successUrl' => $this->successUrl,
+                'successUrl' => Yii::$app->request->getUrl(),
             ],
         ];
     }
