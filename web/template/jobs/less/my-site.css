@@ -30,6 +30,9 @@ body.modal-open {
 .navbar-collapse.in {
   overflow-y: hidden!important;
 }
+.ovf-h {
+  overflow: hidden;
+}
 .ovf-x-h {
   overflow-x: hidden;
 }
@@ -517,6 +520,12 @@ form div.required label:after {
   content: " (*)";
   color: red;
 }
+form .form-group .iCheck label {
+  margin-right: 20px;
+}
+form .form-group label {
+  font-weight: normal;
+}
 input.cropit-image-zoom-input {
   margin-bottom: 15px;
 }
@@ -600,6 +609,6 @@ input.cropit-image-zoom-input {
 .ft-jobs-detail button {
   margin-left: 10px;
   margin-right: 10px;
-  min-width: 125px;
+  min-width: 161px;
   font-family: inherit;
 }

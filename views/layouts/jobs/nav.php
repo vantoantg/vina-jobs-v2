@@ -69,9 +69,9 @@ use app\library\helper\Helper;
 	<li>
 		<a class="<?= Helper::active('site/employeers') ?>"
 		   href="<?= Helper::createUrl(['site/employeers']) ?>">Nhà tuyển dụng</a></li>
-	<li>
-		<a class="<?= Helper::active('site/about-us') ?>"
-		   href="<?= Helper::createUrl(['site/about-us']) ?>">Giới thiệu</a></li>
+	<!--<li>
+		<a class="<?/*= Helper::active('site/about-us') */?>"
+		   href="<?/*= Helper::createUrl(['site/about-us']) */?>">Giới thiệu</a></li>-->
 	<li>
 		<a class="<?= Helper::active('site/blog') ?>"
 		   href="<?= Helper::createUrl(['site/blog']) ?>">Blog</a>

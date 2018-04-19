@@ -5,13 +5,15 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 use \app\library\helper\Common;
 use \app\library\helper\Helper;
+use app\models\Pages;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\User */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
-$this->title = Common::currentUser('profile-contact');
+$page = Pages::get('profile-contact');
+$this->title = Helper::titleSeo($page);
 $this->params['breadcrumbs'][] = $this->title;
+Helper::generateSeo($page);
 
 /** @var $userInfo \app\models\UserDetails $userInfo */
 $userInfo = \app\models\UserDetails::getInfo();

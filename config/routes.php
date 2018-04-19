@@ -27,7 +27,7 @@ return [
 	'client/update.html' => 'front/user/update-company',
 
 	'user/profile.html' => 'front/user/user-profile',
-	'client/profile.html' => 'front/user/contact-profile',
+	'client/profile.html' => 'front/user/client-profile',
 
 	'user/profile/<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/user/view-profile',
 	'user/forgot-password.html' => 'front/user/forgot',
@@ -37,9 +37,9 @@ return [
     // jobs
 	'service/jobs/update/job-<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/edit-jobs',
 	'service/register-jobs.html' => 'front/jobs/post-jobs',
-
 	'service/register-cv.html' => 'front/jobs/post-cv',
     'service/cv/update/<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/edit-cv',
+    'service/jobs/action/<slug:[a-zA-Z0-9_ -@.]+>-<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/actions',
 
 
 

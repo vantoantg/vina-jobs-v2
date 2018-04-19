@@ -8,8 +8,10 @@ use app\library\helper\Helper;
 use app\models\Company;
 use app\models\CurriculumVitae;
 use app\models\Job;
+use app\models\UserJobs;
 use app\models\Users;
 use Yii;
+use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 
 
@@ -18,6 +20,17 @@ use yii\web\NotFoundHttpException;
  */
 class JobsController extends FrontController
 {
+
+    public function actionActions($slug, $id){
+        if(!Yii::$app->request->isAjax){
+            throw new BadRequestHttpException('Không tìm thấy yêu cầu của bạn!');
+        }
+
+        if(Yii::$app->request->isAjax){
+            UserJobs::favoriteOrApply($id, Yii::$app->request->post());
+        }
+    }
+
     /**
      * Renders the index view for the module
      * @return string
