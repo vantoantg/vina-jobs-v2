@@ -18,34 +18,31 @@ use app\library\helper\Helper;
 						<a role="menuitem" tabindex="-1"
 						   href="<?= Helper::createUrl(['front/jobs/post-jobs']) ?>">Đăng tuyển dụng</a>
 					</li>
+	                <li role="presentation">
+		                <a role="menuitem" tabindex="-1"
+		                   href="<?= Helper::createUrl(['front/user/profile-change-password']) ?>">Thay đổi mật khẩu</a></li>
+	                <li role="presentation">
+		                <a role="menuitem" tabindex="-1" href="<?= Helper::createUrl(['front/user/update-company']) ?>">Thay đổi thông tin</a></li>
+	                <li role="presentation"><a
+				                href="<?= Helper::createUrl(['front/user/client-profile']) ?>">Trang cá nhân</a></li>
+
                 <?php } else { ?>
 					<li role="presentation">
 						<a role="menuitem" tabindex="-1"
-						   href="<?= Helper::createUrl(['front/user/update-candidate']) ?>">Cập nhật hồ
-							sơ</a>
+						   href="<?= Helper::createUrl(['front/user/update-candidate']) ?>">Cập nhật hồ sơ</a>
 					</li>
+	                <li role="presentation">
+		                <a role="menuitem" tabindex="-1"
+		                   href="<?= Helper::createUrl(['front/user/profile-change-password']) ?>">Thay đổi mật khẩu</a></li>
+	                <li role="presentation">
+		                <a role="menuitem" tabindex="-1"
+		                   href="<?= Helper::createUrl(['front/user/update-candidate']) ?>">Thay đổi thông
+			                tin</a></li>
+	                <li role="presentation"><a href="<?= Helper::createUrl(['front/user/user-profile']) ?>">Trang cá nhân</a></li>
                 <?php } ?>
-				<li role="presentation">
-					<a role="menuitem" tabindex="-1"
-					   href="<?= Helper::createUrl(['front/user/profile-change-password']) ?>">Thay đổi mật
-						khẩu</a></li>
-                <?php if (\app\library\helper\Common::currentUser('type') == \app\models\Users::USER_TYPE_CONTACT_OF_COMPANY) { ?>
-					<li role="presentation">
-						<a role="menuitem" tabindex="-1" href="<?= Helper::createUrl(['front/user/update-company']) ?>">Thay đổi thông tin</a></li>
-					<li role="presentation"><a
-								href="<?= Helper::createUrl(['front/user/contact-profile']) ?>">Trang cá
-							nhân</a></li>
-                <?php } else { ?>
-					<li role="presentation">
-						<a role="menuitem" tabindex="-1"
-						   href="<?= Helper::createUrl(['front/user/update-candidate']) ?>">Thay đổi thông
-							tin</a></li>
-					<li role="presentation"><a href="<?= Helper::createUrl(['front/user/user-profile']) ?>">Trang
-							cá nhân</a></li>
-                <?php } ?>
+
 				<li role="presentation" class="divider"></li>
-				<li role="presentation"><a href="<?= Helper::createUrl(['front/user/logout']) ?>">Đăng
-						xuất</a>
+				<li role="presentation"><a href="<?= Helper::createUrl(['front/user/logout']) ?>">Đăng xuất</a>
 				</li>
 			</ul>
 		</div>
