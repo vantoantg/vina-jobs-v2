@@ -284,7 +284,6 @@ var Main = function () {
                 $(window).scroll(function() {
                     var wdTop = $(window).scrollTop();
                     if($(window).width() >= 768 && wdTop + 400 < contentHeight){
-                        console.log('2343');
                         Main.doFixedSidebar(sidebarfx, offset, topPadding);
                     }
                 });
@@ -294,7 +293,7 @@ var Main = function () {
             if ($(window).scrollTop() > offset.top) {
                 sidebarfx.stop().animate({
                     marginTop: $(window).scrollTop() - offset.top + topPadding
-                });
+                }, 300);
             } else {
                 sidebarfx.stop().animate({
                     marginTop: 0
