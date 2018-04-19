@@ -10,12 +10,12 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="container">
-    <div class="row page-title text-center wow bounce" data-wow-delay="1s">
+    <div class="row page-title text-center <?= \app\library\helper\Helper::wowClass() ?> bounce" data-wow-delay="1s">
         <h5>Tin của nhà tuyển dụng</h5>
         <h2><span>54.716</span> việc làm sẵn có cho bạn</h2>
     </div>
     <div class="row text-center">
-        <div class="search-form wow pulse" data-wow-delay="0.5s">
+        <div class="search-form <?= \app\library\helper\Helper::wowClass() ?> pulse" data-wow-delay="0.5s">
             <form id="employeers-search" class="form-inline" action="<?= Helper::createUrl(['site/search']) ?>"
                   method="get">
                 <div class="form-group field-searchform-keywords">
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="job-posts table-responsive">
                 <table class="table list-jobs">
                     <?php for($i=1; $i<= 20; $i++){ ?>
-		                <tr class="odd wow fadeInUp" data-wow-delay="0.<?= $i ?>s">
+		                <tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.<?= $i ?>s">
 			                <td class="tbl-logo"><img src="<?= Helper::homeUrl()?>web/template/jobs/img/job-logo1.png" alt=""></td>
 			                <td class="tbl-title"><h4>Web Designer <br><span class="job-type">full time</span></h4></td>
 			                <td><p>dribbble community</p></td>
@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
         <div class="col-md-3 hidden-sm">
-            <div class="job-add wow fadeInRight" data-wow-delay="0.1s">
+            <div class="job-add <?= \app\library\helper\Helper::wowClass() ?> fadeInRight" data-wow-delay="0.1s">
                 <h2>Tìm việc ?</h2>
                 <a href="#" data-toggle="modal" data-target="#register-modal">TẠO TÀI KHOẢN</a>
             </div>

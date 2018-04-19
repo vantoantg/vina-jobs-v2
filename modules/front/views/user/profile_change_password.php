@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	</div>
 
     <div class="row">
-        <div class="col-12 col-sm-8 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="col-12 col-sm-8 <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.1s">
 			<?php if (Yii::$app->session->hasFlash('update_pw_success')): ?>
                 <div class="alert alert-success alert-dismissable">
                     <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>

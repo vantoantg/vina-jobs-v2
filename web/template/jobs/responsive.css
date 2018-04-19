@@ -233,7 +233,7 @@
 
     .client-text {
         margin-left: 0;
-        width: 740px;
+        width: 100%;
     }
 
     .client-face > img {
@@ -242,8 +242,8 @@
     }
 
     .testimonial .item .client-face {
-        right: 0;
-        top: 83px;
+        right: 15px!important;
+        top: 245px!important;
     }
 
     .footer-copy {
@@ -279,6 +279,7 @@
     .client-text p {
         line-height: 20px;
         font-size: 13px;
+        text-align: justify;
     }
 
     .client-text h4 {

@@ -130,6 +130,7 @@ var Common = {
     };
 })(jQuery);
 
+
 var isMobile = {
     Android: function() {
         return navigator.userAgent.match(/Android/i);
@@ -150,8 +151,8 @@ var isMobile = {
         return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
     }
 };
-
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
     Common.clickGoToUrl();
+    console.log(isMobile.any());
 });

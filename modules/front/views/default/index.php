@@ -73,21 +73,21 @@ Helper::generateSeo($page);
 
 <div class="content-area">
 	<div class="container">
-		<div class="row page-title text-center wow zoomInDown" data-wow-delay="0.1s">
+		<div class="row page-title text-center <?= \app\library\helper\Helper::wowClass() ?> zoomInDown" data-wow-delay="0.1s">
 			<h5>Niềm vui của chúng tôi</h5>
 			<h2>Là sự hài lòng của bạn</h2>
             <p>Sử dụng các kết quả từ công việc, chúng tôi sẽ đưa ra một kế hoạch cho chiến lược tiếp thị hiệu quả nhất để có được kết quả tốt nhất.</p>
 		</div>
 		<div class="row how-it-work text-center">
 			<div class="col-md-4">
-				<div class="single-work wow fadeInUp" data-wow-delay="0.7s">
+				<div class="single-work <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.7s">
 					<img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/how-work1.png" alt="<?= Helper::params(); ?>">
 					<h3>Hướng đến sự đơn giản</h3>
 					<p>Website không đòi hỏi đăng ký quá phức tạp. Các tính năng rõ ràng thuận tiện thao tác cho cả những ai không nắm nhiều kiến thức về máy tính.</p>
 				</div>
 			</div>
 			<div class="col-md-4">
-				<div class="single-work  wow fadeInUp" data-wow-delay="0.8s">
+				<div class="single-work  <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.8s">
 					<img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/how-work2.png" alt="<?= Helper::params(); ?>">
 					<h3>Tạo sự thỏa mãn</h3>
 					<p>Luôn chọn lọc công việc và ứng viên phù hợp nhất để gửi đến bạn. Không spam mail với những tin nhắn quảng cáo
@@ -95,7 +95,7 @@ Helper::generateSeo($page);
 				</div>
 			</div>
 			<div class="col-md-4">
-				<div class="single-work wow fadeInUp" data-wow-delay="0.9s">
+				<div class="single-work <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.9s">
 					<img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/how-work3.png" alt="">
 					<h3>Luôn luôn tức thời</h3>
 					<p>Thông tin sẽ cập nhật tức thời khi có một công việc hoặc ứng viên phù hợp với nhu cầu của bạn. Bạn có thể trao đổi
@@ -107,7 +107,7 @@ Helper::generateSeo($page);
 	<hr>
 
     <div class="container">
-        <div class="row job-posting wow fadeInUp" data-wow-delay="0.2s">
+        <div class="row job-posting <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.2s">
             <div role="tabpanel">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
@@ -213,7 +213,7 @@ Helper::generateSeo($page);
     <hr>
 
     <div class="container">
-        <div class="row page-title text-center wow bounce" data-wow-delay="1s">
+        <div class="row page-title text-center <?= \app\library\helper\Helper::wowClass() ?> bounce" data-wow-delay="1s">
             <h5>Công việc mới nhất</h5>
             <h2><span>54716</span> công việc sẵn có cho bạn</h2>
         </div>
@@ -221,7 +221,7 @@ Helper::generateSeo($page);
             <div class="col-md-9">
                 <div class="job-posts table-responsive">
                     <table class="table list-jobs">
-                        <tr class="odd wow fadeInUp" data-wow-delay="0.1s">
+                        <tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.1s">
                             <td class="tbl-logo">
                                 <a href="#"><img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo1.png" alt=""></a>
                             </td>
@@ -235,7 +235,7 @@ Helper::generateSeo($page);
                             <td><p>&dollar; 14000</p></td>
                             <td class="tbl-apply"><a href="#">Apply now</a></td>
                         </tr>
-                        <tr class="even wow fadeInUp" data-wow-delay="0.2s">
+                        <tr class="even <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.2s">
                             <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo2.png" alt=""></td>
                             <td class="tbl-title"><h4>Front End Developer <br><span class="job-type">full time</span>
                                 </h4></td>
@@ -244,7 +244,7 @@ Helper::generateSeo($page);
                             <td><p>&dollar; 14000</p></td>
                             <td class="tbl-apply"><a href="#">Apply now</a></td>
                         </tr>
-                        <tr class="odd wow fadeInUp" data-wow-delay="0.3s">
+                        <tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.3s">
                             <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo3.png" alt=""></td>
                             <td class="tbl-title"><h4>HR Manager <br><span class="job-type">full time</span></h4></td>
                             <td><p>Fanta bevarage</p></td>
@@ -252,7 +252,7 @@ Helper::generateSeo($page);
                             <td><p>&dollar; 14000</p></td>
                             <td class="tbl-apply"><a href="#">Apply now</a></td>
                         </tr>
-                        <tr class="even wow fadeInUp" data-wow-delay="0.4s">
+                        <tr class="even <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.4s">
                             <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo4.png" alt=""></td>
                             <td class="tbl-title"><h4>Internship Designer <br><span class="job-type">full time</span>
                                 </h4></td>
@@ -261,7 +261,7 @@ Helper::generateSeo($page);
                             <td><p>&dollar; 14000</p></td>
                             <td class="tbl-apply"><a href="#">Apply now</a></td>
                         </tr>
-                        <tr class="odd wow fadeInUp" data-wow-delay="0.5s">
+                        <tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.5s">
                             <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo5.png" alt=""></td>
                             <td class="tbl-title"><h4>Software Designer <br><span class="job-type">full time</span></h4>
                             </td>
@@ -315,7 +315,7 @@ Helper::generateSeo($page);
                 </div>
             </div>
             <div class="col-md-3 hidden-sm">
-                <div class="job-add wow fadeInRight" data-wow-delay="1s">
+                <div class="job-add <?= \app\library\helper\Helper::wowClass() ?> fadeInRight" data-wow-delay="1s">
                     <h2>Tìm việc ?</h2>
                     <a href="#" data-toggle="modal" data-target="#register-modal">TẠO TÀI KHOẢN</a>
                 </div>
@@ -325,7 +325,7 @@ Helper::generateSeo($page);
     <hr>
 
 	<div class="container">
-		<div class="row page-title text-center  wow bounce" data-wow-delay=".7s">
+		<div class="row page-title text-center  <?= \app\library\helper\Helper::wowClass() ?> bounce" data-wow-delay=".7s">
 			<h5>Hãy nghe</h5>
 			<h2>Người thành công</h2>
 		</div>
@@ -341,7 +341,7 @@ Helper::generateSeo($page);
 								hãy quyết tâm đến cùng. Đừng bỏ cuộc.."</p>
 							<h4><strong>Steve Jobs, </strong><i>CEO của Apple</i></h4>
 						</div>
-						<div class="client-face wow fadeInRight" data-wow-delay=".9s" style="top: 123px; right: 149px">
+						<div class="client-face <?= \app\library\helper\Helper::wowClass() ?> fadeInRight" data-wow-delay=".9s" style="top: 123px; right: 149px">
 							<img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/client-face1.png" alt="">
 						</div>
 					</div>

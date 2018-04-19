@@ -74,6 +74,9 @@ var Main = function () {
             });
 
             $('.lazy').Lazy();
+            if($(window).width < 768){
+
+            }
         },
         handleFormRegister: function () {
             var _links = $('a#form-register');
@@ -280,7 +283,7 @@ var Main = function () {
                 var contentHeight = $(tartgetHeight).height();
                 $(window).scroll(function() {
                     var wdTop = $(window).scrollTop();
-                    if(wdTop + 400 < contentHeight){
+                    if( $(window).width >= 768 && wdTop + 400 < contentHeight){
                         console.log('2343');
                         Main.doFixedSidebar(sidebarfx, offset, topPadding);
                     }

@@ -588,4 +588,12 @@ class Helper
 		}
 		return Yii::$app->params[$param];
 	}
+
+    public static function wowClass()
+    {
+        if (!Helper::params('urlCookied')) {
+            return 'wow';
+        }
+        return '';
+    }
 }

@@ -25,5 +25,8 @@ return [
 			'setFrom' => 'system@jobsvina.com',
 			'addReplyTo' => 'noreply@vina-jobs.com',
 		]
-	]
+	],
+    'siteSetting' => [
+        'urlCookied' => false
+    ]
 ];

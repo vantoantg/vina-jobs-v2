@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-12 col-sm-8">
         <div class="row main">
             <div class="main-login main-center">
-                <div class="alert-message alert-message-info wow zoomInDown animated" data-wow-delay="0.2s">
+                <div class="alert-message alert-message-info <?= \app\library\helper\Helper::wowClass() ?> zoomInDown animated" data-wow-delay="0.2s">
                     <h4>Lưu ý:</h4>
                     <p>
                         Bạn vui lòng điền đúng địa chỉ email. Hệ thống sẽ gửi các thông báo, thông tin liên quan tới tài khoản hoặc thông tin tuyển dụng vào <strong>email của bạn đăng ký</strong>.</p>
