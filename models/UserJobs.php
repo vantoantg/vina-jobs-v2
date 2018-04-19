@@ -20,7 +20,7 @@ class UserJobs extends \app\models\base\UserJobs
             if (!$job) {
                 $job = new UserJobs();
                 if ($data['action'] == 'favorite') {
-                    $job->saved = '1';
+                    $job->saved = 1;
                 }
                 $job->user_id = Common::currentUser();
                 $job->jobs_id = $jobId;
@@ -28,14 +28,9 @@ class UserJobs extends \app\models\base\UserJobs
                 $job->save();
             } else {
                 if ($data['action'] == 'favorite') {
-                    $job->saved = ($job->saved == '1') ? '0' : '1';
+                    $job->saved = ($job->saved == 1) ? 0 : 1;
                 }
-                if(!$job->update()){
-                    echo '<pre>';
-                    print_r($job->errors);
-                    echo '</pre>';
-                    die;
-                }
+	            $job->update();
             }
         }
     }

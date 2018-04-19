@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "tn_user_jobs".
  *
- * @property int $id
+ * @property string $id
  * @property int $user_id
  * @property int $jobs_id
  * @property int $applied
@@ -33,9 +33,8 @@ class UserJobs extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'jobs_id', 'arranged'], 'integer'],
+            [['user_id', 'jobs_id', 'applied', 'saved', 'arranged', 'is_deleted'], 'integer'],
             [['applied_time', 'saved_time'], 'safe'],
-            [['applied', 'saved', 'is_deleted'], 'string', 'max' => 1],
         ];
     }
 

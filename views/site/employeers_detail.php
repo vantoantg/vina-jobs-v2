@@ -26,14 +26,22 @@ $this->params['breadcrumbs'][] = $this->title;
                 'slug' => $model->slug,
                 'id' => $model->id
             ]) ?>">
+                <?php if(\app\library\helper\Common::isLoginned()){ ?>
 				<div class="well text-center">
-					<button type="button" data-action="favorite" class="btn btn-sunny text-uppercase btn-lg"><i
-								class="far fa-save"></i> Lưu đã lưu
+					<button type="button" data-action="favorite" class="btn btn-sunny text-uppercase btn-lg"><i class="far fa-save"></i> Lưu đã lưu
 					</button>
 					<button type="button" data-action="apply" class="btn btn-sky text-uppercase btn-lg"
 					        data-toggle="modal" data-target="#apply-modal"><i class="fas fa-location-arrow"></i> Apply
 					</button>
 				</div>
+                <?php }else{ ?>
+                    <div class="well text-center">
+                        <button type="button" data-action="favorite" class="btn btn-sunny text-uppercase btn-lg" <?= Helper::checkLogin()?>><i class="far fa-save"></i> Lưu tin này
+                        </button>
+                        <button type="button" data-action="apply" class="btn btn-sky text-uppercase btn-lg"
+	                        <?= Helper::checkLogin()?>><i class="fas fa-location-arrow"></i> Apply </button>
+                    </div>
+                <?php }?>
 			</div>
 		</div>
 	</div>
@@ -63,14 +71,10 @@ $this->params['breadcrumbs'][] = $this->title;
 				<div class="col-xs-12">
 					<div class="form-area">
 						<div class="form-group">
-							<textarea class="form-control" type="textarea" id="message" placeholder="Message"
-							          maxlength="140" rows="7"></textarea>
-							<span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>
+							<?= $form->field($applyForm, 'message')->textarea(['placeholder' => 'Hãy viết gì đó cho nhà tuyển dụng...', 'rows' => 6]) ?>
 						</div>
 
-						<button type="button" id="submit" name="submit" class="btn btn-primary pull-right"><i
-									class="fas fa-location-arrow"></i> GỬI ĐI
-						</button>
+						<button type="button" id="submit" name="submit" class="btn btn-primary pull-right"><i class="fas fa-location-arrow"></i> GỬI ĐI </button>
 					</div>
 				</div>
 			</div>

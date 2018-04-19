@@ -596,4 +596,14 @@ class Helper
         }
         return '';
     }
+
+	/**
+	 * @return string 'data-toggle="modal" data-target="#login-modal"'
+	 */
+    public static function checkLogin(){
+	    if(!Common::isLoginned()){
+		    return 'data-toggle="modal" data-target="#login-modal"';
+	    }
+	    return '';
+    }
 }

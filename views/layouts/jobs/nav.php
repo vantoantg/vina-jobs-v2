@@ -42,7 +42,7 @@ use app\library\helper\Helper;
                 <?php } ?>
 
 				<li role="presentation" class="divider"></li>
-				<li role="presentation"><a href="<?= Helper::createUrl(['front/user/logout']) ?>">Đăng xuất</a>
+				<li role="presentation"><a href="<?= Helper::createUrl(['front/user/logout']) ?>?returnUrl=<?= Yii::$app->request->getUrl()?>">Đăng xuất</a>
 				</li>
 			</ul>
 		</div>
