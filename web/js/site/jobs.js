@@ -29,9 +29,25 @@ var Jobs = function(){
         },
         siteEmployeersDetail: function () {
             var jobsDetail = site_employeers_detail.find('.ft-jobs-detail');
-            site_employeers_detail.on('click', '.ft-jobs-detail button', function () {
-                Service.postCallback(jobsDetail.data('href'), {'action': $(this).data('action')}, function () {
+            site_employeers_detail.on('click', '.ft-jobs-detail button.save-jobs', function () {
+                var _btn = $(this);
+                Service.postCallback(jobsDetail.data('href'), {'action': $(this).data('action')}, function (res) {
+                    if(res.favorite == 1){
+                        _btn.addClass('_saved').find('span').html('Tin đã lưu');
+                    }else{
+                        _btn.removeClass('_saved').find('span').html('Lưu tin này');
+                    }
+                });
+            });
 
+            site_employeers_detail.on('click', '.ft-jobs-detail button.apply-job', function () {
+                var _btn = $(this);
+                Service.postCallback(_btn.data('href'), {'action': 'applỵ'}, function (res) {
+                    if(res.favorite == 1){
+                        _btn.addClass('_saved').find('span').html('Tin đã lưu');
+                    }else{
+                        _btn.removeClass('_saved').find('span').html('Lưu tin này');
+                    }
                 });
             });
         }

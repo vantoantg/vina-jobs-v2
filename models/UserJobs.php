@@ -13,7 +13,7 @@ use app\library\helper\Datetime;
 
 class UserJobs extends \app\models\base\UserJobs
 {
-    public static function favoriteOrApply($jobId, $data){
+    public static function favorite($jobId, $data){
 
         if ($jobId && $data) {
             $job = UserJobs::findOne(['user_id' => Common::currentUser(), 'jobs_id' => $jobId]);
@@ -32,6 +32,8 @@ class UserJobs extends \app\models\base\UserJobs
                 }
 	            $job->update();
             }
+	        return $job->saved;
         }
+        return false;
     }
 }

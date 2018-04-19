@@ -61,7 +61,7 @@ class SiteController extends FrontController
             'auth' => [
                 'class' => 'yii\authclient\AuthAction',
                 'successCallback' => [$this, 'successCallback'],
-                'successUrl' => Yii::$app->request->getUrl(),
+                'successUrl' => $this->successUrl,
             ],
         ];
     }
@@ -72,7 +72,7 @@ class SiteController extends FrontController
      */
     public function successCallback($client)
     {
-        $this->successUrl = Yii::$app->request->referrer;
+        $this->successUrl = Yii::$app->request->getUrl();
         (new Auth())->detectUserType($client);
     }
 
@@ -191,10 +191,10 @@ class SiteController extends FrontController
      */
     public function actionEmployeersDetail($slug, $id)
     {
-    	$model = Job::findOne($id);
+    	$job = Job::getJob($id);
     	$form = new ApplyForm();
         return $this->render('employeers_detail', [
-        	'model' => $model,
+        	'job' => $job,
         	'applyForm' => $form,
         ]);
     }
