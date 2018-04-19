@@ -31,8 +31,8 @@ if (YII_DEBUG) {
 
     <link rel="shortcut icon" type="image/png" href="<?= \app\library\helper\Helper::homeUrl() ?>favicon.ico"/>
 
-    <!-- Vina - Jobs -->
-    <meta property="og:type" content="Tìm kiếm việc làm"/>
+    <!-- Jobs - Vina -->
+    <meta property="og:type" content="Tuyển dụng và tìm kiếm việc làm"/>
     <meta property="og:title" content="<?= Html::encode($this->title) ?>"/>
     <meta property="og:url" content="<?= \app\library\helper\Helper::siteURL() ?>"/>
     <meta property="og:description" content="<?= Yii::$app->params['seo']['description'] ?>"/>
@@ -47,7 +47,7 @@ if (YII_DEBUG) {
     <meta name="twitter:text:title" content="<?= Html::encode($this->title) ?>"/>
     <meta name="twitter:image" content="<?= \app\library\helper\Helper::homeUrl() ?>favicon.ico?w=240"/>
     <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:creator" content="Vina - Jobs"/>
+    <meta name="twitter:creator" content="Jobs - Vina"/>
     <meta name="twitter:description" content="<?= Yii::$app->params['seo']['description'] ?>"/>
     <meta property="article:publisher" content="https://www.facebook.com/vina-jobs.com"/>
 
