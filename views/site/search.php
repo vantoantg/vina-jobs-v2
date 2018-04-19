@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 					<div class="job-posts table-responsive">
 						<table class="table list-jobs">
-							<tr class="odd wow fadeInUp" data-wow-delay="1s">
+							<tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="1s">
 								<td class="tbl-logo"><img
 											src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo1.png" alt="">
 								</td>
@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
 								<td><p>&dollar; 14000</p></td>
 								<td class="tbl-apply"><a href="#">Apply now</a></td>
 							</tr>
-							<tr class="even wow fadeInUp" data-wow-delay="1.1s">
+							<tr class="even <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="1.1s">
 								<td class="tbl-logo"><img
 											src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo2.png" alt="">
 								</td>
@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
 								<td><p>&dollar; 14000</p></td>
 								<td class="tbl-apply"><a href="#">Apply now</a></td>
 							</tr>
-							<tr class="odd wow fadeInUp" data-wow-delay="1.2s">
+							<tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="1.2s">
 								<td class="tbl-logo"><img
 											src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo3.png" alt="">
 								</td>
@@ -60,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
 								<td><p>&dollar; 14000</p></td>
 								<td class="tbl-apply"><a href="#">Apply now</a></td>
 							</tr>
-							<tr class="even wow fadeInUp" data-wow-delay="1.3s">
+							<tr class="even <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="1.3s">
 								<td class="tbl-logo"><img
 											src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo4.png" alt="">
 								</td>
@@ -70,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
 								<td><p>&dollar; 14000</p></td>
 								<td class="tbl-apply"><a href="#">Apply now</a></td>
 							</tr>
-							<tr class="odd wow fadeInUp" data-wow-delay="1.4s">
+							<tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="1.4s">
 								<td class="tbl-logo"><img
 											src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo5.png" alt="">
 								</td>

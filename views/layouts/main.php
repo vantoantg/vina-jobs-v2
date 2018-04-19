@@ -97,8 +97,8 @@ if (YII_DEBUG) {
 </div><!-- /.footer-area -->
 
 <?php
-\app\components\LogSystemWidget::createLogs();
-\app\components\UserOnlineWidget::userOnline();
+//\app\components\LogSystemWidget::createLogs();
+//\app\components\UserOnlineWidget::userOnline();
 ?>
 
 <?php $this->endBody() ?>

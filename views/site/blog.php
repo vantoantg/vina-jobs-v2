@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?php
                         for ($i=1; $i<=10; $i++){
                         ?>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.<?= $i ?>s">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.<?= $i ?>s">
                             <aside>
                                 <img src="https://lh3.googleusercontent.com/-ndZJOGgvYQ4/WM1ZI8dH86I/AAAAAAAADeo/l67ZqZnRUO8QXIQi38bEXuxqHfVX0TV2gCJoC/w424-h318-n-rw/thumbnail8.jpg" class="img-responsive">
                                 <div class="content-title">

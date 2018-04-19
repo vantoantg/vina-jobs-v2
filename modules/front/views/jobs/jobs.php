@@ -19,7 +19,7 @@ Helper::generateSeo($page);
     <div class="col-12 col-sm-8">
         <div class="front-jobs">
 
-            <div class="row page-title text-center wow bounce animated" data-wow-delay="1s" style="visibility: visible; animation-delay: 1s; animation-name: bounce;">
+            <div class="row page-title text-center <?= \app\library\helper\Helper::wowClass() ?> bounce animated" data-wow-delay="1s" style="visibility: visible; animation-delay: 1s; animation-name: bounce;">
                 <h5>ĐĂNG TUYỂN DỤNG</h5>
                 <h2><span>54716</span> Available jobs for you</h2>
                 <p>Hãy liệt kế tất cả các chính sách đang có, và cơ hội cho hấp dẫn, để có thể thu hút ứng viên apply vào các vị trí mà công ty muốn tuyển.</p>

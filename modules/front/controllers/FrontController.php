@@ -2,8 +2,6 @@
 
 namespace app\modules\front\controllers;
 
-use app\components\LogSystemWidget;
-use app\components\UserOnlineWidget;
 use yii\web\Controller;
 
 /**
@@ -14,6 +12,7 @@ class FrontController extends Controller
     public function init()
     {
         parent::init();
+        $this->setCookieForUrl();
     }
 
     /**
@@ -23,5 +22,16 @@ class FrontController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function setCookieForUrl(){
+        $cookie_name = md5(\Yii::$app->request->getUrl());
+        $timer = time() + 3600;
+        if(!isset($_COOKIE[$cookie_name])) {
+            setcookie($cookie_name, true, $timer, "/"); // 86400 = 1 day
+            \Yii::$app->params['urlCookied'] = false;
+        } else {
+            \Yii::$app->params['urlCookied'] = $_COOKIE[$cookie_name];
+        }
     }
 }

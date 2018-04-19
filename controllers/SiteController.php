@@ -8,6 +8,7 @@ use app\models\Job;
 use app\models\LoginForm;
 use app\models\search\JobCustomSearch;
 use app\models\Users;
+use app\modules\front\controllers\FrontController;
 use Codeception\Lib\ParamsLoader;
 use Symfony\Component\Translation\Loader\FileLoader;
 use Yii;
@@ -19,7 +20,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\ContactForm;
 
-class SiteController extends Controller
+class SiteController extends FrontController
 {
     public $successUrl;
 
