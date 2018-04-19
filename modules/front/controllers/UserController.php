@@ -440,7 +440,7 @@ class UserController extends FrontController
 	{
 		$model = new LoginForm();
 		if ($model->load(\Yii::$app->request->post()) && $model->login()) {
-			return $this->goHome();
+			return $this->redirect(\Yii::$app->request->post('returnUrl'));
 		} else {
 			if (\Yii::$app->request->isAjax) {
 				return Helper::jsonData(['error' => true, 'message' => $model->errors['password'][0]]);
@@ -519,7 +519,7 @@ class UserController extends FrontController
 	public function actionLogout()
 	{
 		\Yii::$app->user->logout();
-		return $this->goHome();
+		return $this->redirect(\Yii::$app->request->get('returnUrl'));
 	}
 
 	public function getToken($token)

@@ -2,20 +2,15 @@
 
 namespace app\controllers;
 
-use app\library\helper\Helper;
+use app\forms\ApplyForm;
 use app\models\Auth;
 use app\models\Job;
 use app\models\LoginForm;
 use app\models\search\JobCustomSearch;
-use app\models\Users;
 use app\modules\front\controllers\FrontController;
-use Codeception\Lib\ParamsLoader;
-use Symfony\Component\Translation\Loader\FileLoader;
 use Yii;
-use yii\di\ServiceLocator;
 use yii\filters\AccessControl;
 use yii\helpers\Url;
-use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\ContactForm;
@@ -77,7 +72,7 @@ class SiteController extends FrontController
      */
     public function successCallback($client)
     {
-        $this->successUrl = Url::to(['/']);
+        $this->successUrl = Yii::$app->request->referrer;
         (new Auth())->detectUserType($client);
     }
 
@@ -197,8 +192,10 @@ class SiteController extends FrontController
     public function actionEmployeersDetail($slug, $id)
     {
     	$model = Job::findOne($id);
+    	$form = new ApplyForm();
         return $this->render('employeers_detail', [
-        	'model' => $model
+        	'model' => $model,
+        	'applyForm' => $form,
         ]);
     }
 

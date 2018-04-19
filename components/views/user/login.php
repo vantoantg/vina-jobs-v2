@@ -23,7 +23,7 @@ use app\library\helper\Helper;
                     'autocomplete' => 'on'
                 ]
             ]) ?>
-
+            <input type="hidden" name="returnUrl" value="<?= Yii::$app->request->getUrl()?>">
             <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'autocomplete' => 'off', 'placeholder' => 'Tài khoản hoặc email']) ?>
             <?= $form->field($model, 'password')->passwordInput(['placeholder' => 'Mật khẩu']) ?>
             <div class="hide error-login"><p class="text-danger"></p></div>
