@@ -513,21 +513,21 @@ input.cropit-image-zoom-input{
 .btn-sunny {
 	color: #fff;
 	background-color: #f4ad49;
+	.fa-check{ display: none}
+	&._saved{
+		background: #0bacd3;
+		color: #fff;
+		.fa-save{ display: none}
+		.fa-check{ display: inline-block}
+	}
+	&:focus{ color: #fff}
 }
 
-.btn-sunny:hover, .btn-sky.active:focus, .btn-sunny:focus, .open>.dropdown-toggle.btn-sunny {
+.btn-sunny:hover{
 	color: #fff;
 	background-color: #f5b75f;
 	outline: none;
 }
-
-
-.btn-sunny:active, .btn-sunny.active {
-	color: #fff;
-	background-color: #d69840;
-	margin-top: 2px;
-}
-
 
 .btn-sky {
 	color: #fff;

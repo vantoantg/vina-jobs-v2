@@ -13,6 +13,7 @@ use app\models\Users;
 use Yii;
 use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 
 /**
@@ -27,7 +28,12 @@ class JobsController extends FrontController
         }
 
         if(Yii::$app->request->isAjax){
-            UserJobs::favoriteOrApply($id, Yii::$app->request->post());
+            $favorite = UserJobs::favorite($id, Yii::$app->request->post());
+            if($favorite === false){
+            	return $this->asJson(new BadRequestHttpException());
+            }else{
+	            return $this->asJson(['favorite' => $favorite]);
+            }
         }
     }
 

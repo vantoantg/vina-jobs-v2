@@ -2,7 +2,9 @@
 
 namespace app\models;
 
+use app\library\helper\Common;
 use app\models\base\Jobs;
+use yii\db\Query;
 
 class Job extends Jobs
 {
@@ -55,5 +57,25 @@ class Job extends Jobs
 	        'star' => 'Star',
 	        'status' => 'Status',
         ];
+    }
+
+    public static function getJob($job_id){
+    	$user_id = Common::isLoginned() ? Common::currentUsers()->getId() : 0;
+	    $query = new Query();
+	    $query->select([
+			    'job.id',
+			    'job.title',
+			    'job.slug',
+			    'job.content',
+			    'ujob.applied',
+			    'ujob.saved',
+			    ]
+	    )
+		    ->from('tn_jobs job')
+		    ->leftJoin('tn_user_jobs ujob', 'ujob.jobs_id = job.id AND ujob.user_id = :user_id AND ujob.is_deleted = 0', ['user_id' => $user_id])
+	        ->where('job.id = :job_id', ['job_id' => $job_id]);
+
+	    $command = $query->createCommand();
+	    return $command->queryOne();
     }
 }

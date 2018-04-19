@@ -4,8 +4,8 @@ return [
 	/* Url                                                              => Controller/action */
 	'/' => 'front/default/index',
 	'job-seekers.html' => 'site/job-seekers',
-	'employeers.html' => 'site/employeers',
-	'employeers/detail/<slug:[a-zA-Z0-9_ -@.]+>-<id:[a-zA-Z0-9_ -@.]+>.html' => 'site/employeers-detail',
+	'jobs.html' => 'site/employeers',
+	'job/detail/<slug:[a-zA-Z0-9_ -@.]+>-<id:[a-zA-Z0-9_ -@.]+>.html' => 'site/employeers-detail',
 	'about-us.html' => 'site/about-us',
 	'blog.html' => 'site/blog',
 	'contact.html' => 'site/contact',
