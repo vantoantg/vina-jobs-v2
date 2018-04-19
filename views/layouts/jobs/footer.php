@@ -1,4 +1,6 @@
-<!--footer start from here-->
+<?php
+use app\library\helper\Helper;
+?>
 <footer>
 	<div class="container">
 		<div class="row">
@@ -10,7 +12,6 @@
 				<p><i class="fa fa-map-pin"></i> 143/70 Gò Dầu, Phường Tân Quý, Quận Tân Phú, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hồ Chí Minh</p>
 				<p><i class="fa fa-phone"></i> Hotline: 0932 252 414</p>
 				<p><i class="fa fa-envelope"></i> E-mail: info@vina-jobs.com</p>
-
 			</div>
 			<div class="col-md-3 col-sm-6 paddingtop-bottom <?= \app\library\helper\Helper::wowClass() ?> fadeInLeft" data-wow-delay="0.3s">
 				<h6 class="heading7">BẠN MUỐN LÀM GÌ ?</h6>
@@ -70,18 +71,20 @@
 
 <div class="copyright ovf-y-h">
 	<div class="container <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.1s">
-		<div class="col-md-6">
-			<p>© <?= Yii::$app->params['siteName']; ?> 2018, All rights reserved.</p>
-		</div>
-		<div class="col-md-6">
-			<ul class="bottom_ul">
-				<li><a href="<?= \app\library\helper\Helper::siteURL()?>"><?= \app\library\helper\Helper::siteURL()?></a></li>
-				<li><a href="#">Giới thiệu</a></li>
-				<li><a href="#">Blog</a></li>
-				<li><a href="#">Hỏi - đáp</a></li>
-				<li><a href="#">Liên hệ</a></li>
-				<li><a href="#">Site Map</a></li>
-			</ul>
+		<div class="row">
+			<div class="col-md-6">
+				<p>© <?= Yii::$app->params['siteName']; ?> 2018, All rights reserved.</p>
+			</div>
+			<div class="col-md-6">
+				<ul class="bottom_ul">
+					<li><a href="<?= \app\library\helper\Helper::siteURL()?>"><?= \app\library\helper\Helper::siteURL()?></a></li>
+					<li><a href="#">Giới thiệu</a></li>
+					<li><a href="<?= Helper::createUrl(['site/blog']) ?>">Blog</a></li>
+					<li><a href="#">Hỏi - đáp</a></li>
+					<li><a href="<?= Helper::createUrl(['site/contact']) ?>">Liên hệ</a></li>
+					<li><a href="#">Site Map</a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>

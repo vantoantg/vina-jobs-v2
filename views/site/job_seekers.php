@@ -55,9 +55,11 @@ $this->params['breadcrumbs'][] = $this->title;
 					    ?>
                     </select>
                 </div>
-
                 <input type="submit" class="btn search" value="TÌM">
             </form>
+	        <br>
+	        <br>
+	        <a href="/search/result.html?keywords=&mode=search-jobs" class="navbar-btn nav-button search-options"><i class="fa fa-search"></i>  TÌM KIẾM NÂNG CAO</a>
         </div>
     </div>
     <div class="row jobs">
