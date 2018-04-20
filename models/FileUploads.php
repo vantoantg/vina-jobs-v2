@@ -8,10 +8,35 @@
 namespace app\models;
 
 
+use app\library\helper\Common;
+use yii\db\Query;
+
 class FileUploads extends \app\models\base\FileUploads
 {
 
     const CANDIDATE = 'candidate';
+
+    /**
+     * @return array|false
+     */
+    public static function getCV(){
+        $user_id = Common::isLoginned() ? Common::currentUsers()->getId() : 0;
+        $query = new Query();
+        $query->select([
+                'cv.file_name',
+                'cv.file_type'
+            ]
+        )
+            ->from('tn_file_uploads cv')
+            ->where('cv.created_by = :created_by AND cv.object_type = :object_type AND cv.is_deleted = 0', [
+                'created_by' => $user_id,
+                'object_type' => self::CANDIDATE
+            ])
+        ->orderBy(['cv.created_at' => SORT_ASC]);
+
+        return $query->createCommand()->queryAll();
+    }
+
     /**
      * @param $object_type
      * @param $object_id

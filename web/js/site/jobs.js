@@ -43,10 +43,10 @@ var Jobs = function(){
             site_employeers_detail.on('click', '.ft-jobs-detail button.apply-job', function () {
                 var _btn = $(this);
                 Service.postCallback(_btn.data('href'), {'action': 'applỵ'}, function (res) {
-                    if(res.favorite == 1){
-                        _btn.addClass('_saved').find('span').html('Tin đã lưu');
+                    if(res.data.length){
+
                     }else{
-                        _btn.removeClass('_saved').find('span').html('Lưu tin này');
+                        alert(1212);
                     }
                 });
             });

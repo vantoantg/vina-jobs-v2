@@ -594,6 +594,7 @@ class Helper
         if (!Helper::params('urlCookied')) {
             return 'wow';
         }
+
         return '';
     }
 

@@ -39,7 +39,8 @@ return [
 	'service/register-jobs.html' => 'front/jobs/post-jobs',
 	'service/register-cv.html' => 'front/jobs/post-cv',
     'service/cv/update/<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/edit-cv',
-    'service/jobs/action/<slug:[a-zA-Z0-9_ -@.]+>-<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/actions',
+    'service/jobs/favorite/<slug:[a-zA-Z0-9_ -@.]+>-<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/favorite',
+    'service/jobs/preapply.html' => 'front/jobs/preapply',
 
 
 
