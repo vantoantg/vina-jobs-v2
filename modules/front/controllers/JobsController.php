@@ -7,6 +7,7 @@ use app\library\helper\Datetime;
 use app\library\helper\Helper;
 use app\models\Company;
 use app\models\CurriculumVitae;
+use app\models\FileUploads;
 use app\models\Job;
 use app\models\UserJobs;
 use app\models\Users;
@@ -14,6 +15,7 @@ use Yii;
 use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
+use yii\web\UploadedFile;
 
 
 /**
@@ -22,18 +24,29 @@ use yii\web\Response;
 class JobsController extends FrontController
 {
 
-    public function actionActions($slug, $id){
+    public function actionFavorite($slug, $id){
         if(!Yii::$app->request->isAjax){
             throw new BadRequestHttpException('Không tìm thấy yêu cầu của bạn!');
         }
 
-        if(Yii::$app->request->isAjax){
+        if(Yii::$app->request->isAjax && Common::isLoginned()){
             $favorite = UserJobs::favorite($id, Yii::$app->request->post());
             if($favorite === false){
             	return $this->asJson(new BadRequestHttpException());
             }else{
 	            return $this->asJson(['favorite' => $favorite]);
             }
+        }
+    }
+
+    public function actionPreapply(){
+        if(!Yii::$app->request->isAjax){
+            throw new BadRequestHttpException('Không tìm thấy yêu cầu của bạn!');
+        }
+
+        if(Yii::$app->request->isAjax && Common::isLoginned()){
+            $cv = FileUploads::getCV();
+            return $this->asJson(['data' => $cv]);
         }
     }
 

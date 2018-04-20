@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
 
             <div class="row ft-jobs-detail" data-href="<?= Helper::createUrl([
-				'front/jobs/actions',
+				'front/jobs/favorite',
 				'slug' => $job['slug'],
 				'id' => $job['id']
 			]) ?>">
@@ -50,8 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         class="btn btn-sunny text-uppercase btn-lg apply-job"
                                         data-toggle="modal"
                                         data-target="#apply-modal"
-                                        data-href="<!--Load list CV-->"
-                                >
+                                        data-href="<?= Helper::createUrl(['front/jobs/preapply']); ?>">
                                     <i class="fas fa-location-arrow"></i> Gửi hồ sơ
                                 </button>
 							<?php } ?>

@@ -10,9 +10,23 @@ namespace app\models;
 
 use app\library\helper\Common;
 use app\library\helper\Datetime;
+use yii\db\BatchQueryResult;
 
 class UserJobs extends \app\models\base\UserJobs
 {
+
+    /**
+     * @return mixed
+     */
+    public static function preapply(){
+
+    }
+
+    /**
+     * @param $jobId
+     * @param $data
+     * @return bool|int
+     */
     public static function favorite($jobId, $data){
 
         if ($jobId && $data) {
@@ -32,8 +46,10 @@ class UserJobs extends \app\models\base\UserJobs
                 }
 	            $job->update();
             }
+
 	        return $job->saved;
         }
+
         return false;
     }
 }
