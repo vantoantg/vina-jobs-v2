@@ -61,7 +61,7 @@ class SiteController extends FrontController
             'auth' => [
                 'class' => 'yii\authclient\AuthAction',
                 'successCallback' => [$this, 'successCallback'],
-                'successUrl' => $this->successUrl,
+//                'successUrl' => $this->successUrl,
             ],
         ];
     }
@@ -72,8 +72,10 @@ class SiteController extends FrontController
      */
     public function successCallback($client)
     {
-        $this->successUrl = Yii::$app->request->getUrl();
-        (new Auth())->detectUserType($client);
+//        $this->successUrl = Yii::$app->request->getUrl();
+        if((new Auth())->detectUserType($client)){
+            return $this->refresh();
+        }
     }
 
 
