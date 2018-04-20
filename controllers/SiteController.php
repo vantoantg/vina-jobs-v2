@@ -73,9 +73,7 @@ class SiteController extends FrontController
     public function successCallback($client)
     {
         $this->successUrl = Url::to(['/']);
-        if((new Auth())->detectUserType($client)){
-            return $this->redirect(Yii::$app->request->getUrl());
-        }
+        (new Auth())->detectUserType($client);
     }
 
 
