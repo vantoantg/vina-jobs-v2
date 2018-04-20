@@ -74,7 +74,7 @@ class SiteController extends FrontController
     {
         $this->successUrl = Url::to(['/']);
         if((new Auth())->detectUserType($client)){
-            return $this->refresh();
+            return $this->redirect(Yii::$app->request->getUrl());
         }
     }
 
