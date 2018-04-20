@@ -63,18 +63,6 @@ if (YII_DEBUG) {
 <div class="header-connect">
 	<?= $this->render('//layouts/jobs/header'); ?>
 </div>
-<script>
-    (function() {
-        var cx = '003587625673638477862:xuevhqlaqfw';
-        var gcse = document.createElement('script');
-        gcse.type = 'text/javascript';
-        gcse.async = true;
-        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(gcse, s);
-    })();
-</script>
-<gcse:search></gcse:search>
 <nav class="navbar navbar-default">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
