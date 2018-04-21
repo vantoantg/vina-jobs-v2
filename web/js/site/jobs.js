@@ -44,9 +44,10 @@ var Jobs = function(){
                 var _btn = $(this);
                 Service.postCallback(_btn.data('href'), {'action': 'applỵ'}, function (res) {
                     if(res.data.length){
-
+                        var html = _.template($('#cv-list').html())({list : res.data });
+                        $('#tabs-cv-valid ul').html(html);
                     }else{
-                        alert(1212);
+                        $('a[href="#tabs-cv-valid"]').hide();
                     }
                 });
             });

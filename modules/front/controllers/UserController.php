@@ -93,9 +93,10 @@ class UserController extends FrontController
                     if ($candidate->file) {
                         $file_type = $candidate->file->extension;
                         $file_name = $candidate->file->baseName;
-                        $path = Yii::$app->basePath . Yii::$app->params['companyCandidatePath'] . $candidate->file->baseName . '.' . $file_type;
+	                    $file_path = $candidate->file->baseName.'-'.md5(date('dmyhis')).'.'.$file_type;
+                        $path = Yii::$app->basePath . Yii::$app->params['companyCandidatePath'] . $file_path;
                         $candidate->file->saveAs($path);
-                        FileUploads::saveFile(FileUploads::CANDIDATE, $candidate->id, $path, $file_name, $file_type);
+                        FileUploads::saveFile(FileUploads::CANDIDATE, $file_path, $file_name, $file_type, $candidate->id);
                     }
 
                     $transaction->commit();

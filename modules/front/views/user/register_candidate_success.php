@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use \yii\widgets\ActiveForm;
 use \app\models\Dropdown;
+use app\library\helper\Helper;
 
 
 /* @var $this yii\web\View */
@@ -10,17 +11,14 @@ use \app\models\Dropdown;
 /* @var $page app\models\Pages */
 $page = \app\models\Pages::get('user-dang-ky-thanh-cong');
 
-$this->title = $page->seo_title . \app\library\helper\Helper::siteURL();
+$this->title = Helper::titleSeo($page);
+Helper::generateSeo($page);
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-$dropdowns = new Dropdown();
-
 ?>
 <div class="container">
 	<div class="users-create">
-
 		<h1><?= Html::encode($this->title) ?></h1>
-
 	</div>
 </div>
 
@@ -28,9 +26,12 @@ $dropdowns = new Dropdown();
 	<div class="col-12 col-sm-8">
 		<div class="row main">
 			<div class="main-login main-center">
-				<h5>Vui lòng điền đúng địa chỉ email, hệ thống sẽ gửi link kích hoạt tài khoản vào email.</h5>
                 <div class="content-page">
                     <?= $page->content; ?>
+                </div>
+                <div class="col-xs-12 text-center">
+                    <button class="navbar-btn nav-button <?= Helper::wowClass() ?> bounceInRight login animated" data-toggle="modal" data-target="#login-modal" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: bounceInRight;"><i class="fas fa-sign-in-alt"></i> Đăng nhập
+                    </button>
                 </div>
 			</div>
 		</div>

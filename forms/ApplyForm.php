@@ -15,6 +15,7 @@ use yii\base\Model;
 class ApplyForm extends Model
 {
     public $message;
+    public $new_cv;
 
 
     /**
@@ -25,6 +26,7 @@ class ApplyForm extends Model
         return [
             [['message'], 'string'],
             [['message'], 'required'],
+	        [['new_cv'], 'file', 'extensions' =>'pdf, pptx, docx, doc', 'maxSize' => 3072000, 'tooBig' => 'Chỉ tải lên file dưới 3MB'],
         ];
     }
 

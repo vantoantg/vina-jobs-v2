@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     Vui lòng kiểm tra email để có thể kích hoạt tài khoản!.</h3>-->
                 <h4>Chúc mừng bạn đã đăng ký tài khoản công ty thành công. Hãy đăng nhập để cập nhật thông tin hoặc bắt đầu đăng tin tuyển dụng.</h4>
                 <div class="col-xs-12 text-center">
-                    <button class="navbar-btn nav-button <?= \app\library\helper\Helper::wowClass() ?> bounceInRight login animated" data-toggle="modal" data-target="#login-modal" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: bounceInRight;">Đăng nhập
+                    <button class="navbar-btn nav-button <?= Helper::wowClass() ?> bounceInRight login animated" data-toggle="modal" data-target="#login-modal" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: bounceInRight;"><i class="fas fa-sign-in-alt"></i> Đăng nhập
                     </button>
                 </div>
             </div>

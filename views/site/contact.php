@@ -37,13 +37,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 </p>
 
             <?php else: ?>
-
-                <p>
-	                - Nếu bạn có yêu cầu kinh doanh hoặc các câu hỏi khác, vui lòng điền vào mẫu dưới đây để liên hệ với chúng tôi.
-                    <br>
-                    - Hoặc bạn cũng có thể góp ý để website càng hoàn thiện tốt hơn, có thể phục vụ nhu cầu tuyển dụng và tìm việc. Cảm ơn bạn.
-                </p>
-
+                <div class="alert-message alert-message-info <?= \app\library\helper\Helper::wowClass() ?> zoomInDown animated" data-wow-delay="0.2s">
+                    <p>
+                        - Nếu bạn có yêu cầu kinh doanh hoặc các câu hỏi khác, vui lòng điền vào mẫu dưới đây để liên hệ với chúng tôi.
+                        <br>
+                        - Hoặc bạn cũng có thể góp ý để website càng hoàn thiện tốt hơn, có thể phục vụ nhu cầu tuyển dụng và tìm việc. Chúng tôi xin chân thành cảm ơn.
+                    </p>
+                </div>
                 <div class="row">
                     <div class="col-12 col-lg-8">
 

@@ -485,7 +485,7 @@ table.table.list-jobs tr:hover {
   line-height: 40px;
 }
 .bottom_ul li:after {
-  content: "/";
+  content: "|";
   color: #FFF;
   margin-right: 8px;
   margin-left: 8px;
@@ -493,6 +493,9 @@ table.table.list-jobs tr:hover {
 .bottom_ul li a {
   color: #FFF;
   font-size: 12px;
+}
+.bottom_ul li:last-child:after {
+  display: none;
 }
 #back-to-top {
   position: fixed;
@@ -626,4 +629,69 @@ a.search-options {
 a.search-options:hover {
   background: #c2c2c2;
   color: #fff;
+}
+#tabs-cv-valid ul {
+  padding: 0;
+}
+#tabs-cv-valid label {
+  margin: 5px;
+  display: inline-block;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-weight: normal;
+}
+#tabs-cv-valid label:hover {
+  opacity: 0.8;
+}
+#tabs-cv-valid input {
+  height: 1px;
+  width: 1px;
+  opacity: 0;
+}
+#tabs-cv-valid .outside {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -10px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #00AEEF;
+  border-radius: 50%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: none;
+}
+#tabs-cv-valid .inside {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  background: #00AEEF;
+  left: 3px;
+  top: 3px;
+  -webkit-transform: scale(0, 0);
+  transform: scale(0, 0);
+}
+#tabs-cv-valid .no-transforms .inside {
+  left: auto;
+  top: auto;
+  width: 0;
+  height: 0;
+}
+#tabs-cv-valid input:checked + .outside .inside {
+  -webkit-animation: radio-select 0.1s linear;
+  animation: radio-select 0.1s linear;
+  -webkit-transform: scale(1, 1);
+  transform: scale(1, 1);
+}
+#tabs-cv-valid .no-transforms input:checked + .outside .inside {
+  width: 10px;
+  height: 10px;
 }

@@ -5153,9 +5153,13 @@ var isMobile = {
     }
 };
 $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
     Common.clickGoToUrl();
-    console.log(isMobile.any());
+    $('[data-toggle="tooltip"]').tooltip();
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        $('body').addClass('ismb');
+    }else{
+        $('body').addClass('isdt');
+    }
 });
 
 /**
@@ -5490,8 +5494,7 @@ var Main = function () {
                 var contentHeight = $(tartgetHeight).height();
                 $(window).scroll(function() {
                     var wdTop = $(window).scrollTop();
-                    if( $(window).width >= 768 && wdTop + 400 < contentHeight){
-                        console.log('2343');
+                    if($(window).width() >= 768 && wdTop + 400 < contentHeight){
                         Main.doFixedSidebar(sidebarfx, offset, topPadding);
                     }
                 });
@@ -5501,7 +5504,7 @@ var Main = function () {
             if ($(window).scrollTop() > offset.top) {
                 sidebarfx.stop().animate({
                     marginTop: $(window).scrollTop() - offset.top + topPadding
-                });
+                }, 300);
             } else {
                 sidebarfx.stop().animate({
                     marginTop: 0
@@ -5565,9 +5568,26 @@ var Jobs = function(){
         },
         siteEmployeersDetail: function () {
             var jobsDetail = site_employeers_detail.find('.ft-jobs-detail');
-            site_employeers_detail.on('click', '.ft-jobs-detail button', function () {
-                Service.postCallback(jobsDetail.data('href'), {'action': $(this).data('action')}, function () {
+            site_employeers_detail.on('click', '.ft-jobs-detail button.save-jobs', function () {
+                var _btn = $(this);
+                Service.postCallback(jobsDetail.data('href'), {'action': $(this).data('action')}, function (res) {
+                    if(res.favorite == 1){
+                        _btn.addClass('_saved').find('span').html('Tin đã lưu');
+                    }else{
+                        _btn.removeClass('_saved').find('span').html('Lưu tin này');
+                    }
+                });
+            });
 
+            site_employeers_detail.on('click', '.ft-jobs-detail button.apply-job', function () {
+                var _btn = $(this);
+                Service.postCallback(_btn.data('href'), {'action': 'applỵ'}, function (res) {
+                    if(res.data.length){
+                        var html = _.template($('#cv-list').html())({list : res.data });
+                        $('#tabs-cv-valid ul').html(html);
+                    }else{
+                        $('a[href="#tabs-cv-valid"]').hide();
+                    }
                 });
             });
         }

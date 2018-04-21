@@ -9,6 +9,7 @@ namespace app\models;
 
 
 use app\library\helper\Common;
+use app\library\helper\Datetime;
 use yii\db\Query;
 
 class FileUploads extends \app\models\base\FileUploads
@@ -23,8 +24,10 @@ class FileUploads extends \app\models\base\FileUploads
         $user_id = Common::isLoginned() ? Common::currentUsers()->getId() : 0;
         $query = new Query();
         $query->select([
+                'cv.file_path',
                 'cv.file_name',
-                'cv.file_type'
+                'cv.file_type',
+                'cv.created_at',
             ]
         )
             ->from('tn_file_uploads cv')
@@ -45,7 +48,7 @@ class FileUploads extends \app\models\base\FileUploads
      * @param $file_type
      * @return FileUploads
      */
-    public static function saveFile($object_type, $object_id, $file_path, $file_name, $file_type)
+    public static function saveFile($object_type, $file_path, $file_name, $file_type,  $object_id = 0)
     {
         $file = new FileUploads();
         $file->object_type = $object_type;
@@ -53,6 +56,8 @@ class FileUploads extends \app\models\base\FileUploads
         $file->file_path = $file_path;
         $file->file_name = $file_name;
         $file->file_type = $file_type;
+        $file->created_by = Common::currentUser();
+        $file->created_at = Datetime::createdAt();
         $file->save();
         return $file;
     }
