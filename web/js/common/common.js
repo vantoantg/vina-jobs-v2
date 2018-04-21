@@ -152,7 +152,11 @@ var isMobile = {
     }
 };
 $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
     Common.clickGoToUrl();
-    console.log(isMobile.any());
+    $('[data-toggle="tooltip"]').tooltip();
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        $('body').addClass('ismb');
+    }else{
+        $('body').addClass('isdt');
+    }
 });

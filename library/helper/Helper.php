@@ -589,9 +589,17 @@ class Helper
 		return Yii::$app->params[$param];
 	}
 
-    public static function wowClass()
+	/**
+	 * @param bool $check_mobile
+	 * @return string
+	 */
+    public static function wowClass($check_mobile = false)
     {
         if (!Helper::params('urlCookied')) {
+        	if($check_mobile){
+        		return '';
+	        }
+
             return 'wow';
         }
 
@@ -605,6 +613,7 @@ class Helper
 	    if(!Common::isLoginned()){
 		    return 'data-toggle="modal" data-target="#login-modal"';
 	    }
+
 	    return '';
     }
 }

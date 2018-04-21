@@ -76,7 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </table>
             </div>
             <div class="more-jobs text-center">
-                <a href=""><i class="fa fa-download"></i>Xem thêm</a>
+                <a href=""><i class="fa fa-download"></i> Xem thêm</a>
             </div>
         </div>
         <div class="col-md-3 hidden-sm">

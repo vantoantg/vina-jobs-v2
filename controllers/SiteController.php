@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use app\forms\ApplyForm;
 use app\models\Auth;
+use app\models\Email;
+use app\models\FileUploads;
 use app\models\Job;
 use app\models\LoginForm;
 use app\models\search\JobCustomSearch;
@@ -14,10 +16,12 @@ use yii\helpers\Url;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\ContactForm;
+use yii\web\UploadedFile;
 
 class SiteController extends FrontController
 {
     public $successUrl;
+    public $attachment;
 
     /**
      * @inheritdoc
@@ -193,6 +197,25 @@ class SiteController extends FrontController
     {
     	$job = Job::getJob($id);
     	$form = new ApplyForm();
+
+	    if($form->load(Yii::$app->request->post())){
+		    $form->new_cv = UploadedFile::getInstance($form, 'new_cv');
+		    if ($form->new_cv) {
+			    $file_type = $form->new_cv->extension;
+			    $file_name = $form->new_cv->baseName;
+			    $file_path = $form->new_cv->baseName.'-'.md5(date('dmyhis')).'.'.$file_type;
+			    $this->attachment = Yii::$app->basePath . Yii::$app->params['companyCandidatePath'] . $file_path;
+			    $form->new_cv->saveAs($this->attachment);
+			    FileUploads::saveFile(FileUploads::CANDIDATE, $file_path, $file_name, $file_type);
+		    }else{
+			    $this->attachment = Yii::$app->basePath . Yii::$app->params['companyCandidatePath'] . 123;
+		    }
+
+		    // Send email
+		    $body = $this->renderPartial('@app/mail/layouts/reset_password', ['data' => '']);
+		    Email::sendMailApply(' Chao ban abc ...', $body, '', '', $this->attachment);
+	    }
+
         return $this->render('employeers_detail', [
         	'job' => $job,
         	'applyForm' => $form,

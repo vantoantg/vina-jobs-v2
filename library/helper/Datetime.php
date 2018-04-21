@@ -56,6 +56,17 @@ class Datetime
         return $date->format($format);
     }
 
+	/**
+	 * @param null $zone
+	 * @return string
+	 */
+	public static function createdAt($zone = null){
+		if($zone == null){
+			$zone = Common::currentUser('timezone');
+		}
+		return Carbon::now($zone)->format(Datetime::SQL_DATETIME);
+	}
+
     /**
      * @param null $zone
      * @param null $format

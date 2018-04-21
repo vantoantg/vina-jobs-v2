@@ -182,7 +182,7 @@ $dropdowns = new Dropdown();
 					</div>
 					<div class="col-xs-12 col-sm-8">
 						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Kĩ năng<span class="red"> (*)</span></label>
+							<label for="email" class="cols-sm-2 control-label">Kĩ năng</label>
 							<div class="cols-sm-10">
 								<?php $data = \app\models\JobSkill::getAllSkill(); ?>
 								<?= $form->field($candidate, 'skill', [

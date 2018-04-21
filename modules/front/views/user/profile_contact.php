@@ -91,8 +91,8 @@ $userInfo = \app\models\UserDetails::getInfo();
                                                     </tbody>
                                                 </table>
 
-                                                <a href="#" class="btn btn-primary">My Sales Performance</a>
-                                                <a href="#" class="btn btn-primary">Team Sales Performance</a>
+                                                <a href="<?= Helper::createUrl(['front/jobs/post-jobs']) ?>" class="btn btn-primary"><i class="fas fa-plus"></i> Đăng tin tuyển dụng</a>
+                                                <a href="<?= Helper::createUrl(['front/user/update-company']) ?>" class="btn btn-primary"><i class="far fa-edit"></i> Câp nhật thông tin</a>
                                             </div>
                                         </div>
                                     </div>
