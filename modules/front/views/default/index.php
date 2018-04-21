@@ -81,14 +81,14 @@ Helper::generateSeo($page);
 		<div class="row how-it-work text-center">
 			<div class="col-md-4">
 				<div class="single-work <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.7s">
-					<img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/how-work1.png" alt="<?= Helper::params(); ?>">
+					<img class="lazy" src="<?= Helper::homeUrl() ?>web/template/jobs/img/loading.gif" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/how-work1.png" alt="<?= Helper::params(); ?>">
 					<h3>Hướng đến sự đơn giản</h3>
 					<p>Website không đòi hỏi đăng ký quá phức tạp. Các tính năng rõ ràng thuận tiện thao tác cho cả những ai không nắm nhiều kiến thức về máy tính.</p>
 				</div>
 			</div>
 			<div class="col-md-4">
 				<div class="single-work  <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.8s">
-					<img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/how-work2.png" alt="<?= Helper::params(); ?>">
+					<img class="lazy" src="<?= Helper::homeUrl() ?>web/template/jobs/img/loading.gif" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/how-work2.png" alt="<?= Helper::params(); ?>">
 					<h3>Tạo sự thỏa mãn</h3>
 					<p>Luôn chọn lọc công việc và ứng viên phù hợp nhất để gửi đến bạn. Không spam mail với những tin nhắn quảng cáo
 					và những tin tức không liên quan.</p>
@@ -96,7 +96,7 @@ Helper::generateSeo($page);
 			</div>
 			<div class="col-md-4">
 				<div class="single-work <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.9s">
-					<img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/how-work3.png" alt="">
+					<img class="lazy" src="<?= Helper::homeUrl() ?>web/template/jobs/img/loading.gif" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/how-work3.png" alt="">
 					<h3>Luôn luôn tức thời</h3>
 					<p>Thông tin sẽ cập nhật tức thời khi có một công việc hoặc ứng viên phù hợp với nhu cầu của bạn. Bạn có thể trao đổi
 					trực tuyến với đối tác khi họ online.</p>
