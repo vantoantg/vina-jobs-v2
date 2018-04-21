@@ -212,8 +212,8 @@ class SiteController extends FrontController
 		    }
 
 		    // Send email
-		    $body = $this->renderPartial('@app/mail/layouts/reset_password', ['data' => '']);
-		    Email::sendMailApply(' Chao ban abc ...', $body, '', '', $this->attachment);
+//		    $body = $this->renderPartial('@app/mail/layouts/reset_password', ['data' => '']);
+//		    Email::sendMailApply(' Chao ban abc ...', $body, '', '', $this->attachment);
 	    }
 
         return $this->render('employeers_detail', [
