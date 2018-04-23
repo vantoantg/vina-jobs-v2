@@ -21,6 +21,7 @@ if (YII_DEBUG) {
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="x-dns-prefetch-control" content="on">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
@@ -28,10 +29,7 @@ if (YII_DEBUG) {
     <meta name="keywords" content="<?= Yii::$app->params['seo']['keywords'] ?>">
     <meta name="robots" content="index,follow">
     <meta name="copyright" content="index,follow">
-
     <link rel="shortcut icon" type="image/png" href="<?= \app\library\helper\Helper::homeUrl() ?>favicon.ico"/>
-
-    <!-- Jobs - Vina -->
     <meta property="og:type" content="Tuyển dụng và tìm kiếm việc làm"/>
     <meta property="og:title" content="<?= Html::encode($this->title) ?>"/>
     <meta property="og:url" content="<?= \app\library\helper\Helper::siteURL() ?>"/>
@@ -42,12 +40,12 @@ if (YII_DEBUG) {
     <meta property="og:image" content="<?= \app\library\helper\Helper::homeUrl() ?>favicon.ico?w=200"/>
     <meta property="og:image:width" content="200"/>
     <meta property="og:image:height" content="200"/>
-    <meta property="og:locale" content="<?= Yii::$app->language ?>"/>
-    <meta name="twitter:site" content="<?= \app\library\helper\Helper::siteURL() ?>"/>
+	<meta property="og:locale" content="vi_VN" />
+	<meta name="twitter:site" content="<?= \app\library\helper\Helper::siteURL() ?>"/>
     <meta name="twitter:text:title" content="<?= Html::encode($this->title) ?>"/>
     <meta name="twitter:image" content="<?= \app\library\helper\Helper::homeUrl() ?>favicon.ico?w=240"/>
     <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:creator" content="Jobs - Vina"/>
+	<meta name="twitter:creator" content="Jobs - Vina"/>
     <meta name="twitter:description" content="<?= Yii::$app->params['seo']['description'] ?>"/>
     <meta property="article:publisher" content="https://www.facebook.com/vina-jobs.com"/>
 
