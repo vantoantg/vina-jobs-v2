@@ -50,6 +50,7 @@ SENTORA SERVER:
 ########################################################
 vina-jobs.com => /var/zpanel/hostdata/zadmin/public_html/vina-jobs_com
 host_name config => nano /etc/sentora/configs/apache/httpd-vhosts.conf
+                         /etc/sentora/configs/apache/httpd-vhosts-tona-backup.conf
 email: system@vina-jobs.com/12345678090
 ########################################################
 
@@ -65,3 +66,4 @@ web/uploads/_company
 runtime/cache
 assets
 
+/var/zpanel/hostdata/zadmin/public_html/vina-jobs_com/doc/ssl-doc/vina-jobs/sslforfree
