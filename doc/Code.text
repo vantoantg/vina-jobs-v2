@@ -49,8 +49,6 @@ SENTORA SERVER:
    (theses passwords are saved in /root/passwords.txt)
 ########################################################
 vina-jobs.com => /var/zpanel/hostdata/zadmin/public_html/vina-jobs_com
-host_name config => nano /etc/sentora/configs/apache/httpd-vhosts.conf
-                         /etc/sentora/configs/apache/httpd-vhosts-tona-backup.conf
 email: system@vina-jobs.com/12345678090
 ########################################################
 
@@ -65,5 +63,10 @@ Deploy-chmod:
 web/uploads/_company
 runtime/cache
 assets
+------------------------------------------------------------------------------------------------------------------------
+SSL:
+https://muassl.com/tai-khoan/don-hang-ssl/chitiet/M0454997.html
+------------------------------------------------------------------------------------------------------------------------
+nvtoan@lockon-vn.com / tona01 / upajupy7y
 
 /var/zpanel/hostdata/zadmin/public_html/vina-jobs_com/doc/ssl-doc/vina-jobs/sslforfree

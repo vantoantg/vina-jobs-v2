@@ -1,0 +1,17 @@
+{
+  "name": "TonaNguyen",
+  "description": "Minify CSS - JS",
+  "main": "Gruntfile.js",
+  "authors": [
+    "jobsvina.com"
+  ],
+  "license": "1.0",
+  "homepage": "https://github.com/vantoantg/vina-jobs-v2",
+  "dependencies": {
+    "select2": "^4.0.5",
+    "cropit": "^0.5.1",
+    "jquery-confirm2": "craftpip/jquery-confirm#^3.3.2",
+    "iCheck": "^1.0.2",
+    "jquery-lazy": "^1.7.7"
+  }
+}
