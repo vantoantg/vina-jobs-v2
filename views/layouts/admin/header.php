@@ -1,7 +1,8 @@
 <?php
 
 use \app\library\helper\Common;
-
+use app\library\helper\Helper;
+use yii\helpers\Url;
 ?>
 <header id="header" >
     <div class="headerbar">
@@ -109,6 +110,7 @@ use \app\library\helper\Common;
                         <li><a href="../../html/pages/profile.html">My profile</a></li>
                         <li><a href="../../html/pages/blog/post.html">My blog <span class="badge style-danger pull-right">16</span></a></li>
                         <li><a href="../../html/pages/calendar.html">My appointments</a></li>
+                        <li><a href="<?= Url::toRoute('/user/user/profile-change-password') ?>">Change password</a></li>
                         <li class="divider"></li>
                         <li><a href="../../html/pages/locked.html"><i class="fa fa-fw fa-lock"></i> Lock</a></li>
                         <li><a href="<?= \yii\helpers\Url::toRoute('/admin/login/logout') ?>" methods="post"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>

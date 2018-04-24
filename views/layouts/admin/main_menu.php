@@ -23,13 +23,14 @@
 
 use \yii\helpers\Url;
 use app\library\helper\Helper;
+use \app\library\helper\Cons;
 ?>
 
 <ul id="main-menu" class="gui-controls">
 
     <!-- BEGIN DASHBOARD -->
     <li>
-        <a href="<?= \app\library\helper\Helper::homeUrl().\app\library\helper\Cons::ROUTE_ADMIN_ROOT ?>" class="active">
+        <a href="<?= Helper::homeUrl().Cons::ROUTE_ADMIN_ROOT ?>" class="active">
             <div class="gui-icon"><i class="md md-home"></i></div>
             <span class="title">Dashboard</span>
         </a>
