@@ -10356,7 +10356,7 @@ button.accordion.active:after {
 
     .page-title h2 {
         font-size: 20px;
-        margin-top: 2px;
+        /*margin-top: 2px;*/
     }
 
     .page-title h5 {
@@ -10617,7 +10617,7 @@ button.accordion.active:after {
     }
 
     .form-inline .form-control, .form-inline .form-control {
-        height: 35px;
+        /*height: 35px;*/
         width: 100%;
     }
 
@@ -10653,7 +10653,7 @@ button.accordion.active:after {
 
     .page-title h2 {
         font-size: 20px;
-        margin-top: 2px;
+        /*margin-top: 2px;*/
     }
 
     .page-title h5 {
@@ -10907,7 +10907,7 @@ button.accordion.active:after {
 
     .page-title h2 {
         font-size: 20px;
-        margin-top: 2px;
+        /*margin-top: 2px;*/
     }
 
     .page-title h5 {
@@ -11158,6 +11158,9 @@ body h1 {
 }
 body h2 {
   font-size: 28px;
+}
+body .btn {
+  padding: 9px 12px;
 }
 body.modal-open {
   padding-right: 0!important;
@@ -11483,6 +11486,9 @@ section#blog-section .content-footer span.pull-right {
 table.table.list-jobs tr:hover {
   background: #E5F6FD;
 }
+form .select2-container .select2-selection--multiple {
+  min-height: 34px;
+}
 #search-jobs .content-widget-sidebar label {
   font-weight: normal;
 }
@@ -11494,7 +11500,6 @@ table.table.list-jobs tr:hover {
   margin-right: 10px;
 }
 #search-jobs .select2-container .select2-selection--multiple {
-  min-height: 34px;
   background-image: none;
   border: 1px solid #ccc;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -11842,4 +11847,57 @@ a.search-options:hover {
 #tabs-cv-valid .no-transforms input:checked + .outside .inside {
   width: 10px;
   height: 10px;
+}
+.header-call p span {
+  display: inline-block;
+}
+/* Responsive */
+@media (max-width: 767px) {
+  .wrapper-sb {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .wrapper-sb .widget-sidebar {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .copyright .container > .row > div {
+    text-align: center;
+  }
+  .copyright .container > .row > div p {
+    text-align: center;
+  }
+  .copyright .container > .row > div .bottom_ul {
+    display: inline-block;
+    float: inherit;
+  }
+  .copyright .container > .row > div .bottom_ul li {
+    line-height: 20px;
+  }
+  .slider .owl-pagination {
+    bottom: 100px;
+  }
+  .slider-content p {
+    line-height: 20px;
+  }
+  .button.navbar-right {
+    text-align: center;
+  }
+  .navbar-nav.navbar-right:last-child {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+@media (max-width: 480px) {
+  #blog-section .list .col-xs-6 {
+    width: 100%;
+  }
+  .slider .owl-pagination {
+    bottom: 50px;
+  }
+  .slider-content h2 {
+    font-size: 20px;
+  }
 }
