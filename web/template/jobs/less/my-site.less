@@ -6,6 +6,7 @@ body{
 	}
 	h1{ font-size: 34px;}
 	h2{ font-size: 28px;}
+	.btn{ padding: 9px 12px}
 }
 body.modal-open{ padding-right: 0!important;}
 .pd-lr-0{ padding-left: 0!important; padding-right: 0!important;}
@@ -347,7 +348,11 @@ table.table.list-jobs{
 		}
 	}
 }
-
+form{
+	.select2-container .select2-selection--multiple {
+		min-height: 34px;
+	}
+}
 #search-jobs{
 	.content-widget-sidebar{
 		label{
@@ -362,7 +367,6 @@ table.table.list-jobs{
 		}
 	}
 	.select2-container .select2-selection--multiple{
-		min-height: 34px;
 		background-image: none;
 		border: 1px solid #ccc;
 		-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
@@ -656,4 +660,44 @@ a.search-options{
 		width: 10px;
 		height: 10px;
 	}
+}
+.header-call p span{ display: inline-block}
+
+/* Responsive */
+@media (max-width: 767px) {
+	.wrapper-sb{
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 0;
+		padding-right: 0;
+		.widget-sidebar{
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+	
+	.copyright .container > .row > div{
+		text-align: center;
+		p{
+			text-align: center;
+		}
+		.bottom_ul{
+			display: inline-block;
+			float: inherit;
+			li{ line-height: 20px}
+		}
+	}
+	.slider .owl-pagination{ bottom: 100px}
+	.slider-content p{line-height: 20px}
+	.button.navbar-right{ text-align: center}
+	.navbar-nav.navbar-right:last-child{margin-left: 0; margin-right: 0;}
+}
+@media (max-width: 480px) {
+	#blog-section{
+		.list{
+			.col-xs-6{ width: 100%}
+		}
+	}
+	.slider .owl-pagination{ bottom: 50px}
+	.slider-content h2{ font-size: 20px}
 }

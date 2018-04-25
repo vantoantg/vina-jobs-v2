@@ -95,7 +95,7 @@ $this->title = 'Post a Curriculum Vitae';
 
         </div><!-- modules-front-jobs -->
     </div>
-    <div class="col-12 col-sm-4">
+    <div class="col-12 col-sm-4 wrapper-sb">
         <div class="widget-sidebar">
             <h2 class="title-widget-sidebar">ARCHIVES</h2>
             <div class="last-post">

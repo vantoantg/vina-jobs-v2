@@ -8,7 +8,7 @@
                 </p>
             </div>
         </div>
-        <div class="col-md-2 col-md-offset-5  col-sm-3 col-sm-offset-1  col-xs-3  col-xs-offset-1">
+        <div class="col-md-2 col-md-offset-5 col-sm-3 col-sm-offset-1 col-xs-3 col-xs-offset-1">
             <div class="header-half header-social">
                 <ul class="list-inline">
                     <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>

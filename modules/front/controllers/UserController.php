@@ -52,7 +52,6 @@ class UserController extends FrontController
 			$candidate = new Candidate();
 			$candidate->user_id = 0; // Set to validate, after that set new user_id
 			$candidate->client_status = Candidate::STATUS_CLIENT_PUBLISH;
-//			$candidate->scenario = 'form';
 		}
 
 		if (

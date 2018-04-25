@@ -78,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php endif; ?>
         </div>
     </div>
-    <div class="col-12 col-sm-4">
+    <div class="col-12 col-sm-4 wrapper-sb">
         <?= (new \app\components\SidebarWidget())->recentJobs(); ?>
     </div>
 </div>
