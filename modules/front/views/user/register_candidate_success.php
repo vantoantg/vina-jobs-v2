@@ -36,7 +36,8 @@ $this->params['breadcrumbs'][] = $this->title;
 			</div>
 		</div>
 	</div>
-	<div class="col-12 col-sm-4">
+
+	<div class="col-12 col-sm-4 wrapper-sb">
 		<div class="widget-sidebar">
 			<h2 class="title-widget-sidebar">RECENT JOBS</h2>
 			<div class="content-widget-sidebar">

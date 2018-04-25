@@ -586,7 +586,7 @@ class Helper
 		if ($param3) {
 			return Yii::$app->params[$param][$param3];
 		}
-		return Yii::$app->params[$param];
+		return isset(Yii::$app->params[$param]) ? Yii::$app->params[$param] : null;
 	}
 
 	/**
@@ -595,11 +595,11 @@ class Helper
 	 */
     public static function wowClass($check_mobile = false)
     {
-        if (!Helper::params('urlCookied')) {
-        	if($check_mobile){
-        		return '';
-	        }
+	    if($check_mobile){
+		    return '';
+	    }
 
+        if (!Helper::params('urlCookied')) {
             return 'wow';
         }
 

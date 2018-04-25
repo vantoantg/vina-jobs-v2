@@ -22,8 +22,8 @@ class Candidate extends \app\models\base\Candidate
     public function rules()
     {
         return [
-            [['user_id', 'job_category_id'], 'required'],
-            [['user_id', 'job_category_id', 'location', 'created_by', 'updated_by', 'approved_by', 'view', 'sorted', 'receives'], 'integer'],
+            [['user_id', 'job_category_id', 'location'], 'required'],
+            [['user_id', 'job_category_id', 'created_by', 'updated_by', 'approved_by', 'view', 'sorted', 'receives', 'location'], 'integer'],
             [['resume_content'], 'string'],
             [['file'], 'file', 'extensions' =>'pdf, pptx, docx, doc', 'maxSize' => 3072000, 'tooBig' => 'Chỉ tải lên file dưới 3MB'],
             [['created_at', 'updated_at', 'approved_at', 'skill'], 'safe'],
@@ -46,7 +46,7 @@ class Candidate extends \app\models\base\Candidate
 			'job_category_id' => 'Lĩnh vực',
 			'skill_tags' => 'Các kỹ năng',
 			'skill' => 'Kỹ năng',
-			'location' => 'Location',
+			'location' => 'Tỉnh / TP có thể làm việc',
 			'video' => 'Video',
 			'resume_content' => 'Resume Content',
 			'resume_file' => 'Resume File',
@@ -63,7 +63,7 @@ class Candidate extends \app\models\base\Candidate
 			'sorted' => 'Sorted',
 			'star' => 'Star',
 			'client_status' => 'Client Status',
-			'receives' => 'Bạn sẽ nhận các tin tuyển dụng mới nhất liên quan đến ngành - nghề bạn đã đăng ký ?',
+			'receives' => 'Nhận các tin tuyển dụng mới nhất liên quan đến ngành - nghề đã đăng ký.',
 			'status' => 'Status',
 		];
 	}

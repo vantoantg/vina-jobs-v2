@@ -2,6 +2,7 @@
 
 namespace app\modules\user\controllers;
 
+use app\forms\ProfilePasswordForm;
 use app\modules\admin\controllers\AdminController;
 use Yii;
 use app\models\Users;
@@ -43,6 +44,34 @@ class UserController extends AdminController
             'dataProvider' => $dataProvider,
         ]);
     }
+
+	/**
+	 * @return string
+	 */
+	public function actionProfileChangePassword()
+	{
+		$form = new ProfilePasswordForm();
+		$form->scenario = ProfilePasswordForm::SCENARIO_UPDATE;
+		if ($form->load(Yii::$app->request->post())) {
+			$user = Users::findOne(['id' => \Yii::$app->user->identity->id]);
+			$user->scenario = Users::SCENARIO_RESET_PW;
+			# here we run our validation rules on the model
+
+			if ($form->validatePassword('password')) {
+				# if it is ok - setting the password property of user
+				$user->setPassword($form->changepassword);
+				# and finally save it
+				if ($user->update()) {
+					$form = new ProfilePasswordForm();
+					$form->scenario = ProfilePasswordForm::SCENARIO_UPDATE;
+					Yii::$app->session->setFlash('update_pw_success', "Saved new password.");
+				}
+			}
+		}
+		return $this->render('profile_change_password', [
+			'model' => $form
+		]);
+	}
 
     /**
      * Displays a single Users model.

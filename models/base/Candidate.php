@@ -50,10 +50,10 @@ class Candidate extends \yii\db\ActiveRecord
     {
         return [
             [['user_id'], 'required'],
-            [['user_id', 'job_category_id', 'location', 'created_by', 'updated_by', 'approved_by', 'view', 'sorted'], 'integer'],
-            [['skill', 'resume_content'], 'string'],
+            [['user_id', 'job_category_id', 'created_by', 'updated_by', 'approved_by', 'view', 'sorted'], 'integer'],
+            [['skill', 'resume_content', 'location'], 'string'],
             [['created_at', 'updated_at', 'approved_at'], 'safe'],
-            [['title', 'slug', 'video', 'resume_file'], 'string', 'max' => 255],
+            [['title', 'slug', 'video', 'resume_file', 'location'], 'string', 'max' => 255],
             [['skill_tags', 'social_network', 'education', 'experience'], 'string', 'max' => 1000],
             [['star', 'client_status', 'status'], 'string', 'max' => 1],
         ];

@@ -38,7 +38,7 @@ $dropdowns = new Dropdown();
 				</button>
 
 				<div class="image-editor"
-				     data-default-img="<?= \app\library\helper\Helper::webImgs('no-image-u.jpg'); ?>">
+				     data-default-img="<?= Helper::webImgs('no-image-u.jpg'); ?>">
 					<input type="file" class="cropit-image-input">
 					<div class="cropit-preview text-center"></div>
 					<div class="image-size-label">Phóng to/thu nhỏ</div>
@@ -58,7 +58,7 @@ $dropdowns = new Dropdown();
 	<div class="col-12 col-sm-8">
 		<div class="row main">
 			<div class="main-login main-center">
-                <div class="alert-message alert-message-info <?= \app\library\helper\Helper::wowClass() ?> zoomInDown animated" data-wow-delay="0.2s">
+                <div class="alert-message alert-message-info <?= Helper::wowClass() ?> zoomInDown animated" data-wow-delay="0.2s">
                     <h4>Lưu ý:</h4>
                     <p>Vui lòng điền đúng địa chỉ email, hệ thống sẽ gửi link kích hoạt tài khoản hoặc thông báo tuyển dụng vào <strong>email của bạn đăng ký</strong>.</p>
                 </div>
@@ -77,7 +77,7 @@ $dropdowns = new Dropdown();
 					<div class="col-xs-12 col-sm-12 avatar-view">
                         <?= $form->field($model, 'avatar')->hiddenInput(['class' => 'hidden_base64'])->label(false) ?>
 						<a href="#" data-toggle="modal" data-target="#register-avatar" data-wow-delay="0.6s" title="Nhấp vào đây để tải ảnh lên">
-							<img class="imgs" src="<?= \app\library\helper\Helper::webImgs('no_image_user.png'); ?>">
+							<img class="imgs" src="<?= Helper::webImgs('no_image_user.png'); ?>">
 						</a>
 					</div>
 				</div>
@@ -131,14 +131,14 @@ $dropdowns = new Dropdown();
 				</div>
 
 				<div class="row">
-					<div class="col-xs-12 col-sm-8">
+					<div class="col-xs-12 col-sm-5">
 						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">Tỉnh / TP có thể làm việc<span class="red"> (*)</span></label>
 							<div class="cols-sm-10">
 								<?php
 								$loca = \app\models\Locations::getAll();
 								?>
-								<?= $form->field($userDetail, 'city_id', [
+								<?= $form->field($candidate, 'location', [
 									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-map-pin"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
 								])->dropDownList(\yii\helpers\ArrayHelper::map($loca, 'id', 'name'),
@@ -150,7 +150,23 @@ $dropdowns = new Dropdown();
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-4">
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="form-group">
+                            <label for="email" class="cols-sm-2 control-label">Lĩnh vực / ngành / nghề<span class="red"> (*)</span></label>
+                            <div class="cols-sm-10">
+			                    <?php $data = \app\models\JobCategories::getAll(); ?>
+			                    <?= $form->field($candidate, 'job_category_id', [
+				                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-genderless"
+                                                                   aria-hidden="true"></i></span>{input}</div>{error}{hint}'
+			                    ])->dropDownList(\yii\helpers\ArrayHelper::map($data, 'id', 'name'),
+				                    [
+					                    'prompt' => '-- Chọn --',
+					                    'class' => 'job-select2 form-control'
+				                    ])->label(false) ?>
+                            </div>
+                        </div>
+                    </div>
+					<div class="col-xs-12 col-sm-3">
 						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">Điện thoại liên hệ<span class="red"> (*)</span></label>
 							<div class="cols-sm-10">
@@ -164,46 +180,9 @@ $dropdowns = new Dropdown();
 				</div>
 
 				<div class="row">
-					<div class="col-xs-12 col-sm-4">
-						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Lĩnh vực<span class="red"> (*)</span></label>
-							<div class="cols-sm-10">
-								<?php $data = \app\models\JobCategories::getAll(); ?>
-								<?= $form->field($candidate, 'job_category_id', [
-									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-genderless"
-                                                                   aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-								])->dropDownList(\yii\helpers\ArrayHelper::map($data, 'id', 'name'),
-									[
-										'prompt' => '-- Chọn --',
-										'class' => 'job-select2 form-control'
-									])->label(false) ?>
-							</div>
-						</div>
-					</div>
 					<div class="col-xs-12 col-sm-8">
 						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Kĩ năng</label>
-							<div class="cols-sm-10">
-								<?php $data = \app\models\JobSkill::getAllSkill(); ?>
-								<?= $form->field($candidate, 'skill', [
-									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-genderless"
-                                                                   aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-								])->dropDownList(\yii\helpers\ArrayHelper::map($data, 'name', 'name'),
-									[
-										'prompt' => '-- Chọn --',
-										'class' => 'select-tags form-control',
-										'multiple' => 'multiple',
-                                        'data-placeholder' => 'Chọn từ khóa có sẵn, hoặc thêm mới'
-									])->label(false) ?>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-xs-12 col-sm-8">
-						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Địa chỉ</label>
+							<label for="email" class="cols-sm-2 control-label">Địa chỉ của bạn</label>
 							<div class="cols-sm-10">
 								<?= $form->field($userDetail, 'address', [
 									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-map-marker"
@@ -240,7 +219,7 @@ $dropdowns = new Dropdown();
 					</div>
 					<div class="col-xs-12 col-sm-4">
 						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Trình độ</label>
+							<label for="email" class="cols-sm-2 control-label">Học vấn</label>
 							<div class="cols-sm-10">
 								<?php $lel = \app\library\helper\Dropdowns::$education; ?>
 								<?= $form->field($candidate, 'education', [
@@ -285,8 +264,8 @@ $dropdowns = new Dropdown();
 				</div>
 
                 <div class="row">
-                    <div class="col-xs-6">
-						<?= $form->field($candidate, 'client_status')->radioList([\app\models\Candidate::STATUS_CLIENT_DRAFT => 'Chưa sẵn sàng', \app\models\Candidate::STATUS_CLIENT_PUBLISH => 'Đã sẵn sàng'], ['class' => 'iCheck'])->label('Bạn có muốn hiện thị khi nguời dùng tìm kiếm ?') ?>
+                    <div class="col-xs-12">
+						<?= $form->field($candidate, 'client_status')->radioList([\app\models\Candidate::STATUS_CLIENT_PUBLISH => 'Đã sẵn sàng', \app\models\Candidate::STATUS_CLIENT_DRAFT => 'Chưa sẵn sàng'], ['class' => 'iCheck'])->label('Hiện thị hồ sơ của bạn khi nguời dùng tìm kiếm ?') ?>
                     </div>
                 </div>
 
@@ -310,7 +289,7 @@ $dropdowns = new Dropdown();
 			</div>
 		</div>
 	</div>
-	<div class="col-12 col-sm-4">
+	<div class="col-12 col-sm-4 wrapper-sb">
 		<?= (new \app\components\SidebarWidget())->recentJobs(); ?>
 	</div>
 	<script type="text/javascript">

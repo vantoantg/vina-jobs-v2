@@ -10,15 +10,15 @@ $this->title = 'Blog';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container">
-    <section id="blog-section" >
+    <section id="blog-section">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-8">
-                    <div class="row">
+                    <div class="row list">
                         <?php
                         for ($i=1; $i<=10; $i++){
                         ?>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.<?= $i ?>s">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.<?= $i ?>s">
                             <aside>
                                 <img src="https://lh3.googleusercontent.com/-ndZJOGgvYQ4/WM1ZI8dH86I/AAAAAAAADeo/l67ZqZnRUO8QXIQi38bEXuxqHfVX0TV2gCJoC/w424-h318-n-rw/thumbnail8.jpg" class="img-responsive">
                                 <div class="content-title">
@@ -53,26 +53,23 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?php } ?>
                     </div>
                 </div>
+            </div>
+            <!--           // RECENT POST===========-->
+            <div class="col-12 col-md-4 wrapper-sb">
+		        <?= $sidebarWidget->recentJobs(); ?>
 
-                <!--           // RECENT POST===========-->
-                <div class="col-12 col-md-4">
-                    <?= $sidebarWidget->recentJobs(); ?>
+		        <?= $sidebarWidget->archives(); ?>
 
-                    <?= $sidebarWidget->archives(); ?>
-
-	                <!--=====================
-                           CATEGORIES
-                      ======================-->
-	                <?= $sidebarWidget->categories(); ?>
-
-
-                    <!--=====================
-                          NEWSLATTER
-                   ======================-->
-                    <?= $sidebarWidget->newsLatter(); ?>
+                <!--=====================
+					   CATEGORIES
+				  ======================-->
+		        <?= $sidebarWidget->categories(); ?>
 
 
-                </div>
+                <!--=====================
+					  NEWSLATTER
+			   ======================-->
+		        <?= $sidebarWidget->newsLatter(); ?>
             </div>
         </div>
 

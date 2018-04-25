@@ -92,7 +92,7 @@ $this->title = 'Post a Job';
 
         </div><!-- front-jobs -->
     </div>
-    <div class="col-xs-12 col-sm-4">
+    <div class="col-xs-12 col-sm-4 wrapper-sb">
 
         <div class="widget-sidebar">
             <h2 class="title-widget-sidebar">ARCHIVES</h2>
