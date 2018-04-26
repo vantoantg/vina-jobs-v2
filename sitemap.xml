@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://jobsvina.com/</loc>
+  <lastmod>2018-04-26T14:50:11+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://jobsvina.com/job-seekers.html</loc>
+  <lastmod>2018-04-26T14:50:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jobsvina.com/jobs.html</loc>
+  <lastmod>2018-04-26T14:50:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jobsvina.com/blog.html</loc>
+  <lastmod>2018-04-26T14:50:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jobsvina.com/contact.html</loc>
+  <lastmod>2018-04-26T14:50:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jobsvina.com/register/candidate.html</loc>
+  <lastmod>2018-04-26T14:50:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jobsvina.com/register/company.html</loc>
+  <lastmod>2018-04-26T14:50:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jobsvina.com/user/forgot-password.html</loc>
+  <lastmod>2018-04-26T14:50:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jobsvina.com/job/detail/web-developer-java--javascript--jquery-1.html</loc>
+  <lastmod>2018-04-26T14:50:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jobsvina.com/search/result.html?keywords=&amp;mode=search-jobs</loc>
+  <lastmod>2018-04-26T14:50:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>

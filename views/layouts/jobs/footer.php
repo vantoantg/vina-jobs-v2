@@ -78,11 +78,10 @@ use app\library\helper\Helper;
 			<div class="col-md-6">
 				<ul class="bottom_ul">
 					<li><a href="<?= Helper::siteURL()?>"><?= Helper::params() ?></a></li>
-					<li><a href="#">Giới thiệu</a></li>
 					<li><a href="<?= Helper::createUrl(['site/blog']) ?>">Blog</a></li>
-					<li><a href="#">Hỏi - đáp</a></li>
-					<li><a href="<?= Helper::createUrl(['site/contact']) ?>">Liên hệ</a></li>
-					<li><a href="#">Site Map</a></li>
+					<li><a href="#">Q&A</a></li>
+					<li><a href="<?= Helper::createUrl(['site/contact']) ?>">Contact</a></li>
+					<li><a href="<?= Helper::siteURL()?>/sitemap.xml" target="_blankQ&A">Site Map</a></li>
 				</ul>
 			</div>
 		</div>
