@@ -52,6 +52,7 @@ class UserController extends FrontController
 			$candidate = new Candidate();
 			$candidate->user_id = 0; // Set to validate, after that set new user_id
 			$candidate->client_status = Candidate::STATUS_CLIENT_PUBLISH;
+			$candidate->receives = 1;
 		}
 
 		if (
@@ -64,6 +65,7 @@ class UserController extends FrontController
 			$candidate->validate()
 			)
 		{
+			$candidate->location = implode(',', $candidate->location);
             $transaction = Yii::$app->db->beginTransaction();
 
             $img = Yii::$app->request->post();
@@ -84,7 +86,6 @@ class UserController extends FrontController
 
                 //save candidate
                 $candidate->user_id = $model->getId();
-                $candidate->skill = $candidate->array2String($candidate->skill);
 //				$candidate->scenario = "register";
                 $candidate->user_id = $model->getId();
                 if ($userDetail->save() && $candidate->save()) {
@@ -138,7 +139,10 @@ class UserController extends FrontController
 			$model->scenario = Users::SCENARIO_UPDATE;
 			$userDetail = UserDetails::findOne(['user_id' => $model->getId()]);
 			$userDetail->phone = ($userDetail->phone == '--') ? '' : $userDetail->phone;
+			$userDetail->birthday = Datetime::sqlDateToFormat($userDetail->birthday);
+			$oldImg = $model->avatar;
 			$candidate = Candidate::getCandidate(Common::currentUser());
+			$candidate->location = explode(',', $candidate->location);
 			$candidate->client_status = ($candidate->client_status != Candidate::STATUS_CLIENT_PUBLISH &&
 					$candidate->client_status != Candidate::STATUS_CLIENT_PUBLISH
 				) ? Candidate::STATUS_CLIENT_PUBLISH : $candidate->client_status;
@@ -159,7 +163,7 @@ class UserController extends FrontController
 			$transaction = Yii::$app->db->beginTransaction();
 
 			$img = Yii::$app->request->post();
-			if($img['Users']['avatar']){
+			if($img['Users']['avatar'] && $oldImg != $img['Users']['avatar']){
 				$model->avatar = Image::base64ToImage($img['Users']['avatar']);
 			}
 
@@ -176,27 +180,25 @@ class UserController extends FrontController
 
 				//save candidate
 				$candidate->user_id = $model->getId();
-				$candidate->skill = $candidate->array2String($candidate->skill);
+				$candidate->location = implode(',', $candidate->location);
 //				$candidate->scenario = "register";
 				$candidate->user_id = $model->getId();
 				if ($userDetail->save() && $candidate->save()) {
 					$transaction->commit();
-					// TODO: Send email
-					$data['name'] = $model->name;
-					$data['link'] = Url::to('/candidate/active/token/' . $token_waiting_active . '.html', true);
-					$temp = $this->renderPartial('@app/mail/layouts/active_user_register', ['data' => $data]);
-
-					// TODO: comment out
-//                    Email::sendMail('Instructions to activate your account - ' . Helper::siteURL(), $temp);
+					// Flash updated
+				}else{
+					echo '<pre>';
+					print_r($userDetail->errors);
+					echo '</pre>';
+					die;
 				}
 
-				return $this->render('register_candidate_success', [
+				return $this->render('update_candidate_success', [
 					'success' => true,
 					'message' => "",
 				]);
 			}
 		}else {
-
 			$erros = array_merge($model->getErrors(), $candidate->getErrors(), $userDetail->getErrors());
 			foreach ($erros as $error) {
 				$errors[] = $error[0];

@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\forms\ApplyForm;
+use app\library\helper\Helper;
 use app\models\Auth;
 use app\models\Email;
 use app\models\FileUploads;
@@ -65,7 +66,7 @@ class SiteController extends FrontController
             'auth' => [
                 'class' => 'yii\authclient\AuthAction',
                 'successCallback' => [$this, 'successCallback'],
-                'successUrl' => $this->successUrl,
+                'successUrl' => Url::to(Helper::createUrl(['/front/user/update-candidate'])),
             ],
         ];
     }
@@ -76,7 +77,7 @@ class SiteController extends FrontController
      */
     public function successCallback($client)
     {
-        $this->successUrl = Url::to(['/']);
+        $this->successUrl = Url::to(Helper::createUrl(['/front/user/update-candidate']));
         (new Auth())->detectUserType($client);
     }
 

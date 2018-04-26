@@ -67,7 +67,20 @@ class Helper
     public static function webImgs($pathFile, $check = true)
     {
         $path = Yii::$app->getHomeUrl() . 'web/imgs/' . $pathFile;
-        if ($check && file_exists(Yii::$app->basePath . '/webs/' . $pathFile)) {
+        if ($check && file_exists(Yii::$app->basePath . '/' . $pathFile)) {
+            return $path;
+        }
+
+        return Yii::$app->getHomeUrl() . 'web/imgs/no-image.jpg';
+    }
+
+    /**
+     * @return string
+     */
+    public static function userAvatar($pathFile, $check = true)
+    {
+        $path = Yii::$app->getHomeUrl() . $pathFile;
+        if ($check && file_exists(Yii::$app->basePath . '/' . $pathFile)) {
             return $path;
         }
 

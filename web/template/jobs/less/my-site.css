@@ -341,6 +341,14 @@ table.table.list-jobs tr:hover {
 form .select2-container .select2-selection--multiple {
   min-height: 34px;
 }
+form .has-error .select2-container--default .select2-selection--single,
+form .has-error .select2-container .select2-selection--multiple {
+  border-color: #a94442;
+}
+form .has-success .select2-container--default .select2-selection--single,
+form .has-success .select2-container .select2-selection--multiple {
+  border-color: #3c763d;
+}
 #search-jobs .content-widget-sidebar label {
   font-weight: normal;
 }
