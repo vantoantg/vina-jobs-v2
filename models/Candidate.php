@@ -17,19 +17,18 @@ class Candidate extends \app\models\base\Candidate
 
 		STATUS_CLIENT_PUBLISH = 7,
 		STATUS_CLIENT_DRAFT = 8;
-    public $receives;
     public $file;
     public function rules()
     {
         return [
             [['user_id', 'job_category_id', 'location'], 'required'],
-            [['user_id', 'job_category_id', 'created_by', 'updated_by', 'approved_by', 'view', 'sorted', 'receives', 'location'], 'integer'],
+            [['user_id', 'job_category_id', 'created_by', 'updated_by', 'approved_by', 'view', 'sorted', 'receives'], 'integer'],
             [['resume_content'], 'string'],
             [['file'], 'file', 'extensions' =>'pdf, pptx, docx, doc', 'maxSize' => 3072000, 'tooBig' => 'Chỉ tải lên file dưới 3MB'],
             [['created_at', 'updated_at', 'approved_at', 'skill'], 'safe'],
             [['title', 'slug', 'video', 'resume_file'], 'string', 'max' => 255],
             [['skill_tags', 'social_network', 'education', 'experience'], 'string', 'max' => 1000],
-            [['star', 'client_status', 'status'], 'string', 'max' => 1],
+            [['star', 'client_status', 'status'], 'integer'],
         ];
     }
 

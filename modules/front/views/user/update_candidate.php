@@ -68,7 +68,7 @@ $dropdowns = new Dropdown();
                         <?= $form->field($model, 'avatar')->hiddenInput(['class' => 'hidden_base64'])->label(false) ?>
 						<a href="#" data-toggle="modal" data-target="#register-avatar" data-wow-delay="0.6s" title="Nhấp vào đây để tải ảnh lên">
 							<img class="imgs"
-                                 src="<?= $model->avatar ? $model->avatar : ($model->avatar_url ? $model->avatar_url : \app\library\helper\Helper::webImgs('no_image_user.png')) ?>">
+                                 src="<?= $model->avatar ? Helper::userAvatar($model->avatar) : ($model->avatar_url ? $model->avatar_url : \app\library\helper\Helper::webImgs('no_image_user.png')) ?>">
 						</a>
 					</div>
 				</div>
@@ -99,44 +99,30 @@ $dropdowns = new Dropdown();
 					</div>
 				</div>
 
-				<div class="row">
-					<div class="col-xs-12 col-sm-8">
-						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Tỉnh / TP có thể làm việc<span class="red"> (*)</span></label>
-							<div class="cols-sm-10">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-5">
+                        <div class="form-group">
+                            <label for="email" class="cols-sm-2 control-label">Tỉnh / TP có thể làm việc<span class="red"> (*)</span></label>
+                            <div class="cols-sm-10">
 								<?php
 								$loca = \app\models\Locations::getAll();
 								?>
-								<?= $form->field($userDetail, 'city_id', [
+								<?= $form->field($candidate, 'location', [
 									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-map-pin"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
 								])->dropDownList(\yii\helpers\ArrayHelper::map($loca, 'id', 'name'),
-                                    [
-                                        'prompt' => '-- Chọn --',
-                                        'class' => 'job-select2 form-control',
+									[
+										'prompt' => '-- Chọn --',
+										'class' => 'job-select2 form-control',
 										'multiple' => 'multiple'
-                                    ])->label(false) ?>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-12 col-sm-4">
-						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Điện thoại liên hệ<span class="red"> (*)</span></label>
-							<div class="cols-sm-10">
-								<?= $form->field($userDetail, 'phone', [
-									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-mobile-alt"
-                                                                   aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-								])->label(false) ?>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-xs-12 col-sm-4">
-						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Lĩnh vực<span class="red"> (*)</span></label>
-							<div class="cols-sm-10">
+									])->label(false) ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="form-group">
+                            <label for="email" class="cols-sm-2 control-label">Lĩnh vực / ngành / nghề<span class="red"> (*)</span></label>
+                            <div class="cols-sm-10">
 								<?php $data = \app\models\JobCategories::getAll(); ?>
 								<?= $form->field($candidate, 'job_category_id', [
 									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-genderless"
@@ -146,28 +132,21 @@ $dropdowns = new Dropdown();
 										'prompt' => '-- Chọn --',
 										'class' => 'job-select2 form-control'
 									])->label(false) ?>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-12 col-sm-8">
-						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Kĩ năng<span class="red"> (*)</span></label>
-							<div class="cols-sm-10">
-								<?php $data = \app\models\JobSkill::getAllSkill(); ?>
-								<?= $form->field($candidate, 'skill[]', [
-									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-genderless"
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3">
+                        <div class="form-group">
+                            <label for="email" class="cols-sm-2 control-label">Điện thoại liên hệ<span class="red"> (*)</span></label>
+                            <div class="cols-sm-10">
+								<?= $form->field($userDetail, 'phone', [
+									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-mobile-alt"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-								])->dropDownList(\yii\helpers\ArrayHelper::map($data, 'name', 'name'),
-									[
-										'prompt' => '-- Chọn --',
-										'class' => 'select-tags form-control',
-										'multiple' => 'multiple',
-										'data-placeholder' => 'Chọn từ khóa có sẵn, hoặc thêm mới'
-									])->label(false) ?>
-							</div>
-						</div>
-					</div>
-				</div>
+								])->label(false) ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 				<div class="row">
 					<div class="col-xs-12 col-sm-8">
@@ -248,12 +227,16 @@ $dropdowns = new Dropdown();
 
                 <div class="row">
                     <div class="col-xs-12">
-						<?= $form->field($candidate, 'client_status')->radioList([\app\models\Candidate::STATUS_CLIENT_DRAFT => 'Chưa sẵn sàng', \app\models\Candidate::STATUS_CLIENT_PUBLISH => 'Đã sẵn sàng'], ['class' => 'iCheck'])->label('Bạn có muốn hiện thị khi nguời dùng tìm kiếm ?') ?>
+						<?= $form->field($candidate, 'client_status')->radioList([\app\models\Candidate::STATUS_CLIENT_PUBLISH => 'Đã sẵn sàng', \app\models\Candidate::STATUS_CLIENT_DRAFT => 'Chưa sẵn sàng'], ['class' => 'iCheck'])->label('Hiện thị hồ sơ của bạn khi nguời dùng tìm kiếm ?') ?>
                     </div>
                 </div>
 
 				<hr>
-
+                <div class="form-group ">
+					<?= $form->field($candidate, 'receives', [
+						'template' => '{input}'
+					])->checkbox(['class' => 'iCheck'])->label(false) ?>
+                </div>
 				<div class="form-group ">
                     <?= Html::submitButton('<i class="fas fa-hdd"></i> Cập nhật hồ sơ', ['class' => 'btn btn-primary login-button']) ?>
 				</div>

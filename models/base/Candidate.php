@@ -14,7 +14,7 @@ use Yii;
  * @property int $job_category_id
  * @property string $skill_tags
  * @property string $skill
- * @property int $location
+ * @property string $location
  * @property string $video
  * @property string $resume_content
  * @property string $resume_file
@@ -29,6 +29,7 @@ use Yii;
  * @property string $approved_at
  * @property int $view
  * @property int $sorted
+ * @property int $receives
  * @property int $star
  * @property int $client_status
  * @property int $status
@@ -50,12 +51,11 @@ class Candidate extends \yii\db\ActiveRecord
     {
         return [
             [['user_id'], 'required'],
-            [['user_id', 'job_category_id', 'created_by', 'updated_by', 'approved_by', 'view', 'sorted'], 'integer'],
-            [['skill', 'resume_content', 'location'], 'string'],
+            [['user_id', 'job_category_id', 'created_by', 'updated_by', 'approved_by', 'view', 'sorted', 'receives', 'star', 'client_status', 'status'], 'integer'],
+            [['skill', 'resume_content'], 'string'],
             [['created_at', 'updated_at', 'approved_at'], 'safe'],
-            [['title', 'slug', 'video', 'resume_file', 'location'], 'string', 'max' => 255],
+            [['title', 'slug', 'location', 'video', 'resume_file'], 'string', 'max' => 255],
             [['skill_tags', 'social_network', 'education', 'experience'], 'string', 'max' => 1000],
-            [['star', 'client_status', 'status'], 'string', 'max' => 1],
         ];
     }
 
@@ -87,6 +87,7 @@ class Candidate extends \yii\db\ActiveRecord
             'approved_at' => 'Approved At',
             'view' => 'View',
             'sorted' => 'Sorted',
+            'receives' => 'Receives',
             'star' => 'Star',
             'client_status' => 'Client Status',
             'status' => 'Status',
