@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'arranged',
             //'status',
 
-            ['class' => 'yii\grid\ActionColumn'],
+	        \app\library\helper\ActionColumn::link(),
         ],
     ]); ?>
     <?php Pjax::end(); ?>

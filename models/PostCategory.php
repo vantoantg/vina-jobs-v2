@@ -10,6 +10,18 @@ namespace app\models;
 
 class PostCategory extends \app\models\base\PostCategory
 {
+
+	/**
+	 * @param bool $insert
+	 * @return bool
+	 */
+	public function beforeSave($insert)
+	{
+		/*if ($this->isNewRecord) {
+		} else {
+		}*/
+		return parent::beforeSave($insert);
+	}
     /**
      * @param bool $is_category
      * @param int $parent_id
@@ -24,12 +36,12 @@ class PostCategory extends \app\models\base\PostCategory
             $trees = [];
         }
         $sql = "SELECT * FROM $table WHERE (parent_id = {$parent_id}) order by arranged asc";
-        if (\Yii::$app->request->getQueryParam('id') && $is_category) {
+        /*if (\Yii::$app->request->getQueryParam('id') && $is_category) {
             $id = Yii::$app->request->getQueryParam('id');
             if ($id > 0) {
                 $sql = "SELECT * FROM $table WHERE (parent_id = {$parent_id} AND id != {$id}) order by arranged asc";
             }
-        }
+        }*/
         $data = \Yii::$app->db->createCommand($sql)->queryAll();
         foreach ($data as $k => $rs) {
             $trees[] = array(

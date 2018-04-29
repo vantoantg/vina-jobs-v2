@@ -22,16 +22,12 @@ body.modal-open{ padding-right: 0!important;}
 .red{color: red}
 .loginmodal-container {
 	padding: 30px;
-	max-width: 350px;
-	width: 100% !important;
 	background-color: #F7F7F7;
 	margin: 0 auto;
 	border-radius: 2px;
 	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 	overflow: hidden;
-	font-family: roboto;
 	&.switch-register{
-		max-width: 475px;
 	}
 	.close{
 		position: relative;
@@ -40,7 +36,11 @@ body.modal-open{ padding-right: 0!important;}
 		outline: none;
 	}
 }
-
+#login-modal{
+	> div{
+		max-width: 350px;
+	}
+}
 .loginmodal-container h1 {
 	text-align: center;
 	font-size: 1.8em;

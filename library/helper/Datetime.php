@@ -63,6 +63,9 @@ class Datetime
 	public static function createdAt($zone = null){
 		if($zone == null){
 			$zone = Common::currentUser('timezone');
+			if(!$zone){
+				$zone = self::DEFAULT_TIME_ZONE;
+			}
 		}
 		return Carbon::now($zone)->format(Datetime::SQL_DATETIME);
 	}
@@ -75,6 +78,9 @@ class Datetime
     public static function getTimeNow($zone = null, $format = null){
         if($zone == null){
             $zone = Common::currentUser('timezone');
+	        if(!$zone){
+		        $zone = self::DEFAULT_TIME_ZONE;
+	        }
         }
         if($format == null){
             $format = self::VIEW_TIME;
@@ -113,7 +119,13 @@ class Datetime
      * @return string
      */
     public static function datetimeSqlNow($fomat = 'Y-m-d H:i:s', $tz = null){
-        return Carbon::now()->format($fomat);
+    	if($tz == null){
+		    $tz = Common::currentUser('timezone');
+		    if($tz == false){
+		    	$tz = Datetime::DEFAULT_TIME_ZONE;
+		    }
+	    }
+        return Carbon::now($tz)->format($fomat);
     }
 
     /**

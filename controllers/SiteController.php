@@ -9,11 +9,13 @@ use app\models\Email;
 use app\models\FileUploads;
 use app\models\Job;
 use app\models\LoginForm;
+use app\models\Post;
 use app\models\search\JobCustomSearch;
 use app\modules\front\controllers\FrontController;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\Url;
+use yii\web\BadRequestHttpException;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\ContactForm;
@@ -230,8 +232,30 @@ class SiteController extends FrontController
      */
     public function actionBlog()
     {
-        return $this->render('blog');
+	    $searchModel = new Post();
+	    $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+	    $dataProvider->pagination->pageSize = 20;
+        return $this->render('blog', [
+        	'blogs' => $dataProvider->getModels()
+        ]);
     }
+
+	/**
+	 * Displays blog page.
+	 *
+	 * @return string
+	 */
+	public function actionBlogDetail($slug, $id)
+	{
+		$post = Post::findOne($id);
+		if(!$post){
+			throw new BadRequestHttpException();
+		}
+
+		return $this->render('blog_detail', [
+			'blog' => $post
+		]);
+	}
 
 	public function actionPolicy()
 	{
