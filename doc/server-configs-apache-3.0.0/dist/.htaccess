@@ -1,12 +1,3 @@
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)\?*$ index.php?r=$1 [L,QSA]
-RewriteCond %{HTTPS} off [OR]
-RewriteCond %{HTTP_HOST} ^www\. [NC]
-RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
-#RewriteRule ^ https://%1%{REQUEST_URI} [L,NE,R=301]
-
 # Apache Server Configs v3.0.0 | MIT License
 # https://github.com/h5bp/server-configs-apache
 
