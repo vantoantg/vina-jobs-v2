@@ -367,7 +367,7 @@ AddDefaultCharset utf-8
 # | Suppressing the `www.` at the beginning of URLs                    |
 # ----------------------------------------------------------------------
 
-# Rewrite www.example.com → example.com
+# Rewrite www.example.com ??? example.com
 
 # The same content should never be available under two different
 # URLs, especially not with and without `www.` at the beginning.
@@ -396,7 +396,7 @@ AddDefaultCharset utf-8
 # | Forcing the `www.` at the beginning of URLs                        |
 # ----------------------------------------------------------------------
 
-# Rewrite example.com → www.example.com
+# Rewrite example.com ??? www.example.com
 
 # The same content should never be available under two different
 # URLs, especially not with and without `www.` at the beginning.
@@ -446,7 +446,7 @@ AddDefaultCharset utf-8
 # https://tools.ietf.org/html/rfc7034#section-2.1.
 #
 # Keep in mind that while you could send the `X-Frame-Options` header
-# for all of your website’s pages, this has the potential downside that
+# for all of your website???s pages, this has the potential downside that
 # it forbids even non-malicious framing of your content (e.g.: when
 # users visit your website using a Google Image Search results page).
 #
@@ -618,7 +618,7 @@ AddDefaultCharset utf-8
 #     Header always set Strict-Transport-Security "max-age=16070400; includeSubDomains"
 #     # (1) or if HSTS preloading is desired (respect (2) for current requirements):
 #     # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
-#     # (4) respectively… (respect (2) for current requirements):
+#     # (4) respectively??? (respect (2) for current requirements):
 #     # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" "expr=%{HTTPS} == 'on'"
 # </IfModule>
 
