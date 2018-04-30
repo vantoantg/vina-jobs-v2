@@ -1,0 +1,37 @@
+# For more information about the configurations used
+# in this file, please see the Travis CI documentation:
+# https://docs.travis-ci.com/
+
+language: node_js
+node_js: node
+sudo: required
+
+env:
+  global:
+    - secure: "itatOgspOE49LX1fczgut51/3AGiCE7ueMeUHdGseB7cWfyFlJ2eUozspXBfbmWtEls8Y97/V1Q8vZty/WXJ2Q3CdxjK8TBBhVycRgK5Qp03eG/yFy/G5hXN1mGil4KwIwqHVYAQvCVcuDv0Ek4V+PEfNp8KGkRILxP2a6kRjgw="
+
+jobs:
+  include:
+    - env: # Tests for Apache 2.4.x
+       - APACHE_VERSION="2.4"
+       - CONF_TARGET="000-default.conf"
+      before_script: ./bin/setup.sh
+
+    - stage: distribution
+      if: branch = master
+      script: .travis/update-dist.sh
+
+  fast_finish: true
+  allow_failures:
+    - stage: distribution
+
+after_failure:
+  - sudo cat /var/log/apache2/error.log
+  - sudo cat /var/log/apache2/access.log
+
+addons:
+  hosts:
+    - travis.localhost
+
+cache:
+  directories: node_modules

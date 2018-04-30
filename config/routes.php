@@ -8,6 +8,7 @@ return [
 	'job/detail/<slug:[a-zA-Z0-9_ -@.]+>-<id:[a-zA-Z0-9_ -@.]+>.html' => 'site/employeers-detail',
 	'about-us.html' => 'site/about-us',
 	'blog.html' => 'site/blog',
+	'blog/<slug:[a-zA-Z0-9_ -@.]+>-<id:[a-zA-Z0-9_ -@.]+>.html' => 'site/blog-detail',
 	'contact.html' => 'site/contact',
 	'dieu-khoan-su-dung.html' => 'site/policy',
 

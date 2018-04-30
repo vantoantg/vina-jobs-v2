@@ -28,8 +28,10 @@ $dropdowns = new Dropdown();
 <div class="modal fade" id="register-avatar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true"
      style="display: none;">
-	<div class="vertical-alignment-helper">
-		<div class="modal-dialog vertical-align-center">
+	<!--<div class="vertical-alignment-helper">
+		<div class="modal-dialog vertical-align-center">-->
+    <div class="">
+		<div class="modal-dialog">
 
 			<div class="modal-content loginmodal-container switch-register">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close" title="Đóng lại">

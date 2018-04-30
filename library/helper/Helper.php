@@ -66,10 +66,30 @@ class Helper
      */
     public static function webImgs($pathFile, $check = true)
     {
-        $path = Yii::$app->getHomeUrl() . 'web/imgs/' . $pathFile;
-        if ($check && file_exists(Yii::$app->basePath . '/' . $pathFile)) {
-            return $path;
+	    if($pathFile){
+	        $path = Yii::$app->getHomeUrl() . 'web/imgs/' . $pathFile;
+	        if ($check && file_exists(Yii::$app->basePath . '/' . $pathFile)) {
+	            return $path;
+	        }
         }
+
+        return Yii::$app->getHomeUrl() . 'web/imgs/no-image.jpg';
+    }
+
+    /**
+     * @return string
+     */
+    public static function imgRender($pathFile, $check = true)
+    {
+    	if($pathFile){
+            $pathFile = str_replace('/web/', 'web/',$pathFile);
+		    $path = Yii::$app->getHomeUrl() . $pathFile;
+		    if ($check) {
+			    if(file_exists(Yii::$app->basePath . '/' . $pathFile)){
+				    return $path;
+			    }
+		    }
+	    }
 
         return Yii::$app->getHomeUrl() . 'web/imgs/no-image.jpg';
     }
@@ -79,9 +99,11 @@ class Helper
      */
     public static function userAvatar($pathFile, $check = true)
     {
-        $path = Yii::$app->getHomeUrl() . $pathFile;
-        if ($check && file_exists(Yii::$app->basePath . '/' . $pathFile)) {
-            return $path;
+	    if($pathFile){
+	        $path = Yii::$app->getHomeUrl() . $pathFile;
+	        if ($check && file_exists(Yii::$app->basePath . '/' . $pathFile)) {
+	            return $path;
+	        }
         }
 
         return Yii::$app->getHomeUrl() . 'web/imgs/no-image.jpg';

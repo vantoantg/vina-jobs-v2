@@ -9,8 +9,9 @@ $page = \app\models\Pages::get('gioi-thieu');
 /** @var $page \app\models\Pages title */
 
 /** @var $this \yii\web\View title */
-$this->title = $page->seo_title . ' | ' . \app\library\helper\Helper::siteURL();
+$this->title = \app\library\helper\Helper::titleSeo($page);
 $this->params['breadcrumbs'][] = $this->title;
+\app\library\helper\Helper::generateSeo($page);
 ?>
 
 <div class="container <?= $page->slug; ?>">

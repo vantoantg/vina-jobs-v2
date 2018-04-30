@@ -22,8 +22,8 @@ use app\library\helper\Cons;
 	</div>
 
 	<?php
-	$countries = \app\models\ProductCategory::categoriesMenus();
-	$listData = \yii\helpers\ArrayHelper::map($countries, 'id', 'name');
+	$datas = \app\models\ProductCategory::categoriesMenus();
+	$listData = \yii\helpers\ArrayHelper::map($datas, 'id', 'name');
 	echo $form->field($model, 'category_id',[
 		'template' => '{input}{label}{error}{hint}'
 	])->dropDownList(
