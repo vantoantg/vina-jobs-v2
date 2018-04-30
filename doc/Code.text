@@ -65,6 +65,7 @@ Deploy-chmod:
 web/uploads/_company
 runtime/cache
 assets
+web/assets
 ------------------------------------------------------------------------------------------------------------------------
 SSL:
 https://muassl.com/tai-khoan/don-hang-ssl/chitiet/M0454997.html
