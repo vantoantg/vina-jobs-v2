@@ -10,6 +10,8 @@ namespace app\models;
 
 class PostCategory extends \app\models\base\PostCategory
 {
+	const   STATUS_ACTIVE = 1,
+			STATUS_DRAFT = 0;
 
 	/**
 	 * @param bool $insert

@@ -9,6 +9,7 @@ namespace app\library\helper;
 
 use app\models\Pages;
 use Carbon\Carbon;
+use tonanguyen\SimpleImage;
 use Yii;
 use \yii\web\Response;
 
@@ -76,22 +77,34 @@ class Helper
         return Yii::$app->getHomeUrl() . 'web/imgs/no-image.jpg';
     }
 
-    /**
-     * @return string
-     */
-    public static function imgRender($pathFile, $check = true)
+	/**
+	 * @param $pathFile
+	 * @param int $w
+	 * @param int $h
+	 * @return mixed|string
+	 */
+    public static function imgRender($pathFile, $w = 100, $h = 100, $prefix = 'blog')
     {
-    	if($pathFile){
-            $pathFile = str_replace('/web/', 'web/',$pathFile);
-		    $path = Yii::$app->getHomeUrl() . $pathFile;
-		    if ($check) {
-			    if(file_exists(Yii::$app->basePath . '/' . $pathFile)){
-				    return $path;
-			    }
-		    }
+    	if(!$pathFile){
+		    $pathFile = 'web/imgs/no-image.jpg';
 	    }
 
-        return Yii::$app->getHomeUrl() . 'web/imgs/no-image.jpg';
+	    $pathFile = str_replace('/web/', 'web/',$pathFile);
+	    $basePath = Yii::$app->basePath . '/' . $pathFile;
+	    $imgName = end(explode('/', $pathFile));
+	    $newPath = 'web/assets/'.$prefix.'-'.md5(date('Ymd')).'-'.$imgName;
+
+	    if(file_exists($newPath)){
+		    return $newPath;
+	    }
+
+	    if(file_exists($basePath)){
+		    $img = new \app\library\helper\SimpleImage();
+		    $img->load($basePath);
+		    $img->resize($w, $h);
+		    $img->save($newPath, 100);
+		    return $newPath;
+	    }
     }
 
     /**

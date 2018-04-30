@@ -17,19 +17,19 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <section id="blog-section">
     <div class="container">
+	    <?=
+	    \yii\widgets\Breadcrumbs::widget([
+		    'homeLink' => [
+			    'label' => 'Trang chủ',
+			    'url' => Yii::$app->homeUrl,
+		    ],
+		    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+	    ])
+	    ?>
         <div class="row">
-	        <?=
-	        \yii\widgets\Breadcrumbs::widget([
-		        'homeLink' => [
-			        'label' => 'Trang chủ',
-			        'url' => Yii::$app->homeUrl,
-		        ],
-		        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-	        ])
-	        ?>
             <div class="col-12 col-md-8">
                 <h1><?= Html::encode($this->title) ?></h1>
-                <div class="row list">
+                <div class="list">
 					<?= $blog->content; ?>
                 </div>
             </div>
