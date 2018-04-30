@@ -14,6 +14,9 @@ use yii\data\ActiveDataProvider;
 
 class Post extends \app\models\base\Post
 {
+	const   STATUS_ACTIVE = 1,
+			STATUS_DRAFT = 0;
+
 	/**
 	 * @param bool $insert
 	 * @return bool
@@ -51,8 +54,10 @@ class Post extends \app\models\base\Post
 
 	public function search($params)
 	{
-		$query = Post::find();
-
+		$query = Post::find()->alias('post');
+		$query->join('INNER JOIN', 'tn_post_category post_cat', 'post.post_category_id = post_cat.id AND post_cat.slug = :slug', ['slug' => 'jobsvina-com']);
+		$query->where(['post.status' => Post::STATUS_ACTIVE, 'post_cat.status' => PostCategory::STATUS_ACTIVE]);
+		$query->orderBy(['post.arranged' => SORT_DESC, 'post.created_at' => SORT_DESC]);
 		// add conditions that should always apply here
 
 		$dataProvider = new ActiveDataProvider([
@@ -87,6 +92,8 @@ class Post extends \app\models\base\Post
 			->andFilterWhere(['like', 'seo_keyword', $this->seo_keyword])
 			->andFilterWhere(['like', 'seo_description', $this->seo_description])
 			->andFilterWhere(['like', 'img', $this->img]);
+
+
 
 		return $dataProvider;
 	}
