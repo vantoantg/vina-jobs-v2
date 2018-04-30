@@ -10,7 +10,7 @@ use app\library\helper\Helper;
 /* @var $searchModel app\models\search\User */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$page = \app\models\Pages::get('register-candidate');
+$page = \app\models\Pages::get('forgot-password');
 $this->title = Helper::titleSeo($page);
 Helper::generateSeo($page);
 $this->params['breadcrumbs'][] = $this->title;

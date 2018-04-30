@@ -11,7 +11,7 @@ use \app\library\helper\Helper;
 /** @var $page \app\models\Pages title */
 /** @var $this \yii\web\View title */
 
-$page = \app\models\Pages::get('register-candidate');
+$page = \app\models\Pages::get('update-candidate');
 $this->title = Helper::titleSeo($page);
 Helper::generateSeo($page);
 
