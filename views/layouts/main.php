@@ -32,7 +32,7 @@ if (YII_DEBUG) {
     <link rel="shortcut icon" type="image/png" href="<?= \app\library\helper\Helper::homeUrl() ?>favicon.ico"/>
     <meta property="og:type" content="Tuyển dụng và tìm kiếm việc làm"/>
     <meta property="og:title" content="<?= Html::encode($this->title) ?>"/>
-    <meta property="og:url" content="<?= \app\library\helper\Helper::siteURL() ?>"/>
+    <meta property="og:url" content="<?= Yii::$app->request->getUrl() ?>"/>
     <meta property="og:description" content="<?= Yii::$app->params['seo']['description'] ?>"/>
     <meta property="article:published_time" content="2015-11-09T16:39:31+00:00"/>
     <meta property="article:modified_time" content="2017-08-01T18:22:52+00:00"/>

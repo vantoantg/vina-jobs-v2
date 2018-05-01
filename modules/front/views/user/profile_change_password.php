@@ -23,6 +23,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
         <div class="col-12 col-sm-8 <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.1s">
+            <div class="alert-message alert-message-info <?= Helper::wowClass() ?> zoomInDown animated" data-wow-delay="0.2s">
+                <h4>Lưu ý:</h4>
+                <p>Bạn nên thay đổi mật khẩu...</p>
+            </div>
+
 			<?php if (Yii::$app->session->hasFlash('update_pw_success')): ?>
                 <div class="alert alert-success alert-dismissable">
                     <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>

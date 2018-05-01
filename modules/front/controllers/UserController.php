@@ -143,9 +143,6 @@ class UserController extends FrontController
 			$oldImg = $model->avatar;
 			$candidate = Candidate::getCandidate(Common::currentUser());
 			$candidate->location = explode(',', $candidate->location);
-			$candidate->client_status = ($candidate->client_status != Candidate::STATUS_CLIENT_PUBLISH &&
-					$candidate->client_status != Candidate::STATUS_CLIENT_PUBLISH
-				) ? Candidate::STATUS_CLIENT_PUBLISH : $candidate->client_status;
 		} else {
 			return $this->redirect(['register-candidate']);
 		}

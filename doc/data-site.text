@@ -1,6 +1,7 @@
 DATA REFERENCE:
 https://www.vietnamworks.com/tim-viec-lam  => list catagory jobs
 https://viblo.asia/p/training-lap-trinh-vien-phat-trien-su-nghiep-nhu-the-nao-ByEZk3JYZQ0
+https://www.ere.net/the-ideal-profile/
 
 
 
@@ -12,5 +13,6 @@ TODO:
 - Khi user login:
     + là candidate thì những chỗ có widget hoặc tin liên quan nên show tin của company
     + là contact of company thì những chỗ có widget hoặc tin liên quan nên show những candidate(có thể có catogory giống với company đó, hoặc những lĩnh vực và user đã từng search)
+- If login via social should make password (thinking about it ...)
 
 - Admin: when approve or reject should send email confirm or report to user/contact
