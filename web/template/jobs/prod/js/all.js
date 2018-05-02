@@ -5491,8 +5491,10 @@ var Main = function () {
                 var offset = sidebarfx.offset();
                 var topPadding = 15;
                 var tartgetHeight = sidebarfx.data('follow-scroll')
-                var contentHeight = $(tartgetHeight).height();
+
                 $(window).scroll(function() {
+                    var contentHeight = $(tartgetHeight).height();
+                    console.log(contentHeight, 'contentHeight');
                     var wdTop = $(window).scrollTop();
                     if($(window).width() >= 768 && wdTop + 400 < contentHeight){
                         Main.doFixedSidebar(sidebarfx, offset, topPadding);
@@ -5622,6 +5624,52 @@ var Search = function(){
                     console.log(data);
                 });
             }*/
+        }
+    }
+}();
+$(function () {
+    contactMember.init();
+});
+
+var contactMember = function(){
+    var profileContact = $('#profile_contact');
+    var contactInfos = $('#profile_contact #contact_infos');
+    var siteUrl = $('input#setting-common').attr('data-site');
+
+    return{
+        init: function(){
+            this.events();
+            if(contactInfos.length){
+                this.profileContactPage();
+            }
+        },
+        events: function(){
+        },
+        profileContactPage: function () {
+            var url = contactInfos.attr('data-url');
+            contactInfos.on('click', 'li a[aria-controls]', function () {
+                var _url = url + '?info=' + $(this).attr('aria-controls');
+                Service.getCallback(_url,function (res) {
+                    console.log(res);
+                });
+            });
+        }
+    }
+}();
+$(function () {
+    userMember.init();
+});
+
+var userMember = function(){
+    var Page = $('body.site-search');
+    var Form = $('form#search-jobs');
+    var siteUrl = $('input#setting-common').attr('data-site');
+    return{
+        init: function(){
+            this.events();
+        },
+        events: function(){
+
         }
     }
 }();
