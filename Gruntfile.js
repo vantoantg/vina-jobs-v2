@@ -44,7 +44,8 @@ module.exports = function(grunt) {
                     'web/js/site/candidate.js',
                     'web/js/site/jobs.js',
                     'web/js/site/search.js',
-
+                    'web/js/site/contactMember.js',
+                    'web/js/site/userMember.js',
                 ],
                 dest: 'web/template/jobs/prod/js/all.js'
             },

@@ -19,12 +19,6 @@ $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $dropdowns = new Dropdown();
 ?>
-<div class="container">
-	<div class="users-create">
-        <h1>CẬP NHẬT HỒ SƠ ỨNG VIÊN</h1>
-	</div>
-</div>
-
 <div class="modal fade" id="register-avatar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true"
      style="display: none;">
@@ -56,8 +50,10 @@ $dropdowns = new Dropdown();
 
 
 <div class="container" id="register-candidate">
-	<div class="col-12 col-sm-8">
+	<div class="col-12 col-sm-8 candidate-form">
 		<div class="row main">
+            <h1>CẬP NHẬT HỒ SƠ ỨNG VIÊN</h1>
+
 			<div class="main-login main-center">
                 <div class="alert-message alert-message-info <?= \app\library\helper\Helper::wowClass() ?> zoomInDown animated" data-wow-delay="0.2s">
                     <h4>Lưu ý:</h4>
@@ -247,16 +243,7 @@ $dropdowns = new Dropdown();
 			</div>
 		</div>
 	</div>
-	<div class="col-12 col-sm-4">
+	<div id="sidebarfx" data-follow-scroll="#register-candidate > div" class="col-12 col-sm-4">
 		<?= (new \app\components\SidebarWidget())->recentJobs(); ?>
 	</div>
-	<script type="text/javascript">
-		var keyTest = <?= \yii\helpers\Json::encode($jobSkill); ?>
-	</script>
-
-	<script type="text/template" id="skill-template">
-		<% _.each(list, function(item) { %>
-		<option value="<%= item.name %>"><%= item.name %></option>
-		<% }) %>
-	</script>
 </div>

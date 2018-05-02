@@ -280,8 +280,10 @@ var Main = function () {
                 var offset = sidebarfx.offset();
                 var topPadding = 15;
                 var tartgetHeight = sidebarfx.data('follow-scroll')
-                var contentHeight = $(tartgetHeight).height();
+
                 $(window).scroll(function() {
+                    var contentHeight = $(tartgetHeight).height();
+                    console.log(contentHeight, 'contentHeight');
                     var wdTop = $(window).scrollTop();
                     if($(window).width() >= 768 && wdTop + 400 < contentHeight){
                         Main.doFixedSidebar(sidebarfx, offset, topPadding);

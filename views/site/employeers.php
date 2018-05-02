@@ -79,7 +79,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <a href=""><i class="fa fa-download"></i> Xem thêm</a>
             </div>
         </div>
-        <div class="col-md-3 hidden-sm">
+        <div id="sidebarfx" data-follow-scroll=".job-posts" class="col-md-3 hidden-sm">
             <div class="job-add <?= \app\library\helper\Helper::wowClass() ?> fadeInRight" data-wow-delay="0.1s">
                 <h2>Tìm việc ?</h2>
                 <a href="#" data-toggle="modal" data-target="#register-modal">TẠO TÀI KHOẢN</a>

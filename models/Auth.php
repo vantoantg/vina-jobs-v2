@@ -19,6 +19,8 @@ class Auth extends \yii\db\ActiveRecord
      */
     public function detectUserType($client)
     {
+	    \Yii::$app->session->set('redirectAfterLoginWithSocial', 4);
+
         $clientId = $client->getId();
         $userAttributes = $client->getUserAttributes();
         switch ($clientId) {
