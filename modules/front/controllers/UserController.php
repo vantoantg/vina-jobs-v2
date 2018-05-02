@@ -406,7 +406,7 @@ class UserController extends FrontController
 	{
 	    if(!Common::isLoginned()){
             if(Common::currentUser('type') == Users::USER_TYPE_CONTACT_OF_COMPANY){
-                throw new BadRequestHttpException();
+	            return $this->goHome();
             }
 
             return $this->goHome();
@@ -415,22 +415,36 @@ class UserController extends FrontController
         return $this->render('profile_user');
 	}
 
-    /**
-     * @return \yii\web\Response
-     * @throws BadRequestHttpException
-     */
-    public function actionClientProfile()
-    {
-        if(!Common::isLoginned()){
-            if(Common::currentUser('type') != Users::USER_TYPE_CONTACT_OF_COMPANY){
-                throw new BadRequestHttpException();
-            }
+	/**
+	 * @return string|\yii\web\Response
+	 */
+	public function actionClientProfile()
+	{
+		if(!Common::isLoginned()){
+			if(Common::currentUser('type') != Users::USER_TYPE_CONTACT_OF_COMPANY){
+				return $this->goHome();
+			}
 
-            return $this->goHome();
-        }
+			return $this->goHome();
+		}
 
-        return $this->render('profile_contact');
-    }
+		return $this->render('profile_contact');
+	}
+
+	/**
+	 * @return \yii\web\Response
+	 * @throws BadRequestHttpException
+	 */
+	public function actionClientInfos()
+	{
+		if(!Yii::$app->request->isAjax){
+			throw new BadRequestHttpException();
+		}
+
+		if(Common::isLoginned() && Common::currentUser('type') == Users::USER_TYPE_CONTACT_OF_COMPANY){
+			return $this->asJson(UserDetails::instance()->loadInfomationContactProfile(Yii::$app->request->get('info')));
+		}
+	}
 
 	/**
 	 * @return array|\yii\web\Response

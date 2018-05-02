@@ -135,7 +135,7 @@ class Datetime
      */
     public static function sqlDateToFormat($date, $format = 'd/m/Y'){
         if(!$date){
-            return '';
+            return '--';
         }
 
         return Carbon::createFromFormat(self::SQL_DATE, $date)->format($format);

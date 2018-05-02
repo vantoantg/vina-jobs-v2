@@ -19,7 +19,7 @@ Helper::generateSeo($page);
 $userInfo = \app\models\UserDetails::getInfo();
 ?>
 
-<div class="container">
+<div id="profile_contact" class="container">
     <div class="row">
         <div class="col-md-12 toppad pull-right">
             <br>
@@ -30,7 +30,7 @@ $userInfo = \app\models\UserDetails::getInfo();
         <div class="col-xs-12">
 
             <div class="card">
-                <ul class="nav nav-tabs" role="tablist">
+                <ul id="contact_infos" class="nav nav-tabs" role="tablist" data-url="<?= Helper::createUrl(['front/user/client-infos'])?>">
                     <li role="presentation" class="active">
 	                    <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Thông tin nguời liên hệ</a></li>
                     <li role="presentation"><a href="#company" aria-controls="company" role="tab" data-toggle="tab">Thông tin công ty</a></li>
@@ -52,16 +52,12 @@ $userInfo = \app\models\UserDetails::getInfo();
                                                 <table class="table table-user-information">
                                                     <tbody>
                                                     <tr>
-                                                        <td>Department:</td>
+                                                        <td>Avatar:</td>
                                                         <td>
                                                             <img alt="User Pic" src="<?= Helper::webImgs(Common::currentUser('avatar')); ?>" class="img-circle img-responsive"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Department:</td>
-                                                        <td>Programming</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Đăng ký:</td>
+                                                        <td>Đăng ký</td>
                                                         <td><?= $userInfo->registration_date; ?></td>
                                                     </tr>
                                                     <tr>
@@ -72,7 +68,7 @@ $userInfo = \app\models\UserDetails::getInfo();
                                                     <tr>
                                                     <tr>
                                                         <td>Giới tính</td>
-                                                        <td>Female</td>
+                                                        <td><?= $userInfo->gender; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Địa chỉ</td>
@@ -81,7 +77,7 @@ $userInfo = \app\models\UserDetails::getInfo();
                                                     <tr>
                                                         <td>Email</td>
                                                         <td>
-                                                            <a href="mailto:<?= $userInfo->email ?>"><?= $userInfo->email ?></a>
+                                                            <a href="mailto:<?= Common::currentUsers()->email ?>"><?= Common::currentUsers()->email ?></a>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -124,41 +120,33 @@ $userInfo = \app\models\UserDetails::getInfo();
                                                 <table class="table table-user-information">
                                                     <tbody>
                                                     <tr>
-                                                        <td>Department:</td>
+                                                        <td>Logo:</td>
                                                         <td>
-                                                            <img alt="User Pic" src="<?= Helper::webImgs(Common::currentUser('avatar')); ?>" class="img-circle img-responsive"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Department:</td>
-                                                        <td>Programming</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Đăng ký:</td>
-                                                        <td><?= $userInfo->registration_date; ?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Sinh nhật</td>
-                                                        <td><?= $userInfo->birthday; ?></td>
-                                                    </tr>
-
-                                                    <tr>
-                                                    <tr>
-                                                        <td>Giới tính</td>
-                                                        <td>Female</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Địa chỉ</td>
-                                                        <td><?= $userInfo->address; ?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Email</td>
-                                                        <td>
-                                                            <a href="mailto:<?= $userInfo->email ?>"><?= $userInfo->email ?></a>
+                                                            <img alt="User Pic" src="<?= Helper::webImgs(Common::currentUser('avatar')); ?>" class="img-circle img-responsive">
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Điện thoại</td>
-                                                        <td><?= $userInfo->phone; ?></td>
+                                                        <td>Website:</td>
+                                                        <td><a href="https://www.google.com.vn" target="_blank">https://www.google.com.vn</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Giới thiệu về công ty:</td>
+                                                        <td>
+                                                            <p>asdasdasda sa
+                                                            </p>
+                                                            <p>asd
+                                                            </p>
+                                                            <p>asd
+                                                            </p>
+                                                            <p>sa
+                                                            </p>
+                                                            <p>d
+                                                            </p>
+                                                            <p>sad
+                                                            </p>
+                                                            <p>sa
+                                                            </p>
+                                                        </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>

@@ -55,6 +55,8 @@ class AppAsset extends AssetBundle
         'web/js/site/candidate.js',
         'web/js/site/jobs.js',
         'web/js/site/search.js',
+        'web/js/site/contactMember.js',
+        'web/js/site/userMember.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

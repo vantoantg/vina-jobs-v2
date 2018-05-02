@@ -9,26 +9,12 @@ namespace app\models;
 
 
 use app\library\helper\Common;
+use app\library\helper\Cons;
 use app\library\helper\Datetime;
+use app\library\helper\Dropdowns;
 
 class UserDetails extends \app\models\base\UserDetails
 {
-	/**
-	 * @var Object Helper
-	 */
-	protected static $_instance;
-
-	/**
-	 * @return Device
-	 */
-	public static function getInstance()
-	{
-		if (!(self::$_instance instanceof self)) {
-			self::$_instance = new self();
-		}
-
-		return self::$_instance;
-	}
 
     /**
      * @inheritdoc
@@ -72,6 +58,21 @@ class UserDetails extends \app\models\base\UserDetails
             'active_tour_guide' => 'Active Tour Guide',
         ];
     }
+
+	/**
+	 * @param bool $insert
+	 * @return bool
+	 */
+	public function beforeSave($insert)
+	{
+		if ($this->isNewRecord) {
+			$this->registration_date = Datetime::datetimeSqlNow();
+		} else {
+
+		}
+
+		return parent::beforeSave($insert);
+	}
 
     public function saveInfo(){
         $this->birthday = Datetime::todateSql($this->birthday);
@@ -135,8 +136,26 @@ class UserDetails extends \app\models\base\UserDetails
 
         $userDetail->birthday = Datetime::sqlDateToFormat($userDetail->birthday);
         $userDetail->registration_date = Datetime::sqlDatetimeDiffForHumans($userDetail->registration_date);
-
+	    $userDetail->gender = ($userDetail->gender) ? Dropdowns::$gender[$userDetail->gender] : '--';
 
         return $userDetail;
+    }
+
+    public function loadInfomationContactProfile($type){
+    	if($type == 'company'){
+			$com = Company::find()->select(['name', 'website', 'content', 'logo'])->where(['created_by' => Common::currentUsers()->getId()])->asArray()->one();
+			return $com;
+	    }
+
+	    // Tin đã đăng
+	    if($type == 'jobs'){
+		    $jobs = Job::instance()->getJobs(Common::currentUsers()->getId());
+		    return $jobs;
+	    }
+
+	    // Ứng viên đang theo dõi
+	    if($type == 'candidate'){
+		    UserCandidate::instance()->getList();
+	    }
     }
 }

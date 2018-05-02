@@ -59,6 +59,10 @@ class Job extends Jobs
         ];
     }
 
+	/**
+	 * @param $job_id
+	 * @return array|false
+	 */
     public static function getJob($job_id){
     	$user_id = Common::isLoginned() ? Common::currentUsers()->getId() : 0;
 	    $query = new Query();
@@ -78,4 +82,28 @@ class Job extends Jobs
 	    $command = $query->createCommand();
 	    return $command->queryOne();
     }
+
+	/**
+	 * @param $user_id
+	 * @return array
+	 */
+	public function getJobs($user_id){
+		$query = new Query();
+		$query->select([
+				'job.id',
+				'job.categories_id',
+				'job.title',
+				'job.slug',
+				'job.content',
+				'job.status',
+				'job.client_status',
+				'job_cat.name',
+			]
+		)
+			->from('tn_jobs job')
+			->innerJoin('tn_job_categories job_cat', 'job_cat.id = job.categories_id AND job.created_by = :user_id', ['user_id' => $user_id])
+			->orderBy(['job.status' => SORT_DESC, 'job.client_status' => SORT_DESC, 'job.approved_at' => SORT_DESC, 'job.effect_date' => SORT_DESC, 'job.updated_at' => SORT_DESC, 'job.created_at' => SORT_DESC]);
+
+		return $query->createCommand()->queryAll();
+	}
 }
