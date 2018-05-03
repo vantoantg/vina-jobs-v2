@@ -52,10 +52,17 @@ Helper::generateSeo($page);
                 'clientOptions' => Helper::redactorOps('Hãy mô tả yêu cầu, kỹ năng, chính sách hấp dẫn cho ứng viên,....')
             ]) ?>
             <div class="row">
-                <div class="col-xs-6">
-                    <?= $form->field($model, 'salary')->textInput(['placeholder' => '900$ - 200$']) ?>
+                <div class="col-xs-4">
+                    <?php
+                    $salary = \app\library\helper\Dropdowns::$salary;
+                    ?>
+                    <?= $form->field($model, 'salary')->dropDownList($salary,
+	                    [
+		                    'class' => 'job-select2 form-control'
+	                    ]) ?>
                 </div>
-                <div class="col-xs-6">
+
+                <div class="col-xs-4">
                     <?php
                     $loca = \app\models\Locations::getAll();
                     ?>
@@ -63,6 +70,16 @@ Helper::generateSeo($page);
 	                    [
 		                    'class' => 'job-select2 form-control'
 	                    ]) ?>
+                </div>
+
+                <div class="col-xs-4">
+		            <?php
+		            $data = \app\library\helper\Dropdowns::$working_time;
+		            ?>
+		            <?= $form->field($model, 'working_time')->dropDownList($data,
+			            [
+				            'class' => 'job-select2 form-control'
+			            ]) ?>
                 </div>
             </div>
 

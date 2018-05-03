@@ -9431,9 +9431,9 @@ body {
     background: #fff
 }
 
-/*.search-form.top #searchform-keys{
+.search-form.top #searchform-keys{
     margin-top: 0;
-}*/
+}
 .search-form.top {
     background-color: #fff;
     /*border-radius: 5px;*/
@@ -10109,7 +10109,7 @@ aside .content-footer > img {
 
 .post-img img {
     width: 100px;
-    height: 70px;
+    height: 80px;
     float: left;
     margin-right: 15px;
     border: 5px solid #00AEEF;
@@ -11178,6 +11178,9 @@ body.modal-open {
 .w100 {
   width: 100%;
 }
+.lh-18 {
+  line-height: 18px;
+}
 .navbar-collapse.in {
   overflow-y: hidden!important;
 }
@@ -11868,6 +11871,12 @@ a.search-options:hover {
 #register-modal .modal-content li a i {
   position: relative;
   top: 15px;
+}
+.panel.panel-info {
+  border-radius: 0;
+}
+.nav.nav-tabs {
+  bottom: 0px;
 }
 /* Responsive */
 @media (max-width: 767px) {
