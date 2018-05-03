@@ -20,6 +20,8 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
+
+use app\library\helper\Helper;
 ?>
 
 <div class="widget-sidebar <?= \app\library\helper\Helper::wowClass() ?> fadeInRight" data-wow-delay="0.2s">
@@ -28,7 +30,7 @@
         <ul>
             <li class="recent-post">
                 <div class="post-img">
-                    <img src="https://lh3.googleusercontent.com/-ndZJOGgvYQ4/WM1ZI8dH86I/AAAAAAAADeo/l67ZqZnRUO8QXIQi38bEXuxqHfVX0TV2gCJoC/w424-h318-n-rw/thumbnail8.jpg"
+                    <img src="<?= Helper::imgRender(null, 100,70) ?>"
                          class="img-responsive">
                 </div>
                 <a href="#"><h5>Excepteur sint occaecat cupi non proident laborum.</h5></a>
@@ -40,8 +42,8 @@
 
             <li class="recent-post">
                 <div class="post-img">
-                    <img src="https://lh3.googleusercontent.com/-ojLI116-Mxk/WM1ZIwdnuwI/AAAAAAAADeo/4K6VpwIPSfgsmlXJB5o0N8scuI3iW4OpwCJoC/w424-h318-n-rw/thumbnail6.jpg"
-                         class="img-responsive">
+	                <img src="<?= Helper::imgRender(null, 100,70) ?>"
+	                     class="img-responsive">
                 </div>
                 <a href="#"><h5>Excepteur sint occaecat cupi non proident laborum.</h5></a>
                 <p>
@@ -52,8 +54,8 @@
 
             <li class="recent-post">
                 <div class="post-img">
-                    <img src="https://lh3.googleusercontent.com/-TrK1csbtHRs/WM1ZI1SIUNI/AAAAAAAADeo/OkiUjuad6skWl9ugxbiIA_436OwsWKBNgCJoC/w424-h318-n-rw/thumbnail3.jpg"
-                         class="img-responsive">
+	                <img src="<?= Helper::imgRender(null, 100,70) ?>"
+	                     class="img-responsive">
                 </div>
                 <a href="#"><h5>Excepteur sint occaecat cupi non proident laborum.</h5></a>
                 <p>
@@ -64,8 +66,8 @@
 
             <li class="recent-post">
                 <div class="post-img">
-                    <img src="https://lh3.googleusercontent.com/-UKfIhJSBW9M/WM1ZI8ou34I/AAAAAAAADeo/vlLGY29147AYLaxUW29ZXJlun115BhkhgCJoC/w424-h318-n-rw/thumbnail7.jpg"
-                         class="img-responsive">
+	                <img src="<?= Helper::imgRender(null, 100,70) ?>"
+	                     class="img-responsive">
                 </div>
                 <a href="#"><h5>Excepteur sint occaecat cupi non proident laborum.</h5></a>
                 <p>

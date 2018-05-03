@@ -85,13 +85,16 @@ class Helper
 	 */
     public static function imgRender($pathFile, $w = 100, $h = 100, $prefix = 'blog')
     {
-    	if(!$pathFile){
-		    $pathFile = 'web/imgs/no-image.jpg';
+        $pathFile = str_replace('/web/', 'web/',$pathFile);
+
+    	if(!$pathFile || !file_exists(Yii::$app->basePath . '/' . $pathFile)){
+		    $pathFile = "web/imgs/no-image.jpg";
 	    }
 
-	    $pathFile = str_replace('/web/', 'web/',$pathFile);
+
 	    $basePath = Yii::$app->basePath . '/' . $pathFile;
-	    $imgName = end(explode('/', $pathFile));
+        $pathFileArr = explode('/', $pathFile);
+        $imgName = end($pathFileArr);
 	    $newPath = 'web/assets/'.$prefix.'-'.md5(date('Ymd')).'-'.$imgName;
 
 	    if(file_exists($newPath)){
