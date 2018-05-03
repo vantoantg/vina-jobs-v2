@@ -454,6 +454,10 @@ class UserController extends FrontController
 	 */
 	public function actionLogin()
 	{
+		if(!Yii::$app->request->isAjax){
+			return $this->goHome();
+		}
+
 		$model = new LoginForm();
 		if ($model->load(\Yii::$app->request->post()) && $model->login()) {
 			return $this->redirect(\Yii::$app->request->post('returnUrl'));

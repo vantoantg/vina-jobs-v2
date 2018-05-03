@@ -72,7 +72,6 @@ class Dropdowns
      * @var array
      */
     public static $salary = [
-        0 => 'Tất cả',
         1 => "Thỏa thuận",
         2 => 'Dưới 5 triệu',
         3 => '5-10 triệu',
@@ -80,6 +79,7 @@ class Dropdowns
         5 => '15-20 triệu',
         6 => '20-30 triệu',
         7 => 'Trên 30 triệu',
+        8 => 'Bạn sẽ yêu thích',
         10 => 'Khác',
     ];
 

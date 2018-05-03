@@ -179,9 +179,9 @@ body {
     background: #fff
 }
 
-/*.search-form.top #searchform-keys{
+.search-form.top #searchform-keys{
     margin-top: 0;
-}*/
+}
 .search-form.top {
     background-color: #fff;
     /*border-radius: 5px;*/

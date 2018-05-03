@@ -141,6 +141,10 @@ class UserDetails extends \app\models\base\UserDetails
         return $userDetail;
     }
 
+	/**
+	 * @param $type
+	 * @return array|null|\yii\db\ActiveRecord|\yii\db\ActiveRecord[]
+	 */
     public function loadInfomationContactProfile($type){
     	if($type == 'company'){
 			$com = Company::find()->select(['name', 'website', 'content', 'logo'])->where(['created_by' => Common::currentUsers()->getId()])->asArray()->one();

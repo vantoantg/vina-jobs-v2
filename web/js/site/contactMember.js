@@ -34,11 +34,14 @@ var contactMember = function(){
             var load = function (_type, _url) {
                 Service.getCallback(_url,function (res) {
                     _PROFILES[_type] = res;
+                    render(_type, _PROFILES[_type]);
                 });
             };
 
             var render = function (_type, datas) {
-
+                console.log(datas);
+                var html = _.template($('#template-' + _type).html())({ data : datas });
+                $('#container-' + _type).html(html);
             };
 
         }

@@ -30,6 +30,9 @@ body.modal-open {
 .w100 {
   width: 100%;
 }
+.lh-18 {
+  line-height: 18px;
+}
 .navbar-collapse.in {
   overflow-y: hidden!important;
 }
@@ -720,6 +723,12 @@ a.search-options:hover {
 #register-modal .modal-content li a i {
   position: relative;
   top: 15px;
+}
+.panel.panel-info {
+  border-radius: 0;
+}
+.nav.nav-tabs {
+  bottom: 0px;
 }
 /* Responsive */
 @media (max-width: 767px) {

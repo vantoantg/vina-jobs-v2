@@ -39,4 +39,12 @@ class Cons
 		PAGE_REGISTER_COMPANY = 'register-company-html',
 		PAGE_JOB_SEEKERS = 'job-seekers-html',
 		PAGE_EMPLOYEERS = 'employeers-html';
+
+
+	/**
+	 * @return string
+	 */
+	public static function getLoadingImg(){
+		return Helper::homeUrl().'web/template/jobs/img/loading.gif';
+	}
 }

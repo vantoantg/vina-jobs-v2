@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "tn_jobs".
  *
- * @property int $id
+ * @property string $id
  * @property int $categories_id
  * @property int $company_id
  * @property string $title
@@ -16,7 +16,8 @@ use Yii;
  * @property string $content
  * @property string $tags
  * @property string $keyword
- * @property string $salary
+ * @property int $salary
+ * @property int $working_time
  * @property string $address
  * @property int $created_by
  * @property int $updated_by
@@ -47,10 +48,10 @@ class Jobs extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['categories_id', 'company_id', 'created_by', 'updated_by', 'approved_by', 'arrange', 'star', 'client_status', 'status'], 'integer'],
+            [['categories_id', 'company_id', 'salary', 'working_time', 'created_by', 'updated_by', 'approved_by', 'arrange', 'star', 'client_status', 'status'], 'integer'],
             [['description', 'content'], 'string'],
             [['created_at', 'updated_at', 'effect_date', 'end_date', 'approved_at'], 'safe'],
-            [['title', 'slug', 'tags', 'keyword', 'salary', 'address'], 'string', 'max' => 255],
+            [['title', 'slug', 'tags', 'keyword', 'address'], 'string', 'max' => 255],
         ];
     }
 
@@ -70,6 +71,7 @@ class Jobs extends \yii\db\ActiveRecord
             'tags' => 'Tags',
             'keyword' => 'Keyword',
             'salary' => 'Salary',
+            'working_time' => 'Working Time',
             'address' => 'Address',
             'created_by' => 'Created By',
             'updated_by' => 'Updated By',
