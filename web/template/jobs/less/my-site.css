@@ -61,11 +61,11 @@ body.modal-open {
 }
 #login-modal > div {
   max-width: 350px;
+  margin: 15px auto;
 }
 .loginmodal-container h1 {
   text-align: center;
   font-size: 1.8em;
-  font-family: roboto;
 }
 .loginmodal-container input[type=submit] {
   width: 100%;
@@ -709,6 +709,17 @@ a.search-options:hover {
 }
 .header-call p span {
   display: inline-block;
+}
+.content-editor img {
+  max-width: 100%;
+  height: auto!important;
+}
+#register-modal .modal-content li a {
+  min-width: 177px;
+}
+#register-modal .modal-content li a i {
+  position: relative;
+  top: 15px;
 }
 /* Responsive */
 @media (max-width: 767px) {

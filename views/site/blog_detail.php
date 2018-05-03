@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="row">
             <div class="col-12 col-md-8">
                 <h1><?= Html::encode($this->title) ?></h1>
-                <div class="list">
+                <div class="content-editor">
 					<?= $blog->content; ?>
                 </div>
             </div>
