@@ -218,6 +218,9 @@ class UserController extends FrontController
 
 	public function actionRegisterCompany()
 	{
+	    if(Common::isLoginned()){
+	        return $this->goHome();
+        }
 		$errors = [];
 
 		// TODO: remove  this class

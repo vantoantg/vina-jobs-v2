@@ -155,7 +155,7 @@ class UserDetails extends \app\models\base\UserDetails
 
 	    // Ứng viên đang theo dõi
 	    if($type == 'candidate'){
-		    UserCandidate::instance()->getList();
+		    return UserCandidate::instance()->getList();
 	    }
     }
 }

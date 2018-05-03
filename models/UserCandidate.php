@@ -35,6 +35,7 @@ class UserCandidate extends \app\models\base\UserCandidate
 	 * @return array|null|\yii\db\ActiveRecord[]
 	 */
 	public function getList($except = 0){
-
+	    //Todo:...
+        return [];
 	}
 }
