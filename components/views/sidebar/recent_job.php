@@ -30,7 +30,7 @@ use app\library\helper\Helper;
         <ul>
             <li class="recent-post">
                 <div class="post-img">
-                    <img src="<?= Helper::imgRender(null, 100,70) ?>"
+                    <img src="<?= Helper::imgRender(null, 100,80, 'jobs') ?>"
                          class="img-responsive">
                 </div>
                 <a href="#"><h5>Excepteur sint occaecat cupi non proident laborum.</h5></a>
