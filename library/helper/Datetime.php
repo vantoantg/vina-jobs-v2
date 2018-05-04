@@ -158,11 +158,14 @@ class Datetime
      * @param $datetime
      * @return string
      */
-    public static function sqlDatetimeDiffForHumans($datetime){
+    public static function sqlDatetimeDiffForHumans($datetime, $tz = null){
         if(!$datetime){
             return '';
         }
+        if($tz === null){
+	        $tz = Helper::getTzUser();
+        }
         Carbon::setLocale(Yii::$app->language);
-        return Carbon::createFromFormat(self::SQL_DATETIME, $datetime)->diffForHumans();
+        return Carbon::createFromFormat(self::SQL_DATETIME, $datetime, $tz)->diffForHumans();
     }
 }

@@ -40,6 +40,17 @@ class Helper
         return self::$_instance;
     }
 
+	/**
+	 * @return string
+	 */
+    public static function getTzUser(){
+    	if(Common::isLoginned()){
+    		return Common::currentUser('timezone');
+	    }
+
+	    return Datetime::DEFAULT_TIME_ZONE;
+    }
+
     /**
      * @param array $data
      * @return array
