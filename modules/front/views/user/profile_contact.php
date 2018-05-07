@@ -274,7 +274,7 @@ $userInfo = \app\models\UserDetails::getInfo();
         </table>
     </div>
     <% } else { %>
-        <p>Chưa có tin nào được đăng !</p>
+        <p class="text-center"><i class="far fa-file-alt"></i> <br> Chưa có tin nào được đăng !</p>
     <% } %>
 </script>
 

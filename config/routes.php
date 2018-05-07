@@ -17,6 +17,10 @@ return [
 
 	'search-jobs.html' => 'front/default/ajax-search',
 
+	// Comment widget
+	'comment.html' => 'front/comment/index',
+	'add-comment.html' => 'front/comment/add',
+
 	'user/logout.html' => 'front/user/logout',
 	'user/login.html' => 'front/user/login',
 
