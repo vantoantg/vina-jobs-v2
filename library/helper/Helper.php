@@ -645,7 +645,7 @@ class Helper
 			return Yii::$app->params[$param][$param2];
 		}
 		if ($param3) {
-			return Yii::$app->params[$param][$param3];
+			return Yii::$app->params[$param][$param2][$param3];
 		}
 		return isset(Yii::$app->params[$param]) ? Yii::$app->params[$param] : null;
 	}
