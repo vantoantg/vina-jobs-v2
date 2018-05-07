@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
 
                 <div class="cms">
-                    <?= ( new \app\components\CommentWidget())->comment($blog->id, \app\models\Comment::BLOG); ?>
+                    <?= ( new \app\components\CommentWidget())->commentFB(); ?>
                 </div>
             </div>
             <!--           // RECENT POST===========-->

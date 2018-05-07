@@ -2,7 +2,7 @@
 /** @var $this \yii\web\View title */
 $this->registerJsFile('/web/js/site/comment.js', ['position' => \yii\web\View::POS_END]);
 ?>
-<h4 class="title-widget-sidebar">BÌNH LUẬN <i class="far fa-comment-dots"></i></h4>
+<h4 class="title-widget-sidebar">BÌNH LUẬN <i class="far fa-comments"></i></h4>
 <div id="container-comment" data-obj-id="<?= $object_id ?>" data-obj-type="<?= $object_type ?>">
     <div class="comment-form-container">
         <form class="frm-comment">

@@ -291,6 +291,9 @@ input,
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
+.search-form.top #searchform-keys {
+  /*margin-top: 0;*/
+}
 .search-form #searchform-keys {
   margin-right: 0;
   margin-top: -1px;
