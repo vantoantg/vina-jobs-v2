@@ -47,19 +47,19 @@ use app\library\helper\Helper;
 			</div>
 			<div class="col-md-2 col-sm-6 paddingtop-bottom <?= Helper::wowClass(true) ?> fadeInRight" data-wow-delay="0.4s">
 				<h6 class="heading7">MẠNG XÃ HỘI</h6>
-				<div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="300" data-small-header="false" style="margin-bottom:15px;" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+				<div class="social-page" data-href="https://www.facebook.com" data-tabs="timeline" data-height="300" data-small-header="false" style="margin-bottom:15px;" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
 					<div class="fb-xfbml-parse-ignore">
-						<blockquote cite="https://www.facebook.com/facebook">
-                            <a href="https://www.facebook.com/facebook"><i class="fab fa-facebook"></i> Facebook</a>
+						<blockquote cite="https://www.facebook.com">
+                            <a href="https://www.facebook.com"><i class="fab fa-facebook"></i> Facebook</a>
                         </blockquote>
-                        <blockquote cite="https://www.facebook.com/facebook">
-                            <a href="https://www.facebook.com/facebook"><i class="fab fa-twitter-square"></i> Twitter</a>
+                        <blockquote cite="https://www.facebook.com">
+                            <a href="https://www.facebook.com"><i class="fab fa-twitter-square"></i> Twitter</a>
                         </blockquote>
-                        <blockquote cite="https://www.facebook.com/facebook">
-                            <a href="https://www.facebook.com/facebook"><i class="fab fa-linkedin"></i> Linkedin</a>
+                        <blockquote cite="https://www.facebook.com">
+                            <a href="https://www.facebook.com"><i class="fab fa-linkedin"></i> Linkedin</a>
                         </blockquote>
-                        <blockquote cite="https://www.facebook.com/facebook">
-                            <a href="https://www.facebook.com/facebook"><i class="fab fa-google-plus-square"></i> Google+</a>
+                        <blockquote cite="https://www.facebook.com">
+                            <a href="https://www.facebook.com"><i class="fab fa-google-plus-square"></i> Google+</a>
                         </blockquote>
 					</div>
 				</div>
