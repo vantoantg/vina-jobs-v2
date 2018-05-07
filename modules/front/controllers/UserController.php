@@ -349,10 +349,11 @@ class UserController extends FrontController
 				}
 				$userDetail->user_id = $model->getId();
 				$userDetail->save();
-			}
 
-			$url = Yii::$app->getUrlManager()->createUrl(['front/user/update-company']);
-			return $this->redirect($url);
+			}
+			Yii::$app->session->setFlash('updateSuccess', 'updateSuccess a');
+//			$url = Yii::$app->getUrlManager()->createUrl(['front/user/update-company']);
+//			return $this->redirect($url);
 		} else {
 			$errs = array_merge($model->getErrors(), $com->getErrors(), $userDetail->getErrors());
 			foreach ($errs as $error) {

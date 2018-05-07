@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use \yii\widgets\ActiveForm;
 use dosamigos\fileupload\FileUploadUI; // https://github.com/2amigos/yii2-file-upload-widget
 use \app\library\helper\Helper;
+use \Yii;
 
 /** @var $page \app\models\Pages title */
 /** @var $this \yii\web\View title */
@@ -30,6 +31,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     <p>
                         Bạn vui lòng điền đúng địa chỉ email. Hệ thống sẽ gửi các thông báo, thông tin liên quan tới tài khoản hoặc thông tin tuyển dụng vào <strong>email của bạn đăng ký</strong>.</p>
                 </div>
+
+	            <?php if (Yii::$app->session->hasFlash('updateSuccess')): ?>
+                    <div class="alert alert-success alert-dismissable <?= \app\library\helper\Helper::wowClass() ?> zoomInDown animated" data-wow-delay="0.5s">
+                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                        <i class="icon fa fa-check"></i> <?= Yii::$app->session->getFlash('updateSuccess') ?>
+                    </div>
+	            <?php endif; ?>
 
                 <?php if ($errors) {
                     echo '<div class="alert alert-danger">';
@@ -196,7 +204,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
 		            </div>
 	            </div>
-
+                <?php if($model->isNewRecord){ ?>
 	            <div class="form-group ">
 		            Các chính sách và quy địn của <?= Yii::$app->params['siteName']; ?> <a
 				            href="<?= \app\library\helper\Helper::siteURL() ?>" target="_blank">tại đây</a>
@@ -204,7 +212,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'template' => '{input}'
                     ])->checkbox(['class' => 'iCheck'])->label(false) ?>
 	            </div>
-
+                <?php } ?>
 	            <div class="form-group ">
                     <?= Html::submitButton('<i class="fas fa-hdd"></i> Lưu thông tin', ['class' => 'btn btn-primary login-button']) ?>
 	            </div>
