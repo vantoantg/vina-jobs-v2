@@ -395,7 +395,7 @@ form .has-success .select2-container .select2-selection--multiple {
   font-family: 'Open Sans', sans-serif;
 }
 .footer-area footer .footerleft {
-  margin-top: 50px;
+  margin-top: 41px;
 }
 .footer-area footer .footerleft p {
   text-align: justify;
@@ -409,8 +409,9 @@ form .has-success .select2-container .select2-selection--multiple {
 .footer-area footer .footerleft p {
   color: #fff;
   font-size: 12px !important;
+  line-height: 18px;
   font-family: 'Open Sans', sans-serif;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 .footer-area footer .footerleft p i {
   width: 20px;

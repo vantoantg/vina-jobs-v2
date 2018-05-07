@@ -10,9 +10,9 @@ return [
     'hotline' => '0932 252 414',
     'address' => '143/70 Gò Dầu, Phường Tân Quý, Quận Tân Phú, HCM',
     'seo' => [
-        'title' => 'Jobs - Vina',
-        'description' => 'description...',
-        'keywords' => 'keywords...'
+        'title' => 'Tuyển dụng, tìm kiếm việc làm miễn phí tại jobs Vina nhanh chóng và hiệu quả',
+        'description' => 'Tìm kiếm việc làm miễn phí - Tuyển dụng & Tìm kiếm việc làm nhanh, hiệu quả',
+        'keywords' => 'tuyển dụng, tuyen dung, tìm kiếm việc làm, tìm việc làm miễn phí, tim kiem viec lam mien phi, dang tin mien phi, sinh viên moi tot nghiep, đăng tin, dang tin tim viec, tìm việc làm lập trình web, lập trình php, kế toán, viec lam ban thi gian'
     ],
 	'mail' => [
 		'host' => 'mail.jobsvina.com',

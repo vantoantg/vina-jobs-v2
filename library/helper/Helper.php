@@ -562,7 +562,7 @@ class Helper
     public static function titleSeo($page)
     {
         /** @var $page Pages */
-        return $page->seo_title . ' | '. Helper::params();
+        return $page->seo_title ? $page->seo_title : Yii::$app->params['seo']['title'] . ' | '. Helper::params();
     }
 
     /**
@@ -571,9 +571,8 @@ class Helper
     public static function generateSeo($page)
     {
         /** @var $page Pages */
-        Yii::$app->params['seo']['description'] = $page->seo_description;
-        Yii::$app->params['seo']['keywords'] = $page->seo_keyword;
-        Yii::$app->params['seo']['keywords'] = $page->seo_keyword;
+        Yii::$app->params['seo']['description'] = ($page->seo_description) ? $page->seo_description : Yii::$app->params['seo']['description'];
+        Yii::$app->params['seo']['keywords'] = ($page->seo_keyword) ? $page->seo_keyword : Yii::$app->params['seo']['keywords'];
     }
 
 
@@ -645,7 +644,7 @@ class Helper
 			return Yii::$app->params[$param][$param2];
 		}
 		if ($param3) {
-			return Yii::$app->params[$param][$param3];
+			return Yii::$app->params[$param][$param2][$param3];
 		}
 		return isset(Yii::$app->params[$param]) ? Yii::$app->params[$param] : null;
 	}

@@ -8,10 +8,10 @@ use app\library\helper\Helper;
 				<div class="logofooter">
                     <a href="<?= Helper::siteURL()?>"><img src="<?= Helper::homeUrl()?>web/template/jobs/img/logo-ft.png" alt="<?= Yii::$app->params['siteName'] ?>" class="wow pulse" style="max-height: 60px" data-wow-delay="1s"></a>
                 </div>
-				<p>Vina - Jobs được xây dựng dựa trên nhu cầu tìm kiếm việc làm của các bạn trẻ và nhu cầu tìm kiếm nguồn nhân lực của các công ty. Với mong muốn là cầu nối giữa các doanh nghiệp và nguồn lao động chúng tôi sẽ nỗ lực hết sức để làm hài lòng.</p>
+				<p><?= Helper::params(); ?> được xây dựng dựa trên nhu cầu tìm kiếm việc làm của các bạn trẻ và nhu cầu tìm kiếm nguồn nhân lực của các công ty. Với mong muốn là cầu nối giữa các doanh nghiệp và nguồn lao động chúng tôi sẽ nỗ lực hết sức để làm hài lòng.</p>
 				<p><i class="fa fa-map-pin"></i> 143/70 Gò Dầu, Phường Tân Quý, Quận Tân Phú, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hồ Chí Minh</p>
-				<p><i class="fa fa-phone"></i> Hotline: 0932 252 414</p>
-				<p><i class="fa fa-envelope"></i> E-mail: info@vina-jobs.com</p>
+				<p><i class="fa fa-phone"></i> Hotline: <?= Yii::$app->params['hotline'] ?></p>
+				<p><i class="fa fa-envelope"></i> E-mail: <?= Yii::$app->params['mail']['options']['mailInfo']; ?></p>
 			</div>
 			<div class="col-md-3 col-sm-6 paddingtop-bottom <?= Helper::wowClass(true) ?> fadeInLeft" data-wow-delay="0.3s">
 				<h6 class="heading7">BẠN MUỐN LÀM GÌ ?</h6>

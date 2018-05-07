@@ -99,8 +99,7 @@ $userInfo = \app\models\UserDetails::getInfo();
                                                    class="btn btn-primary"><i class="fas fa-plus"></i> Đăng tin tuyển
                                                     dụng</a>
                                                 <a href="<?= Helper::createUrl(['front/user/update-company']) ?>"
-                                                   class="btn btn-primary"><i class="far fa-edit"></i> Câp nhật thông
-                                                    tin</a>
+                                                   class="btn btn-primary"><i class="far fa-edit"></i> Câp nhật thông tin</a>
                                             </div>
                                         </div>
                                     </div>
@@ -123,7 +122,7 @@ $userInfo = \app\models\UserDetails::getInfo();
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="company">
-                        <div class="row">
+                        <div class="row ovf-y-h">
                             <div class="col-xs-12 toppad <?= \app\library\helper\Helper::wowClass() ?> fadeInUp"
                                  data-wow-delay="0.5s">
                                 <div id="container-company" class="panel panel-info">
@@ -135,7 +134,7 @@ $userInfo = \app\models\UserDetails::getInfo();
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="jobs">
-                        <div class="row">
+                        <div class="row ovf-y-h">
                             <div class="col-xs-12 toppad <?= \app\library\helper\Helper::wowClass() ?> fadeInUp"
                                  data-wow-delay="0.5s">
                                 <div id="container-jobs" class="panel panel-info">
@@ -147,7 +146,7 @@ $userInfo = \app\models\UserDetails::getInfo();
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="candidate">
-                        <div class="row">
+                        <div class="row ovf-y-h">
                             <div class="col-xs-12 toppad <?= \app\library\helper\Helper::wowClass() ?> fadeInUp"
                                  data-wow-delay="0.5s">
                                 <div id="container-candidate" class="panel panel-info">
@@ -295,7 +294,7 @@ $userInfo = \app\models\UserDetails::getInfo();
                         <td>Logo:</td>
                         <td>
                             <img src="<?= Yii::$app->params['companyLogoPath'] ?><%= data.logo %>"
-                                 class="img-circle img-responsive">
+                                 class="img-circle img-responsive" width="120">
                         </td>
                     </tr>
                     <tr>
