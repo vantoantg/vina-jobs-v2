@@ -17,7 +17,6 @@ Helper::generateSeo($page);
 
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-$dropdowns = new Dropdown();
 
 ?>
 <div class="modal fade" id="register-avatar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"

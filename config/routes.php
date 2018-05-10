@@ -34,6 +34,7 @@ return [
 	'user/profile.html' => 'front/user/user-profile',
 	'client/profile.html' => 'front/user/client-profile',
 	'client/infomation.html' => 'front/user/client-infos',
+	'ajax/upload/img.html' => 'front/user/ajax-upload-img',
 
 	'user/profile/<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/user/view-profile',
 	'user/forgot-password.html' => 'front/user/forgot',

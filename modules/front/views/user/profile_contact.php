@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use \yii\widgets\ActiveForm;
 use yii\widgets\Pjax;
 use \app\library\helper\Common;
 use \app\library\helper\Helper;
@@ -287,6 +287,14 @@ $userInfo = \app\models\UserDetails::getInfo();
                 <table class="table table-user-information">
                     <tbody>
                     <tr>
+                        <td colspan="100%">
+	                        <?php $form = ActiveForm::begin(['action' => Helper::createUrl(['front/user/ajax-upload-img'])]); ?>
+	                        <?= $form->field($imgForm, 'image')->fileInput(['accept' => 'image/*'])->label('Tải ảnh lên Gallery') ?>
+	                        <?= Html::button('<i class="fas fa-upload"></i> Tải lên', ['class' => 'btn btn-primary upload-img', 'disabled' => true]) ?>
+	                        <?php ActiveForm::end(); ?>
+                        </td>
+                    </tr>
+                    <tr>
                         <td>Tên công ty:</td>
                         <td><%= data.name %></td>
                     </tr>
@@ -313,16 +321,25 @@ $userInfo = \app\models\UserDetails::getInfo();
         </div>
     </div>
     <div class="panel-footer">
-        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i
-                    class="glyphicon glyphicon-envelope"></i></a>
-        <span class="pull-right">
-                                            <a href="<?= Helper::createUrl(['company/update.html']) ?>"
-                                               data-original-title="Edit this user" data-toggle="tooltip"
-                                               type="button" class="btn btn-sm btn-warning"><i
-                                                        class="glyphicon glyphicon-edit"></i></a>
-                                            <a href="<?= Helper::createUrl(['front/user/logout']) ?>"
-                                               data-original-title="Logout" data-toggle="tooltip" type="button"
-                                               class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                                        </span>
+        <a data-original-title="Broadcast Message" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#companyInfo"><i class="glyphicon glyphicon-edit"></i> Cập nhật thông tin công ty</a>
     </div>
 </script>
+
+<!-- Modal -->
+<div id="companyInfo" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">CẬP NHẬT THÔNG TIN CÔNG TY</h4>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">ĐÓNG LẠI</button>
+            </div>
+        </div>
+    </div>
+</div>
