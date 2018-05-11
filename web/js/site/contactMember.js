@@ -58,12 +58,14 @@ var contactMember = function(){
 
             profileContact.on('click', 'button.upload-img', function (e) {
                 e.preventDefault();
+                $(this).attr('disabled', true);
 
                 var _form = $(this).closest('form');
                 var formData = _form.serializeFiles();
                 _doUpload(_form.attr('action'), formData)
             });
 
+            console.log(_PROFILES);
             var _doUpload = function (_url, formData) {
                 $.ajax({
                     url: _url,
@@ -72,7 +74,11 @@ var contactMember = function(){
                     processData: false,
                     contentType: false,
                     success: function (res) {
-                        console.log(res);
+                        if(res['status']){
+                            delete _PROFILES.company;
+                            aler(121111);
+                            console.log(_PROFILES);
+                        }
                     }
                 });
             };

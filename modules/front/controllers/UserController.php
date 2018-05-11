@@ -469,17 +469,19 @@ class UserController extends FrontController
 
 		$model = new ImageOnlyForm();
 		if(Common::isLoginned()){
-			if (Yii::$app->request->isPost && $model->validate()) {
-				if(UploadedFile::getInstance($model, 'image')){
-					$model->image = UploadedFile::getInstance($model, 'image');
-					// TODO: validate and do uplad, save db and load again, delete
-					if ($model->upload()) {
-						// file is uploaded successfully
-						return;
-					}
-				}
-			}
-			return $this->asJson(UserDetails::instance()->loadInfomationContactProfile(Yii::$app->request->get('info')));
+            if(UploadedFile::getInstance($model, 'image')){
+                $model->image = UploadedFile::getInstance($model, 'image');
+                $file_type = $model->image->extension;
+                $file_name = $model->image->baseName;
+                $file_path = $model->image->baseName.'-'.md5(date('dmyhis')).'.'.$file_type;
+                $path = Yii::$app->basePath . Yii::$app->params['companyCompanyGallery'] . $file_path;
+                $model->image->saveAs($path);
+
+                $object_id = Company::findOne(['created_by' => Common::currentUsers()->getId()])->id;
+                FileUploads::saveFile(FileUploads::COM_GALLERY, $file_path, $file_name, $file_type, $object_id);
+
+                return $this->asJson(['status' => true]);
+            }
 		}
 	}
 

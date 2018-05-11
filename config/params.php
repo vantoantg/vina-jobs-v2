@@ -4,6 +4,7 @@ return [
     'adminEmail' => 'nguyennguyen.vt88@gmail.com',
     'adminSystemEmail' => 'admin@jobsvina.com',
     'companyLogoPath' => '/web/uploads/_company/',
+    'companyCompanyGallery' => '/web/uploads/_company_gallery/',
     'companyCandidatePath' => '/web/uploads/_candidate/',
 
     'siteName' => 'Jobs Vina',

@@ -16,6 +16,7 @@ class FileUploads extends \app\models\base\FileUploads
 {
 
     const CANDIDATE = 'candidate';
+    const COM_GALLERY = 'company_gallery';
 
     /**
      * @return array|false

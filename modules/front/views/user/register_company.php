@@ -4,7 +4,6 @@ use yii\helpers\Html;
 use \yii\widgets\ActiveForm;
 use dosamigos\fileupload\FileUploadUI; // https://github.com/2amigos/yii2-file-upload-widget
 use \app\library\helper\Helper;
-use \Yii;
 
 /** @var $page \app\models\Pages title */
 /** @var $this \yii\web\View title */
