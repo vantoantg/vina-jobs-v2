@@ -283,17 +283,36 @@ $userInfo = \app\models\UserDetails::getInfo();
     </div>
     <div class="panel-body">
         <div class="row">
-            <div class=" col-md-9 col-lg-9">
+            <div class=" col-xs-12">
                 <table class="table table-user-information">
                     <tbody>
                     <tr>
+	                    <td colspan="100%">
+		                    <ul class="com-gallery">
+			                    <% if (data.gallerys.length){ %>
+			                    <% _.each(data.gallerys, function(k,v){ %>
+			                    <li>
+				                    <img src="<%= k %>">
+			                    </li>
+			                    <% }); %>
+			                    <% } %>
+
+			                    <% if (data.isUpload){ %>
+			                    <li>
+				                    <a href="#" data-toggle="modal" data-target="#uploadGallery" title="Thêm ảnh vào thư viện"><i class="far fa-plus-square"></i></a>
+			                    </li>
+			                    <% } %>
+		                    </ul>
+
+	                    </td>
+                    </tr>
+                    <% if (data.isUpload){ %>
+                    <tr>
                         <td colspan="100%">
-	                        <?php $form = ActiveForm::begin(['action' => Helper::createUrl(['front/user/ajax-upload-img'])]); ?>
-	                        <?= $form->field($imgForm, 'image')->fileInput(['accept' => 'image/*'])->label('Tải ảnh lên Gallery') ?>
-	                        <?= Html::button('<i class="fas fa-upload"></i> Tải lên', ['class' => 'btn btn-primary upload-img', 'disabled' => true]) ?>
-	                        <?php ActiveForm::end(); ?>
+
                         </td>
                     </tr>
+                    <% } %>
                     <tr>
                         <td>Tên công ty:</td>
                         <td><%= data.name %></td>
@@ -321,12 +340,12 @@ $userInfo = \app\models\UserDetails::getInfo();
         </div>
     </div>
     <div class="panel-footer">
-        <a data-original-title="Broadcast Message" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#companyInfo"><i class="glyphicon glyphicon-edit"></i> Cập nhật thông tin công ty</a>
+        <a data-original-title="Broadcast Message" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Cập nhật thông tin công ty</a>
     </div>
 </script>
 
 <!-- Modal -->
-<div id="companyInfo" class="modal fade" role="dialog">
+<div id="uploadGallery" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -335,7 +354,10 @@ $userInfo = \app\models\UserDetails::getInfo();
                 <h4 class="modal-title">CẬP NHẬT THÔNG TIN CÔNG TY</h4>
             </div>
             <div class="modal-body">
-                <p>Some text in the modal.</p>
+                <?php $form = ActiveForm::begin(['action' => Helper::createUrl(['front/user/ajax-upload-img'])]); ?>
+                <?= $form->field($imgForm, 'image')->fileInput(['accept' => 'image/*'])->label('Tải ảnh lên Gallery') ?>
+                <?= Html::button('<i class="fas fa-upload"></i> Tải lên', ['class' => 'btn btn-primary upload-img', 'disabled' => true]) ?>
+                <?php ActiveForm::end(); ?>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">ĐÓNG LẠI</button>

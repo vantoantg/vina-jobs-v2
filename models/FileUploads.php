@@ -18,6 +18,32 @@ class FileUploads extends \app\models\base\FileUploads
     const CANDIDATE = 'candidate';
     const COM_GALLERY = 'company_gallery';
 
+
+    /**
+     * @param $object_type
+     * @param $object_id
+     * @return array
+     */
+    public function getListByObjects($object_type, $object_id){
+        $query = new Query();
+        $query->select([
+                'f.id',
+                'f.file_path',
+                'f.file_name',
+                'f.file_type',
+                'f.created_at',
+            ]
+        )
+            ->from('tn_file_uploads f')
+            ->where('f.object_type = :object_type AND f.object_id = :object_id AND f.is_deleted = 0', [
+                'object_type' => $object_type,
+                'object_id' => $object_id
+            ])
+            ->orderBy(['f.created_at' => SORT_ASC]);
+
+        return $query->createCommand()->queryAll();
+    }
+
     /**
      * @return array|false
      */

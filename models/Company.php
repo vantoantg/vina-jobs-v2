@@ -6,7 +6,8 @@
  */
 
 namespace app\models;
-
+use app\library\helper\Helper;
+use Yii;
 
 class Company extends \app\models\base\Company
 {
@@ -54,4 +55,20 @@ class Company extends \app\models\base\Company
 		}
 		return false;
 	}
+
+    /**
+     * @param $company_id
+     * @return array
+     */
+	public function gallerys($company_id){
+        $imgs = [];
+        $files = FileUploads::instance()->getListByObjects(FileUploads::COM_GALLERY, $company_id);
+        if($files){
+            foreach ($files as $file){
+                $imgs[] =  Helper::imgRender(Yii::$app->params['companyCompanyGallery'].$file['file_path']);
+            }
+        }
+
+        return $imgs;
+    }
 }

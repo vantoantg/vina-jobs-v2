@@ -29,5 +29,9 @@ return [
 	],
     'siteSetting' => [
         'urlCookied' => false
+    ],
+
+    'gallerys' => [
+        'max' => 3
     ]
 ];

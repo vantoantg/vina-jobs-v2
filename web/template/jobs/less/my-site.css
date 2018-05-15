@@ -770,6 +770,18 @@ a.search-options:hover {
 #container-comment #output-comment {
   background: #f5f5f5;
 }
+body.user-client-profile ul.com-gallery {
+  padding: 0;
+}
+body.user-client-profile ul.com-gallery li {
+  display: inline-block;
+  list-style: none;
+}
+body.user-client-profile ul.com-gallery li a i {
+  font-size: 60px;
+  font-weight: normal;
+  color: #00AEEF;
+}
 /* Responsive */
 @media (max-width: 767px) {
   .wrapper-sb {

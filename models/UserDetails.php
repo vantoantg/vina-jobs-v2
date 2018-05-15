@@ -12,6 +12,7 @@ use app\library\helper\Common;
 use app\library\helper\Cons;
 use app\library\helper\Datetime;
 use app\library\helper\Dropdowns;
+use app\library\helper\Helper;
 
 class UserDetails extends \app\models\base\UserDetails
 {
@@ -147,7 +148,9 @@ class UserDetails extends \app\models\base\UserDetails
 	 */
     public function loadInfomationContactProfile($type){
     	if($type == 'company'){
-			$com = Company::find()->select(['name', 'website', 'content', 'logo'])->where(['created_by' => Common::currentUsers()->getId()])->asArray()->one();
+			$com = Company::find()->select(['id', 'name', 'website', 'content', 'logo'])->where(['created_by' => Common::currentUsers()->getId()])->asArray()->one();
+            $com['gallerys'] = Company::instance()->gallerys($com['id']);
+            $com['isUpload'] = (count($com['gallerys']) < Helper::params('gallerys', 'max')) ? true : false;
 			return $com;
 	    }
 
