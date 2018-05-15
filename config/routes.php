@@ -49,6 +49,7 @@ return [
     'service/cv/update/<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/edit-cv',
     'service/jobs/favorite/<slug:[a-zA-Z0-9_ -@.]+>-<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/favorite',
     'service/jobs/preapply.html' => 'front/jobs/preapply',
+    'service/jobs/top-list.html' => 'front/jobs/top-list',
 
 
 

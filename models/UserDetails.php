@@ -154,11 +154,7 @@ class UserDetails extends \app\models\base\UserDetails
 	{
 		if ($type == 'company') {
 			$com = Company::find()->select(['id', 'name', 'website', 'content', 'logo'])->where(['created_by' => Common::currentUsers()->getId()])->asArray()->one();
-			if ($com['logo']) {
-				$com['logo'] = Helper::imgRender(Helper::params('companyLogoPath') . $com['logo']);
-			} else {
-				$com['logo'] = Helper::imgRender(false);
-			}
+			$com['logo'] = Company::getLogo($com['logo']);
 			$com['gallery'] = Company::instance()->gallery($com['id']);
 			$com['isUpload'] = (count($com['gallery']) < Helper::params('gallery', 'max')) ? true : false;
 			return $com;

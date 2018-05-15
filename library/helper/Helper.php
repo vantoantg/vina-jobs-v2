@@ -115,7 +115,7 @@ class Helper
 		if (file_exists($basePath)) {
 			$img = new \app\library\helper\SimpleImage();
 			$img->load($basePath);
-			$img->resize($w, $h);
+			$img->thumbnail($w, $h);
 			$img->save($newPath, 100);
 			return $newUrl;
 		}

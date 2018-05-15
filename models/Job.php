@@ -86,30 +86,6 @@ class Job extends Jobs
 	}
 
 	/**
-	 * @param $job_id
-	 * @return array|false
-	 */
-    public static function getJob($job_id){
-    	$user_id = Common::isLoginned() ? Common::currentUsers()->getId() : 0;
-	    $query = new Query();
-	    $query->select([
-			    'job.id',
-			    'job.title',
-			    'job.slug',
-			    'job.content',
-			    'ujob.applied',
-			    'ujob.saved',
-			    ]
-	    )
-		    ->from('tn_jobs job')
-		    ->leftJoin('tn_user_jobs ujob', 'ujob.jobs_id = job.id AND ujob.user_id = :user_id AND ujob.is_deleted = 0', ['user_id' => $user_id])
-	        ->where('job.id = :job_id', ['job_id' => $job_id]);
-
-	    $command = $query->createCommand();
-	    return $command->queryOne();
-    }
-
-	/**
 	 * @param $user_id
 	 * @return array
 	 */
@@ -140,6 +116,82 @@ class Job extends Jobs
 			$result = [];
 			foreach ($data as $k => $item){
 				$item['salary'] = Dropdowns::$salary[$item['salary']];
+				$item['working_time'] = Dropdowns::$working_time[$item['working_time']];
+				$item['created_at'] = Datetime::sqlDatetimeDiffForHumans($item['created_at']);
+				$item['url_edit'] = Helper::createUrl(['front/jobs/edit-jobs', 'id' => $item['job_id']]);
+				$item['url_view'] = Helper::createUrl(['site/employeers-detail', 'slug' => $item['slug'], 'id' => $item['job_id']]);
+				$result[] = $item;
+			}
+
+			return $result;
+		}
+
+		return [];
+	}
+
+	/**
+	 * @param $job_id
+	 * @return array|false
+	 */
+    public static function getJob($job_id){
+    	$user_id = Common::isLoginned() ? Common::currentUsers()->getId() : 0;
+	    $query = new Query();
+	    $query->select([
+			    'job.id',
+			    'job.title',
+			    'job.slug',
+			    'job.content',
+			    'ujob.applied',
+			    'ujob.saved',
+			    ]
+	    )
+		    ->from('tn_jobs job')
+		    ->leftJoin('tn_user_jobs ujob', 'ujob.jobs_id = job.id AND ujob.user_id = :user_id AND ujob.is_deleted = 0', ['user_id' => $user_id])
+	        ->where('job.id = :job_id', ['job_id' => $job_id]);
+
+	    $command = $query->createCommand();
+	    return $command->queryOne();
+    }
+
+	/**
+	 * @param bool $user_id
+	 * @param bool $limit
+	 * @return array
+	 */
+	public function getAllCompanyJobs($user_id = false, $limit = false){
+		$query = new Query();
+		$query->select([
+				'job.id AS job_id',
+				'job.categories_id',
+				'job.title AS job_name',
+				'job.slug',
+				'job.salary',
+				'job.working_time',
+				'job.content',
+				'job.status',
+				'job.created_at',
+				'job.client_status',
+				'job_cat.name AS cat_name',
+				'loca.name AS loca_name',
+				'com.logo AS com_logo',
+			]
+		)
+			->from('tn_jobs job');
+		$query->innerJoin('tn_job_categories job_cat', 'job_cat.id = job.categories_id');
+		$query->innerJoin('tn_company com', 'job.created_by = com.created_by');
+		$query->leftJoin('tn_locations loca', 'loca.id = job.address')
+			->groupBy(['job_id'])
+			->orderBy(['job.status' => SORT_DESC, 'job.client_status' => SORT_DESC, 'job.approved_at' => SORT_DESC, 'job.effect_date' => SORT_DESC, 'job.updated_at' => SORT_DESC, 'job.created_at' => SORT_DESC]);
+		if($limit){
+			$query->limit(10);
+		}
+
+		$data = $query->createCommand()->queryAll();
+		if($data){
+			$result = [];
+			foreach ($data as $k => $item){
+				$item['salary'] = Dropdowns::$salary[$item['salary']];
+				$item['com_logo'] = Company::getLogo($item['com_logo'], 70,70);
 				$item['working_time'] = Dropdowns::$working_time[$item['working_time']];
 				$item['created_at'] = Datetime::sqlDatetimeDiffForHumans($item['created_at']);
 				$item['url_edit'] = Helper::createUrl(['front/jobs/edit-jobs', 'id' => $item['job_id']]);

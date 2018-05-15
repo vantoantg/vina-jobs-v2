@@ -219,8 +219,8 @@ Helper::generateSeo($page);
         </div>
         <div class="row jobs">
             <div class="col-md-9">
-                <div class="job-posts table-responsive">
-                    <table class="table list-jobs">
+                <div id="top-jobs" class="job-posts table-responsive" data-url="<?= Helper::createUrl(['front/jobs/top-list']); ?>">
+                    <table class="table list-jobs" id="container-top-list">
                         <tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.1s">
                             <td class="tbl-logo">
                                 <a href="#"><img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo1.png" alt=""></a>
@@ -383,3 +383,25 @@ Helper::generateSeo($page);
 		</div>
 	</div>
 </div>
+
+<script id="template-top-list" type="text/template">
+    <% if(data.length){ %>
+    <% _.each(data, function(k,v){ %>
+    <tr class="<% if(v%2){ %> even <% }else{ %> odd <% } %> <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.1s">
+        <td class="tbl-logo">
+        <a href="#"><img src="<%= k.com_logo %>" alt=""></a>
+        </td>
+        <td class="tbl-title">
+        <h4><a href="<%= k.url_view %>"><%= k.job_name %> </a> <br><span class="job-type"><%= k.working_time %></span></h4>
+    </td>
+    <td>
+    <p><%= k.cat_name %></p>
+        Lương: <%= k.salary %>
+    </td>
+    <td><p><i class="icon-location"></i>
+            <br><%= k.loca_name %></p></td>
+    <td class="tbl-apply"><a href="#">Apply now</a></td>
+    </tr>
+    <% }); %>
+    <% } %>
+</script>

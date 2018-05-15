@@ -166,6 +166,11 @@ class JobsController extends FrontController
         ]);
     }
 
+    public function actionTopList(){
+	    $jobs = Job::instance()->getAllCompanyJobs();
+	    return $this->asJson($jobs);
+    }
+
     /**
      * Finds the AuthAssignment model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
