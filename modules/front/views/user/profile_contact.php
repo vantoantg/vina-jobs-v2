@@ -31,7 +31,9 @@ $userInfo = \app\models\UserDetails::getInfo();
 
             <div class="card">
                 <ul id="contact_infos" class="nav nav-tabs" role="tablist"
-                    data-url="<?= Helper::createUrl(['front/user/client-infos']) ?>">
+                    data-url="<?= Helper::createUrl(['front/user/client-infos']) ?>"
+                    data-url-del-gallery="<?= Helper::createUrl(['front/user/client-infos']) ?>"
+                >
                     <li role="presentation" class="active">
                         <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Thông tin nguời liên
                             hệ</a></li>
@@ -291,14 +293,15 @@ $userInfo = \app\models\UserDetails::getInfo();
 		                    <ul class="com-gallery">
 			                    <% if (data.gallery.length){ %>
 			                    <% _.each(data.gallery, function(k,v){ %>
-			                    <li>
+			                    <li class="item">
+				                    <a href="#" data-id="23"><i class="far fa-trash-alt"></i></a>
 				                    <img src="<%= k %>">
 			                    </li>
 			                    <% }); %>
 			                    <% } %>
 
 			                    <% if (data.isUpload){ %>
-			                    <li>
+			                    <li class="add">
 				                    <a href="#" data-toggle="modal" data-target="#uploadGallery" title="Thêm ảnh vào thư viện"><i class="far fa-plus-square"></i></a>
 			                    </li>
 			                    <% } %>
@@ -320,7 +323,7 @@ $userInfo = \app\models\UserDetails::getInfo();
                     <tr>
                         <td>Logo:</td>
                         <td>
-                            <img src="<?= Yii::$app->params['companyLogoPath'] ?><%= data.logo %>"
+                            <img src="<%= data.logo %>"
                                  class="img-circle img-responsive" width="120">
                         </td>
                     </tr>

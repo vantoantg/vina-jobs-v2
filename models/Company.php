@@ -65,7 +65,7 @@ class Company extends \app\models\base\Company
         $files = FileUploads::instance()->getListByObjects(FileUploads::COM_GALLERY, $company_id);
         if($files){
             foreach ($files as $file){
-                $imgs[] =  Helper::imgRender(Yii::$app->params['companyCompanyGallery'].$file['file_path']);
+                $imgs[] =  Helper::imgRender(Helper::params('companyCompanyGallery').$file['file_path']);
             }
         }
 

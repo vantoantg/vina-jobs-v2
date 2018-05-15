@@ -7,6 +7,7 @@ var contactMember = function () {
     var contactInfos = $('#profile_contact #contact_infos');
     var siteUrl = $('input#setting-common').attr('data-site');
     var urlContactInfos = contactInfos.attr('data-url');
+    var urlDelGallery = contactInfos.attr('data-url-del-gallery');
     var _PROFILES = [];
 
     return {
@@ -23,6 +24,11 @@ var contactMember = function () {
             contactInfos.on('click', 'li a[aria-controls]', function () {
                 var _type = $(this).attr('aria-controls');
                 contactMember.doLoadProfile(_type);
+            });
+
+            $('#container-company').on('click', 'ul.com-gallery li > a', function () {
+                var _id = $(this).data('id');
+                contactMember.deleteGalleryImg(_id);
             });
         },
         doLoadProfile: function (_type) {
@@ -47,8 +53,14 @@ var contactMember = function () {
                 $('#container-' + _type).html(html);
             };
         },
+        deleteGalleryImg: function (id) {
+            alert(112121);
+            Service.postCallback(urlDelGallery, {imgId: id}), function () {
+
+            }
+        },
         uploadGallery: function () {
-            $('body').on('change', '#imageonlyform-image', function () {
+            $('#uploadGallery').on('change', '#imageonlyform-image', function () {
                 var _form = $(this).closest('form');
                 var _upload = _form.find('.upload-img');
                 if ($(this).val() != '') {
@@ -58,7 +70,7 @@ var contactMember = function () {
                 }
             });
 
-            $('body').on('click', 'button.upload-img', function (e) {
+            $('#uploadGallery').on('click', 'button.upload-img', function (e) {
                 e.preventDefault();
                 $(this).attr('disabled', true);
 
