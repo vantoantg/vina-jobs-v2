@@ -10,6 +10,7 @@ namespace app\models;
 
 use app\library\helper\Common;
 use app\library\helper\Datetime;
+use app\library\helper\Helper;
 use yii\db\Query;
 
 class FileUploads extends \app\models\base\FileUploads
@@ -87,5 +88,20 @@ class FileUploads extends \app\models\base\FileUploads
         $file->created_at = Datetime::createdAt();
         $file->save();
         return $file;
+    }
+
+	/**
+	 * @param $fileId
+	 * @return bool
+	 */
+    public function deleteFile($fileId)
+    {
+	    $file = FileUploads::findOne($fileId);
+	    if($file){
+		    @unlink(\Yii::$app->basePath.Helper::params('companyCompanyGallery').$file->file_path);
+		    $file->delete();
+		    return true;
+	    }
+	    return false;
     }
 }

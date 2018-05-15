@@ -8,6 +8,7 @@ var contactMember = function () {
     var siteUrl = $('input#setting-common').attr('data-site');
     var urlContactInfos = contactInfos.attr('data-url');
     var urlDelGallery = contactInfos.attr('data-url-del-gallery');
+    var _Sv = Service;
     var _PROFILES = [];
 
     return {
@@ -26,7 +27,8 @@ var contactMember = function () {
                 contactMember.doLoadProfile(_type);
             });
 
-            $('#container-company').on('click', 'ul.com-gallery li > a', function () {
+            $('#container-company').on('click', 'ul.com-gallery li > a', function (e) {
+                e.preventDefault();
                 var _id = $(this).data('id');
                 contactMember.deleteGalleryImg(_id);
             });
@@ -54,10 +56,12 @@ var contactMember = function () {
             };
         },
         deleteGalleryImg: function (id) {
-            alert(112121);
-            Service.postCallback(urlDelGallery, {imgId: id}), function () {
-
-            }
+            _Sv.postCallback(urlDelGallery, {imgId: id}, function (res) {
+                if(res.status){
+                    delete _PROFILES['company'];
+                    contactMember.doLoadProfile('company');
+                }
+            });
         },
         uploadGallery: function () {
             $('#uploadGallery').on('change', '#imageonlyform-image', function () {

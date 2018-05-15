@@ -733,7 +733,26 @@ body.user-client-profile{
 		li{
 			display: inline-block;
 			list-style: none;
+			&.item{
+				position: relative;
+				&:hover{
+					a i{
+						zoom: 110%;
+					}
+				}
+				a{
+					position: absolute;
+					top: 5px;
+					right: 5px;
+					display: inline-block;
+					i.fa-trash-alt{
+						font-size: 22px;
+						color: #fff;
+					}
+				}
+			}
 			a{
+				
 				i{
 					font-size: 60px;
 					font-weight: normal;

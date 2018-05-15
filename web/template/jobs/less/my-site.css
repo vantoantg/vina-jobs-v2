@@ -777,6 +777,22 @@ body.user-client-profile ul.com-gallery li {
   display: inline-block;
   list-style: none;
 }
+body.user-client-profile ul.com-gallery li.item {
+  position: relative;
+}
+body.user-client-profile ul.com-gallery li.item:hover a i {
+  zoom: 110%;
+}
+body.user-client-profile ul.com-gallery li.item a {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: inline-block;
+}
+body.user-client-profile ul.com-gallery li.item a i.fa-trash-alt {
+  font-size: 22px;
+  color: #fff;
+}
 body.user-client-profile ul.com-gallery li a i {
   font-size: 60px;
   font-weight: normal;

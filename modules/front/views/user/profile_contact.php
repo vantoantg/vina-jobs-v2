@@ -32,17 +32,13 @@ $userInfo = \app\models\UserDetails::getInfo();
             <div class="card">
                 <ul id="contact_infos" class="nav nav-tabs" role="tablist"
                     data-url="<?= Helper::createUrl(['front/user/client-infos']) ?>"
-                    data-url-del-gallery="<?= Helper::createUrl(['front/user/client-infos']) ?>"
+                    data-url-del-gallery="<?= Helper::createUrl(['front/user/ajax-delete-img']) ?>"
                 >
                     <li role="presentation" class="active">
-                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Thông tin nguời liên
-                            hệ</a></li>
-                    <li role="presentation"><a href="#company" aria-controls="company" role="tab" data-toggle="tab">Thông
-                            tin công ty</a></li>
-                    <li role="presentation"><a href="#jobs" aria-controls="jobs" role="tab" data-toggle="tab">Tin đã
-                            đăng</a></li>
-                    <li role="presentation"><a href="#candidate" aria-controls="candidate" role="tab" data-toggle="tab">Ứng
-                            viên đang theo dõi</a></li>
+                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Thông tin nguời liên hệ</a></li>
+                    <li role="presentation"><a href="#company" aria-controls="company" role="tab" data-toggle="tab">Thông tin công ty</a></li>
+                    <li role="presentation"><a href="#jobs" aria-controls="jobs" role="tab" data-toggle="tab">Tin đã đăng</a></li>
+                    <li role="presentation"><a href="#candidate" aria-controls="candidate" role="tab" data-toggle="tab">Ứng  viên đang theo dõi</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -294,8 +290,8 @@ $userInfo = \app\models\UserDetails::getInfo();
 			                    <% if (data.gallery.length){ %>
 			                    <% _.each(data.gallery, function(k,v){ %>
 			                    <li class="item">
-				                    <a href="#" data-id="23"><i class="far fa-trash-alt"></i></a>
-				                    <img src="<%= k %>">
+				                    <a href="#" data-id="<%= k.id %>"><i class="far fa-trash-alt"></i></a>
+				                    <img src="<%= k.img %>">
 			                    </li>
 			                    <% }); %>
 			                    <% } %>

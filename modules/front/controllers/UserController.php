@@ -486,6 +486,21 @@ class UserController extends FrontController
 	}
 
 	/**
+	 * @return \yii\web\Response
+	 * @throws BadRequestHttpException
+	 */
+	public function actionAjaxDeleteImg(){
+		if(!Yii::$app->request->isAjax || !Common::isLoginned()){
+			throw new BadRequestHttpException();
+		}
+
+		if(Yii::$app->request->isPost){
+			$fileId = Yii::$app->request->post('imgId');
+			return $this->asJson(['status'=> FileUploads::instance()->deleteFile($fileId)]);
+		}
+	}
+
+	/**
 	 * @return array|\yii\web\Response
 	 */
 	public function actionLogin()
