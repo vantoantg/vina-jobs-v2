@@ -394,11 +394,10 @@ Helper::generateSeo($page);
         <td class="tbl-title">
         <h4><a href="<%= k.url_view %>"><%= k.job_name %> </a> <br><span class="job-type"><%= k.working_time %></span></h4>
     </td>
-    <td>
-    <p><%= k.cat_name %></p>
+    <td><%= k.cat_name %><br>
         Lương: <%= k.salary %>
     </td>
-    <td><p><i class="icon-location"></i>
+    <td class="text-center"><p title="Nơi làm việc"><i class="icon-location"></i>
             <br><%= k.loca_name %></p></td>
     <td class="tbl-apply"><a href="#">Apply now</a></td>
     </tr>
