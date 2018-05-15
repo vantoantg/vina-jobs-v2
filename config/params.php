@@ -31,7 +31,7 @@ return [
         'urlCookied' => false
     ],
 
-    'gallerys' => [
+    'gallery' => [
         'max' => 3
     ]
 ];

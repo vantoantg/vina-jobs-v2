@@ -60,7 +60,7 @@ class Company extends \app\models\base\Company
      * @param $company_id
      * @return array
      */
-	public function gallerys($company_id){
+	public function gallery($company_id){
         $imgs = [];
         $files = FileUploads::instance()->getListByObjects(FileUploads::COM_GALLERY, $company_id);
         if($files){

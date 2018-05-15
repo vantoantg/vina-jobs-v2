@@ -149,8 +149,8 @@ class UserDetails extends \app\models\base\UserDetails
     public function loadInfomationContactProfile($type){
     	if($type == 'company'){
 			$com = Company::find()->select(['id', 'name', 'website', 'content', 'logo'])->where(['created_by' => Common::currentUsers()->getId()])->asArray()->one();
-            $com['gallerys'] = Company::instance()->gallerys($com['id']);
-            $com['isUpload'] = (count($com['gallerys']) < Helper::params('gallerys', 'max')) ? true : false;
+            $com['gallery'] = Company::instance()->gallery($com['id']);
+            $com['isUpload'] = (count($com['gallerys']) < Helper::params('gallery', 'max')) ? true : false;
 			return $com;
 	    }
 

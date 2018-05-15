@@ -289,8 +289,8 @@ $userInfo = \app\models\UserDetails::getInfo();
                     <tr>
 	                    <td colspan="100%">
 		                    <ul class="com-gallery">
-			                    <% if (data.gallerys.length){ %>
-			                    <% _.each(data.gallerys, function(k,v){ %>
+			                    <% if (data.gallery.length){ %>
+			                    <% _.each(data.gallery, function(k,v){ %>
 			                    <li>
 				                    <img src="<%= k %>">
 			                    </li>
