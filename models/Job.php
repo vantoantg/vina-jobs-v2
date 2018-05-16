@@ -180,7 +180,6 @@ class Job extends Jobs
 		$query->innerJoin('tn_job_categories job_cat', 'job_cat.id = job.categories_id');
 		$query->innerJoin('tn_company com', 'job.created_by = com.created_by');
 		$query->leftJoin('tn_locations loca', 'loca.id = job.address')
-			->groupBy(['job_id'])
 			->orderBy(['job.status' => SORT_DESC, 'job.client_status' => SORT_DESC, 'job.approved_at' => SORT_DESC, 'job.effect_date' => SORT_DESC, 'job.updated_at' => SORT_DESC, 'job.created_at' => SORT_DESC]);
 		if($limit){
 			$query->limit(10);

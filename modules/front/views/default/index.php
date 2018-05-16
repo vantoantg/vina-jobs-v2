@@ -402,5 +402,11 @@ Helper::generateSeo($page);
     <td class="tbl-apply"><a href="#">Apply now</a></td>
     </tr>
     <% }); %>
+    <% }else{ %>
+    <tr>
+	    <td colspan="100$">
+		    Chưa có tin nào được đăng.
+	    </td>
+    </tr>
     <% } %>
 </script>

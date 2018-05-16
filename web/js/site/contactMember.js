@@ -57,7 +57,7 @@ var contactMember = function () {
         },
         deleteGalleryImg: function (id) {
             _Sv.postCallback(urlDelGallery, {imgId: id}, function (res) {
-                if(res.status){
+                if (res.status) {
                     delete _PROFILES['company'];
                     contactMember.doLoadProfile('company');
                 }
