@@ -34,10 +34,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
 
                 <div class="cms">
-                    <?= ( new \app\components\CommentWidget())->commentFB(); ?>
+                    <?= ( new \app\components\CommentWidget())->commentFB(false); ?>
                 </div>
             </div>
-            <!--           // RECENT POST===========-->
+            <!-- // RECENT POST===========-->
             <div class="col-12 col-md-4 wrapper-sb">
 				<?= $sidebarWidget->recentJobs(); ?>
 

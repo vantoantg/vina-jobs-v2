@@ -12,7 +12,7 @@ use yii\helpers\Url;
                 <li class="header-nav-brand" >
                     <div class="brand-holder">
                         <a href="<?= \app\library\helper\Helper::homeUrl() ?>">
-                            <span class="text-lg text-bold text-primary">MATERIAL ADMIN</span>
+                            <span class="text-lg text-bold text-primary"><?= Helper::params(); ?> ADMIN</span>
                         </a>
                     </div>
                 </li>

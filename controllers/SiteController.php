@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\forms\ApplyForm;
 use app\library\helper\Helper;
 use app\models\Auth;
+use app\models\Company;
 use app\models\Email;
 use app\models\FileUploads;
 use app\models\Job;
@@ -191,14 +192,21 @@ class SiteController extends FrontController
         return $this->render('employeers');
     }
 
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
+	/**
+	 * @param $slug
+	 * @param $id
+	 * @return string
+	 * @throws BadRequestHttpException
+	 */
     public function actionEmployeersDetail($slug, $id)
     {
     	$job = Job::getJob($id);
+    	if(!$job){
+    		throw new BadRequestHttpException();
+	    }
+
+	    $company = Company::instance()->getCompany($job['company_id']);
+	    $galleries = FileUploads::instance()->getGallery(FileUploads::COM_GALLERY, $job['company_id']);
     	$form = new ApplyForm();
 
 	    if($form->load(Yii::$app->request->post())){
@@ -221,6 +229,8 @@ class SiteController extends FrontController
 
         return $this->render('employeers_detail', [
         	'job' => $job,
+        	'company' => $company,
+        	'galleries' => $galleries,
         	'applyForm' => $form,
         ]);
     }

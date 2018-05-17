@@ -6,7 +6,8 @@
  */
 
 namespace app\models;
-
+use app\library\helper\Helper;
+use Yii;
 
 class Company extends \app\models\base\Company
 {
@@ -54,4 +55,42 @@ class Company extends \app\models\base\Company
 		}
 		return false;
 	}
+
+	public function getCompany($company){
+    	$company = self::findOne($company);
+
+    	return $company;
+	}
+
+    /**
+     * @param $company_id
+     * @return array
+     */
+	public function gallery($company_id){
+        $imgs = [];
+        $files = FileUploads::instance()->getListByObjects(FileUploads::COM_GALLERY, $company_id);
+        if($files){
+            foreach ($files as $file){
+                $imgs[] =  [
+                	'id' => $file['id'],
+                	'img' => Helper::imgRender(Helper::params('companyCompanyGallery').$file['file_path'], 150,120)];
+            }
+        }
+
+        return $imgs;
+    }
+
+	/**
+	 * @param $logo
+	 * @param int $w
+	 * @param int $h
+	 * @return mixed|string
+	 */
+    public static function getLogo($logo, $w = 100, $h = 100){
+	    if ($logo) {
+		    return Helper::imgRender(Helper::params('companyLogoPath') . $logo, $w, $h);
+	    } else {
+		    return Helper::imgRender(false);
+	    }
+    }
 }

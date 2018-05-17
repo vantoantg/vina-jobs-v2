@@ -219,8 +219,8 @@ Helper::generateSeo($page);
         </div>
         <div class="row jobs">
             <div class="col-md-9">
-                <div class="job-posts table-responsive">
-                    <table class="table list-jobs">
+                <div id="top-jobs" class="job-posts table-responsive" data-url="<?= Helper::createUrl(['front/jobs/top-list']); ?>">
+                    <table class="table list-jobs" id="container-top-list">
                         <tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.1s">
                             <td class="tbl-logo">
                                 <a href="#"><img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo1.png" alt=""></a>
@@ -235,83 +235,10 @@ Helper::generateSeo($page);
                             <td><p>&dollar; 14000</p></td>
                             <td class="tbl-apply"><a href="#">Apply now</a></td>
                         </tr>
-                        <tr class="even <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.2s">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo2.png" alt=""></td>
-                            <td class="tbl-title"><h4>Front End Developer <br><span class="job-type">full time</span>
-                                </h4></td>
-                            <td><p>Jolil corporation</p></td>
-                            <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
-                            <td><p>&dollar; 14000</p></td>
-                            <td class="tbl-apply"><a href="#">Apply now</a></td>
-                        </tr>
-                        <tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.3s">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo3.png" alt=""></td>
-                            <td class="tbl-title"><h4>HR Manager <br><span class="job-type">full time</span></h4></td>
-                            <td><p>Fanta bevarage</p></td>
-                            <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
-                            <td><p>&dollar; 14000</p></td>
-                            <td class="tbl-apply"><a href="#">Apply now</a></td>
-                        </tr>
-                        <tr class="even <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.4s">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo4.png" alt=""></td>
-                            <td class="tbl-title"><h4>Internship Designer <br><span class="job-type">full time</span>
-                                </h4></td>
-                            <td><p>Google</p></td>
-                            <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
-                            <td><p>&dollar; 14000</p></td>
-                            <td class="tbl-apply"><a href="#">Apply now</a></td>
-                        </tr>
-                        <tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.5s">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo5.png" alt=""></td>
-                            <td class="tbl-title"><h4>Software Designer <br><span class="job-type">full time</span></h4>
-                            </td>
-                            <td><p>Microsoft</p></td>
-                            <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
-                            <td><p>&dollar; 14000</p></td>
-                            <td class="tbl-apply"><a href="#">Apply now</a></td>
-                        </tr>
-                        <tr class="even hide-jobs">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo4.png" alt=""></td>
-                            <td class="tbl-title"><h4>Internship Designer <br><span class="job-type">full time</span>
-                                </h4></td>
-                            <td><p>Google</p></td>
-                            <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
-                            <td><p>&dollar; 14000</p></td>
-                            <td class="tbl-apply"><a href="#">Apply now</a></td>
-                        </tr>
-                        <tr class="odd hide-jobs">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo5.png" alt=""></td>
-                            <td class="tbl-title"><h4>Software Designer <br><span class="job-type">full time</span></h4>
-                            </td>
-                            <td><p>Microsoft</p></td>
-                            <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
-                            <td><p>&dollar; 14000</p></td>
-                            <td class="tbl-apply"><a href="#">Apply now</a></td>
-                        </tr>
-                        <tr class="even hide-jobs">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo4.png"
-                                                      alt=""></td>
-                            <td class="tbl-title"><h4>Internship Designer <br><span class="job-type">full time</span>
-                                </h4></td>
-                            <td><p>Google</p></td>
-                            <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
-                            <td><p>&dollar; 14000</p></td>
-                            <td class="tbl-apply"><a href="#">Apply now</a></td>
-                        </tr>
-                        <tr class="odd hide-jobs">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo5.png"
-                                                      alt=""></td>
-                            <td class="tbl-title"><h4>Software Designer <br><span class="job-type">full time</span></h4>
-                            </td>
-                            <td><p>Microsoft</p></td>
-                            <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
-                            <td><p>&dollar; 14000</p></td>
-                            <td class="tbl-apply"><a href="#">Apply now</a></td>
-                        </tr>
                     </table>
                 </div>
                 <div class="more-jobs text-center">
-                    <a href=""><i class="fa fa-download"></i>Xem thêm</a>
+                    <a href="<?= Helper::createUrl(['site/employeers']) ?>"><i class="fa fa-download"></i>Xem thêm</a>
                 </div>
             </div>
             <div class="col-md-3 hidden-sm">
@@ -383,3 +310,30 @@ Helper::generateSeo($page);
 		</div>
 	</div>
 </div>
+
+<script id="template-top-list" type="text/template">
+    <% if(data.length){ %>
+    <% _.each(data, function(k,v){ %>
+    <tr class="<% if(v%2){ %> even <% }else{ %> odd <% } %> <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.1s">
+        <td class="tbl-logo">
+        <a href="#"><img src="<%= k.com_logo %>" alt=""></a>
+        </td>
+        <td class="tbl-title">
+        <h4><a href="<%= k.url_view %>"><%= k.job_name %> </a> <br><span class="job-type"><%= k.working_time %></span></h4>
+    </td>
+    <td><%= k.cat_name %><br>
+        Lương: <%= k.salary %>
+    </td>
+    <td class="text-center"><p title="Nơi làm việc"><i class="icon-location"></i>
+            <br><%= k.loca_name %></p></td>
+    <td class="tbl-apply"><a href="#">Apply now</a></td>
+    </tr>
+    <% }); %>
+    <% }else{ %>
+    <tr>
+	    <td colspan="100$">
+		    Chưa có tin nào được đăng.
+	    </td>
+    </tr>
+    <% } %>
+</script>

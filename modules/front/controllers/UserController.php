@@ -2,6 +2,7 @@
 
 namespace app\modules\front\controllers;
 
+use app\forms\ImageOnlyForm;
 use app\library\helper\Common;
 use app\library\helper\Datetime;
 use app\library\helper\Image;
@@ -18,6 +19,7 @@ use app\forms\RequireResetPasswordForm;
 use app\library\helper\Helper;
 use app\models\Users;
 use yii\helpers\Url;
+use yii\httpclient\Exception;
 use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
@@ -420,6 +422,8 @@ class UserController extends FrontController
 	}
 
 	/**
+	 * http://localhost/client/profile.html
+	 *
 	 * @return string|\yii\web\Response
 	 */
 	public function actionClientProfile()
@@ -432,7 +436,10 @@ class UserController extends FrontController
 			return $this->goHome();
 		}
 
-		return $this->render('profile_contact');
+		$imgForm = new ImageOnlyForm();
+		return $this->render('profile_contact', [
+			'imgForm' => $imgForm
+		]);
 	}
 
 	/**
@@ -447,6 +454,65 @@ class UserController extends FrontController
 
 		if(Common::isLoginned() && Common::currentUser('type') == Users::USER_TYPE_CONTACT_OF_COMPANY){
 			return $this->asJson(UserDetails::instance()->loadInfomationContactProfile(Yii::$app->request->get('info')));
+		}
+	}
+
+	/**
+	 * @return \yii\web\Response
+	 * @throws BadRequestHttpException
+	 */
+	public function actionAjaxUploadImg()
+	{
+		if(!Yii::$app->request->isAjax){
+			throw new BadRequestHttpException();
+		}
+
+		$model = new ImageOnlyForm();
+		if(Common::isLoginned()){
+            if(UploadedFile::getInstance($model, 'image')){
+                $model->image = UploadedFile::getInstance($model, 'image');
+                $file_type = $model->image->extension;
+                $file_name = $model->image->baseName;
+                $file_path = $model->image->baseName.'-'.md5(date('dmyhis')).'.'.$file_type;
+                $path = Yii::$app->basePath . Yii::$app->params['companyCompanyGallery'] . $file_path;
+                $model->image->saveAs($path);
+
+                $object_id = Company::findOne(['created_by' => Common::currentUsers()->getId()])->id;
+                FileUploads::saveFile(FileUploads::COM_GALLERY, $file_path, $file_name, $file_type, $object_id);
+
+                return $this->asJson(['status' => true]);
+            }
+		}
+	}
+
+	/**
+	 * @return \yii\web\Response
+	 * @throws BadRequestHttpException
+	 */
+	public function actionAjaxDeleteImg(){
+		if(!Yii::$app->request->isAjax || !Common::isLoginned()){
+			throw new BadRequestHttpException();
+		}
+
+		if(Yii::$app->request->isPost){
+			$fileId = Yii::$app->request->post('imgId');
+			return $this->asJson(['status'=> FileUploads::instance()->deleteFile($fileId)]);
+		}
+	}
+
+	/**
+	 * @return \yii\web\Response
+	 * @throws BadRequestHttpException
+	 */
+	public function actionAjaxSortable(){
+		if(!Yii::$app->request->isAjax || !Common::isLoginned()){
+			throw new BadRequestHttpException();
+		}
+
+		if(Yii::$app->request->isPost){
+			$data = Yii::$app->request->post();
+			FileUploads::instance()->doArrange($data);
+			return $this->asJson(['status'=> 1]);
 		}
 	}
 
@@ -535,12 +601,17 @@ class UserController extends FrontController
 	}
 
 	/**
-	 * @return array|\yii\web\Response
+	 * @return \yii\web\Response
+	 * @throws BadRequestHttpException
 	 */
 	public function actionLogout()
 	{
-		\Yii::$app->user->logout();
-		return $this->redirect(\Yii::$app->request->get('returnUrl'));
+		try{
+			\Yii::$app->user->logout();
+			return $this->redirect(Helper::encrypt(\Yii::$app->request->get('returnUrl'), false));
+		}catch (Exception $exception){
+			throw new BadRequestHttpException($exception->getMessage());
+		}
 	}
 
 	public function getToken($token)

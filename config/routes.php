@@ -34,12 +34,18 @@ return [
 	'user/profile.html' => 'front/user/user-profile',
 	'client/profile.html' => 'front/user/client-profile',
 	'client/infomation.html' => 'front/user/client-infos',
+	'ajax/upload/img.html' => 'front/user/ajax-upload-img',
+	'ajax/delete/img.html' => 'front/user/ajax-delete-img',
+	'ajax/sortable/gallery.html' => 'front/user/ajax-sortable',
 
 	'user/profile/<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/user/view-profile',
 	'user/forgot-password.html' => 'front/user/forgot',
 	'user/change-password.html' => 'front/user/profile-change-password',
 	'user/reset-password/<token:[a-zA-Z0-9_ -@.]+>.html' => 'front/user/profile-reset-password',
 
+    // contact
+	'service/register-jobs.html' => 'front/jobs/post-jobs',
+	'company/<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/company-detail',
     // jobs
 	'service/jobs/update/job-<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/edit-jobs',
 	'service/register-jobs.html' => 'front/jobs/post-jobs',
@@ -47,6 +53,7 @@ return [
     'service/cv/update/<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/edit-cv',
     'service/jobs/favorite/<slug:[a-zA-Z0-9_ -@.]+>-<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/favorite',
     'service/jobs/preapply.html' => 'front/jobs/preapply',
+    'service/jobs/top-list.html' => 'front/jobs/top-list',
 
 
 

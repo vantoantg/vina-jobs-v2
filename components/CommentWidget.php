@@ -25,10 +25,18 @@ class CommentWidget extends Widget
 
     }
 
+	/**
+	 * @return string
+	 */
     public function commentFB(){
-        return $this->render('comment/fb');
+        return $this->render('comment/fb_box');
     }
 
+	/**
+	 * @param $object_id
+	 * @param $object_type
+	 * @return string
+	 */
     public function comment($object_id, $object_type){
 	    return $this->render('comment/index',[
 	    	'object_id' => $object_id,

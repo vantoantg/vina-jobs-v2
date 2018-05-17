@@ -728,6 +728,64 @@ a.search-options{
 	}
 }
 
+body.user-client-profile{
+	ul.com-gallery{
+		padding: 0;
+		li{
+			display: inline-block;
+			list-style: none;
+			&.item{
+				position: relative;
+				&:hover{
+					a i{
+						zoom: 110%;
+					}
+				}
+				a{
+					position: absolute;
+					top: 5px;
+					right: 5px;
+					display: inline-block;
+					i.fa-trash-alt{
+						font-size: 22px;
+						color: #fff;
+					}
+				}
+			}
+			a{
+				i{
+					font-size: 60px;
+					font-weight: normal;
+					color: #00AEEF;
+				}
+			}
+		}
+	}
+}
+
+body.site-employeers-detail{
+	.gallery{
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+	
+	#viewGallery{
+		.modal-content{
+			.close{
+				height: 15px;
+				font-size: 30px;
+				position: relative;
+				top: -7px;
+				z-index: 1;
+				outline: none;
+			}
+		}
+	}
+}
+
+
+
+
 /* Responsive */
 @media (max-width: 767px) {
 	.wrapper-sb{

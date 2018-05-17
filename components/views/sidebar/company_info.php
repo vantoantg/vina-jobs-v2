@@ -27,8 +27,10 @@
     <div class="content-widget-sidebar">
         <ul>
             <li class="text-center">
-                <img src="https://cdn.itviec.com/system/production/employers/logos/104/toshiba-software-development-viet-nam-co-ltd-logo-170-151.jpg?1496738781"
-                     class="img-responsive">
+                <a href="">
+                    <img src="https://cdn.itviec.com/system/production/employers/logos/104/toshiba-software-development-viet-nam-co-ltd-logo-170-151.jpg?1496738781"
+                         class="img-responsive">
+                </a>
             </li>
             <hr>
 

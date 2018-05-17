@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use \yii\widgets\ActiveForm;
 use yii\widgets\Pjax;
 use \app\library\helper\Common;
 use \app\library\helper\Helper;
@@ -31,16 +31,14 @@ $userInfo = \app\models\UserDetails::getInfo();
 
             <div class="card">
                 <ul id="contact_infos" class="nav nav-tabs" role="tablist"
-                    data-url="<?= Helper::createUrl(['front/user/client-infos']) ?>">
+                    data-url="<?= Helper::createUrl(['front/user/client-infos']) ?>"
+                    data-url-del-gallery="<?= Helper::createUrl(['front/user/ajax-delete-img']) ?>"
+                >
                     <li role="presentation" class="active">
-                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Thông tin nguời liên
-                            hệ</a></li>
-                    <li role="presentation"><a href="#company" aria-controls="company" role="tab" data-toggle="tab">Thông
-                            tin công ty</a></li>
-                    <li role="presentation"><a href="#jobs" aria-controls="jobs" role="tab" data-toggle="tab">Tin đã
-                            đăng</a></li>
-                    <li role="presentation"><a href="#candidate" aria-controls="candidate" role="tab" data-toggle="tab">Ứng
-                            viên đang theo dõi</a></li>
+                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Thông tin nguời liên hệ</a></li>
+                    <li role="presentation"><a href="#company" aria-controls="company" role="tab" data-toggle="tab">Thông tin công ty</a></li>
+                    <li role="presentation"><a href="#jobs" aria-controls="jobs" role="tab" data-toggle="tab">Tin đã đăng</a></li>
+                    <li role="presentation"><a href="#candidate" aria-controls="candidate" role="tab" data-toggle="tab">Ứng  viên đang theo dõi</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -283,9 +281,37 @@ $userInfo = \app\models\UserDetails::getInfo();
     </div>
     <div class="panel-body">
         <div class="row">
-            <div class=" col-md-9 col-lg-9">
+            <div class=" col-xs-12">
                 <table class="table table-user-information">
                     <tbody>
+                    <tr>
+	                    <td colspan="100%">
+		                    <ul class="com-gallery" data-url-sort="<?= Helper::createUrl(['front/user/ajax-sortable'])?>">
+			                    <% if (data.gallery.length){ %>
+			                    <% _.each(data.gallery, function(k,v){ %>
+			                    <li class="item" data-id="<%= k.id %>">
+				                    <a href="#" data-id="<%= k.id %>"><i class="far fa-trash-alt"></i></a>
+				                    <img src="<%= k.img %>">
+			                    </li>
+			                    <% }); %>
+			                    <% } %>
+
+			                    <% if (data.isUpload){ %>
+			                    <li class="add">
+				                    <a href="#" data-toggle="modal" data-target="#uploadGallery" title="Thêm ảnh vào thư viện"><i class="far fa-plus-square"></i></a>
+			                    </li>
+			                    <% } %>
+		                    </ul>
+
+	                    </td>
+                    </tr>
+                    <% if (data.isUpload){ %>
+                    <tr>
+                        <td colspan="100%">
+
+                        </td>
+                    </tr>
+                    <% } %>
                     <tr>
                         <td>Tên công ty:</td>
                         <td><%= data.name %></td>
@@ -293,7 +319,7 @@ $userInfo = \app\models\UserDetails::getInfo();
                     <tr>
                         <td>Logo:</td>
                         <td>
-                            <img src="<?= Yii::$app->params['companyLogoPath'] ?><%= data.logo %>"
+                            <img src="<%= data.logo %>"
                                  class="img-circle img-responsive" width="120">
                         </td>
                     </tr>
@@ -313,16 +339,28 @@ $userInfo = \app\models\UserDetails::getInfo();
         </div>
     </div>
     <div class="panel-footer">
-        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i
-                    class="glyphicon glyphicon-envelope"></i></a>
-        <span class="pull-right">
-                                            <a href="<?= Helper::createUrl(['company/update.html']) ?>"
-                                               data-original-title="Edit this user" data-toggle="tooltip"
-                                               type="button" class="btn btn-sm btn-warning"><i
-                                                        class="glyphicon glyphicon-edit"></i></a>
-                                            <a href="<?= Helper::createUrl(['front/user/logout']) ?>"
-                                               data-original-title="Logout" data-toggle="tooltip" type="button"
-                                               class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                                        </span>
+        <a data-original-title="Broadcast Message" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Cập nhật thông tin công ty</a>
     </div>
 </script>
+
+<!-- Modal -->
+<div id="uploadGallery" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">CẬP NHẬT THÔNG TIN CÔNG TY</h4>
+            </div>
+            <div class="modal-body">
+                <?php $form = ActiveForm::begin(['action' => Helper::createUrl(['front/user/ajax-upload-img'])]); ?>
+                <?= $form->field($imgForm, 'image')->fileInput(['accept' => 'image/*'])->label('Tải ảnh lên Gallery') ?>
+                <?= Html::button('<i class="fas fa-upload"></i> Tải lên', ['class' => 'btn btn-primary upload-img', 'disabled' => true]) ?>
+                <?php ActiveForm::end(); ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">ĐÓNG LẠI</button>
+            </div>
+        </div>
+    </div>
+</div>
