@@ -251,13 +251,14 @@ class SiteController extends FrontController
     }
 
 	/**
-	 * Displays blog page.
-	 *
+	 * @param $slug
+	 * @param $id
 	 * @return string
+	 * @throws BadRequestHttpException
 	 */
 	public function actionBlogDetail($slug, $id)
 	{
-		$post = Post::findOne($id);
+		$post = Post::find()->where('status = :status',['status' => Post::STATUS_ACTIVE])->andWhere(['id' => $id])->one();
 		if(!$post){
 			throw new BadRequestHttpException();
 		}
