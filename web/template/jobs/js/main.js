@@ -38,7 +38,7 @@ $(document).ready(function () {
         // itemsMobile : false
     });
 
-    $('.more-jobs a').click(function (e) {
+    $('.moreJobs a').click(function (e) {
         e.preventDefault();
         var $this = $(this);
         $this.toggleClass('more-jobs a');
@@ -49,7 +49,7 @@ $(document).ready(function () {
         }
     });
 
-    $('.more-jobs a').click(function () {
+    $('.moreJobs a').click(function () {
         $('.table tr.hide-jobs').toggle();
     });
 

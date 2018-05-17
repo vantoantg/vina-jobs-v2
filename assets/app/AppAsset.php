@@ -40,6 +40,7 @@ class AppAsset extends AssetBundle
         'web/template/jobs/js/bootstrap.min.js',
         'web/template/admin/assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js',
         'web/template/admin/assets/js/libs/bootstrap-datepicker/locales/bootstrap-datepicker.vi.js',
+        'web/template/admin/assets/js/libs/jquery-ui/jquery-ui.min.js',
         'web/template/jobs/js/owl.carousel.min.js',
         'web/template/jobs/js/wow.js',
         'vendor/bower-asset/select2/dist/js/select2.min.js',

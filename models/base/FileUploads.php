@@ -13,6 +13,7 @@ use Yii;
  * @property string $file_path
  * @property string $file_name
  * @property string $file_type
+ * @property int $arranged
  * @property string $created_at
  * @property int $created_by
  * @property int $is_deleted
@@ -34,12 +35,12 @@ class FileUploads extends \yii\db\ActiveRecord
     {
         return [
             [['object_type', 'object_id'], 'required'],
-            [['object_id', 'created_by', 'is_deleted'], 'integer'],
+            [['object_id', 'arranged', 'created_by', 'is_deleted'], 'integer'],
             [['created_at'], 'safe'],
             [['object_type'], 'string', 'max' => 50],
-            [['file_type'], 'string', 'max' => 10],
             [['file_path'], 'string', 'max' => 155],
             [['file_name'], 'string', 'max' => 255],
+            [['file_type'], 'string', 'max' => 10],
         ];
     }
 
@@ -55,6 +56,7 @@ class FileUploads extends \yii\db\ActiveRecord
             'file_path' => 'File Path',
             'file_name' => 'File Name',
             'file_type' => 'File Type',
+            'arranged' => 'Arranged',
             'created_at' => 'Created At',
             'created_by' => 'Created By',
             'is_deleted' => 'Is Deleted',

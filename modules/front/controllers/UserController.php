@@ -501,6 +501,22 @@ class UserController extends FrontController
 	}
 
 	/**
+	 * @return \yii\web\Response
+	 * @throws BadRequestHttpException
+	 */
+	public function actionAjaxSortable(){
+		if(!Yii::$app->request->isAjax || !Common::isLoginned()){
+			throw new BadRequestHttpException();
+		}
+
+		if(Yii::$app->request->isPost){
+			$data = Yii::$app->request->post();
+			FileUploads::instance()->doArrange($data);
+			return $this->asJson(['status'=> 1]);
+		}
+	}
+
+	/**
 	 * @return array|\yii\web\Response
 	 */
 	public function actionLogin()

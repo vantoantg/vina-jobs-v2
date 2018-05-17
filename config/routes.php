@@ -36,6 +36,7 @@ return [
 	'client/infomation.html' => 'front/user/client-infos',
 	'ajax/upload/img.html' => 'front/user/ajax-upload-img',
 	'ajax/delete/img.html' => 'front/user/ajax-delete-img',
+	'ajax/sortable/gallery.html' => 'front/user/ajax-sortable',
 
 	'user/profile/<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/user/view-profile',
 	'user/forgot-password.html' => 'front/user/forgot',

@@ -286,10 +286,10 @@ $userInfo = \app\models\UserDetails::getInfo();
                     <tbody>
                     <tr>
 	                    <td colspan="100%">
-		                    <ul class="com-gallery">
+		                    <ul class="com-gallery" data-url-sort="<?= Helper::createUrl(['front/user/ajax-sortable'])?>">
 			                    <% if (data.gallery.length){ %>
 			                    <% _.each(data.gallery, function(k,v){ %>
-			                    <li class="item">
+			                    <li class="item" data-id="<%= k.id %>">
 				                    <a href="#" data-id="<%= k.id %>"><i class="far fa-trash-alt"></i></a>
 				                    <img src="<%= k.img %>">
 			                    </li>

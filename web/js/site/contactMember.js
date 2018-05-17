@@ -53,6 +53,7 @@ var contactMember = function () {
             function _render(_type, datas) {
                 var html = _.template($('#template-' + _type).html())({data: datas});
                 $('#container-' + _type).html(html);
+                contactMember.sortable();
             };
         },
         deleteGalleryImg: function (id) {
@@ -98,6 +99,38 @@ var contactMember = function () {
                             contactMember.doLoadProfile(_type);
                         }
                     }
+                });
+            };
+        },
+        sortable: function () {
+            var _el = $("ul.com-gallery");
+            var _urlSort = _el.attr('data-url-sort');
+            // Drag and Drop
+            _el.sortable({
+                items: '> .item',
+                cursor: 'move',
+                update: function (e, ui) {
+                    moveSortNo();
+                }
+            });
+
+            var moveSortNo = function () {
+                updateSortNo();
+            };
+
+            var updateSortNo = function () {
+                var newSortNos = {};
+                var i = 1;
+                _el.find('.item').each(function () {
+                    newSortNos[this.dataset.id] = i;
+                    i++;
+                });
+                console.log(newSortNos);
+                $.ajax({
+                    url: _urlSort,
+                    type: 'POST',
+                    data: newSortNos
+                }).always(function () {
                 });
             };
         }

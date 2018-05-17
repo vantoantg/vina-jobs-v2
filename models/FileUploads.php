@@ -40,7 +40,7 @@ class FileUploads extends \app\models\base\FileUploads
                 'object_type' => $object_type,
                 'object_id' => $object_id
             ])
-            ->orderBy(['f.created_at' => SORT_ASC]);
+            ->orderBy(['f.arranged' => SORT_ASC,'f.created_at' => SORT_ASC]);
 
         return $query->createCommand()->queryAll();
     }
@@ -88,6 +88,25 @@ class FileUploads extends \app\models\base\FileUploads
         $file->created_at = Datetime::createdAt();
         $file->save();
         return $file;
+    }
+
+    /**
+     * @param $data
+     */
+    public function doArrange($data){
+        $db = \Yii::$app->db;
+        $table = self::tableName();
+        if($data){
+            foreach ($data as $id => $arrange){
+                $sql = "UPDATE $table SET `arranged` = :arranged WHERE `id` = :id";
+                $params = [
+                    'arranged' => $arrange,
+                    'id' => $id
+                ];
+                $db->createCommand($sql)->bindValues($params)->execute();
+            }
+        }
+
     }
 
 	/**

@@ -235,83 +235,10 @@ Helper::generateSeo($page);
                             <td><p>&dollar; 14000</p></td>
                             <td class="tbl-apply"><a href="#">Apply now</a></td>
                         </tr>
-                        <tr class="even <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.2s">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo2.png" alt=""></td>
-                            <td class="tbl-title"><h4>Front End Developer <br><span class="job-type">full time</span>
-                                </h4></td>
-                            <td><p>Jolil corporation</p></td>
-                            <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
-                            <td><p>&dollar; 14000</p></td>
-                            <td class="tbl-apply"><a href="#">Apply now</a></td>
-                        </tr>
-                        <tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.3s">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo3.png" alt=""></td>
-                            <td class="tbl-title"><h4>HR Manager <br><span class="job-type">full time</span></h4></td>
-                            <td><p>Fanta bevarage</p></td>
-                            <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
-                            <td><p>&dollar; 14000</p></td>
-                            <td class="tbl-apply"><a href="#">Apply now</a></td>
-                        </tr>
-                        <tr class="even <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.4s">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo4.png" alt=""></td>
-                            <td class="tbl-title"><h4>Internship Designer <br><span class="job-type">full time</span>
-                                </h4></td>
-                            <td><p>Google</p></td>
-                            <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
-                            <td><p>&dollar; 14000</p></td>
-                            <td class="tbl-apply"><a href="#">Apply now</a></td>
-                        </tr>
-                        <tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.5s">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo5.png" alt=""></td>
-                            <td class="tbl-title"><h4>Software Designer <br><span class="job-type">full time</span></h4>
-                            </td>
-                            <td><p>Microsoft</p></td>
-                            <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
-                            <td><p>&dollar; 14000</p></td>
-                            <td class="tbl-apply"><a href="#">Apply now</a></td>
-                        </tr>
-                        <tr class="even hide-jobs">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo4.png" alt=""></td>
-                            <td class="tbl-title"><h4>Internship Designer <br><span class="job-type">full time</span>
-                                </h4></td>
-                            <td><p>Google</p></td>
-                            <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
-                            <td><p>&dollar; 14000</p></td>
-                            <td class="tbl-apply"><a href="#">Apply now</a></td>
-                        </tr>
-                        <tr class="odd hide-jobs">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo5.png" alt=""></td>
-                            <td class="tbl-title"><h4>Software Designer <br><span class="job-type">full time</span></h4>
-                            </td>
-                            <td><p>Microsoft</p></td>
-                            <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
-                            <td><p>&dollar; 14000</p></td>
-                            <td class="tbl-apply"><a href="#">Apply now</a></td>
-                        </tr>
-                        <tr class="even hide-jobs">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo4.png"
-                                                      alt=""></td>
-                            <td class="tbl-title"><h4>Internship Designer <br><span class="job-type">full time</span>
-                                </h4></td>
-                            <td><p>Google</p></td>
-                            <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
-                            <td><p>&dollar; 14000</p></td>
-                            <td class="tbl-apply"><a href="#">Apply now</a></td>
-                        </tr>
-                        <tr class="odd hide-jobs">
-                            <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo5.png"
-                                                      alt=""></td>
-                            <td class="tbl-title"><h4>Software Designer <br><span class="job-type">full time</span></h4>
-                            </td>
-                            <td><p>Microsoft</p></td>
-                            <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
-                            <td><p>&dollar; 14000</p></td>
-                            <td class="tbl-apply"><a href="#">Apply now</a></td>
-                        </tr>
                     </table>
                 </div>
                 <div class="more-jobs text-center">
-                    <a href=""><i class="fa fa-download"></i>Xem thêm</a>
+                    <a href="<?= Helper::createUrl(['site/employeers']) ?>"><i class="fa fa-download"></i>Xem thêm</a>
                 </div>
             </div>
             <div class="col-md-3 hidden-sm">
