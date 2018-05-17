@@ -138,6 +138,7 @@ class Job extends Jobs
 	    $query = new Query();
 	    $query->select([
 			    'job.id',
+			    'job.company_id',
 			    'job.title',
 			    'job.slug',
 			    'job.content',

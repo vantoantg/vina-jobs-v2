@@ -56,6 +56,12 @@ class Company extends \app\models\base\Company
 		return false;
 	}
 
+	public function getCompany($company){
+    	$company = self::findOne($company);
+
+    	return $company;
+	}
+
     /**
      * @param $company_id
      * @return array

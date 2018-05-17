@@ -43,6 +43,9 @@ return [
 	'user/change-password.html' => 'front/user/profile-change-password',
 	'user/reset-password/<token:[a-zA-Z0-9_ -@.]+>.html' => 'front/user/profile-reset-password',
 
+    // contact
+	'service/register-jobs.html' => 'front/jobs/post-jobs',
+	'company/<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/company-detail',
     // jobs
 	'service/jobs/update/job-<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/edit-jobs',
 	'service/register-jobs.html' => 'front/jobs/post-jobs',

@@ -166,9 +166,27 @@ class JobsController extends FrontController
         ]);
     }
 
+	/**
+	 * @return Response
+	 */
     public function actionTopList(){
 	    $jobs = Job::instance()->getAllCompanyJobs();
 	    return $this->asJson($jobs);
+    }
+
+	/**
+	 * @param $id
+	 * @return string
+	 * @throws BadRequestHttpException
+	 */
+    public function actionCompanyDetail($id){
+	    $company = Company::findOne($id);
+	    if(!$company){
+	    	throw new BadRequestHttpException();
+	    }
+	    return $this->render('company_detail', [
+
+	    ]);
     }
 
     /**

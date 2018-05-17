@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="row">
 	                    <?php foreach ($galleries as $k => $gallery){ ?>
                             <div class="col-xs-4 item">
-                                <a href="#" data-num="<?=$k?>" data-toggle="modal" data-target="#viewGallery">
+                                <a href="#" data-toggle="modal" data-target="#viewGallery">
                                     <img src="<?= $gallery['thum'] ?>" class="img-thumbnail" alt="Los Angeles">
                                 </a>
                             </div>
@@ -167,7 +167,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
                         <?php foreach ($galleries as $k => $gallery){ ?>
-                        <div data-num="<?=$k?>" class="item <?php if ($k == 0){ echo 'active'; } ?>">
+                        <div class="item <?php if ($k == 0){ echo 'active'; } ?>">
                             <img src="<?= $gallery['view'] ?>" alt="Los Angeles">
                         </div>
                         <?php } ?>

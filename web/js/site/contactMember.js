@@ -14,12 +14,25 @@ var contactMember = function () {
     return {
         init: function () {
             this.events();
+            if (profileContact.length) {
+                this.handleTabsContactPage();
+            }
             if (contactInfos.length) {
                 this.profileContactPage();
                 this.uploadGallery();
             }
         },
         events: function () {
+        },
+        handleTabsContactPage: function () {
+            profileContact.on('click', 'ul#contact_infos li', function (e) {
+                var _hash = $('a', $(this)).attr('href');
+                history.pushState(null, null, _hash);
+            });
+            var hash = location.hash.split('#')[1];
+            console.log('ul#contact_infos li a[href="#'+hash+'"]');
+            $('ul#contact_infos li a[href="#'+hash+'"]').click();
+            contactMember.doLoadProfile(hash);
         },
         profileContactPage: function () {
             contactInfos.on('click', 'li a[aria-controls]', function () {

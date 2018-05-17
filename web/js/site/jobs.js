@@ -12,6 +12,7 @@ var Jobs = function(){
             this.events();
             if(site_employeers_detail.length){
                 this.siteEmployeersDetail();
+                this.handleActiveImgWhenClickShowPopupGellery();
             }
             if(site_index.length){
                 this.siteIndex();
@@ -54,6 +55,17 @@ var Jobs = function(){
                         $('a[href="#tabs-cv-valid"]').hide();
                     }
                 });
+            });
+        },
+        handleActiveImgWhenClickShowPopupGellery: function(){
+            var myCarousel = $('#myCarousel');
+            $('div.gallery').on('click', 'div.row div a[data-toggle="modal"]', function (e) {
+                var _no = $(this).data('num');
+                myCarousel.find('.carousel-indicators .active').removeClass('active');
+                myCarousel.find('[data-slide-to="' + _no + '"]').addClass('active');
+
+                myCarousel.find('.carousel-inner .active').removeClass('active');
+                myCarousel.find('[data-num="' + _no + '"]').addClass('active');
             });
         },
         siteIndex: function () {

@@ -19,6 +19,26 @@ class FileUploads extends \app\models\base\FileUploads
     const CANDIDATE = 'candidate';
     const COM_GALLERY = 'company_gallery';
 
+	/**
+	 * @param $object_type
+	 * @param $object_id
+	 * @return array
+	 */
+	public function getGallery($object_type, $object_id){
+		$imgs = self::instance()->getListByObjects($object_type, $object_id);
+		$return = [];
+
+		if($imgs){
+			foreach ($imgs as $img){
+				$return[] = [
+					'thum' => Helper::imgRender(Helper::params('companyCompanyGallery').$img['file_path'], 250, 200),
+					'view' => Helper::imgRender(Helper::params('companyCompanyGallery').$img['file_path'], 600, 400),
+				];
+			}
+		}
+
+		return $return;
+	}
 
     /**
      * @param $object_type
