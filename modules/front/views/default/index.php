@@ -312,11 +312,12 @@ Helper::generateSeo($page);
 </div>
 
 <script id="template-top-list" type="text/template">
-    <% if(data.length){ %>
+    <% var items = data.length; %>
+    <% if(items > 0){ %>
     <% _.each(data, function(k,v){ %>
     <tr class="<% if(v%2){ %> even <% }else{ %> odd <% } %> <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.1s">
         <td class="tbl-logo">
-        <a href="#"><img src="<%= k.com_logo %>" alt=""></a>
+        <a href="#"><img src="<%= k.com_logo %>" alt="" width="70"></a>
         </td>
         <td class="tbl-title">
         <h4><a href="<%= k.url_view %>"><%= k.job_name %> </a> <br><span class="job-type"><%= k.working_time %></span></h4>
@@ -326,14 +327,34 @@ Helper::generateSeo($page);
     </td>
     <td class="text-center"><p title="Nơi làm việc"><i class="icon-location"></i>
             <br><%= k.loca_name %></p></td>
-    <td class="tbl-apply"><a href="#">Apply now</a></td>
+    <td class="tbl-apply">
+        <a href="#"
+           class="apply-job"
+           data-action="apply"
+           data-toggle="modal"
+           data-target="#apply-modal"
+           data-href="<?= Helper::createUrl(['front/jobs/preapply']); ?>"
+        >Apply</a>
+    </td>
     </tr>
     <% }); %>
-    <% }else{ %>
-    <tr>
-	    <td colspan="100$">
-		    Chưa có tin nào được đăng.
-	    </td>
+
+    <% if(items <= 10){ %>
+    <%
+    var i;
+    for (i = 0; i < 10 - items; i++) { %>
+    <tr class="even wow fadeInUp" data-wow-delay="0.2s">
+        <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo2.png" alt=""></td>
+        <td class="tbl-title"><h4>Front End Developer <br><span class="job-type">full time</span>
+            </h4></td>
+        <td><p>Jolil corporation</p></td>
+        <td class="text-center"><p><i class="icon-location"></i>
+                <br>San Franciso, USA</p></td>
+        <td class="tbl-apply"><a href="#">Apply</a></td>
     </tr>
     <% } %>
+    <% } %>
+    <% } %>
 </script>
+
+<?= (new \app\components\JobsWidget())->applyPopup(); ?>

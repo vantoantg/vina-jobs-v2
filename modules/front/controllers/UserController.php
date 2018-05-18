@@ -353,15 +353,16 @@ class UserController extends FrontController
 				$userDetail->save();
 
 			}
-			Yii::$app->session->setFlash('updateSuccess', 'updateSuccess a');
-//			$url = Yii::$app->getUrlManager()->createUrl(['front/user/update-company']);
-//			return $this->redirect($url);
+			Yii::$app->session->setFlash('updateSuccess', 'Đã cập nhật thông tin công ty');
+			$r = Yii::$app->request->get('r');
+			if($r){
+				return $this->redirect(Helper::encrypt($r, false));
+			}
 		} else {
 			$errs = array_merge($model->getErrors(), $com->getErrors(), $userDetail->getErrors());
 			foreach ($errs as $error) {
 				$errors[] = $error[0];
 			}
-
 		}
 
 		return $this->render('register_company', [
@@ -527,7 +528,7 @@ class UserController extends FrontController
 
 		$model = new LoginForm();
 		if ($model->load(\Yii::$app->request->post()) && $model->login()) {
-			return $this->redirect(\Yii::$app->request->post('returnUrl'));
+			return $this->redirect(\Yii::$app->request->post('r'));
 		} else {
 			if (\Yii::$app->request->isAjax) {
 				return Helper::jsonData(['error' => true, 'message' => $model->errors['password'][0]]);
@@ -608,7 +609,7 @@ class UserController extends FrontController
 	{
 		try{
 			\Yii::$app->user->logout();
-			return $this->redirect(Helper::encrypt(\Yii::$app->request->get('returnUrl'), false));
+			return $this->redirect(Helper::encrypt(\Yii::$app->request->get('r'), false));
 		}catch (Exception $exception){
 			throw new BadRequestHttpException($exception->getMessage());
 		}

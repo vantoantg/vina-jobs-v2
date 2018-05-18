@@ -283,7 +283,6 @@ var Main = function () {
 
                 $(window).scroll(function() {
                     var contentHeight = $(tartgetHeight).height();
-                    console.log(contentHeight, 'contentHeight');
                     var wdTop = $(window).scrollTop();
                     if($(window).width() >= 768 && wdTop + 400 < contentHeight){
                         Main.doFixedSidebar(sidebarfx, offset, topPadding);

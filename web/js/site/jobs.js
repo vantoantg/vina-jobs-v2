@@ -10,6 +10,10 @@ var Jobs = function(){
     return{
         init: function(){
             this.events();
+
+            if($('#apply-modal').length){
+                this.loadBtnApplyPopup();
+            }
             if(site_employeers_detail.length){
                 this.siteEmployeersDetail();
                 this.handleActiveImgWhenClickShowPopupGellery();
@@ -46,6 +50,20 @@ var Jobs = function(){
             });
 
             site_employeers_detail.on('click', '.ft-jobs-detail button.apply-job', function () {
+                var _btn = $(this);
+                Service.postCallback(_btn.data('href'), {'action': 'applỵ'}, function (res) {
+                    if(res.data.length){
+                        var html = _.template($('#cv-list').html())({list : res.data });
+                        $('#tabs-cv-valid ul').html(html);
+                    }else{
+                        $('a[href="#tabs-cv-valid"]').hide();
+                    }
+                });
+            });
+        },
+        loadBtnApplyPopup: function(){
+            $('div.container').on('click', '.apply-job', function (e) {
+                e.preventDefault();
                 var _btn = $(this);
                 Service.postCallback(_btn.data('href'), {'action': 'applỵ'}, function (res) {
                     if(res.data.length){

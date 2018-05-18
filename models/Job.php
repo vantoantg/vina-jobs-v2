@@ -190,7 +190,7 @@ class Job extends Jobs
 		if($data){
 			$result = [];
 			foreach ($data as $k => $item){
-				$item['salary'] = Dropdowns::$salary[$item['salary']];
+				$item['salary'] = $this->getSalary($item['salary']);
 				$item['com_logo'] = Company::getLogo($item['com_logo'], 70,70);
 				$item['working_time'] = Dropdowns::$working_time[$item['working_time']];
 				$item['created_at'] = Datetime::sqlDatetimeDiffForHumans($item['created_at']);
@@ -203,5 +203,17 @@ class Job extends Jobs
 		}
 
 		return [];
+	}
+
+	/**
+	 * @param $salary
+	 * @return string
+	 */
+	public function getSalary($salary){
+		if(Common::isLoginned()){
+			return Dropdowns::$salary[$salary];
+		}
+
+		return '<a href="#" data-toggle="modal" data-target="#login-modal" title="Đăng nhập để xem">Login</a>';
 	}
 }

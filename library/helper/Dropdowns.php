@@ -73,7 +73,7 @@ class Dropdowns
      */
     public static $salary = [
         1 => "Thỏa thuận",
-        2 => 'Dưới 5 triệu',
+        2 => '5 triệu',
         3 => '5-10 triệu',
         4 => '10-15 triệu',
         5 => '15-20 triệu',
