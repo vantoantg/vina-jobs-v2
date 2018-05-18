@@ -133,10 +133,17 @@ class UserController extends FrontController
 			'errors' => $errors
 		]);
 	}
+
+	/**
+	 * @return string
+	 */
 	public function actionUpdateCandidate()
 	{
 		$errors = [];
 		if (Common::isLoginned()) {
+			if(Common::currentUsers()->type != Users::USER_TYPE_DEFAULT){
+				return $this->goHome();
+			}
 			$model = Users::findOne(Common::currentUser());
 			$model->scenario = Users::SCENARIO_UPDATE;
 			$userDetail = UserDetails::findOne(['user_id' => $model->getId()]);
@@ -185,17 +192,12 @@ class UserController extends FrontController
 				if ($userDetail->save() && $candidate->save()) {
 					$transaction->commit();
 					// Flash updated
-				}else{
-					echo '<pre>';
-					print_r($userDetail->errors);
-					echo '</pre>';
-					die;
-				}
 
-				return $this->render('update_candidate_success', [
-					'success' => true,
-					'message' => "",
-				]);
+					return $this->render('update_candidate_success', [
+						'success' => true,
+						'message' => "",
+					]);
+				}
 			}
 		}else {
 			$erros = array_merge($model->getErrors(), $candidate->getErrors(), $userDetail->getErrors());
