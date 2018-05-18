@@ -121,6 +121,10 @@ class Users extends \app\models\base\User implements IdentityInterface
 
         if (parent::beforeSave($insert)) {
             if ($this->isNewRecord) {
+	            // TODO: Make active user register
+	            //$this->status = Users::STATUS_WAITING_ACTIVE;
+	            $this->status = Users::STATUS_ACTIVED;
+
                 $this->setPassword($this->password);
                 $this->password_reset_token = $this->generatePasswordResetToken();
                 $this->auth_key = \Yii::$app->getSecurity()->generateRandomString();
@@ -135,11 +139,6 @@ class Users extends \app\models\base\User implements IdentityInterface
 	 */
     public function newContactCompany(){
 	    $this->type = Users::USER_TYPE_CONTACT_OF_COMPANY;
-
-	    // TODO: Make active user register
-	    //$this->status = Users::STATUS_WAITING_ACTIVE;
-	    $this->status = Users::STATUS_ACTIVED;
-
 	    $this->role = Role::ROLE_CUSTOMMER;
     }
 

@@ -52,7 +52,7 @@ $dropdowns = new Dropdown();
 <div class="container" id="register-candidate">
 	<div class="col-12 col-sm-8 candidate-form">
 		<div class="row main">
-            <h1>CẬP NHẬT HỒ SƠ ỨNG VIÊN</h1>
+            <h1 class="text-center">CẬP NHẬT HỒ SƠ ỨNG VIÊN</h1>
 
 			<div class="main-login main-center">
                 <div class="alert-message alert-message-info <?= \app\library\helper\Helper::wowClass() ?> zoomInDown animated" data-wow-delay="0.2s">

@@ -22,8 +22,22 @@ class Common
         if (Yii::$app->user->identity) {
             return true;
         }
+
         return false;
     }
+
+	/**
+	 * No login
+	 * @return bool
+	 */
+	public static function isGuest()
+	{
+		if (!Yii::$app->user->identity) {
+			return true;
+		}
+
+		return false;
+	}
 
     /**
      * @param string $key

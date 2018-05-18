@@ -213,7 +213,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	            </div>
                 <?php } ?>
 	            <div class="form-group ">
-                    <?= Html::submitButton('<i class="fas fa-hdd"></i> Lưu thông tin', ['class' => 'btn btn-primary login-button']) ?>
+                    <?= Html::submitButton($model->isNewRecord ?'<i class="fas fa-hdd"></i> Lưu thông tin' : '<i class="fas fa-hdd"></i> Cập nhật thông tin', ['class' => 'btn btn-primary login-button']) ?>
 	            </div>
 
                 <?php ActiveForm::end(); ?>

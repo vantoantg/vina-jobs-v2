@@ -86,9 +86,10 @@ class Company extends \app\models\base\Company
 	 * @param int $h
 	 * @return mixed|string
 	 */
-    public static function getLogo($logo, $w = 100, $h = 100){
+    public static function getLogo($logo, $w = 200, $h = 200){
 	    if ($logo) {
-		    return Helper::imgRender(Helper::params('companyLogoPath') . $logo, $w, $h);
+	    	return Helper::params('companyLogoPath') . $logo;
+//		    return Helper::imgRender(Helper::params('companyLogoPath') . $logo, $w, $h);
 	    } else {
 		    return Helper::imgRender(false);
 	    }

@@ -133,10 +133,17 @@ class UserController extends FrontController
 			'errors' => $errors
 		]);
 	}
+
+	/**
+	 * @return string
+	 */
 	public function actionUpdateCandidate()
 	{
 		$errors = [];
 		if (Common::isLoginned()) {
+			if(Common::currentUsers()->type != Users::USER_TYPE_DEFAULT){
+				return $this->goHome();
+			}
 			$model = Users::findOne(Common::currentUser());
 			$model->scenario = Users::SCENARIO_UPDATE;
 			$userDetail = UserDetails::findOne(['user_id' => $model->getId()]);
@@ -185,17 +192,12 @@ class UserController extends FrontController
 				if ($userDetail->save() && $candidate->save()) {
 					$transaction->commit();
 					// Flash updated
-				}else{
-					echo '<pre>';
-					print_r($userDetail->errors);
-					echo '</pre>';
-					die;
-				}
 
-				return $this->render('update_candidate_success', [
-					'success' => true,
-					'message' => "",
-				]);
+					return $this->render('update_candidate_success', [
+						'success' => true,
+						'message' => "",
+					]);
+				}
 			}
 		}else {
 			$erros = array_merge($model->getErrors(), $candidate->getErrors(), $userDetail->getErrors());
@@ -353,15 +355,16 @@ class UserController extends FrontController
 				$userDetail->save();
 
 			}
-			Yii::$app->session->setFlash('updateSuccess', 'updateSuccess a');
-//			$url = Yii::$app->getUrlManager()->createUrl(['front/user/update-company']);
-//			return $this->redirect($url);
+			Yii::$app->session->setFlash('updateSuccess', 'Đã cập nhật thông tin công ty');
+			$r = Yii::$app->request->get('r');
+			if($r){
+				return $this->redirect(Helper::encrypt($r, false));
+			}
 		} else {
 			$errs = array_merge($model->getErrors(), $com->getErrors(), $userDetail->getErrors());
 			foreach ($errs as $error) {
 				$errors[] = $error[0];
 			}
-
 		}
 
 		return $this->render('register_company', [
@@ -527,7 +530,7 @@ class UserController extends FrontController
 
 		$model = new LoginForm();
 		if ($model->load(\Yii::$app->request->post()) && $model->login()) {
-			return $this->redirect(\Yii::$app->request->post('returnUrl'));
+			return $this->redirect(\Yii::$app->request->post('r'));
 		} else {
 			if (\Yii::$app->request->isAjax) {
 				return Helper::jsonData(['error' => true, 'message' => $model->errors['password'][0]]);
@@ -608,7 +611,7 @@ class UserController extends FrontController
 	{
 		try{
 			\Yii::$app->user->logout();
-			return $this->redirect(Helper::encrypt(\Yii::$app->request->get('returnUrl'), false));
+			return $this->redirect(Helper::encrypt(\Yii::$app->request->get('r'), false));
 		}catch (Exception $exception){
 			throw new BadRequestHttpException($exception->getMessage());
 		}

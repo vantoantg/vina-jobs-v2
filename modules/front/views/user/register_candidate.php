@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container" id="register-candidate">
 	<div class="col-12 col-sm-8">
 		<div class="row main">
-            <h1>ĐĂNG KÝ ỨNG VIÊN</h1>
+            <h1 class="text-center">ĐĂNG KÝ ỨNG VIÊN</h1>
 
 			<div class="main-login main-center">
                 <div class="alert-message alert-message-info <?= Helper::wowClass() ?> zoomInDown animated" data-wow-delay="0.2s">

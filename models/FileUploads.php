@@ -104,6 +104,7 @@ class FileUploads extends \app\models\base\FileUploads
         $file->file_path = $file_path;
         $file->file_name = $file_name;
         $file->file_type = $file_type;
+        $file->arranged = 9999; // Set to arrange latest
         $file->created_by = Common::currentUser();
         $file->created_at = Datetime::createdAt();
         $file->save();

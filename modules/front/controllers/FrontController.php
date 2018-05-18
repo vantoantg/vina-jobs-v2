@@ -11,6 +11,7 @@ use Yii;
  */
 class FrontController extends Controller
 {
+
 	public function init()
 	{
 		parent::init();
@@ -28,9 +29,12 @@ class FrontController extends Controller
 		return $this->render('index');
 	}
 
+	/**
+	 * @return \yii\web\Response
+	 */
 	public function handleUrlSessionToRedirect()
 	{
-		if (!Yii::$app->request->isAjax) {
+		if (!Yii::$app->request->isAjax && Common::isGuest()) {
 			$url = Yii::$app->request->getUrl();
 			if (!Yii::$app->session->get('testUrl')) {
 				$data[] = $url;
@@ -52,6 +56,9 @@ class FrontController extends Controller
 		}
 	}
 
+	/**
+	 * If user visited url second then not set effect show of UI
+	 */
 	public function setCookieForUrl()
 	{
 		$cookie_name = md5(\Yii::$app->request->getUrl());

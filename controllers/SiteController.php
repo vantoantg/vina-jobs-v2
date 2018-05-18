@@ -209,24 +209,6 @@ class SiteController extends FrontController
 	    $galleries = FileUploads::instance()->getGallery(FileUploads::COM_GALLERY, $job['company_id']);
     	$form = new ApplyForm();
 
-	    if($form->load(Yii::$app->request->post())){
-		    $form->new_cv = UploadedFile::getInstance($form, 'new_cv');
-		    if ($form->new_cv) {
-			    $file_type = $form->new_cv->extension;
-			    $file_name = $form->new_cv->baseName;
-			    $file_path = $form->new_cv->baseName.'-'.md5(date('dmyhis')).'.'.$file_type;
-			    $this->attachment = Yii::$app->basePath . Yii::$app->params['companyCandidatePath'] . $file_path;
-			    $form->new_cv->saveAs($this->attachment);
-			    FileUploads::saveFile(FileUploads::CANDIDATE, $file_path, $file_name, $file_type);
-		    }else{
-			    $this->attachment = Yii::$app->basePath . Yii::$app->params['companyCandidatePath'] . 123;
-		    }
-
-		    // Send email
-//		    $body = $this->renderPartial('@app/mail/layouts/reset_password', ['data' => '']);
-//		    Email::sendMailApply(' Chao ban abc ...', $body, '', '', $this->attachment);
-	    }
-
         return $this->render('employeers_detail', [
         	'job' => $job,
         	'company' => $company,
@@ -251,13 +233,14 @@ class SiteController extends FrontController
     }
 
 	/**
-	 * Displays blog page.
-	 *
+	 * @param $slug
+	 * @param $id
 	 * @return string
+	 * @throws BadRequestHttpException
 	 */
 	public function actionBlogDetail($slug, $id)
 	{
-		$post = Post::findOne($id);
+		$post = Post::find()->where('status = :status',['status' => Post::STATUS_ACTIVE])->andWhere(['id' => $id])->one();
 		if(!$post){
 			throw new BadRequestHttpException();
 		}

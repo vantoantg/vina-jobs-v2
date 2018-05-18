@@ -17,12 +17,18 @@ use app\library\helper\Helper;
 				<h6 class="heading7">BẠN MUỐN LÀM GÌ ?</h6>
 				<ul class="footer-ul">
 					<li><a href="#"> Đăng tin tìm việc</a></li>
-					<li><a href="#"> Đăng tin tuyển dụng</a></li>
-					<li><a href="#"> Tìm ứng viên tốt</a></li>
-					<li><a href="#"> Tìm một công việc tốt</a></li>
-					<li><a href="#"> Đăng ký thành thành viên</a></li>
-					<li><a href="#"> Đóng góp ý kiến của bạn</a></li>
-					<li><a href="#"> Xem các điều khoản của <?= Yii::$app->params['siteName']; ?></a></li>
+					<?php if(\app\library\helper\Common::isLoginned()){ ?>
+					<li><a href="<?= Helper::createUrl(['front/jobs/post-jobs']) ?>"> Đăng tin tuyển dụng</a></li>
+                    <?php }else{ ?>
+					<li><a href="#" data-toggle="modal" data-target="#login-modal"> Đăng tin tuyển dụng</a></li>
+                    <?php } ?>
+					<li><a href="<?= Helper::createUrl('site/job-seekers')?>"> Tìm ứng viên tốt</a></li>
+					<li><a href="<?= Helper::createUrl('site/employeers')?>"> Tìm một công việc tốt</a></li>
+                    <?php if(\app\library\helper\Common::isGuest()){ ?>
+					<li><a href="#" data-toggle="modal" data-target="#register-modal"> Đăng ký thành thành viên</a></li>
+                    <?php } ?>
+					<li><a href="<?= Helper::createUrl(['site/contact'])?>"> Đóng góp ý kiến của bạn</a></li>
+					<li><a href="<?= Helper::createUrl(['site/policy'])?>"> Xem các điều khoản của <?= Yii::$app->params['siteName']; ?></a></li>
 				</ul>
 			</div>
 			<div class="col-md-3 col-sm-6 paddingtop-bottom <?= Helper::wowClass(true) ?> fadeInRight" data-wow-delay="0.3s">

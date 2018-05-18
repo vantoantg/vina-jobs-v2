@@ -106,7 +106,7 @@ $userInfo = \app\models\UserDetails::getInfo();
                                            class="btn btn-sm btn-primary"><i
                                                     class="glyphicon glyphicon-envelope"></i></a>
                                         <span class="pull-right">
-                                            <a href="<?= Helper::createUrl(['company/update.html']) ?>"
+                                            <a href="<?= Helper::createUrl(['front/user/update-company']) ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#profile'); ?>"
                                                data-original-title="Edit this user" data-toggle="tooltip" type="button"
                                                class="btn btn-sm btn-warning"><i
                                                         class="glyphicon glyphicon-edit"></i></a>
@@ -161,12 +161,15 @@ $userInfo = \app\models\UserDetails::getInfo();
     </div>
 </div>
 <script type="text/template" id="template-candidate">
-    <div class="job-posts table-responsive">
+    <p class="text-center nodata"><i class="fas fa-paint-brush"></i> <br>
+        Tính năng đang cập nhật!
+    </p>
+    <!--<div class="job-posts table-responsive">
         <table class="table list-jobs">
-            <tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp"
+            <tr class="odd <?/*= \app\library\helper\Helper::wowClass() */?> fadeInUp"
                 data-wow-delay="1s">
                 <td class="tbl-logo"><img
-                            src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo1.png"
+                            src="<?/*= Helper::homeUrl() */?>web/template/jobs/img/job-logo1.png"
                             alt=""></td>
                 <td class="tbl-title"><h4>Web Designer <br><span
                                 class="job-type">full time</span></h4></td>
@@ -174,10 +177,10 @@ $userInfo = \app\models\UserDetails::getInfo();
                 <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
                 <td><p>&dollar; 14000</p></td>
             </tr>
-            <tr class="even <?= \app\library\helper\Helper::wowClass() ?> fadeInUp"
+            <tr class="even <?/*= \app\library\helper\Helper::wowClass() */?> fadeInUp"
                 data-wow-delay="1.1s">
                 <td class="tbl-logo"><img
-                            src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo2.png"
+                            src="<?/*= Helper::homeUrl() */?>web/template/jobs/img/job-logo2.png"
                             alt=""></td>
                 <td class="tbl-title"><h4>Front End Developer <br><span class="job-type">full time</span>
                     </h4></td>
@@ -185,10 +188,10 @@ $userInfo = \app\models\UserDetails::getInfo();
                 <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
                 <td><p>&dollar; 14000</p></td>
             </tr>
-            <tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp"
+            <tr class="odd <?/*= \app\library\helper\Helper::wowClass() */?> fadeInUp"
                 data-wow-delay="1.2s">
                 <td class="tbl-logo"><img
-                            src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo3.png"
+                            src="<?/*= Helper::homeUrl() */?>web/template/jobs/img/job-logo3.png"
                             alt=""></td>
                 <td class="tbl-title"><h4>HR Manager <br><span class="job-type">full time</span>
                     </h4></td>
@@ -196,10 +199,10 @@ $userInfo = \app\models\UserDetails::getInfo();
                 <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
                 <td><p>&dollar; 14000</p></td>
             </tr>
-            <tr class="even <?= \app\library\helper\Helper::wowClass() ?> fadeInUp"
+            <tr class="even <?/*= \app\library\helper\Helper::wowClass() */?> fadeInUp"
                 data-wow-delay="1.3s">
                 <td class="tbl-logo"><img
-                            src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo4.png"
+                            src="<?/*= Helper::homeUrl() */?>web/template/jobs/img/job-logo4.png"
                             alt=""></td>
                 <td class="tbl-title"><h4>Internship Designer <br><span class="job-type">full time</span>
                     </h4></td>
@@ -207,10 +210,10 @@ $userInfo = \app\models\UserDetails::getInfo();
                 <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
                 <td><p>&dollar; 14000</p></td>
             </tr>
-            <tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp"
+            <tr class="odd <?/*= \app\library\helper\Helper::wowClass() */?> fadeInUp"
                 data-wow-delay="1.4s">
                 <td class="tbl-logo"><img
-                            src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo5.png"
+                            src="<?/*= Helper::homeUrl() */?>web/template/jobs/img/job-logo5.png"
                             alt=""></td>
                 <td class="tbl-title"><h4>Software Designer <br><span
                                 class="job-type">full time</span></h4></td>
@@ -218,10 +221,10 @@ $userInfo = \app\models\UserDetails::getInfo();
                 <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
                 <td><p>&dollar; 14000</p></td>
             </tr>
-            <tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp"
+            <tr class="odd <?/*= \app\library\helper\Helper::wowClass() */?> fadeInUp"
                 data-wow-delay="1.5s">
                 <td class="tbl-logo"><img
-                            src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo4.png"
+                            src="<?/*= Helper::homeUrl() */?>web/template/jobs/img/job-logo4.png"
                             alt=""></td>
                 <td class="tbl-title"><h4>Internship Designer <br><span class="job-type">full time</span>
                     </h4></td>
@@ -229,10 +232,10 @@ $userInfo = \app\models\UserDetails::getInfo();
                 <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
                 <td><p>&dollar; 14000</p></td>
             </tr>
-            <tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp"
+            <tr class="odd <?/*= \app\library\helper\Helper::wowClass() */?> fadeInUp"
                 data-wow-delay="1.6s">
                 <td class="tbl-logo"><img
-                            src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo4.png"
+                            src="<?/*= Helper::homeUrl() */?>web/template/jobs/img/job-logo4.png"
                             alt=""></td>
                 <td class="tbl-title"><h4>Internship Designer <br><span class="job-type">full time</span>
                     </h4></td>
@@ -241,7 +244,7 @@ $userInfo = \app\models\UserDetails::getInfo();
                 <td><p>&dollar; 14000</p></td>
             </tr>
         </table>
-    </div>
+    </div>-->
 </script>
 <script type="text/template" id="template-jobs">
     <% if(data.length){ %>
@@ -271,7 +274,7 @@ $userInfo = \app\models\UserDetails::getInfo();
         </table>
     </div>
     <% } else { %>
-        <p class="text-center"><i class="far fa-file-alt"></i> <br> Chưa có tin nào được đăng !</p>
+        <p class="text-center nodata"><i class="far fa-file-alt"></i> <br> Chưa có tin nào được đăng!</p>
     <% } %>
 </script>
 
@@ -281,7 +284,7 @@ $userInfo = \app\models\UserDetails::getInfo();
     </div>
     <div class="panel-body">
         <div class="row">
-            <div class=" col-xs-12">
+            <div class=" col-xs-9">
                 <table class="table table-user-information">
                     <tbody>
                     <tr>
@@ -289,8 +292,8 @@ $userInfo = \app\models\UserDetails::getInfo();
 		                    <ul class="com-gallery" data-url-sort="<?= Helper::createUrl(['front/user/ajax-sortable'])?>">
 			                    <% if (data.gallery.length){ %>
 			                    <% _.each(data.gallery, function(k,v){ %>
-			                    <li class="item" data-id="<%= k.id %>">
-				                    <a href="#" data-id="<%= k.id %>"><i class="far fa-trash-alt"></i></a>
+			                    <li class="item" data-id="<%= k.id %>" title="Nhấp chuột giữ và di chuyển để sắp xếp thứ tự cho các bức ảnh">
+				                    <a href="#" data-id="<%= k.id %>" title="Xóa"><i class="far fa-trash-alt"></i></a>
 				                    <img src="<%= k.img %>">
 			                    </li>
 			                    <% }); %>
@@ -305,22 +308,15 @@ $userInfo = \app\models\UserDetails::getInfo();
 
 	                    </td>
                     </tr>
-                    <% if (data.isUpload){ %>
                     <tr>
-                        <td colspan="100%">
-
-                        </td>
-                    </tr>
-                    <% } %>
-                    <tr>
-                        <td>Tên công ty:</td>
+                        <td style="width: 30%">Tên công ty:</td>
                         <td><%= data.name %></td>
                     </tr>
                     <tr>
                         <td>Logo:</td>
                         <td>
                             <img src="<%= data.logo %>"
-                                 class="img-circle img-responsive" width="120">
+                                 class="img-responsive" style="max-width: 100px">
                         </td>
                     </tr>
                     <tr>
@@ -336,10 +332,13 @@ $userInfo = \app\models\UserDetails::getInfo();
                     </tbody>
                 </table>
             </div>
+            <div class="col-xs-3">
+                &nbsp;
+            </div>
         </div>
     </div>
     <div class="panel-footer">
-        <a data-original-title="Broadcast Message" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Cập nhật thông tin công ty</a>
+        <a href="" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Cập nhật thông tin công ty</a>
     </div>
 </script>
 
