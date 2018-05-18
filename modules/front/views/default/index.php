@@ -314,8 +314,13 @@ Helper::generateSeo($page);
 <script id="template-top-list" type="text/template">
     <% var items = data.length; %>
     <% if(items > 0){ %>
-    <% _.each(data, function(k,v){ %>
-    <tr class="<% if(v%2){ %> even <% }else{ %> odd <% } %> <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.1s">
+
+    <%
+    var i;
+    _.each(data, function(k,v){
+    i++;
+    %>
+    <tr class="<% if(v%2){ %> even <% }else{ %> odd <% } %> wow fadeInUp" data-wow-delay="0.<%= i %>s">
         <td class="tbl-logo">
         <a href="#"><img src="<%= k.com_logo %>" alt="" width="70"></a>
         </td>
@@ -343,7 +348,7 @@ Helper::generateSeo($page);
     <%
     var i;
     for (i = 0; i < 10 - items; i++) { %>
-    <tr class="even wow fadeInUp" data-wow-delay="0.2s">
+    <tr class="even wow fadeInUp" data-wow-delay="0.<%= i + 2 %>s">
         <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo2.png" alt=""></td>
         <td class="tbl-title"><h4>Front End Developer <br><span class="job-type">full time</span>
             </h4></td>
