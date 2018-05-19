@@ -333,6 +333,11 @@ Helper::generateSeo($page);
     <td class="text-center"><p title="Nơi làm việc"><i class="icon-location"></i>
             <br><%= k.loca_name %></p></td>
     <td class="tbl-apply">
+        <% if (k.isGuest){ %>
+        <a href="#"
+           data-toggle="modal" data-target="#login-modal"
+        >Apply</a>
+        <% } else{ %>
         <a href="#"
            class="apply-job"
            data-action="apply"
@@ -340,6 +345,7 @@ Helper::generateSeo($page);
            data-target="#apply-modal"
            data-href="<?= Helper::createUrl(['front/jobs/preapply']); ?>"
         >Apply</a>
+        <% } %>
     </td>
     </tr>
     <% }); %>

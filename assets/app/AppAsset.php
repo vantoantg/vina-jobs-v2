@@ -36,7 +36,7 @@ class AppAsset extends AssetBundle
         'web/template/jobs/less/my-site.css',
     ];
     public $js = [
-        'web/template/jobs/js/vendor/modernizr-2.6.2.min.js',
+//        'web/template/jobs/js/vendor/modernizr-2.6.2.min.js',
         'web/template/jobs/js/bootstrap.min.js',
         'web/template/admin/assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js',
         'web/template/admin/assets/js/libs/bootstrap-datepicker/locales/bootstrap-datepicker.vi.js',
@@ -58,6 +58,7 @@ class AppAsset extends AssetBundle
         'web/js/site/search.js',
         'web/js/site/contactMember.js',
         'web/js/site/userMember.js',
+        'web/js/site/loadLast.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

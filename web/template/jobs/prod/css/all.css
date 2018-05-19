@@ -11180,6 +11180,14 @@ body.modal-open {
 .red {
   color: red;
 }
+.nodata {
+  padding: 100px;
+}
+.nodata i {
+  font-size: 70px;
+  color: #dedede;
+  margin-bottom: 15px;
+}
 .loginmodal-container {
   padding: 30px;
   max-width: 350px;

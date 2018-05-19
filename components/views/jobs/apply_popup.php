@@ -60,3 +60,12 @@ use \yii\widgets\ActiveForm;
 		</div>
 	</div>
 </div>
+
+<script type="text/template" id="cv-list">
+    <% _.each(list, function(v, k){ %>
+    <li>
+        <label><input <% if(k == 0){ %> checked <% } %> type="radio" class="radio-inline" name="radios" value="<%= v.file_path %>">
+            <span class="outside"><span class="inside"></span></span><%= v.file_name %></label>
+    </li>
+    <% }) %>
+</script>

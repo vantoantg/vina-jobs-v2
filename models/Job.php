@@ -190,6 +190,7 @@ class Job extends Jobs
 		if($data){
 			$result = [];
 			foreach ($data as $k => $item){
+				$item['isGuest'] = Common::isGuest();
 				$item['salary'] = $this->getSalary($item['salary']);
 				$item['com_logo'] = Company::getLogo($item['com_logo'], 70,70);
 				$item['working_time'] = Dropdowns::$working_time[$item['working_time']];

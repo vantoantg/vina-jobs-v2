@@ -39,6 +39,10 @@ class JobsController extends FrontController
         }
     }
 
+	/**
+	 * @return Response
+	 * @throws BadRequestHttpException
+	 */
     public function actionPreapply(){
         if(!Yii::$app->request->isAjax){
             throw new BadRequestHttpException('Không tìm thấy yêu cầu của bạn!');
