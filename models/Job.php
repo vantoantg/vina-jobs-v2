@@ -120,6 +120,7 @@ class Job extends Jobs
 				$item['created_at'] = Datetime::sqlDatetimeDiffForHumans($item['created_at']);
 				$item['url_edit'] = Helper::createUrl(['front/jobs/edit-jobs', 'id' => $item['job_id']]);
 				$item['url_view'] = Helper::createUrl(['site/employeers-detail', 'slug' => $item['slug'], 'id' => $item['job_id']]);
+				$item['client_status'] = ($item['client_status'] == Job::STATUS_CLIENT_PUBLISH) ? '<i class="fas fa-eye"></i>' : '<i class="far fa-eye-slash"></i>';
 				$result[] = $item;
 			}
 
@@ -190,6 +191,7 @@ class Job extends Jobs
 		if($data){
 			$result = [];
 			foreach ($data as $k => $item){
+				$item['isGuest'] = Common::isGuest();
 				$item['salary'] = $this->getSalary($item['salary']);
 				$item['com_logo'] = Company::getLogo($item['com_logo'], 70,70);
 				$item['working_time'] = Dropdowns::$working_time[$item['working_time']];

@@ -48,18 +48,6 @@ var Jobs = function(){
                     }
                 });
             });
-
-            site_employeers_detail.on('click', '.ft-jobs-detail button.apply-job', function () {
-                var _btn = $(this);
-                Service.postCallback(_btn.data('href'), {'action': 'applỵ'}, function (res) {
-                    if(res.data.length){
-                        var html = _.template($('#cv-list').html())({list : res.data });
-                        $('#tabs-cv-valid ul').html(html);
-                    }else{
-                        $('a[href="#tabs-cv-valid"]').hide();
-                    }
-                });
-            });
         },
         loadBtnApplyPopup: function(){
             $('div.container').on('click', '.apply-job', function (e) {

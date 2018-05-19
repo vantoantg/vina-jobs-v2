@@ -17,15 +17,16 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="container">
-	<div class="users-create">
-		<h1><?= Html::encode($this->title) ?></h1>
-	</div>
-
     <div class="row">
         <div class="col-12 col-sm-8 <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.1s">
+            <div class="users-create">
+                <h1 class="text-center">THAY ĐỔI MẬT KHẨU</h1>
+            </div>
+
             <div class="alert-message alert-message-info <?= Helper::wowClass() ?> zoomInDown animated" data-wow-delay="0.2s">
                 <h4>Lưu ý:</h4>
-                <p>Bạn nên thay đổi mật khẩu...</p>
+                <p>Bạn nên thay đổi mật khẩu nếu có đăng nhập trên thiết bị, máy tính không phải của bạn.<br>
+                    Mật khẩu nên đặt có độ phức tạp, không nên sử dụng những mật khẩu đơn giản dễ đoán, dễ dò.</p>
             </div>
 
 			<?php if (Yii::$app->session->hasFlash('update_pw_success')): ?>
