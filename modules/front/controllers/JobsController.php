@@ -114,10 +114,14 @@ class JobsController extends FrontController
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
-
-            $this->refresh();
+			$r = Yii::$app->request->get('r');
+			if($r){
+				Yii::$app->session->setFlash('success', "Tin tuyển dụng đã được cập nhật.");
+				return $this->redirect(Helper::encrypt($r, false));
+			}
+	        $this->refresh();
         }
-        Yii::$app->session->setFlash('success', "Tin tuyển dụng đã được cập nhật.");
+
         return $this->render('jobs', [
             'model' => $model,
         ]);

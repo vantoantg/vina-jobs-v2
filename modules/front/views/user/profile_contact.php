@@ -93,27 +93,15 @@ $userInfo = \app\models\UserDetails::getInfo();
                                                     </tbody>
                                                 </table>
 
-                                                <a href="<?= Helper::createUrl(['front/jobs/post-jobs']) ?>"
-                                                   class="btn btn-primary"><i class="fas fa-plus"></i> Đăng tin tuyển
-                                                    dụng</a>
-                                                <a href="<?= Helper::createUrl(['front/user/update-company']) ?>"
-                                                   class="btn btn-primary"><i class="far fa-edit"></i> Câp nhật thông tin</a>
+
                                             </div>
                                         </div>
                                     </div>
                                     <div class="panel-footer">
-                                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button"
-                                           class="btn btn-sm btn-primary"><i
-                                                    class="glyphicon glyphicon-envelope"></i></a>
-                                        <span class="pull-right">
-                                            <a href="<?= Helper::createUrl(['front/user/update-company']) ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#profile'); ?>"
-                                               data-original-title="Edit this user" data-toggle="tooltip" type="button"
-                                               class="btn btn-sm btn-warning"><i
-                                                        class="glyphicon glyphicon-edit"></i></a>
-                            <a href="<?= Helper::createUrl(['front/user/logout']) ?>" data-original-title="Logout"
-                               data-toggle="tooltip" type="button"
-                               class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                        </span>
+                                        <a href="<?= Helper::createUrl(['front/user/update-company']) ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#profile'); ?>" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Cập nhật thông tin</a>
+
+                                        <a href="<?= Helper::createUrl(['front/jobs/post-jobs']) ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#profile'); ?>"
+                                           class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Đăng tin tuyển dụng</a>
                                     </div>
                                 </div>
                             </div>
@@ -252,6 +240,16 @@ $userInfo = \app\models\UserDetails::getInfo();
         <h3 class="panel-title">Có tất cả <%= data.length %> tin</h3>
     </div>
     <div class="job-posts table-responsive">
+        <div class="col-xs-12">
+	        <?php if (Yii::$app->session->hasFlash('success')): ?>
+                <br>
+                <div class="alert alert-success alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <i class="icon fa fa-check"></i> <?= Yii::$app->session->getFlash('success') ?>
+                </div>
+	        <?php endif; ?>
+        </div>
+
         <table class="table list-jobs">
             <% _.each(data, function(k,v){ %>
             <tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp"
@@ -260,7 +258,7 @@ $userInfo = \app\models\UserDetails::getInfo();
                 <td class="tbl-title">
                     <h4><%= k.job_name %><br>
                         <span class="job-type">
-                            <a href="<%= k.url_edit %>"><i class="fas fa-edit"></i></a> |
+                            <a href="<%= k.url_edit %>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#jobs'); ?>"><i class="fas fa-edit"></i></a> |
                             <a href="<%= k.url_view %>" target="_blank"><i class="fas fa-eye"></i></a>
                         </span></h4>
                 </td>
@@ -268,7 +266,9 @@ $userInfo = \app\models\UserDetails::getInfo();
                 <td><p><i class="icon-location"></i><%= k.loca_name %></p></td>
                 <td><p><%= k.salary %></p></td>
                 <td><p><%= k.created_at %></p></td>
-                <td><p><i class="far fa-eye-slash"></i></p></td>
+                <td><p>
+                        <%= k.client_status %>
+                    </p></td>
             </tr>
             <% }); %>
         </table>
@@ -276,6 +276,10 @@ $userInfo = \app\models\UserDetails::getInfo();
     <% } else { %>
         <p class="text-center nodata"><i class="far fa-file-alt"></i> <br> Chưa có tin nào được đăng!</p>
     <% } %>
+    <div class="panel-footer">
+    <a href="<?= Helper::createUrl(['front/jobs/post-jobs']) ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#jobs'); ?>"
+       class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Đăng tin tuyển dụng</a>
+    </div>
 </script>
 
 <script type="text/template" id="template-company">
@@ -287,6 +291,15 @@ $userInfo = \app\models\UserDetails::getInfo();
             <div class=" col-xs-9">
                 <table class="table table-user-information">
                     <tbody>
+                    <tr>
+                        <td colspan="100%">
+	                        <?php if (Yii::$app->session->hasFlash('updateSuccess')): ?>
+                                <div class="alert alert-success alert-dismissable <?= \app\library\helper\Helper::wowClass() ?> zoomInDown animated" data-wow-delay="0.5s">
+                                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                                    <i class="icon fa fa-check"></i> <?= Yii::$app->session->getFlash('updateSuccess') ?>
+                                </div>
+	                        <?php endif; ?>
+                        </td>
                     <tr>
 	                    <td colspan="100%">
 		                    <ul class="com-gallery" data-url-sort="<?= Helper::createUrl(['front/user/ajax-sortable'])?>">
@@ -338,7 +351,7 @@ $userInfo = \app\models\UserDetails::getInfo();
         </div>
     </div>
     <div class="panel-footer">
-        <a href="" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Cập nhật thông tin công ty</a>
+        <a href="<?= Helper::createUrl(['front/user/update-company']) ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#company'); ?>" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Cập nhật thông tin</a>
     </div>
 </script>
 

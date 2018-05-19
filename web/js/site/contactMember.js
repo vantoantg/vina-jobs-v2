@@ -27,6 +27,7 @@ var contactMember = function () {
         handleTabsContactPage: function () {
             profileContact.on('click', 'ul#contact_infos li', function (e) {
                 var _hash = $('a', $(this)).attr('href');
+                contactInfos.closest('.card').find('.alert.alert-success').remove();
                 history.pushState(null, null, _hash);
             });
             var hash = location.hash.split('#')[1];

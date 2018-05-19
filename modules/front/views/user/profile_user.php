@@ -52,15 +52,11 @@ $userInfo = \app\models\UserDetails::getInfo();
 												<table class="table table-user-information">
 													<tbody>
 													<tr>
-														<td>Department:</td>
+														<td>Avatar: <?= Common::currentUser('avatar') ?></td>
 														<td>
 															<img alt="User Pic"
-															     src="<?= Helper::webImgs(Common::currentUser('avatar')); ?>"
-															     class="img-circle img-responsive"></td>
-													</tr>
-													<tr>
-														<td>Department:</td>
-														<td>Programming</td>
+															     src="<?= Helper::imgRender('/'.Common::currentUser('avatar'), 150, 150, 'avatar'); ?>"
+															     class="img-responsive"></td>
 													</tr>
 													<tr>
 														<td>Đăng ký:</td>
@@ -92,29 +88,17 @@ $userInfo = \app\models\UserDetails::getInfo();
 													</tr>
 													</tbody>
 												</table>
-
-												<a href="#" class="btn btn-primary">My Sales Performance</a>
-												<a href="#" class="btn btn-primary">Team Sales Performance</a>
 											</div>
 										</div>
 									</div>
 									<div class="panel-footer">
-										<a data-original-title="Broadcast Message" data-toggle="tooltip" type="button"
-										   class="btn btn-sm btn-primary">
-											<i class="glyphicon glyphicon-envelope"></i></a>
-										<span class="pull-right">
-                                            <a href="<?= Helper::createUrl(['company/update.html']) ?>"
-                                               data-original-title="Cập nhật thông tin" data-toggle="tooltip" type="button"
-                                               class="btn btn-sm btn-warning"><i
-			                                            class="glyphicon glyphicon-edit"></i></a>
-                                            <a href="<?= Helper::createUrl(['front/user/logout']) ?>" data-original-title="Đăng xuất"
-				                               data-toggle="tooltip" type="button"
-				                               class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a></span>
+                                        <a href="<?= Helper::createUrl(['front/user/update-candidate']) ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#jobs'); ?>"class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Cập nhật thông tin</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+
 					<div role="tabpanel" class="tab-pane ovf-h" id="jobs">
 						<div class="col-xs-12 jobs">
 							<div class="job-posts table-responsive">
