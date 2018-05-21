@@ -34,7 +34,7 @@ class FrontController extends Controller
 	 */
 	public function handleUrlSessionToRedirect()
 	{
-		if (!Yii::$app->request->isAjax && Common::isGuest()) {
+		if (!Yii::$app->request->isAjax) {
 			$url = Yii::$app->request->getUrl();
 			if (!Yii::$app->session->get('testUrl')) {
 				$data[] = $url;
@@ -43,7 +43,9 @@ class FrontController extends Controller
 				$data[] = $url;
 			}
 			Yii::$app->session->set('testUrl', $data);
-		}
+		}else{
+		    $data = [];
+        }
 
 		if (Yii::$app->session->has('redirectAfterLoginWithSocial')) {
 			$keyUrl = count($data) - Yii::$app->session->get('redirectAfterLoginWithSocial');
