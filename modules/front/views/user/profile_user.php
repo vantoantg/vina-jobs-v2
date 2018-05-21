@@ -54,9 +54,10 @@ $userInfo = \app\models\UserDetails::getInfo();
 													<tr>
 														<td>Avatar: <?= Common::currentUser('avatar') ?></td>
 														<td>
-															<img alt="User Pic"
-															     src="<?= Helper::imgRender('/'.Common::currentUser('avatar'), 150, 150, 'avatar'); ?>"
-															     class="img-responsive"></td>
+															<!--<img alt="User Pic"
+															     src="<?/*= Helper::imgRender('/'.Common::currentUser('avatar'), 150, 150, 'avatar'); */?>"
+															     class="img-responsive">-->
+														</td>
 													</tr>
 													<tr>
 														<td>Đăng ký:</td>
