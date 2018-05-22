@@ -8,6 +8,7 @@
 namespace app\models;
 
 
+use app\library\helper\Helper;
 use PHPMailer\PHPMailer\PHPMailer;
 use yii\db\Exception;
 
@@ -22,7 +23,19 @@ use yii\db\Exception;
  */
 class Email
 {
-    public static function sendMail($subject = 'Subject', $body, $toEmail = 'nguyennguyen.vt88@gmail.com', $toName = 'Tona Nguyễn'){
+	/**
+	 * @param string $subject
+	 * @param $body
+	 * @param string $toEmail
+	 * @param string $toName
+	 * @return bool
+	 */
+    public static function sendMail(
+    	$subject = 'Subject',
+	    $body,
+	    $toEmail = 'nguyennguyen.vt88@gmail.com',
+	    $toName = 'Tona Nguyễn')
+    {
 	    $mail = new PHPMailer();                              // Passing `true` enables exceptions
 	    try {
 	    	$m = \Yii::$app->params['mail'];
@@ -45,7 +58,7 @@ class Email
 		    $mail->addAddress($toEmail, $toName);     // Add a recipient
 //		    $mail->addAddress('admin@vina-jobs.com');               // Name is optional
 		    $mail->addReplyTo($m['options']['addReplyTo'], 'noreply');
-//		    $mail->addCC('cc@example.com');
+		    $mail->addCC(Helper::params('adminEmail'));
 //		    $mail->addBCC('bcc@example.com');
 
 		    //Attachments

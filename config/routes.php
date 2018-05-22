@@ -44,6 +44,7 @@ return [
 	'user/reset-password/<token:[a-zA-Z0-9_ -@.]+>.html' => 'front/user/profile-reset-password',
 
     // contact
+	'company/active/token/<token:[a-zA-Z0-9_ -@.]+>.html' => 'front/user/active-company',
 	'company/<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/company-detail',
     // jobs
 	'service/jobs/update/job-<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/edit-jobs',
