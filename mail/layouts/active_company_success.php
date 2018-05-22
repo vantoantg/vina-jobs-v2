@@ -4,6 +4,8 @@
  * Date: 3/7/2018
  * Time: 9:49 PM
  */
+
+use app\library\helper\Helper;
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +15,7 @@
 	<meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
 	<meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
-	<title>www.vina-jobs.com</title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+	<title><?= \app\library\helper\Helper::params(); ?></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
 
 	<!-- Web Font / @font-face : BEGIN -->
 	<!-- NOTE: If web fonts are not required, lines 10 - 27 can be safely removed. -->
@@ -223,7 +225,7 @@
 	<table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="600" style="margin: auto;" class="email-container">
 		<tr>
 			<td style="padding: 10px 0; text-align: center">
-				<img src="http://www.vina-jobs.com/web/template/jobs/img/logo.jpg" width="72" alt="alt_text" border="0" style="height: auto; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555;">
+				<img src="<?= Helper::siteURL() ?>/web/template/jobs/img/logo.jpg" width="72" alt="alt_text" border="0" style="height: auto; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555;">
 			</td>
 		</tr>
 	</table>
@@ -234,15 +236,15 @@
 
 		<!-- 1 Column Text + Button : BEGIN -->
 		<tr>
-			<td bgcolor="#ffffff" style="padding: 40px 40px 20px; text-align: center;">
+			<td bgcolor="#ffffff" style="padding: 40px 0px 20px; text-align: center;">
 				<h1 style="margin: 0; font-family: sans-serif; font-size: 24px; line-height: 125%; color: #333333; font-weight: normal;">
-					Bạn vừa đăng ký thông tin trên website <?= \app\library\helper\Helper::siteURL(); ?>
+					Kích hoạt tài khoản <?= Helper::params() ?>
 				</h1>
 			</td>
 		</tr>
 		<tr>
-			<td bgcolor="#ffffff" style="padding: 0 40px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: center;">
-				<p style="margin: 0;">Chào bạn <?= $data['name'] ?>! bạn vừa đăng ký thành viên trên .... Maecenas sed ante pellentesque, posuere leo id, eleifend dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent laoreet malesuada cursus. Maecenas scelerisque congue eros eu posuere. Praesent in felis ut velit pretium lobortis rhoncus ut&nbsp;erat.</p>
+			<td bgcolor="#ffffff" style="padding: 0 0px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: center;">
+                <p style="margin: 0;">Chào bạn <?= $data['name'] ?>! tài khoản <b><?= $data['email'] ?></b> trên  <?= Helper::params() ?> vừa được kích hoạt. Vui lòng click vào button bên dưới quay lại website để có thể đăng tin tuyển dụng hoặc vài trang cá nhân để có cập nhật thông tin công ty. Xin cảm ơn</p>
 			</td>
 		</tr>
 		<tr>
@@ -251,8 +253,8 @@
 				<table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin: auto">
 					<tr>
 						<td style="border-radius: 3px; background: #00AEEF; text-align: center;" class="button-td">
-							<a href="<?= $data['link'] ?>" style="background: #00AEEF; border: 15px solid #00AEEF; font-family: sans-serif; font-size: 13px; line-height: 110%; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a">
-								&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff;">Kích hoạt tài khoản</span>&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="<?= Helper::siteURL() ?>" style="background: #00AEEF; border: 15px solid #00AEEF; font-family: sans-serif; font-size: 13px; line-height: 110%; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a">
+								&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff;">Quay lại <?= Helper::params() ?></span>&nbsp;&nbsp;&nbsp;&nbsp;
 							</a>
 						</td>
 					</tr>
@@ -273,9 +275,9 @@
 	<table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 680px; font-family: sans-serif; color: #888888; font-size: 12px; line-height: 140%;">
 		<tr>
 			<td style="padding: 0px 10px; width: 100%; font-family: sans-serif; font-size: 12px; line-height: 140%; text-align: center; color: #888888;" class="x-gmail-data-detectors">
-				<webversion style="color: #cccccc; text-decoration: underline; font-weight: bold;">http://www.vina-jobs.com</webversion>
+				<webversion style="color: #cccccc; text-decoration: underline; font-weight: bold;"><?= Helper::siteURL(); ?></webversion>
 				<br><br>
-				www.vina-jobs.com<br>Tân Phú, Hồ Chí Minh<br>0932.252.414
+				<?= Helper::siteURL() ?><br>Tân Phú, Hồ Chí Minh<br><?= Helper::params('hotline')?>
 				<br><br>
 				<!--<unsubscribe style="color: #888888; text-decoration: underline;">unsubscribe</unsubscribe>-->
 			</td>
@@ -296,7 +298,7 @@
 					<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
 						<tr>
 							<td style="padding: 15px; text-align: center; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #ffffff;">
-								<p style="margin: 0;">GÍUP BẠN TÌM KIẾM CÔNG VIỆC TRỞ NÊN DỄ DÀNG HƠN.</p>
+								<p style="margin: 0;">GÍUP BẠN TÌM KIẾM ỨNG VIÊN / VIỆC LÀM TRỞ NÊN DỄ DÀNG HƠN.</p>
 							</td>
 						</tr>
 					</table>

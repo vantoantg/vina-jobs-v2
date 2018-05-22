@@ -124,7 +124,6 @@ input[type=password]:hover {
   background-color: #4d90fe;
   padding: 0px;
   height: 36px;
-  font-family: roboto;
   font-size: 14px;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
 }
