@@ -16,7 +16,7 @@ class AppAssetAdmin extends AssetBundle
 	public $basePath = '@webroot';
 	public $baseUrl = '@web';
 	public $css = [
-		'http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900',
+		'https://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900',
 		'web/template/admin/assets/css/theme-default/bootstrap.css',
 		'web/template/admin/assets/css/theme-default/materialadmin.css',
 		'web/template/admin/assets/css/theme-default/font-awesome.min.css',
