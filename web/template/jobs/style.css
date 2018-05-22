@@ -479,15 +479,6 @@ body {
     transition: all 0.1s ease-in-out;
 }
 
-.table tr:hover td a {
-    /*background: #E5F6FD*/
-}
-
-.jobs .table tr:hover td a:hover {
-    /*background: #fff;*/
-    /*color: #00AEEF*/
-}
-
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
     border-top: 0px;
     vertical-align: middle;
@@ -513,11 +504,6 @@ body {
 
 .table tr.even {
     background: #F4FFFF
-}
-
-.table tr:hover {
-    /*background: #00AEEF;*/
-    /*color: #fff*/
 }
 
 .more-jobs {
@@ -617,7 +603,6 @@ body {
 .footer-area {
     background: #000;
     border-top: 4px solid #00AEEF;
-    /*padding-bottom: 20px*/
 }
 
 .footer {
@@ -822,11 +807,9 @@ aside .content-footer > img {
     color: #3A3A3A;
 }
 
-/*recent-post-col////////////////////*/
 .widget-sidebar {
     background-color: #fff;
     padding: 20px;
-    /*margin-top: 30px;*/
 }
 
 .title-widget-sidebar {
@@ -875,8 +858,6 @@ aside .content-footer > img {
     border: 5px solid #F39C12;
 }
 
-/*===============ARCHIVES////////////////////////////*/
-
 button.accordion {
     background-color: #00AEEF;
     color: #fff;
@@ -914,8 +895,6 @@ button.accordion.active:after {
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 }
-
-/*categories//////////////////////*/
 
 .categories-btn {
     background-color: #F39C12;
