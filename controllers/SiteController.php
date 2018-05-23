@@ -63,8 +63,8 @@ class SiteController extends FrontController
                 'class' => 'yii\web\ErrorAction',
             ],
             'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+                'class' => 'app\components\MathCaptchaAction',
+                'fixedVerifyCode' => YII_ENV_TEST ? '42' : null,
             ],
             'auth' => [
                 'class' => 'yii\authclient\AuthAction',
@@ -263,7 +263,10 @@ class SiteController extends FrontController
     public function actionContact()
     {
         $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
+        if ($model->load(Yii::$app->request->post())) {
+            $data = Yii::$app->request->post();
+            $body = $this->renderPartial('@app/mail/layouts/contact', ['data' => $data['ContactForm']]);
+            Email::instance()->sendContact($body);
             Yii::$app->session->setFlash('contactFormSubmitted');
 
             return $this->refresh();
