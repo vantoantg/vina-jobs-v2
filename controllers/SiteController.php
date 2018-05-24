@@ -63,8 +63,8 @@ class SiteController extends FrontController
                 'class' => 'yii\web\ErrorAction',
             ],
             'captcha' => [
-                'class' => 'app\components\MathCaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? '42' : null,
+                'class' => 'yii\captcha\CaptchaAction',
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
             'auth' => [
                 'class' => 'yii\authclient\AuthAction',
