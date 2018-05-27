@@ -11,6 +11,16 @@ use yii\captcha\Captcha;
 
 $this->title = 'Liên hệ';
 $this->params['breadcrumbs'][] = $this->title;
+
+$this->registerJs(
+	'setTimeout(function(){ $("#contactform-verifycode-image").trigger("click"); }, 10);',
+	\yii\web\View::POS_READY
+);
+$this->registerJs(
+	'$("#contactform-verifycode-image").click();',
+	\yii\web\View::POS_READY,
+	'refresh-captcha'
+);
 ?>
 
 <div class="container">
@@ -62,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
 
                         <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-                            'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
+                            'template' => '<div class="row"><div class="col-lg-6">{input}</div><div class="col-lg-3" title="Click vào ảnh để thay đổi">{image}</div></div>',
                         ]) ?>
 
                         <div class="form-group">
