@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\CaptchaAction;
 use app\forms\ApplyForm;
 use app\library\helper\Helper;
 use app\models\Auth;
@@ -20,7 +21,6 @@ use yii\web\BadRequestHttpException;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\ContactForm;
-use yii\web\UploadedFile;
 
 class SiteController extends FrontController
 {
@@ -63,7 +63,7 @@ class SiteController extends FrontController
                 'class' => 'yii\web\ErrorAction',
             ],
             'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
+                'class' => '\app\components\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
             'auth' => [
@@ -263,7 +263,10 @@ class SiteController extends FrontController
     public function actionContact()
     {
         $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
+        if ($model->load(Yii::$app->request->post())) {
+            $data = Yii::$app->request->post();
+            $body = $this->renderPartial('@app/mail/layouts/contact', ['data' => $data['ContactForm']]);
+            Email::instance()->sendContact($body);
             Yii::$app->session->setFlash('contactFormSubmitted');
 
             return $this->refresh();

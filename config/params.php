@@ -16,7 +16,7 @@ return [
         'keywords' => 'tuyển dụng, tuyen dung, tìm kiếm việc làm, tìm việc làm miễn phí, tim kiem viec lam mien phi, dang tin mien phi, tìm ứng viên miễn phí, tìm hồ sơ tuyển dụng miễn phím sinh viên moi tot nghiep, đăng tin, dang tin tim viec, tìm việc làm lập trình web, lập trình php, kế toán, viec lam ban thi gian'
     ],
 	'mail' => [
-		'host' => 'mail.jobsvina.com',
+		'host' => 'panel.jobsvina.com',
 		'username' => 'system@jobsvina.com',
 		'password' => '12345678090',
 		'secure' => 'TLS',
