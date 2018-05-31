@@ -3,6 +3,7 @@
 #/config/db.php
 assets/*
 /config/db.php
+/config/email.php
 /node_modules
 !/assets/app
 /vendor
