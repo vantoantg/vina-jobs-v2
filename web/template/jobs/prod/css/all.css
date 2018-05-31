@@ -9731,15 +9731,6 @@ body {
     transition: all 0.1s ease-in-out;
 }
 
-.table tr:hover td a {
-    /*background: #E5F6FD*/
-}
-
-.jobs .table tr:hover td a:hover {
-    /*background: #fff;*/
-    /*color: #00AEEF*/
-}
-
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
     border-top: 0px;
     vertical-align: middle;
@@ -9765,11 +9756,6 @@ body {
 
 .table tr.even {
     background: #F4FFFF
-}
-
-.table tr:hover {
-    /*background: #00AEEF;*/
-    /*color: #fff*/
 }
 
 .more-jobs {
@@ -9869,7 +9855,6 @@ body {
 .footer-area {
     background: #000;
     border-top: 4px solid #00AEEF;
-    /*padding-bottom: 20px*/
 }
 
 .footer {
@@ -10074,11 +10059,9 @@ aside .content-footer > img {
     color: #3A3A3A;
 }
 
-/*recent-post-col////////////////////*/
 .widget-sidebar {
     background-color: #fff;
     padding: 20px;
-    /*margin-top: 30px;*/
 }
 
 .title-widget-sidebar {
@@ -10127,8 +10110,6 @@ aside .content-footer > img {
     border: 5px solid #F39C12;
 }
 
-/*===============ARCHIVES////////////////////////////*/
-
 button.accordion {
     background-color: #00AEEF;
     color: #fff;
@@ -10166,8 +10147,6 @@ button.accordion.active:after {
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 }
-
-/*categories//////////////////////*/
 
 .categories-btn {
     background-color: #F39C12;
@@ -10320,12 +10299,10 @@ button.accordion.active:after {
     }
 
     .form-inline .form-control, .form-inline .form-control {
-        /*height: 30px;*/
         width: 100%;
     }
 
     .form-inline input[type="submit"] {
-        /*height: 30px;*/
         width: 100%
     }
 
@@ -10335,10 +10312,6 @@ button.accordion.active:after {
 
     .slider-area {
         height: 440px;
-    }
-
-    #bg-slider .item img {
-        /*height: 440px;*/
     }
 
     .slider .owl-pagination {
@@ -10353,7 +10326,6 @@ button.accordion.active:after {
 
     .page-title h2 {
         font-size: 20px;
-        /*margin-top: 2px;*/
     }
 
     .page-title h5 {
@@ -10614,12 +10586,10 @@ button.accordion.active:after {
     }
 
     .form-inline .form-control, .form-inline .form-control {
-        /*height: 35px;*/
         width: 100%;
     }
 
     .form-inline input[type="submit"] {
-        /*height: 35px;*/
         width: 100%
     }
 
@@ -10634,10 +10604,6 @@ button.accordion.active:after {
         height: 440px;
     }
 
-    #bg-slider .item img {
-        /*height: 440px;*/
-    }
-
     .slider .owl-pagination {
         bottom: 165px;
         right: 0;
@@ -10650,7 +10616,6 @@ button.accordion.active:after {
 
     .page-title h2 {
         font-size: 20px;
-        /*margin-top: 2px;*/
     }
 
     .page-title h5 {
@@ -10875,12 +10840,10 @@ button.accordion.active:after {
     }
 
     .form-inline .form-control, .form-inline .form-control {
-        /*height: 35px;*/
         width: 160px;
     }
 
     .form-inline input[type="submit"] {
-        /*height: 35px;*/
         width: 80px;
     }
 
@@ -10994,10 +10957,6 @@ button.accordion.active:after {
         top: 71px;
     }
 
-    .single-footer img {
-        /*width: 150px;*/
-    }
-
     .single-footer p {
         font-size: 13px;
     }
@@ -11039,10 +10998,6 @@ button.accordion.active:after {
 
     .slider-area {
         height: 540px;
-    }
-
-    #bg-slider .item img {
-        /*height: 540px;*/
     }
 
     .tab-content ul li {
@@ -11269,7 +11224,6 @@ input[type=password]:hover {
   background-color: #4d90fe;
   padding: 0px;
   height: 36px;
-  font-family: roboto;
   font-size: 14px;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
 }
