@@ -235,30 +235,21 @@ use app\library\helper\Helper;
 
 		<!-- 1 Column Text + Button : BEGIN -->
 		<tr>
-			<td bgcolor="#ffffff" style="padding: 40px 0px 20px; text-align: center;">
+			<td bgcolor="#ffffff" style="padding: 40px 0px 20px; text-align: left;">
 				<h1 style="margin: 0; font-family: sans-serif; font-size: 24px; line-height: 125%; color: #333333; font-weight: normal;">
-                    Bạn vừa đăng ký thông tin trên website <?= Helper::params() ?>
+                    Có một người dùng đã gửi form contact - <?= Helper::params() ?>
 				</h1>
 			</td>
 		</tr>
 		<tr>
-			<td bgcolor="#ffffff" style="padding: 0 0px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: center;">
-				<p style="margin: 0;">Chào bạn <b><?= $data['name'] ?></b>! bạn vừa đăng ký thành viên trên <?= Helper::params() ?>.</p>
-				<p style="margin: 0;"><?= Helper::params() ?> là một website đăng tin tuyển dụng, tìm kiếm việc làm miễn phí, hãy click vào button bên dưới để kích hoạt tài khoản và có thể đăng tin tuyển dụng trên website. Hoặc tiếp tục cập nhật thông tin, hoạt động của công ty để có thể giới thiệu công ty của bạn tới các ứng viên tốt nhất !</p>
-			</td>
-		</tr>
-		<tr>
-			<td bgcolor="#ffffff" style="padding: 0 40px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555;">
-				<!-- Button : BEGIN -->
-				<table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin: auto">
-					<tr>
-						<td style="border-radius: 3px; background: #00AEEF; text-align: center;" class="button-td">
-							<a href="<?= $data['linkActive'] ?>" style="background: #00AEEF; border: 15px solid #00AEEF; font-family: sans-serif; font-size: 13px; line-height: 110%; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a" title="Kích hoạt tài khoản">
-								&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff;">Kích hoạt tài khoản <?= Helper::params()  ?></span>&nbsp;&nbsp;&nbsp;&nbsp;
-							</a>
-						</td>
-					</tr>
-				</table>
+			<td bgcolor="#ffffff" style="padding: 0 0px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: left;">
+				<p style="margin: 0;">Chào <b>Admin</b>! bạn vừa nhận được nội dung liên hệ trên <?= Helper::params() ?> như sau:</p>
+				<p style="margin: 0;">
+					<b>Tên người gửi</b>: <?= $data['name'] ?><br>
+					<b>Email người gửi</b>: <?= $data['email'] ?><br>
+					<b>Chủ đề gửi</b>: <?= $data['subject'] ?><br>
+					<b>Nội dung</b>: <?= $data['body'] ?>
+				</p>
 			</td>
 		</tr>
 	</table>

@@ -206,7 +206,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php if($model->isNewRecord){ ?>
 	            <div class="form-group ">
 		            Các chính sách và quy địn của <?= Yii::$app->params['siteName']; ?> <a
-				            href="<?= \app\library\helper\Helper::siteURL() ?>" target="_blank">tại đây</a>
+				            href="<?= \app\library\helper\Helper::siteURL() ?>/dieu-khoan-su-dung.html" target="_blank">tại đây</a>
                     <?= $form->field($model, 'iread', [
                         'template' => '{input}'
                     ])->checkbox(['class' => 'iCheck'])->label(false) ?>

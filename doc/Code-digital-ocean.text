@@ -1,0 +1,24 @@
+Centos-6x64: 206.189.155.175
+Droplet Name: centos-tona
+IP Address: 206.189.155.175
+Username: root/it
+
+Server IP address : 206.189.155.175
+Panel URL         : http://panel.jobsvina.com
+zadmin Password   : it
+
+MySQL Root Password      : 5Tbut7uBquMlhr9T
+MySQL Postfix Password   : qKLku8dasLVhGZxN
+MySQL ProFTPd Password   : ml8HesXeRtU6K1ni
+MySQL Roundcube Password : RBnxDuBRLTdrAfXQ
+
+=====================================================
+206.189.95.212
+Login to Sentora at http://tona
+ Sentora Username  : zadmin
+ Sentora Password  : vcbqIEAwepmMl7fc
+
+ MySQL Root Password      : Ah3o8y8wb0Cb02uN
+ MySQL Postfix Password   : wRZ49X3ShGl2R1TH
+ MySQL ProFTPd Password   : IP1sQCjp4s3QetBU
+ MySQL Roundcube Password : nKXzf1HvJQzE8Bal

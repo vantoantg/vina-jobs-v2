@@ -6,6 +6,7 @@ use app\forms\ImageOnlyForm;
 use app\library\helper\Common;
 use app\library\helper\Datetime;
 use app\library\helper\Image;
+use app\models\base\User;
 use app\models\Candidate;
 use app\models\Company;
 use app\models\Dropdown;
@@ -220,15 +221,15 @@ class UserController extends FrontController
 
     }
 
+	/**
+	 * @return string|\yii\web\Response
+	 */
 	public function actionRegisterCompany()
 	{
-	    if(Common::isLoginned()){
+		if(Common::isLoginned()){
 	        return $this->goHome();
         }
 		$errors = [];
-
-		// TODO: remove  this class
-//		$dropdowns = new Dropdown();
 
 		$model = new Users();
 		$model->scenario = Users::SCENARIO_REGISTER;
@@ -272,16 +273,14 @@ class UserController extends FrontController
 				$userDetail->save();
 
 				$data['name'] = $model->name;
-				$data['link'] = Url::to('/company/active/token/' . $token_waiting_active . '.html', true);
-				$temp = $this->renderPartial('@app/mail/layouts/active_company_register', ['data' => $data]);
+				$data['linkActive'] = Url::to('/company/active/token/' . $token_waiting_active . '.html', true);
 
-				// TODO: comment out
-//	            Email::sendMail('Register account - '. Yii::$app->params['siteName'], $temp);
-
-                // Send email when register success
-                $data['homeUrl'] = Helper::siteURL();
+                // Send email when register success (to active)
+				$model->scenario = Users::SCENARIO_UPDATE;
+				$model->status = Users::STATUS_WAITING_ACTIVE;
+				$model->update();
                 $temp = $this->renderPartial('@app/mail/layouts/company_register_success', ['data' => $data]);
-//	            Email::sendMail('Register account - '. Yii::$app->params['siteName'], $temp, $model->email, $model->name);
+	            Email::sendMail(Helper::params().' - Active your account', $temp, $model->email, $model->name);
 			}
 
             return $this->render('register_company_success', [
@@ -300,6 +299,31 @@ class UserController extends FrontController
 			'com' => $com,
 			'errors' => $errors,
 
+		]);
+	}
+
+	/**
+	 * @param $token
+	 * @return string|\yii\web\Response
+	 */
+	public function actionActiveCompany($token){
+		/** @var Users $model */
+		$model = Users::find()->where(['token_waiting_active' => $token])->one();
+		if(!$model){
+			return $this->goHome();
+		}
+		$model->scenario = Users::SCENARIO_UPDATE;
+		$model->status = Users::STATUS_ACTIVED;
+		$model->token_waiting_active = Datetime::createdAt();
+		$model->update();
+		// Send email noti actived success
+		$data['name'] = $model->name;
+		$data['email'] = $model->email;
+		$temp = $this->renderPartial('@app/mail/layouts/active_company_success', ['data' => $data]);
+//		Email::sendMail(Helper::params().' - Active your account success', $temp, $model->email, $model->name);
+
+		return $this->render('active_company_success', [
+			'model' => $model,
 		]);
 	}
 
