@@ -38,14 +38,14 @@ SENTORA SERVER:
  server. Please review the log file left in /root/ for
  any errors encountered during installation.
 
- Login to Sentora at http://tona.vina-jobs.com
- Sentora Username  : zadmin
- Sentora Password  : yxY1szZc29yL0bZh
+ Login to Sentora at http://tona.jobsvina.com
+  Sentora Username  : zadmin
+  Sentora Password  : XTdvYm3nxQBkTOhI
 
- MySQL Root Password      : DIYcW5JDUN75io6f
- MySQL Postfix Password   : 2M2abixIzzK1x4qD
- MySQL ProFTPd Password   : bETrPcYg8n57jzNm
- MySQL Roundcube Password : I8obIR5ZwnPhqysL
+  MySQL Root Password      : gCsBceDQmvrqvjtx
+  MySQL Postfix Password   : gXSofc9wIarkpv6s
+  MySQL ProFTPd Password   : 2FY3FpzSw8k4Iz0y
+  MySQL Roundcube Password : rgjEyxTd7mF4HwMn
    (theses passwords are saved in /root/passwords.txt)
 ########################################################
 vina-jobs.com => /var/zpanel/hostdata/zadmin/public_html/vina-jobs_com
@@ -55,8 +55,9 @@ email: system@vina-jobs.com/12345678090
 ########################################################
 
 INSTALL-DOC
+18.218.175.99
     https://docs.google.com/document/d/1eVkRyi6j5h4d9c65bo_5vm126QcwT_f_D8EWGBd-9s8/edit
-    ssh -i "tonanguyenswe.pem" ubuntu@ec2-18-188-166-175.us-east-2.compute.amazonaws.com
+    ssh -i "aws_ub_14.pem" ubuntu@ec2-18-218-175-99.us-east-2.compute.amazonaws.com
 
 bootsnipp
     https://bootsnipp.com/snippets/gN1X1 // my page (card)
