@@ -34,30 +34,25 @@ composer require --prefer-dist yiidoc/yii2-redactor "*"
 
 SENTORA SERVER:
 ########################################################
- Congratulations Sentora has now been installed on your
- server. Please review the log file left in /root/ for
- any errors encountered during installation.
+Login to Sentora at http://tona.jobsvina.com
+ Sentora Username  : zadmin
+ Sentora Password  : it
 
- Login to Sentora at http://tona.jobsvina.com
-  Sentora Username  : zadmin
-  Sentora Password  : XTdvYm3nxQBkTOhI
-
-  MySQL Root Password      : gCsBceDQmvrqvjtx
-  MySQL Postfix Password   : gXSofc9wIarkpv6s
-  MySQL ProFTPd Password   : 2FY3FpzSw8k4Iz0y
-  MySQL Roundcube Password : rgjEyxTd7mF4HwMn
+ MySQL Root Password      : qWkh2YegxSdwJ2bu
+ MySQL Postfix Password   : nqvMlYVt26LbYNHE
+ MySQL ProFTPd Password   : 2LXJlv1oQ4o25mVT
+ MySQL Roundcube Password : h5lUVybEI8j5PyYy
    (theses passwords are saved in /root/passwords.txt)
 ########################################################
 vina-jobs.com => /var/zpanel/hostdata/zadmin/public_html/vina-jobs_com
 host_name config => nano /etc/sentora/configs/apache/httpd-vhosts.conf
                          /etc/sentora/configs/apache/httpd-vhosts-tona-backup.conf
-email: system@vina-jobs.com/12345678090
 ########################################################
 
 INSTALL-DOC
-18.218.175.99
+54.169.77.31
     https://docs.google.com/document/d/1eVkRyi6j5h4d9c65bo_5vm126QcwT_f_D8EWGBd-9s8/edit
-    ssh -i "aws_ub_14.pem" ubuntu@ec2-18-218-175-99.us-east-2.compute.amazonaws.com
+    ssh -i "ub14_01062018.pem" ubuntu@ec2-54-169-77-31.ap-southeast-1.compute.amazonaws.com
 
 bootsnipp
     https://bootsnipp.com/snippets/gN1X1 // my page (card)
