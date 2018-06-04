@@ -47,4 +47,18 @@ class Cons
 	public static function getLoadingImg(){
 		return Helper::homeUrl().'web/template/jobs/img/loading.gif';
 	}
+
+    /**
+     * @return string
+     */
+    public static function getNoUserImg(){
+        return Helper::homeUrl().'web/imgs/no_image_user.png';
+    }
+
+    /**
+     * @return string
+     */
+    public static function getNoImg(){
+        return Helper::homeUrl().'web/imgs/no-image.jpg';
+    }
 }

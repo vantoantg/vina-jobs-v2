@@ -101,7 +101,7 @@ class Helper
 			$pathFile = "/web/imgs/no-image.jpg";
 		}
 
-		$basePath = Yii::$app->basePath . $pathFile;
+		$basePath = Yii::$app->basePath .'/'. $pathFile;
 		$pathFileArr = explode('/', $pathFile);
 		$imgName = end($pathFileArr);
 		$prefix = $prefix.'-'.$w.'@'.$h;
