@@ -4,11 +4,11 @@
  */
 
 return [
-    'host' => 'smtp.gmail.com',
-    'username' => 'info@jobsvina.com',
-    'password' => '111111',
-    'secure' => 'tls',
-    'port' => '587',
+    'host' => 'vina-jobs.com',
+    'username' => 'system@vina-jobs.com',
+    'password' => '12345678090',
+    'secure' => false,
+    'port' => '25',
     'options' => [
         'mailInfo' => 'info@jobsvina.com',
         'setFrom' => 'system@jobsvina.com',

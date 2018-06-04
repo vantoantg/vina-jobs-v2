@@ -38,11 +38,11 @@ class JobsWidget extends Widget
 			    $file_type = $form->new_cv->extension;
 			    $file_name = $form->new_cv->baseName;
 			    $file_path = $form->new_cv->baseName.'-'.md5(date('dmyhis')).'.'.$file_type;
-			    $this->attachment = Yii::$app->basePath . Yii::$app->params['companyCandidatePath'] . $file_path;
+			    $this->attachment = Yii::$app->basePath .'/'. Yii::$app->params['companyCandidatePath'] . $file_path;
 			    $form->new_cv->saveAs($this->attachment);
 			    FileUploads::saveFile(FileUploads::CANDIDATE, $file_path, $file_name, $file_type);
 		    }else{
-			    $this->attachment = Yii::$app->basePath . Yii::$app->params['companyCandidatePath'] . 123;
+			    $this->attachment = Yii::$app->basePath .'/'. Yii::$app->params['companyCandidatePath'] . 123;
 		    }
 
 		    // Send email
