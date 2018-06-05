@@ -101,7 +101,7 @@ class Helper
 			$pathFile = "/web/imgs/no-image.jpg";
 		}
 
-		$basePath = Yii::$app->basePath . $pathFile;
+		$basePath = Yii::$app->basePath .'/'. $pathFile;
 		$pathFileArr = explode('/', $pathFile);
 		$imgName = end($pathFileArr);
 		$prefix = $prefix.'-'.$w.'@'.$h;
@@ -703,4 +703,18 @@ class Helper
 
 		return $output;
 	}
+
+    /**
+     * @param $path
+     * @return bool|mixed|string
+     */
+	public static function getContentFileWith($path){
+        $content = file_get_contents($path);
+        $content = str_replace('../fonts/gg-', 'web/template/jobs/prod/fonts/gg-', $content);
+        $content = str_replace('../fonts/fontello/', 'web/template/jobs/prod/fonts/fontello/', $content);
+        $content = str_replace('../webfonts/', 'web/template/jobs/prod/webfonts/', $content);
+
+        $content = str_replace('img/', 'web/template/jobs/prod/css/img/', $content);
+        return $content;
+    }
 }

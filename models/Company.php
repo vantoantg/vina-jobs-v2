@@ -6,6 +6,7 @@
  */
 
 namespace app\models;
+use app\library\helper\Cons;
 use app\library\helper\Helper;
 use Yii;
 
@@ -88,7 +89,11 @@ class Company extends \app\models\base\Company
 	 */
     public static function getLogo($logo, $w = 200, $h = 200){
 	    if ($logo) {
-	    	return Yii::$app->homeUrl.Helper::params('companyLogoPath') . $logo;
+	        $path = Yii::$app->homeUrl.Helper::params('companyLogoPath') . $logo;
+	        if(file_exists($path)){
+                return $path;
+            }
+	    	return Cons::getNoImg();
 //		    return Helper::imgRender(Helper::params('companyLogoPath') . $logo, $w, $h);
 	    } else {
 		    return Helper::imgRender(false);
