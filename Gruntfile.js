@@ -15,7 +15,6 @@ module.exports = function(grunt) {
                     'web/template/jobs/css/owl.carousel.css',
                     'web/template/jobs/css/owl.theme.css',
                     'web/template/jobs/css/owl.transitions.css',
-                    'vendor/bower-asset/select2/dist/css/select2.min.css',
                     'vendor/bower-asset/iCheck/skins/all.css',
                     'web/template/jobs/style.css',
                     'web/template/jobs/responsive.css',

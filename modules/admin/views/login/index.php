@@ -63,8 +63,9 @@ $this->title = 'Login';
                     <h3 class="text-light">
                         or
                     </h3>
-                    <?= yii\authclient\widgets\AuthChoice::widget([
-                        'baseAuthUrl' => ['/site/auth']
+                    <?= \app\components\AuthChoice::widget([
+                        'baseAuthUrl' => ['/site/auth'],
+	                    'popupMode' => true
                     ]) ?>
                 </div><!--end .col -->
             </div><!--end .row -->
