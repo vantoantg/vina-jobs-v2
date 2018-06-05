@@ -18,6 +18,7 @@ Helper::generateSeo($page);
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
+$this->registerJsFile('/vendor/bower-asset/select2/dist/js/select2.min.js');
 ?>
 <div class="modal fade" id="register-avatar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true"

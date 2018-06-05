@@ -6,6 +6,7 @@
  */
 namespace app\components;
 
+use app\models\Job;
 use yii\base\Widget;
 use app\library\helper\Helper;
 use yii\helpers\Html;
@@ -24,10 +25,17 @@ class SidebarWidget extends Widget
         }
     }
 
-    public function recentJobs(){
-	    return $this->render('sidebar/recent_job', [
-
-	    ]);
+	/**
+	 * @param array $except_job_ids
+	 * @return string|void
+	 */
+    public function recentJobs($except_job_ids = []){
+	    $data = Job::instance()->getRecentJobsSidebar($except_job_ids);
+    	if($data){
+		    return $this->render('sidebar/recent_job', [
+			    'data' => $data
+		    ]);
+	    }
     }
 
 	public function recentCompanyInfo(){

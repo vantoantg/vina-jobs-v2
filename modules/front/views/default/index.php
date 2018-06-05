@@ -8,8 +8,7 @@ $page = \app\models\Pages::get();
 $this->title = Helper::titleSeo($page);
 Helper::generateSeo($page);
 
-$this->registerJsFile('vendor/bower-asset/select2/dist/js/select2.min.js');
-$this->registerCss(file_get_contents('vendor/bower-asset/select2/dist/css/select2.min.css'));
+$this->registerJsFile('/vendor/bower-asset/select2/dist/js/select2.min.js');
 ?>
 <div class="slider-area">
     <div class="slider">

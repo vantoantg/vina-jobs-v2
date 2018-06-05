@@ -21,59 +21,26 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-use app\library\helper\Helper;
 ?>
 
 <div class="widget-sidebar <?= \app\library\helper\Helper::wowClass() ?> fadeInRight" data-wow-delay="0.2s">
     <h2 class="title-widget-sidebar">CÁC VIỆC LÀM MỚI</h2>
     <div class="content-widget-sidebar">
         <ul>
+            <?php foreach ($data as $item){ ?>
             <li class="recent-post">
                 <div class="post-img">
-                    <img src="<?= Helper::imgRender(null, 100,80, 'jobs') ?>"
-                         class="img-responsive">
+                    <a href="<?= $item['url_company_detail']; ?>"><img src="<?= $item['com_logo']; ?>"
+                                    class="img-responsive"></a>
                 </div>
-                <a href="#"><h5>Excepteur sint occaecat cupi non proident laborum.</h5></a>
+                <a href="<?= $item['url_view']; ?>"><h5><?= $item['job_name']; ?></h5></a>
                 <p>
-                    <small><i class="fa fa-calendar" data-original-title="" title=""></i> 30 Juni 2014</small>
+                    <small><i class="fa fa-calendar" data-original-title="" title=""></i>
+                        <?= $item['created_at']; ?></small>
                 </p>
             </li>
             <hr>
-
-            <li class="recent-post">
-                <div class="post-img">
-	                <img src="<?= Helper::imgRender(null, 100,70) ?>"
-	                     class="img-responsive">
-                </div>
-                <a href="#"><h5>Excepteur sint occaecat cupi non proident laborum.</h5></a>
-                <p>
-                    <small><i class="fa fa-calendar" data-original-title="" title=""></i> 30 Juni 2014</small>
-                </p>
-            </li>
-            <hr>
-
-            <li class="recent-post">
-                <div class="post-img">
-	                <img src="<?= Helper::imgRender(null, 100,70) ?>"
-	                     class="img-responsive">
-                </div>
-                <a href="#"><h5>Excepteur sint occaecat cupi non proident laborum.</h5></a>
-                <p>
-                    <small><i class="fa fa-calendar" data-original-title="" title=""></i> 30 Juni 2014</small>
-                </p>
-            </li>
-            <hr>
-
-            <li class="recent-post">
-                <div class="post-img">
-	                <img src="<?= Helper::imgRender(null, 100,70) ?>"
-	                     class="img-responsive">
-                </div>
-                <a href="#"><h5>Excepteur sint occaecat cupi non proident laborum.</h5></a>
-                <p>
-                    <small><i class="fa fa-calendar" data-original-title="" title=""></i> 30 Juni 2014</small>
-                </p>
-            </li>
+            <?php } ?>
         </ul>
     </div>
 </div>

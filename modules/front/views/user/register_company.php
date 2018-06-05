@@ -13,6 +13,8 @@ Helper::generateSeo($page);
 
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+$this->registerJsFile('/vendor/bower-asset/select2/dist/js/select2.min.js');
 ?>
 
 <div class="container">

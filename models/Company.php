@@ -89,9 +89,9 @@ class Company extends \app\models\base\Company
 	 */
     public static function getLogo($logo, $w = 200, $h = 200){
 	    if ($logo) {
-	        $path = Yii::$app->homeUrl.Helper::params('companyLogoPath') . $logo;
+	        $path = Yii::$app->basePath.'/'.Helper::params('companyLogoPath') . $logo;
 	        if(file_exists($path)){
-                return $path;
+                return Yii::$app->getHomeUrl().Helper::params('companyLogoPath') . $logo;
             }
 	    	return Cons::getNoImg();
 //		    return Helper::imgRender(Helper::params('companyLogoPath') . $logo, $w, $h);
