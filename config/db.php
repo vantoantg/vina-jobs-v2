@@ -1,10 +1,12 @@
 <?php
 
+$db = require __DIR__ . '/private.php';
+
 return [
     'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=localhost;dbname=zadmin_vnjobs', // wampp_loc
     'username' => 'root',
-    'password' => 'root',
+    'password' => '123',
     'charset' => 'utf8',
 
 //    Schema cache options (for production environment)
