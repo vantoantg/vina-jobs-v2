@@ -14,7 +14,7 @@ Helper::generateSeo($page);
 /* @var $model app\models\Job */
 /* @var $form ActiveForm */
 
-$this->registerJsFile('/vendor/bower-asset/select2/dist/js/select2.min.js');
+$this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/js/select2.min.js');
 ?>
 <div class="container">
     <div class="col-12 col-sm-8">

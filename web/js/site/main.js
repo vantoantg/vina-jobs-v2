@@ -14,6 +14,7 @@ var Main = function () {
     return {
         init: function () {
             this.events();
+            this.initSite();
             this.handleFormRegister();
             this.backToTop();
             this.blog();
@@ -76,6 +77,14 @@ var Main = function () {
             $('.lazy').Lazy();
             if($(window).width < 768){
 
+            }
+        },
+        initSite: function () {
+            var menu = $('nav.navbar ul.main-nav');
+            var menuActive = $('input#setActiveTopMenu');
+            if(menuActive.length && menu.length && menuActive.val()){
+                menu.find('li a.active').removeClass('active');
+                menu.find('li a#m-' + menuActive.val()).addClass('active');
             }
         },
         handleFormRegister: function () {

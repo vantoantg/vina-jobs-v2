@@ -15,6 +15,7 @@ $this->title = Helper::titleSeo($page);
 Helper::generateSeo($page);
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+\app\components\Menu\ActiveMenu::is('job-seekers');
 ?>
 
 <div class="container">
