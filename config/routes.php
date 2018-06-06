@@ -45,7 +45,7 @@ return [
 
     // contact
 	'company/active/token/<token:[a-zA-Z0-9_ -@.]+>.html' => 'front/user/active-company',
-	'company/<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/company-detail',
+	'company/<slug:[a-zA-Z0-9_ -@.]+>-<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/company-detail',
     // jobs
 	'service/jobs/update/job-<id:[a-zA-Z0-9_ -@.]+>.html' => 'front/jobs/edit-jobs',
 	'service/register-jobs.html' => 'front/jobs/post-jobs',

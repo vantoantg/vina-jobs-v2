@@ -13,6 +13,9 @@ Helper::generateSeo($page);
 
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+$this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/js/select2.min.js');
+\app\components\Menu\ActiveMenu::is('employeers')
 ?>
 
 <div class="container">

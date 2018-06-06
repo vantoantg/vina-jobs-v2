@@ -192,8 +192,10 @@ class JobsController extends FrontController
 	    if(!$company){
 	    	throw new BadRequestHttpException();
 	    }
-	    return $this->render('company_detail', [
 
+	    return $this->render('company_detail', [
+			'company' => $company,
+			'galleries' => FileUploads::instance()->getGallery(FileUploads::COM_GALLERY, $company->id),
 	    ]);
     }
 

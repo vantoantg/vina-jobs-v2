@@ -53,23 +53,23 @@ use app\library\helper\Helper;
 </div>
 <ul class="main-nav nav navbar-nav navbar-right">
 	<li>
-		<a class="<?= Helper::active('front/default/index') ?>"
+		<a id="m-index" class="<?= Helper::active('front/default/index') ?>"
 		   href="<?= Helper::createUrl(['front/default/index']) ?>">Trang chủ</a></li>
 	<li>
-		<a class="<?= Helper::active('site/job-seekers') ?>"
+		<a id="m-job-seekers" class="<?= Helper::active('site/job-seekers') ?>"
 		   href="<?= Helper::createUrl(['site/job-seekers']) ?>">Người tìm việc</a></li>
 	<li>
-		<a class="<?= Helper::active('site/employeers') ?>"
+		<a id="m-employeers" class="<?= Helper::active('site/employeers') ?>"
 		   href="<?= Helper::createUrl(['site/employeers']) ?>">Nhà tuyển dụng</a></li>
 	<!--<li>
-		<a class="<?/*= Helper::active('site/about-us') */?>"
+		<a id="m-about-us" class="<?/*= Helper::active('site/about-us') */?>"
 		   href="<?/*= Helper::createUrl(['site/about-us']) */?>">Giới thiệu</a></li>-->
 	<li>
-		<a class="<?= Helper::active('site/blog') ?>"
+		<a id="m-blogs" class="<?= Helper::active('site/blog') ?>"
 		   href="<?= Helper::createUrl(['site/blog']) ?>">Blog</a>
 	</li>
 	<li>
-		<a class="<?= Helper::active('site/contact') ?>"
+		<a id="m-contact" class="<?= Helper::active('site/contact') ?>"
 		   href="<?= Helper::createUrl(['site/contact']) ?>">Liên hệ</a>
 	</li>
 </ul>

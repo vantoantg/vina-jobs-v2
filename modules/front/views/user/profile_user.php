@@ -17,6 +17,7 @@ Helper::generateSeo($page);
 
 /** @var $userInfo \app\models\UserDetails $userInfo */
 $userInfo = \app\models\UserDetails::getInfo();
+\app\components\Menu\ActiveMenu::is('job-seekers');
 ?>
 
 <div class="container">

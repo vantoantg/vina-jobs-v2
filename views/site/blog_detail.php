@@ -13,6 +13,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Blogs', 'url' => Helper::createUrl
 $this->params['breadcrumbs'][] = $this->title;
 
 \app\library\helper\Helper::generateSeo($page);
+\app\components\Menu\ActiveMenu::is('blogs')
 ?>
 
 <section id="blog-section">
