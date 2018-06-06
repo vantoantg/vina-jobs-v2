@@ -6,7 +6,7 @@ $db_name = $db['db']['dbname'];
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => "mysql:$db_host=localhost;dbname=$db_name",
+    'dsn' => "mysql:host=$db_host;dbname=$db_name",
     'username' => $db['db']['username'],
     'password' => $db['db']['password'],
     'charset' => 'utf8',
