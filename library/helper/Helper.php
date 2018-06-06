@@ -710,11 +710,11 @@ class Helper
      */
 	public static function getContentFileWith($path){
         $content = file_get_contents($path);
-        $content = str_replace('../fonts/gg-', 'web/template/jobs/prod/fonts/gg-', $content);
-        $content = str_replace('../fonts/fontello/', 'web/template/jobs/prod/fonts/fontello/', $content);
-        $content = str_replace('../webfonts/', 'web/template/jobs/prod/webfonts/', $content);
+        $content = str_replace('../fonts/gg-', self::homeUrl().'web/template/jobs/prod/fonts/gg-', $content);
+        $content = str_replace('../fonts/fontello/', self::homeUrl().'/web/template/jobs/prod/fonts/fontello/', $content);
+        $content = str_replace('../webfonts/', self::homeUrl().'web/template/jobs/prod/webfonts/', $content);
 
-        $content = str_replace('img/', 'web/template/jobs/prod/css/img/', $content);
+        $content = str_replace('img/', self::homeUrl().'web/template/jobs/prod/css/img/', $content);
         return $content;
     }
 }

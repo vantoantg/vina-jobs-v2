@@ -48,14 +48,6 @@ if (YII_DEBUG) {
 	<meta name="twitter:creator" content="Jobs - Vina"/>
     <meta name="twitter:description" content="<?= Yii::$app->params['seo']['description'] ?>"/>
     <meta property="article:publisher" content="https://www.facebook.com/vina-jobs.com"/>
-	<?php
-    if (YII_DEBUG) {
-        AppAsset::register($this);
-    } else {
-        $this->registerCss(Helper::getContentFileWith('web/template/jobs/prod/css/all.min.css'));
-        AppProdAsset::register($this);
-    }
-	?>
 	<?php $this->head() ?>
 </head>
 <body class="<?= Yii::$app->controller->id ?>-<?= Yii::$app->controller->action->id ?>">
