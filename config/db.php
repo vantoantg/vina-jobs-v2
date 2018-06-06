@@ -1,12 +1,10 @@
 <?php
 
 $db = require __DIR__ . '/private.php';
-$db_host = $db['db']['host'];
-$db_name = $db['db']['dbname'];
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => "mysql:host=$db_host;dbname=$db_name",
+    'dsn' => $db['db']['dsn'],
     'username' => $db['db']['username'],
     'password' => $db['db']['password'],
     'charset' => 'utf8',
