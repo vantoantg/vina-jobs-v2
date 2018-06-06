@@ -16,10 +16,9 @@ class AppProdAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'web/template/jobs/prod/css/all.min.css',
+//        'web/template/jobs/prod/css/all.min.css',
     ];
     public $js = [
-        'vendor/bower-asset/select2/dist/js/select2.min.js',
         'web/template/jobs/prod/js/all.min.js',
     ];
     public $depends = [

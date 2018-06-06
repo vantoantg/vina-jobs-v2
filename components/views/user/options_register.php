@@ -13,7 +13,7 @@ use app\library\helper\Helper;
     <div class="modal-dialog">
 
         <div class="modal-content loginmodal-container switch-register">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-toggle="tooltip" title="Đóng lại" data-placement="left">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" title="Đóng lại">
                 <span aria-hidden="true">&times;</span>
             </button>
             <div class="clearfix"></div>

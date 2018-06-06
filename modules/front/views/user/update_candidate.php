@@ -18,6 +18,7 @@ Helper::generateSeo($page);
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $dropdowns = new Dropdown();
+\app\components\Menu\ActiveMenu::is('job-seekers');
 ?>
 <div class="modal fade" id="register-avatar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true"

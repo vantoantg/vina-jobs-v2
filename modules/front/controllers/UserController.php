@@ -97,7 +97,7 @@ class UserController extends FrontController
                         $file_type = $candidate->file->extension;
                         $file_name = $candidate->file->baseName;
 	                    $file_path = $candidate->file->baseName.'-'.md5(date('dmyhis')).'.'.$file_type;
-                        $path = Yii::$app->basePath . Yii::$app->params['companyCandidatePath'] . $file_path;
+                        $path = Yii::$app->basePath .'/'. Yii::$app->params['companyCandidatePath'] . $file_path;
                         $candidate->file->saveAs($path);
                         FileUploads::saveFile(FileUploads::CANDIDATE, $file_path, $file_name, $file_type, $candidate->id);
                     }
@@ -259,9 +259,9 @@ class UserController extends FrontController
 
 					// TODO: add new fild to save origin file name, generate a unique file name to prevent duplicate filenames
 					/*$com->logo = Yii::$app->security->generateRandomString().".{$ext}";
-					$path = Yii::$app->basePath.Yii::$app->params['companyLogoPath'] . $com->logo;*/
+					$path = Yii::$app->basePath.'/'.Yii::$app->params['companyLogoPath'] . $com->logo;*/
 
-					$path = Yii::$app->basePath . Yii::$app->params['companyLogoPath'] . $image->name;
+					$path = Yii::$app->basePath .'/'. Yii::$app->params['companyLogoPath'] . $image->name;
 					$image->saveAs($path);
 				}
 				if ($com->save()) {
@@ -320,7 +320,7 @@ class UserController extends FrontController
 		$data['name'] = $model->name;
 		$data['email'] = $model->email;
 		$temp = $this->renderPartial('@app/mail/layouts/active_company_success', ['data' => $data]);
-//		Email::sendMail(Helper::params().' - Active your account success', $temp, $model->email, $model->name);
+		Email::sendMail(Helper::params().' - Active your account success', $temp, $model->email, $model->name);
 
 		return $this->render('active_company_success', [
 			'model' => $model,
@@ -365,9 +365,9 @@ class UserController extends FrontController
 
 					// TODO: add new fild to save origin file name, generate a unique file name to prevent duplicate filenames
 					/*$com->logo = Yii::$app->security->generateRandomString().".{$ext}";
-					$path = Yii::$app->basePath.Yii::$app->params['companyLogoPath'] . $com->logo;*/
+					$path = Yii::$app->basePath.'/'.Yii::$app->params['companyLogoPath'] . $com->logo;*/
 
-					$path = Yii::$app->basePath . Yii::$app->params['companyLogoPath'] . $image->name;
+					$path = Yii::$app->basePath .'/'. Yii::$app->params['companyLogoPath'] . $image->name;
 					$image->saveAs($path);
 				}
 
@@ -501,7 +501,7 @@ class UserController extends FrontController
                 $file_type = $model->image->extension;
                 $file_name = $model->image->baseName;
                 $file_path = $model->image->baseName.'-'.md5(date('dmyhis')).'.'.$file_type;
-                $path = Yii::$app->basePath . Yii::$app->params['companyCompanyGallery'] . $file_path;
+                $path = Yii::$app->basePath .'/'. Yii::$app->params['companyCompanyGallery'] . $file_path;
                 $model->image->saveAs($path);
 
                 $object_id = Company::findOne(['created_by' => Common::currentUsers()->getId()])->id;

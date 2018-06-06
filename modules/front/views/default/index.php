@@ -7,6 +7,8 @@ $page = \app\models\Pages::get();
 /** @var $this \yii\web\View title */
 $this->title = Helper::titleSeo($page);
 Helper::generateSeo($page);
+
+$this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/js/select2.min.js');
 ?>
 <div class="slider-area">
     <div class="slider">
