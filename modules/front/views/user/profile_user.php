@@ -72,7 +72,7 @@ $userInfo = \app\models\UserDetails::getInfo();
 													<tr>
 													<tr>
 														<td>Giới tính</td>
-														<td>Female</td>
+														<td><?= $userInfo->gender; ?></td>
 													</tr>
 													<tr>
 														<td>Địa chỉ</td>

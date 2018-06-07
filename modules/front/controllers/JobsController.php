@@ -11,6 +11,7 @@ use app\models\FileUploads;
 use app\models\Job;
 use app\models\UserJobs;
 use app\models\Users;
+use Carbon\Carbon;
 use Yii;
 use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
@@ -80,6 +81,7 @@ class JobsController extends FrontController
             $model->updated_by = Common::currentUsers()->getId();
             $model->created_at = Datetime::getDateNow(Datetime::SQL_DATETIME);
             $model->updated_at = Datetime::getDateNow(Datetime::SQL_DATETIME);
+            $model->cv_end_date = Carbon::createFromFormat(Datetime::INPUT_DMY, $model->cv_end_date)->format(Datetime::SQL_DATE);
 
             // TODO: will make func approve
             $model->effect_date = Datetime::getDateNow(Datetime::SQL_DATETIME);
@@ -108,18 +110,21 @@ class JobsController extends FrontController
         $model = null;
         if($id){
             $model = $this->findModel($id);
+	        $model->cv_end_date = Carbon::createFromFormat(Datetime::SQL_DATE,$model->cv_end_date)->format(Datetime::INPUT_DMY);
         }
         if(!$model){
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
-			$r = Yii::$app->request->get('r');
-			if($r){
-				Yii::$app->session->setFlash('success', "Tin tuyển dụng đã được cập nhật.");
-				return $this->redirect(Helper::encrypt($r, false));
-			}
-	        $this->refresh();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()){
+	        $model->cv_end_date = Carbon::createFromFormat(Datetime::INPUT_DMY, $model->cv_end_date)->format(Datetime::SQL_DATE);
+	        if($model->save()){
+		        $r = Yii::$app->request->get('r');
+		        if($r){
+			        Yii::$app->session->setFlash('success', "Tin tuyển dụng đã được cập nhật.");
+			        return $this->redirect(Helper::encrypt($r, false));
+		        }
+	        }
         }
 
         return $this->render('jobs', [

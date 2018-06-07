@@ -7,6 +7,7 @@ use app\library\helper\Helper;
 
 $this->title = 'About';
 $this->params['breadcrumbs'][] = $this->title;
+$this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/js/select2.min.js');
 ?>
 
 <div class="container">

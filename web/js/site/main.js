@@ -192,14 +192,34 @@ var Main = function () {
                     } else {
                         var language = "vi";
                     }
+
+                    var startDate = _this.attr('startDate');
+                    if (typeof startDate !== typeof undefined && startDate !== false) {
+                        var startDates = startDate;
+                    } else {
+                        var startDates = "01/01/1900";
+                    }
+                    var endDate = _this.attr('endDate');
+                    if (typeof endDate !== typeof undefined && endDate !== false) {
+                        var endDates = endDate;
+                    } else {
+                        var endDates = new Date();
+                    }
+                    var startView = _this.attr('startView');
+                    if (typeof startView !== typeof undefined && startView !== false) {
+                        var startViews = startView;
+                    } else {
+                        var startViews = 2;
+                    }
+
                     _this.datepicker({
-                        startView: 2,
+                        startView: startViews,
                         format: format,
                         language: language,
                         todayHighlight: true,
                         toggleActive: true,
-                        startDate: "01/01/1900",
-                        endDate: new Date(),
+                        startDate: startDates,
+                        endDate: endDates,
                         clearBtn: true,
                     });
                 });

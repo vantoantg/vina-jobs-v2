@@ -10,9 +10,9 @@ namespace app\library\helper;
 class Cons
 {
     const
-	        STATUS_ACTIVE = 1,
-		    STATUS_DISABLED = 2,
-		    STATUS_DRAFT = 0;
+        STATUS_ACTIVE = 1,
+        STATUS_DISABLED = 2,
+        STATUS_DRAFT = 0;
 	const
 		ARCHIVE_FALSE = 0,
 		ARCHIVE_TRUE = 1;

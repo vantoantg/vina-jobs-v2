@@ -16,15 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="container">
-    <div class="users-create">
-
-        <h1><?= Html::encode($this->title) ?></h1>
-
-    </div>
-</div>
-
-<div class="container">
     <div class="col-12 col-sm-8">
+	    <div class="users-create text-center">
+		    <h1>RESET MẬT KHẨU</h1>
+	    </div>
+
 		<?php $form = \yii\widgets\ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 		<?php
 		echo $form->field($model, 'changepassword')->passwordInput(['placeholder' => 'Mật khẩu mới']);

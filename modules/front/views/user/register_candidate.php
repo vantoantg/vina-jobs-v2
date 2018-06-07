@@ -211,7 +211,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                                 <?= $form->field($userDetail, 'birthday', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-birthday-cake"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                                ])->textInput(['class' => 'datepk form-control'])->label(false) ?>
+                                ])->textInput(['autocomplete' => "off", 'class' => 'datepk form-control'])->label(false) ?>
 							</div>
 						</div>
 					</div>

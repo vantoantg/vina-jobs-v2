@@ -334,12 +334,14 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
     </td>
     <td class="text-center"><p title="Nơi làm việc"><i class="icon-location"></i>
             <br><%= k.loca_name %></p></td>
+        <?php if(\app\library\helper\Common::isGuest() || \app\library\helper\Common::currentUsers()->type != \app\models\Users::USER_TYPE_CONTACT_OF_COMPANY){ ?>
     <td class="tbl-apply">
         <% if (k.isGuest){ %>
         <a href="#"
            data-toggle="modal" data-target="#login-modal"
         >Apply</a>
-        <% } else{ %>
+        <% } else { %>
+
         <a href="#"
            class="apply-job"
            data-action="apply"
@@ -349,6 +351,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
         >Apply</a>
         <% } %>
     </td>
+    <?php } ?>
     </tr>
     <% }); %>
 

@@ -28,14 +28,14 @@
         <ul>
             <li class="text-center">
                 <a href="">
-                    <img src="https://cdn.itviec.com/system/production/employers/logos/104/toshiba-software-development-viet-nam-co-ltd-logo-170-151.jpg?1496738781"
+                    <img src="<?= $company['logo'];?>"
                          class="img-responsive">
                 </a>
             </li>
             <hr>
 
             <li class="">
-                <p>Toshiba Software Development (Viet Nam) Co, Ltd</p>
+                <p><?= $company['name'];?></p>
             </li>
             <hr>
 
