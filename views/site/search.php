@@ -13,6 +13,7 @@ $page = \app\models\Pages::get('search');
 $this->title = \app\library\helper\Helper::titleSeo($page);
 \app\library\helper\Helper::generateSeo($page);
 $this->params['breadcrumbs'][] = $this->title;
+$this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/js/select2.min.js');
 ?>
 
 <div class="container <?= $page->slug; ?>">

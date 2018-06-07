@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\components\CaptchaAction;
 use app\forms\ApplyForm;
+use app\library\helper\Common;
 use app\library\helper\Helper;
 use app\models\Auth;
 use app\models\Company;
@@ -205,13 +206,11 @@ class SiteController extends FrontController
     		throw new BadRequestHttpException();
 	    }
 
-	    $company = Company::instance()->getCompany($job['company_id']);
 	    $galleries = FileUploads::instance()->getGallery(FileUploads::COM_GALLERY, $job['company_id']);
     	$form = new ApplyForm();
 
         return $this->render('employeers_detail', [
         	'job' => $job,
-        	'company' => $company,
         	'galleries' => $galleries,
         	'applyForm' => $form,
         ]);

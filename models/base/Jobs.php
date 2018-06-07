@@ -14,6 +14,7 @@ use Yii;
  * @property string $slug
  * @property string $description
  * @property string $content
+ * @property string $cv_end_date
  * @property string $tags
  * @property string $keyword
  * @property int $salary
@@ -50,7 +51,7 @@ class Jobs extends \yii\db\ActiveRecord
         return [
             [['categories_id', 'company_id', 'salary', 'working_time', 'created_by', 'updated_by', 'approved_by', 'arrange', 'star', 'client_status', 'status'], 'integer'],
             [['description', 'content'], 'string'],
-            [['created_at', 'updated_at', 'effect_date', 'end_date', 'approved_at'], 'safe'],
+            [['cv_end_date', 'created_at', 'updated_at', 'effect_date', 'end_date', 'approved_at'], 'safe'],
             [['title', 'slug', 'tags', 'keyword', 'address'], 'string', 'max' => 255],
         ];
     }
@@ -68,6 +69,7 @@ class Jobs extends \yii\db\ActiveRecord
             'slug' => 'Slug',
             'description' => 'Description',
             'content' => 'Content',
+            'cv_end_date' => 'Cv End Date',
             'tags' => 'Tags',
             'keyword' => 'Keyword',
             'salary' => 'Salary',

@@ -34,21 +34,17 @@ use app\library\helper\Helper;
 			<div class="col-md-3 col-sm-6 paddingtop-bottom <?= Helper::wowClass(true) ?> fadeInRight" data-wow-delay="0.3s">
 				<h6 class="heading7">CÁC VIỆC LÀM MỚI</h6>
 				<div class="post">
-					<p>
-                        <a href="<?= Helper::createUrl(['site/employeers-detail', 'slug' => 'web-developer-java--javascript--jquery', 'id' => 1])?>" title="Click để xem tin: Tuyển lập trình backend - 3 năm kinh nghiệm">Tuyển lập trình backend - 3 năm kinh nghiệm</a><br>
-                        <a href="#" title="Click để xem thông tin Công Ty LOCKON-VN">Công ty LOCKON VN</a>
-                        <span>Hạn nộp HS: 01/06</span>
-                    </p>
-                    <p>
-                        <a href="#" title="Click để xem tin: Tuyển lập trình backend - 3 năm kinh nghiệm">Tuyển lập trình backend - 3 năm kinh nghiệm</a><br>
-                        <a href="#" title="Click để xem thông tin Công Ty LOCKON-VN">Công ty LOCKON VN</a>
-                        <span>Hạn nộp HS: 01/06</span>
-                    </p>
-                    <p>
-                        <a href="#" title="Click để xem tin: Tuyển lập trình backend - 3 năm kinh nghiệm">Tuyển lập trình backend - 3 năm kinh nghiệm</a><br>
-                        <a href="#" title="Click để xem thông tin Công Ty LOCKON-VN">Công ty LOCKON VN</a>
-                        <span>Hạn nộp HS: 01/06</span>
-                    </p>
+                    <?php
+                   if($data){
+                       foreach ($data as $item){ ?>
+                           <p>
+                               <a href="<?= $item['url_view']; ?>" title="Click để xem tin: <?= $item['job_name']; ?>"><?= $item['job_name']; ?></a><br>
+                               <a href="<?= $item['url_company_detail']; ?>" title="Click để xem thông tin <?= $item['com_name']; ?>"><?= $item['com_name']; ?></a>
+                               <span>Hạn nộp HS: <?= $item['cv_end_date']; ?></span>
+                           </p>
+                       <?php }
+                   }
+                    ?>
 				</div>
 			</div>
 			<div class="col-md-2 col-sm-6 paddingtop-bottom <?= Helper::wowClass(true) ?> fadeInRight" data-wow-delay="0.4s">

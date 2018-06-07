@@ -84,7 +84,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
     <div id="sidebarfx" data-follow-scroll='.employeers-detail' class="col-12 col-sm-4">
-		<?= (new \app\components\SidebarWidget())->recentCompanyInfo(); ?>
+		<?= (new \app\components\SidebarWidget())->recentCompanyInfo($job['company_id']); ?>
     </div>
 </div>
 

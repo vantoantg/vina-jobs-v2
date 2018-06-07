@@ -85,6 +85,13 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
             </div>
 
             <?= $form->field($model, 'tags') ?>
+            <?= $form->field($model, 'cv_end_date')->textInput([
+                    'autocomplete' => "off",
+                'class' => 'datepk form-control',
+                'startView' => 3,
+                'startDate' => \app\library\helper\Datetime::getTimeNow(null, \app\library\helper\Datetime::INPUT_DMY),
+                'endDate' => \Carbon\Carbon::now()->addYears(3)->format(\app\library\helper\Datetime::INPUT_DMY),
+            ]) ?>
 
 	        <div class="row">
 		        <div class="col-xs-6">

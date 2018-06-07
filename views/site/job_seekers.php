@@ -11,6 +11,7 @@ $this->title = Helper::titleSeo($page);
 Helper::generateSeo($page);
 
 $this->params['breadcrumbs'][] = $this->title;
+$this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/js/select2.min.js');
 ?>
 
 

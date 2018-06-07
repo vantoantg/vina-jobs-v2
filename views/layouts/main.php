@@ -91,7 +91,7 @@ if (YII_DEBUG) {
 <?= (new \app\components\UserWidget())->login() ?>
 
 <div class="footer-area">
-	<?= $this->render('//layouts/jobs/footer'); ?>
+	<?= (new \app\components\SiteWidget())->footer(); ?>
 </div><!-- /.footer-area -->
 
 <?php
