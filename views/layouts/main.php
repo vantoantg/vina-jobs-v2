@@ -30,12 +30,12 @@ if (YII_DEBUG) {
     <meta name="robots" content="index,follow">
     <meta name="copyright" content="index,follow">
     <link rel="shortcut icon" type="image/png" href="<?= \app\library\helper\Helper::homeUrl() ?>favicon.ico"/>
-    <meta property="og:type" content="Tuyển dụng và tìm kiếm việc làm"/>
+    <meta property="og:type" content="Tuyển dụng và tìm kiếm việc làm" />
     <meta property="og:title" content="<?= Html::encode($this->title) ?>"/>
     <meta property="og:url" content="<?= Yii::$app->request->getUrl() ?>"/>
     <meta property="og:description" content="<?= Yii::$app->params['seo']['description'] ?>"/>
-    <meta property="article:published_time" content="2015-11-09T16:39:31+00:00"/>
-    <meta property="article:modified_time" content="2017-08-01T18:22:52+00:00"/>
+    <meta property="article:published_time" content="<?= \Carbon\Carbon::createFromFormat('Y-m-d', '2018-01-01')->toFormattedDateString() ?>"/>
+    <meta property="article:modified_time" content="<?= \Carbon\Carbon::now()->toFormattedDateString() ?>"/>
     <meta property="og:site_name" content="<?= \app\library\helper\Helper::siteURL() ?>"/>
     <meta property="og:image" content="<?= \app\library\helper\Helper::homeUrl() ?>favicon.ico?w=200"/>
     <meta property="og:image:width" content="200"/>
@@ -45,7 +45,7 @@ if (YII_DEBUG) {
     <meta name="twitter:text:title" content="<?= Html::encode($this->title) ?>"/>
     <meta name="twitter:image" content="<?= \app\library\helper\Helper::homeUrl() ?>favicon.ico?w=240"/>
     <meta name="twitter:card" content="summary"/>
-	<meta name="twitter:creator" content="Jobs - Vina"/>
+	<meta name="twitter:creator" content="<?= Helper::params(); ?>"/>
     <meta name="twitter:description" content="<?= Yii::$app->params['seo']['description'] ?>"/>
     <meta property="article:publisher" content="https://www.facebook.com/vina-jobs.com"/>
 	<?php $this->head() ?>
