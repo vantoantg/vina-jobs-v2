@@ -591,6 +591,7 @@ class UserController extends FrontController
 			if ($model->validate()) {
 				$user->setPassword($model->changepassword);
 				$user->save();
+				//TODO: redirect to ...
 			}
 		}
 
