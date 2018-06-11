@@ -66,7 +66,7 @@ class Users extends \app\models\base\User implements IdentityInterface
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios[self::SCENARIO_UPDATE] = ['name'];
+        $scenarios[self::SCENARIO_UPDATE] = ['name', 'email'];
         $scenarios[self::SCENARIO_REGISTER] = ['name', 'iread', 'email', 'password', 'repassword'];
         $scenarios[self::SCENARIO_RESET_PW] = [];
         return $scenarios;
