@@ -6,6 +6,7 @@
  */
 namespace app\components;
 
+use app\models\Company;
 use app\models\Job;
 use yii\base\Widget;
 use app\library\helper\Helper;
@@ -38,9 +39,12 @@ class SidebarWidget extends Widget
 	    }
     }
 
-	public function recentCompanyInfo(){
+	public function recentCompanyInfo($company_id){
+		$company = Company::instance()->getCompany($company_id);
+		$company = $company->toArray();
+		$company['logo'] = Company::getLogo($company['logo']);
 		return $this->render('sidebar/company_info', [
-
+			'company' => $company
 		]);
 	}
 

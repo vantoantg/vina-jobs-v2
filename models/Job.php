@@ -7,6 +7,7 @@ use app\library\helper\Datetime;
 use app\library\helper\Dropdowns;
 use app\library\helper\Helper;
 use app\models\base\Jobs;
+use Carbon\Carbon;
 use yii\db\Query;
 
 class Job extends Jobs
@@ -28,7 +29,7 @@ class Job extends Jobs
 			[['categories_id', 'title', 'salary', 'address'], 'required'],
 			[['categories_id', 'company_id', 'working_time', 'created_by', 'updated_by', 'approved_by', 'arrange', 'star', 'client_status', 'status'], 'integer'],
 			[['description', 'content'], 'string'],
-			[['created_at', 'updated_at', 'effect_date', 'end_date', 'approved_at'], 'safe'],
+			[['cv_end_date', 'created_at', 'updated_at', 'effect_date', 'end_date', 'approved_at'], 'safe'],
 			[['title', 'slug', 'tags', 'keyword', 'salary', 'address'], 'string', 'max' => 255],
 		];
 	}
@@ -44,6 +45,7 @@ class Job extends Jobs
 			'slug' => 'slug',
 			'description' => 'Mô tả',
 			'content' => 'Chi tiết thông tin cần tuyển',
+			'cv_end_date' => 'Hạn nộp HS',
 			'tags' => 'Kỹ năng',
 			'keyword' => 'Keyword',
 			'salary' => 'Mức lương',
@@ -235,12 +237,10 @@ class Job extends Jobs
 				'job.categories_id',
 				'job.title AS job_name',
 				'job.slug',
+				'job.cv_end_date',
 				'job.salary',
 				'job.working_time',
-				'job.content',
-				'job.status',
 				'job.created_at',
-				'job.client_status',
 				'job_cat.name AS cat_name',
 				'loca.name AS loca_name',
 				'com.id AS com_id',
@@ -268,7 +268,7 @@ class Job extends Jobs
 				$item['created_at'] = Datetime::sqlDatetimeDiffForHumans($item['created_at']);
 				$item['url_view'] = Helper::createUrl(['site/employeers-detail', 'slug' => $item['slug'], 'id' => $item['job_id']]);
 				$item['url_company_detail'] = Helper::createUrl(['front/jobs/company-detail', 'id' => $item['slug'], 'slug' => Helper::createSlug($item['com_name']), 'id' => $item['com_id']]);
-				$item['client_status'] = ($item['client_status'] == Job::STATUS_CLIENT_PUBLISH) ? '<i class="fas fa-eye"></i>' : '<i class="far fa-eye-slash"></i>';
+				$item['cv_end_date'] = $item['cv_end_date'] ? Carbon::createFromFormat(Datetime::SQL_DATE, $item['cv_end_date'])->format(Datetime::INPUT_DMY) : '--';
 				$result[] = $item;
 			}
 
