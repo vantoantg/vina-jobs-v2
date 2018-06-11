@@ -31,29 +31,29 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 
                 <div class="form-group field-searchform-jobs">
 				    <?php
-				    $data = \app\models\JobCategories::getAll();
-				    ?>
+                    $data = \app\models\JobCategories::getAll();
+                    ?>
                     <select class="job-select2 form-control" name="jobs">
                         <option value="0">-- Chọn --</option>
 					    <?php
-					    foreach ($data as $datum) {
-						    echo '<option value="' . $datum['id'] . '">' . $datum['name'] . '</option>';
-					    }
-					    ?>
+                        foreach ($data as $datum) {
+                            echo '<option value="' . $datum['id'] . '">' . $datum['name'] . '</option>';
+                        }
+                        ?>
                     </select>
                 </div>
 
                 <div class="form-group field-searchform-loca">
 				    <?php
-				    $data = \app\models\Locations::getAll();
-				    ?>
+                    $data = \app\models\Locations::getAll();
+                    ?>
                     <select class="job-select2 form-control" name="loca">
                         <option value="0">-- Chọn --</option>
 					    <?php
-					    foreach ($data as $datum) {
-						    echo '<option value="' . $datum['id'] . '">' . $datum['name'] . '</option>';
-					    }
-					    ?>
+                        foreach ($data as $datum) {
+                            echo '<option value="' . $datum['id'] . '">' . $datum['name'] . '</option>';
+                        }
+                        ?>
                     </select>
                 </div>
                 <input type="submit" class="btn search" value="TÌM">
@@ -67,7 +67,8 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
         <div class="col-md-9">
             <div class="job-posts table-responsive">
                 <table class="table list-jobs">
-	                <?php for($i=1; $i<= 20; $i++){ ?>
+	                <?php for ($i=1; $i<= 20; $i++) {
+                            ?>
                     <tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.<?= $i ?>s">
                         <td class="tbl-logo"><img src="<?= Helper::homeUrl()?>web/template/jobs/img/job-logo1.png" alt=""></td>
                         <td class="tbl-title"><h4>Web Designer <br><span class="job-type">full time</span></h4></td>
@@ -76,7 +77,8 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                         <td><p>&dollar; 14000</p></td>
                         <td class="tbl-apply"><a href="#">Apply now</a></td>
                     </tr>
-	                <?php } ?>
+	                <?php
+                        } ?>
                 </table>
             </div>
             <div class="more-jobs">

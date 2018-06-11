@@ -96,5 +96,4 @@ class Dropdowns
             6 => 'Quản lý cấp cao',
             10 => 'Khác',
         ];
-    
 }

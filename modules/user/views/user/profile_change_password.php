@@ -4,7 +4,6 @@ use yii\helpers\Html;
 use \yii\widgets\ActiveForm;
 use app\library\helper\Helper;
 
-
 /* @var $this yii\web\View */
 /* @var $model app\models\Users */
 
@@ -32,10 +31,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
 			<?php $form = \yii\widgets\ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 			<?php
-			echo $form->field($model, 'password')->passwordInput(['placeholder' => 'Current password']);
-			echo $form->field($model, 'changepassword')->passwordInput(['placeholder' => 'New password']);
-			echo $form->field($model, 'reenterpassword')->passwordInput(['placeholder' => 'Renew password']);
-			?>
+            echo $form->field($model, 'password')->passwordInput(['placeholder' => 'Current password']);
+            echo $form->field($model, 'changepassword')->passwordInput(['placeholder' => 'New password']);
+            echo $form->field($model, 'reenterpassword')->passwordInput(['placeholder' => 'Renew password']);
+            ?>
             <div class="form-group">
 				<?= \yii\helpers\Html::submitButton('<i class="far fa-hdd"></i> Save', ['class' => 'btn btn-primary']) ?>
             </div>

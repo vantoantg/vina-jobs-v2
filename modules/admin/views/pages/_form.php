@@ -38,12 +38,13 @@ use \app\library\helper\Cons;
     <?= $form->field($model, 'img')->textInput(['maxlength' => true]) ?>
 
 	<?php
-	if(\app\library\helper\Role::allowAdmin()){
-	?>
+    if (\app\library\helper\Role::allowAdmin()) {
+        ?>
 
     <?= $form->field($model, 'view')->textInput() ?>
 
-	<?php } ?>
+	<?php
+    } ?>
 
     <?= $form->field($model, 'pape_template')->textInput() ?>
 

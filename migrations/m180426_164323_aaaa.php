@@ -12,7 +12,7 @@ class m180426_164323_aaaa extends Migration
      */
     public function safeUp()
     {
-		$this->execute("ALTER TABLE `tn_candidate` ADD COLUMN `receives` SMALLINT(1) DEFAULT 1 NULL AFTER `sorted`; ");
+        $this->execute("ALTER TABLE `tn_candidate` ADD COLUMN `receives` SMALLINT(1) DEFAULT 1 NULL AFTER `sorted`; ");
     }
 
     /**

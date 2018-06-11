@@ -29,7 +29,8 @@ $this->params['breadcrumbs'][] = 'Update';
                         foreach ($pages as $page) {
                             ?>
 							<li title="Click to edit"><?= Html::a($page->name, ['update', 'id' => $page->id], ['class' => '']) ?></li>
-                        <?php }
+                        <?php
+                        }
                     } ?>
 				</ul>
 			</div>

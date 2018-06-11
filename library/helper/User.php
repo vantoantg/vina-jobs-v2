@@ -7,8 +7,6 @@
 
 namespace app\library\helper;
 
-
 class User extends Common
 {
-
 }

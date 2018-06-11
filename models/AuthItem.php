@@ -7,8 +7,6 @@
 
 namespace app\models;
 
-
 class AuthItem extends \app\models\base\AuthItem
 {
-
 }

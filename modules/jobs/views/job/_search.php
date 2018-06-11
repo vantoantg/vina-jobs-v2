@@ -28,43 +28,43 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'slug') ?>
 
-    <?php // echo $form->field($model, 'description') ?>
+    <?php // echo $form->field($model, 'description')?>
 
-    <?php // echo $form->field($model, 'content') ?>
+    <?php // echo $form->field($model, 'content')?>
 
-    <?php // echo $form->field($model, 'tags') ?>
+    <?php // echo $form->field($model, 'tags')?>
 
-    <?php // echo $form->field($model, 'keyword') ?>
+    <?php // echo $form->field($model, 'keyword')?>
 
-    <?php // echo $form->field($model, 'salary') ?>
+    <?php // echo $form->field($model, 'salary')?>
 
-    <?php // echo $form->field($model, 'working_time') ?>
+    <?php // echo $form->field($model, 'working_time')?>
 
-    <?php // echo $form->field($model, 'address') ?>
+    <?php // echo $form->field($model, 'address')?>
 
-    <?php // echo $form->field($model, 'created_by') ?>
+    <?php // echo $form->field($model, 'created_by')?>
 
-    <?php // echo $form->field($model, 'updated_by') ?>
+    <?php // echo $form->field($model, 'updated_by')?>
 
-    <?php // echo $form->field($model, 'created_at') ?>
+    <?php // echo $form->field($model, 'created_at')?>
 
-    <?php // echo $form->field($model, 'updated_at') ?>
+    <?php // echo $form->field($model, 'updated_at')?>
 
-    <?php // echo $form->field($model, 'effect_date') ?>
+    <?php // echo $form->field($model, 'effect_date')?>
 
-    <?php // echo $form->field($model, 'end_date') ?>
+    <?php // echo $form->field($model, 'end_date')?>
 
-    <?php // echo $form->field($model, 'approved_at') ?>
+    <?php // echo $form->field($model, 'approved_at')?>
 
-    <?php // echo $form->field($model, 'approved_by') ?>
+    <?php // echo $form->field($model, 'approved_by')?>
 
-    <?php // echo $form->field($model, 'arrange') ?>
+    <?php // echo $form->field($model, 'arrange')?>
 
-    <?php // echo $form->field($model, 'star') ?>
+    <?php // echo $form->field($model, 'star')?>
 
-    <?php // echo $form->field($model, 'client_status') ?>
+    <?php // echo $form->field($model, 'client_status')?>
 
-    <?php // echo $form->field($model, 'status') ?>
+    <?php // echo $form->field($model, 'status')?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

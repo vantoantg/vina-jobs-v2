@@ -20,18 +20,18 @@ use yii\widgets\ActiveForm;
     </div>
 
 	<?php
-	$datas = \app\models\PostCategory::categoriesMenus();
-	$listData = \yii\helpers\ArrayHelper::map($datas, 'id', 'name');
-	echo $form->field($model, 'post_category_id',[
-		'template' => '{input}{label}{error}{hint}'
-	])->dropDownList(
-		$listData,
-		[
-			'class' => 'form-control select2-list',
-			'data-placeholder' => "Select an item"
-		]
-	)->label('Select category');
-	?>
+    $datas = \app\models\PostCategory::categoriesMenus();
+    $listData = \yii\helpers\ArrayHelper::map($datas, 'id', 'name');
+    echo $form->field($model, 'post_category_id', [
+        'template' => '{input}{label}{error}{hint}'
+    ])->dropDownList(
+        $listData,
+        [
+            'class' => 'form-control select2-list',
+            'data-placeholder' => "Select an item"
+        ]
+    )->label('Select category');
+    ?>
 
 	<?= $form->field($model, 'name')->textInput(['maxlength' => true, 'class' => 'createSlug form-control', 'data-target' => '#post-slug']) ?>
 
@@ -44,8 +44,8 @@ use yii\widgets\ActiveForm;
     <div class="row">
         <div class="col-xs-10">
 			<?= $form->field($model, 'img', [
-				'template' => '{input}{label}{error}{hint}'
-			])->textInput(['maxlength' => true, 'class' => 'form-control image-url', 'placeholder' => 'Enter image url address or select']) ?>
+                'template' => '{input}{label}{error}{hint}'
+            ])->textInput(['maxlength' => true, 'class' => 'form-control image-url', 'placeholder' => 'Enter image url address or select']) ?>
         </div>
         <div class="col-xs-2">
             <button class="btn btn-default openFinder" data-target=".image-url" data-type = "Images" type="button">
@@ -61,8 +61,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'arranged')->textInput() ?>
 
 	<?= $form->field($model, 'status', [
-		'template' => '<label class="checkbox-inline checkbox-styled" >{input}</label>{label}{error}{hint}'
-	])->checkbox() ?>
+        'template' => '<label class="checkbox-inline checkbox-styled" >{input}</label>{label}{error}{hint}'
+    ])->checkbox() ?>
 
     <?php ActiveForm::end(); ?>
 

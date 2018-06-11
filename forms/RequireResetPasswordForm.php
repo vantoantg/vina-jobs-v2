@@ -24,7 +24,8 @@ class RequireResetPasswordForm extends Model
         ];
     }
 
-    public function sendEmailResetPassword($email, $User = null){
+    public function sendEmailResetPassword($email, $User = null)
+    {
         /** var $User Users */
         $mail = \Yii::$app->mailer->compose('@app/mail/layouts/html', ['content' => 1312312312])
             ->setFrom($email)

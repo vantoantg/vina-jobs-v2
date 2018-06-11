@@ -5,7 +5,6 @@ use \yii\widgets\ActiveForm;
 use \app\models\Dropdown;
 use app\library\helper\Helper;
 
-
 /* @var $this yii\web\View */
 /* @var $model app\models\Users */
 /* @var $page app\models\Pages */

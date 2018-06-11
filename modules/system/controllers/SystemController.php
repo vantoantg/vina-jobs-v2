@@ -129,46 +129,47 @@ class SystemController extends AdminController
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-	public function actionBackupDb(){
+    public function actionBackupDb()
+    {
         @ini_set('memory_limit', '2048M');
         @set_time_limit(3000);
 
-    	$path = Yii::$app->basePath.'/web/backups';
-		if(!file_exists($path)){
-			mkdir($path);
-		}
-		@chmod($path, 0777);
+        $path = Yii::$app->basePath.'/web/backups';
+        if (!file_exists($path)) {
+            mkdir($path);
+        }
+        @chmod($path, 0777);
 
-		if(Yii::$app->request->isPost){
-			$backup = Yii::$app->request->post('backup_db');
-			if(isset($backup)){
-				Helper::backupDB();
-			}
-		}
-		if(Yii::$app->request->get('delete')){
-			@unlink(Yii::$app->basePath.'/web/backups/'.Yii::$app->request->get('delete'));
-			return $this->redirect(['/admin/admin/backup-db']);
-		}
-		$file = [];
-		if ($handle = opendir(Yii::$app->basePath.'/web/backups')) {
-			while (false !== ($entry = readdir($handle))) {
-				if ($entry != "." && $entry != "..") {
-					$time = explode('-', $entry);
-					$time = str_replace('.sql', '', $time[3]);
-					$file[] = [
-						'name' => $entry,
-						'size' => filesize($path.'/'.$entry),
-						'time' => Carbon::createFromFormat(Datetime::FILE_TIME, $time)->format(Datetime::VIEW_DATETIME_dmYHis),
-						'path'  => Helper::siteURL().'/web/backups/'.$entry
-					];
-				}
-			}
-			closedir($handle);
-		}
-		rsort($file);
+        if (Yii::$app->request->isPost) {
+            $backup = Yii::$app->request->post('backup_db');
+            if (isset($backup)) {
+                Helper::backupDB();
+            }
+        }
+        if (Yii::$app->request->get('delete')) {
+            @unlink(Yii::$app->basePath.'/web/backups/'.Yii::$app->request->get('delete'));
+            return $this->redirect(['/admin/admin/backup-db']);
+        }
+        $file = [];
+        if ($handle = opendir(Yii::$app->basePath.'/web/backups')) {
+            while (false !== ($entry = readdir($handle))) {
+                if ($entry != "." && $entry != "..") {
+                    $time = explode('-', $entry);
+                    $time = str_replace('.sql', '', $time[3]);
+                    $file[] = [
+                        'name' => $entry,
+                        'size' => filesize($path.'/'.$entry),
+                        'time' => Carbon::createFromFormat(Datetime::FILE_TIME, $time)->format(Datetime::VIEW_DATETIME_dmYHis),
+                        'path'  => Helper::siteURL().'/web/backups/'.$entry
+                    ];
+                }
+            }
+            closedir($handle);
+        }
+        rsort($file);
 
-		return $this->render('database', [
-			'files' => $file
-		]);
-	}
+        return $this->render('database', [
+            'files' => $file
+        ]);
+    }
 }

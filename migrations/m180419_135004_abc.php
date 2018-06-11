@@ -12,7 +12,7 @@ class m180419_135004_abc extends Migration
      */
     public function safeUp()
     {
-		$this->execute("ALTER TABLE `tn_user_jobs` CHANGE `applied` `applied` SMALLINT(1) DEFAULT 0 NULL, CHANGE `saved` `saved` SMALLINT(1) DEFAULT 0 NULL, CHANGE `is_deleted` `is_deleted` SMALLINT(1) DEFAULT 0 NULL;");
+        $this->execute("ALTER TABLE `tn_user_jobs` CHANGE `applied` `applied` SMALLINT(1) DEFAULT 0 NULL, CHANGE `saved` `saved` SMALLINT(1) DEFAULT 0 NULL, CHANGE `is_deleted` `is_deleted` SMALLINT(1) DEFAULT 0 NULL;");
     }
 
     /**

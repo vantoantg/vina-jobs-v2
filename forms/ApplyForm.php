@@ -26,17 +26,17 @@ class ApplyForm extends Model
         return [
             [['message'], 'string'],
             [['message'], 'required'],
-	        [['new_cv'], 'file', 'extensions' =>'pdf, pptx, docx, doc', 'maxSize' => 3072000, 'tooBig' => 'Chỉ tải lên file dưới 3MB'],
+            [['new_cv'], 'file', 'extensions' =>'pdf, pptx, docx, doc', 'maxSize' => 3072000, 'tooBig' => 'Chỉ tải lên file dưới 3MB'],
         ];
     }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function attributeLabels()
-	{
-		return [
-			'message' => 'Tin nhắn',
-		];
-	}
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'message' => 'Tin nhắn',
+        ];
+    }
 }

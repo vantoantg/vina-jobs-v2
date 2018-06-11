@@ -10,9 +10,9 @@ use app\assets\app\AppProdAsset;
 use \app\library\helper\Helper;
 
 if (YII_DEBUG) {
-	AppAsset::register($this);
+    AppAsset::register($this);
 } else {
-	AppProdAsset::register($this);
+    AppProdAsset::register($this);
 }
 ?>
 <?php $this->beginPage() ?>

@@ -28,9 +28,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'default') ?>
 
-    <?php // echo $form->field($model, 'sorted') ?>
+    <?php // echo $form->field($model, 'sorted')?>
 
-    <?php // echo $form->field($model, 'input') ?>
+    <?php // echo $form->field($model, 'input')?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

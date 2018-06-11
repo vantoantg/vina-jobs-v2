@@ -30,15 +30,15 @@ class SearchForm extends Model
         ];
     }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function attributeLabels()
-	{
-		return [
-			'keys' => 'keys',
-			'location' => 'location',
-			'categories' => 'categories',
-		];
-	}
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'keys' => 'keys',
+            'location' => 'location',
+            'categories' => 'categories',
+        ];
+    }
 }

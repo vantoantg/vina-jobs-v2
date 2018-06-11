@@ -1,5 +1,6 @@
 <?php
 use app\library\helper\Helper;
+
 ?>
 <div class="button navbar-right">
     <?php
@@ -13,7 +14,8 @@ use app\library\helper\Helper;
 			</button>
 			<ul class="dropdown-menu" role="menu"
 			    aria-labelledby="menu1">
-                <?php if (\app\library\helper\Common::currentUser('type') == \app\models\Users::USER_TYPE_CONTACT_OF_COMPANY) { ?>
+                <?php if (\app\library\helper\Common::currentUser('type') == \app\models\Users::USER_TYPE_CONTACT_OF_COMPANY) {
+            ?>
                     <li role="presentation"><a
                                 href="<?= Helper::createUrl(['front/user/client-profile']) ?>"><i class="far fa-user"></i> Trang cá nhân</a></li>
 					<li role="presentation">
@@ -25,7 +27,9 @@ use app\library\helper\Helper;
 		                   href="<?= Helper::createUrl(['front/user/profile-change-password']) ?>"><i class="fas fa-unlock-alt"></i> Thay đổi mật khẩu</a></li>
 	                <li role="presentation">
 		                <a role="menuitem" tabindex="-1" href="<?= Helper::createUrl(['front/user/update-company']) ?>"><i class="far fa-edit"></i> Cập nhật thông tin</a></li>
-                <?php } else { ?>
+                <?php
+        } else {
+            ?>
                     <li role="presentation"><a href="<?= Helper::createUrl(['front/user/user-profile']) ?>"><i class="far fa-user"></i> Trang cá nhân</a></li>
 					<li role="presentation">
 						<a role="menuitem" tabindex="-1"
@@ -34,7 +38,8 @@ use app\library\helper\Helper;
 	                <li role="presentation">
 		                <a role="menuitem" tabindex="-1"
 		                   href="<?= Helper::createUrl(['front/user/profile-change-password']) ?>"><i class="fas fa-unlock-alt"></i> Thay đổi mật khẩu</a></li>
-                <?php } ?>
+                <?php
+        } ?>
 
 				<li role="presentation" class="divider"></li>
 				<li role="presentation"><a href="<?= Helper::createUrl(['front/user/logout']) ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl()); ?>"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
@@ -42,14 +47,17 @@ use app\library\helper\Helper;
 			</ul>
 		</div>
 
-    <?php } else { ?>
+    <?php
+    } else {
+        ?>
 		<button class="navbar-btn nav-button" data-toggle="modal"
 		        data-target="#register-modal"><i class="fas fa-plus"></i> Đăng ký
 		</button>
 		<button class="navbar-btn nav-button login" data-toggle="modal"
 		        data-target="#login-modal"><i class="fas fa-sign-in-alt"></i> Đăng nhập
 		</button>
-    <?php } ?>
+    <?php
+    } ?>
 </div>
 <ul class="main-nav nav navbar-nav navbar-right">
 	<li>

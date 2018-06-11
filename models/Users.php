@@ -10,7 +10,6 @@ use yii\web\IdentityInterface;
 
 class Users extends \app\models\base\User implements IdentityInterface
 {
-
     const
         USER_TYPE_DEFAULT = 1, //  Register(candidate)
         USER_TYPE_FACEBOOK = 2,
@@ -20,12 +19,12 @@ class Users extends \app\models\base\User implements IdentityInterface
 
         USER_TYPE_CONTACT_OF_COMPANY = 9; // Contact of company
 
-	const
-		STATUS_WAITING_ACTIVE = 0,
-		STATUS_WAITING_RESET_PASSWORD = 3,
+    const
+        STATUS_WAITING_ACTIVE = 0,
+        STATUS_WAITING_RESET_PASSWORD = 3,
 
-		STATUS_ACTIVED = 1,
-		STATUS_DISABLED = 2;
+        STATUS_ACTIVED = 1,
+        STATUS_DISABLED = 2;
 
     const SCENARIO_REGISTER = 'register';
     const SCENARIO_UPDATE = 'update';
@@ -56,7 +55,7 @@ class Users extends \app\models\base\User implements IdentityInterface
             [['lang'], 'string', 'max' => 5],
             [['timezone'], 'string', 'max' => 100],
             [['email', 'access_token'], 'unique'],
-	        ['repassword', 'compare', 'compareAttribute'=>'password', 'message' => "Mật khẩu nhập lại chưa chính xác." ],
+            ['repassword', 'compare', 'compareAttribute'=>'password', 'message' => "Mật khẩu nhập lại chưa chính xác." ],
         ];
     }
 
@@ -100,7 +99,7 @@ class Users extends \app\models\base\User implements IdentityInterface
             'iread' => $iread,
             'status' => 'Status',
 
-	        'as_employers' => 'Như là nhà tuyển dụng'
+            'as_employers' => 'Như là nhà tuyển dụng'
         ];
     }
 
@@ -113,17 +112,17 @@ class Users extends \app\models\base\User implements IdentityInterface
         }
     }
 
-	/**
-	 * @param bool $insert
-	 * @return bool
-	 */
-    public function beforeSave($insert) {
-
+    /**
+     * @param bool $insert
+     * @return bool
+     */
+    public function beforeSave($insert)
+    {
         if (parent::beforeSave($insert)) {
             if ($this->isNewRecord) {
-	            // TODO: Make active user register
-	            //$this->status = Users::STATUS_WAITING_ACTIVE;
-	            $this->status = Users::STATUS_ACTIVED;
+                // TODO: Make active user register
+                //$this->status = Users::STATUS_WAITING_ACTIVE;
+                $this->status = Users::STATUS_ACTIVED;
 
                 $this->setPassword($this->password);
                 $this->password_reset_token = $this->generatePasswordResetToken();
@@ -134,18 +133,20 @@ class Users extends \app\models\base\User implements IdentityInterface
         return false;
     }
 
-	/**
-	 *
-	 */
-    public function newContactCompany(){
-	    $this->type = Users::USER_TYPE_CONTACT_OF_COMPANY;
-	    $this->role = Role::ROLE_CUSTOMMER;
+    /**
+     *
+     */
+    public function newContactCompany()
+    {
+        $this->type = Users::USER_TYPE_CONTACT_OF_COMPANY;
+        $this->role = Role::ROLE_CUSTOMMER;
     }
 
     /**
      *
      */
-    public function newCandidate(){
+    public function newCandidate()
+    {
         $this->type = Users::USER_TYPE_DEFAULT;
         $this->status = Users::STATUS_WAITING_ACTIVE;
         $this->role = Role::ROLE_CUSTOMMER;
@@ -194,7 +195,6 @@ class Users extends \app\models\base\User implements IdentityInterface
         }
 
         return static::findOne(['password_reset_token' => $token]);
-
     }
 
 
@@ -271,5 +271,4 @@ class Users extends \app\models\base\User implements IdentityInterface
         $this->password_reset_token = null;
     }
     /** EXTENSION MOVIE **/
-
 }

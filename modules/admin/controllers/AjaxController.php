@@ -54,8 +54,8 @@ class AjaxController extends AdminController
 
     public function actionIndex($cookie_name)
     {
-        if(Yii::$app->request->isAjax){
-            if(isset($_COOKIE[$cookie_name]) && $_COOKIE[$cookie_name] == true) {
+        if (Yii::$app->request->isAjax) {
+            if (isset($_COOKIE[$cookie_name]) && $_COOKIE[$cookie_name] == true) {
                 setcookie($cookie_name, false, time() + (86400 * 30), "/"); // 86400 = 1 day
             } else {
                 setcookie($cookie_name, true, time() + (86400 * 30), "/"); // 86400 = 1 day
@@ -63,7 +63,8 @@ class AjaxController extends AdminController
         }
     }
 
-    public function actionPhpWorking(){
+    public function actionPhpWorking()
+    {
         UserOnlineWidget::clearUserOnline();
     }
 }

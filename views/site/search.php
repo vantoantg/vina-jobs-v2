@@ -5,7 +5,6 @@
 use yii\helpers\Html;
 use app\library\helper\Helper;
 
-
 $page = \app\models\Pages::get('search');
 /** @var $page \app\models\Pages title */
 

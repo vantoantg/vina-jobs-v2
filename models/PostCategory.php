@@ -7,23 +7,22 @@
 
 namespace app\models;
 
-
 class PostCategory extends \app\models\base\PostCategory
 {
-	const   STATUS_ACTIVE = 1,
-			STATUS_DRAFT = 0;
+    const   STATUS_ACTIVE = 1,
+            STATUS_DRAFT = 0;
 
-	/**
-	 * @param bool $insert
-	 * @return bool
-	 */
-	public function beforeSave($insert)
-	{
-		/*if ($this->isNewRecord) {
-		} else {
-		}*/
-		return parent::beforeSave($insert);
-	}
+    /**
+     * @param bool $insert
+     * @return bool
+     */
+    public function beforeSave($insert)
+    {
+        /*if ($this->isNewRecord) {
+        } else {
+        }*/
+        return parent::beforeSave($insert);
+    }
     /**
      * @param bool $is_category
      * @param int $parent_id
@@ -31,7 +30,7 @@ class PostCategory extends \app\models\base\PostCategory
      * @param array $trees
      * @return array
      */
-    static public function categoriesMenus($is_category = true, $parent_id = 0, $space = "", $trees = [])
+    public static function categoriesMenus($is_category = true, $parent_id = 0, $space = "", $trees = [])
     {
         $table = self::tableName();
         if (!$trees) {

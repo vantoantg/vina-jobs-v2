@@ -32,6 +32,9 @@ composer require --prefer-dist yiisoft/yii2-authclient
 Rich Text Input With Redactor:
 composer require --prefer-dist yiidoc/yii2-redactor "*"
 
+PHP_CS_FIXER - PS2
+vendor\bin\php-cs-fixer.bat fix C:\wamp64\www\demo2\modules
+
 SENTORA SERVER:
 ########################################################
 Login to Sentora at http://tona.jobsvina.com

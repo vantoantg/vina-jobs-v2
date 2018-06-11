@@ -89,7 +89,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 							<div class="cols-sm-10">
 								<?php
                                 $readonly = $model->email ? true : false;
-								?>
+                                ?>
                                 <?= $form->field($model, 'email', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
@@ -105,17 +105,19 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                             <label for="email" class="cols-sm-2 control-label">Tỉnh / TP có thể làm việc<span class="red"> (*)</span></label>
                             <div class="cols-sm-10">
 								<?php
-								$loca = \app\models\Locations::getAll();
-								?>
+                                $loca = \app\models\Locations::getAll();
+                                ?>
 								<?= $form->field($candidate, 'location', [
-									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-map-pin"
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-map-pin"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-								])->dropDownList(\yii\helpers\ArrayHelper::map($loca, 'id', 'name'),
-									[
-										'prompt' => '-- Chọn --',
-										'class' => 'job-select2 form-control',
-										'multiple' => 'multiple'
-									])->label(false) ?>
+                                ])->dropDownList(
+                                    \yii\helpers\ArrayHelper::map($loca, 'id', 'name'),
+                                    [
+                                        'prompt' => '-- Chọn --',
+                                        'class' => 'job-select2 form-control',
+                                        'multiple' => 'multiple'
+                                    ]
+                                )->label(false) ?>
                             </div>
                         </div>
                     </div>
@@ -125,13 +127,15 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                             <div class="cols-sm-10">
 								<?php $data = \app\models\JobCategories::getAll(); ?>
 								<?= $form->field($candidate, 'job_category_id', [
-									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-genderless"
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-genderless"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-								])->dropDownList(\yii\helpers\ArrayHelper::map($data, 'id', 'name'),
-									[
-										'prompt' => '-- Chọn --',
-										'class' => 'job-select2 form-control'
-									])->label(false) ?>
+                                ])->dropDownList(
+                                    \yii\helpers\ArrayHelper::map($data, 'id', 'name'),
+                                    [
+                                        'prompt' => '-- Chọn --',
+                                        'class' => 'job-select2 form-control'
+                                    ]
+                                )->label(false) ?>
                             </div>
                         </div>
                     </div>
@@ -140,9 +144,9 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                             <label for="email" class="cols-sm-2 control-label">Điện thoại liên hệ<span class="red"> (*)</span></label>
                             <div class="cols-sm-10">
 								<?= $form->field($userDetail, 'phone', [
-									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-mobile-alt"
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-mobile-alt"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-								])->label(false) ?>
+                                ])->label(false) ?>
                             </div>
                         </div>
                     </div>
@@ -154,9 +158,9 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 							<label for="email" class="cols-sm-2 control-label">Địa chỉ</label>
 							<div class="cols-sm-10">
 								<?= $form->field($userDetail, 'address', [
-									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-map-marker"
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-map-marker"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-								])->label(false) ?>
+                                ])->label(false) ?>
 							</div>
 						</div>
 					</div>
@@ -166,9 +170,9 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 							<div class="cols-sm-10">
 								<?php $gender = \app\library\helper\Dropdowns::$gender; ?>
 								<?= $form->field($userDetail, 'gender', [
-									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-transgender"
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-transgender"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-								])->dropDownList($gender)->label(false) ?>
+                                ])->dropDownList($gender)->label(false) ?>
 							</div>
 						</div>
 					</div>
@@ -192,12 +196,14 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 							<div class="cols-sm-10">
 								<?php $lel = \app\library\helper\Dropdowns::$education; ?>
 								<?= $form->field($candidate, 'education', [
-									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-align-center"
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-align-center"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-								])->dropDownList($lel,
-									[
-										'class' => 'job-select2 form-control'
-									])->label(false) ?>
+                                ])->dropDownList(
+                                    $lel,
+                                    [
+                                        'class' => 'job-select2 form-control'
+                                    ]
+                                )->label(false) ?>
 							</div>
 						</div>
 					</div>
@@ -207,12 +213,14 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 							<div class="cols-sm-10">
 								<?php $experience = \app\library\helper\Dropdowns::$experience; ?>
 								<?= $form->field($candidate, 'experience', [
-									'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-list-ol"
+                                    'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-list-ol"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-								])->dropDownList($experience,
-									[
-										'class' => 'job-select2 form-control'
-									])->label(false) ?>
+                                ])->dropDownList(
+                                    $experience,
+                                    [
+                                        'class' => 'job-select2 form-control'
+                                    ]
+                                )->label(false) ?>
 							</div>
 						</div>
 					</div>
@@ -220,8 +228,8 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 				<div class="row">
 					<div class="col-xs-12">
 	                    <?= $form->field($userDetail, 'about_me')->widget(\yii\redactor\widgets\Redactor::className(), [
-	                        'clientOptions' => Helper::redactorOps('Hãy giới thiệu bản thân mình, điểm mạnh, điểm yếu, tính cách,... tạo sự chú ý cho nhà tuyển dụng nhanh nhất.'),
-	                    ])->label('Đôi nét về bản thân') ?>
+                            'clientOptions' => Helper::redactorOps('Hãy giới thiệu bản thân mình, điểm mạnh, điểm yếu, tính cách,... tạo sự chú ý cho nhà tuyển dụng nhanh nhất.'),
+                        ])->label('Đôi nét về bản thân') ?>
 					</div>
 				</div>
 
@@ -234,8 +242,8 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 				<hr>
                 <div class="form-group ">
 					<?= $form->field($candidate, 'receives', [
-						'template' => '{input}'
-					])->checkbox(['class' => 'iCheck'])->label(false) ?>
+                        'template' => '{input}'
+                    ])->checkbox(['class' => 'iCheck'])->label(false) ?>
                 </div>
 				<div class="form-group ">
                     <?= Html::submitButton('<i class="fas fa-hdd"></i> Cập nhật hồ sơ', ['class' => 'btn btn-primary login-button']) ?>

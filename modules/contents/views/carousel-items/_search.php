@@ -28,17 +28,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'img_original') ?>
 
-    <?php // echo $form->field($model, 'title') ?>
+    <?php // echo $form->field($model, 'title')?>
 
-    <?php // echo $form->field($model, 'description') ?>
+    <?php // echo $form->field($model, 'description')?>
 
-    <?php // echo $form->field($model, 'link') ?>
+    <?php // echo $form->field($model, 'link')?>
 
-    <?php // echo $form->field($model, 'target') ?>
+    <?php // echo $form->field($model, 'target')?>
 
-    <?php // echo $form->field($model, 'sorted') ?>
+    <?php // echo $form->field($model, 'sorted')?>
 
-    <?php // echo $form->field($model, 'status') ?>
+    <?php // echo $form->field($model, 'status')?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

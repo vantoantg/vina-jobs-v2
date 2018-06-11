@@ -6,6 +6,7 @@
  */
 
 namespace app\models;
+
 use app\library\helper\Cons;
 use app\library\helper\Helper;
 use Yii;
@@ -22,7 +23,7 @@ class Company extends \app\models\base\Company
             [['location_id', 'created_by', 'status', 'arranged'], 'integer'],
             [['content'], 'string'],
             [['created_at'], 'safe'],
-	        [['website'],'url', 'defaultScheme' => ''],
+            [['website'],'url', 'defaultScheme' => ''],
             [['logo'], 'file', 'extensions' => 'gif, jpg, png, jpeg',],
             [['name', 'logo'], 'string', 'max' => 255],
         ];
@@ -46,57 +47,59 @@ class Company extends \app\models\base\Company
         ];
     }
 
-	public function beforeSave($insert) {
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if ($this->isNewRecord) {
+            }
+            return true;
+        }
+        return false;
+    }
 
-		if (parent::beforeSave($insert)) {
-			if ($this->isNewRecord) {
+    public function getCompany($company)
+    {
+        $company = self::findOne($company);
 
-			}
-			return true;
-		}
-		return false;
-	}
-
-	public function getCompany($company){
-    	$company = self::findOne($company);
-
-    	return $company;
-	}
+        return $company;
+    }
 
     /**
      * @param $company_id
      * @return array
      */
-	public function gallery($company_id){
+    public function gallery($company_id)
+    {
         $imgs = [];
         $files = FileUploads::instance()->getListByObjects(FileUploads::COM_GALLERY, $company_id);
-        if($files){
-            foreach ($files as $file){
+        if ($files) {
+            foreach ($files as $file) {
                 $imgs[] =  [
-                	'id' => $file['id'],
-                	'img' => Helper::imgRender(Helper::params('companyCompanyGallery').$file['file_path'], 150,120)];
+                    'id' => $file['id'],
+                    'img' => Helper::imgRender(Helper::params('companyCompanyGallery').$file['file_path'], 150, 120)];
             }
         }
 
         return $imgs;
     }
 
-	/**
-	 * @param $logo
-	 * @param int $w
-	 * @param int $h
-	 * @return mixed|string
-	 */
-    public static function getLogo($logo, $w = 200, $h = 200){
-	    if ($logo) {
-	        $path = Yii::$app->basePath.'/'.Helper::params('companyLogoPath') . $logo;
-	        if(file_exists($path)){
+    /**
+     * @param $logo
+     * @param int $w
+     * @param int $h
+     * @return mixed|string
+     */
+    public static function getLogo($logo, $w = 200, $h = 200)
+    {
+        if ($logo) {
+            $path = Yii::$app->basePath.'/'.Helper::params('companyLogoPath') . $logo;
+            if (file_exists($path)) {
                 return Yii::$app->getHomeUrl().Helper::params('companyLogoPath') . $logo;
             }
-	    	return Cons::getNoImg();
-//		    return Helper::imgRender(Helper::params('companyLogoPath') . $logo, $w, $h);
-	    } else {
-		    return Helper::imgRender(false);
-	    }
+            return Cons::getNoImg();
+        //		    return Helper::imgRender(Helper::params('companyLogoPath') . $logo, $w, $h);
+        } else {
+            return Helper::imgRender(false);
+        }
     }
 }

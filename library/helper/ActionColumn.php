@@ -13,23 +13,23 @@ namespace app\library\helper;
  */
 class ActionColumn
 {
-	public static function changeStatus($label = 'Status'){
-		return [
-			'format' => 'raw',
-			'attribute' => 'status',
-			'label' => $label,
-			'value' => function($model) {
-				return '<i class="zmdi zmdi-check"></i>';
-			},
-		];
-	}
-	/**
+    public static function changeStatus($label = 'Status')
+    {
+        return [
+            'format' => 'raw',
+            'attribute' => 'status',
+            'label' => $label,
+            'value' => function ($model) {
+                return '<i class="zmdi zmdi-check"></i>';
+            },
+        ];
+    }
+    /**
      * @param string $template
      * @return array
      */
     public static function link($template = '{update} {delete}')
     {
-
         $buttons = [
             'view' => function ($url, $model) {
                 $html = '<a href="' . $url . '" data-placement="top" data-toggle="tooltip" title="View">

@@ -17,14 +17,14 @@ $this->params['breadcrumbs'][] = $this->title;
 <section id="blog-section">
     <div class="container">
 	    <?=
-	    Breadcrumbs::widget([
-		    'homeLink' => [
-			    'label' => 'Trang chủ',
-			    'url' => Yii::$app->homeUrl,
-		    ],
-		    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-	    ])
-	    ?>
+        Breadcrumbs::widget([
+            'homeLink' => [
+                'label' => 'Trang chủ',
+                'url' => Yii::$app->homeUrl,
+            ],
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ])
+        ?>
 
 	    <div class="col-12 col-md-8 pd-lr-0">
 		    <div class="row list">
@@ -33,12 +33,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 //                    Helper::imgRender($blogs[0]->img, 230,200);
                 //                    die;
                 foreach ($blogs as $k => $blog) {
-                    $i++;
-                    ?>
+                    $i++; ?>
 				    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 <?= Helper::wowClass() ?> fadeInUp"
 				         data-wow-delay="0.<?= $i ?>s">
 					    <aside>
-						    <img src="<?= Helper::imgRender($blog->img, 230,200) ?>"
+						    <img src="<?= Helper::imgRender($blog->img, 230, 200) ?>"
 						         class="img-responsive">
 						    <div class="content-title">
 							    <div class="text-center">
@@ -47,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
 						    </div>
 						    <div class="content-footer">
 							    <img class="user-small-img"
-							         src="<?= Helper::imgRender(null, 33,33) ?>">
+							         src="<?= Helper::imgRender(null, 33, 33) ?>">
 							    <span>Sumit Kumar Kumar</span>
 							    <span class="pull-right">
 									<a href="#" data-toggle="tooltip" data-placement="top" title="Comments"><i class="fa fa-comments"></i> 30</a>
@@ -56,7 +55,8 @@ $this->params['breadcrumbs'][] = $this->title;
 						    </div>
 					    </aside>
 				    </div>
-                <?php } ?>
+                <?php
+                } ?>
 		    </div>
 	    </div>
 	    <!--           // RECENT POST===========-->
