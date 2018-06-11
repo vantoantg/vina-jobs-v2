@@ -12,11 +12,11 @@ return [
             'clientId' => '592988894149611',
             'clientSecret' => 'c081d2c7c8d11c94a183dbfcc435ca0b',
         ],*/
-	    'google' => [
-		    'class' => 'yii\authclient\clients\Google',
-		    'clientId' => '835202725290-e2s5222m95gr298i9gvledke10pvnmds.apps.googleusercontent.com',
-		    'clientSecret' => '87PEHeA6t3drizYk4v_tB-sE',
-	    ],
+        'google' => [
+            'class' => 'yii\authclient\clients\Google',
+            'clientId' => '835202725290-e2s5222m95gr298i9gvledke10pvnmds.apps.googleusercontent.com',
+            'clientSecret' => '87PEHeA6t3drizYk4v_tB-sE',
+        ],
         'twitter' => [
             'class' => '\yii\authclient\clients\Twitter',
             'attributeParams' => [
