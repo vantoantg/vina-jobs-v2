@@ -10,7 +10,9 @@
  * modifying or distribute this file or part of its contents. The contents of
  * this file is part of the Source Code of CKFinder.
  */
-if (!defined('IN_CKFINDER')) exit;
+if (!defined('IN_CKFINDER')) {
+    exit;
+}
 
 /**
  * @package CKFinder
@@ -185,51 +187,44 @@ class CKFinder_Connector_CommandHandler_MoveFiles extends CKFinder_Connector_Com
                     continue;
                 }
                 // check if file exists if we don't force overwriting
-                else if (file_exists($destinationFilePath)) {
+                elseif (file_exists($destinationFilePath)) {
                     if (strpos($options, "overwrite") !== false) {
                         if (!@unlink($destinationFilePath)) {
                             $errorCode = CKFINDER_CONNECTOR_ERROR_ACCESS_DENIED;
                             $this->appendErrorNode($oErrorsNode, $errorCode, $name, $type, $path);
                             continue;
-                        }
-                        else {
+                        } else {
                             if (!@rename($sourceFilePath, $destinationFilePath)) {
                                 $errorCode = CKFINDER_CONNECTOR_ERROR_ACCESS_DENIED;
                                 $this->appendErrorNode($oErrorsNode, $errorCode, $name, $type, $path);
                                 continue;
-                            }
-                            else {
+                            } else {
                                 CKFinder_Connector_Utils_FileSystem::unlink($thumbPath);
                                 $moved++;
                             }
                         }
-                    }
-                    else if (strpos($options, "autorename") !== false) {
+                    } elseif (strpos($options, "autorename") !== false) {
                         $fileName = CKFinder_Connector_Utils_FileSystem::autoRename($sServerDir, $name);
                         $destinationFilePath = $sServerDir.$fileName;
                         if (!@rename($sourceFilePath, $destinationFilePath)) {
                             $errorCode = CKFINDER_CONNECTOR_ERROR_ACCESS_DENIED;
                             $this->appendErrorNode($oErrorsNode, $errorCode, $name, $type, $path);
                             continue;
-                        }
-                        else {
+                        } else {
                             CKFinder_Connector_Utils_FileSystem::unlink($thumbPath);
                             $moved++;
                         }
-                    }
-                    else {
+                    } else {
                         $errorCode = CKFINDER_CONNECTOR_ERROR_ALREADY_EXIST;
                         $this->appendErrorNode($oErrorsNode, $errorCode, $name, $type, $path);
                         continue;
                     }
-                }
-                else {
+                } else {
                     if (!@rename($sourceFilePath, $destinationFilePath)) {
                         $errorCode = CKFINDER_CONNECTOR_ERROR_ACCESS_DENIED;
                         $this->appendErrorNode($oErrorsNode, $errorCode, $name, $type, $path);
                         continue;
-                    }
-                    else {
+                    } else {
                         CKFinder_Connector_Utils_FileSystem::unlink($thumbPath);
                         $moved++;
                     }

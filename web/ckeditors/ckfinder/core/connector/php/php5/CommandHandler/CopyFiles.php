@@ -10,7 +10,9 @@
  * modifying or distribute this file or part of its contents. The contents of
  * this file is part of the Source Code of CKFinder.
  */
-if (!defined('IN_CKFINDER')) exit;
+if (!defined('IN_CKFINDER')) {
+    exit;
+}
 
 /**
  * @package CKFinder
@@ -181,7 +183,7 @@ class CKFinder_Connector_CommandHandler_CopyFiles extends CKFinder_Connector_Com
                     continue;
                 }
                 // check if file exists if we don't force overwriting
-                else if (file_exists($destinationFilePath) && strpos($options, "overwrite") === false) {
+                elseif (file_exists($destinationFilePath) && strpos($options, "overwrite") === false) {
                     if (strpos($options, "autorename") !== false) {
                         $fileName = CKFinder_Connector_Utils_FileSystem::autoRename($sServerDir, $name);
                         $destinationFilePath = $sServerDir.$fileName;
@@ -189,12 +191,10 @@ class CKFinder_Connector_CommandHandler_CopyFiles extends CKFinder_Connector_Com
                             $errorCode = CKFINDER_CONNECTOR_ERROR_ACCESS_DENIED;
                             $this->appendErrorNode($oErrorsNode, $errorCode, $name, $type, $path);
                             continue;
-                        }
-                        else {
+                        } else {
                             $copied++;
                         }
-                    }
-                    else {
+                    } else {
                         $errorCode = CKFINDER_CONNECTOR_ERROR_ALREADY_EXIST;
                         $this->appendErrorNode($oErrorsNode, $errorCode, $name, $type, $path);
                         continue;
@@ -206,8 +206,7 @@ class CKFinder_Connector_CommandHandler_CopyFiles extends CKFinder_Connector_Com
                         $errorCode = CKFINDER_CONNECTOR_ERROR_ACCESS_DENIED;
                         $this->appendErrorNode($oErrorsNode, $errorCode, $name, $type, $path);
                         continue;
-                    }
-                    else {
+                    } else {
                         $copied++;
                     }
                 }

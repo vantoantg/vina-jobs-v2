@@ -10,7 +10,9 @@
  * modifying or distribute this file or part of its contents. The contents of
  * this file is part of the Source Code of CKFinder.
  */
-if (!defined('IN_CKFINDER')) exit;
+if (!defined('IN_CKFINDER')) {
+    exit;
+}
 
 /**
  * @package CKFinder
@@ -43,7 +45,7 @@ class CKFinder_Connector_Utils_Security
                 $this->stripQuotes($_COOKIE);
             }
             if (!empty($_FILES)) {
-                while (list($k,$v) = each($_FILES)) {
+                while (list($k, $v) = each($_FILES)) {
                     if (isset($_FILES[$k]['name'])) {
                         $this->stripQuotes($_FILES[$k]['name']);
                     }
@@ -64,7 +66,7 @@ class CKFinder_Connector_Utils_Security
     {
         if (is_array($var)) {
             if ($depth++<$howDeep) {
-                while (list($k,$v) = each($var)) {
+                while (list($k, $v) = each($var)) {
                     $this->stripQuotes($var[$k], $depth, $howDeep);
                 }
             }

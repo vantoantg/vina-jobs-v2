@@ -10,7 +10,9 @@
 * modifying or distribute this file or part of its contents. The contents of
 * this file is part of the Source Code of CKFinder.
 */
-if (!defined('IN_CKFINDER')) exit;
+if (!defined('IN_CKFINDER')) {
+    exit;
+}
 
 /**
  * @package CKFinder
@@ -83,7 +85,7 @@ class CKFinder_Connector_CommandHandler_Thumbnail extends CKFinder_Connector_Com
 
         // If the thumbnail file doesn't exists, create it now.
         if (!file_exists($thumbFilePath)) {
-            if(!$this->createThumb($sourceFilePath, $thumbFilePath, $_thumbnails->getMaxWidth(), $_thumbnails->getMaxHeight(), $_thumbnails->getQuality(), true, $_thumbnails->getBmpSupported())) {
+            if (!$this->createThumb($sourceFilePath, $thumbFilePath, $_thumbnails->getMaxWidth(), $_thumbnails->getMaxHeight(), $_thumbnails->getQuality(), true, $_thumbnails->getBmpSupported())) {
                 $this->_errorHandler->throwError(CKFINDER_CONNECTOR_ERROR_ACCESS_DENIED);
             }
         }
@@ -100,8 +102,7 @@ class CKFinder_Connector_CommandHandler_Thumbnail extends CKFinder_Connector_Com
 
         if (isset($_SERVER["HTTP_IF_NONE_MATCH"]) && $_SERVER["HTTP_IF_NONE_MATCH"] === $etag) {
             $is304 = true;
-        }
-        else if($rtime == $mtime) {
+        } elseif ($rtime == $mtime) {
             $is304 = true;
         }
 
@@ -163,19 +164,16 @@ class CKFinder_Connector_CommandHandler_Thumbnail extends CKFinder_Connector_Com
             return true;
         }
 
-        if ($preserverAspectRatio)
-        {
+        if ($preserverAspectRatio) {
             // Gets the best size for aspect ratio resampling
-            $oSize = CKFinder_Connector_CommandHandler_Thumbnail::GetAspectRatioSize($iFinalWidth, $iFinalHeight, $sourceImageWidth, $sourceImageHeight );
-        }
-        else {
+            $oSize = CKFinder_Connector_CommandHandler_Thumbnail::GetAspectRatioSize($iFinalWidth, $iFinalHeight, $sourceImageWidth, $sourceImageHeight);
+        } else {
             $oSize = array('Width' => $iFinalWidth, 'Height' => $iFinalHeight);
         }
 
         CKFinder_Connector_Utils_Misc::setMemoryForImage($sourceImageWidth, $sourceImageHeight, $sourceImageBits, $sourceImageChannels);
 
-        switch ($sourceImageAttr['mime'])
-        {
+        switch ($sourceImageAttr['mime']) {
             case 'image/gif':
                 {
                     if (@imagetypes() & IMG_GIF) {
@@ -239,10 +237,9 @@ class CKFinder_Connector_CommandHandler_Thumbnail extends CKFinder_Connector_Com
 
         $oThumbImage = imagecreatetruecolor($oSize["Width"], $oSize["Height"]);
 
-        if ($sourceImageAttr['mime'] == 'image/png')
-        {
+        if ($sourceImageAttr['mime'] == 'image/png') {
             $bg = imagecolorallocatealpha($oThumbImage, 255, 255, 255, 127); // (PHP 4 >= 4.3.2, PHP 5)
-            imagefill($oThumbImage, 0, 0 , $bg);
+            imagefill($oThumbImage, 0, 0, $bg);
             imagealphablending($oThumbImage, false);
             imagesavealpha($oThumbImage, true);
         }
@@ -250,8 +247,7 @@ class CKFinder_Connector_CommandHandler_Thumbnail extends CKFinder_Connector_Com
         //imagecopyresampled($oThumbImage, $oImage, 0, 0, 0, 0, $oSize["Width"], $oSize["Height"], $sourceImageWidth, $sourceImageHeight);
         CKFinder_Connector_Utils_Misc::fastImageCopyResampled($oThumbImage, $oImage, 0, 0, 0, 0, $oSize["Width"], $oSize["Height"], $sourceImageWidth, $sourceImageHeight, (int)max(floor($quality/20), 6));
 
-        switch ($sourceImageAttr['mime'])
-        {
+        switch ($sourceImageAttr['mime']) {
             case 'image/gif':
                 imagegif($oThumbImage, $targetFile);
                 break;
@@ -309,13 +305,11 @@ class CKFinder_Connector_CommandHandler_Thumbnail extends CKFinder_Connector_Com
         $iFactorY = (float)$maxHeight / (float)$actualHeight;
 
         // If some dimension have to be scaled
-        if ($iFactorX != 1 || $iFactorY != 1)
-        {
+        if ($iFactorX != 1 || $iFactorY != 1) {
             // Uses the lower Factor to scale the oposite size
             if ($iFactorX < $iFactorY) {
                 $oSize["Height"] = (int)round($actualHeight * $iFactorX);
-            }
-            else if ($iFactorX > $iFactorY) {
+            } elseif ($iFactorX > $iFactorY) {
                 $oSize["Width"] = (int)round($actualWidth * $iFactorY);
             }
         }

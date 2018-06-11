@@ -1,5 +1,5 @@
 <?php
-require_once ("db.php");
+require_once("db.php");
 $commentId = isset($_POST['comment_id']) ? $_POST['comment_id'] : 0;
 $comment = isset($_POST['comment']) ? $_POST['comment'] : "";
 $commentSenderName = isset($_POST['name']) ? $_POST['name'] : "";
@@ -15,4 +15,3 @@ if (! $result) {
     $result = mysqli_error($conn);
 }
 echo $result;
-?>
