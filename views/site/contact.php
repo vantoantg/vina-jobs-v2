@@ -24,7 +24,7 @@ $this->registerJs(
 ?>
 
 <div class="container">
-    <div class="col-12 col-sm-8 ovf-y-h">
+    <div class="col-12 col-sm-8 pd-lr-0">
         <div class="site-contact <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.1s">
             <h1><?= Html::encode($this->title) ?></h1>
 

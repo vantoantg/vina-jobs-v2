@@ -26,7 +26,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 	<div class="col-12 col-sm-9 search-results">
 		<div class="row">
 			<div class="jobs">
-				<div class="pd-right-0 col-xs-12">
+				<div class="pd-lr-0 col-xs-12">
 					<h2>CÓ 365 KẾT QUẢ</h2>
 
 					<div class="job-posts table-responsive">

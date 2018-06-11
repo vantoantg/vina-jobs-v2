@@ -27,35 +27,34 @@ $this->params['breadcrumbs'][] = $this->title;
 		    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
 	    ])
 	    ?>
-        <div class="row">
-            <div class="col-12 col-md-8">
-                <h1><?= Html::encode($this->title) ?></h1>
-                <div class="content-editor">
-					<?= $blog->content; ?>
-                </div>
 
-                <div class="cms">
-                    <?= ( new \app\components\CommentWidget())->commentFB(false); ?>
-                </div>
-            </div>
-            <!-- // RECENT POST===========-->
-            <div class="col-12 col-md-4 wrapper-sb">
-				<?= $sidebarWidget->recentJobs(); ?>
+	    <div class="col-12 col-md-8 pd-lr-0">
+		    <h1><?= Html::encode($this->title) ?></h1>
+		    <div class="content-editor">
+                <?= $blog->content; ?>
+		    </div>
 
-				<?= $sidebarWidget->archives(); ?>
+		    <div class="cms">
+                <?= ( new \app\components\CommentWidget())->commentFB(false); ?>
+		    </div>
+	    </div>
+	    <!-- // RECENT POST===========-->
+	    <div class="col-12 col-md-4 wrapper-sb">
+            <?= $sidebarWidget->recentJobs(); ?>
 
-                <!--=====================
-					   CATEGORIES
-				  ======================-->
-				<?= $sidebarWidget->categories(); ?>
+            <?= $sidebarWidget->archives(); ?>
+
+		    <!--=====================
+                   CATEGORIES
+              ======================-->
+            <?= $sidebarWidget->categories(); ?>
 
 
-                <!--=====================
-					  NEWSLATTER
-			   ======================-->
-				<?= $sidebarWidget->newsLatter(); ?>
-            </div>
-        </div>
+		    <!--=====================
+                  NEWSLATTER
+           ======================-->
+            <?= $sidebarWidget->newsLatter(); ?>
+	    </div>
     </div>
 
 </section>
