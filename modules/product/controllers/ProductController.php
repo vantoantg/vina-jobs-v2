@@ -37,7 +37,7 @@ class ProductController extends AdminController
     {
         $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-	    $dataProvider->pagination->pageSize = $this->setting['page_size'];
+        $dataProvider->pagination->pageSize = $this->setting['page_size'];
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -68,9 +68,9 @@ class ProductController extends AdminController
         $model = new Product();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-	        if(Yii::$app->request->post('save') == 'saveback'){
-		        return $this->redirect(['index']);
-	        }
+            if (Yii::$app->request->post('save') == 'saveback') {
+                return $this->redirect(['index']);
+            }
             return $this->redirect(['index']);
         }
 
@@ -91,9 +91,9 @@ class ProductController extends AdminController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-	        if(Yii::$app->request->post('save') == 'saveback'){
-		        return $this->redirect(['index']);
-	        }
+            if (Yii::$app->request->post('save') == 'saveback') {
+                return $this->redirect(['index']);
+            }
         }
 
         return $this->render('update', [

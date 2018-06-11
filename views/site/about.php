@@ -4,7 +4,6 @@
 
 use yii\helpers\Html;
 
-
 $page = \app\models\Pages::get('gioi-thieu');
 /** @var $page \app\models\Pages title */
 

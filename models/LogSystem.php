@@ -7,8 +7,6 @@
 
 namespace app\models;
 
-
 class LogSystem extends \app\models\base\LogSystem
 {
-
 }

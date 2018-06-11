@@ -47,8 +47,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'timezone')->textInput(['maxlength' => true]) ?>
 
 	<?= $form->field($model, 'status', [
-		'template' => '<label class="checkbox-inline checkbox-styled" >{input}</label>{label}{error}{hint}'
-	])->checkbox() ?>
+        'template' => '<label class="checkbox-inline checkbox-styled" >{input}</label>{label}{error}{hint}'
+    ])->checkbox() ?>
 
     <?php ActiveForm::end(); ?>
 

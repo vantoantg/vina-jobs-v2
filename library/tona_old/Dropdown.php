@@ -3,11 +3,12 @@ namespace app\components\tona;
 
 class Dropdown
 {
-    public function init(){
-
+    public function init()
+    {
     }
     
-    public static function netWork(){
+    public static function netWork()
+    {
         return [
             1 => [
                 'id'  => 1,

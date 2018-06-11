@@ -33,8 +33,8 @@ class Datetime
 
     const DEFAULT_TIME_ZONE = "Asia/Bangkok";
 
-    public function init(){
-
+    public function init()
+    {
     }
 
     /**
@@ -42,47 +42,50 @@ class Datetime
      * @param null $format
      * @return string
      */
-    public static function getDateNow($format = null, $zone = null){
-        if($zone == null){
+    public static function getDateNow($format = null, $zone = null)
+    {
+        if ($zone == null) {
             $zone = Common::currentUser('timezone');
-            if(!$zone){
+            if (!$zone) {
                 $zone = self::DEFAULT_TIME_ZONE;
             }
         }
-        if($format == null){
+        if ($format == null) {
             $format = self::VIEW_DATETIME;
         }
         $date = Carbon::now($zone);
         return $date->format($format);
     }
 
-	/**
-	 * @param null $zone
-	 * @return string
-	 */
-	public static function createdAt($zone = null){
-		if($zone == null){
-			$zone = Common::currentUser('timezone');
-			if(!$zone){
-				$zone = self::DEFAULT_TIME_ZONE;
-			}
-		}
-		return Carbon::now($zone)->format(Datetime::SQL_DATETIME);
-	}
+    /**
+     * @param null $zone
+     * @return string
+     */
+    public static function createdAt($zone = null)
+    {
+        if ($zone == null) {
+            $zone = Common::currentUser('timezone');
+            if (!$zone) {
+                $zone = self::DEFAULT_TIME_ZONE;
+            }
+        }
+        return Carbon::now($zone)->format(Datetime::SQL_DATETIME);
+    }
 
     /**
      * @param null $zone
      * @param null $format
      * @return string
      */
-    public static function getTimeNow($zone = null, $format = null){
-        if($zone == null){
+    public static function getTimeNow($zone = null, $format = null)
+    {
+        if ($zone == null) {
             $zone = Common::currentUser('timezone');
-	        if(!$zone){
-		        $zone = self::DEFAULT_TIME_ZONE;
-	        }
+            if (!$zone) {
+                $zone = self::DEFAULT_TIME_ZONE;
+            }
         }
-        if($format == null){
+        if ($format == null) {
             $format = self::VIEW_TIME;
         }
         $date = Carbon::now($zone);
@@ -94,8 +97,9 @@ class Datetime
      * @param string $fomat
      * @return null|string
      */
-    public static function todateSql($date, $fomat = 'd/m/Y'){
-        if(!$date){
+    public static function todateSql($date, $fomat = 'd/m/Y')
+    {
+        if (!$date) {
             return null;
         }
         return Carbon::createFromFormat($fomat, $date)->format(self::SQL_DATE);
@@ -106,8 +110,9 @@ class Datetime
      * @param string $fomat
      * @return null|string
      */
-    public static function todatetimeSql($datetime, $fomat = 'd/m/Y'){
-        if(!$datetime){
+    public static function todatetimeSql($datetime, $fomat = 'd/m/Y')
+    {
+        if (!$datetime) {
             return null;
         }
         return Carbon::createFromFormat($fomat, $datetime)->format(self::SQL_DATE);
@@ -118,13 +123,14 @@ class Datetime
      * @param null $tz
      * @return string
      */
-    public static function datetimeSqlNow($fomat = 'Y-m-d H:i:s', $tz = null){
-    	if($tz == null){
-		    $tz = Common::currentUser('timezone');
-		    if($tz == false){
-		    	$tz = Datetime::DEFAULT_TIME_ZONE;
-		    }
-	    }
+    public static function datetimeSqlNow($fomat = 'Y-m-d H:i:s', $tz = null)
+    {
+        if ($tz == null) {
+            $tz = Common::currentUser('timezone');
+            if ($tz == false) {
+                $tz = Datetime::DEFAULT_TIME_ZONE;
+            }
+        }
         return Carbon::now($tz)->format($fomat);
     }
 
@@ -133,8 +139,9 @@ class Datetime
      * @param string $format
      * @return string
      */
-    public static function sqlDateToFormat($date, $format = 'd/m/Y'){
-        if(!$date){
+    public static function sqlDateToFormat($date, $format = 'd/m/Y')
+    {
+        if (!$date) {
             return '--';
         }
 
@@ -146,8 +153,9 @@ class Datetime
      * @param string $format
      * @return string
      */
-    public static function sqlDatetimeToFormat($datetime, $format = 'd/m/Y'){
-        if(!$datetime){
+    public static function sqlDatetimeToFormat($datetime, $format = 'd/m/Y')
+    {
+        if (!$datetime) {
             return '';
         }
 
@@ -158,12 +166,13 @@ class Datetime
      * @param $datetime
      * @return string
      */
-    public static function sqlDatetimeDiffForHumans($datetime, $tz = null){
-        if(!$datetime){
+    public static function sqlDatetimeDiffForHumans($datetime, $tz = null)
+    {
+        if (!$datetime) {
             return '';
         }
-        if($tz === null){
-	        $tz = Helper::getTzUser();
+        if ($tz === null) {
+            $tz = Helper::getTzUser();
         }
         Carbon::setLocale(Yii::$app->language);
         return Carbon::createFromFormat(self::SQL_DATETIME, $datetime, $tz)->diffForHumans();

@@ -12,7 +12,7 @@ class m180328_151738_add_setting_pagi_default extends Migration
      */
     public function safeUp()
     {
-		$this->execute("INSERT INTO `tn_setting` (`name`, `code`, `value`, `default`) VALUES ('Default pagination', 'page_size', '15', '10'); ");
+        $this->execute("INSERT INTO `tn_setting` (`name`, `code`, `value`, `default`) VALUES ('Default pagination', 'page_size', '15', '10'); ");
     }
 
     /**

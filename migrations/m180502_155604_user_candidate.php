@@ -12,7 +12,7 @@ class m180502_155604_user_candidate extends Migration
      */
     public function safeUp()
     {
-		$this->execute("
+        $this->execute("
 		CREATE TABLE `tn_user_candidate` (
 		  `id` INT (11) NOT NULL AUTO_INCREMENT,
 		  `candidate_id` INT (11),

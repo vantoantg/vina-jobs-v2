@@ -61,11 +61,11 @@ class JobCustomSearch extends JobModel
             'status' => 1,
         ]);
 
-        if(isset($params['keywords'])){
+        if (isset($params['keywords'])) {
 //            $query->andFilterWhere(['like', 'title', $params['keywords']]);
         }
 
-        if(isset($params['jobs'])){
+        if (isset($params['jobs'])) {
 //            $query->andFilterWhere(['in', 'categories_id', $params['jobs']]);
         }
 //            ->andFilterWhere(['like', 'slug', $this->slug])

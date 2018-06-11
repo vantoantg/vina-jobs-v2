@@ -42,13 +42,13 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 	            <?php endif; ?>
 
                 <?php if ($errors) {
-                    echo '<div class="alert alert-danger">';
-                    echo '<strong>Có lỗi trong quá trình đăng ký:</strong>';
-                    foreach ($errors as $error) {
-                        echo '<br>- ' . $error;
-                    }
-                    echo '</div>';
-                } ?>
+    echo '<div class="alert alert-danger">';
+    echo '<strong>Có lỗi trong quá trình đăng ký:</strong>';
+    foreach ($errors as $error) {
+        echo '<br>- ' . $error;
+    }
+    echo '</div>';
+} ?>
 
                 <?php $form = ActiveForm::begin(); ?>
 	            <div class="row">
@@ -121,26 +121,28 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 		            </div>
 	            </div>
 
-                <?php if ($model->isNewRecord) { ?>
+                <?php if ($model->isNewRecord) {
+                                    ?>
 		            <div class="row">
 			            <div class="col-xs-12 col-sm-6">
                             <div class="cols-sm-10">
 					            <?= $form->field($model, 'password', [
-						            'template' => '{label}<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
+                                    'template' => '{label}<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
                                                                        aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-					            ])->passwordInput()->label('Mật khẩu') ?>
+                                ])->passwordInput()->label('Mật khẩu') ?>
                             </div>
 			            </div>
 			            <div class="col-xs-12 col-sm-6">
                             <div class="cols-sm-10">
 					            <?= $form->field($model, 'repassword', [
-						            'template' => '{label}<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
+                                    'template' => '{label}<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock fa-lg"
                                                                        aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-					            ])->passwordInput()->label('Nhập lại mật khẩu') ?>
+                                ])->passwordInput()->label('Nhập lại mật khẩu') ?>
                             </div>
 			            </div>
 		            </div>
-                <?php } ?>
+                <?php
+                                } ?>
 
 	            <div class="row">
 		            <div class="col-xs-12 col-sm-8">
@@ -164,11 +166,13 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                                 <?= $form->field($userDetail, 'city_id', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-map-pin"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}'
-                                ])->dropDownList(\yii\helpers\ArrayHelper::map($loca, 'id', 'name'),
+                                ])->dropDownList(
+                                    \yii\helpers\ArrayHelper::map($loca, 'id', 'name'),
                                     [
                                         'prompt' => '-- Chọn --',
                                         'class' => 'job-select2 form-control'
-                                    ])->label(false) ?>
+                                    ]
+                                )->label(false) ?>
 				            </div>
 			            </div>
 		            </div>
@@ -206,7 +210,8 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                         </div>
 		            </div>
 	            </div>
-                <?php if($model->isNewRecord){ ?>
+                <?php if ($model->isNewRecord) {
+                                ?>
 	            <div class="form-group ">
 		            Các chính sách và quy địn của <?= Yii::$app->params['siteName']; ?> <a
 				            href="<?= \app\library\helper\Helper::siteURL() ?>/dieu-khoan-su-dung.html" target="_blank">tại đây</a>
@@ -214,7 +219,8 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                         'template' => '{input}'
                     ])->checkbox(['class' => 'iCheck'])->label(false) ?>
 	            </div>
-                <?php } ?>
+                <?php
+                            } ?>
 	            <div class="form-group ">
                     <?= Html::submitButton($model->isNewRecord ?'<i class="fas fa-hdd"></i> Lưu thông tin' : '<i class="fas fa-hdd"></i> Cập nhật thông tin', ['class' => 'btn btn-primary login-button']) ?>
 	            </div>

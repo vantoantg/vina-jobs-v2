@@ -22,25 +22,26 @@ class CommentWidget extends Widget
         } else {
             $this->message = 'Welcome ' . $this->message;
         }
-
     }
 
-	/**
-	 * @return string
-	 */
-    public function commentFB(){
+    /**
+     * @return string
+     */
+    public function commentFB()
+    {
         return $this->render('comment/fb_box');
     }
 
-	/**
-	 * @param $object_id
-	 * @param $object_type
-	 * @return string
-	 */
-    public function comment($object_id, $object_type){
-	    return $this->render('comment/index',[
-	    	'object_id' => $object_id,
-		    'object_type' => $object_type
-	    ]);
+    /**
+     * @param $object_id
+     * @param $object_type
+     * @return string
+     */
+    public function comment($object_id, $object_type)
+    {
+        return $this->render('comment/index', [
+            'object_id' => $object_id,
+            'object_type' => $object_type
+        ]);
     }
 }

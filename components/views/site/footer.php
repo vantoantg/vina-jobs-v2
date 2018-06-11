@@ -1,5 +1,6 @@
 <?php
 use app\library\helper\Helper;
+
 ?>
 <footer>
 	<div class="container">
@@ -17,16 +18,22 @@ use app\library\helper\Helper;
 				<h6 class="heading7">BẠN MUỐN LÀM GÌ ?</h6>
 				<ul class="footer-ul">
 					<li><a href="#"> Đăng tin tìm việc</a></li>
-					<?php if(\app\library\helper\Common::isLoginned()){ ?>
+					<?php if (\app\library\helper\Common::isLoginned()) {
+    ?>
 					<li><a href="<?= Helper::createUrl(['front/jobs/post-jobs']) ?>"> Đăng tin tuyển dụng</a></li>
-                    <?php }else{ ?>
+                    <?php
+} else {
+        ?>
 					<li><a href="#" data-toggle="modal" data-target="#login-modal"> Đăng tin tuyển dụng</a></li>
-                    <?php } ?>
+                    <?php
+    } ?>
 					<li><a href="<?= Helper::createUrl('site/job-seekers')?>"> Tìm ứng viên tốt</a></li>
 					<li><a href="<?= Helper::createUrl('site/employeers')?>"> Tìm một công việc tốt</a></li>
-                    <?php if(\app\library\helper\Common::isGuest()){ ?>
+                    <?php if (\app\library\helper\Common::isGuest()) {
+        ?>
 					<li><a href="#" data-toggle="modal" data-target="#register-modal"> Đăng ký thành thành viên</a></li>
-                    <?php } ?>
+                    <?php
+    } ?>
 					<li><a href="<?= Helper::createUrl(['site/contact'])?>"> Đóng góp ý kiến của bạn</a></li>
 					<li><a href="<?= Helper::createUrl(['site/policy'])?>"> Xem các điều khoản của <?= Yii::$app->params['siteName']; ?></a></li>
 				</ul>
@@ -35,14 +42,16 @@ use app\library\helper\Helper;
 				<h6 class="heading7">CÁC VIỆC LÀM MỚI</h6>
 				<div class="post">
                     <?php
-                   if($data){
-                       foreach ($data as $item){ ?>
+                   if ($data) {
+                       foreach ($data as $item) {
+                           ?>
                            <p>
                                <a href="<?= $item['url_view']; ?>" title="Click để xem tin: <?= $item['job_name']; ?>"><?= $item['job_name']; ?></a><br>
                                <a href="<?= $item['url_company_detail']; ?>" title="Click để xem thông tin <?= $item['com_name']; ?>"><?= $item['com_name']; ?></a>
                                <span>Hạn nộp HS: <?= $item['cv_end_date']; ?></span>
                            </p>
-                       <?php }
+                       <?php
+                       }
                    }
                     ?>
 				</div>

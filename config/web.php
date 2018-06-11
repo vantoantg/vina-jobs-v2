@@ -8,7 +8,7 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
-	'language' => 'vi',
+    'language' => 'vi',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -67,7 +67,7 @@ $config = [
             'basePath' => '@webroot/assets',
             'bundles' => [
                 'yii\web\JqueryAsset' => [
-	                'jsOptions' => [ 'position' => \yii\web\View::POS_HEAD],
+                    'jsOptions' => [ 'position' => \yii\web\View::POS_HEAD],
                     'basePath' => '@webroot/assets',
                     'baseUrl' => '@web',
                     'js' => [
@@ -77,7 +77,7 @@ $config = [
             ],
         ],
     ],
-	'modules' => require __DIR__ . '/modules.php',
+    'modules' => require __DIR__ . '/modules.php',
     'params' => require __DIR__ . '/params.php',
     'defaultRoute' => 'front/default/index',
 ];

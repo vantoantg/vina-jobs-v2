@@ -1,5 +1,6 @@
 <?php
 namespace app\components\tona;
+
 use app\models\CacheImg;
 use Carbon\Carbon;
 use Yii;
@@ -7,8 +8,8 @@ use \app\components\library\abeautifulsite\SimpleImage;
 
 class Helper
 {
-    public function init(){
-
+    public function init()
+    {
     }
 
     /**
@@ -16,7 +17,8 @@ class Helper
      * @param $slug
      * @return string
      */
-    public static function urlTo($route, $slug){
+    public static function urlTo($route, $slug)
+    {
         return \yii\helpers\Url::to('/'.$route.'/'.$slug.'.html');
     }
 
@@ -24,7 +26,8 @@ class Helper
      * @param null $class
      * @return Helper|static
      */
-    public static function instants($class = null){
+    public static function instants($class = null)
+    {
         if ($class instanceof static) {
             return clone $class;
         }
@@ -39,15 +42,16 @@ class Helper
      * @return string
      * @throws \Exception
      */
-    public static function thumbnail($object_type, $object_id, $rootPath, $w, $h, $position = 'center'){
+    public static function thumbnail($object_type, $object_id, $rootPath, $w, $h, $position = 'center')
+    {
         $pathCache = CacheImg::instants()->getCache($object_type, $object_id, self::setSize($w, $h));
-        if($pathCache){
-            if(self::checkImage($pathCache, false) == false){
+        if ($pathCache) {
+            if (self::checkImage($pathCache, false) == false) {
                 CacheImg::instants()->removeArray($object_type, $object_id, self::setSize($w, $h));
                 return self::thumbnail($object_type, $object_id, $rootPath, $w, $h);
             }
-            return self::checkImage($pathCache,true, Cons::IMG_DEFAULT_PROJECT);
-        }else{
+            return self::checkImage($pathCache, true, Cons::IMG_DEFAULT_PROJECT);
+        } else {
             return self::createThumbnail($object_type, $object_id, $rootPath, $w, $h, $position);
         }
     }
@@ -62,8 +66,9 @@ class Helper
      * @return string
      * @throws \Exception
      */
-    public static function createThumbnail($object_type, $object_id, $rootPath, $w, $h, $position = 'center'){
-        if(self::checkImage($rootPath, false) == false){
+    public static function createThumbnail($object_type, $object_id, $rootPath, $w, $h, $position = 'center')
+    {
+        if (self::checkImage($rootPath, false) == false) {
             return Cons::IMG_DEFAULT;
         }
         $img = Yii::$app->basePath.$rootPath;
@@ -84,7 +89,8 @@ class Helper
      * @param $h
      * @return string
      */
-    public static function setSize($w, $h){
+    public static function setSize($w, $h)
+    {
         return $w.'x'.$h;
     }
 
@@ -92,10 +98,11 @@ class Helper
      * @param $key
      * @return string
      */
-    public static function getSeo($key){
-        if(isset(Yii::$app->view->params[$key])){
+    public static function getSeo($key)
+    {
+        if (isset(Yii::$app->view->params[$key])) {
             return Yii::$app->view->params[$key];
-        }else{
+        } else {
             return '';
         }
     }
@@ -104,14 +111,16 @@ class Helper
      * @param $key
      * @param $value
      */
-    public static function setSeo($key, $value){
+    public static function setSeo($key, $value)
+    {
         Yii::$app->view->params[$key] = $value;
     }
 
     /**
      * @return string
      */
-    public static function userAvatar(){
+    public static function userAvatar()
+    {
         return self::checkImage(Common::currentUser('avatar'), true);
     }
 
@@ -120,11 +129,12 @@ class Helper
      * @param string $img_default
      * @return string
      */
-    public static function checkImage($path, $checkOnly = false, $img_default = Cons::IMG_DEFAULT_USER){
-        if($path && file_exists(Yii::$app->basePath.$path)){
+    public static function checkImage($path, $checkOnly = false, $img_default = Cons::IMG_DEFAULT_USER)
+    {
+        if ($path && file_exists(Yii::$app->basePath.$path)) {
             return $path;
-        }else{
-            if($checkOnly == false){
+        } else {
+            if ($checkOnly == false) {
                 return false;
             }
             return $img_default;
@@ -135,15 +145,16 @@ class Helper
      * @param array $controllers
      * @return string
      */
-    public static function checkMenuAdmin($controllers = [], $sub_menu = false, $class = 'active'){
+    public static function checkMenuAdmin($controllers = [], $sub_menu = false, $class = 'active')
+    {
         $con = explode('/', Yii::$app->controller->id);
-        if($sub_menu){
+        if ($sub_menu) {
             $con = Yii::$app->controller->action->id;
         }
 
-        if(isset($con[1]) && in_array($con[1], $controllers)){
+        if (isset($con[1]) && in_array($con[1], $controllers)) {
             return $class;
-        }else{
+        } else {
             return '';
         }
     }
@@ -152,11 +163,11 @@ class Helper
      * @param $action
      * @return string
      */
-    public static function checkActiveMenu($action){
-
-        if(Yii::$app->controller->id.'/'.Yii::$app->controller->action->id == $action){
+    public static function checkActiveMenu($action)
+    {
+        if (Yii::$app->controller->id.'/'.Yii::$app->controller->action->id == $action) {
             return 'active';
-        }else{
+        } else {
             return '';
         }
     }
@@ -165,52 +176,59 @@ class Helper
      * @param $number
      * @return string
      */
-    public static function formatNumber($number){
+    public static function formatNumber($number)
+    {
         return number_format("$number");
     }
 
     /**
      * @return mixed
      */
-    public static function getMethod(){
+    public static function getMethod()
+    {
         return $_SERVER['REQUEST_METHOD'];
     }
     /**
      * @return mixed
      */
-    public static function getIpClient(){
+    public static function getIpClient()
+    {
         return $_SERVER['SERVER_ADDR'];
     }
     /**
      * @return mixed
      */
-    public static function getBrowser(){
+    public static function getBrowser()
+    {
         return  $_SERVER['HTTP_USER_AGENT'];
     }
     /**
      * @return string
      */
-    public static function getCurrentUrl(){
+    public static function getCurrentUrl()
+    {
         return "http" . (($_SERVER['SERVER_PORT'] == 443) ? "s://" : "://") . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     }
     /**
      * @param $name
      * @return mixed
      */
-    public static function getCookie($name){
-        $return = explode('~',$name);
-        if(!isset($_COOKIE[$name])) {
+    public static function getCookie($name)
+    {
+        $return = explode('~', $name);
+        if (!isset($_COOKIE[$name])) {
             return $return[0];
         } else {
             return $return[1];
         }
     }
 
-	/**
-	 * @param $array
-	 * @return \stdClass
-	 */
-    public static function arrayToObject($array) {
+    /**
+     * @param $array
+     * @return \stdClass
+     */
+    public static function arrayToObject($array)
+    {
         $object = new \stdClass();
         foreach ($array as $key => $value) {
             if (is_array($value)) {
@@ -221,13 +239,14 @@ class Helper
         return $object;
     }
 
-	/**
-	 * @param $object
-	 * @return array
-	 */
-    public static function objectToArray($object){
+    /**
+     * @param $object
+     * @return array
+     */
+    public static function objectToArray($object)
+    {
         $arrays = [];
-        foreach($object as $key => $value){
+        foreach ($object as $key => $value) {
             if (is_object($value)) {
                 $value = self::objectToArray($value);
             }
@@ -236,37 +255,36 @@ class Helper
         return $arrays;
     }
 
-	/**
-	 * @param $strUrl
-	 * @return string
-	 */
-    public function checkUrlHttp($strUrl){
+    /**
+     * @param $strUrl
+     * @return string
+     */
+    public function checkUrlHttp($strUrl)
+    {
         $arrParsedUrl = parse_url($strUrl);
-        if (!empty($arrParsedUrl['scheme']))
-        {
+        if (!empty($arrParsedUrl['scheme'])) {
             // Contains http:// schema
-            if ($arrParsedUrl['scheme'] === "http"){
+            if ($arrParsedUrl['scheme'] === "http") {
             }
             // Contains https:// schema
-            else if ($arrParsedUrl['scheme'] === "https"){
-
+            elseif ($arrParsedUrl['scheme'] === "https") {
             }
             return $strUrl;
-        }else{
+        } else {
             return 'http://'.$strUrl;
         }
     }
 
-	/**
-	 * @param array $data
-	 * @return array
-	 */
+    /**
+     * @param array $data
+     * @return array
+     */
     public static function jsonData($data = [])
     {
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        if(!$data){
+        if (!$data) {
             return ['data' => null];
-        }else{
+        } else {
             return $data;
         }
     }
@@ -274,7 +292,8 @@ class Helper
     /**
      * @return string
      */
-    public static function urlTemplate(){
+    public static function urlTemplate()
+    {
         return self::siteURL().'/web/template/'.Cons::TEMPLATE_FOLDER.'/';
     }
 
@@ -286,7 +305,7 @@ class Helper
         $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') ||
             $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
         $domainName = $_SERVER['HTTP_HOST'];
-        if($domainNameOnly){
+        if ($domainNameOnly) {
             return $domainName;
         }
         return $protocol . $domainName;
@@ -299,7 +318,8 @@ class Helper
      *
      * @return string the resulting slug.
      */
-    public static function createSlug($strings) {
+    public static function createSlug($strings)
+    {
         $string = self::stripUnicode($strings);
         $table = array(
             '�'=>'S', '�'=>'s', '?'=>'Dj', '?'=>'dj', '�'=>'Z', '�'=>'z', '?'=>'C', '?'=>'c', '?'=>'C', '?'=>'c',
@@ -357,12 +377,13 @@ class Helper
      * @param int $words
      * @return string
      */
-    public static function cutStringSpace($str, $words = 20){
-        if($str){
+    public static function cutStringSpace($str, $words = 20)
+    {
+        if ($str) {
             $string = '';
-            $arr = explode(' ',$str);
-            if(count($arr) > $words){
-                for($i = 0; $i < $words; $i++){
+            $arr = explode(' ', $str);
+            if (count($arr) > $words) {
+                for ($i = 0; $i < $words; $i++) {
                     $string .= ' '. $arr[$i];
                 }
                 return trim($string.'...');
@@ -374,7 +395,8 @@ class Helper
     /**
      * @return array
      */
-    public static function getConfigDb(){
+    public static function getConfigDb()
+    {
         $dsn = str_replace('mysql:', '', Yii::$app->getDb()->dsn);
         $dsn = explode(';', $dsn);
         $db_user = Yii::$app->getDb()->username;
@@ -393,16 +415,16 @@ class Helper
      */
     public static function backupDB($host = null, $user = null, $pass = null, $name = null, $tables = '*')
     {
-        if($host == null){
+        if ($host == null) {
             $host = Helper::getConfigDb()['host'];
         }
-        if($user == null){
+        if ($user == null) {
             $user = Helper::getConfigDb()['user'];
         }
-        if($pass == null){
+        if ($pass == null) {
             $pass = Helper::getConfigDb()['pass'];
         }
-        if($name == null){
+        if ($name == null) {
             $name = Helper::getConfigDb()['db_name'];
         }
 

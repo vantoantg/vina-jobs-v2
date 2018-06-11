@@ -10,7 +10,9 @@
  * modifying or distribute this file or part of its contents. The contents of
  * this file is part of the Source Code of CKFinder.
  */
-if (!defined('IN_CKFINDER')) exit;
+if (!defined('IN_CKFINDER')) {
+    exit;
+}
 
 /**
  * @package CKFinder
@@ -21,14 +23,14 @@ if (!defined('IN_CKFINDER')) exit;
 /**
  * Folder view mask
  */
-define('CKFINDER_CONNECTOR_ACL_FOLDER_VIEW',1);
-define('CKFINDER_CONNECTOR_ACL_FOLDER_CREATE',2);
-define('CKFINDER_CONNECTOR_ACL_FOLDER_RENAME',4);
-define('CKFINDER_CONNECTOR_ACL_FOLDER_DELETE',8);
-define('CKFINDER_CONNECTOR_ACL_FILE_VIEW',16);
-define('CKFINDER_CONNECTOR_ACL_FILE_UPLOAD',32);
-define('CKFINDER_CONNECTOR_ACL_FILE_RENAME',64);
-define('CKFINDER_CONNECTOR_ACL_FILE_DELETE',128);
+define('CKFINDER_CONNECTOR_ACL_FOLDER_VIEW', 1);
+define('CKFINDER_CONNECTOR_ACL_FOLDER_CREATE', 2);
+define('CKFINDER_CONNECTOR_ACL_FOLDER_RENAME', 4);
+define('CKFINDER_CONNECTOR_ACL_FOLDER_DELETE', 8);
+define('CKFINDER_CONNECTOR_ACL_FILE_VIEW', 16);
+define('CKFINDER_CONNECTOR_ACL_FILE_UPLOAD', 32);
+define('CKFINDER_CONNECTOR_ACL_FILE_RENAME', 64);
+define('CKFINDER_CONNECTOR_ACL_FILE_DELETE', 128);
 
 /**
  * This class keeps ACL configuration
@@ -48,7 +50,7 @@ class CKFinder_Connector_Core_AccessControlConfig
      */
     private $_aclEntries = array();
 
-    function __construct($accessControlNodes)
+    public function __construct($accessControlNodes)
     {
         foreach ($accessControlNodes as $node) {
             $_folderView = isset($node['folderView']) ? CKFinder_Connector_Utils_Misc::booleanValue($node['folderView']) : false;
@@ -64,7 +66,10 @@ class CKFinder_Connector_Core_AccessControlConfig
             $_resourceType = isset($node['resourceType']) ? $node['resourceType'] : "*";
             $_folder = isset($node['folder']) ? $node['folder'] : "/";
 
-            $this->addACLEntry($_role, $_resourceType, $_folder,
+            $this->addACLEntry(
+                $_role,
+                $_resourceType,
+                $_folder,
             array(
             $_folderView ? CKFINDER_CONNECTOR_ACL_FOLDER_VIEW : 0,
             $_folderCreate ? CKFINDER_CONNECTOR_ACL_FOLDER_CREATE : 0,
@@ -101,23 +106,21 @@ class CKFinder_Connector_Core_AccessControlConfig
      */
     private function addACLEntry($role, $resourceType, $folderPath, $allowRulesMask, $denyRulesMask)
     {
-
         if (!strlen($folderPath)) {
             $folderPath = '/';
-        }
-        else {
-            if (substr($folderPath,0,1) != '/') {
+        } else {
+            if (substr($folderPath, 0, 1) != '/') {
                 $folderPath = '/' . $folderPath;
             }
 
-            if (substr($folderPath,-1,1) != '/') {
+            if (substr($folderPath, -1, 1) != '/') {
                 $folderPath .= '/';
             }
         }
 
         $_entryKey = $role . "#@#" . $resourceType;
 
-        if (array_key_exists($folderPath,$this->_aclEntries)) {
+        if (array_key_exists($folderPath, $this->_aclEntries)) {
             if (array_key_exists($_entryKey, $this->_aclEntries[$folderPath])) {
                 $_rulesMasks = $this->_aclEntries[$folderPath][$_entryKey];
                 foreach ($_rulesMasks[0] as $key => $value) {
@@ -127,8 +130,7 @@ class CKFinder_Connector_Core_AccessControlConfig
                     $denyRulesMask[$key] |= $value;
                 }
             }
-        }
-        else {
+        } else {
             $this->_aclEntries[$folderPath] = array();
         }
 
@@ -163,20 +165,21 @@ class CKFinder_Connector_Core_AccessControlConfig
 
         $_currentPath = "/";
 
-        for($i = -1; $i < sizeof($_pathParts); $i++) {
+        for ($i = -1; $i < sizeof($_pathParts); $i++) {
             if ($i >= 0) {
                 if (!strlen($_pathParts[$i])) {
                     continue;
                 }
 
-                if (array_key_exists($_currentPath . '*/', $this->_aclEntries))
-                $_computedMask = $this->mergePathComputedMask( $_computedMask, $resourceType, $_userRole, $_currentPath . '*/' );
+                if (array_key_exists($_currentPath . '*/', $this->_aclEntries)) {
+                    $_computedMask = $this->mergePathComputedMask($_computedMask, $resourceType, $_userRole, $_currentPath . '*/');
+                }
 
                 $_currentPath .= $_pathParts[$i] . '/';
             }
 
             if (array_key_exists($_currentPath, $this->_aclEntries)) {
-                $_computedMask = $this->mergePathComputedMask( $_computedMask, $resourceType, $_userRole, $_currentPath );
+                $_computedMask = $this->mergePathComputedMask($_computedMask, $resourceType, $_userRole, $_currentPath);
             }
         }
 
@@ -193,7 +196,7 @@ class CKFinder_Connector_Core_AccessControlConfig
      * @param string $path
      * @return int
      */
-    private function mergePathComputedMask( $currentMask, $resourceType, $userRole, $path )
+    private function mergePathComputedMask($currentMask, $resourceType, $userRole, $path)
     {
         $_folderEntries = $this->_aclEntries[$path];
 
@@ -202,17 +205,14 @@ class CKFinder_Connector_Core_AccessControlConfig
         $_possibleEntries[0] = "*#@#*";
         $_possibleEntries[1] = "*#@#" . $resourceType;
 
-        if (!is_null($userRole))
-        {
+        if (!is_null($userRole)) {
             $_possibleEntries[2] = $userRole . "#@#*";
             $_possibleEntries[3] = $userRole . "#@#" . $resourceType;
         }
 
-        for ($r = 0; $r < sizeof($_possibleEntries); $r++)
-        {
+        for ($r = 0; $r < sizeof($_possibleEntries); $r++) {
             $_possibleKey = $_possibleEntries[$r];
-            if (array_key_exists($_possibleKey, $_folderEntries))
-            {
+            if (array_key_exists($_possibleKey, $_folderEntries)) {
                 $_rulesMasks = $_folderEntries[$_possibleKey];
 
                 $currentMask |= array_sum($_rulesMasks[0]);

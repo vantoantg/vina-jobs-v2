@@ -12,7 +12,7 @@ class m180426_160805_aaa extends Migration
      */
     public function safeUp()
     {
-		$this->execute("ALTER TABLE `tn_candidate` CHANGE `star` `star` SMALLINT(1) DEFAULT 0 NULL, CHANGE `client_status` `client_status` SMALLINT(1) DEFAULT 1 NULL, CHANGE `status` `status` SMALLINT(1) DEFAULT 1 NULL; ");
+        $this->execute("ALTER TABLE `tn_candidate` CHANGE `star` `star` SMALLINT(1) DEFAULT 0 NULL, CHANGE `client_status` `client_status` SMALLINT(1) DEFAULT 1 NULL, CHANGE `status` `status` SMALLINT(1) DEFAULT 1 NULL; ");
     }
 
     /**

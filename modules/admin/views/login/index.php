@@ -17,13 +17,13 @@ $this->title = 'Login';
                     <br/><br/>
 
 					<?php $form = \yii\bootstrap\ActiveForm::begin([
-						'method' => "post",
-						'options' => [
-							'class' => 'form floating-label',
-							'accept-charset' => "utf-8",
+                        'method' => "post",
+                        'options' => [
+                            'class' => 'form floating-label',
+                            'accept-charset' => "utf-8",
                             'autocomplete' => 'on'
-						]
-					]) ?>
+                        ]
+                    ]) ?>
 
                     <div class="error-login form-group mg-bt-0 pd-0 hide">
                         <span class="error text-danger"></span>

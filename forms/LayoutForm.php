@@ -26,13 +26,13 @@ class LayoutForm extends Model
         ];
     }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function attributeLabels()
-	{
-		return [
-			'textarea' => 'Content',
-		];
-	}
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'textarea' => 'Content',
+        ];
+    }
 }

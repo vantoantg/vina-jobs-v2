@@ -67,10 +67,10 @@ class SettingController extends AdminController
         $model = new Setting();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-	        if(Yii::$app->request->post('save') == 'saveedit'){
-		        return $this->redirect(['update', 'id' => $model->id]);
-	        }
-	        return $this->redirect(['index']);
+            if (Yii::$app->request->post('save') == 'saveedit') {
+                return $this->redirect(['update', 'id' => $model->id]);
+            }
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -90,9 +90,9 @@ class SettingController extends AdminController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-	        if(Yii::$app->request->post('save') == 'saveback'){
-		        return $this->redirect(['index']);
-	        }
+            if (Yii::$app->request->post('save') == 'saveback') {
+                return $this->redirect(['index']);
+            }
         }
 
         return $this->render('update', [
@@ -109,7 +109,7 @@ class SettingController extends AdminController
      */
     public function actionDelete($id)
     {
-    	// TODO:
+        // TODO:
 //        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

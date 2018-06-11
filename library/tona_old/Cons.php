@@ -3,7 +3,6 @@ namespace app\components\tona;
 
 class Cons
 {
-
     const
             IMG_DEFAULT_USER = '/web/images/defaults/noUser.jpg',
             IMG_DEFAULT_PROJECT = '/web/images/defaults/img-project-default.jpg',
@@ -49,7 +48,7 @@ class Cons
         self::PAGE_TEMPLATE_SIDEBAR_RIGHT     => 'Sidebar right',
     ];
 
-    public function init(){
-
+    public function init()
+    {
     }
 }

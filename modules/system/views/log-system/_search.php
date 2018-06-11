@@ -28,15 +28,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'browser') ?>
 
-    <?php // echo $form->field($model, 'time') ?>
+    <?php // echo $form->field($model, 'time')?>
 
-    <?php // echo $form->field($model, 'controller') ?>
+    <?php // echo $form->field($model, 'controller')?>
 
-    <?php // echo $form->field($model, 'action') ?>
+    <?php // echo $form->field($model, 'action')?>
 
-    <?php // echo $form->field($model, 'method') ?>
+    <?php // echo $form->field($model, 'method')?>
 
-    <?php // echo $form->field($model, 'user_timezone') ?>
+    <?php // echo $form->field($model, 'user_timezone')?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

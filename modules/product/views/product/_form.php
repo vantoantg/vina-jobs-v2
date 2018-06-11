@@ -22,53 +22,53 @@ use app\library\helper\Cons;
 	</div>
 
 	<?php
-	$datas = \app\models\ProductCategory::categoriesMenus();
-	$listData = \yii\helpers\ArrayHelper::map($datas, 'id', 'name');
-	echo $form->field($model, 'category_id',[
-		'template' => '{input}{label}{error}{hint}'
-	])->dropDownList(
-		$listData,
-		[
-			'class' => 'form-control select2-list',
-			'data-placeholder' => "Select an item"
-		]
-	)->label('Select category');
-	?>
+    $datas = \app\models\ProductCategory::categoriesMenus();
+    $listData = \yii\helpers\ArrayHelper::map($datas, 'id', 'name');
+    echo $form->field($model, 'category_id', [
+        'template' => '{input}{label}{error}{hint}'
+    ])->dropDownList(
+        $listData,
+        [
+            'class' => 'form-control select2-list',
+            'data-placeholder' => "Select an item"
+        ]
+    )->label('Select category');
+    ?>
 
 	<?= $form->field($model, 'name', [
-		'template' => '{input}{label}{error}{hint}'
-	])->textInput(['maxlength' => true]) ?>
+        'template' => '{input}{label}{error}{hint}'
+    ])->textInput(['maxlength' => true]) ?>
 
 	<?= $form->field($model, 'description')->widget(\yii\redactor\widgets\Redactor::className(), [
-		'clientOptions' => [
-			'placeholder' => 'Content..',
-			'observeLinks' => true,
-			'convertVideoLinks' => true,
-			'imageUpload' => ['/web/uploads/image'],
-			'fileUpload' => ['/web/uploads/file'],
-			'plugins' => ['clips', 'fontcolor', 'imagemanager'],
-			'toolbar' => true,
-			'buttons' => [
-				'html',
-				'format',
-				'formatting',
-				'lists',
-				'bold',
-				'italic',
-				'deleted',
-				'underline',
-				'horizontalrule',
-				'alignment',
-				'unorderedlist',
-				'orderedlist',
-				'outdent',
-				'indent',
-				'link',
-				/*'image',
-				'file'*/
-			],
-		]
-	]) ?>
+        'clientOptions' => [
+            'placeholder' => 'Content..',
+            'observeLinks' => true,
+            'convertVideoLinks' => true,
+            'imageUpload' => ['/web/uploads/image'],
+            'fileUpload' => ['/web/uploads/file'],
+            'plugins' => ['clips', 'fontcolor', 'imagemanager'],
+            'toolbar' => true,
+            'buttons' => [
+                'html',
+                'format',
+                'formatting',
+                'lists',
+                'bold',
+                'italic',
+                'deleted',
+                'underline',
+                'horizontalrule',
+                'alignment',
+                'unorderedlist',
+                'orderedlist',
+                'outdent',
+                'indent',
+                'link',
+                /*'image',
+                'file'*/
+            ],
+        ]
+    ]) ?>
 
 	<?= $form->field($model, 'content')->textarea(['rows' => 6, 'id' => 'page-content', 'class' => 'form-control']) ?>
 
@@ -87,37 +87,37 @@ use app\library\helper\Cons;
 
 
     <?= $form->field($model, 'slug', [
-	    'template' => '{input}{label}{error}{hint}'
+        'template' => '{input}{label}{error}{hint}'
     ])->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'price_in', [
-	    'template' => '{input}{label}{error}{hint}'
+        'template' => '{input}{label}{error}{hint}'
     ])->textInput() ?>
 
     <?= $form->field($model, 'price_out', [
-	    'template' => '{input}{label}{error}{hint}'
+        'template' => '{input}{label}{error}{hint}'
     ])->textInput() ?>
 
     <?= $form->field($model, 'price_sale', [
-	    'template' => '{input}{label}{error}{hint}'
+        'template' => '{input}{label}{error}{hint}'
     ])->textInput() ?>
 
     <?= $form->field($model, 'quantity_remaining', [
-	    'template' => '{input}{label}{error}{hint}'
+        'template' => '{input}{label}{error}{hint}'
     ])->textInput() ?>
 
     <?= $form->field($model, 'arranged', [
-	    'template' => '{input}{label}{error}{hint}'
+        'template' => '{input}{label}{error}{hint}'
     ])->textInput() ?>
 
 
 	<?= $form->field($model, 'is_comment', [
-		'template' => '<label class="checkbox-inline checkbox-styled" >{input}</label>{label}{error}{hint}'
-	])->checkbox() ?>
+        'template' => '<label class="checkbox-inline checkbox-styled" >{input}</label>{label}{error}{hint}'
+    ])->checkbox() ?>
 
 	<?= $form->field($model, 'status', [
-		'template' => '<label class="checkbox-inline checkbox-styled" >{input}</label>{label}{error}{hint}'
-	])->checkbox() ?>
+        'template' => '<label class="checkbox-inline checkbox-styled" >{input}</label>{label}{error}{hint}'
+    ])->checkbox() ?>
 
 
     <?php ActiveForm::end(); ?>

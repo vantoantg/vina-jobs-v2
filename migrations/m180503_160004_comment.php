@@ -12,7 +12,7 @@ class m180503_160004_comment extends Migration
      */
     public function safeUp()
     {
-		$this->execute("
+        $this->execute("
 		CREATE TABLE `tn_comment` (
 	  `comment_id` int(11) NOT NULL,
 	  `parent_comment_id` int(11) DEFAULT NULL,

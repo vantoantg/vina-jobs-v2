@@ -72,7 +72,7 @@ class CarouselItemsSearch extends CarouselItems
             ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'link', $this->link]);
 
-        if($carousel_id) {
+        if ($carousel_id) {
             $query->andWhere(['carousel_id' => $carousel_id]);
         }
 

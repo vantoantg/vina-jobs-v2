@@ -7,7 +7,6 @@
 
 namespace app\components\tona;
 
-
 use yii\bootstrap\Html;
 use yii\widgets\LinkPager;
 

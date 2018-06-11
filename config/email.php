@@ -6,7 +6,7 @@
 return [
     'host' => 'vina-jobs.com',
     'username' => 'system@vina-jobs.com',
-    'password' => '12345678090',
+    'password' => '',
     'secure' => false,
     'port' => '25',
     'options' => [

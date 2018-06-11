@@ -36,13 +36,14 @@
 		    <select class="form-control job-select2" name="jobs" data-placeholder="Chọn ngành nghề" multiple>
                 <?php
                 $actived = [];
-                if(isset($queryParams['jobs']) && $queryParams['jobs']){
-	                $actived = explode(',', $queryParams['jobs']);
+                if (isset($queryParams['jobs']) && $queryParams['jobs']) {
+                    $actived = explode(',', $queryParams['jobs']);
                 }
                 foreach ($data as $value) {
                     ?>
 				    <option value="<?= $value['id'] ?>" <?= in_array($value['id'], $actived) ? 'selected' : ''?>> <?= $value['name'] ?></option>
-                <?php } ?>
+                <?php
+                } ?>
 		    </select>
 	    </div>
 
@@ -53,32 +54,35 @@
 		    <select class="form-control job-select2" name="loca" data-placeholder="Nơi làm việc mong muốn" multiple>
                 <?php
                 $actived = [];
-                if(isset($queryParams['loca']) && $queryParams['loca']){
-	                $actived = explode(',', $queryParams['loca']);
+                if (isset($queryParams['loca']) && $queryParams['loca']) {
+                    $actived = explode(',', $queryParams['loca']);
                 }
                 foreach ($data as $value) {
                     ?>
 				    <option value="<?= $value['id'] ?>" <?= in_array($value['id'], $actived) ? 'selected' : ''?>> <?= $value['name'] ?></option>
-                <?php } ?>
+                <?php
+                } ?>
 		    </select>
 	    </div>
 
         <h2 class="title-widget-sidebar">Thời gian làm việc</h2>
         <div class="content-widget-sidebar">
 			<?php
-			$data = \app\library\helper\Dropdowns::$working_time;
-			?>
+            $data = \app\library\helper\Dropdowns::$working_time;
+            ?>
             <ul>
 				<?php
-				$actived = [];
-				if(isset($queryParams['wkt']) && $queryParams['wkt']){
-					$actived = explode(',', $queryParams['wkt']);
-				}
-				foreach ($data as $k => $value) {
-					if($k > 0){
-					?>
+                $actived = [];
+                if (isset($queryParams['wkt']) && $queryParams['wkt']) {
+                    $actived = explode(',', $queryParams['wkt']);
+                }
+                foreach ($data as $k => $value) {
+                    if ($k > 0) {
+                        ?>
                     <li><label><input type="checkbox" name="wkt" class="iCheck" value="<?= $k ?>"  <?= in_array($k, $actived) ? 'checked' : ''?>> <?= $value ?></label></li>
-				<?php }} ?>
+				<?php
+                    }
+                } ?>
             </ul>
         </div>
 
@@ -86,18 +90,20 @@
         <div class="content-widget-sidebar">
 			<?php
             $data = \app\library\helper\Dropdowns::$salary;
-			?>
+            ?>
             <ul>
                 <?php
                 $actived = [];
-                if(isset($queryParams['salary']) && $queryParams['salary']){
-	                $actived = explode(',', $queryParams['salary']);
+                if (isset($queryParams['salary']) && $queryParams['salary']) {
+                    $actived = explode(',', $queryParams['salary']);
                 }
                 foreach ($data as $k => $value) {
-                    if($k > 0){
+                    if ($k > 0) {
                         ?>
 			            <li><label><input type="checkbox" name="salary" class="iCheck" value="<?= $k ?>" <?= in_array($k, $actived) ? 'checked' : ''?>> <?= $value ?></label></li>
-                    <?php }} ?>
+                    <?php
+                    }
+                } ?>
             </ul>
         </div>
 
@@ -105,18 +111,20 @@
         <div class="content-widget-sidebar">
 			<?php
             $data = \app\library\helper\Dropdowns::$experience;
-			?>
+            ?>
             <ul>
 				<?php
-				$actived = [];
-				if(isset($queryParams['exp']) && $queryParams['exp']){
-					$actived = explode(',', $queryParams['exp']);
-				}
-				foreach ($data as $k => $value) {
-                if($k > 0){
-					?>
+                $actived = [];
+                if (isset($queryParams['exp']) && $queryParams['exp']) {
+                    $actived = explode(',', $queryParams['exp']);
+                }
+                foreach ($data as $k => $value) {
+                    if ($k > 0) {
+                        ?>
                     <li><label><input type="checkbox" name="exp" class="iCheck" value="<?= $k ?>" <?= in_array($k, $actived) ? 'checked' : ''?>> <?= $value ?></label></li>
-				<?php } } ?>
+				<?php
+                    }
+                } ?>
             </ul>
         </div>
 

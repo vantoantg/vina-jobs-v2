@@ -39,29 +39,29 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 
                         <div class="form-group field-searchform-jobs">
 							<?php
-							$data = \app\models\JobCategories::getAll();
-							?>
+                            $data = \app\models\JobCategories::getAll();
+                            ?>
                             <select class="job-select2 form-control" name="jobs">
                                 <option value="0">Chọn ngành - nghề</option>
 								<?php
-								foreach ($data as $datum) {
-									echo '<option value="' . $datum['id'] . '">' . $datum['name'] . '</option>';
-								}
-								?>
+                                foreach ($data as $datum) {
+                                    echo '<option value="' . $datum['id'] . '">' . $datum['name'] . '</option>';
+                                }
+                                ?>
                             </select>
                         </div>
 
                         <div class="form-group field-searchform-loca">
 							<?php
-							$data = \app\models\Locations::getAll();
-							?>
+                            $data = \app\models\Locations::getAll();
+                            ?>
                             <select class="job-select2 form-control" name="loca">
                                 <option value="0">Nơi làm việc</option>
 								<?php
-								foreach ($data as $datum) {
-									echo '<option value="' . $datum['id'] . '">' . $datum['name'] . '</option>';
-								}
-								?>
+                                foreach ($data as $datum) {
+                                    echo '<option value="' . $datum['id'] . '">' . $datum['name'] . '</option>';
+                                }
+                                ?>
                             </select>
                         </div>
 
@@ -334,7 +334,8 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
     </td>
     <td class="text-center"><p title="Nơi làm việc"><i class="icon-location"></i>
             <br><%= k.loca_name %></p></td>
-        <?php if(\app\library\helper\Common::isGuest() || \app\library\helper\Common::currentUsers()->type != \app\models\Users::USER_TYPE_CONTACT_OF_COMPANY){ ?>
+        <?php if (\app\library\helper\Common::isGuest() || \app\library\helper\Common::currentUsers()->type != \app\models\Users::USER_TYPE_CONTACT_OF_COMPANY) {
+                                    ?>
     <td class="tbl-apply">
         <% if (k.isGuest){ %>
         <a href="#"
@@ -351,7 +352,8 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
         >Apply</a>
         <% } %>
     </td>
-    <?php } ?>
+    <?php
+                                } ?>
     </tr>
     <% }); %>
 

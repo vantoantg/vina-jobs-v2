@@ -7,5 +7,4 @@ use Yii;
 
 class UserOnline extends \app\models\base\UserOnline
 {
-
 }

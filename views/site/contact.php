@@ -13,18 +13,18 @@ $this->title = 'Liên hệ';
 $this->params['breadcrumbs'][] = $this->title;
 
 $this->registerJs(
-	'setTimeout(function(){ $("#contactform-verifycode-image").trigger("click"); }, 10);',
-	\yii\web\View::POS_READY
+    'setTimeout(function(){ $("#contactform-verifycode-image").trigger("click"); }, 10);',
+    \yii\web\View::POS_READY
 );
 $this->registerJs(
-	'$("#contactform-verifycode-image").click();',
-	\yii\web\View::POS_READY,
-	'refresh-captcha'
+    '$("#contactform-verifycode-image").click();',
+    \yii\web\View::POS_READY,
+    'refresh-captcha'
 );
 ?>
 
 <div class="container">
-    <div class="col-12 col-sm-8 ovf-y-h">
+    <div class="col-12 col-sm-8 pd-lr-0">
         <div class="site-contact <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.1s">
             <h1><?= Html::encode($this->title) ?></h1>
 
@@ -64,8 +64,10 @@ $this->registerJs(
                         ]) ?>
 
                         <div class="form-group">
-                            <?= Html::submitButton('<i class="fas fa-location-arrow"></i> Gửi đi',
-                                ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                            <?= Html::submitButton(
+                            '<i class="fas fa-location-arrow"></i> Gửi đi',
+                                ['class' => 'btn btn-primary', 'name' => 'contact-button']
+                        ) ?>
                         </div>
 
                         <?php ActiveForm::end(); ?>

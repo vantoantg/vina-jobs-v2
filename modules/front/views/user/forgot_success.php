@@ -6,6 +6,7 @@ use yii\widgets\Pjax;
 use yii\bootstrap\ActiveForm;
 //use yii\widgets\ActiveForm;
 use app\library\helper\Helper;
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\User */
 /* @var $dataProvider yii\data\ActiveDataProvider */

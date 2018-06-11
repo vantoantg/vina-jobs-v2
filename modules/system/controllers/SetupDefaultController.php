@@ -23,10 +23,10 @@ class SetupDefaultController extends Controller
     {
         $pathRoot = \Yii::$app->getBasePath();
         $pathAssets = $pathRoot . '/assets';
-        try{
+        try {
             chmod($pathAssets, 0777);
             echo "Changed $pathAssets to CHMOD 0777";
-        }catch (Exception $exception){
+        } catch (Exception $exception) {
             throw new \Exception($exception->getMessage() . ' Couldn\'t set permission.');
         }
 

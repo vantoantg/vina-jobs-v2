@@ -8,10 +8,10 @@
 
 namespace app\models;
 
-
 class JobSkill extends \app\models\base\JobSkill
 {
-    public static function getAllGroupSkill(){
+    public static function getAllGroupSkill()
+    {
         $table = self::tableName();
         $result = [];
         $sql = "SELECT * FROM $table";
@@ -25,7 +25,8 @@ class JobSkill extends \app\models\base\JobSkill
         return $result;
     }
 
-    public static function getAllSkill(){
+    public static function getAllSkill()
+    {
         $table = self::tableName();
         $sql = "SELECT * FROM $table";
 

@@ -6,6 +6,7 @@
  * Time: 10:29 PM
  */
 use \yii\widgets\ActiveForm;
+
 ?>
 
 <!-- line modal -->
@@ -13,12 +14,12 @@ use \yii\widgets\ActiveForm;
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<?php $form = ActiveForm::begin([
-				'method' => "post",
-				'options' => [
-					'class' => 'form floating-label',
-					'accept-charset' => "utf-8",
-				]
-			]) ?>
+                'method' => "post",
+                'options' => [
+                    'class' => 'form floating-label',
+                    'accept-charset' => "utf-8",
+                ]
+            ]) ?>
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 				<h3 class="modal-title" id="lineModalLabel">Apply</h3>
