@@ -136,6 +136,10 @@ class UserDetails extends \app\models\base\UserDetails
 
         /** @var $userDetail self $userDetail */
         $userDetail = UserDetails::checkAndCreateUser($userId);
+		if(!$userDetail->email){
+			$userDetail->email = Common::currentUsers()->email;
+		}
+
 
         $userDetail->birthday = Datetime::sqlDateToFormat($userDetail->birthday);
         $userDetail->registration_date = Datetime::sqlDatetimeDiffForHumans($userDetail->registration_date);

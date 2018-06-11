@@ -140,7 +140,8 @@ class UserController extends FrontController
         $errors = [];
         if (Common::isLoginned()) {
             if (Common::currentUsers()->type != Users::USER_TYPE_DEFAULT) {
-                return $this->goHome();
+            	//TODO:
+//                return $this->goHome();
             }
             $model = Users::findOne(Common::currentUser());
             $model->scenario = Users::SCENARIO_UPDATE;
@@ -450,11 +451,11 @@ class UserController extends FrontController
     public function actionClientProfile()
     {
         if (!Common::isLoginned()) {
-            if (Common::currentUser('type') != Users::USER_TYPE_CONTACT_OF_COMPANY) {
-                return $this->goHome();
-            }
-
             return $this->goHome();
+        }else{
+	        if (Common::currentUser('type') != Users::USER_TYPE_CONTACT_OF_COMPANY) {
+		        return $this->goHome();
+	        }
         }
 
         $imgForm = new ImageOnlyForm();

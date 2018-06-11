@@ -50,12 +50,10 @@ use \yii\widgets\ActiveForm;
 				</div>
 			</div>
 			<div class="modal-footer">
-				<div class="btn-group" role="group" aria-label="group button">
-					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-times"></i> Đóng lại</button>
-						<button type="submit" id="submit" name="apply" class="btn btn-primary pull-right"><i class="fas fa-location-arrow"></i> GỬI ĐI </button>
-					</div>
-				</div>
+                <div class="">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-times"></i> Đóng lại</button>
+                    <button type="submit" id="submit" name="apply" class="btn btn-primary pull-right"><i class="fas fa-location-arrow"></i> GỬI ĐI </button>
+                </div>
 			</div>
 			<?php ActiveForm::end(); ?>
 		</div>
