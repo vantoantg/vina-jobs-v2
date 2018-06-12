@@ -92,7 +92,7 @@ use app\library\helper\Helper;
 					<li><a href="<?= Helper::createUrl(['site/blog']); ?>">Blog</a></li>
 					<li><a href="#">Q&A</a></li>
 					<li><a href="<?= Helper::createUrl(['site/contact']); ?>">Contact</a></li>
-					<li><a href="<?= Helper::siteURL();?>/sitemap.xml" target="_blankQ&A">Site Map</a></li>
+					<li><a href="<?= Helper::siteURL(); ?>/sitemap.xml" target="_blankQ&A">Site Map</a></li>
 				</ul>
 			</div>
 		</div>
