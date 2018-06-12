@@ -7,6 +7,7 @@ var Jobs = function(){
     var site_employeers_detail = $('body.site-employeers-detail');
     var site_index = $('body.default-index');
 
+    var applyModal = $('#apply-modal');
     var _callToPreApply = false;
     var _dataPreApply = [];
 
@@ -14,7 +15,7 @@ var Jobs = function(){
         init: function(){
             this.events();
 
-            if($('#apply-modal').length){
+            if(applyModal.length){
                 this.loadBtnApplyPopup();
             }
             if(site_employeers_detail.length){
@@ -65,12 +66,22 @@ var Jobs = function(){
                 }else {
                     renderPopupApply(_dataPreApply);
                 }
+
+                applyModal.on('click', 'ul li input[type="radio"]', function () {
+                    console.log($(this).val());
+                    if ($(this).val() == 'upload') {
+                        applyModal.find('ul li.file').removeClass('hide');
+                    } else {
+                        applyModal.find('ul li.file input').val('');
+                        applyModal.find('ul li.file').addClass('hide');
+                    }
+                });
             });
 
             var renderPopupApply = function (_data) {
                 if(_data.data.length){
                     var html = _.template($('#cv-list').html())({list : _data.data });
-                    $('#tabs-cv-valid ul').html(html);
+                    $('#tabs-cv-valid ul.cv-list').html(html);
                 }else{
                     $('a[href="#tabs-cv-valid"]').hide();
                 }

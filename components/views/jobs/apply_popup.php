@@ -32,17 +32,23 @@ use yii\widgets\ActiveForm;
 				<div class="panel with-nav-tabs">
 					<div class="panel-heading">
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="#tab1default" data-toggle="tab">Tải hồ sơ (CV) mới</a></li>
-							<li><a href="#tabs-cv-valid" data-toggle="tab">Chọn hồ sơ (CV) có sẵn</a></li>
+							<li class="upload active"><a href="#upload-cv">Đính kèm CV</a></li>
 						</ul>
 					</div>
 					<div class="panel-body">
 						<div class="tab-content">
-							<div class="tab-pane fade in active" id="tab1default">
-								<?= $form->field($applyForm, 'new_cv')->fileInput()->label(false); ?>
-							</div>
-							<div class="tab-pane fade" id="tabs-cv-valid">
+							<div class="tab-pane active" id="tabs-cv-valid">
 								<ul>
+                                    <li>
+                                        <label>
+                                            <input type="radio" class="radio-inline" name="radios" value="upload">
+                                            <span class="outside"><span class="inside"></span></span>Tải CV mới</label>
+                                    </li>
+                                    <li class="file hide">
+	                                    <?= $form->field($applyForm, 'new_cv')->fileInput()->label(false); ?>
+                                    </li>
+								</ul>
+                                <ul class="cv-list">
 								</ul>
 							</div>
 						</div>
@@ -64,7 +70,7 @@ use yii\widgets\ActiveForm;
     <% _.each(list, function(v, k){ %>
     <li>
         <label><input <% if(k == 0){ %> checked <% } %> type="radio" class="radio-inline" name="radios" value="<%= v.file_path %>">
-            <span class="outside"><span class="inside"></span></span><%= v.file_name %></label>
+            <span class="outside"><span class="inside"></span></span><%= v.file_name %> (<%= v.created_at %>)</label>
     </li>
     <% }) %>
 </script>

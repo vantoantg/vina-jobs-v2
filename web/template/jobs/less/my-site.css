@@ -659,6 +659,12 @@ a.search-options:hover {
 #tabs-cv-valid ul {
   padding: 0;
 }
+#tabs-cv-valid ul li {
+  list-style: none;
+}
+#tabs-cv-valid ul li.file {
+  padding-left: 40px;
+}
 #tabs-cv-valid label {
   margin: 5px;
   display: inline-block;
@@ -670,12 +676,12 @@ a.search-options:hover {
 #tabs-cv-valid label:hover {
   opacity: 0.8;
 }
-#tabs-cv-valid input {
+#tabs-cv-valid ul li label input {
   height: 1px;
   width: 1px;
   opacity: 0;
 }
-#tabs-cv-valid .outside {
+#tabs-cv-valid ul li label .outside {
   display: inline-block;
   position: absolute;
   left: 0;
@@ -689,7 +695,7 @@ a.search-options:hover {
   box-sizing: border-box;
   background: none;
 }
-#tabs-cv-valid .inside {
+#tabs-cv-valid ul li label .inside {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -705,19 +711,19 @@ a.search-options:hover {
   -webkit-transform: scale(0, 0);
   transform: scale(0, 0);
 }
-#tabs-cv-valid .no-transforms .inside {
+#tabs-cv-valid ul li label .no-transforms .inside {
   left: auto;
   top: auto;
   width: 0;
   height: 0;
 }
-#tabs-cv-valid input:checked + .outside .inside {
+#tabs-cv-valid ul li label input:checked + .outside .inside {
   -webkit-animation: radio-select 0.1s linear;
   animation: radio-select 0.1s linear;
   -webkit-transform: scale(1, 1);
   transform: scale(1, 1);
 }
-#tabs-cv-valid .no-transforms input:checked + .outside .inside {
+#tabs-cv-valid ul li label .no-transforms input:checked + .outside .inside {
   width: 10px;
   height: 10px;
 }
