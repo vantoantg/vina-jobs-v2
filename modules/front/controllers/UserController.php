@@ -577,7 +577,7 @@ class UserController extends FrontController
         $user = Users::findOne(array('password_reset_token' => $token));
         if (!$user) {
             $url = Helper::siteURL();
-            throw new BadRequestHttpException('Liên kết này đã hết hạn hoặc không tồi tại. <a href="' . $url . '">Quay lại trang chủ!</a>');
+            throw new BadRequestHttpException('Liên kết này đã hết hạn hoặc không tồn tại. <a href="' . $url . '">Quay lại trang chủ!</a>');
         }
 
         if ($model->load(Yii::$app->request->post())) {
