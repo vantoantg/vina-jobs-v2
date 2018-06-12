@@ -1,8 +1,14 @@
 <?php
 
-namespace app\models\base;
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
+ */
 
-use Yii;
+namespace app\models\base;
 
 /**
  * This is the model class for table "auth_rule".
@@ -11,13 +17,12 @@ use Yii;
  * @property resource $data
  * @property int $created_at
  * @property int $updated_at
- *
  * @property AuthItem[] $authItems
  */
 class AuthRule extends \yii\db\ActiveRecord
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
@@ -25,7 +30,7 @@ class AuthRule extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -39,7 +44,7 @@ class AuthRule extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {

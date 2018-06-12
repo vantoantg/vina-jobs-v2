@@ -1,8 +1,15 @@
 <?php
 
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\front\controllers;
 
-use app\library\helper\Common;
 use app\models\Comment;
 use yii\web\Controller;
 use Yii;
@@ -12,21 +19,23 @@ use Yii;
  */
 class CommentController extends FrontController
 {
-
     /**
      * Renders the index view for the module
+     *
      * @return string
      */
     public function actionIndex()
     {
         if (Yii::$app->request->isAjax && Yii::$app->request->isGet) {
             $data = Comment::instance()->getList(Yii::$app->request->get('object_id'), Yii::$app->request->get('object_type'));
+
             return $this->asJson($data);
         }
     }
 
     /**
      * Renders the index view for the module
+     *
      * @return string
      */
     public function actionAdd()

@@ -1,10 +1,7 @@
 <?php
 
-use yii\helpers\Html;
-use yii\grid\GridView;
-use yii\widgets\Pjax;
-use \app\library\helper\Common;
-use \app\library\helper\Helper;
+use app\library\helper\Common;
+use app\library\helper\Helper;
 use app\models\Pages;
 
 /* @var $this yii\web\View */
@@ -25,7 +22,7 @@ $userInfo = \app\models\UserDetails::getInfo();
 	<div class="row">
 		<div class="col-md-12 toppad pull-right">
 			<br>
-			<p class=" text-info"><?= \app\library\helper\Datetime::getDateNow() ?></p>
+			<p class=" text-info"><?= \app\library\helper\Datetime::getDateNow(); ?></p>
 		</div>
 	</div>
 	<div class="row">
@@ -43,10 +40,10 @@ $userInfo = \app\models\UserDetails::getInfo();
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane active ovf-h" id="profile">
 						<div class="row">
-							<div class="col-xs-12 toppad <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.1s">
+							<div class="col-xs-12 toppad <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp" data-wow-delay="0.1s">
 								<div class="panel panel-info">
 									<div class="panel-heading">
-										<h3 class="panel-title"><?= Common::currentUser('name') ?></h3>
+										<h3 class="panel-title"><?= Common::currentUser('name'); ?></h3>
 									</div>
 									<div class="panel-body">
 										<div class="row">
@@ -54,7 +51,7 @@ $userInfo = \app\models\UserDetails::getInfo();
 												<table class="table table-user-information">
 													<tbody>
 													<tr>
-														<td>Avatar: <?= Common::currentUser('avatar') ?></td>
+														<td>Avatar: <?= Common::currentUser('avatar'); ?></td>
 														<td>
 															<!--<img alt="User Pic"
 															     src="<?/*= Helper::imgRender('/'.Common::currentUser('avatar'), 150, 150, 'avatar'); */?>"
@@ -82,7 +79,7 @@ $userInfo = \app\models\UserDetails::getInfo();
 													<tr>
 														<td>Email</td>
 														<td>
-															<a href="mailto:<?= $userInfo->email ?>"><?= $userInfo->email ?></a>
+															<a href="mailto:<?= $userInfo->email; ?>"><?= $userInfo->email; ?></a>
 														</td>
 													</tr>
 													<tr>
@@ -95,7 +92,7 @@ $userInfo = \app\models\UserDetails::getInfo();
 										</div>
 									</div>
 									<div class="panel-footer">
-                                        <a href="<?= Helper::createUrl(['front/user/update-candidate']) ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#jobs'); ?>"class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Cập nhật thông tin</a>
+                                        <a href="<?= Helper::createUrl(['front/user/update-candidate']); ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#jobs'); ?>"class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Cập nhật thông tin</a>
 									</div>
 								</div>
 							</div>
@@ -106,18 +103,18 @@ $userInfo = \app\models\UserDetails::getInfo();
 						<div class="col-xs-12 jobs">
 							<div class="job-posts table-responsive">
 								<table class="table list-jobs">
-									<tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.1s">
+									<tr class="odd <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp" data-wow-delay="0.1s">
 										<td class="tbl-logo">
-											<img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo1.png" alt=""></td>
+											<img src="<?= Helper::homeUrl(); ?>web/template/jobs/img/job-logo1.png" alt=""></td>
 										<td class="tbl-title"><h4>Web Designer <br><span class="job-type">full time</span></h4>
 										</td>
 										<td><p>dribbble community</p></td>
 										<td><p><i class="icon-location"></i>San Franciso, USA</p></td>
 										<td><p>&dollar; 14000</p></td>
 									</tr>
-									<tr class="even <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="1.1s">
+									<tr class="even <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp" data-wow-delay="1.1s">
 										<td class="tbl-logo"><img
-													src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo2.png"
+													src="<?= Helper::homeUrl(); ?>web/template/jobs/img/job-logo2.png"
 													alt=""></td>
 										<td class="tbl-title">
 											<h4>Front End Developer <br><span class="job-type">full time</span>
@@ -127,9 +124,9 @@ $userInfo = \app\models\UserDetails::getInfo();
 										<td><p><i class="icon-location"></i>San Franciso, USA</p></td>
 										<td><p>&dollar; 14000</p></td>
 									</tr>
-									<tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="1.2s">
+									<tr class="odd <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp" data-wow-delay="1.2s">
 										<td class="tbl-logo"><img
-													src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo3.png"
+													src="<?= Helper::homeUrl(); ?>web/template/jobs/img/job-logo3.png"
 													alt="">
 										</td>
 										<td class="tbl-title">
@@ -139,9 +136,9 @@ $userInfo = \app\models\UserDetails::getInfo();
 										<td><p><i class="icon-location"></i>San Franciso, USA</p></td>
 										<td><p>&dollar; 14000</p></td>
 									</tr>
-									<tr class="even <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="1.3s">
+									<tr class="even <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp" data-wow-delay="1.3s">
 										<td class="tbl-logo">
-											<img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo4.png"
+											<img src="<?= Helper::homeUrl(); ?>web/template/jobs/img/job-logo4.png"
 											     alt="">
 										</td>
 										<td class="tbl-title">
@@ -152,9 +149,9 @@ $userInfo = \app\models\UserDetails::getInfo();
 										<td><p><i class="icon-location"></i>San Franciso, USA</p></td>
 										<td><p>&dollar; 14000</p></td>
 									</tr>
-									<tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="1.4s">
+									<tr class="odd <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp" data-wow-delay="1.4s">
 										<td class="tbl-logo">
-											<img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo5.png"
+											<img src="<?= Helper::homeUrl(); ?>web/template/jobs/img/job-logo5.png"
 											     alt="">
 										</td>
 										<td class="tbl-title">
@@ -164,9 +161,9 @@ $userInfo = \app\models\UserDetails::getInfo();
 										<td><p><i class="icon-location"></i>San Franciso, USA</p></td>
 										<td><p>&dollar; 14000</p></td>
 									</tr>
-									<tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="1.5s">
+									<tr class="odd <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp" data-wow-delay="1.5s">
 										<td class="tbl-logo"><img
-													src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo4.png"
+													src="<?= Helper::homeUrl(); ?>web/template/jobs/img/job-logo4.png"
 													alt=""></td>
 										<td class="tbl-title"><h4>Internship Designer <br><span class="job-type">full time</span>
 											</h4></td>
@@ -174,9 +171,9 @@ $userInfo = \app\models\UserDetails::getInfo();
 										<td><p><i class="icon-location"></i>San Franciso, USA</p></td>
 										<td><p>&dollar; 14000</p></td>
 									</tr>
-									<tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="1.6s">
+									<tr class="odd <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp" data-wow-delay="1.6s">
 										<td class="tbl-logo"><img
-													src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo4.png"
+													src="<?= Helper::homeUrl(); ?>web/template/jobs/img/job-logo4.png"
 													alt=""></td>
 										<td class="tbl-title"><h4>Internship Designer <br><span class="job-type">full time</span>
 											</h4></td>

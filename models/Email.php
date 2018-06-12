@@ -1,8 +1,11 @@
 <?php
-/**
- * Created by Tona Nguyễn
- * Date: 1/29/2018
- * Time: 5:32 PM
+
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
  */
 
 namespace app\models;
@@ -10,16 +13,9 @@ namespace app\models;
 use app\library\helper\Helper;
 use PHPMailer\PHPMailer\PHPMailer;
 use yii\base\Model;
-use yii\db\Exception;
 
 /**
  * Class Email
- * @package app\models
- *
- * Tona DOC:
- * Setting gmail become mailserver: https://myaccount.google.com/u/1/apppasswords?rapt=AEjHL4O3T2Xk2UwwABN-Ca9GaqNigTxOSJhaTVOmee4otcVVKU65s9SflsgQRpoKde55TnFXjqZfvJHxvULa4uVQAKkWEMis_A
- * + Create new password for account https://support.google.com/accounts/answer/185833
- * Ex: vanvan.vt88@gmail.com / anwizqatmdosqwlt
  */
 class Email extends Model
 {
@@ -28,6 +24,7 @@ class Email extends Model
      * @param $body
      * @param string $toEmail
      * @param string $toName
+     *
      * @return bool
      */
     public static function sendMail(
@@ -68,10 +65,11 @@ class Email extends Model
             //Content
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = $subject;
-            $mail->Body    = $body;
+            $mail->Body = $body;
             $mail->AltBody = $body;
 
             $mail->send();
+
             return true;
         } catch (\PHPMailer\PHPMailer\Exception $e) {
             echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
@@ -112,10 +110,11 @@ class Email extends Model
             //Content
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = $subject;
-            $mail->Body    = $body;
+            $mail->Body = $body;
             $mail->AltBody = $body;
 
             $mail->send();
+
             return true;
         } catch (\PHPMailer\PHPMailer\Exception $e) {
             echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
@@ -156,15 +155,17 @@ class Email extends Model
             //Content
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = 'Contact from '.Helper::params();
-            $mail->Body    = $body;
+            $mail->Body = $body;
             $mail->AltBody = $body;
 
             $mail->send();
+
             return true;
         } catch (\PHPMailer\PHPMailer\Exception $e) {
             echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
         }
     }
+
     public function validateRmailType()
     {
     }

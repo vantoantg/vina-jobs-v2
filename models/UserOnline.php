@@ -1,9 +1,14 @@
 <?php
 
-namespace app\models;
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
+ */
 
-use app\models\Base\TnUserOnline;
-use Yii;
+namespace app\models;
 
 class UserOnline extends \app\models\base\UserOnline
 {

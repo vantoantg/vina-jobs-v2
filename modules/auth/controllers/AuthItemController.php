@@ -1,12 +1,19 @@
 <?php
 
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\auth\controllers;
 
 use app\modules\admin\controllers\AdminController;
 use Yii;
 use app\models\AuthItem;
 use app\models\search\AuthItem as AuthItemSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -16,7 +23,7 @@ use yii\filters\VerbFilter;
 class AuthItemController extends AdminController
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -32,6 +39,7 @@ class AuthItemController extends AdminController
 
     /**
      * Lists all AuthItem models.
+     *
      * @return mixed
      */
     public function actionIndex()
@@ -47,8 +55,11 @@ class AuthItemController extends AdminController
 
     /**
      * Displays a single AuthItem model.
+     *
      * @param string $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
@@ -61,6 +72,7 @@ class AuthItemController extends AdminController
     /**
      * Creates a new AuthItem model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return mixed
      */
     public function actionCreate()
@@ -79,8 +91,11 @@ class AuthItemController extends AdminController
     /**
      * Updates an existing AuthItem model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param string $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
@@ -99,8 +114,11 @@ class AuthItemController extends AdminController
     /**
      * Deletes an existing AuthItem model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param string $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
@@ -113,8 +131,11 @@ class AuthItemController extends AdminController
     /**
      * Finds the AuthItem model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param string $id
+     *
      * @return AuthItem the loaded model
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)

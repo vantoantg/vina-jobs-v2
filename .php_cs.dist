@@ -1,0 +1,35 @@
+<?php
+
+$header = <<<EOL
+ Created by Tona Nguyễn.
+ Email: nguyennguyen.vt88@gmail.com
+ Phone: 0932.252.414
+ Address: Hồ Chí Minh, Việt Nam
+ Website: https://jobsvina.com/
+EOL;
+
+$rules = [
+    '@Symfony' => true,
+    'array_syntax' => ['syntax' => 'short'],
+    'phpdoc_align' => false,
+    'phpdoc_summary' => false,
+    'phpdoc_scalar' => false,
+    'phpdoc_annotation_without_dot' => false,
+    'increment_style' => false,
+    'yoda_style' => false,
+    'header_comment' => ['header' => $header],
+];
+
+$finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__.'/views')
+    ->in(__DIR__.'/modules')
+    ->in(__DIR__.'/models')
+    ->in(__DIR__.'/forms')
+    ->in(__DIR__.'/config')
+    ->in(__DIR__.'/components')
+    ->name('*.php')
+;
+return PhpCsFixer\Config::create()
+    ->setRules($rules)
+    ->setFinder($finder)
+    ;

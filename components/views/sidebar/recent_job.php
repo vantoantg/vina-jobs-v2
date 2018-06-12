@@ -23,7 +23,7 @@
 
 ?>
 
-<div class="widget-sidebar <?= \app\library\helper\Helper::wowClass() ?> fadeInRight" data-wow-delay="0.2s">
+<div class="widget-sidebar <?= \app\library\helper\Helper::wowClass(); ?> fadeInRight" data-wow-delay="0.2s">
     <h2 class="title-widget-sidebar">CÁC VIỆC LÀM MỚI</h2>
     <div class="content-widget-sidebar">
         <ul>

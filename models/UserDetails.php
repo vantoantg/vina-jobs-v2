@@ -1,23 +1,24 @@
 <?php
-/**
- * Created by Tona Nguyễn
- * Date: 1/29/2018
- * Time: 5:32 PM
+
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
  */
 
 namespace app\models;
 
 use app\library\helper\Common;
-use app\library\helper\Cons;
 use app\library\helper\Datetime;
 use app\library\helper\Dropdowns;
 use app\library\helper\Helper;
 
 class UserDetails extends \app\models\base\UserDetails
 {
-
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -34,7 +35,7 @@ class UserDetails extends \app\models\base\UserDetails
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -61,6 +62,7 @@ class UserDetails extends \app\models\base\UserDetails
 
     /**
      * @param bool $insert
+     *
      * @return bool
      */
     public function beforeSave($insert)
@@ -84,7 +86,7 @@ class UserDetails extends \app\models\base\UserDetails
      */
     public function setNames($fullname = '')
     {
-        $name = explode(" ", $fullname);
+        $name = explode(' ', $fullname);
         if (count($name) == 1) {
             $this->last_name = $name[0];
         }
@@ -99,7 +101,7 @@ class UserDetails extends \app\models\base\UserDetails
             $middle = '';
             foreach ($name as $key => $n) {
                 if ($key > 0 && $key < count($name) - 1) {
-                    $middle .= $n . ' ';
+                    $middle .= $n.' ';
                 }
             }
             $this->middle_name = trim($middle);
@@ -109,6 +111,7 @@ class UserDetails extends \app\models\base\UserDetails
 
     /**
      * @param $userId
+     *
      * @return UserDetails|array|null|\yii\db\ActiveRecord
      */
     public static function checkAndCreateUser($userId)
@@ -126,6 +129,7 @@ class UserDetails extends \app\models\base\UserDetails
 
     /**
      * @param $userId
+     *
      * @return UserDetails|array|null|\yii\db\ActiveRecord
      */
     public static function getInfo($userId = null)
@@ -136,10 +140,9 @@ class UserDetails extends \app\models\base\UserDetails
 
         /** @var $userDetail self $userDetail */
         $userDetail = UserDetails::checkAndCreateUser($userId);
-		if(!$userDetail->email){
-			$userDetail->email = Common::currentUsers()->email;
-		}
-
+        if (!$userDetail->email) {
+            $userDetail->email = Common::currentUsers()->email;
+        }
 
         $userDetail->birthday = Datetime::sqlDateToFormat($userDetail->birthday);
         $userDetail->registration_date = Datetime::sqlDatetimeDiffForHumans($userDetail->registration_date);
@@ -150,6 +153,7 @@ class UserDetails extends \app\models\base\UserDetails
 
     /**
      * @param $type
+     *
      * @return array|null|\yii\db\ActiveRecord|\yii\db\ActiveRecord[]
      */
     public function loadInfomationContactProfile($type)
@@ -159,12 +163,14 @@ class UserDetails extends \app\models\base\UserDetails
             $com['logo'] = Company::getLogo($com['logo']);
             $com['gallery'] = Company::instance()->gallery($com['id']);
             $com['isUpload'] = (count($com['gallery']) < Helper::params('gallery', 'max')) ? true : false;
+
             return $com;
         }
 
         // Tin đã đăng
         if ($type == 'jobs') {
             $jobs = Job::instance()->getJobs(Common::currentUsers()->getId());
+
             return $jobs;
         }
 

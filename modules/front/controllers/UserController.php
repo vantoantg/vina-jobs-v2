@@ -1,5 +1,13 @@
 <?php
 
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\front\controllers;
 
 use app\forms\ImageOnlyForm;
@@ -33,6 +41,7 @@ class UserController extends FrontController
 {
     /**
      * Renders the index view for the module
+     *
      * @return string
      */
     public function actionIndex()
@@ -95,7 +104,7 @@ class UserController extends FrontController
                         $file_type = $candidate->file->extension;
                         $file_name = $candidate->file->baseName;
                         $file_path = $candidate->file->baseName.'-'.md5(date('dmyhis')).'.'.$file_type;
-                        $path = Yii::$app->basePath .'/'. Yii::$app->params['companyCandidatePath'] . $file_path;
+                        $path = Yii::$app->basePath.'/'.Yii::$app->params['companyCandidatePath'].$file_path;
                         $candidate->file->saveAs($path);
                         FileUploads::saveFile(FileUploads::CANDIDATE, $file_path, $file_name, $file_type, $candidate->id);
                     }
@@ -103,7 +112,7 @@ class UserController extends FrontController
                     $transaction->commit();
                     // TODO: Send email
                     $data['name'] = $model->name;
-                    $data['link'] = Url::to('/candidate/active/token/' . $token_waiting_active . '.html', true);
+                    $data['link'] = Url::to('/candidate/active/token/'.$token_waiting_active.'.html', true);
                     $temp = $this->renderPartial('@app/mail/layouts/active_user_register', ['data' => $data]);
 
                     // TODO: comment out
@@ -112,7 +121,7 @@ class UserController extends FrontController
 
                 return $this->render('register_candidate_success', [
                     'success' => true,
-                    'message' => "",
+                    'message' => '',
                 ]);
             }
         } else {
@@ -123,12 +132,13 @@ class UserController extends FrontController
         }
 
         $jobSkill = JobSkill::getAllGroupSkill();
+
         return $this->render('register_candidate', [
             'model' => $model,
             'userDetail' => $userDetail,
             'candidate' => $candidate,
             'jobSkill' => $jobSkill,
-            'errors' => $errors
+            'errors' => $errors,
         ]);
     }
 
@@ -140,7 +150,7 @@ class UserController extends FrontController
         $errors = [];
         if (Common::isLoginned()) {
             if (Common::currentUsers()->type != Users::USER_TYPE_DEFAULT) {
-            	//TODO:
+                //TODO:
 //                return $this->goHome();
             }
             $model = Users::findOne(Common::currentUser());
@@ -193,7 +203,7 @@ class UserController extends FrontController
 
                     return $this->render('update_candidate_success', [
                         'success' => true,
-                        'message' => "",
+                        'message' => '',
                     ]);
                 }
             }
@@ -205,12 +215,13 @@ class UserController extends FrontController
         }
 
         $jobSkill = JobSkill::getAllGroupSkill();
+
         return $this->render('update_candidate', [
             'model' => $model,
             'userDetail' => $userDetail,
             'candidate' => $candidate,
             'jobSkill' => $jobSkill,
-            'errors' => $errors
+            'errors' => $errors,
         ]);
     }
 
@@ -250,14 +261,14 @@ class UserController extends FrontController
                 $image = UploadedFile::getInstance($com, 'logo');
                 if (!is_null($image)) {
                     $com->logo = $image->name;
-                    $ex = explode(".", $image->name);
+                    $ex = explode('.', $image->name);
                     $ext = end($ex);
 
                     // TODO: add new fild to save origin file name, generate a unique file name to prevent duplicate filenames
                     /*$com->logo = Yii::$app->security->generateRandomString().".{$ext}";
                     $path = Yii::$app->basePath.'/'.Yii::$app->params['companyLogoPath'] . $com->logo;*/
 
-                    $path = Yii::$app->basePath .'/'. Yii::$app->params['companyLogoPath'] . $image->name;
+                    $path = Yii::$app->basePath.'/'.Yii::$app->params['companyLogoPath'].$image->name;
                     $image->saveAs($path);
                 }
                 if ($com->save()) {
@@ -269,7 +280,7 @@ class UserController extends FrontController
                 $userDetail->save();
 
                 $data['name'] = $model->name;
-                $data['linkActive'] = Url::to('/company/active/token/' . $token_waiting_active . '.html', true);
+                $data['linkActive'] = Url::to('/company/active/token/'.$token_waiting_active.'.html', true);
 
                 // Send email when register success (to active)
                 $model->scenario = Users::SCENARIO_UPDATE;
@@ -280,7 +291,7 @@ class UserController extends FrontController
             }
 
             return $this->render('register_company_success', [
-                'email' => $model->email
+                'email' => $model->email,
             ]);
         } else {
             $erros = array_merge($model->getErrors(), $com->getErrors(), $userDetail->getErrors());
@@ -294,12 +305,12 @@ class UserController extends FrontController
             'userDetail' => $userDetail,
             'com' => $com,
             'errors' => $errors,
-
         ]);
     }
 
     /**
      * @param $token
+     *
      * @return string|\yii\web\Response
      */
     public function actionActiveCompany($token)
@@ -326,6 +337,7 @@ class UserController extends FrontController
 
     /**
      * @return string|\yii\web\Response
+     *
      * @throws NotFoundHttpException
      */
     public function actionUpdateCompany()
@@ -357,14 +369,14 @@ class UserController extends FrontController
                 $image = UploadedFile::getInstance($com, 'logo');
                 if (!is_null($image)) {
                     $com->logo = $image->name;
-                    $ex = explode(".", $image->name);
+                    $ex = explode('.', $image->name);
                     $ext = end($ex);
 
                     // TODO: add new fild to save origin file name, generate a unique file name to prevent duplicate filenames
                     /*$com->logo = Yii::$app->security->generateRandomString().".{$ext}";
                     $path = Yii::$app->basePath.'/'.Yii::$app->params['companyLogoPath'] . $com->logo;*/
 
-                    $path = Yii::$app->basePath .'/'. Yii::$app->params['companyLogoPath'] . $image->name;
+                    $path = Yii::$app->basePath.'/'.Yii::$app->params['companyLogoPath'].$image->name;
                     $image->saveAs($path);
                 }
 
@@ -393,7 +405,7 @@ class UserController extends FrontController
             'com' => $com,
             'errors' => $errors,
 
-            'gender' => $gender
+            'gender' => $gender,
         ]);
     }
 
@@ -406,10 +418,12 @@ class UserController extends FrontController
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
             $url = Yii::$app->getUrlManager()->createUrl(['front/jobs/edit-cv', 'id' => $model->id]);
+
             return $this->redirect($url);
         }
+
         return $this->render('register', [
-            'model' => $model
+            'model' => $model,
         ]);
     }
 
@@ -428,6 +442,7 @@ class UserController extends FrontController
 
     /**
      * @return string|\yii\web\Response
+     *
      * @throws BadRequestHttpException
      */
     public function actionUserProfile()
@@ -452,20 +467,22 @@ class UserController extends FrontController
     {
         if (!Common::isLoginned()) {
             return $this->goHome();
-        }else{
-	        if (Common::currentUser('type') != Users::USER_TYPE_CONTACT_OF_COMPANY) {
-		        return $this->goHome();
-	        }
+        } else {
+            if (Common::currentUser('type') != Users::USER_TYPE_CONTACT_OF_COMPANY) {
+                return $this->goHome();
+            }
         }
 
         $imgForm = new ImageOnlyForm();
+
         return $this->render('profile_contact', [
-            'imgForm' => $imgForm
+            'imgForm' => $imgForm,
         ]);
     }
 
     /**
      * @return \yii\web\Response
+     *
      * @throws BadRequestHttpException
      */
     public function actionClientInfos()
@@ -481,6 +498,7 @@ class UserController extends FrontController
 
     /**
      * @return \yii\web\Response
+     *
      * @throws BadRequestHttpException
      */
     public function actionAjaxUploadImg()
@@ -496,7 +514,7 @@ class UserController extends FrontController
                 $file_type = $model->image->extension;
                 $file_name = $model->image->baseName;
                 $file_path = $model->image->baseName.'-'.md5(date('dmyhis')).'.'.$file_type;
-                $path = Yii::$app->basePath .'/'. Yii::$app->params['companyCompanyGallery'] . $file_path;
+                $path = Yii::$app->basePath.'/'.Yii::$app->params['companyCompanyGallery'].$file_path;
                 $model->image->saveAs($path);
 
                 $object_id = Company::findOne(['created_by' => Common::currentUsers()->getId()])->id;
@@ -509,6 +527,7 @@ class UserController extends FrontController
 
     /**
      * @return \yii\web\Response
+     *
      * @throws BadRequestHttpException
      */
     public function actionAjaxDeleteImg()
@@ -519,12 +538,14 @@ class UserController extends FrontController
 
         if (Yii::$app->request->isPost) {
             $fileId = Yii::$app->request->post('imgId');
-            return $this->asJson(['status'=> FileUploads::instance()->deleteFile($fileId)]);
+
+            return $this->asJson(['status' => FileUploads::instance()->deleteFile($fileId)]);
         }
     }
 
     /**
      * @return \yii\web\Response
+     *
      * @throws BadRequestHttpException
      */
     public function actionAjaxSortable()
@@ -536,7 +557,8 @@ class UserController extends FrontController
         if (Yii::$app->request->isPost) {
             $data = Yii::$app->request->post();
             FileUploads::instance()->doArrange($data);
-            return $this->asJson(['status'=> 1]);
+
+            return $this->asJson(['status' => 1]);
         }
     }
 
@@ -567,23 +589,26 @@ class UserController extends FrontController
 
     /**
      * Url: http://www.localhost/user/reset-password/dvtyKtsPJZfAYN-cdA_bGUFT_Tn1NRkT.html
+     *
      * @param $token
+     *
      * @return string
+     *
      * @throws BadRequestHttpException
      */
     public function actionProfileResetPassword($token)
     {
         $model = new ProfilePasswordForm();
         $model->scenario = ProfilePasswordForm::SCENARIO_RESET_PW;
-        $user = Users::findOne(array('password_reset_token' => $token));
+        $user = Users::findOne(['password_reset_token' => $token]);
         if (!$user) {
             $url = Helper::siteURL();
-            throw new BadRequestHttpException('Liên kết này đã hết hạn hoặc không tồn tại. <a href="' . $url . '">Quay lại trang chủ!</a>');
+            throw new BadRequestHttpException('Liên kết này đã hết hạn hoặc không tồn tại. <a href="'.$url.'">Quay lại trang chủ!</a>');
         }
 
         if ($model->load(Yii::$app->request->post())) {
-            $user = Users::findOne(array('password_reset_token' => $token));
-            $user->password_reset_token = $user->password_reset_token . '@' . Datetime::getDateNow(Datetime::SQL_DATETIME);
+            $user = Users::findOne(['password_reset_token' => $token]);
+            $user->password_reset_token = $user->password_reset_token.'@'.Datetime::getDateNow(Datetime::SQL_DATETIME);
             $user->scenario = Users::SCENARIO_RESET_PW;
             if ($model->validate()) {
                 $user->setPassword($model->changepassword);
@@ -593,7 +618,7 @@ class UserController extends FrontController
         }
 
         return $this->render('profile_reset_password', [
-            'model' => $model
+            'model' => $model,
         ]);
     }
 
@@ -607,32 +632,35 @@ class UserController extends FrontController
         if ($form->load(Yii::$app->request->post())) {
             $user = Users::findOne(['id' => \Yii::$app->user->identity->id]);
             $user->scenario = Users::SCENARIO_RESET_PW;
-            # here we run our validation rules on the model
+            // here we run our validation rules on the model
 
             if ($form->validatePassword('password')) {
-                # if it is ok - setting the password property of user
+                // if it is ok - setting the password property of user
                 $user->setPassword($form->changepassword);
-                # and finally save it
+                // and finally save it
                 if ($user->update()) {
                     $form = new ProfilePasswordForm();
                     $form->scenario = ProfilePasswordForm::SCENARIO_UPDATE;
-                    Yii::$app->session->setFlash('update_pw_success', "Mật khẩu mới đã được lưu.");
+                    Yii::$app->session->setFlash('update_pw_success', 'Mật khẩu mới đã được lưu.');
                 }
             }
         }
+
         return $this->render('profile_change_password', [
-            'model' => $form
+            'model' => $form,
         ]);
     }
 
     /**
      * @return \yii\web\Response
+     *
      * @throws BadRequestHttpException
      */
     public function actionLogout()
     {
         try {
             \Yii::$app->user->logout();
+
             return $this->redirect(Helper::encrypt(\Yii::$app->request->get('r'), false));
         } catch (Exception $exception) {
             throw new BadRequestHttpException($exception->getMessage());
@@ -641,13 +669,13 @@ class UserController extends FrontController
 
     public function getToken($token)
     {
-        $model = Users::model()->findByAttributes(array('token' => $token));
+        $model = Users::model()->findByAttributes(['token' => $token]);
         if ($model === null) {
             throw new CHttpException(404, 'The requested page does not exist.');
         }
+
         return $model;
     }
-
 
     public function actionVerToken($token)
     {
@@ -655,16 +683,16 @@ class UserController extends FrontController
         if (isset($_POST['Ganti'])) {
             if ($model->token == $_POST['Ganti']['tokenhid']) {
                 $model->password = md5($_POST['Ganti']['password']);
-                $model->token = "null";
+                $model->token = 'null';
                 $model->save();
                 Yii::$app->user->setFlash('ganti', '<b>Password has been successfully changed! please login</b>');
                 $this->redirect('?r=site/login');
                 $this->refresh();
             }
         }
-        $this->render('verifikasi', array(
+        $this->render('verifikasi', [
             'model' => $model,
-        ));
+        ]);
     }
 
     /**
@@ -676,20 +704,20 @@ class UserController extends FrontController
         if (Yii::$app->request->isPost) {
             if ($form->load(Yii::$app->request->post()) && $form->validate()) {
                 $data = Yii::$app->request->post($form->formName());
-                $User = Users::findOne(array('username' => $data['email']));
+                $User = Users::findOne(['username' => $data['email']]);
                 if ($User) {
                     $User->scenario = Users::SCENARIO_RESET_PW;
                     $token_reset_password = \Yii::$app->getSecurity()->generateRandomString();
-                    $User->password_reset_token  = $token_reset_password;
+                    $User->password_reset_token = $token_reset_password;
                     $User->update();
                     $data['name'] = $User->name;
-                    $data['link'] = Url::to('/user/reset-password/' . $token_reset_password . '.html', true);
+                    $data['link'] = Url::to('/user/reset-password/'.$token_reset_password.'.html', true);
                     $temp = $this->renderPartial('@app/mail/layouts/reset_password', ['data' => $data]);
-                    $send = Email::sendMail('Reset password - ' . Yii::$app->params['siteName'], $temp);
+                    $send = Email::sendMail('Reset password - '.Yii::$app->params['siteName'], $temp);
                     $send = true;
                     if ($send) {
                         return $this->render('forgot_success', [
-                            'email' => $User->email
+                            'email' => $User->email,
                         ]);
                     }
                 } else {
@@ -697,8 +725,9 @@ class UserController extends FrontController
                 }
             }
         }
+
         return $this->render('forgot', [
-            'model' => $form
+            'model' => $form,
         ]);
     }
 }

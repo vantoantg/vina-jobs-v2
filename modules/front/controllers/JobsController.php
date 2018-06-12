@@ -1,5 +1,13 @@
 <?php
 
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\front\controllers;
 
 use app\library\helper\Common;
@@ -16,7 +24,6 @@ use Yii;
 use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
-use yii\web\UploadedFile;
 
 /**
  * Default controller for the `front` module
@@ -41,6 +48,7 @@ class JobsController extends FrontController
 
     /**
      * @return Response
+     *
      * @throws BadRequestHttpException
      */
     public function actionPreapply()
@@ -51,12 +59,14 @@ class JobsController extends FrontController
 
         if (Yii::$app->request->isAjax && Common::isLoginned()) {
             $cv = FileUploads::getCV();
+
             return $this->asJson(['data' => $cv]);
         }
     }
 
     /**
      * Renders the index view for the module
+     *
      * @return string
      */
     public function actionIndex()
@@ -91,8 +101,9 @@ class JobsController extends FrontController
             $model->status = Job::STATUS_ACTIVE;
 
             if ($model->save()) {
-                Yii::$app->session->setFlash('success', "Tin tuyển dụng đã được lưu.");
+                Yii::$app->session->setFlash('success', 'Tin tuyển dụng đã được lưu.');
                 $url = Yii::$app->getUrlManager()->createUrl(['front/jobs/edit-jobs', 'id' => $model->id]);
+
                 return $this->redirect($url);
             }
         }
@@ -104,7 +115,9 @@ class JobsController extends FrontController
 
     /**
      * @param int $id
+     *
      * @return string|\yii\web\Response
+     *
      * @throws NotFoundHttpException
      */
     public function actionEditJobs($id = 0)
@@ -123,7 +136,8 @@ class JobsController extends FrontController
             if ($model->save()) {
                 $r = Yii::$app->request->get('r');
                 if ($r) {
-                    Yii::$app->session->setFlash('success', "Tin tuyển dụng đã được cập nhật.");
+                    Yii::$app->session->setFlash('success', 'Tin tuyển dụng đã được cập nhật.');
+
                     return $this->redirect(Helper::encrypt($r, false));
                 }
             }
@@ -142,12 +156,14 @@ class JobsController extends FrontController
         $model = CurriculumVitae::findOne(['created_by' => Common::currentUser()]);
         if ($model) {
             $url = Yii::$app->getUrlManager()->createUrl(['front/jobs/edit-cv', 'id' => $model->id]);
+
             return $this->redirect($url);
         }
 
         $model = new CurriculumVitae();
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
             $url = Yii::$app->getUrlManager()->createUrl(['front/jobs/edit-cv', 'id' => $model->id]);
+
             return $this->redirect($url);
         }
 
@@ -158,7 +174,9 @@ class JobsController extends FrontController
 
     /**
      * @param int $id
+     *
      * @return string|\yii\web\Response
+     *
      * @throws NotFoundHttpException
      */
     public function actionEditCv($id = 0)
@@ -173,6 +191,7 @@ class JobsController extends FrontController
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
             $url = Yii::$app->getUrlManager()->createUrl(['front/jobs/edit-cv', 'id' => $model->id]);
+
             return $this->redirect($url);
         }
 
@@ -187,12 +206,15 @@ class JobsController extends FrontController
     public function actionTopList()
     {
         $jobs = Job::instance()->getAllCompanyJobs();
+
         return $this->asJson($jobs);
     }
 
     /**
      * @param $id
+     *
      * @return string
+     *
      * @throws BadRequestHttpException
      */
     public function actionCompanyDetail($id)
@@ -211,8 +233,11 @@ class JobsController extends FrontController
     /**
      * Finds the AuthAssignment model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param string $id
+     *
      * @return Job the loaded model
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)

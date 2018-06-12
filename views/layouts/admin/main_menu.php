@@ -21,9 +21,9 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-use \yii\helpers\Url;
+use yii\helpers\Url;
 use app\library\helper\Helper;
-use \app\library\helper\Cons;
+use app\library\helper\Cons;
 
 ?>
 
@@ -31,7 +31,7 @@ use \app\library\helper\Cons;
 
     <!-- BEGIN DASHBOARD -->
     <li>
-        <a href="<?= Helper::homeUrl().Cons::ROUTE_ADMIN_ROOT ?>" class="active">
+        <a href="<?= Helper::homeUrl().Cons::ROUTE_ADMIN_ROOT; ?>" class="active">
             <div class="gui-icon"><i class="md md-home"></i></div>
             <span class="title">Dashboard</span>
         </a>
@@ -54,10 +54,10 @@ use \app\library\helper\Cons;
                 </a>
                 <!--start submenu -->
                 <ul>
-                    <li><a href="<?= Url::toRoute('/auth/auth-rule') ?>"><span class="title">Auth rule</span></a></li>
-                    <li><a href="<?= Url::toRoute('/auth/auth-assignment') ?>"><span class="title">Auth Assignment</span></a></li>
-                    <li><a href="<?= Url::toRoute('/auth/auth-item') ?>"><span class="title">Auth item</span></a></li>
-                    <li><a href="<?= Url::toRoute('/auth/auth-item-child') ?>"><span class="title">Auth item child</span></a></li>
+                    <li><a href="<?= Url::toRoute('/auth/auth-rule'); ?>"><span class="title">Auth rule</span></a></li>
+                    <li><a href="<?= Url::toRoute('/auth/auth-assignment'); ?>"><span class="title">Auth Assignment</span></a></li>
+                    <li><a href="<?= Url::toRoute('/auth/auth-item'); ?>"><span class="title">Auth item</span></a></li>
+                    <li><a href="<?= Url::toRoute('/auth/auth-item-child'); ?>"><span class="title">Auth item child</span></a></li>
                 </ul><!--end /submenu -->
             </li><!--end /submenu-li -->
 
@@ -67,7 +67,7 @@ use \app\library\helper\Cons;
                 </a>
                 <!--start submenu -->
                 <ul>
-                    <li><a href="<?= Url::toRoute('/user') ?>"><span class="title">User</span></a></li>
+                    <li><a href="<?= Url::toRoute('/user'); ?>"><span class="title">User</span></a></li>
                 </ul><!--end /submenu -->
             </li><!--end /submenu-li -->
         </ul><!--end /submenu -->
@@ -75,88 +75,88 @@ use \app\library\helper\Cons;
     <!-- END LEVELS -->
 
     <!-- BEGIN Products -->
-    <li class="gui-folder <?= Helper::activeMenu(['product/index', 'product/create', '/product-category/index', 'product-category/create'])?>">
+    <li class="gui-folder <?= Helper::activeMenu(['product/index', 'product/create', '/product-category/index', 'product-category/create']); ?>">
         <a>
             <div class="gui-icon"><i class="md md-computer"></i></div>
             <span class="title">Products</span>
         </a>
         <!--start submenu -->
         <ul>
-            <li><a href="<?= Url::toRoute('/product/product') ?>" ><span class="title">Product</span></a></li>
-            <li><a href="<?= Url::toRoute('/product/product/create') ?>" ><span class="title">Create product</span></a></li>
-            <li><a href="<?= Url::toRoute('/product/product-category') ?>" ><span class="title">Product category</span></a></li>
-            <li><a href="<?= Url::toRoute('/product/product-category/create') ?>" ><span class="title">Create product category</span></a></li>
+            <li><a href="<?= Url::toRoute('/product/product'); ?>" ><span class="title">Product</span></a></li>
+            <li><a href="<?= Url::toRoute('/product/product/create'); ?>" ><span class="title">Create product</span></a></li>
+            <li><a href="<?= Url::toRoute('/product/product-category'); ?>" ><span class="title">Product category</span></a></li>
+            <li><a href="<?= Url::toRoute('/product/product-category/create'); ?>" ><span class="title">Create product category</span></a></li>
         </ul><!--end /submenu -->
     </li><!--end /menu-li -->
     <!-- END Products -->
 
 	<!-- BEGIN Candidate -->
-	<li class="gui-folder <?= Helper::activeMenu(['user/index', 'user/create', 'user/update'])?>">
+	<li class="gui-folder <?= Helper::activeMenu(['user/index', 'user/create', 'user/update']); ?>">
 		<a>
 			<div class="gui-icon"><i class="md md-computer"></i></div>
 			<span class="title">Candidate</span>
 		</a>
 		<!--start submenu -->
 		<ul>
-			<li><a href="<?= Url::toRoute('/user/user') ?>" ><span class="title">List</span></a></li>
+			<li><a href="<?= Url::toRoute('/user/user'); ?>" ><span class="title">List</span></a></li>
 		</ul><!--end /submenu -->
 	</li><!--end /menu-li -->
 	<!-- END Candidate -->
 
 	<!-- BEGIN Jobs -->
-	<li class="gui-folder <?= Helper::activeMenu(['job/index', 'job/create', 'job/update'])?>">
+	<li class="gui-folder <?= Helper::activeMenu(['job/index', 'job/create', 'job/update']); ?>">
 		<a>
 			<div class="gui-icon"><i class="md md-computer"></i></div>
 			<span class="title">Jobs</span>
 		</a>
 		<!--start submenu -->
 		<ul>
-			<li><a href="<?= Url::toRoute('/jobs/job') ?>" ><span class="title">List</span></a></li>
+			<li><a href="<?= Url::toRoute('/jobs/job'); ?>" ><span class="title">List</span></a></li>
 		</ul><!--end /submenu -->
 	</li><!--end /menu-li -->
 	<!-- END Jobs -->
 
 	<!-- BEGIN Company -->
-	<li class="gui-folder <?= Helper::activeMenu(['company/index', 'company/create', 'company/update'])?>">
+	<li class="gui-folder <?= Helper::activeMenu(['company/index', 'company/create', 'company/update']); ?>">
 		<a>
 			<div class="gui-icon"><i class="md md-computer"></i></div>
 			<span class="title">Company</span>
 		</a>
 		<!--start submenu -->
 		<ul>
-			<li><a href="<?= Url::toRoute('/user/company') ?>" ><span class="title">List</span></a></li>
+			<li><a href="<?= Url::toRoute('/user/company'); ?>" ><span class="title">List</span></a></li>
 		</ul><!--end /submenu -->
 	</li><!--end /menu-li -->
 	<!-- END Company -->
 
     <!-- BEGIN Pages -->
-    <li class="gui-folder <?= Helper::activeMenu(['pages/index', 'pages/create', 'pages/update', 'post/index', 'post/create', 'post/update', 'post-category/index', 'post-category/create', 'post-category/update'])?>">
+    <li class="gui-folder <?= Helper::activeMenu(['pages/index', 'pages/create', 'pages/update', 'post/index', 'post/create', 'post/update', 'post-category/index', 'post-category/create', 'post-category/update']); ?>">
         <a>
             <div class="gui-icon"><i class="md md-computer"></i></div>
             <span class="title">Content</span>
         </a>
         <!--start submenu -->
         <ul>
-            <li><a href="<?= Url::toRoute('/contents/pages') ?>" ><span class="title">Page</span></a></li>
-            <li><a href="<?= Url::toRoute('/contents/post') ?>" ><span class="title">Blog</span></a></li>
-            <li><a href="<?= Url::toRoute('/contents/post-category') ?>" ><span class="title">Blog - category</span></a></li>
+            <li><a href="<?= Url::toRoute('/contents/pages'); ?>" ><span class="title">Page</span></a></li>
+            <li><a href="<?= Url::toRoute('/contents/post'); ?>" ><span class="title">Blog</span></a></li>
+            <li><a href="<?= Url::toRoute('/contents/post-category'); ?>" ><span class="title">Blog - category</span></a></li>
         </ul><!--end /submenu -->
     </li><!--end /menu-li -->
     <!-- END Pages -->
 
     <!-- BEGIN SYSTEM -->
-    <li class="gui-folder <?= Helper::activeMenu(['migration/index', 'log-system/index', 'system/index', 'setting/index', 'system/backup-db'])?>">
+    <li class="gui-folder <?= Helper::activeMenu(['migration/index', 'log-system/index', 'system/index', 'setting/index', 'system/backup-db']); ?>">
         <a>
             <div class="gui-icon"><i class="fa fa-folder-open fa-fw"></i></div>
             <span class="title">System</span>
         </a>
         <!--start submenu -->
         <ul>
-            <li><a href="<?= Url::toRoute('/system/migration') ?>" ><span class="title">Migrations</span></a></li>
-            <li><a href="<?= Url::toRoute('/system/log-system') ?>" ><span class="title">Log system</span></a></li>
-            <li><a href="<?= Url::toRoute('/system/system') ?>" ><span class="title">System</span></a></li>
-            <li><a href="<?= Url::toRoute('/system/setting') ?>" ><span class="title">Setting</span></a></li>
-            <li><a href="<?= Url::toRoute('/system/system/backup-db') ?>" ><span class="title">Backup Database</span></a></li>
+            <li><a href="<?= Url::toRoute('/system/migration'); ?>" ><span class="title">Migrations</span></a></li>
+            <li><a href="<?= Url::toRoute('/system/log-system'); ?>" ><span class="title">Log system</span></a></li>
+            <li><a href="<?= Url::toRoute('/system/system'); ?>" ><span class="title">System</span></a></li>
+            <li><a href="<?= Url::toRoute('/system/setting'); ?>" ><span class="title">Setting</span></a></li>
+            <li><a href="<?= Url::toRoute('/system/system/backup-db'); ?>" ><span class="title">Backup Database</span></a></li>
         </ul><!--end /submenu -->
     </li><!--end /menu-li -->
     <!-- END SYSTEM -->
@@ -169,8 +169,8 @@ use \app\library\helper\Cons;
 		</a>
 		<!--start submenu -->
 		<ul>
-			<li><a href="<?= Url::toRoute('/contents/carousel') ?>" ><span class="title">Carousel</span></a></li>
-			<li><a href="<?= Url::toRoute('/contents/carousel-items') ?>" ><span class="title">Carousel images</span></a></li>
+			<li><a href="<?= Url::toRoute('/contents/carousel'); ?>" ><span class="title">Carousel</span></a></li>
+			<li><a href="<?= Url::toRoute('/contents/carousel-items'); ?>" ><span class="title">Carousel images</span></a></li>
 		</ul><!--end /submenu -->
 	</li><!--end /menu-li -->
 	<!-- END CAROUSEL -->
@@ -183,22 +183,22 @@ use \app\library\helper\Cons;
 		</a>
 		<!--start submenu -->
 		<ul>
-			<li><a href="<?= Url::toRoute('/contents/tags') ?>" ><span class="title">Tags</span></a></li>
-			<li><a href="<?= Url::toRoute('/contents/tags/create') ?>" ><span class="title">Create tag</span></a></li>
+			<li><a href="<?= Url::toRoute('/contents/tags'); ?>" ><span class="title">Tags</span></a></li>
+			<li><a href="<?= Url::toRoute('/contents/tags/create'); ?>" ><span class="title">Create tag</span></a></li>
 		</ul><!--end /submenu -->
 	</li><!--end /menu-li -->
 	<!-- END TAGS -->
 
 	<!-- BEGIN EMAIL -->
-	<li class="gui-folder <?= Helper::activeMenu(['layout/page', 'layout/style'])?>">
+	<li class="gui-folder <?= Helper::activeMenu(['layout/page', 'layout/style']); ?>">
 		<a>
 			<div class="gui-icon"><i class="md md-web"></i></div>
 			<span class="title">Layouts</span>
 		</a>
 		<!--start submenu -->
 		<ul>
-			<li><a href="<?= Url::toRoute('/contents/layout/page') ?>"><span class="title">Page</span></a></li>
-			<li><a href="<?= Url::toRoute('/contents/layout/style') ?>"><span class="title">Stylesheet</span></a></li>
+			<li><a href="<?= Url::toRoute('/contents/layout/page'); ?>"><span class="title">Page</span></a></li>
+			<li><a href="<?= Url::toRoute('/contents/layout/style'); ?>"><span class="title">Stylesheet</span></a></li>
 		</ul><!--end /submenu -->
 	</li><!--end /menu-li -->
 	<!-- END EMAIL -->

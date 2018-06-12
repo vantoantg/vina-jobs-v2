@@ -1,16 +1,18 @@
 <?php
-/**
- * Created by Tona Nguyễn
- * Date: 2/6/2018
- * Time: 6:23 PM
+
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
  */
+
 namespace app\components;
 
 use app\models\Company;
 use app\models\Job;
 use yii\base\Widget;
-use app\library\helper\Helper;
-use yii\helpers\Html;
 
 class SidebarWidget extends Widget
 {
@@ -22,12 +24,13 @@ class SidebarWidget extends Widget
         if ($this->message === null) {
             $this->message = 'Welcome User';
         } else {
-            $this->message = 'Welcome ' . $this->message;
+            $this->message = 'Welcome '.$this->message;
         }
     }
 
     /**
      * @param array $except_job_ids
+     *
      * @return string|void
      */
     public function recentJobs($except_job_ids = [])
@@ -35,7 +38,7 @@ class SidebarWidget extends Widget
         $data = Job::instance()->getRecentJobsSidebar($except_job_ids);
         if ($data) {
             return $this->render('sidebar/recent_job', [
-                'data' => $data
+                'data' => $data,
             ]);
         }
     }
@@ -45,32 +48,29 @@ class SidebarWidget extends Widget
         $company = Company::instance()->getCompany($company_id);
         $company = $company->toArray();
         $company['logo'] = Company::getLogo($company['logo']);
+
         return $this->render('sidebar/company_info', [
-            'company' => $company
+            'company' => $company,
         ]);
     }
 
     public function archives()
     {
         return $this->render('sidebar/archives', [
-
         ]);
     }
 
     public function categories()
     {
         return $this->render('sidebar/categories', [
-
         ]);
     }
 
     public function newsLatter()
     {
         return $this->render('sidebar/news_latter', [
-
         ]);
     }
-
 
     public function searchResultJobs($_url, $queryParams)
     {

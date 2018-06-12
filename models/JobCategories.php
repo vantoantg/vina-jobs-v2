@@ -1,5 +1,13 @@
 <?php
 
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\models;
 
 class JobCategories extends \app\models\base\JobCategories
@@ -19,10 +27,10 @@ class JobCategories extends \app\models\base\JobCategories
         $datas = \Yii::$app->db->createCommand($sql)->queryAll();
 
         foreach ($datas as $k => $rs) {
-            $data[] = array(
+            $data[] = [
                 'id' => $rs['id'],
                 'name' => $rs['name'],
-            );
+            ];
         }
 
         return $data;
@@ -33,9 +41,10 @@ class JobCategories extends \app\models\base\JobCategories
      * @param int $parent_id
      * @param string $space
      * @param array $trees
+     *
      * @return array
      */
-    public static function categoriesMenus($is_category = true, $parent_id = 0, $space = "", $trees = [])
+    public static function categoriesMenus($is_category = true, $parent_id = 0, $space = '', $trees = [])
     {
         $status = self::STATUS_ACTIVE;
         $table = self::tableName();
@@ -51,13 +60,13 @@ class JobCategories extends \app\models\base\JobCategories
         }
         $data = \Yii::$app->db->createCommand($sql)->queryAll();
         foreach ($data as $k => $rs) {
-            $trees[] = array(
+            $trees[] = [
                 'id' => $rs['id'],
-                'name' => $space . $rs['name'],
+                'name' => $space.$rs['name'],
                 'arranged' => $rs['arranged'],
                 'parent_id' => $rs['parent_id'],
-            );
-            $trees = self::categoriesMenus($is_category, $rs['id'], $space . ' - ', $trees);
+            ];
+            $trees = self::categoriesMenus($is_category, $rs['id'], $space.' - ', $trees);
         }
 
         return $trees;

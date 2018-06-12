@@ -1,5 +1,13 @@
 <?php
 
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\system\controllers;
 
 use app\modules\admin\controllers\AdminController;
@@ -15,7 +23,7 @@ use yii\filters\VerbFilter;
 class MigrationController extends AdminController
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -31,6 +39,7 @@ class MigrationController extends AdminController
 
     /**
      * Lists all Migration models.
+     *
      * @return mixed
      */
     public function actionIndex()
@@ -46,8 +55,11 @@ class MigrationController extends AdminController
 
     /**
      * Displays a single Migration model.
+     *
      * @param string $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
@@ -60,6 +72,7 @@ class MigrationController extends AdminController
     /**
      * Creates a new Migration model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return mixed
      */
     public function actionCreate()
@@ -78,8 +91,11 @@ class MigrationController extends AdminController
     /**
      * Updates an existing Migration model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param string $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
@@ -98,8 +114,11 @@ class MigrationController extends AdminController
     /**
      * Deletes an existing Migration model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param string $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
@@ -112,8 +131,11 @@ class MigrationController extends AdminController
     /**
      * Finds the Migration model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param string $id
+     *
      * @return Migration the loaded model
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)

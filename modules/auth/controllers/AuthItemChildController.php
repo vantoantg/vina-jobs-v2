@@ -1,12 +1,19 @@
 <?php
 
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\auth\controllers;
 
 use app\modules\admin\controllers\AdminController;
 use Yii;
 use app\models\AuthItemChild;
 use app\models\search\AuthItemChild as AuthItemChildSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -16,7 +23,7 @@ use yii\filters\VerbFilter;
 class AuthItemChildController extends AdminController
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -32,6 +39,7 @@ class AuthItemChildController extends AdminController
 
     /**
      * Lists all AuthItemChild models.
+     *
      * @return mixed
      */
     public function actionIndex()
@@ -47,9 +55,12 @@ class AuthItemChildController extends AdminController
 
     /**
      * Displays a single AuthItemChild model.
+     *
      * @param string $parent
      * @param string $child
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($parent, $child)
@@ -62,6 +73,7 @@ class AuthItemChildController extends AdminController
     /**
      * Creates a new AuthItemChild model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return mixed
      */
     public function actionCreate()
@@ -80,9 +92,12 @@ class AuthItemChildController extends AdminController
     /**
      * Updates an existing AuthItemChild model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param string $parent
      * @param string $child
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($parent, $child)
@@ -101,9 +116,12 @@ class AuthItemChildController extends AdminController
     /**
      * Deletes an existing AuthItemChild model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param string $parent
      * @param string $child
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($parent, $child)
@@ -116,9 +134,12 @@ class AuthItemChildController extends AdminController
     /**
      * Finds the AuthItemChild model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param string $parent
      * @param string $child
+     *
      * @return AuthItemChild the loaded model
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($parent, $child)

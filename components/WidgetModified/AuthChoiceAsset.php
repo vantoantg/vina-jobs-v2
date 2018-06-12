@@ -1,10 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HP570
- * Date: 6/5/2018
- * Time: 11:10 AM
+
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
  */
+
 namespace app\components;
 
 class AuthChoiceAsset extends \yii\web\AssetBundle

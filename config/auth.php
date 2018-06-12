@@ -1,6 +1,11 @@
 <?php
+
 /*
- * Tona Nguyễn
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
  */
 
 return [
@@ -20,7 +25,7 @@ return [
         'twitter' => [
             'class' => '\yii\authclient\clients\Twitter',
             'attributeParams' => [
-                'include_email' => 'true'
+                'include_email' => 'true',
             ],
             'consumerKey' => 'KQ3PQvbdCahcywwd5OXr0eftp',
             'consumerSecret' => 'SBUUIMqmITWPYFiqFUaN5a3N1KF3b1YGFH37jHfbniVQalfPes',

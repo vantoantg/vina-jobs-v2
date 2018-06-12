@@ -1,8 +1,11 @@
 <?php
-/**
- * Created by Tona Nguyễn
- * Date: 1/29/2018
- * Time: 5:32 PM
+
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
  */
 
 namespace app\models;
@@ -13,11 +16,12 @@ use yii\data\ActiveDataProvider;
 
 class Post extends \app\models\base\Post
 {
-    const   STATUS_ACTIVE = 1,
-            STATUS_DRAFT = 0;
+    const   STATUS_ACTIVE = 1;
+    const STATUS_DRAFT = 0;
 
     /**
      * @param bool $insert
+     *
      * @return bool
      */
     public function beforeSave($insert)
@@ -37,6 +41,7 @@ class Post extends \app\models\base\Post
 
     /**
      * @param int $except
+     *
      * @return array|null|\yii\db\ActiveRecord[]
      */
     public static function getList($except = 0)
@@ -92,8 +97,6 @@ class Post extends \app\models\base\Post
             ->andFilterWhere(['like', 'seo_keyword', $this->seo_keyword])
             ->andFilterWhere(['like', 'seo_description', $this->seo_description])
             ->andFilterWhere(['like', 'img', $this->img]);
-
-
 
         return $dataProvider;
     }

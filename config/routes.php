@@ -1,5 +1,13 @@
 <?php
 
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
+ */
+
 return [
     /* Url                                                              => Controller/action */
     '/' => 'front/default/index',
@@ -55,8 +63,6 @@ return [
     'service/jobs/preapply.html' => 'front/jobs/preapply',
     'service/jobs/top-list.html' => 'front/jobs/top-list',
 
-
-
     /* Admin module
     Url                                                                 => 'module/controller/action
     */
@@ -66,10 +72,10 @@ return [
 
     /* Auth module
     */
-    '/auth'                 => 'auth/auth-assignment/index',
+    '/auth' => 'auth/auth-assignment/index',
     '/auth/auth-assignment' => 'auth/auth-assignment/index',
-    '/auth/auth-rule'       => 'auth/auth-rule/index',
-    '/auth/auth-item'       => 'auth/auth-item/index',
+    '/auth/auth-rule' => 'auth/auth-rule/index',
+    '/auth/auth-item' => 'auth/auth-item/index',
     '/auth/auth-item-child' => 'auth/auth-item-child/index',
 
     /* User module
@@ -82,28 +88,10 @@ return [
     '/system' => 'system/migration/index',
     '/system/migration' => 'system/migration/index',
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /*'<username:[a-zA-Z0-9_ -@.]+>/view/<slug:[a-zA-Z0-9_ -]+>.html' => 'resume/view',
     '<username:[a-zA-Z0-9_ -@.]+>/update/<slug:[a-zA-Z0-9_ -]+>.html' => 'resume/update',
     '<username:[a-zA-Z0-9_ -@.]+>/profile.html' => 'profile/view',
     '<username:[a-zA-Z0-9_ -@.]+>/profile/update.html' => 'profile/update',
     'tin-tuc.html' => 'site/news',
     'tin-tuc/<slug:[a-zA-Z0-9_ -]+>.html' => 'site/news-detail',*/
-
-
-
 ];

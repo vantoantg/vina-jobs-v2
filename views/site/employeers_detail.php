@@ -6,9 +6,8 @@
 /* @var $model app\models\Job */
 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
 use app\library\helper\Helper;
-use \app\library\helper\Common;
+use app\library\helper\Common;
 
 $this->title = $job['title'];
 $this->params['breadcrumbs'][] = $this->title;
@@ -16,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="container">
     <div class="col-12 col-sm-8">
-        <div class="employeers-detail <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.1s">
+        <div class="employeers-detail <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp" data-wow-delay="0.1s">
 
             <div class="row content">
 	            <?php if ($galleries) {
@@ -26,8 +25,8 @@ $this->params['breadcrumbs'][] = $this->title;
 	                    <?php foreach ($galleries as $k => $gallery) {
         ?>
                             <div class="col-xs-4 item">
-                                <a href="#" data-num="<?=$k?>" data-toggle="modal" data-target="#viewGallery">
-                                    <img src="<?= $gallery['thum'] ?>" class="img-thumbnail" alt="Los Angeles">
+                                <a href="#" data-num="<?=$k; ?>" data-toggle="modal" data-target="#viewGallery">
+                                    <img src="<?= $gallery['thum']; ?>" class="img-thumbnail" alt="Los Angeles">
                                 </a>
                             </div>
 	                    <?php
@@ -36,15 +35,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <?php
 } ?>
-                <h1><?= Html::encode($this->title) ?></h1>
+                <h1><?= Html::encode($this->title); ?></h1>
 				<?= $job['content']; ?>
             </div>
 
             <div class="row ft-jobs-detail" data-href="<?= Helper::createUrl([
                 'front/jobs/favorite',
                 'slug' => $job['slug'],
-                'id' => $job['id']
-            ]) ?>">
+                'id' => $job['id'],
+            ]); ?>">
 				<?php if (Common::isLoginned()) {
                 ?>
 					<?php if (Common::currentUsers()->type != \app\models\Users::USER_TYPE_CONTACT_OF_COMPANY) {
@@ -85,11 +84,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 ?>
                     <div class="well text-center">
                         <button type="button" data-action="favorite"
-                                class="btn btn-sunny text-uppercase btn-lg" <?= Helper::checkLogin() ?>><i
+                                class="btn btn-sunny text-uppercase btn-lg" <?= Helper::checkLogin(); ?>><i
                                     class="far fa-save"></i> Lưu tin này
                         </button>
                         <button type="button" data-action="apply" class="btn btn-sunny text-uppercase btn-lg"
-							<?= Helper::checkLogin() ?>><i class="fas fa-location-arrow"></i> Apply
+							<?= Helper::checkLogin(); ?>><i class="fas fa-location-arrow"></i> Apply
                         </button>
                     </div>
 				<?php
@@ -118,7 +117,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <ol class="carousel-indicators">
 	                    <?php foreach ($galleries as $k => $gallery) {
                     ?>
-                        <li data-target="#myCarousel" data-slide-to="<?= $k ?>" class="<?php if ($k == 0) {
+                        <li data-target="#myCarousel" data-slide-to="<?= $k; ?>" class="<?php if ($k == 0) {
                         echo 'active';
                     } ?>"></li>
 	                    <?php
@@ -129,10 +128,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="carousel-inner">
                         <?php foreach ($galleries as $k => $gallery) {
                     ?>
-                        <div data-num="<?=$k?>" class="item <?php if ($k == 0) {
+                        <div data-num="<?=$k; ?>" class="item <?php if ($k == 0) {
                         echo 'active';
                     } ?>">
-                            <img src="<?= $gallery['view'] ?>" alt="Los Angeles">
+                            <img src="<?= $gallery['view']; ?>" alt="Los Angeles">
                         </div>
                         <?php
                 } ?>

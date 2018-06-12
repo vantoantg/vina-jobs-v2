@@ -1,8 +1,11 @@
 <?php
-/**
- * Created by Tona Nguyễn
- * Date: 1/29/2018
- * Time: 5:32 PM
+
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
  */
 
 namespace app\models;
@@ -20,6 +23,7 @@ class FileUploads extends \app\models\base\FileUploads
     /**
      * @param $object_type
      * @param $object_id
+     *
      * @return array
      */
     public function getGallery($object_type, $object_id)
@@ -42,6 +46,7 @@ class FileUploads extends \app\models\base\FileUploads
     /**
      * @param $object_type
      * @param $object_id
+     *
      * @return array
      */
     public function getListByObjects($object_type, $object_id)
@@ -59,9 +64,9 @@ class FileUploads extends \app\models\base\FileUploads
             ->from('tn_file_uploads f')
             ->where('f.object_type = :object_type AND f.object_id = :object_id AND f.is_deleted = 0', [
                 'object_type' => $object_type,
-                'object_id' => $object_id
+                'object_id' => $object_id,
             ])
-            ->orderBy(['f.arranged' => SORT_ASC,'f.created_at' => SORT_ASC]);
+            ->orderBy(['f.arranged' => SORT_ASC, 'f.created_at' => SORT_ASC]);
 
         return $query->createCommand()->queryAll();
     }
@@ -84,7 +89,7 @@ class FileUploads extends \app\models\base\FileUploads
             ->from('tn_file_uploads cv')
             ->where('cv.created_by = :created_by AND cv.object_type = :object_type AND cv.is_deleted = 0', [
                 'created_by' => $user_id,
-                'object_type' => self::CANDIDATE
+                'object_type' => self::CANDIDATE,
             ])
         ->orderBy(['cv.created_at' => SORT_ASC]);
 
@@ -97,6 +102,7 @@ class FileUploads extends \app\models\base\FileUploads
      * @param $file_path
      * @param $file_name
      * @param $file_type
+     *
      * @return FileUploads
      */
     public static function saveFile($object_type, $file_path, $file_name, $file_type, $object_id = 0)
@@ -111,6 +117,7 @@ class FileUploads extends \app\models\base\FileUploads
         $file->created_by = Common::currentUser();
         $file->created_at = Datetime::createdAt();
         $file->save();
+
         return $file;
     }
 
@@ -126,7 +133,7 @@ class FileUploads extends \app\models\base\FileUploads
                 $sql = "UPDATE $table SET `arranged` = :arranged WHERE `id` = :id";
                 $params = [
                     'arranged' => $arrange,
-                    'id' => $id
+                    'id' => $id,
                 ];
                 $db->createCommand($sql)->bindValues($params)->execute();
             }
@@ -135,6 +142,7 @@ class FileUploads extends \app\models\base\FileUploads
 
     /**
      * @param $fileId
+     *
      * @return bool
      */
     public function deleteFile($fileId)
@@ -143,8 +151,10 @@ class FileUploads extends \app\models\base\FileUploads
         if ($file) {
             @unlink(\Yii::$app->basePath.Helper::params('companyCompanyGallery').$file->file_path);
             $file->delete();
+
             return true;
         }
+
         return false;
     }
 }

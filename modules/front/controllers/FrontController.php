@@ -1,8 +1,15 @@
 <?php
 
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\front\controllers;
 
-use app\library\helper\Common;
 use yii\web\Controller;
 use Yii;
 
@@ -21,6 +28,7 @@ class FrontController extends Controller
 
     /**
      * Renders the index view for the module
+     *
      * @return string
      */
     public function actionIndex()
@@ -52,6 +60,7 @@ class FrontController extends Controller
 
             if (isset($data[$keyUrl])) {
                 Yii::$app->session->remove('testUrl');
+
                 return $this->redirect($data[$keyUrl]);
             }
         }
@@ -65,7 +74,7 @@ class FrontController extends Controller
         $cookie_name = md5(\Yii::$app->request->getUrl());
         $timer = time() + 3600;
         if (!isset($_COOKIE[$cookie_name])) {
-            setcookie($cookie_name, true, $timer, "/"); // 86400 = 1 day
+            setcookie($cookie_name, true, $timer, '/'); // 86400 = 1 day
             \Yii::$app->params['urlCookied'] = false;
         } else {
             \Yii::$app->params['urlCookied'] = $_COOKIE[$cookie_name];

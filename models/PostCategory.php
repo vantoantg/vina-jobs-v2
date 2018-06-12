@@ -1,19 +1,23 @@
 <?php
-/**
- * Created by Tona Nguyễn
- * Date: 1/29/2018
- * Time: 5:32 PM
+
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
  */
 
 namespace app\models;
 
 class PostCategory extends \app\models\base\PostCategory
 {
-    const   STATUS_ACTIVE = 1,
-            STATUS_DRAFT = 0;
+    const   STATUS_ACTIVE = 1;
+    const STATUS_DRAFT = 0;
 
     /**
      * @param bool $insert
+     *
      * @return bool
      */
     public function beforeSave($insert)
@@ -23,14 +27,16 @@ class PostCategory extends \app\models\base\PostCategory
         }*/
         return parent::beforeSave($insert);
     }
+
     /**
      * @param bool $is_category
      * @param int $parent_id
      * @param string $space
      * @param array $trees
+     *
      * @return array
      */
-    public static function categoriesMenus($is_category = true, $parent_id = 0, $space = "", $trees = [])
+    public static function categoriesMenus($is_category = true, $parent_id = 0, $space = '', $trees = [])
     {
         $table = self::tableName();
         if (!$trees) {
@@ -45,13 +51,13 @@ class PostCategory extends \app\models\base\PostCategory
         }*/
         $data = \Yii::$app->db->createCommand($sql)->queryAll();
         foreach ($data as $k => $rs) {
-            $trees[] = array(
+            $trees[] = [
                 'id' => $rs['id'],
-                'name' => $space . $rs['name'],
+                'name' => $space.$rs['name'],
                 'arranged' => $rs['arranged'],
                 'parent_id' => $rs['parent_id'],
-            );
-            $trees = self::categoriesMenus($is_category, $rs['id'], $space . ' - ', $trees);
+            ];
+            $trees = self::categoriesMenus($is_category, $rs['id'], $space.' - ', $trees);
         }
 
         return $trees;

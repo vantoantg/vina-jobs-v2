@@ -1,8 +1,11 @@
 <?php
-/**
- * Created by Tona Nguyễn
- * Date: 1/29/2018
- * Time: 5:32 PM
+
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
  */
 
 namespace app\models;
@@ -37,7 +40,7 @@ class Dropdown extends \app\models\base\Dropdown
         $this->dropdowns = self::find()
             ->select('type, name, value')
             ->where('status = :status', [
-                ':status' => Dropdown::STATUS_ACTIVE
+                ':status' => Dropdown::STATUS_ACTIVE,
             ])
             ->orderBy(['arranged' => SORT_ASC])
             ->asArray()->all();
@@ -47,6 +50,7 @@ class Dropdown extends \app\models\base\Dropdown
 
     /**
      * @param int $type
+     *
      * @return array
      */
     public function getDropdown($type = 0)

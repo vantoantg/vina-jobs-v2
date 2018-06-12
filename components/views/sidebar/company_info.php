@@ -22,20 +22,20 @@
  */
 ?>
 
-<div class="widget-sidebar <?= \app\library\helper\Helper::wowClass() ?> fadeInRight" data-wow-delay="0.2s">
+<div class="widget-sidebar <?= \app\library\helper\Helper::wowClass(); ?> fadeInRight" data-wow-delay="0.2s">
     <h2 class="title-widget-sidebar">THÔNG TIN CÔNG TY</h2>
     <div class="content-widget-sidebar">
         <ul>
             <li class="text-center">
                 <a href="">
-                    <img src="<?= $company['logo'];?>"
+                    <img src="<?= $company['logo']; ?>"
                          class="img-responsive">
                 </a>
             </li>
             <hr>
 
             <li class="">
-                <p><?= $company['name'];?></p>
+                <p><?= $company['name']; ?></p>
             </li>
             <hr>
 

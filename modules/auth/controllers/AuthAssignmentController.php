@@ -1,5 +1,13 @@
 <?php
 
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\auth\controllers;
 
 use app\modules\admin\controllers\AdminController;
@@ -16,7 +24,7 @@ use yii\filters\VerbFilter;
 class AuthAssignmentController extends AdminController
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -48,6 +56,7 @@ class AuthAssignmentController extends AdminController
 
     /**
      * Lists all AuthAssignment models.
+     *
      * @return mixed
      */
     public function actionIndex()
@@ -63,9 +72,12 @@ class AuthAssignmentController extends AdminController
 
     /**
      * Displays a single AuthAssignment model.
+     *
      * @param string $item_name
      * @param string $user_id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($item_name, $user_id)
@@ -78,6 +90,7 @@ class AuthAssignmentController extends AdminController
     /**
      * Creates a new AuthAssignment model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return mixed
      */
     public function actionCreate()
@@ -96,9 +109,12 @@ class AuthAssignmentController extends AdminController
     /**
      * Updates an existing AuthAssignment model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param string $item_name
      * @param string $user_id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($item_name, $user_id)
@@ -117,9 +133,12 @@ class AuthAssignmentController extends AdminController
     /**
      * Deletes an existing AuthAssignment model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param string $item_name
      * @param string $user_id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($item_name, $user_id)
@@ -132,9 +151,12 @@ class AuthAssignmentController extends AdminController
     /**
      * Finds the AuthAssignment model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param string $item_name
      * @param string $user_id
+     *
      * @return AuthAssignment the loaded model
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($item_name, $user_id)

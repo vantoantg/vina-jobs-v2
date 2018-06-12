@@ -1,4 +1,13 @@
 <?php
+
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\forms;
 
 use app\models\Users as User;
@@ -18,12 +27,11 @@ class ProfilePasswordForm extends Model
     public function rules()
     {
         return [
-
             ['password', 'validatePassword'],
             [['password', 'changepassword'], 'required'],
-            [['changepassword'],'string','min' => 8, 'max' => 60],
+            [['changepassword'], 'string', 'min' => 8, 'max' => 60],
             ['reenterpassword', 'required'],
-            ['reenterpassword', 'compare', 'compareAttribute'=>'changepassword', 'message'=>"Passwords don't match" ]
+            ['reenterpassword', 'compare', 'compareAttribute' => 'changepassword', 'message' => "Passwords don't match"],
         ];
     }
 
@@ -35,6 +43,7 @@ class ProfilePasswordForm extends Model
         $scenarios = parent::scenarios();
         $scenarios[self::SCENARIO_UPDATE] = ['password', 'changepassword', 'reenterpassword'];
         $scenarios[self::SCENARIO_RESET_PW] = ['changepassword', 'reenterpassword'];
+
         return $scenarios;
     }
 
@@ -55,9 +64,11 @@ class ProfilePasswordForm extends Model
             $user = $this->getUser();
             if (!$user || !$user->validatePassword($this->password)) {
                 $this->addError($attribute, 'Mật khẩu bạn nhập không đúng');
+
                 return false;
             }
         }
+
         return true;
     }
 

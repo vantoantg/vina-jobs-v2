@@ -1,5 +1,13 @@
 <?php
 
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\user\controllers;
 
 use app\forms\ProfilePasswordForm;
@@ -16,7 +24,7 @@ use yii\filters\VerbFilter;
 class UserController extends AdminController
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -32,6 +40,7 @@ class UserController extends AdminController
 
     /**
      * Lists all Users models.
+     *
      * @return mixed
      */
     public function actionIndex()
@@ -55,28 +64,32 @@ class UserController extends AdminController
         if ($form->load(Yii::$app->request->post())) {
             $user = Users::findOne(['id' => \Yii::$app->user->identity->id]);
             $user->scenario = Users::SCENARIO_RESET_PW;
-            # here we run our validation rules on the model
+            // here we run our validation rules on the model
 
             if ($form->validatePassword('password')) {
-                # if it is ok - setting the password property of user
+                // if it is ok - setting the password property of user
                 $user->setPassword($form->changepassword);
-                # and finally save it
+                // and finally save it
                 if ($user->update()) {
                     $form = new ProfilePasswordForm();
                     $form->scenario = ProfilePasswordForm::SCENARIO_UPDATE;
-                    Yii::$app->session->setFlash('update_pw_success', "Saved new password.");
+                    Yii::$app->session->setFlash('update_pw_success', 'Saved new password.');
                 }
             }
         }
+
         return $this->render('profile_change_password', [
-            'model' => $form
+            'model' => $form,
         ]);
     }
 
     /**
      * Displays a single Users model.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
@@ -89,6 +102,7 @@ class UserController extends AdminController
     /**
      * Creates a new Users model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return mixed
      */
     public function actionCreate()
@@ -107,8 +121,11 @@ class UserController extends AdminController
     /**
      * Updates an existing Users model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
@@ -127,8 +144,11 @@ class UserController extends AdminController
     /**
      * Deletes an existing Users model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
@@ -141,8 +161,11 @@ class UserController extends AdminController
     /**
      * Finds the Users model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param integer $id
+     *
      * @return Users the loaded model
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)

@@ -5,7 +5,7 @@
  * Date: 5/18/2018
  * Time: 10:29 PM
  */
-use \yii\widgets\ActiveForm;
+use yii\widgets\ActiveForm;
 
 ?>
 
@@ -14,19 +14,19 @@ use \yii\widgets\ActiveForm;
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<?php $form = ActiveForm::begin([
-                'method' => "post",
+                'method' => 'post',
                 'options' => [
                     'class' => 'form floating-label',
-                    'accept-charset' => "utf-8",
-                ]
-            ]) ?>
+                    'accept-charset' => 'utf-8',
+                ],
+            ]); ?>
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 				<h3 class="modal-title" id="lineModalLabel">Apply</h3>
 			</div>
 			<div class="modal-body">
 				<div class="form-group">
-					<?= $form->field($applyForm, 'message')->textarea(['placeholder' => 'Hãy viết gì đó cho nhà tuyển dụng...', 'rows' => 6]) ?>
+					<?= $form->field($applyForm, 'message')->textarea(['placeholder' => 'Hãy viết gì đó cho nhà tuyển dụng...', 'rows' => 6]); ?>
 				</div>
 
 				<div class="panel with-nav-tabs">
@@ -39,7 +39,7 @@ use \yii\widgets\ActiveForm;
 					<div class="panel-body">
 						<div class="tab-content">
 							<div class="tab-pane fade in active" id="tab1default">
-								<?= $form->field($applyForm, 'new_cv')->fileInput()->label(false) ?>
+								<?= $form->field($applyForm, 'new_cv')->fileInput()->label(false); ?>
 							</div>
 							<div class="tab-pane fade" id="tabs-cv-valid">
 								<ul>

@@ -1,14 +1,19 @@
 <?php
 
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\contents\controllers;
 
 use app\forms\LayoutForm;
 use app\modules\admin\controllers\AdminController;
 use Yii;
 use app\models\Tags;
-use app\models\search\Tags as TagsSearch;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
@@ -17,7 +22,7 @@ use yii\filters\VerbFilter;
 class LayoutController extends AdminController
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -33,6 +38,7 @@ class LayoutController extends AdminController
 
     /**
      * Lists all Tags models.
+     *
      * @return mixed
      */
     public function actionPage()
@@ -61,7 +67,6 @@ class LayoutController extends AdminController
                 'path' => Yii::$app->getViewPath().$x.'site'.$x.'contact.php',
             ],
 
-
             101 => [
                 'id' => 101,
                 'name' => 'Header',
@@ -71,9 +76,8 @@ class LayoutController extends AdminController
                 'id' => 102,
                 'name' => 'Footer',
                 'path' => Yii::$app->getLayoutPath().$x.'jobs'.$x.'footer.php',
-            ]
+            ],
         ];
-
 
         foreach ($files as $file) {
             @chmod($file['path'], 0777);
@@ -87,14 +91,15 @@ class LayoutController extends AdminController
         }
 
         return $this->render('page', [
-            'file_name' =>  $files[$file_id]['name'],
+            'file_name' => $files[$file_id]['name'],
             'files' => $files,
-            'model' =>  $form,
+            'model' => $form,
         ]);
     }
 
     /**
      * Lists all Tags models.
+     *
      * @return mixed
      */
     public function actionStyle()
@@ -111,9 +116,8 @@ class LayoutController extends AdminController
                 'id' => 2,
                 'name' => 'site.css',
                 'path' => Yii::$app->basePath.$x.'/web'.$x.'css'.$x.'site.css',
-            ]
+            ],
         ];
-
 
         foreach ($files as $file) {
             @chmod($file, 0777);
@@ -126,9 +130,9 @@ class LayoutController extends AdminController
         }
 
         return $this->render('style', [
-            'file_name' =>  $files[$file_id]['name'],
+            'file_name' => $files[$file_id]['name'],
             'files' => $files,
-            'model' =>  $form,
+            'model' => $form,
         ]);
     }
 }

@@ -1,12 +1,19 @@
 <?php
 
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\contents\controllers;
 
 use app\modules\admin\controllers\AdminController;
 use Yii;
 use app\models\Post;
 use app\models\search\Post as PostSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -16,7 +23,7 @@ use yii\filters\VerbFilter;
 class PostController extends AdminController
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -32,6 +39,7 @@ class PostController extends AdminController
 
     /**
      * Lists all Post models.
+     *
      * @return mixed
      */
     public function actionIndex()
@@ -47,8 +55,11 @@ class PostController extends AdminController
 
     /**
      * Displays a single Post model.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
@@ -61,6 +72,7 @@ class PostController extends AdminController
     /**
      * Creates a new Post model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return mixed
      */
     public function actionCreate()
@@ -71,6 +83,7 @@ class PostController extends AdminController
             if (Yii::$app->request->post('save') == 'saveedit') {
                 return $this->redirect(['update', 'id' => $model->id]);
             }
+
             return $this->redirect(['index']);
         }
 
@@ -82,8 +95,11 @@ class PostController extends AdminController
     /**
      * Updates an existing Post model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
@@ -98,15 +114,18 @@ class PostController extends AdminController
 
         return $this->render('update', [
             'model' => $model,
-            'pages' => Post::getList($id)
+            'pages' => Post::getList($id),
         ]);
     }
 
     /**
      * Deletes an existing Post model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
@@ -119,8 +138,11 @@ class PostController extends AdminController
     /**
      * Finds the Post model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param integer $id
+     *
      * @return Post the loaded model
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)

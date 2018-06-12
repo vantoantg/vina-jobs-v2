@@ -1,5 +1,13 @@
 <?php
 
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\forms;
 
 use app\models\Users;
@@ -10,7 +18,6 @@ use yii\base\Model;
  * LoginForm is the model behind the login form.
  *
  * @property User|null $user This property is read-only.
- *
  */
 class LoginForm extends Model
 {
@@ -19,7 +26,6 @@ class LoginForm extends Model
     public $rememberMe = true;
 
     private $_user = false;
-
 
     /**
      * @return array the validation rules.
@@ -37,7 +43,7 @@ class LoginForm extends Model
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -67,13 +73,15 @@ class LoginForm extends Model
 
     /**
      * Logs in a user using the provided username and password.
+     *
      * @return boolean whether the user is logged in successfully
      */
     public function login()
     {
         if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
+            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
         }
+
         return false;
     }
 
@@ -87,17 +95,21 @@ class LoginForm extends Model
         if ($this->_user === false) {
             $this->_user = Users::findByUsername($this->username);
         }
+
         return $this->_user;
     }
+
     public function object_to_array($data)
     {
         if (is_array($data) || is_object($data)) {
-            $result = array();
+            $result = [];
             foreach ($data as $key => $value) {
                 $result[$key] = $this->object_to_array($value);
             }
+
             return $result;
         }
+
         return $data;
     }
 }

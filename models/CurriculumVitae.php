@@ -1,15 +1,22 @@
 <?php
 
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\models;
 
 use app\library\helper\Common;
 use app\library\helper\Datetime;
-use Carbon\Carbon;
 
 class CurriculumVitae extends \app\models\base\CurriculumVitae
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
@@ -17,7 +24,7 @@ class CurriculumVitae extends \app\models\base\CurriculumVitae
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -31,7 +38,7 @@ class CurriculumVitae extends \app\models\base\CurriculumVitae
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {

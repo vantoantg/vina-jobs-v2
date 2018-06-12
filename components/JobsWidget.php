@@ -1,18 +1,19 @@
 <?php
-/**
- * Created by Tona Nguyễn
- * Date: 2/6/2018
- * Time: 6:23 PM
+
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
  */
+
 namespace app\components;
 
 use app\models\FileUploads;
 use Yii;
 use app\forms\ApplyForm;
-use app\forms\LoginForm;
 use yii\base\Widget;
-use app\library\helper\Helper;
-use yii\helpers\Html;
 use yii\web\UploadedFile;
 
 class JobsWidget extends Widget
@@ -38,11 +39,11 @@ class JobsWidget extends Widget
                 $file_type = $form->new_cv->extension;
                 $file_name = $form->new_cv->baseName;
                 $file_path = $form->new_cv->baseName.'-'.md5(date('dmyhis')).'.'.$file_type;
-                $this->attachment = Yii::$app->basePath .'/'. Yii::$app->params['companyCandidatePath'] . $file_path;
+                $this->attachment = Yii::$app->basePath.'/'.Yii::$app->params['companyCandidatePath'].$file_path;
                 $form->new_cv->saveAs($this->attachment);
                 FileUploads::saveFile(FileUploads::CANDIDATE, $file_path, $file_name, $file_type);
             } else {
-                $this->attachment = Yii::$app->basePath .'/'. Yii::$app->params['companyCandidatePath'] . 123;
+                $this->attachment = Yii::$app->basePath.'/'.Yii::$app->params['companyCandidatePath']. 123;
             }
 
             // Send email

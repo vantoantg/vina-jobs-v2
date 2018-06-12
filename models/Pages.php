@@ -1,8 +1,11 @@
 <?php
-/**
- * Created by Tona Nguyễn
- * Date: 1/29/2018
- * Time: 5:32 PM
+
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
  */
 
 namespace app\models;
@@ -13,8 +16,10 @@ use app\library\helper\Datetime;
 class Pages extends \app\models\base\Pages
 {
     const STATUS_ACTIVE = 1;
+
     /**
      * @param string $slug
+     *
      * @return Pages|null|static
      */
     public static function get($slug = 'home')
@@ -23,11 +28,13 @@ class Pages extends \app\models\base\Pages
         if ($model) {
             return $model;
         }
+
         return new self();
     }
 
     /**
      * @param int $except
+     *
      * @return array|null|\yii\db\ActiveRecord[]
      */
     public static function getList($except = 0)
@@ -39,11 +46,13 @@ class Pages extends \app\models\base\Pages
         if ($model) {
             return $model;
         }
+
         return null;
     }
 
     /**
      * @param bool $insert
+     *
      * @return bool
      */
     public function beforeSave($insert)

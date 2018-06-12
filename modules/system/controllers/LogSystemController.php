@@ -1,12 +1,19 @@
 <?php
 
+/*
+ *  Created by Tona Nguyễn.
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: Hồ Chí Minh, Việt Nam
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\system\controllers;
 
 use app\modules\admin\controllers\AdminController;
 use Yii;
 use app\models\LogSystem;
 use app\models\search\LogSystem as LogSystemSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -16,7 +23,7 @@ use yii\filters\VerbFilter;
 class LogSystemController extends AdminController
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -32,6 +39,7 @@ class LogSystemController extends AdminController
 
     /**
      * Lists all LogSystem models.
+     *
      * @return mixed
      */
     public function actionIndex()
@@ -48,8 +56,11 @@ class LogSystemController extends AdminController
 
     /**
      * Displays a single LogSystem model.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
@@ -62,6 +73,7 @@ class LogSystemController extends AdminController
     /**
      * Creates a new LogSystem model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return mixed
      */
     public function actionCreate()
@@ -80,8 +92,11 @@ class LogSystemController extends AdminController
     /**
      * Updates an existing LogSystem model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
@@ -100,8 +115,11 @@ class LogSystemController extends AdminController
     /**
      * Deletes an existing LogSystem model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
@@ -114,8 +132,11 @@ class LogSystemController extends AdminController
     /**
      * Finds the LogSystem model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param integer $id
+     *
      * @return LogSystem the loaded model
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
