@@ -5,8 +5,8 @@
 
 return [
     'db' => [
-	    'dsn' => 'mysql:host=localhost;dbname=zadmin_vnjobs',
-        'username' => 'root',
-        'password' => '123',
+            'dsn' => 'mysql:host=localhost;dbname=zadmin_vnjobs',
+        'username' => 'vnjobs',
+        'password' => 'apy9yzavu',
     ]
 ];
