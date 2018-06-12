@@ -62,19 +62,17 @@ class CurriculumVitae extends \app\models\base\CurriculumVitae
 
     public function beforeSave($insert)
     {
-
-        if($this->isNewRecord){
+        if ($this->isNewRecord) {
             $this->effect_date = Datetime::getTimeNow(null, Datetime::SQL_DATETIME);
             $this->created_at = Datetime::getTimeNow(null, Datetime::SQL_DATETIME);
             $this->updated_at = Datetime::getTimeNow(null, Datetime::SQL_DATETIME);
             $this->updated_by = Common::currentUser();
             $this->created_by = Common::currentUser();
-        }else{
+        } else {
             $this->updated_at = Datetime::getTimeNow(null, Datetime::SQL_DATETIME);
             $this->updated_by = Common::currentUser();
         }
 
         return parent::beforeSave($insert);
     }
-
 }

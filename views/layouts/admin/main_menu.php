@@ -24,6 +24,7 @@
 use \yii\helpers\Url;
 use app\library\helper\Helper;
 use \app\library\helper\Cons;
+
 ?>
 
 <ul id="main-menu" class="gui-controls">
@@ -88,6 +89,45 @@ use \app\library\helper\Cons;
         </ul><!--end /submenu -->
     </li><!--end /menu-li -->
     <!-- END Products -->
+
+	<!-- BEGIN Candidate -->
+	<li class="gui-folder <?= Helper::activeMenu(['user/index', 'user/create', 'user/update'])?>">
+		<a>
+			<div class="gui-icon"><i class="md md-computer"></i></div>
+			<span class="title">Candidate</span>
+		</a>
+		<!--start submenu -->
+		<ul>
+			<li><a href="<?= Url::toRoute('/user/user') ?>" ><span class="title">List</span></a></li>
+		</ul><!--end /submenu -->
+	</li><!--end /menu-li -->
+	<!-- END Candidate -->
+
+	<!-- BEGIN Jobs -->
+	<li class="gui-folder <?= Helper::activeMenu(['job/index', 'job/create', 'job/update'])?>">
+		<a>
+			<div class="gui-icon"><i class="md md-computer"></i></div>
+			<span class="title">Jobs</span>
+		</a>
+		<!--start submenu -->
+		<ul>
+			<li><a href="<?= Url::toRoute('/jobs/job') ?>" ><span class="title">List</span></a></li>
+		</ul><!--end /submenu -->
+	</li><!--end /menu-li -->
+	<!-- END Jobs -->
+
+	<!-- BEGIN Company -->
+	<li class="gui-folder <?= Helper::activeMenu(['company/index', 'company/create', 'company/update'])?>">
+		<a>
+			<div class="gui-icon"><i class="md md-computer"></i></div>
+			<span class="title">Company</span>
+		</a>
+		<!--start submenu -->
+		<ul>
+			<li><a href="<?= Url::toRoute('/user/company') ?>" ><span class="title">List</span></a></li>
+		</ul><!--end /submenu -->
+	</li><!--end /menu-li -->
+	<!-- END Company -->
 
     <!-- BEGIN Pages -->
     <li class="gui-folder <?= Helper::activeMenu(['pages/index', 'pages/create', 'pages/update', 'post/index', 'post/create', 'post/update', 'post-category/index', 'post-category/create', 'post-category/update'])?>">

@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-
 class Tags extends \app\models\base\Tags
 {
 

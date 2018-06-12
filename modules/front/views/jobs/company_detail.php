@@ -22,20 +22,24 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h1 class="text-center"><?= Html::encode($this->title) ?></h1>
             </div>
             <div class="row content">
-	            <?php if($galleries){ ?>
+	            <?php if ($galleries) {
+    ?>
                 <div class="gallery col-xs-12">
                     <div class="row">
-	                    <?php foreach ($galleries as $k => $gallery){ ?>
+	                    <?php foreach ($galleries as $k => $gallery) {
+        ?>
                             <div class="col-xs-4 item">
                                 <a href="#" data-toggle="modal" data-target="#viewGallery">
                                     <img src="<?= $gallery['thum'] ?>" class="img-thumbnail" alt="Los Angeles">
                                 </a>
                             </div>
-	                    <?php } ?>
+	                    <?php
+    } ?>
                     </div>
                 </div>
                 <div class="clearfix"></div>
-                <?php } ?>
+                <?php
+} ?>
 				<?= $company['content']; ?>
             </div>
         </div>
@@ -48,7 +52,8 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
 
-<?php if($galleries){ ?>
+<?php if ($galleries) {
+        ?>
 <!-- Modal -->
 <div id="viewGallery" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -59,18 +64,26 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
-	                    <?php foreach ($galleries as $k => $gallery){ ?>
-                        <li data-target="#myCarousel" data-slide-to="<?= $k ?>" class="<?php if ($k == 0){ echo 'active'; } ?>"></li>
-	                    <?php } ?>
+	                    <?php foreach ($galleries as $k => $gallery) {
+            ?>
+                        <li data-target="#myCarousel" data-slide-to="<?= $k ?>" class="<?php if ($k == 0) {
+                echo 'active';
+            } ?>"></li>
+	                    <?php
+        } ?>
                     </ol>
 
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
-                        <?php foreach ($galleries as $k => $gallery){ ?>
-                        <div class="item <?php if ($k == 0){ echo 'active'; } ?>">
+                        <?php foreach ($galleries as $k => $gallery) {
+            ?>
+                        <div class="item <?php if ($k == 0) {
+                echo 'active';
+            } ?>">
                             <img src="<?= $gallery['view'] ?>" alt="Los Angeles">
                         </div>
-                        <?php } ?>
+                        <?php
+        } ?>
                     </div>
 
                     <!-- Left and right controls -->
@@ -87,4 +100,5 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
-<?php } ?>
+<?php
+    } ?>

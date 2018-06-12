@@ -12,8 +12,8 @@ class ProfilePasswordForm extends Model
     public $reenterpassword;
     public $_user;
 
-	const SCENARIO_UPDATE = 'update';
-	const SCENARIO_RESET_PW = 'reset_pw';
+    const SCENARIO_UPDATE = 'update';
+    const SCENARIO_RESET_PW = 'reset_pw';
 
     public function rules()
     {
@@ -21,22 +21,22 @@ class ProfilePasswordForm extends Model
 
             ['password', 'validatePassword'],
             [['password', 'changepassword'], 'required'],
-	        [['changepassword'],'string','min' => 8, 'max' => 60],
+            [['changepassword'],'string','min' => 8, 'max' => 60],
             ['reenterpassword', 'required'],
             ['reenterpassword', 'compare', 'compareAttribute'=>'changepassword', 'message'=>"Passwords don't match" ]
         ];
     }
 
     /**
-	 * @return array
-	 */
-	public function scenarios()
-	{
-		$scenarios = parent::scenarios();
-		$scenarios[self::SCENARIO_UPDATE] = ['password', 'changepassword', 'reenterpassword'];
-		$scenarios[self::SCENARIO_RESET_PW] = ['changepassword', 'reenterpassword'];
-		return $scenarios;
-	}
+     * @return array
+     */
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_UPDATE] = ['password', 'changepassword', 'reenterpassword'];
+        $scenarios[self::SCENARIO_RESET_PW] = ['changepassword', 'reenterpassword'];
+        return $scenarios;
+    }
 
     public function attributeLabels()
     {
@@ -69,5 +69,4 @@ class ProfilePasswordForm extends Model
 
         return $this->_user;
     }
-
 }

@@ -1,5 +1,6 @@
 <?php
 namespace app\components\tona;
+
 use Carbon\Carbon;
 use Yii;
 
@@ -26,8 +27,8 @@ class Datetime
 
     const DEFAULT_TIME_ZONE = "Asia/Bangkok";
 
-    public function init(){
-
+    public function init()
+    {
     }
 
     /**
@@ -35,14 +36,15 @@ class Datetime
      * @param null $format
      * @return string
      */
-    public static function getDateNow($format = null, $zone = null){
-        if($zone == null){
+    public static function getDateNow($format = null, $zone = null)
+    {
+        if ($zone == null) {
             $zone = Common::currentUser('timezone');
-            if(!$zone){
+            if (!$zone) {
                 $zone = self::DEFAULT_TIME_ZONE;
             }
         }
-        if($format == null){
+        if ($format == null) {
             $format = self::VIEW_DATETIME;
         }
         $date = Carbon::now($zone);
@@ -54,11 +56,12 @@ class Datetime
      * @param null $format
      * @return string
      */
-    public static function getTimeNow($zone = null, $format = null){
-        if($zone == null){
+    public static function getTimeNow($zone = null, $format = null)
+    {
+        if ($zone == null) {
             $zone = Common::currentUser('timezone');
         }
-        if($format == null){
+        if ($format == null) {
             $format = self::VIEW_TIME;
         }
         $date = Carbon::now($zone);

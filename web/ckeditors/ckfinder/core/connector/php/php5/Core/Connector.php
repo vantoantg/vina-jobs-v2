@@ -10,7 +10,9 @@
  * modifying or distribute this file or part of its contents. The contents of
  * this file is part of the Source Code of CKFinder.
  */
-if (!defined('IN_CKFINDER')) exit;
+if (!defined('IN_CKFINDER')) {
+    exit;
+}
 
 /**
  * @package CKFinder
@@ -35,7 +37,7 @@ class CKFinder_Connector_Core_Connector
      */
     private $_registry;
 
-    function __construct()
+    public function __construct()
     {
         $this->_registry =& CKFinder_Connector_Core_Factory::getInstance("Core_Registry");
         $this->_registry->set("errorHandler", "ErrorHandler_Base");
@@ -64,8 +66,7 @@ class CKFinder_Connector_Core_Connector
             return;
         }
 
-        switch ($command)
-        {
+        switch ($command) {
             case 'FileUpload':
             $this->_registry->set("errorHandler", "ErrorHandler_FileUpload");
             $obj =& CKFinder_Connector_Core_Factory::getInstance("CommandHandler_".$command);

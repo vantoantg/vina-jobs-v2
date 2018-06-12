@@ -12,7 +12,7 @@ class m180401_144940_delete_user extends Migration
      */
     public function safeUp()
     {
-		$this->execute("DELETE FROM `tn_user` WHERE id > 1;
+        $this->execute("DELETE FROM `tn_user` WHERE id > 1;
 		DELETE FROM `tn_user_details` WHERE user_id > 1;");
     }
 

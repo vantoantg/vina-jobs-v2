@@ -46,6 +46,9 @@ return [
     'contents' => [
         'class' => 'app\modules\contents\Module',
     ],
+    'jobs' => [
+        'class' => 'app\modules\jobs\Module',
+    ],
     'redactor' => [
         'class' => 'yii\redactor\RedactorModule',
         'uploadDir' => '@webroot/uploads',

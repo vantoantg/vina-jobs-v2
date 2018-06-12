@@ -12,7 +12,7 @@ class m180503_152634_change_jobs extends Migration
      */
     public function safeUp()
     {
-		$this->execute("
+        $this->execute("
 		ALTER TABLE `tn_jobs` CHANGE `salary` `salary` INT(3) NULL, 
 		ADD COLUMN `working_time` INT(3) NULL AFTER `salary`; 
 		");

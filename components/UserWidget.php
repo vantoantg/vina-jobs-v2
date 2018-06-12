@@ -26,17 +26,19 @@ class UserWidget extends Widget
     }
 
 
-    public function login(){
+    public function login()
+    {
         $form = new LoginForm();
         return $this->render('user/login', [
             'model' => $form
         ]);
     }
 
-    public function optionsRegister(){
-	    return $this->render('user/options_register', [
-		    'candidate' => Helper::createUrl(['front/user/register-candidate']),
-		    'company' => Helper::createUrl(['front/user/register-company']),
-	    ]);
+    public function optionsRegister()
+    {
+        return $this->render('user/options_register', [
+            'candidate' => Helper::createUrl(['front/user/register-candidate']),
+            'company' => Helper::createUrl(['front/user/register-company']),
+        ]);
     }
 }

@@ -16,7 +16,8 @@ class DefaultController extends AdminController
         return $this->render('index');
     }
 
-    public function actionDashboard(){
-	    return $this->render('index');
+    public function actionDashboard()
+    {
+        return $this->render('index');
     }
 }

@@ -92,7 +92,7 @@ class SiteController extends FrontController
     public function actionSearch()
     {
         $queryParams = Yii::$app->request->queryParams;
-		// TODO: save $queryParams (JSON) to strafic user want ...?
+        // TODO: save $queryParams (JSON) to strafic user want ...?
 
         return $this->render('search', [
             '_url' => Yii::$app->request->getUrl(),
@@ -106,7 +106,7 @@ class SiteController extends FrontController
     public function actionAjaxSearch()
     {
         $queryParams = Yii::$app->request->queryParams;
-		// TODO: save $queryParams (JSON) to strafic user want ...?
+        // TODO: save $queryParams (JSON) to strafic user want ...?
 
         if (Yii::$app->request->isAjax && isset($queryParams['mode']) && $queryParams['mode'] == 'search-jobs') {
             $searchModel = new JobCustomSearch();
@@ -193,26 +193,26 @@ class SiteController extends FrontController
         return $this->render('employeers');
     }
 
-	/**
-	 * @param $slug
-	 * @param $id
-	 * @return string
-	 * @throws BadRequestHttpException
-	 */
+    /**
+     * @param $slug
+     * @param $id
+     * @return string
+     * @throws BadRequestHttpException
+     */
     public function actionEmployeersDetail($slug, $id)
     {
-    	$job = Job::getJob($id);
-    	if(!$job){
-    		throw new BadRequestHttpException();
-	    }
+        $job = Job::getJob($id);
+        if (!$job) {
+            throw new BadRequestHttpException();
+        }
 
-	    $galleries = FileUploads::instance()->getGallery(FileUploads::COM_GALLERY, $job['company_id']);
-    	$form = new ApplyForm();
+        $galleries = FileUploads::instance()->getGallery(FileUploads::COM_GALLERY, $job['company_id']);
+        $form = new ApplyForm();
 
         return $this->render('employeers_detail', [
-        	'job' => $job,
-        	'galleries' => $galleries,
-        	'applyForm' => $form,
+            'job' => $job,
+            'galleries' => $galleries,
+            'applyForm' => $form,
         ]);
     }
 
@@ -223,36 +223,36 @@ class SiteController extends FrontController
      */
     public function actionBlog()
     {
-	    $searchModel = new Post();
-	    $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-	    $dataProvider->pagination->pageSize = 20;
+        $searchModel = new Post();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->pagination->pageSize = 20;
         return $this->render('blog', [
-        	'blogs' => $dataProvider->getModels()
+            'blogs' => $dataProvider->getModels()
         ]);
     }
 
-	/**
-	 * @param $slug
-	 * @param $id
-	 * @return string
-	 * @throws BadRequestHttpException
-	 */
-	public function actionBlogDetail($slug, $id)
-	{
-		$post = Post::find()->where('status = :status',['status' => Post::STATUS_ACTIVE])->andWhere(['id' => $id])->one();
-		if(!$post){
-			throw new BadRequestHttpException();
-		}
+    /**
+     * @param $slug
+     * @param $id
+     * @return string
+     * @throws BadRequestHttpException
+     */
+    public function actionBlogDetail($slug, $id)
+    {
+        $post = Post::find()->where('status = :status', ['status' => Post::STATUS_ACTIVE])->andWhere(['id' => $id])->one();
+        if (!$post) {
+            throw new BadRequestHttpException();
+        }
 
-		return $this->render('blog_detail', [
-			'blog' => $post
-		]);
-	}
+        return $this->render('blog_detail', [
+            'blog' => $post
+        ]);
+    }
 
-	public function actionPolicy()
-	{
-		return $this->render('policy');
-	}
+    public function actionPolicy()
+    {
+        return $this->render('policy');
+    }
 
     /**
      * Displays contact page.

@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\Setting */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -14,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(['timeout' => 15000]); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]);?>
 
     <p>
         <?= Html::a('Create Setting', ['create'], ['class' => 'btn btn-success']) ?>
@@ -34,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'sorted',
             //'input',
 
-	        \app\library\helper\ActionColumn::link('{update}'),
+            \app\library\helper\ActionColumn::link('{update}'),
         ],
     ]); ?>
     <?php Pjax::end(); ?>

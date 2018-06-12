@@ -68,10 +68,10 @@ class PostController extends AdminController
         $model = new Post();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-	        if(Yii::$app->request->post('save') == 'saveedit'){
-		        return $this->redirect(['update', 'id' => $model->id]);
-	        }
-	        return $this->redirect(['index']);
+            if (Yii::$app->request->post('save') == 'saveedit') {
+                return $this->redirect(['update', 'id' => $model->id]);
+            }
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -91,14 +91,14 @@ class PostController extends AdminController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-	        if(Yii::$app->request->post('save') == 'saveback'){
-		        return $this->redirect(['index']);
-	        }
+            if (Yii::$app->request->post('save') == 'saveback') {
+                return $this->redirect(['index']);
+            }
         }
 
         return $this->render('update', [
             'model' => $model,
-	        'pages' => Post::getList($id)
+            'pages' => Post::getList($id)
         ]);
     }
 

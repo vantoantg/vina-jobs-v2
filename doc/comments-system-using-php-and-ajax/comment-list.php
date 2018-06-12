@@ -1,5 +1,5 @@
 <?php
-require_once ("db.php");
+require_once("db.php");
 
 $sql = "SELECT * FROM tbl_comment ORDER BY parent_comment_id asc, comment_id asc";
 
@@ -12,4 +12,3 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 mysqli_close($conn);
 echo json_encode($record_set);
-?>

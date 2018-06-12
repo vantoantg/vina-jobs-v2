@@ -26,48 +26,54 @@ class SidebarWidget extends Widget
         }
     }
 
-	/**
-	 * @param array $except_job_ids
-	 * @return string|void
-	 */
-    public function recentJobs($except_job_ids = []){
-	    $data = Job::instance()->getRecentJobsSidebar($except_job_ids);
-    	if($data){
-		    return $this->render('sidebar/recent_job', [
-			    'data' => $data
-		    ]);
-	    }
+    /**
+     * @param array $except_job_ids
+     * @return string|void
+     */
+    public function recentJobs($except_job_ids = [])
+    {
+        $data = Job::instance()->getRecentJobsSidebar($except_job_ids);
+        if ($data) {
+            return $this->render('sidebar/recent_job', [
+                'data' => $data
+            ]);
+        }
     }
 
-	public function recentCompanyInfo($company_id){
-		$company = Company::instance()->getCompany($company_id);
-		$company = $company->toArray();
-		$company['logo'] = Company::getLogo($company['logo']);
-		return $this->render('sidebar/company_info', [
-			'company' => $company
-		]);
-	}
+    public function recentCompanyInfo($company_id)
+    {
+        $company = Company::instance()->getCompany($company_id);
+        $company = $company->toArray();
+        $company['logo'] = Company::getLogo($company['logo']);
+        return $this->render('sidebar/company_info', [
+            'company' => $company
+        ]);
+    }
 
-    public function archives(){
+    public function archives()
+    {
         return $this->render('sidebar/archives', [
 
         ]);
     }
 
-    public function categories(){
+    public function categories()
+    {
         return $this->render('sidebar/categories', [
 
         ]);
     }
 
-    public function newsLatter(){
+    public function newsLatter()
+    {
         return $this->render('sidebar/news_latter', [
 
         ]);
     }
 
 
-    public function searchResultJobs($_url, $queryParams){
+    public function searchResultJobs($_url, $queryParams)
+    {
         return $this->render('sidebar/search_result_jobs', [
             '_url' => $_url,
             'queryParams' => $queryParams,

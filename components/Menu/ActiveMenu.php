@@ -9,7 +9,8 @@ namespace app\components\Menu;
 
 class ActiveMenu
 {
-    public static function is($id){
+    public static function is($id)
+    {
         echo '<input type="hidden" id="setActiveTopMenu" value="'.$id.'">';
     }
 }

@@ -12,7 +12,7 @@ class m180425_152436_modify extends Migration
      */
     public function safeUp()
     {
-		$this->execute("ALTER TABLE `tn_candidate` CHANGE `location` `location` VARCHAR(255) NULL; ");
+        $this->execute("ALTER TABLE `tn_candidate` CHANGE `location` `location` VARCHAR(255) NULL; ");
     }
 
     /**

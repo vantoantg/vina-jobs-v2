@@ -68,7 +68,7 @@ class CarouselItemsController extends AdminController
         $model = new CarouselItems();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if(Yii::$app->request->post('save') == 'saveedit'){
+            if (Yii::$app->request->post('save') == 'saveedit') {
                 return $this->redirect(['update', 'id' => $model->id]);
             }
             return $this->redirect(['index']);
@@ -91,8 +91,7 @@ class CarouselItemsController extends AdminController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
-            if(Yii::$app->request->post('save') == 'saveedit'){
+            if (Yii::$app->request->post('save') == 'saveedit') {
                 return $this->redirect(['update', 'id' => $model->id]);
             }
 

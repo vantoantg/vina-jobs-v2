@@ -7,7 +7,6 @@
 
 namespace app\models;
 
-
 class Locations extends \app\models\base\Locations
 {
     /**
@@ -22,14 +21,14 @@ class Locations extends \app\models\base\Locations
                 ':parent_id' => 64,
                 ':type'      => 3
             ])
-	        ->orderBy(['arranged' => SORT_ASC])
+            ->orderBy(['arranged' => SORT_ASC])
             ->all();
     }
 
     /**
      * @return array
      */
-    static public function getAll()
+    public static function getAll()
     {
         $data = [];
         $type = 3;

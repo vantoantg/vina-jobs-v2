@@ -36,16 +36,16 @@ class LoginForm extends Model
         ];
     }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function attributeLabels()
-	{
-		return [
-			'username' => 'Tài khoản',
-			'password' => 'Mật khẩu',
-		];
-	}
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'Tài khoản',
+            'password' => 'Mật khẩu',
+        ];
+    }
 
     /**
      * Validates the password.
@@ -91,11 +91,9 @@ class LoginForm extends Model
     }
     public function object_to_array($data)
     {
-        if (is_array($data) || is_object($data))
-        {
+        if (is_array($data) || is_object($data)) {
             $result = array();
-            foreach ($data as $key => $value)
-            {
+            foreach ($data as $key => $value) {
                 $result[$key] = $this->object_to_array($value);
             }
             return $result;

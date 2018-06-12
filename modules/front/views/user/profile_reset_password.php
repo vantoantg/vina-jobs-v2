@@ -4,7 +4,6 @@ use yii\helpers\Html;
 use \yii\widgets\ActiveForm;
 use app\library\helper\Helper;
 
-
 /* @var $this yii\web\View */
 /* @var $model app\models\Users */
 
@@ -23,9 +22,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 		<?php $form = \yii\widgets\ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 		<?php
-		echo $form->field($model, 'changepassword')->passwordInput(['placeholder' => 'Mật khẩu mới']);
-		echo $form->field($model, 'reenterpassword')->passwordInput(['placeholder' => 'Nhập lại khẩu mới']);
-		?>
+        echo $form->field($model, 'changepassword')->passwordInput(['placeholder' => 'Mật khẩu mới']);
+        echo $form->field($model, 'reenterpassword')->passwordInput(['placeholder' => 'Nhập lại khẩu mới']);
+        ?>
         <div class="form-group">
 			<?= \yii\helpers\Html::submitButton('<i class="far fa-hdd"></i> Lưu mật khẩu', ['class' => 'btn btn-primary']) ?>
         </div>

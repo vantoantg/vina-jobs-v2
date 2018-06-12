@@ -34,8 +34,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'arranged')->textInput() ?>
 
 	<?= $form->field($model, 'status', [
-		'template' => '<label class="checkbox-inline checkbox-styled" >{input}</label>{label}{error}{hint}'
-	])->checkbox() ?>
+        'template' => '<label class="checkbox-inline checkbox-styled" >{input}</label>{label}{error}{hint}'
+    ])->checkbox() ?>
 
     <?php ActiveForm::end(); ?>
 

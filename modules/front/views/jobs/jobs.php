@@ -57,30 +57,36 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                     <?php
                     $salary = \app\library\helper\Dropdowns::$salary;
                     ?>
-                    <?= $form->field($model, 'salary')->dropDownList($salary,
-	                    [
-		                    'class' => 'job-select2 form-control'
-	                    ]) ?>
+                    <?= $form->field($model, 'salary')->dropDownList(
+                        $salary,
+                        [
+                            'class' => 'job-select2 form-control'
+                        ]
+                    ) ?>
                 </div>
 
                 <div class="col-xs-4">
                     <?php
                     $loca = \app\models\Locations::getAll();
                     ?>
-                    <?= $form->field($model, 'address')->dropDownList(\yii\helpers\ArrayHelper::map($loca, 'id', 'name'),
-	                    [
-		                    'class' => 'job-select2 form-control'
-	                    ]) ?>
+                    <?= $form->field($model, 'address')->dropDownList(
+                        \yii\helpers\ArrayHelper::map($loca, 'id', 'name'),
+                        [
+                            'class' => 'job-select2 form-control'
+                        ]
+                    ) ?>
                 </div>
 
                 <div class="col-xs-4">
 		            <?php
-		            $data = \app\library\helper\Dropdowns::$working_time;
-		            ?>
-		            <?= $form->field($model, 'working_time')->dropDownList($data,
-			            [
-				            'class' => 'job-select2 form-control'
-			            ]) ?>
+                    $data = \app\library\helper\Dropdowns::$working_time;
+                    ?>
+		            <?= $form->field($model, 'working_time')->dropDownList(
+                        $data,
+                        [
+                            'class' => 'job-select2 form-control'
+                        ]
+                    ) ?>
                 </div>
             </div>
 
@@ -99,16 +105,20 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 		        </div>
 	        </div>
 
-	        <?php if($model->isNewRecord){ ?>
+	        <?php if ($model->isNewRecord) {
+                ?>
             <div class="form-group">
                 <?= Html::submitButton('Lưu thông tin tuyển dụng', ['class' => 'btn btn-primary']) ?>
                 <?= Html::resetButton('Xóa hết', ['class' => 'btn btn-default']) ?>
             </div>
-	        <?php }else{ ?>
+	        <?php
+            } else {
+                ?>
 	        <div class="form-group">
                 <?= Html::submitButton('Cập nhật thông tin tuyển dụng', ['class' => 'btn btn-primary']) ?>
 	        </div>
-	        <?php } ?>
+	        <?php
+            } ?>
             <?php ActiveForm::end(); ?>
 
         </div><!-- front-jobs -->

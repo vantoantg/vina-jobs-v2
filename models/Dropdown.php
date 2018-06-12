@@ -7,7 +7,6 @@
 
 namespace app\models;
 
-
 class Dropdown extends \app\models\base\Dropdown
 {
     const STATUS_ACTIVE = 1;
@@ -31,8 +30,8 @@ class Dropdown extends \app\models\base\Dropdown
      */
     public function getAll()
     {
-        if($this->dropdowns){
-           return $this->dropdowns;
+        if ($this->dropdowns) {
+            return $this->dropdowns;
         }
 
         $this->dropdowns = self::find()
@@ -40,7 +39,7 @@ class Dropdown extends \app\models\base\Dropdown
             ->where('status = :status', [
                 ':status' => Dropdown::STATUS_ACTIVE
             ])
-	        ->orderBy(['arranged' => SORT_ASC])
+            ->orderBy(['arranged' => SORT_ASC])
             ->asArray()->all();
 
         return $this->dropdowns;
@@ -50,12 +49,13 @@ class Dropdown extends \app\models\base\Dropdown
      * @param int $type
      * @return array
      */
-    public function getDropdown($type = 0){
+    public function getDropdown($type = 0)
+    {
         $array = [];
         $data = $this->dropdowns;
-        foreach ($data as $item){
-            if($type == $item['type']){
-            	$item['id'] = $item['value'];
+        foreach ($data as $item) {
+            if ($type == $item['type']) {
+                $item['id'] = $item['value'];
                 $array[] = $item;
             }
         }

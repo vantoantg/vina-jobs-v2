@@ -18,38 +18,38 @@ use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\web\UploadedFile;
 
-
 /**
  * Default controller for the `front` module
  */
 class JobsController extends FrontController
 {
-
-    public function actionFavorite($slug, $id){
-        if(!Yii::$app->request->isAjax){
+    public function actionFavorite($slug, $id)
+    {
+        if (!Yii::$app->request->isAjax) {
             throw new BadRequestHttpException('Không tìm thấy yêu cầu của bạn!');
         }
 
-        if(Yii::$app->request->isAjax && Common::isLoginned()){
+        if (Yii::$app->request->isAjax && Common::isLoginned()) {
             $favorite = UserJobs::favorite($id, Yii::$app->request->post());
-            if($favorite === false){
-            	return $this->asJson(new BadRequestHttpException());
-            }else{
-	            return $this->asJson(['favorite' => $favorite]);
+            if ($favorite === false) {
+                return $this->asJson(new BadRequestHttpException());
+            } else {
+                return $this->asJson(['favorite' => $favorite]);
             }
         }
     }
 
-	/**
-	 * @return Response
-	 * @throws BadRequestHttpException
-	 */
-    public function actionPreapply(){
-        if(!Yii::$app->request->isAjax){
+    /**
+     * @return Response
+     * @throws BadRequestHttpException
+     */
+    public function actionPreapply()
+    {
+        if (!Yii::$app->request->isAjax) {
             throw new BadRequestHttpException('Không tìm thấy yêu cầu của bạn!');
         }
 
-        if(Yii::$app->request->isAjax && Common::isLoginned()){
+        if (Yii::$app->request->isAjax && Common::isLoginned()) {
             $cv = FileUploads::getCV();
             return $this->asJson(['data' => $cv]);
         }
@@ -67,7 +67,8 @@ class JobsController extends FrontController
     /**
      * @return string|\yii\web\Response
      */
-    public function actionPostJobs(){
+    public function actionPostJobs()
+    {
         if (!Common::isLoginned() || Common::currentUsers()->type != Users::USER_TYPE_CONTACT_OF_COMPANY) {
             return $this->goHome();
         }
@@ -106,25 +107,26 @@ class JobsController extends FrontController
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException
      */
-    public function actionEditJobs($id = 0){
+    public function actionEditJobs($id = 0)
+    {
         $model = null;
-        if($id){
+        if ($id) {
             $model = $this->findModel($id);
-	        $model->cv_end_date = Carbon::createFromFormat(Datetime::SQL_DATE,$model->cv_end_date)->format(Datetime::INPUT_DMY);
+            $model->cv_end_date = Carbon::createFromFormat(Datetime::SQL_DATE, $model->cv_end_date)->format(Datetime::INPUT_DMY);
         }
-        if(!$model){
+        if (!$model) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate()){
-	        $model->cv_end_date = Carbon::createFromFormat(Datetime::INPUT_DMY, $model->cv_end_date)->format(Datetime::SQL_DATE);
-	        if($model->save()){
-		        $r = Yii::$app->request->get('r');
-		        if($r){
-			        Yii::$app->session->setFlash('success', "Tin tuyển dụng đã được cập nhật.");
-			        return $this->redirect(Helper::encrypt($r, false));
-		        }
-	        }
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->cv_end_date = Carbon::createFromFormat(Datetime::INPUT_DMY, $model->cv_end_date)->format(Datetime::SQL_DATE);
+            if ($model->save()) {
+                $r = Yii::$app->request->get('r');
+                if ($r) {
+                    Yii::$app->session->setFlash('success', "Tin tuyển dụng đã được cập nhật.");
+                    return $this->redirect(Helper::encrypt($r, false));
+                }
+            }
         }
 
         return $this->render('jobs', [
@@ -135,16 +137,16 @@ class JobsController extends FrontController
     /**
      * @return string|\yii\web\Response
      */
-    public function actionPostCv(){
+    public function actionPostCv()
+    {
         $model = CurriculumVitae::findOne(['created_by' => Common::currentUser()]);
-        if($model){
+        if ($model) {
             $url = Yii::$app->getUrlManager()->createUrl(['front/jobs/edit-cv', 'id' => $model->id]);
             return $this->redirect($url);
         }
 
         $model = new CurriculumVitae();
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
-
             $url = Yii::$app->getUrlManager()->createUrl(['front/jobs/edit-cv', 'id' => $model->id]);
             return $this->redirect($url);
         }
@@ -159,17 +161,17 @@ class JobsController extends FrontController
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException
      */
-    public function actionEditCv($id = 0){
+    public function actionEditCv($id = 0)
+    {
         $model = null;
-        if($id){
+        if ($id) {
             $model = CurriculumVitae::findOne(['id' => $id]);
         }
-        if(!$model || $model->created_by != Common::currentUser()){
+        if (!$model || $model->created_by != Common::currentUser()) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
-
             $url = Yii::$app->getUrlManager()->createUrl(['front/jobs/edit-cv', 'id' => $model->id]);
             return $this->redirect($url);
         }
@@ -179,29 +181,31 @@ class JobsController extends FrontController
         ]);
     }
 
-	/**
-	 * @return Response
-	 */
-    public function actionTopList(){
-	    $jobs = Job::instance()->getAllCompanyJobs();
-	    return $this->asJson($jobs);
+    /**
+     * @return Response
+     */
+    public function actionTopList()
+    {
+        $jobs = Job::instance()->getAllCompanyJobs();
+        return $this->asJson($jobs);
     }
 
-	/**
-	 * @param $id
-	 * @return string
-	 * @throws BadRequestHttpException
-	 */
-    public function actionCompanyDetail($id){
-	    $company = Company::findOne($id);
-	    if(!$company){
-	    	throw new BadRequestHttpException();
-	    }
+    /**
+     * @param $id
+     * @return string
+     * @throws BadRequestHttpException
+     */
+    public function actionCompanyDetail($id)
+    {
+        $company = Company::findOne($id);
+        if (!$company) {
+            throw new BadRequestHttpException();
+        }
 
-	    return $this->render('company_detail', [
-			'company' => $company,
-			'galleries' => FileUploads::instance()->getGallery(FileUploads::COM_GALLERY, $company->id),
-	    ]);
+        return $this->render('company_detail', [
+            'company' => $company,
+            'galleries' => FileUploads::instance()->getGallery(FileUploads::COM_GALLERY, $company->id),
+        ]);
     }
 
     /**

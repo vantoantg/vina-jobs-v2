@@ -12,9 +12,9 @@ class m180414_151147_jobs_cate extends Migration
      */
     public function safeUp()
     {
-    	$this->execute("ALTER TABLE `tn_job_categories` CHANGE `name` `name` VARCHAR(255) CHARSET utf8 COLLATE utf8_general_ci NULL; ");
-    	$this->execute("TRUNCATE TABLE `tn_job_categories`;");
-		$this->execute("INSERT  INTO `tn_job_categories`(`id`,`parent_id`,`name`,`description`,`icon_class`,`image`,`created_at`,`updated_at`,`created_by`,`updated_by`,`arranged`,`total_jobs`,`total_cv`,`status`) 
+        $this->execute("ALTER TABLE `tn_job_categories` CHANGE `name` `name` VARCHAR(255) CHARSET utf8 COLLATE utf8_general_ci NULL; ");
+        $this->execute("TRUNCATE TABLE `tn_job_categories`;");
+        $this->execute("INSERT  INTO `tn_job_categories`(`id`,`parent_id`,`name`,`description`,`icon_class`,`image`,`created_at`,`updated_at`,`created_by`,`updated_by`,`arranged`,`total_jobs`,`total_cv`,`status`) 
 		VALUES
 		 (6,0,'XÂY DỰNG',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL),
 		 (7,6,'Kiến trúc/Thiết kế nội thất',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL),
@@ -94,8 +94,8 @@ class m180414_151147_jobs_cate extends Migration
 		 (81,78,'An toàn lao động',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL),
 		 (82,78,'Bảo trì/Sửa chữa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL),
 		 (83,78,'Hoạch định/Dự án',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL);");
-		$this->execute("UPDATE `tn_job_categories` SET `status` = 1;");
-		$this->execute("ALTER TABLE `tn_candidate` ADD COLUMN `client_status` TINYINT(1) DEFAULT 1 NULL AFTER `star`;");
+        $this->execute("UPDATE `tn_job_categories` SET `status` = 1;");
+        $this->execute("ALTER TABLE `tn_candidate` ADD COLUMN `client_status` TINYINT(1) DEFAULT 1 NULL AFTER `star`;");
     }
 
     /**

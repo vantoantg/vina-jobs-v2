@@ -7,8 +7,6 @@
 
 namespace app\models;
 
-
 class CarouselItems extends \app\models\base\CarouselItems
 {
-
 }

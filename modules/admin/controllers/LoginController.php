@@ -11,40 +11,39 @@ use app\library\helper\Helper;
  */
 class LoginController extends BaseController
 {
+    public function init()
+    {
+        parent::init();
+        $this->layout = '/login';
+        \Yii::$app->language = 'en';
+    }
 
-	public function init()
-	{
-		parent::init();
-		$this->layout = '/login';
-		\Yii::$app->language = 'en';
-	}
+    /**
+     * Renders the index view for the module
+     * @return string
+     */
+    public function actionIndex()
+    {
+        /*if ($this->app->user->isGuest) {
+            return $this->goHome();
+        }*/
 
-	/**
-	 * Renders the index view for the module
-	 * @return string
-	 */
-	public function actionIndex()
-	{
-		/*if ($this->app->user->isGuest) {
-			return $this->goHome();
-		}*/
+        $model = new AdminLoginForm();
+        if ($model->load($this->app->request->post()) && $model->login()) {
+            if (Common::currentUser('username') == 'admin') {
+                return $this->redirect(['/admin']);
+            }
+            return $this->goHome();
+        } else {
+            if ($this->app->request->isAjax) {
+                return Helper::jsonData(['error' => true, 'message' => $model->errors['password'][0]]);
+            }
+        }
 
-		$model = new AdminLoginForm();
-		if ($model->load($this->app->request->post()) && $model->login()) {
-			if (Common::currentUser('username') == 'admin') {
-				return $this->redirect(['/admin']);
-			}
-			return $this->goHome();
-		} else {
-			if ($this->app->request->isAjax) {
-				return Helper::jsonData(['error' => true, 'message' => $model->errors['password'][0]]);
-			}
-		}
-
-		return $this->render('index', [
-			'model' => $model
-		]);
-	}
+        return $this->render('index', [
+            'model' => $model
+        ]);
+    }
 
     public function actionLogout()
     {
@@ -52,5 +51,4 @@ class LoginController extends BaseController
 
         return $this->redirect(['/admin/login']);
     }
-
 }

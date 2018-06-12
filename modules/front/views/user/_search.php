@@ -28,25 +28,25 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'access_token') ?>
 
-    <?php // echo $form->field($model, 'password_reset_token') ?>
+    <?php // echo $form->field($model, 'password_reset_token')?>
 
-    <?php // echo $form->field($model, 'role') ?>
+    <?php // echo $form->field($model, 'role')?>
 
-    <?php // echo $form->field($model, 'name') ?>
+    <?php // echo $form->field($model, 'name')?>
 
-    <?php // echo $form->field($model, 'slug_name') ?>
+    <?php // echo $form->field($model, 'slug_name')?>
 
-    <?php // echo $form->field($model, 'avatar') ?>
+    <?php // echo $form->field($model, 'avatar')?>
 
-    <?php // echo $form->field($model, 'archive') ?>
+    <?php // echo $form->field($model, 'archive')?>
 
-    <?php // echo $form->field($model, 'type') ?>
+    <?php // echo $form->field($model, 'type')?>
 
-    <?php // echo $form->field($model, 'lang') ?>
+    <?php // echo $form->field($model, 'lang')?>
 
-    <?php // echo $form->field($model, 'timezone') ?>
+    <?php // echo $form->field($model, 'timezone')?>
 
-    <?php // echo $form->field($model, 'status') ?>
+    <?php // echo $form->field($model, 'status')?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

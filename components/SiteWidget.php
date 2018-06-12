@@ -25,14 +25,15 @@ class SiteWidget extends Widget
         }
     }
 
-	/**
-	 * @param array $except_job_ids
-	 * @return string|void
-	 */
-    public function footer($except_job_ids = []){
-	    $data = Job::instance()->getRecentJobsSidebar($except_job_ids, 3);
-	    return $this->render('site/footer', [
-		    'data' => $data
-	    ]);
+    /**
+     * @param array $except_job_ids
+     * @return string|void
+     */
+    public function footer($except_job_ids = [])
+    {
+        $data = Job::instance()->getRecentJobsSidebar($except_job_ids, 3);
+        return $this->render('site/footer', [
+            'data' => $data
+        ]);
     }
 }

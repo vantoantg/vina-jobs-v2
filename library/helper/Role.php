@@ -21,11 +21,12 @@ class Role
         ROLE_CUSTOMMER      = 8,
         ROLE_GUEST          = 9;
 
-    public function init(){
-
+    public function init()
+    {
     }
     
-    public static function getListRole(){
+    public static function getListRole()
+    {
         return [
             self::ROLE_ADMINISTRATOR    => 'Administrator',
             self::ROLE_ADMIN            => 'Admin',
@@ -43,8 +44,9 @@ class Role
      * @param bool|false $role
      * @return bool
      */
-    public static function allowAdmin($role = false){
-        if($role == false){
+    public static function allowAdmin($role = false)
+    {
+        if ($role == false) {
             $role = Common::currentUser('role', false);
         }
         if (in_array($role, [
@@ -60,8 +62,9 @@ class Role
      * @param bool|false $role
      * @return bool
      */
-    public static function allowSite($role = false){
-        if($role == false){
+    public static function allowSite($role = false)
+    {
+        if ($role == false) {
             $role = Common::currentUser('role', false);
         }
         if (in_array($role, [
@@ -85,8 +88,9 @@ class Role
      * @param bool|false $role
      * @return bool
      */
-    public static function checkRemoveUser($role = false){
-        if($role == false){
+    public static function checkRemoveUser($role = false)
+    {
+        if ($role == false) {
             $role = Common::currentUser('role', false);
         }
         if (in_array($role, [
@@ -102,8 +106,9 @@ class Role
      * @param bool|false $role
      * @return bool
      */
-    public static function checkAdminTN($role = false){
-        if($role == false){
+    public static function checkAdminTN($role = false)
+    {
+        if ($role == false) {
             $role = Common::currentUser('role', false);
         }
         if (in_array($role, [

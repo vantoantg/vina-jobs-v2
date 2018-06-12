@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\Pjax;
 use yii\helpers\Url;
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\System */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -22,7 +23,8 @@ $this->params['breadcrumbs'][] = $this->title;
 				<?php \yii\bootstrap\ActiveForm::end(); ?>
             </div>
             <div class="col-lg-12">
-				<?php if($files) { ?>
+				<?php if ($files) {
+    ?>
                     <table id="spend-management-template" class="table table-striped table-bordered">
                         <thead>
                         <tr>
@@ -35,7 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         </tr>
                         </thead>
                         <tbody">
-						<?php foreach($files as $k => $file){ ?>
+						<?php foreach ($files as $k => $file) {
+        ?>
                             <tr>
                                 <td class="type"><?= $k + 1 ?></td>
                                 <td class="name"><?= $file['name'] ?></td>
@@ -48,12 +51,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <a href="<?= Url::to('/admin/admin/backup-db?delete='.$file['name']) ?>" title="DELETE" data-widget="confirm-delete" data-confirm-text="Are you sure you want to delete this item?"><span class="glyphicon glyphicon-trash"></span></a>
                                 </td>
                             </tr>
-						<?php } ?>
+						<?php
+    } ?>
                         </tbody>
                     </table>
-				<?php }else{ ?>
+				<?php
+} else {
+        ?>
                     <p>No database.</p>
-				<?php } ?>
+				<?php
+    } ?>
             </div>
         </div>
     </div>
