@@ -10,6 +10,7 @@ var Jobs = function(){
     var applyModal = $('#apply-modal');
     var _callToPreApply = false;
     var _dataPreApply = [];
+    var _isAddedFile = false;
 
     return{
         init: function(){
@@ -74,6 +75,17 @@ var Jobs = function(){
                     } else {
                         applyModal.find('ul li.file input').val('');
                         applyModal.find('ul li.file').addClass('hide');
+                    }
+                });
+                applyModal.find('ul li.file input').change(function () {
+                    _isAddedFile = $(this).val();
+                });
+
+                applyModal.on('click', '[name="apply"]', function (e) {
+                    if($('ul.cv-new li.radio label input').is(':checked') && !_isAddedFile) {
+                        e.preventDefault();
+                        applyModal.find('ul li.file > div').addClass('has-error');
+                        applyModal.find('ul li.file div.help-block').show().html('Vui lòng chọn tệp tải lên');
                     }
                 });
             });

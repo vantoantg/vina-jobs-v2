@@ -38,8 +38,8 @@ use yii\widgets\ActiveForm;
 					<div class="panel-body">
 						<div class="tab-content">
 							<div class="tab-pane active" id="tabs-cv-valid">
-								<ul>
-                                    <li>
+								<ul class="cv-new">
+                                    <li class="radio">
                                         <label>
                                             <input type="radio" class="radio-inline" name="radios" value="upload">
                                             <span class="outside"><span class="inside"></span></span>Tải CV mới</label>
