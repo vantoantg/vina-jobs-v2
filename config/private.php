@@ -9,9 +9,13 @@
  */
 
 return [
+    'encrypt' => [
+    	'my_simple_secret_key' => '',
+    	'my_simple_secret_iv' => '',
+    ],
     'db' => [
-        'dsn' => 'mysql:host=localhost;dbname=zadmin_vnjobs',
-        'username' => 'root',
-        'password' => 'root',
+        'dsn' => 'mysql:host=;dbname=',
+        'username' => '',
+        'password' => '',
     ],
 ];
