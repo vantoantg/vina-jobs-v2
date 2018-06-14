@@ -69,7 +69,6 @@ var Jobs = function(){
                 }
 
                 applyModal.on('click', 'ul li input[type="radio"]', function () {
-                    console.log($(this).val());
                     if ($(this).val() == 'upload') {
                         applyModal.find('ul li.file').removeClass('hide');
                     } else {
@@ -95,7 +94,7 @@ var Jobs = function(){
                     var html = _.template($('#cv-list').html())({list : _data.data });
                     $('#tabs-cv-valid ul.cv-list').html(html);
                 }else{
-                    $('a[href="#tabs-cv-valid"]').hide();
+                    $('ul.cv-new li.radio label input').click();
                 }
             };
         },

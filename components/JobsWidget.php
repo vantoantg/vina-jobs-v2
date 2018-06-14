@@ -33,7 +33,7 @@ class JobsWidget extends Widget
     {
         $form = new ApplyForm();
 
-        if ($form->load(\Yii::$app->request->post())) {
+        if ($form->load(\Yii::$app->request->post()) && Yii::$app->request->post('apply')) {
             $form->new_cv = UploadedFile::getInstance($form, 'new_cv');
             if ($form->new_cv) {
                 $file_type = $form->new_cv->extension;
