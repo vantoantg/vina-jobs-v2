@@ -112,11 +112,17 @@ class UserController extends FrontController
                     $transaction->commit();
                     // TODO: Send email
                     $data['name'] = $model->name;
+                    $data['email'] = $model->email;
+                    $data['phone'] = $userDetail->phone;
                     $data['link'] = Url::to('/candidate/active/token/'.$token_waiting_active.'.html', true);
-                    $temp = $this->renderPartial('@app/mail/layouts/active_user_register', ['data' => $data]);
+//                    $temp = $this->renderPartial('@app/mail/layouts/active_user_register', ['data' => $data]);
 
                     // TODO: comment out
 //                    Email::sendMail('Instructions to activate your account - ' . Helper::siteURL(), $temp);
+
+                    // Inform Candidate register
+	                $temp = $this->renderPartial('@app/mail/layouts/noti_candidate_register', ['data' => $data]);
+                    Email::sendNotiCandidateRegister('Have a Candidate just register ' . Helper::siteURL(), $temp);
                 }
 
                 return $this->render('register_candidate_success', [

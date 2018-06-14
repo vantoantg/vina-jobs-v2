@@ -347,6 +347,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
            data-action="apply"
            data-toggle="modal"
            data-target="#apply-modal"
+           data-job-code="<%= k.job_code %>"
            data-href="<?= Helper::createUrl(['front/jobs/preapply']); ?>"
         >Apply</a>
         <% } %>

@@ -15,11 +15,15 @@ use yii\widgets\ActiveForm;
 		<div class="modal-content">
 			<?php $form = ActiveForm::begin([
                 'method' => 'post',
+                'action' => \app\library\helper\Helper::createUrl(['front/jobs/apply-job']),
                 'options' => [
                     'class' => 'form floating-label',
                     'accept-charset' => 'utf-8',
                 ],
             ]); ?>
+			<?= $form->field($applyForm, 'redirect')->hiddenInput()->label(false); ?>
+			<?= $form->field($applyForm, 'job_code')->hiddenInput()->label(false); ?>
+
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 				<h3 class="modal-title" id="lineModalLabel">Apply</h3>

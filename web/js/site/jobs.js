@@ -55,8 +55,11 @@ var Jobs = function(){
             });
         },
         loadBtnApplyPopup: function(){
+
             $('div.container').on('click', '.apply-job', function (e) {
                 e.preventDefault();
+                applyModal.find('input#applyform-job_code').val($(this).data('job-code'));
+
                 if(_callToPreApply === false){
                     var _btn = $(this);
                     Service.postCallback(_btn.data('href'), {'action': 'applỵ'}, function (res) {

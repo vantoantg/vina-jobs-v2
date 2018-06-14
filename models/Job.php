@@ -20,6 +20,25 @@ use yii\db\Query;
 
 class Job extends Jobs
 {
+
+	/**
+	 * @param $job_code
+	 * @return bool|string
+	 */
+	public function getJobCode($job_code)
+	{
+		return Helper::encrypt($job_code, false);
+	}
+
+	/**
+	 * @param $job_code
+	 * @return bool|string
+	 */
+	public function setJobCode($job_code)
+	{
+		return Helper::encrypt($job_code);
+	}
+
     const
         STATUS_WAITING_APPROVE = 0;
     const STATUS_ACTIVE = 1;
@@ -211,6 +230,7 @@ class Job extends Jobs
             $result = [];
             foreach ($data as $k => $item) {
                 $item['isGuest'] = Common::isGuest();
+                $item['job_code'] = $this->setJobCode($item['job_id']);
                 $item['salary'] = $this->getSalary($item['salary']);
                 $item['com_logo'] = Company::getLogo($item['com_logo'], 70, 70);
                 $item['working_time'] = Dropdowns::$working_time[$item['working_time']];

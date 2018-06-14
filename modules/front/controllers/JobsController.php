@@ -10,11 +10,13 @@
 
 namespace app\modules\front\controllers;
 
+use app\forms\ApplyForm;
 use app\library\helper\Common;
 use app\library\helper\Datetime;
 use app\library\helper\Helper;
 use app\models\Company;
 use app\models\CurriculumVitae;
+use app\models\Email;
 use app\models\FileUploads;
 use app\models\Job;
 use app\models\UserJobs;
@@ -24,12 +26,21 @@ use Yii;
 use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
+use yii\web\UploadedFile;
 
 /**
  * Default controller for the `front` module
  */
 class JobsController extends FrontController
 {
+	private $attachment;
+
+	/**
+	 * @param $slug
+	 * @param $id
+	 * @return Response
+	 * @throws BadRequestHttpException
+	 */
     public function actionFavorite($slug, $id)
     {
         if (!Yii::$app->request->isAjax) {
@@ -237,6 +248,31 @@ class JobsController extends FrontController
             'company' => $company,
             'galleries' => FileUploads::instance()->getGallery(FileUploads::COM_GALLERY, $company->id),
         ]);
+    }
+
+    public function actionApplyJob(){
+	    $form = new ApplyForm();
+
+	    if ($form->load(\Yii::$app->request->post()) && Yii::$app->request->post('apply')) {
+		    $form->new_cv = UploadedFile::getInstance($form, 'new_cv');
+		    if ($form->new_cv) {
+			    $file_type = $form->new_cv->extension;
+			    $file_name = $form->new_cv->baseName;
+			    $file_path = $form->new_cv->baseName.'-'.md5(date('dmyhis')).'.'.$file_type;
+			    $this->attachment = Yii::$app->basePath.'/'.Yii::$app->params['companyCandidatePath'].$file_path;
+			    $form->new_cv->saveAs($this->attachment);
+			    FileUploads::saveFile(FileUploads::CANDIDATE, $file_path, $file_name, $file_type);
+		    } else {
+			    $this->attachment = Yii::$app->basePath.'/'.Yii::$app->params['companyCandidatePath']. 123;
+		    }
+
+		    // Save log to db
+
+		    // Send email
+		    $data['contactName'] = '';
+		    $body = $this->renderPartial('@app/mail/layouts/candidate_apply_job', ['data' => $data]);
+		    Email::sendMailApply(' Chao ban abc ...', $body, '', '', $this->attachment);
+	    }
     }
 
     /**

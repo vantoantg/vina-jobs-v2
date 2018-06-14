@@ -21,6 +21,8 @@ class ApplyForm extends Model
 {
     public $message;
     public $new_cv;
+    public $job_code;
+    public $redirect;
 
     /**
      * @return array the validation rules.
@@ -28,7 +30,7 @@ class ApplyForm extends Model
     public function rules()
     {
         return [
-            [['message'], 'string'],
+            [['message', 'job_code', 'redirect'], 'string'],
             [['message'], 'required'],
             [['new_cv'], 'file', 'extensions' => 'pdf, pptx, docx, doc', 'maxSize' => 3072000, 'tooBig' => 'Chỉ tải lên file dưới 3MB'],
         ];
