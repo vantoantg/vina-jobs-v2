@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 Helper::generateSeo($page);
 
 /** @var $userInfo \app\models\UserDetails $userInfo */
-$userInfo = \app\models\UserDetails::getInfo();
+$userInfo = \app\models\UserDetails::instance()->getInfo();
 \app\components\Menu\ActiveMenu::is('employeers');
 ?>
 

@@ -51,7 +51,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 } ?>
 
                 <?php $form = ActiveForm::begin(); ?>
-	            <div class="row">
+	            <div class="row row-20-5">
 		            <div class="col-xs-12">
 			            <h3>THÔNG TIN CÔNG TY</h3>
 		            </div>
@@ -123,7 +123,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 
                 <?php if ($model->isNewRecord) {
                                     ?>
-		            <div class="row">
+		            <div class="row row-20-5">
 			            <div class="col-xs-12 col-sm-6">
                             <div class="cols-sm-10">
 					            <?= $form->field($model, 'password', [
@@ -144,7 +144,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                 <?php
                                 } ?>
 
-	            <div class="row">
+	            <div class="row row-20-5">
 		            <div class="col-xs-12 col-sm-8">
 			            <div class="form-group">
 				            <label for="email" class="cols-sm-2 control-label">Địa chỉ</label>
@@ -178,7 +178,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 		            </div>
 	            </div>
 
-	            <div class="row">
+	            <div class="row row-20-5">
 		            <div class="col-xs-12 col-sm-4">
 			            <div class="form-group">
 				            <label for="email" class="cols-sm-2 control-label">Giới tính</label>

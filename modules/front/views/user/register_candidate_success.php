@@ -31,9 +31,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     <button class="navbar-btn nav-button <?= Helper::wowClass(); ?> bounceInRight login animated" data-toggle="modal" data-target="#login-modal" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: bounceInRight;"><i class="fas fa-sign-in-alt"></i> Đăng nhập
                     </button>
                     <br>
-                    <a role="menuitem" tabindex="-1"
-                       href="<?= Helper::createUrl(['front/user/update-candidate']); ?>"><i class="far fa-edit"></i>
-                        Tiếp tục cập nhật thông tin</a>
                 </div>
 
                 <div class="clearfix"></div>

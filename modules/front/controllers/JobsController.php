@@ -19,6 +19,7 @@ use app\models\CurriculumVitae;
 use app\models\Email;
 use app\models\FileUploads;
 use app\models\Job;
+use app\models\UserDetails;
 use app\models\UserJobs;
 use app\models\Users;
 use Carbon\Carbon;
@@ -33,14 +34,16 @@ use yii\web\UploadedFile;
  */
 class JobsController extends FrontController
 {
-	private $attachment;
+    private $attachment;
 
-	/**
-	 * @param $slug
-	 * @param $id
-	 * @return Response
-	 * @throws BadRequestHttpException
-	 */
+    /**
+     * @param $slug
+     * @param $id
+     *
+     * @return Response
+     *
+     * @throws BadRequestHttpException
+     */
     public function actionFavorite($slug, $id)
     {
         if (!Yii::$app->request->isAjax) {
@@ -75,6 +78,7 @@ class JobsController extends FrontController
                 foreach ($cv as $item) {
                     $data[] = [
                         'created_at' => Carbon::createFromFormat(Datetime::SQL_DATETIME, $item['created_at'])->diffForHumans(),
+                        'file_path' => $item['file_path'],
                         'file_name' => $item['file_name'],
                     ];
                 }
@@ -250,29 +254,51 @@ class JobsController extends FrontController
         ]);
     }
 
-    public function actionApplyJob(){
-	    $form = new ApplyForm();
+    public function actionApplyJob()
+    {
+        $form = new ApplyForm();
 
-	    if ($form->load(\Yii::$app->request->post()) && Yii::$app->request->post('apply')) {
-		    $form->new_cv = UploadedFile::getInstance($form, 'new_cv');
-		    if ($form->new_cv) {
-			    $file_type = $form->new_cv->extension;
-			    $file_name = $form->new_cv->baseName;
-			    $file_path = $form->new_cv->baseName.'-'.md5(date('dmyhis')).'.'.$file_type;
-			    $this->attachment = Yii::$app->basePath.'/'.Yii::$app->params['companyCandidatePath'].$file_path;
-			    $form->new_cv->saveAs($this->attachment);
-			    FileUploads::saveFile(FileUploads::CANDIDATE, $file_path, $file_name, $file_type);
-		    } else {
-			    $this->attachment = Yii::$app->basePath.'/'.Yii::$app->params['companyCandidatePath']. 123;
-		    }
+        if ($form->load(\Yii::$app->request->post())) {
+            $form->new_cv = UploadedFile::getInstance($form, 'new_cv');
+            $applyForm = \Yii::$app->request->post();
+            if ($form->new_cv) {
+                $file_type = $form->new_cv->extension;
+                $file_name = $form->new_cv->baseName;
+                $file_path = $form->new_cv->baseName.'-'.md5(date('dmyhis')).'.'.$file_type;
+                $this->attachment = Yii::$app->basePath.'/'.Yii::$app->params['companyCandidatePath'].$file_path;
+                $form->new_cv->saveAs($this->attachment);
+                FileUploads::saveFile(FileUploads::CANDIDATE, $file_path, $file_name, $file_type);
+            } else {
+                $this->attachment = Yii::$app->basePath.'/'.Yii::$app->params['companyCandidatePath'].$applyForm['radios'];
+            }
 
-		    // Save log to db
+            $job_id = Job::instance()->getJobCode($applyForm['ApplyForm']['job_code']);
+            $job = Job::instance()->getJobAndContact($job_id);
 
-		    // Send email
-		    $data['contactName'] = '';
-		    $body = $this->renderPartial('@app/mail/layouts/candidate_apply_job', ['data' => $data]);
-		    Email::sendMailApply(' Chao ban abc ...', $body, '', '', $this->attachment);
-	    }
+            // Save log to db
+
+            // Send email
+            $userDetail = UserDetails::instance()->getInfo();
+
+            $data['linkJobDetail'] = Helper::siteURL(true).Helper::createUrl([
+                'site/employeers-detail',
+                'slug' => $job['slug'],
+                'id' => $job_id,
+            ]);
+            $data['contactName'] = $job['name'];
+            $data['candidateName'] = $userDetail->last_name;
+            $data['candidateEmail'] = Common::currentUsers()->email;
+            $data['candidatePhone'] = $userDetail->phone;
+            //TODO: Add more and more infomation to send via email for contact
+            $body = $this->renderPartial('@app/mail/layouts/candidate_apply_job', ['data' => $data]);
+            // Send and CC to admin
+            Email::sendMailApply('There is a candidate who has submitted the CV via '.Helper::params(), $body,
+                $job['email'], $job['name'], $this->attachment);
+
+            return $this->redirect($applyForm['ApplyForm']['redirect']);
+        } else {
+            throw new BadRequestHttpException();
+        }
     }
 
     /**

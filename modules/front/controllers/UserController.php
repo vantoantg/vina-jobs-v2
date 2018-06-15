@@ -120,9 +120,9 @@ class UserController extends FrontController
                     // TODO: comment out
 //                    Email::sendMail('Instructions to activate your account - ' . Helper::siteURL(), $temp);
 
-                    // Inform Candidate register
-	                $temp = $this->renderPartial('@app/mail/layouts/noti_candidate_register', ['data' => $data]);
-                    Email::sendNotiCandidateRegister('Have a Candidate just register ' . Helper::siteURL(), $temp);
+                    // Inform Candidate registered
+                    $temp = $this->renderPartial('@app/mail/layouts/noti_candidate_register', ['data' => $data]);
+                    Email::sendNotiCandidateRegister('A candidate has just registered an account on '.Helper::siteURL(), $temp);
                 }
 
                 return $this->render('register_candidate_success', [
@@ -294,6 +294,12 @@ class UserController extends FrontController
                 $model->update();
                 $temp = $this->renderPartial('@app/mail/layouts/company_register_success', ['data' => $data]);
                 Email::sendMail(Helper::params().' - Active your account', $temp, $model->email, $model->name);
+
+                // Inform Candidate registered
+                $data['email'] = $model->email;
+                $data['phone'] = $userDetail->phone;
+                $temp = $this->renderPartial('@app/mail/layouts/noti_candidate_register', ['data' => $data]);
+                Email::sendNotiCandidateRegister('A company has just registered contact on the website '.Helper::params(), $temp);
             }
 
             return $this->render('register_company_success', [

@@ -69,7 +69,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 } ?>
 
                 <?php $form = ActiveForm::begin(); ?>
-				<div class="row">
+				<div class="row row-20-5">
 					<div class="col-xs-12 col-sm-12 avatar-view">
                         <?= $form->field($model, 'avatar')->hiddenInput(['class' => 'hidden_base64'])->label(false); ?>
 						<a href="#" data-toggle="modal" data-target="#register-avatar" data-wow-delay="0.6s" title="Nhấp vào đây để tải ảnh lên">
@@ -77,7 +77,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 						</a>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row row-20-5">
 					<div class="col-xs-12 col-sm-6">
 						<div class="form-group">
 							<label for="name" class="cols-sm-2 control-label">Họ & Tên<span class="red"> (*)</span></label>
@@ -101,7 +101,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 					</div>
 				</div>
 
-				<div class="row">
+				<div class="row row-20-5">
 					<div class="col-xs-12 col-sm-6">
 						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">Mật khẩu<span class="red"> (*)</span></label>
@@ -126,7 +126,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 					</div>
 				</div>
 
-				<div class="row">
+				<div class="row row-20-5">
 					<div class="col-xs-12 col-sm-5">
 						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">Tỉnh / TP có thể làm việc<span class="red"> (*)</span></label>
@@ -179,7 +179,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 					</div>
 				</div>
 
-				<div class="row">
+				<div class="row row-20-5">
 					<div class="col-xs-12 col-sm-8">
 						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">Địa chỉ của bạn</label>
@@ -205,7 +205,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 					</div>
 				</div>
 
-				<div class="row">
+				<div class="row row-20-5">
 					<div class="col-xs-12 col-sm-4">
 						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">Sinh nhật</label>
@@ -253,13 +253,13 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 					</div>
 				</div>
 
-				<div class="row">
+				<div class="row row-20-5">
 					<div class="col-xs-12">
                         <?= $form->field($candidate, 'file')->fileInput()->label('Tải CV'); ?>
 					</div>
 				</div>
 
-				<div class="row">
+				<div class="row row-20-5">
 					<div class="col-xs-12">
 	                    <?= $form->field($userDetail, 'about_me')->widget(\yii\redactor\widgets\Redactor::className(), [
                             'clientOptions' => Helper::redactorOps('Hãy giới thiệu bản thân mình, điểm mạnh, điểm yếu, tính cách, các kỹ năng, trình độ học vấn, kinh nghiệm làm việc... để tạo sự chú ý cho nhà tuyển dụng nhanh nhất.'),
@@ -267,7 +267,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 					</div>
 				</div>
 
-                <div class="row">
+                <div class="row row-20-5">
                     <div class="col-xs-12">
 						<?= $form->field($candidate, 'client_status')->radioList([\app\models\Candidate::STATUS_CLIENT_PUBLISH => 'Đã sẵn sàng', \app\models\Candidate::STATUS_CLIENT_DRAFT => 'Chưa sẵn sàng'], ['class' => 'iCheck'])->label('Hiện thị hồ sơ của bạn khi nguời dùng tìm kiếm ?'); ?>
                     </div>
