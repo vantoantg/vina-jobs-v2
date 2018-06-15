@@ -163,26 +163,41 @@ class Job extends Jobs
 
     /**
      * @param $job_id
-     *
+     * @param array $columns
      * @return array|false
      */
-    public static function getJob($job_id)
+    public function getJob($job_id, $columns = [])
     {
+        if(!$columns){
+            $columns = ['job.id', 'job.company_id', 'job.title', 'job.slug', 'job.content', 'ujob.applied', 'ujob.saved'];
+        }
         $user_id = Common::isLoginned() ? Common::currentUsers()->getId() : 0;
         $query = new Query();
-        $query->select(
-            [
-                'job.id',
-                'job.company_id',
-                'job.title',
-                'job.slug',
-                'job.content',
-                'ujob.applied',
-                'ujob.saved',
-            ]
-        )
+        $query->select($columns)
             ->from('tn_jobs job')
             ->leftJoin('tn_user_jobs ujob', 'ujob.jobs_id = job.id AND ujob.user_id = :user_id AND ujob.is_deleted = 0', ['user_id' => $user_id])
+            ->where('job.id = :job_id', ['job_id' => $job_id]);
+
+        $command = $query->createCommand();
+
+        return $command->queryOne();
+    }
+
+    /**
+     * @param $job_id
+     * @param array $columns
+     * @return array|false
+     */
+    public function getJobAndContact($job_id, $columns = [])
+    {
+        if(!$columns){
+            $columns = ['job.`title`, job.`slug`, u.`name`, u.`email`'];
+        }
+
+        $query = new Query();
+        $query->select($columns)
+            ->from('tn_jobs job')
+            ->leftJoin('tn_user u', 'u.id = job.`created_by`')
             ->where('job.id = :job_id', ['job_id' => $job_id]);
 
         $command = $query->createCommand();

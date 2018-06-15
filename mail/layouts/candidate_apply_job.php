@@ -219,11 +219,13 @@ use app\library\helper\Helper;
 		</tr>
 		<tr>
 			<td bgcolor="#ffffff" style="padding: 0 0px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: left;">
-				<p style="margin: 0;">Chào <b><?= $data['contactName'] ?></b>! bạn vừa nhận được thông tin candidate apply tin của bạn<?= Helper::params() ?> như sau:</p>
+				<p style="margin: 0;">Chào <b><?= $data['contactName'] ?></b>! bạn vừa nhận được thông tin candidate apply tin tuyển dụng của bạn qua website <?= Helper::params() ?> như sau:</p>
 				<p style="margin: 0;">
-					<b>Tên</b>: <?= $data['candidateName'] ?><br>
+					<b>Tin bạn đã đăng: </b> <?= $data['linkJobDetail'] ?><br>
+					<b>Tên ứng viên</b>: <?= $data['candidateName'] ?><br>
 					<b>Email</b>: <?= $data['candidateEmail'] ?><br>
 					<b>SĐT</b>: <?= $data['candidatePhone'] ?><br>
+					<b>CV</b>: Tệp tinh đính kèm<br>
 				</p>
 			</td>
 		</tr>

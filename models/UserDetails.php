@@ -132,7 +132,7 @@ class UserDetails extends \app\models\base\UserDetails
      *
      * @return UserDetails|array|null|\yii\db\ActiveRecord
      */
-    public static function getInfo($userId = null)
+    public function getInfo($userId = null)
     {
         if ($userId == null) {
             $userId = Common::currentUser();

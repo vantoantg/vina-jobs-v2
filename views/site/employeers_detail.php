@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	            <?php if ($galleries) {
     ?>
                 <div class="gallery col-xs-12">
-                    <div class="row">
+                    <div class="row row-sm-20-5">
 	                    <?php foreach ($galleries as $k => $gallery) {
         ?>
                             <div class="col-xs-4 item">
@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ?>
 					<?php if (Common::currentUsers()->type != \app\models\Users::USER_TYPE_CONTACT_OF_COMPANY) {
                     ?>
-                        <div class="well text-center">
+                        <div class="well text-center pd-lr-0">
                             <button type="button" data-action="favorite"
                                     class="btn btn-sunny text-uppercase btn-lg save-jobs <?php if ($job['saved']) {
                         echo '_saved';
@@ -82,7 +82,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<?php
             } else {
                 ?>
-                    <div class="well text-center">
+                    <div class="well text-center pd-lr-0">
                         <button type="button" data-action="favorite"
                                 class="btn btn-sunny text-uppercase btn-lg" <?= Helper::checkLogin(); ?>><i
                                     class="far fa-save"></i> Lưu tin này

@@ -98,14 +98,13 @@ class Email extends Model
             $mail->addAddress($toEmail, $toName);     // Add a recipient
             //		    $mail->addAddress('admin@vina-jobs.com');               // Name is optional
             $mail->addReplyTo($m['options']['addReplyTo'], 'noreply');
-            //		    $mail->addCC('cc@example.com');
+            $mail->addCC(Helper::params('adminEmail'), 'Tona Nguyen - Noti');
             //		    $mail->addBCC('bcc@example.com');
 
             //Attachments
             if ($attachment) {
                 $mail->addAttachment($attachment);         // Add attachments /var/tmp/file.tar.gz
             }
-            //		    $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
             //Content
             $mail->isHTML(true);                                  // Set email format to HTML
@@ -166,7 +165,7 @@ class Email extends Model
         }
     }
 
-	public function sendNotiCandidateRegister($subject, $body)
+	public static function sendNotiCandidateRegister($subject, $body)
 	{
 		$mail = new PHPMailer();                              // Passing `true` enables exceptions
 		try {
