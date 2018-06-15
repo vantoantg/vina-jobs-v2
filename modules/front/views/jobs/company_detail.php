@@ -6,9 +6,6 @@
 /* @var $model app\models\Job */
 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
-use app\library\helper\Helper;
-use \app\library\helper\Common;
 
 $this->title = $company['name'];
 $this->params['breadcrumbs'][] = $this->title;
@@ -16,10 +13,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="container">
     <div class="col-12 col-sm-8">
-        <div class="employeers-detail <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.1s">
+        <div class="employeers-detail <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp" data-wow-delay="0.1s">
 
             <div class="row">
-                <h1 class="text-center"><?= Html::encode($this->title) ?></h1>
+                <h1 class="text-center"><?= Html::encode($this->title); ?></h1>
             </div>
             <div class="row content">
 	            <?php if ($galleries) {
@@ -30,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ?>
                             <div class="col-xs-4 item">
                                 <a href="#" data-toggle="modal" data-target="#viewGallery">
-                                    <img src="<?= $gallery['thum'] ?>" class="img-thumbnail" alt="Los Angeles">
+                                    <img src="<?= $gallery['thum']; ?>" class="img-thumbnail" alt="Los Angeles">
                                 </a>
                             </div>
 	                    <?php
@@ -66,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <ol class="carousel-indicators">
 	                    <?php foreach ($galleries as $k => $gallery) {
             ?>
-                        <li data-target="#myCarousel" data-slide-to="<?= $k ?>" class="<?php if ($k == 0) {
+                        <li data-target="#myCarousel" data-slide-to="<?= $k; ?>" class="<?php if ($k == 0) {
                 echo 'active';
             } ?>"></li>
 	                    <?php
@@ -80,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="item <?php if ($k == 0) {
                 echo 'active';
             } ?>">
-                            <img src="<?= $gallery['view'] ?>" alt="Los Angeles">
+                            <img src="<?= $gallery['view']; ?>" alt="Los Angeles">
                         </div>
                         <?php
         } ?>

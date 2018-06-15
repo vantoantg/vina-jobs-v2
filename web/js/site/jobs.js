@@ -7,11 +7,16 @@ var Jobs = function(){
     var site_employeers_detail = $('body.site-employeers-detail');
     var site_index = $('body.default-index');
 
+    var applyModal = $('#apply-modal');
+    var _callToPreApply = false;
+    var _dataPreApply = [];
+    var _isAddedFile = false;
+
     return{
         init: function(){
             this.events();
 
-            if($('#apply-modal').length){
+            if(applyModal.length){
                 this.loadBtnApplyPopup();
             }
             if(site_employeers_detail.length){
@@ -50,18 +55,51 @@ var Jobs = function(){
             });
         },
         loadBtnApplyPopup: function(){
+
             $('div.container').on('click', '.apply-job', function (e) {
                 e.preventDefault();
-                var _btn = $(this);
-                Service.postCallback(_btn.data('href'), {'action': 'applỵ'}, function (res) {
-                    if(res.data.length){
-                        var html = _.template($('#cv-list').html())({list : res.data });
-                        $('#tabs-cv-valid ul').html(html);
-                    }else{
-                        $('a[href="#tabs-cv-valid"]').hide();
+                applyModal.find('input#applyform-job_code').val($(this).data('job-code'));
+
+                if(_callToPreApply === false){
+                    var _btn = $(this);
+                    Service.postCallback(_btn.data('href'), {'action': 'applỵ'}, function (res) {
+                        _dataPreApply = res;
+                        renderPopupApply(_dataPreApply);
+                        _callToPreApply = true;
+                    });
+                }else {
+                    renderPopupApply(_dataPreApply);
+                }
+
+                applyModal.on('click', 'ul li input[type="radio"]', function () {
+                    if ($(this).val() == 'upload') {
+                        applyModal.find('ul li.file').removeClass('hide');
+                    } else {
+                        applyModal.find('ul li.file input').val('');
+                        applyModal.find('ul li.file').addClass('hide');
+                    }
+                });
+                applyModal.find('ul li.file input').change(function () {
+                    _isAddedFile = $(this).val();
+                });
+
+                applyModal.on('click', '[name="apply"]', function (e) {
+                    if($('ul.cv-new li.radio label input').is(':checked') && !_isAddedFile) {
+                        e.preventDefault();
+                        applyModal.find('ul li.file > div').addClass('has-error');
+                        applyModal.find('ul li.file div.help-block').show().html('Vui lòng chọn tệp tải lên');
                     }
                 });
             });
+
+            var renderPopupApply = function (_data) {
+                if(_data.data.length){
+                    var html = _.template($('#cv-list').html())({list : _data.data });
+                    $('#tabs-cv-valid ul.cv-list').html(html);
+                }else{
+                    $('ul.cv-new li.radio label input').click();
+                }
+            };
         },
         handleActiveImgWhenClickShowPopupGellery: function(){
             var myCarousel = $('#myCarousel');

@@ -1,5 +1,13 @@
 <?php
 
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\models;
 
 use app\library\helper\Common;
@@ -8,9 +16,11 @@ use app\library\helper\Datetime;
 class Comment extends \app\models\base\Comment
 {
     const BLOG = 'blog';
+
     /**
      * @param $object_id
      * @param $object_type
+     *
      * @return array
      */
     public function getList($object_id, $object_type)
@@ -24,7 +34,7 @@ class Comment extends \app\models\base\Comment
                 'cm.comment',
                 'cm.created_at',
             ])
-            ->where('object_id = :object_id AND object_type = :object_type AND is_deleted = 0', ['object_id' => $object_id, 'object_type' =>$object_type])
+            ->where('object_id = :object_id AND object_type = :object_type AND is_deleted = 0', ['object_id' => $object_id, 'object_type' => $object_type])
             ->innerJoin('tn_user_details u', 'cm.created_by = u.user_id')
             ->groupBy('cm.id')
             ->orderBy(['parent_id' => SORT_ASC, 'id' => SORT_ASC])
@@ -37,6 +47,7 @@ class Comment extends \app\models\base\Comment
                 $item['date'] = Datetime::sqlDatetimeDiffForHumans($item['created_at']);
                 $return[] = $item;
             }
+
             return $return;
         }
 
@@ -45,6 +56,7 @@ class Comment extends \app\models\base\Comment
 
     /**
      * @param $post
+     *
      * @return bool
      */
     public function addComment($post)

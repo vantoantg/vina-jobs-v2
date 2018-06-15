@@ -13,16 +13,16 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pages-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title); ?></h1>
     <?php Pjax::begin(['timeout' => 15000]); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]);?>
 
     <p>
-        <?= Html::a('Create Pages', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Pages', ['create'], ['class' => 'btn btn-success']); ?>
     </p>
 
     <?= GridView::widget([
-        'layout' => "{pager} {summary} {items} {pager}",
+        'layout' => '{pager} {summary} {items} {pager}',
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [

@@ -1,10 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HP570
- * Date: 6/6/2018
- * Time: 12:33 PM
+
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
  */
+
 namespace app\components\Menu;
 
 class ActiveMenu

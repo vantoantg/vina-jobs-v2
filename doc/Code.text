@@ -33,7 +33,7 @@ Rich Text Input With Redactor:
 composer require --prefer-dist yiidoc/yii2-redactor "*"
 
 PHP_CS_FIXER - PS2
-vendor\bin\php-cs-fixer.bat fix C:\wamp64\www\demo2\modules
+vendor\bin\php-cs-fixer.bat fix C:\wamp64\www\demo2\modules --config=.php_cs.dist
 
 SENTORA SERVER:
 ########################################################
@@ -71,6 +71,5 @@ https://muassl.com/tai-khoan/don-hang-ssl/chitiet/M0454997.html
 ------------------------------------------------------------------------------------------------------------------------
 nvtoan@lockon-vn.com / tona01 / upajupy7y
 
-/var/zpanel/hostdata/zadmin/public_html/vina-jobs_com/doc/ssl-doc/vina-jobs/sslforfree
-
-jobsvina.com.ca-bundle  jobsvina.com.crt  jobsvina.com.key
+TODO: List
+https://docs.google.com/spreadsheets/d/1J-bQBYpLSRa2FdkAu0Vi9Po-ebWU-NbPlJB_Ga57pWE/edit#gid=1386834576

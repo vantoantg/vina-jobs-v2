@@ -14,25 +14,25 @@ use yii\widgets\ActiveForm;
         'action' => ['index'],
         'method' => 'get',
         'options' => [
-            'data-pjax' => 1
+            'data-pjax' => 1,
         ],
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 'id'); ?>
 
-    <?= $form->field($model, 'name') ?>
+    <?= $form->field($model, 'name'); ?>
 
-    <?= $form->field($model, 'code') ?>
+    <?= $form->field($model, 'code'); ?>
 
-    <?= $form->field($model, 'value') ?>
+    <?= $form->field($model, 'value'); ?>
 
-    <?= $form->field($model, 'value_number') ?>
+    <?= $form->field($model, 'value_number'); ?>
 
     <?php // echo $form->field($model, 'default')?>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']); ?>
+        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']); ?>
     </div>
 
     <?php ActiveForm::end(); ?>

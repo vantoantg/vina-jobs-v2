@@ -1,5 +1,13 @@
 <?php
 
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\models;
 
 use app\library\helper\Common;
@@ -12,15 +20,33 @@ use yii\db\Query;
 
 class Job extends Jobs
 {
-    const
-        STATUS_WAITING_APPROVE = 0,
-        STATUS_ACTIVE = 1,
 
-        STATUS_CLIENT_PUBLISH = 7,
-        STATUS_CLIENT_DRAFT = 8;
+	/**
+	 * @param $job_code
+	 * @return bool|string
+	 */
+	public function getJobCode($job_code)
+	{
+		return Helper::encrypt($job_code, false);
+	}
+
+	/**
+	 * @param $job_code
+	 * @return bool|string
+	 */
+	public function setJobCode($job_code)
+	{
+		return Helper::encrypt($job_code);
+	}
+
+    const
+        STATUS_WAITING_APPROVE = 0;
+    const STATUS_ACTIVE = 1;
+    const STATUS_CLIENT_PUBLISH = 7;
+    const STATUS_CLIENT_DRAFT = 8;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -34,7 +60,7 @@ class Job extends Jobs
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -66,6 +92,7 @@ class Job extends Jobs
 
     /**
      * @param bool $insert
+     *
      * @return bool
      */
     public function beforeSave($insert)
@@ -88,6 +115,7 @@ class Job extends Jobs
 
     /**
      * @param $user_id
+     *
      * @return array
      */
     public function getJobs($user_id)
@@ -135,34 +163,52 @@ class Job extends Jobs
 
     /**
      * @param $job_id
+     * @param array $columns
      * @return array|false
      */
-    public static function getJob($job_id)
+    public function getJob($job_id, $columns = [])
     {
+        if(!$columns){
+            $columns = ['job.id', 'job.company_id', 'job.title', 'job.slug', 'job.content', 'ujob.applied', 'ujob.saved'];
+        }
         $user_id = Common::isLoginned() ? Common::currentUsers()->getId() : 0;
         $query = new Query();
-        $query->select(
-            [
-                'job.id',
-                'job.company_id',
-                'job.title',
-                'job.slug',
-                'job.content',
-                'ujob.applied',
-                'ujob.saved',
-            ]
-        )
+        $query->select($columns)
             ->from('tn_jobs job')
             ->leftJoin('tn_user_jobs ujob', 'ujob.jobs_id = job.id AND ujob.user_id = :user_id AND ujob.is_deleted = 0', ['user_id' => $user_id])
             ->where('job.id = :job_id', ['job_id' => $job_id]);
 
         $command = $query->createCommand();
+
+        return $command->queryOne();
+    }
+
+    /**
+     * @param $job_id
+     * @param array $columns
+     * @return array|false
+     */
+    public function getJobAndContact($job_id, $columns = [])
+    {
+        if(!$columns){
+            $columns = ['job.`title`, job.`slug`, u.`name`, u.`email`'];
+        }
+
+        $query = new Query();
+        $query->select($columns)
+            ->from('tn_jobs job')
+            ->leftJoin('tn_user u', 'u.id = job.`created_by`')
+            ->where('job.id = :job_id', ['job_id' => $job_id]);
+
+        $command = $query->createCommand();
+
         return $command->queryOne();
     }
 
     /**
      * @param bool $user_id
      * @param bool $limit
+     *
      * @return array
      */
     public function getAllCompanyJobs($user_id = false, $limit = false)
@@ -199,6 +245,7 @@ class Job extends Jobs
             $result = [];
             foreach ($data as $k => $item) {
                 $item['isGuest'] = Common::isGuest();
+                $item['job_code'] = $this->setJobCode($item['job_id']);
                 $item['salary'] = $this->getSalary($item['salary']);
                 $item['com_logo'] = Company::getLogo($item['com_logo'], 70, 70);
                 $item['working_time'] = Dropdowns::$working_time[$item['working_time']];
@@ -216,6 +263,7 @@ class Job extends Jobs
 
     /**
      * @param $salary
+     *
      * @return string
      */
     public function getSalary($salary)
@@ -229,6 +277,7 @@ class Job extends Jobs
 
     /**
      * @param array $except_job_ids
+     *
      * @return array
      */
     public function getRecentJobsSidebar($except_job_ids = [], $limit = 5)

@@ -1,12 +1,19 @@
 <?php
 
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\user\controllers;
 
 use app\modules\admin\controllers\AdminController;
 use Yii;
 use app\models\Company;
 use app\models\search\Company as CompanySearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -16,7 +23,7 @@ use yii\filters\VerbFilter;
 class CompanyController extends AdminController
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -32,6 +39,7 @@ class CompanyController extends AdminController
 
     /**
      * Lists all Company models.
+     *
      * @return mixed
      */
     public function actionIndex()
@@ -47,8 +55,11 @@ class CompanyController extends AdminController
 
     /**
      * Displays a single Company model.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
@@ -61,6 +72,7 @@ class CompanyController extends AdminController
     /**
      * Creates a new Company model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return mixed
      */
     public function actionCreate()
@@ -79,8 +91,11 @@ class CompanyController extends AdminController
     /**
      * Updates an existing Company model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
@@ -99,8 +114,11 @@ class CompanyController extends AdminController
     /**
      * Deletes an existing Company model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
@@ -113,8 +131,11 @@ class CompanyController extends AdminController
     /**
      * Finds the Company model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param integer $id
+     *
      * @return Company the loaded model
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)

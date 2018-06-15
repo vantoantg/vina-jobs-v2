@@ -3,7 +3,7 @@
 /* @var $this yii\web\View */
 
 use app\library\helper\Helper;
-use \yii\widgets\Breadcrumbs;
+use yii\widgets\Breadcrumbs;
 
 $page = \app\models\Pages::get('blog');
 
@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'url' => Yii::$app->homeUrl,
             ],
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ])
+        ]);
         ?>
 
 	    <div class="col-12 col-md-8 pd-lr-0">
@@ -34,19 +34,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 //                    die;
                 foreach ($blogs as $k => $blog) {
                     $i++; ?>
-				    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 <?= Helper::wowClass() ?> fadeInUp"
-				         data-wow-delay="0.<?= $i ?>s">
+				    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 <?= Helper::wowClass(); ?> fadeInUp"
+				         data-wow-delay="0.<?= $i; ?>s">
 					    <aside>
-						    <img src="<?= Helper::imgRender($blog->img, 230, 200) ?>"
+						    <img src="<?= Helper::imgRender($blog->img, 230, 200); ?>"
 						         class="img-responsive">
 						    <div class="content-title">
 							    <div class="text-center">
-								    <h3><a href="<?= Helper::createUrl(['site/blog-detail', 'slug' => $blog->slug, 'id' => $blog->id ])?>"><?= $blog->name ?></a></h3>
+								    <h3><a href="<?= Helper::createUrl(['site/blog-detail', 'slug' => $blog->slug, 'id' => $blog->id]); ?>"><?= $blog->name; ?></a></h3>
 							    </div>
 						    </div>
 						    <div class="content-footer">
 							    <img class="user-small-img"
-							         src="<?= Helper::imgRender(null, 33, 33) ?>">
+							         src="<?= Helper::imgRender(null, 33, 33); ?>">
 							    <span>Sumit Kumar Kumar</span>
 							    <span class="pull-right">
 									<a href="#" data-toggle="tooltip" data-placement="top" title="Comments"><i class="fa fa-comments"></i> 30</a>

@@ -2,11 +2,11 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use \app\library\helper\Helper;
+use app\library\helper\Helper;
 
 /** @var $page \app\models\Pages title */
 $page = \app\models\Pages::get('jobs');
-/** @var $this \yii\web\View title */
+/* @var $this \yii\web\View title */
 $this->title = Helper::titleSeo($page);
 Helper::generateSeo($page);
 
@@ -20,7 +20,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
     <div class="col-12 col-sm-8">
         <div class="front-jobs">
 
-            <div class="row page-title text-center <?= \app\library\helper\Helper::wowClass() ?> bounce animated" data-wow-delay="1s" style="visibility: visible; animation-delay: 1s; animation-name: bounce;">
+            <div class="row page-title text-center <?= \app\library\helper\Helper::wowClass(); ?> bounce animated" data-wow-delay="1s" style="visibility: visible; animation-delay: 1s; animation-name: bounce;">
                 <h5>ĐĂNG TUYỂN DỤNG</h5>
                 <h2><span>54716</span> Available jobs for you</h2>
                 <p>Hãy liệt kế tất cả các chính sách đang có, và cơ hội cho hấp dẫn, để có thể thu hút ứng viên apply vào các vị trí mà công ty muốn tuyển.</p>
@@ -29,13 +29,13 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
             <?php if (Yii::$app->session->hasFlash('success')): ?>
 		        <div class="alert alert-success alert-dismissable">
 			        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-			        <i class="icon fa fa-check"></i> <?= Yii::$app->session->getFlash('success') ?>
+			        <i class="icon fa fa-check"></i> <?= Yii::$app->session->getFlash('success'); ?>
 		        </div>
             <?php endif; ?>
 
             <?php $form = ActiveForm::begin(); ?>
 
-            <?= $form->field($model, 'title') ?>
+            <?= $form->field($model, 'title'); ?>
 
             <?php
             $countries = \app\models\JobCategories::find()->all();
@@ -44,14 +44,14 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                 $listData,
                 [
                     'prompt' => '-- Chọn --',
-                    'class' => 'job-select2 form-control'
+                    'class' => 'job-select2 form-control',
                 ]
             );
             ?>
-            <?= $form->field($model, 'description')->textarea() ?>
+            <?= $form->field($model, 'description')->textarea(); ?>
             <?= $form->field($model, 'content')->widget(\yii\redactor\widgets\Redactor::className(), [
-                'clientOptions' => Helper::redactorOps('Hãy mô tả yêu cầu, kỹ năng, chính sách hấp dẫn cho ứng viên,....')
-            ]) ?>
+                'clientOptions' => Helper::redactorOps('Hãy mô tả yêu cầu, kỹ năng, chính sách hấp dẫn cho ứng viên,....'),
+            ]); ?>
             <div class="row">
                 <div class="col-xs-4">
                     <?php
@@ -60,9 +60,9 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                     <?= $form->field($model, 'salary')->dropDownList(
                         $salary,
                         [
-                            'class' => 'job-select2 form-control'
+                            'class' => 'job-select2 form-control',
                         ]
-                    ) ?>
+                    ); ?>
                 </div>
 
                 <div class="col-xs-4">
@@ -72,9 +72,9 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                     <?= $form->field($model, 'address')->dropDownList(
                         \yii\helpers\ArrayHelper::map($loca, 'id', 'name'),
                         [
-                            'class' => 'job-select2 form-control'
+                            'class' => 'job-select2 form-control',
                         ]
-                    ) ?>
+                    ); ?>
                 </div>
 
                 <div class="col-xs-4">
@@ -84,38 +84,38 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 		            <?= $form->field($model, 'working_time')->dropDownList(
                         $data,
                         [
-                            'class' => 'job-select2 form-control'
+                            'class' => 'job-select2 form-control',
                         ]
-                    ) ?>
+                    ); ?>
                 </div>
             </div>
 
-            <?= $form->field($model, 'tags') ?>
+            <?= $form->field($model, 'tags'); ?>
             <?= $form->field($model, 'cv_end_date')->textInput([
-                    'autocomplete' => "off",
+                    'autocomplete' => 'off',
                 'class' => 'datepk form-control',
                 'startView' => 3,
                 'startDate' => \app\library\helper\Datetime::getTimeNow(null, \app\library\helper\Datetime::INPUT_DMY),
                 'endDate' => \Carbon\Carbon::now()->addYears(3)->format(\app\library\helper\Datetime::INPUT_DMY),
-            ]) ?>
+            ]); ?>
 
 	        <div class="row">
 		        <div class="col-xs-6">
-                    <?= $form->field($model, 'client_status')->radioList([\app\models\Job::STATUS_CLIENT_DRAFT => 'Lưu tạm', \app\models\Job::STATUS_CLIENT_PUBLISH => 'Công bố'], ['class' => 'iCheck'])->label('Trạng thái lưu') ?>
+                    <?= $form->field($model, 'client_status')->radioList([\app\models\Job::STATUS_CLIENT_DRAFT => 'Lưu tạm', \app\models\Job::STATUS_CLIENT_PUBLISH => 'Công bố'], ['class' => 'iCheck'])->label('Trạng thái lưu'); ?>
 		        </div>
 	        </div>
 
 	        <?php if ($model->isNewRecord) {
                 ?>
             <div class="form-group">
-                <?= Html::submitButton('Lưu thông tin tuyển dụng', ['class' => 'btn btn-primary']) ?>
-                <?= Html::resetButton('Xóa hết', ['class' => 'btn btn-default']) ?>
+                <?= Html::submitButton('Lưu thông tin tuyển dụng', ['class' => 'btn btn-primary']); ?>
+                <?= Html::resetButton('Xóa hết', ['class' => 'btn btn-default']); ?>
             </div>
 	        <?php
             } else {
                 ?>
 	        <div class="form-group">
-                <?= Html::submitButton('Cập nhật thông tin tuyển dụng', ['class' => 'btn btn-primary']) ?>
+                <?= Html::submitButton('Cập nhật thông tin tuyển dụng', ['class' => 'btn btn-primary']); ?>
 	        </div>
 	        <?php
             } ?>

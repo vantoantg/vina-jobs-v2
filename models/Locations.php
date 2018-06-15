@@ -1,8 +1,11 @@
 <?php
-/**
- * Created by Tona Nguyễn
- * Date: 1/29/2018
- * Time: 5:32 PM
+
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
  */
 
 namespace app\models;
@@ -10,7 +13,6 @@ namespace app\models;
 class Locations extends \app\models\base\Locations
 {
     /**
-     *
      * @return array|\yii\db\ActiveRecord[]
      */
     public static function getLocations()
@@ -19,7 +21,7 @@ class Locations extends \app\models\base\Locations
             ->select('id, name')
             ->where('parent_id = :parent_id and type = :type', [
                 ':parent_id' => 64,
-                ':type'      => 3
+                ':type' => 3,
             ])
             ->orderBy(['arranged' => SORT_ASC])
             ->all();
@@ -38,10 +40,10 @@ class Locations extends \app\models\base\Locations
         $datas = \Yii::$app->db->createCommand($sql)->queryAll();
 
         foreach ($datas as $k => $rs) {
-            $data[] = array(
+            $data[] = [
                 'id' => $rs['id'],
                 'name' => $rs['name'],
-            );
+            ];
         }
 
         return $data;

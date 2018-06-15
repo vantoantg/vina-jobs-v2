@@ -14,19 +14,19 @@ use yii\widgets\ActiveForm;
         'action' => ['index'],
         'method' => 'get',
         'options' => [
-            'data-pjax' => 1
+            'data-pjax' => 1,
         ],
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 'id'); ?>
 
-    <?= $form->field($model, 'username') ?>
+    <?= $form->field($model, 'username'); ?>
 
-    <?= $form->field($model, 'password') ?>
+    <?= $form->field($model, 'password'); ?>
 
-    <?= $form->field($model, 'auth_key') ?>
+    <?= $form->field($model, 'auth_key'); ?>
 
-    <?= $form->field($model, 'access_token') ?>
+    <?= $form->field($model, 'access_token'); ?>
 
     <?php // echo $form->field($model, 'password_reset_token')?>
 
@@ -49,8 +49,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'status')?>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']); ?>
+        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']); ?>
     </div>
 
     <?php ActiveForm::end(); ?>

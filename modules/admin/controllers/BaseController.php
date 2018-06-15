@@ -1,5 +1,13 @@
 <?php
 
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\admin\controllers;
 
 use app\library\helper\Helper;
@@ -7,7 +15,6 @@ use yii\web\Controller;
 
 /**
  * Class BaseController
- * @package app\modules\admin\controllers
  */
 class BaseController extends Controller
 {
@@ -23,6 +30,7 @@ class BaseController extends Controller
     /**
      * @param \yii\base\Action $action
      * @param mixed $result
+     *
      * @return mixed
      */
     public function afterAction($action, $result)
@@ -34,6 +42,7 @@ class BaseController extends Controller
 
     /**
      * @param array $data
+     *
      * @return string
      */
     public function jsonData($data = [])

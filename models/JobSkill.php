@@ -1,9 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Admin
- * Date: 3/30/2018
- * Time: 4:51 PM
+
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
  */
 
 namespace app\models;

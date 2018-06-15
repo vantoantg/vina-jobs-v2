@@ -1,9 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Admin
- * Date: 3/29/2018
- * Time: 2:04 PM
+
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
  */
 
 namespace app\models;
@@ -11,19 +13,19 @@ namespace app\models;
 class Candidate extends \app\models\base\Candidate
 {
     const
-        STATUS_WAITING_APPROVE = 0,
-        STATUS_ACTIVE = 1,
-
-        STATUS_CLIENT_PUBLISH = 7,
-        STATUS_CLIENT_DRAFT = 8;
+        STATUS_WAITING_APPROVE = 0;
+    const STATUS_ACTIVE = 1;
+    const STATUS_CLIENT_PUBLISH = 7;
+    const STATUS_CLIENT_DRAFT = 8;
     public $file;
+
     public function rules()
     {
         return [
             [['user_id', 'job_category_id', 'location'], 'required'],
             [['user_id', 'job_category_id', 'created_by', 'updated_by', 'approved_by', 'view', 'sorted', 'receives'], 'integer'],
             [['resume_content'], 'string'],
-            [['file'], 'file', 'extensions' =>'pdf, pptx, docx, doc', 'maxSize' => 3072000, 'tooBig' => 'Chỉ tải lên file dưới 3MB'],
+            [['file'], 'file', 'extensions' => 'pdf, pptx, docx, doc', 'maxSize' => 3072000, 'tooBig' => 'Chỉ tải lên file dưới 3MB'],
             [['created_at', 'updated_at', 'approved_at', 'skill'], 'safe'],
             [['title', 'slug', 'video', 'resume_file'], 'string', 'max' => 255],
             [['skill_tags', 'social_network', 'education', 'experience'], 'string', 'max' => 1000],
@@ -32,7 +34,7 @@ class Candidate extends \app\models\base\Candidate
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -68,6 +70,7 @@ class Candidate extends \app\models\base\Candidate
 
     /**
      * @param array $array
+     *
      * @return null|string
      */
     public function array2String($array = [])
@@ -76,12 +79,13 @@ class Candidate extends \app\models\base\Candidate
             return null;
         }
 
-        return implode(",", $array);
+        return implode(',', $array);
     }
 
     /**
      * @param $userId
      * @param bool $createIfNot
+     *
      * @return Candidate|array|bool|null|\yii\db\ActiveRecord
      */
     public static function getCandidate($userId, $createIfNot = true)
@@ -92,8 +96,10 @@ class Candidate extends \app\models\base\Candidate
                 $candidate = new Candidate();
                 $candidate->user_id = $userId;
                 $candidate->save();
+
                 return $candidate;
             }
+
             return false;
         }
 

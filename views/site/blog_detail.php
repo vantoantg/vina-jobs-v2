@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Blogs', 'url' => Helper::createUrl
 $this->params['breadcrumbs'][] = $this->title;
 
 \app\library\helper\Helper::generateSeo($page);
-\app\components\Menu\ActiveMenu::is('blogs')
+\app\components\Menu\ActiveMenu::is('blogs');
 ?>
 
 <section id="blog-section">
@@ -26,11 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'url' => Yii::$app->homeUrl,
             ],
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ])
+        ]);
         ?>
 
 	    <div class="col-12 col-md-8 pd-lr-0">
-		    <h1><?= Html::encode($this->title) ?></h1>
+		    <h1><?= Html::encode($this->title); ?></h1>
 		    <div class="content-editor">
                 <?= $blog->content; ?>
 		    </div>

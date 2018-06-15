@@ -1,9 +1,7 @@
 <?php
 
-use yii\helpers\Html;
-use \yii\widgets\ActiveForm;
-use dosamigos\fileupload\FileUploadUI; // https://github.com/2amigos/yii2-file-upload-widget
-use \app\library\helper\Helper;
+// https://github.com/2amigos/yii2-file-upload-widget
+use app\library\helper\Helper;
 
 /** @var $page \app\models\Pages title */
 /** @var $this \yii\web\View title */
@@ -25,14 +23,14 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="row main">
             <div class="main-login main-center">
 
-                <div class="alert-message alert-message-info <?= \app\library\helper\Helper::wowClass() ?> zoomInDown animated" data-wow-delay="0.2s">
+                <div class="alert-message alert-message-info <?= \app\library\helper\Helper::wowClass(); ?> zoomInDown animated" data-wow-delay="0.2s">
                     <h4>Lưu ý:</h4>
                     <p>
                         Chúc mừng bạn đã đăng ký tài khoản công ty thành công. Hãy đăng nhập để cập nhật thông tin hoặc bắt đầu đăng tin tuyển dụng.</p>
                 </div>
 
                 <div class="col-xs-12 text-center">
-                    <button class="navbar-btn nav-button <?= Helper::wowClass() ?> bounceInRight login animated" data-toggle="modal" data-target="#login-modal" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: bounceInRight;"><i class="fas fa-sign-in-alt"></i> Đăng nhập
+                    <button class="navbar-btn nav-button <?= Helper::wowClass(); ?> bounceInRight login animated" data-toggle="modal" data-target="#login-modal" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: bounceInRight;"><i class="fas fa-sign-in-alt"></i> Đăng nhập
                     </button>
                 </div>
             </div>

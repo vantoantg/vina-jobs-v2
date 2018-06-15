@@ -1,21 +1,25 @@
 <?php
 
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\forms;
 
-use app\models\Users;
-use Yii;
 use yii\base\Model;
 
 /**
  * LoginForm is the model behind the login form.
  *
  * @property User|null $user This property is read-only.
- *
  */
 class ImageOnlyForm extends Model
 {
     public $image;
-
 
     /**
      * @return array the validation rules.
@@ -29,7 +33,7 @@ class ImageOnlyForm extends Model
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -41,7 +45,8 @@ class ImageOnlyForm extends Model
     public function upload()
     {
         if ($this->validate()) {
-            $this->image->saveAs('uploads/' . $this->image->baseName . '.' . $this->image->extension);
+            $this->image->saveAs('uploads/'.$this->image->baseName.'.'.$this->image->extension);
+
             return $this->image;
         } else {
             return false;

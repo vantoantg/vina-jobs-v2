@@ -14,19 +14,19 @@ use yii\widgets\ActiveForm;
         'action' => ['index'],
         'method' => 'get',
         'options' => [
-            'data-pjax' => 1
+            'data-pjax' => 1,
         ],
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 'id'); ?>
 
-    <?= $form->field($model, 'parent_id') ?>
+    <?= $form->field($model, 'parent_id'); ?>
 
-    <?= $form->field($model, 'name') ?>
+    <?= $form->field($model, 'name'); ?>
 
-    <?= $form->field($model, 'slug') ?>
+    <?= $form->field($model, 'slug'); ?>
 
-    <?= $form->field($model, 'content') ?>
+    <?= $form->field($model, 'content'); ?>
 
     <?php // echo $form->field($model, 'seo_title')?>
 
@@ -51,8 +51,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'status')?>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']); ?>
+        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']); ?>
     </div>
 
     <?php ActiveForm::end(); ?>

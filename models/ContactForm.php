@@ -1,5 +1,13 @@
 <?php
 
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\models;
 
 use Yii;
@@ -15,7 +23,6 @@ class ContactForm extends Model
     public $subject;
     public $body;
     public $verifyCode;
-
 
     /**
      * @return array the validation rules.
@@ -47,7 +54,9 @@ class ContactForm extends Model
 
     /**
      * Sends an email to the specified email address using the information collected by this model.
+     *
      * @param string $email the target email address
+     *
      * @return bool whether the model passes validation
      */
     public function contact($email)
@@ -62,6 +71,7 @@ class ContactForm extends Model
 
             return true;
         }
+
         return false;
     }
 }

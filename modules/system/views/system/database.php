@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="system-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title); ?></h1>
     <?php Pjax::begin(['timeout' => 15000]); ?>
     <div class="container">
         <div class="row">
@@ -40,15 +40,15 @@ $this->params['breadcrumbs'][] = $this->title;
 						<?php foreach ($files as $k => $file) {
         ?>
                             <tr>
-                                <td class="type"><?= $k + 1 ?></td>
-                                <td class="name"><?= $file['name'] ?></td>
-                                <td class="name"><?= \app\library\helper\Helper::humanFilesize($file['size']) ?></td>
-                                <td class="time"><?= $file['time'] ?></td>
+                                <td class="type"><?= $k + 1; ?></td>
+                                <td class="name"><?= $file['name']; ?></td>
+                                <td class="name"><?= \app\library\helper\Helper::humanFilesize($file['size']); ?></td>
+                                <td class="time"><?= $file['time']; ?></td>
                                 <td class="status">
-                                    <a href="<?= $file['path'] ?>" download="<?= $file['name'] ?>"><span class="glyphicon glyphicon-download-alt"></span></a>
+                                    <a href="<?= $file['path']; ?>" download="<?= $file['name']; ?>"><span class="glyphicon glyphicon-download-alt"></span></a>
                                 </td>
                                 <td class="action">
-                                    <a href="<?= Url::to('/admin/admin/backup-db?delete='.$file['name']) ?>" title="DELETE" data-widget="confirm-delete" data-confirm-text="Are you sure you want to delete this item?"><span class="glyphicon glyphicon-trash"></span></a>
+                                    <a href="<?= Url::to('/admin/admin/backup-db?delete='.$file['name']); ?>" title="DELETE" data-widget="confirm-delete" data-confirm-text="Are you sure you want to delete this item?"><span class="glyphicon glyphicon-trash"></span></a>
                                 </td>
                             </tr>
 						<?php
