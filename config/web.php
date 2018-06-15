@@ -1,21 +1,29 @@
 <?php
 
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
+
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'language' => 'vi',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'liJ-f-p6Z7KWqYt7vk25rA08ZjbpEq9y',
-            'enableCsrfValidation' => true // Default TRUE
+            'enableCsrfValidation' => true, // Default TRUE
         ],
-        'authClientCollection' => require __DIR__ . '/auth.php',
+        'authClientCollection' => require __DIR__.'/auth.php',
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -50,12 +58,12 @@ $config = [
                 ],
             ],
         ],
-        'db' => require __DIR__ . '/db.php',
+        'db' => require __DIR__.'/db.php',
 
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => require __DIR__ . '/routes.php',
+            'rules' => require __DIR__.'/routes.php',
         ],
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
@@ -67,18 +75,18 @@ $config = [
             'basePath' => '@webroot/assets',
             'bundles' => [
                 'yii\web\JqueryAsset' => [
-                    'jsOptions' => [ 'position' => \yii\web\View::POS_HEAD],
+                    'jsOptions' => ['position' => \yii\web\View::POS_HEAD],
                     'basePath' => '@webroot/assets',
                     'baseUrl' => '@web',
                     'js' => [
                         'web/template/jobs/js/vendor/jquery-1.10.2.min.js',
-                    ]
+                    ],
                 ],
             ],
         ],
     ],
-    'modules' => require __DIR__ . '/modules.php',
-    'params' => require __DIR__ . '/params.php',
+    'modules' => require __DIR__.'/modules.php',
+    'params' => require __DIR__.'/params.php',
     'defaultRoute' => 'front/default/index',
 ];
 

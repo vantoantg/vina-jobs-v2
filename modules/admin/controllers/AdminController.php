@@ -1,5 +1,13 @@
 <?php
 
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\admin\controllers;
 
 use app\library\helper\Role;
@@ -7,17 +15,15 @@ use app\models\search\Setting;
 
 /**
  * Class BaseController
- * @package app\modules\admin\controllers
  */
 class AdminController extends BaseController
 {
-
     /**
      * @var \Yii
      */
     public $app;
 
-    /** @var  $setting Setting */
+    /** @var $setting Setting */
     public $setting;
 
     public function init()
@@ -50,6 +56,7 @@ class AdminController extends BaseController
     /**
      * @param \yii\base\Action $action
      * @param mixed $result
+     *
      * @return mixed
      */
     public function afterAction($action, $result)

@@ -1,4 +1,13 @@
 <?php
+
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\components;
 
 use app\components\tona\Cons;
@@ -20,6 +29,7 @@ class UserOnlineWidget extends Widget
     public $message;
     public static $statistics = [];
     public static $total = 0;
+
     public function init()
     {
         parent::init();
@@ -42,7 +52,7 @@ class UserOnlineWidget extends Widget
             $u->browser = Helper::getBrowser();
             $u->url = Helper::getCurrentUrl();
             $u->ip = Helper::getIpClient();
-            $u->controller = Yii::$app->controller->id ? Yii::$app->controller->id : "";
+            $u->controller = Yii::$app->controller->id ? Yii::$app->controller->id : '';
             $u->action = Yii::$app->controller->action->id;
             $u->method = Helper::getMethod();
             $u->save();
@@ -65,6 +75,7 @@ class UserOnlineWidget extends Widget
 
     /**
      * @param $session
+     *
      * @return bool
      */
     public static function check($session)
@@ -75,6 +86,7 @@ class UserOnlineWidget extends Widget
         if ($uo) {
             $uo->time = Carbon::now()->format(Datetime::SQL_DATETIME);
             $uo->save();
+
             return true;
         }
 
@@ -88,7 +100,7 @@ class UserOnlineWidget extends Widget
     {
         $lastWeek = Carbon::now()->subDay(7)->timestamp;
         $lastMonth = Carbon::now()->subDay(30)->timestamp;
-        $today = Carbon::createFromFormat(Datetime::SQL_DATETIME, date('Y-m-d'). ' 00:00:00')->timestamp;
+        $today = Carbon::createFromFormat(Datetime::SQL_DATETIME, date('Y-m-d').' 00:00:00')->timestamp;
 
         $week = 0;
         $month = 0;
@@ -100,28 +112,29 @@ class UserOnlineWidget extends Widget
             foreach ($us as $value) {
                 $time = Carbon::createFromFormat(Datetime::SQL_DATETIME, $value->time)->timestamp;
                 if ($time > $lastWeek) {
-                    $week += 1;
+                    ++$week;
                 }
                 if ($time > $lastMonth) {
-                    $month += 1;
+                    ++$month;
                 }
                 if ($time > $today) {
-                    $day +=1;
+                    ++$day;
                 }
             }
         }
         self::$total = $month + System::find()->where(['code' => 'user_online_total'])->count();
+
         return [
             'today' => $day,
-            'week' 	=> $week,
+            'week' => $week,
             'month' => $month,
-            'total' => self::$total
+            'total' => self::$total,
         ];
     }
 
     public static function test()
     {
-        for ($i=1; $i < 700000; $i++) {
+        for ($i = 1; $i < 700000; $i++) {
             $u = new UserOnline();
             $u->session = md5(rand(111, 999));
             $u->time = Carbon::now()->format(Cons::SQL_DATE_TIME);
@@ -135,9 +148,6 @@ class UserOnlineWidget extends Widget
         }
     }
 
-    /**
-     *
-     */
     public static function clearUserOnline()
     {
         $total = count(UserOnline::find()->all()) - self::getStatistic()->month;

@@ -3,28 +3,24 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use app\widgets\Alert;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use app\assets\app\AppAssetAdmin;
 
 AppAssetAdmin::register($this);
 ?>
-<?php $this->beginPage() ?>
+<?php $this->beginPage(); ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html lang="<?= Yii::$app->language; ?>">
 <head>
-    <meta charset="<?= Yii::$app->charset ?>">
+    <meta charset="<?= Yii::$app->charset; ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="your,keywords">
     <meta name="description" content="Short explanation about this website">
-    <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <link rel="shortcut icon" type="image/png" href="<?= \app\library\helper\Helper::homeUrl()?>favicon.ico"/>
-    <?php $this->head() ?>
+    <?= Html::csrfMetaTags(); ?>
+    <title><?= Html::encode($this->title); ?></title>
+    <link rel="shortcut icon" type="image/png" href="<?= \app\library\helper\Helper::homeUrl(); ?>favicon.ico"/>
+    <?php $this->head(); ?>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script type="text/javascript" src="web/template/admin/assets/js/libs/utils/html5shiv.js"></script>
@@ -33,10 +29,10 @@ AppAssetAdmin::register($this);
 </head>
 <body class="menubar-hoverable header-fixed menubar-pin">
 <input type="hidden" id="setting-common"
-       data-site="<?= \app\library\helper\Helper::homeUrl() ?>"
-       data-page-current="<?= Yii::$app->controller->module->id.'/'.Yii::$app->controller->id ?>"
+       data-site="<?= \app\library\helper\Helper::homeUrl(); ?>"
+       data-page-current="<?= Yii::$app->controller->module->id.'/'.Yii::$app->controller->id; ?>"
 >
-<?php $this->beginBody() ?>
+<?php $this->beginBody(); ?>
 <!-- BEGIN HEADER-->
 <?= $this->render('//layouts/admin/header'); ?>
 <!-- END HEADER-->
@@ -66,7 +62,7 @@ AppAssetAdmin::register($this);
                 </a>
             </div>
             <div class="expanded">
-                <a href="<?= \app\library\helper\Helper::homeUrl() ?>">
+                <a href="<?= \app\library\helper\Helper::homeUrl(); ?>">
                     <span class="text-lg text-bold text-primary ">MATERIAL&nbsp;ADMIN</span>
                 </a>
             </div>
@@ -109,7 +105,7 @@ AppAssetAdmin::register($this);
                     <li class="tile">
                         <a class="tile-content ink-reaction" href="#offcanvas-chat" data-toggle="offcanvas" data-backdrop="false">
                             <div class="tile-icon">
-                                <img src="<?= \app\library\helper\Helper::homeUrl()?>web/template/admin/assets/img/avatar4.jpg?1404026791" alt="" />
+                                <img src="<?= \app\library\helper\Helper::homeUrl(); ?>web/template/admin/assets/img/avatar4.jpg?1404026791" alt="" />
                             </div>
                             <div class="tile-text">
                                 Alex Nelson
@@ -120,7 +116,7 @@ AppAssetAdmin::register($this);
                     <li class="tile">
                         <a class="tile-content ink-reaction" href="#offcanvas-chat" data-toggle="offcanvas" data-backdrop="false">
                             <div class="tile-icon">
-                                <img src="<?= \app\library\helper\Helper::homeUrl()?>web/template/admin/assets/img/avatar9.jpg?1404026744" alt="" />
+                                <img src="<?= \app\library\helper\Helper::homeUrl(); ?>web/template/admin/assets/img/avatar9.jpg?1404026744" alt="" />
                             </div>
                             <div class="tile-text">
                                 Ann Laurens
@@ -136,7 +132,7 @@ AppAssetAdmin::register($this);
                     <li class="tile">
                         <a class="tile-content ink-reaction" href="#offcanvas-chat" data-toggle="offcanvas" data-backdrop="false">
                             <div class="tile-icon">
-                                <img src="<?= \app\library\helper\Helper::homeUrl()?>web/template/admin/assets/img/avatar2.jpg?1404026449" alt="" />
+                                <img src="<?= \app\library\helper\Helper::homeUrl(); ?>web/template/admin/assets/img/avatar2.jpg?1404026449" alt="" />
                             </div>
                             <div class="tile-text">
                                 Jessica Cruise
@@ -147,7 +143,7 @@ AppAssetAdmin::register($this);
                     <li class="tile">
                         <a class="tile-content ink-reaction" href="#offcanvas-chat" data-toggle="offcanvas" data-backdrop="false">
                             <div class="tile-icon">
-                                <img src="<?= \app\library\helper\Helper::homeUrl()?>web/template/admin/assets/img/avatar8.jpg?1404026729" alt="" />
+                                <img src="<?= \app\library\helper\Helper::homeUrl(); ?>web/template/admin/assets/img/avatar8.jpg?1404026729" alt="" />
                             </div>
                             <div class="tile-text">
                                 Jim Peters
@@ -163,7 +159,7 @@ AppAssetAdmin::register($this);
                     <li class="tile">
                         <a class="tile-content ink-reaction" href="#offcanvas-chat" data-toggle="offcanvas" data-backdrop="false">
                             <div class="tile-icon">
-                                <img src="<?= \app\library\helper\Helper::homeUrl()?>web/template/admin/assets/img/avatar5.jpg?1404026513" alt="" />
+                                <img src="<?= \app\library\helper\Helper::homeUrl(); ?>web/template/admin/assets/img/avatar5.jpg?1404026513" alt="" />
                             </div>
                             <div class="tile-text">
                                 Mabel Logan
@@ -174,7 +170,7 @@ AppAssetAdmin::register($this);
                     <li class="tile">
                         <a class="tile-content ink-reaction" href="#offcanvas-chat" data-toggle="offcanvas" data-backdrop="false">
                             <div class="tile-icon">
-                                <img src="<?= \app\library\helper\Helper::homeUrl()?>web/template/admin/assets/img/avatar11.jpg?1404026774" alt="" />
+                                <img src="<?= \app\library\helper\Helper::homeUrl(); ?>web/template/admin/assets/img/avatar11.jpg?1404026774" alt="" />
                             </div>
                             <div class="tile-text">
                                 Mary Peterson
@@ -185,7 +181,7 @@ AppAssetAdmin::register($this);
                     <li class="tile">
                         <a class="tile-content ink-reaction" href="#offcanvas-chat" data-toggle="offcanvas" data-backdrop="false">
                             <div class="tile-icon">
-                                <img src="<?= \app\library\helper\Helper::homeUrl()?>web/template/admin/assets/img/avatar3.jpg?1404026799" alt="" />
+                                <img src="<?= \app\library\helper\Helper::homeUrl(); ?>web/template/admin/assets/img/avatar3.jpg?1404026799" alt="" />
                             </div>
                             <div class="tile-text">
                                 Mike Alba
@@ -201,7 +197,7 @@ AppAssetAdmin::register($this);
                     <li class="tile">
                         <a class="tile-content ink-reaction" href="#offcanvas-chat" data-toggle="offcanvas" data-backdrop="false">
                             <div class="tile-icon">
-                                <img src="<?= \app\library\helper\Helper::homeUrl()?>web/template/admin/assets/img/avatar6.jpg?1404026572" alt="" />
+                                <img src="<?= \app\library\helper\Helper::homeUrl(); ?>web/template/admin/assets/img/avatar6.jpg?1404026572" alt="" />
                             </div>
                             <div class="tile-text">
                                 Nathan Peterson
@@ -217,7 +213,7 @@ AppAssetAdmin::register($this);
                     <li class="tile">
                         <a class="tile-content ink-reaction" href="#offcanvas-chat" data-toggle="offcanvas" data-backdrop="false">
                             <div class="tile-icon">
-                                <img src="<?= \app\library\helper\Helper::homeUrl()?>web/template/admin/assets/img/avatar7.jpg?1404026721" alt="" />
+                                <img src="<?= \app\library\helper\Helper::homeUrl(); ?>web/template/admin/assets/img/avatar7.jpg?1404026721" alt="" />
                             </div>
                             <div class="tile-text">
                                 Philip Ericsson
@@ -233,7 +229,7 @@ AppAssetAdmin::register($this);
                     <li class="tile">
                         <a class="tile-content ink-reaction" href="#offcanvas-chat" data-toggle="offcanvas" data-backdrop="false">
                             <div class="tile-icon">
-                                <img src="<?= \app\library\helper\Helper::homeUrl()?>web/template/admin/assets/img/avatar10.jpg?1404026762" alt="" />
+                                <img src="<?= \app\library\helper\Helper::homeUrl(); ?>web/template/admin/assets/img/avatar10.jpg?1404026762" alt="" />
                             </div>
                             <div class="tile-text">
                                 Samuel Parsons
@@ -269,7 +265,7 @@ AppAssetAdmin::register($this);
                 <ul class="list-chats">
                     <li>
                         <div class="chat">
-                            <div class="chat-avatar"><img class="img-circle" src="<?= \app\library\helper\Helper::homeUrl()?>web/template/admin/assets/img/avatar1.jpg?1403934956" alt="" /></div>
+                            <div class="chat-avatar"><img class="img-circle" src="<?= \app\library\helper\Helper::homeUrl(); ?>web/template/admin/assets/img/avatar1.jpg?1403934956" alt="" /></div>
                             <div class="chat-body">
                                 Yes, it is indeed very beautiful.
                                 <small>10:03 pm</small>
@@ -278,7 +274,7 @@ AppAssetAdmin::register($this);
                     </li>
                     <li class="chat-left">
                         <div class="chat">
-                            <div class="chat-avatar"><img class="img-circle" src="<?= \app\library\helper\Helper::homeUrl()?>web/template/admin/assets/img/avatar9.jpg?1404026744" alt="" /></div>
+                            <div class="chat-avatar"><img class="img-circle" src="<?= \app\library\helper\Helper::homeUrl(); ?>web/template/admin/assets/img/avatar9.jpg?1404026744" alt="" /></div>
                             <div class="chat-body">
                                 Did you see the changes?
                                 <small>10:02 pm</small>
@@ -287,7 +283,7 @@ AppAssetAdmin::register($this);
                     </li>
                     <li>
                         <div class="chat">
-                            <div class="chat-avatar"><img class="img-circle" src="<?= \app\library\helper\Helper::homeUrl()?>web/template/admin/assets/img/avatar1.jpg?1403934956" alt="" /></div>
+                            <div class="chat-avatar"><img class="img-circle" src="<?= \app\library\helper\Helper::homeUrl(); ?>web/template/admin/assets/img/avatar1.jpg?1403934956" alt="" /></div>
                             <div class="chat-body">
                                 I just arrived at work, it was quite busy.
                                 <small>06:44pm</small>
@@ -300,7 +296,7 @@ AppAssetAdmin::register($this);
                     </li>
                     <li class="chat-left">
                         <div class="chat">
-                            <div class="chat-avatar"><img class="img-circle" src="<?= \app\library\helper\Helper::homeUrl()?>web/template/admin/assets/img/avatar9.jpg?1404026744" alt="" /></div>
+                            <div class="chat-avatar"><img class="img-circle" src="<?= \app\library\helper\Helper::homeUrl(); ?>web/template/admin/assets/img/avatar9.jpg?1404026744" alt="" /></div>
                             <div class="chat-body">
                                 The colors are much better now.
                             </div>
@@ -314,7 +310,7 @@ AppAssetAdmin::register($this);
                     </li>
                     <li>
                         <div class="chat">
-                            <div class="chat-avatar"><img class="img-circle" src="<?= \app\library\helper\Helper::homeUrl()?>web/template/admin/assets/img/avatar1.jpg?1403934956" alt="" /></div>
+                            <div class="chat-avatar"><img class="img-circle" src="<?= \app\library\helper\Helper::homeUrl(); ?>web/template/admin/assets/img/avatar1.jpg?1403934956" alt="" /></div>
                             <div class="chat-body">
                                 Are the colors of the logo already adapted?
                                 <small>Last week</small>
@@ -331,7 +327,7 @@ AppAssetAdmin::register($this);
 
 </div><!--end #base-->
 <!-- END BASE -->
-<?php $this->endBody() ?>
+<?php $this->endBody(); ?>
 </body>
 </html>
-<?php $this->endPage() ?>
+<?php $this->endPage(); ?>

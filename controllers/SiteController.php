@@ -82,7 +82,7 @@ class SiteController extends FrontController
     public function successCallback($client)
     {
         $this->successUrl = Url::to(Helper::createUrl(['/front/user/update-candidate']));
-        (new Auth())->detectUserType($client);
+	    Auth::instance()->detectUserType($client);
     }
 
 
@@ -201,7 +201,7 @@ class SiteController extends FrontController
      */
     public function actionEmployeersDetail($slug, $id)
     {
-        $job = Job::getJob($id);
+        $job = Job::instance()->getJob($id);
         if (!$job) {
             throw new BadRequestHttpException();
         }

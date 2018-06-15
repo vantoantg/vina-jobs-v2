@@ -1,10 +1,9 @@
 <?php
 use app\library\helper\Helper;
-use \yii\widgets\ActiveForm;
 
 $page = \app\models\Pages::get();
-/** @var $page \app\models\Pages title */
-/** @var $this \yii\web\View title */
+/* @var $page \app\models\Pages title */
+/* @var $this \yii\web\View title */
 $this->title = Helper::titleSeo($page);
 Helper::generateSeo($page);
 
@@ -14,13 +13,13 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
     <div class="slider">
         <div id="bg-slider" class="owl-carousel owl-theme">
             <div class="item">
-	            <img class="" src="<?= Helper::homeUrl() ?>web/template/jobs/img/slider-image-3.jpg"
+	            <img class="" src="<?= Helper::homeUrl(); ?>web/template/jobs/img/slider-image-3.jpg"
                                    alt="<?= Helper::params(); ?>"></div>
             <div class="item">
-	            <img class="" src="<?= Helper::homeUrl() ?>web/template/jobs/img/slider-image-2.jpg"
+	            <img class="" src="<?= Helper::homeUrl(); ?>web/template/jobs/img/slider-image-2.jpg"
                                    alt="<?= Helper::params(); ?>"></div>
             <div class="item">
-	            <img class="" src="<?= Helper::homeUrl() ?>web/template/jobs/img/slider-image-1.jpg" alt="<?= Helper::params(); ?>">
+	            <img class="" src="<?= Helper::homeUrl(); ?>web/template/jobs/img/slider-image-1.jpg" alt="<?= Helper::params(); ?>">
             </div>
 
 		</div>
@@ -31,7 +30,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 				<h2>TÌM KIẾM CÔNG VIỆC TRỞ NÊN <br> DỄ DÀNG HƠN</h2>
 				<p>Đăng ký tìm việc và tạo công việc tốt thật đơn giản và tiện lợi. Đăng ký nhận email phù hợp với mục đích đăng ký.</p>
 				<div class="search-form top wow pulse" data-wow-delay="0.2s">
-                    <form id="top-search" class="form-inline" action="<?= Helper::createUrl(['site/search']) ?>" method="get">
+                    <form id="top-search" class="form-inline" action="<?= Helper::createUrl(['site/search']); ?>" method="get">
                         <div class="form-group field-searchform-keywords">
                             <input type="text" name="keywords" id="searchform-keys" class="form-control"
                                    placeholder="Nhập từ khóa..." aria-invalid="false">
@@ -45,7 +44,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                                 <option value="0">Chọn ngành - nghề</option>
 								<?php
                                 foreach ($data as $datum) {
-                                    echo '<option value="' . $datum['id'] . '">' . $datum['name'] . '</option>';
+                                    echo '<option value="'.$datum['id'].'">'.$datum['name'].'</option>';
                                 }
                                 ?>
                             </select>
@@ -59,7 +58,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                                 <option value="0">Nơi làm việc</option>
 								<?php
                                 foreach ($data as $datum) {
-                                    echo '<option value="' . $datum['id'] . '">' . $datum['name'] . '</option>';
+                                    echo '<option value="'.$datum['id'].'">'.$datum['name'].'</option>';
                                 }
                                 ?>
                             </select>
@@ -75,30 +74,30 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 
 <div class="content-area">
 	<div class="container">
-		<div class="row page-title text-center <?= \app\library\helper\Helper::wowClass() ?> zoomInDown" data-wow-delay="0.1s">
+		<div class="row page-title text-center <?= \app\library\helper\Helper::wowClass(); ?> zoomInDown" data-wow-delay="0.1s">
 			<h5>Niềm vui của chúng tôi</h5>
 			<h2>Là sự hài lòng của bạn</h2>
             <p>Sử dụng các kết quả từ công việc, chúng tôi sẽ đưa ra một kế hoạch cho chiến lược tiếp thị hiệu quả nhất để có được kết quả tốt nhất.</p>
 		</div>
 		<div class="row how-it-work text-center">
 			<div class="col-md-4">
-				<div class="single-work <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.7s">
-					<img class="lazy" src="<?= Helper::homeUrl() ?>web/template/jobs/img/loading.gif" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/how-work1.png" alt="<?= Helper::params(); ?>">
+				<div class="single-work <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp" data-wow-delay="0.7s">
+					<img class="lazy" src="<?= Helper::homeUrl(); ?>web/template/jobs/img/loading.gif" data-src="<?= Helper::homeUrl(); ?>web/template/jobs/img/how-work1.png" alt="<?= Helper::params(); ?>">
 					<h3>Hướng đến sự đơn giản</h3>
 					<p>Website không đòi hỏi đăng ký quá phức tạp. Các tính năng rõ ràng thuận tiện thao tác cho cả những ai không nắm nhiều kiến thức về máy tính.</p>
 				</div>
 			</div>
 			<div class="col-md-4">
-				<div class="single-work  <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.8s">
-					<img class="lazy" src="<?= Helper::homeUrl() ?>web/template/jobs/img/loading.gif" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/how-work2.png" alt="<?= Helper::params(); ?>">
+				<div class="single-work  <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp" data-wow-delay="0.8s">
+					<img class="lazy" src="<?= Helper::homeUrl(); ?>web/template/jobs/img/loading.gif" data-src="<?= Helper::homeUrl(); ?>web/template/jobs/img/how-work2.png" alt="<?= Helper::params(); ?>">
 					<h3>Tạo sự thỏa mãn</h3>
 					<p>Luôn chọn lọc công việc và ứng viên phù hợp nhất để gửi đến bạn. Không spam mail với những tin nhắn quảng cáo
 					và những tin tức không liên quan.</p>
 				</div>
 			</div>
 			<div class="col-md-4">
-				<div class="single-work <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.9s">
-					<img class="lazy" src="<?= Helper::homeUrl() ?>web/template/jobs/img/loading.gif" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/how-work3.png" alt="">
+				<div class="single-work <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp" data-wow-delay="0.9s">
+					<img class="lazy" src="<?= Helper::homeUrl(); ?>web/template/jobs/img/loading.gif" data-src="<?= Helper::homeUrl(); ?>web/template/jobs/img/how-work3.png" alt="">
 					<h3>Luôn luôn tức thời</h3>
 					<p>Thông tin sẽ cập nhật tức thời khi có một công việc hoặc ứng viên phù hợp với nhu cầu của bạn. Bạn có thể trao đổi
 					trực tuyến với đối tác khi họ online.</p>
@@ -109,7 +108,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 	<hr>
 
     <div class="container">
-        <div class="row job-posting <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.2s">
+        <div class="row job-posting <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp" data-wow-delay="0.2s">
             <div role="tabpanel">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
@@ -125,42 +124,42 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                         <ul class="list-inline job-seeker">
                             <li>
                                 <a href="">
-                                    <img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/team-small-5.jpg" alt="">
+                                    <img class="lazy" data-src="<?= Helper::homeUrl(); ?>web/template/jobs/img/team-small-5.jpg" alt="">
                                     <div class="overlay"><h3>Ohidul Islam</h3>
                                         <p>Web Designer</p></div>
                                 </a>
                             </li>
                             <li>
                                 <a href="">
-                                    <img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/team-small-6.jpg" alt="">
+                                    <img class="lazy" data-src="<?= Helper::homeUrl(); ?>web/template/jobs/img/team-small-6.jpg" alt="">
                                     <div class="overlay"><h3>Mohidul Islam</h3>
                                         <p>CEO</p></div>
                                 </a>
                             </li>
                             <li>
                                 <a href="">
-                                    <img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/team-small-3.jpg" alt="">
+                                    <img class="lazy" data-src="<?= Helper::homeUrl(); ?>web/template/jobs/img/team-small-3.jpg" alt="">
                                     <div class="overlay"><h3>Unknown girl</h3>
                                         <p>Graphic Designer</p></div>
                                 </a>
                             </li>
                             <li>
                                 <a href="">
-                                    <img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/team-small-4.jpg" alt="">
+                                    <img class="lazy" data-src="<?= Helper::homeUrl(); ?>web/template/jobs/img/team-small-4.jpg" alt="">
                                     <div class="overlay"><h3>Eftakher Alam</h3>
                                         <p>Graphic Designer</p></div>
                                 </a>
                             </li>
                             <li>
                                 <a href="">
-                                    <img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/team-small-2.jpg" alt="">
+                                    <img class="lazy" data-src="<?= Helper::homeUrl(); ?>web/template/jobs/img/team-small-2.jpg" alt="">
                                     <div class="overlay"><h3>Mark Otto</h3>
                                         <p>Founder</p></div>
                                 </a>
                             </li>
                             <li>
                                 <a href="">
-                                    <img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/team-small-1.jpg" alt="">
+                                    <img class="lazy" data-src="<?= Helper::homeUrl(); ?>web/template/jobs/img/team-small-1.jpg" alt="">
                                     <div class="overlay"><h3>Rasel Ahmed</h3>
                                         <p>Web Developer</p></div>
                                 </a>
@@ -171,37 +170,37 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                         <ul class="list-inline">
                             <li>
                                 <a href="">
-                                    <img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/employee4.png" alt="">
+                                    <img class="lazy" data-src="<?= Helper::homeUrl(); ?>web/template/jobs/img/employee4.png" alt="">
                                     <div class="overlay"><h3>Instagram</h3></div>
                                 </a>
                             </li>
                             <li>
                                 <a href="">
-                                    <img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/employee5.png" alt="">
+                                    <img class="lazy" data-src="<?= Helper::homeUrl(); ?>web/template/jobs/img/employee5.png" alt="">
                                     <div class="overlay"><h3>Microsoft</h3></div>
                                 </a>
                             </li>
                             <li>
                                 <a href="">
-                                    <img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/employee6.png" alt="">
+                                    <img class="lazy" data-src="<?= Helper::homeUrl(); ?>web/template/jobs/img/employee6.png" alt="">
                                     <div class="overlay"><h3>Dribbble</h3></div>
                                 </a>
                             </li>
                             <li>
                                 <a href="">
-                                    <img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/employee1.png" alt="">
+                                    <img class="lazy" data-src="<?= Helper::homeUrl(); ?>web/template/jobs/img/employee1.png" alt="">
                                     <div class="overlay"><h3>Beats Music</h3></div>
                                 </a>
                             </li>
                             <li>
                                 <a href="">
-                                    <img src="<?= Helper::homeUrl() ?>web/template/jobs/img/employee2.png" alt="">
+                                    <img src="<?= Helper::homeUrl(); ?>web/template/jobs/img/employee2.png" alt="">
                                     <div class="overlay"><h3>Facebook</h3></div>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/employee3.png" alt="">
+                                    <img class="lazy" data-src="<?= Helper::homeUrl(); ?>web/template/jobs/img/employee3.png" alt="">
                                     <div class="overlay"><h3>Twitter</h3></div>
                                 </a>
                             </li>
@@ -215,7 +214,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
     <hr>
 
     <div class="container">
-        <div class="row page-title text-center <?= \app\library\helper\Helper::wowClass() ?> bounce" data-wow-delay="1s">
+        <div class="row page-title text-center <?= \app\library\helper\Helper::wowClass(); ?> bounce" data-wow-delay="1s">
             <h5>Công việc mới nhất</h5>
             <h2><span>54716</span> công việc sẵn có cho bạn</h2>
         </div>
@@ -223,9 +222,9 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
             <div class="col-md-9">
                 <div id="top-jobs" class="job-posts table-responsive" data-url="<?= Helper::createUrl(['front/jobs/top-list']); ?>">
                     <table class="table list-jobs" id="container-top-list">
-                        <tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp" data-wow-delay="0.1s">
+                        <tr class="odd <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp" data-wow-delay="0.1s">
                             <td class="tbl-logo">
-                                <a href="#"><img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo1.png" alt=""></a>
+                                <a href="#"><img class="lazy" data-src="<?= Helper::homeUrl(); ?>web/template/jobs/img/job-logo1.png" alt=""></a>
                             </td>
                             <td class="tbl-title">
                                 <h4><a href="#">Web Designer</a> <br><span class="job-type">full time</span></h4>
@@ -240,11 +239,11 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                     </table>
                 </div>
                 <div class="more-jobs text-center">
-                    <a href="<?= Helper::createUrl(['site/employeers']) ?>"><i class="fa fa-download"></i>Xem thêm</a>
+                    <a href="<?= Helper::createUrl(['site/employeers']); ?>"><i class="fa fa-download"></i>Xem thêm</a>
                 </div>
             </div>
             <div class="col-md-3 hidden-sm">
-                <div class="job-add <?= \app\library\helper\Helper::wowClass() ?> fadeInRight" data-wow-delay="1s">
+                <div class="job-add <?= \app\library\helper\Helper::wowClass(); ?> fadeInRight" data-wow-delay="1s">
                     <h2>Tìm việc ?</h2>
                     <a href="#" data-toggle="modal" data-target="#register-modal">TẠO TÀI KHOẢN</a>
                 </div>
@@ -254,7 +253,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
     <hr>
 
 	<div class="container">
-		<div class="row page-title text-center  <?= \app\library\helper\Helper::wowClass() ?> bounce" data-wow-delay=".7s">
+		<div class="row page-title text-center  <?= \app\library\helper\Helper::wowClass(); ?> bounce" data-wow-delay=".7s">
 			<h5>Hãy nghe</h5>
 			<h2>Người thành công</h2>
 		</div>
@@ -270,8 +269,8 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 								hãy quyết tâm đến cùng. Đừng bỏ cuộc.."</p>
 							<h4><strong>Steve Jobs, </strong><i>CEO của Apple</i></h4>
 						</div>
-						<div class="client-face <?= \app\library\helper\Helper::wowClass() ?> fadeInRight" data-wow-delay=".9s" style="top: 123px; right: 149px">
-							<img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/client-face1.png" alt="">
+						<div class="client-face <?= \app\library\helper\Helper::wowClass(); ?> fadeInRight" data-wow-delay=".9s" style="top: 123px; right: 149px">
+							<img class="lazy" data-src="<?= Helper::homeUrl(); ?>web/template/jobs/img/client-face1.png" alt="">
 						</div>
 					</div>
 					<div class="item">
@@ -283,7 +282,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 							<h4><strong>Denise Morrison, </strong><i>CEO của Campbell Soup</i></h4>
 						</div>
 						<div class="client-face" style="top: 123px; right: 149px">
-							<img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/client-face2.png" alt="">
+							<img class="lazy" data-src="<?= Helper::homeUrl(); ?>web/template/jobs/img/client-face2.png" alt="">
 						</div>
 					</div>
 					<div class="item">
@@ -294,7 +293,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 							<h4><strong>Mark Zuckerberg, </strong><i>CEO của Facebook</i></h4>
 						</div>
 						<div class="client-face">
-							<img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/client-face1.png" alt="">
+							<img class="lazy" data-src="<?= Helper::homeUrl(); ?>web/template/jobs/img/client-face1.png" alt="">
 						</div>
 					</div>
 					<div class="item">
@@ -304,7 +303,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 							<h4><strong>Ohidul Islam, </strong><i>Web Designer</i></h4>
 						</div>
 						<div class="client-face">
-							<img class="lazy" data-src="<?= Helper::homeUrl() ?>web/template/jobs/img/client-face2.png" alt="">
+							<img class="lazy" data-src="<?= Helper::homeUrl(); ?>web/template/jobs/img/client-face2.png" alt="">
 						</div>
 					</div>
 				</div>
@@ -348,6 +347,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
            data-action="apply"
            data-toggle="modal"
            data-target="#apply-modal"
+           data-job-code="<%= k.job_code %>"
            data-href="<?= Helper::createUrl(['front/jobs/preapply']); ?>"
         >Apply</a>
         <% } %>
@@ -362,7 +362,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
     var i;
     for (i = 0; i < 10 - items; i++) { %>
     <tr class="even wow fadeInUp" data-wow-delay="0.<%= i + 2 %>s">
-        <td class="tbl-logo"><img src="<?= Helper::homeUrl() ?>web/template/jobs/img/job-logo2.png" alt=""></td>
+        <td class="tbl-logo"><img src="<?= Helper::homeUrl(); ?>web/template/jobs/img/job-logo2.png" alt=""></td>
         <td class="tbl-title"><h4>Front End Developer <br><span class="job-type">full time</span>
             </h4></td>
         <td><p>Jolil corporation</p></td>

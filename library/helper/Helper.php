@@ -686,8 +686,8 @@ class Helper
     public static function encrypt($string, $action = true)
     {
         // you may change these values to your own
-        $secret_key = 'my_simple_secret_key';
-        $secret_iv = 'my_simple_secret_iv';
+        $secret_key = Helper::params('encrypt', 'my_simple_secret_key');
+        $secret_iv = Helper::params('encrypt', 'my_simple_secret_iv');
 
         $output = false;
         $encrypt_method = "AES-256-CBC";

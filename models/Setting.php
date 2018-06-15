@@ -1,13 +1,19 @@
 <?php
 
-namespace app\models;
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
 
-use Yii;
+namespace app\models;
 
 class Setting extends \app\models\base\Setting
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -21,7 +27,7 @@ class Setting extends \app\models\base\Setting
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {

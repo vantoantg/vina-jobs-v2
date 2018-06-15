@@ -1,5 +1,13 @@
 <?php
 
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\system\controllers;
 
 use yii\base\Exception;
@@ -22,12 +30,12 @@ class SetupDefaultController extends Controller
     public function actionIndex()
     {
         $pathRoot = \Yii::$app->getBasePath();
-        $pathAssets = $pathRoot . '/assets';
+        $pathAssets = $pathRoot.'/assets';
         try {
             chmod($pathAssets, 0777);
             echo "Changed $pathAssets to CHMOD 0777";
         } catch (Exception $exception) {
-            throw new \Exception($exception->getMessage() . ' Couldn\'t set permission.');
+            throw new \Exception($exception->getMessage().' Couldn\'t set permission.');
         }
 
 //        return $this->goHome();

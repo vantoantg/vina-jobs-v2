@@ -1,8 +1,11 @@
 <?php
-/**
- * Created by Tona Nguyễn
- * Date: 1/29/2018
- * Time: 5:32 PM
+
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
  */
 
 namespace app\models;
@@ -14,7 +17,7 @@ use Yii;
 class Company extends \app\models\base\Company
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -23,14 +26,14 @@ class Company extends \app\models\base\Company
             [['location_id', 'created_by', 'status', 'arranged'], 'integer'],
             [['content'], 'string'],
             [['created_at'], 'safe'],
-            [['website'],'url', 'defaultScheme' => ''],
-            [['logo'], 'file', 'extensions' => 'gif, jpg, png, jpeg',],
+            [['website'], 'url', 'defaultScheme' => ''],
+            [['logo'], 'file', 'extensions' => 'gif, jpg, png, jpeg'],
             [['name', 'logo'], 'string', 'max' => 255],
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -52,8 +55,10 @@ class Company extends \app\models\base\Company
         if (parent::beforeSave($insert)) {
             if ($this->isNewRecord) {
             }
+
             return true;
         }
+
         return false;
     }
 
@@ -66,6 +71,7 @@ class Company extends \app\models\base\Company
 
     /**
      * @param $company_id
+     *
      * @return array
      */
     public function gallery($company_id)
@@ -74,9 +80,9 @@ class Company extends \app\models\base\Company
         $files = FileUploads::instance()->getListByObjects(FileUploads::COM_GALLERY, $company_id);
         if ($files) {
             foreach ($files as $file) {
-                $imgs[] =  [
+                $imgs[] = [
                     'id' => $file['id'],
-                    'img' => Helper::imgRender(Helper::params('companyCompanyGallery').$file['file_path'], 150, 120)];
+                    'img' => Helper::imgRender(Helper::params('companyCompanyGallery').$file['file_path'], 150, 120), ];
             }
         }
 
@@ -87,15 +93,17 @@ class Company extends \app\models\base\Company
      * @param $logo
      * @param int $w
      * @param int $h
+     *
      * @return mixed|string
      */
     public static function getLogo($logo, $w = 200, $h = 200)
     {
         if ($logo) {
-            $path = Yii::$app->basePath.'/'.Helper::params('companyLogoPath') . $logo;
+            $path = Yii::$app->basePath.'/'.Helper::params('companyLogoPath').$logo;
             if (file_exists($path)) {
-                return Yii::$app->getHomeUrl().Helper::params('companyLogoPath') . $logo;
+                return Yii::$app->getHomeUrl().Helper::params('companyLogoPath').$logo;
             }
+
             return Cons::getNoImg();
         //		    return Helper::imgRender(Helper::params('companyLogoPath') . $logo, $w, $h);
         } else {

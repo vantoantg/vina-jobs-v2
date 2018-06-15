@@ -12,11 +12,11 @@ $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="post-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title); ?></h1>
     <div class="bg-white col-sm-12 col-md-8 col-lg-9">
 		<?= $this->render('_form', [
             'model' => $model,
-        ]) ?>
+        ]); ?>
     </div>
     <div class="col-sm-12 col-md-4 col-lg-3 sidebar-admin">
         <div class="row">
@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = 'Update';
                     if ($pages) {
                         foreach ($pages as $page) {
                             ?>
-                            <li title="Click to edit"><?= Html::a($page->name, ['update', 'id' => $page->id], ['class' => '']) ?></li>
+                            <li title="Click to edit"><?= Html::a($page->name, ['update', 'id' => $page->id], ['class' => '']); ?></li>
 						<?php
                         }
                     } ?>

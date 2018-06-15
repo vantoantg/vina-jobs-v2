@@ -709,9 +709,6 @@ body {
 
 aside {
     margin-top: 30px;
-    -webkit-box-shadow: 1px 4px 16px 3px rgba(199, 197, 199, 1);
-    -moz-box-shadow: 1px 4px 16px 3px rgba(199, 197, 199, 1);
-    box-shadow: 1px 4px 16px 3px rgba(199, 197, 199, 1);
 }
 
 aside .content-footer > img {
@@ -809,7 +806,6 @@ aside .content-footer > img {
 
 .widget-sidebar {
     background-color: #fff;
-    padding: 20px;
 }
 
 .title-widget-sidebar {
@@ -836,11 +832,10 @@ aside .content-footer > img {
 }
 
 .post-img img {
-    width: 100px;
-    height: 80px;
+    max-width: 100px;
+    max-height: 80px;
     float: left;
     margin-right: 15px;
-    border: 5px solid #00AEEF;
     transition: 0.5s;
 }
 
@@ -852,10 +847,6 @@ aside .content-footer > img {
 
 .post-img, .recent-post a:hover {
     color: #F39C12;
-}
-
-.post-img img:hover {
-    border: 5px solid #F39C12;
 }
 
 button.accordion {

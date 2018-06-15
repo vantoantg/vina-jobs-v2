@@ -1,8 +1,11 @@
 <?php
-/**
- * Created by Tona Nguyễn
- * Date: 1/29/2018
- * Time: 5:32 PM
+
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
  */
 
 namespace app\models;
@@ -14,6 +17,7 @@ class Auth extends \yii\db\ActiveRecord
 
     /**
      * @param $client
+     *
      * @return string
      */
     public function detectUserType($client)
@@ -25,23 +29,28 @@ class Auth extends \yii\db\ActiveRecord
         switch ($clientId) {
             case 'facebook':
                 $this->email = $userAttributes['email'];
+
                 return $this->userFacebook($userAttributes);
 
             case 'twitter':
                 $this->email = $userAttributes['email'];
+
                 return $this->userTwitter($userAttributes);
 
             case 'github':
                 $this->email = $userAttributes['email'];
+
                 return $this->userGitHub($userAttributes);
             case 'google':
                 $this->email = $userAttributes['emails'][0]['value'];
+
                 return $this->userGoogle($userAttributes);
         }
     }
 
     /**
      * @param $userData
+     *
      * @return bool
      */
     public function userFacebook($userData)
@@ -55,11 +64,13 @@ class Auth extends \yii\db\ActiveRecord
             $user = $this->newUser($userData);
             \Yii::$app->user->login(Users::findOne($user->id));
         }
+
         return true;
     }
 
     /**
      * @param array $userData
+     *
      * @return bool
      */
     public function userGitHub($userData = [])
@@ -83,11 +94,13 @@ class Auth extends \yii\db\ActiveRecord
             }
             \Yii::$app->user->login(Users::findOne($user->id));
         }
+
         return true;
     }
 
     /**
      * @param array $userData
+     *
      * @return bool
      */
     public function userGoogle($userData = [])
@@ -113,11 +126,13 @@ class Auth extends \yii\db\ActiveRecord
             }
             \Yii::$app->user->login(Users::findOne($user->id));
         }
+
         return true;
     }
 
     /**
      * @param $userData
+     *
      * @return bool
      */
     public function userTwitter($userData)
@@ -150,6 +165,7 @@ class Auth extends \yii\db\ActiveRecord
 
     /**
      * @param $userData
+     *
      * @return Users
      */
     public function newUser($userData)

@@ -1,5 +1,13 @@
 <?php
 
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\contents\controllers;
 
 use app\modules\admin\controllers\AdminController;
@@ -15,7 +23,7 @@ use yii\filters\VerbFilter;
 class PagesController extends AdminController
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -31,6 +39,7 @@ class PagesController extends AdminController
 
     /**
      * Lists all Pages models.
+     *
      * @return mixed
      */
     public function actionIndex()
@@ -47,8 +56,11 @@ class PagesController extends AdminController
 
     /**
      * Displays a single Pages model.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
@@ -61,6 +73,7 @@ class PagesController extends AdminController
     /**
      * Creates a new Pages model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return mixed
      */
     public function actionCreate()
@@ -71,6 +84,7 @@ class PagesController extends AdminController
             if (Yii::$app->request->post('save') == 'saveedit') {
                 return $this->redirect(['update', 'id' => $model->id]);
             }
+
             return $this->redirect(['index']);
         }
 
@@ -82,8 +96,11 @@ class PagesController extends AdminController
     /**
      * Updates an existing Pages model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
@@ -98,15 +115,18 @@ class PagesController extends AdminController
 
         return $this->render('update', [
             'model' => $model,
-            'pages' => Pages::getList($id)
+            'pages' => Pages::getList($id),
         ]);
     }
 
     /**
      * Deletes an existing Pages model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
@@ -120,8 +140,11 @@ class PagesController extends AdminController
     /**
      * Finds the Pages model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param integer $id
+     *
      * @return Pages the loaded model
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
