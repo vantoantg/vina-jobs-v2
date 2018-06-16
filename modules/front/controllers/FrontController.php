@@ -10,6 +10,7 @@
 
 namespace app\modules\front\controllers;
 
+use app\library\helper\Logs;
 use yii\web\Controller;
 use Yii;
 
@@ -24,6 +25,7 @@ class FrontController extends Controller
         $this->setCookieForUrl();
 
         $this->handleUrlSessionToRedirect();
+        Logs::getInstance()->siteRequest();
     }
 
     /**

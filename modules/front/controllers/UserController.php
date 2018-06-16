@@ -122,7 +122,7 @@ class UserController extends FrontController
 
                     // Inform Candidate registered
                     $temp = $this->renderPartial('@app/mail/layouts/noti_candidate_register', ['data' => $data]);
-                    Email::sendNotiCandidateRegister('A candidate has just registered an account on '.Helper::siteURL(), $temp);
+                    Email::sendNotiCandidateRegister('A candidate has just registered an account on '.Helper::params(), $temp);
                 }
 
                 return $this->render('register_candidate_success', [
