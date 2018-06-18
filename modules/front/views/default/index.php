@@ -216,7 +216,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
     <div class="container">
         <div class="row page-title text-center <?= \app\library\helper\Helper::wowClass(); ?> bounce" data-wow-delay="1s">
             <h5>Công việc mới nhất</h5>
-            <h2><span>54716</span> công việc sẵn có cho bạn</h2>
+            <h2><span class="job-counter">...</span> công việc sẵn có cho bạn</h2>
         </div>
         <div class="row jobs">
             <div class="col-md-9">
@@ -323,7 +323,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
     %>
     <tr class="<% if(v%2){ %> even <% }else{ %> odd <% } %> wow fadeInUp" data-wow-delay="0.<%= i %>s">
         <td class="tbl-logo">
-        <a href="#"><img src="<%= k.com_logo %>" alt="" width="70"></a>
+        <a href="<%= k.url_company_detail %>"><img src="<%= k.com_logo %>" alt="" width="70"></a>
         </td>
         <td class="tbl-title">
         <h4><a href="<%= k.url_view %>"><%= k.job_name %> </a> <br><span class="job-type"><%= k.working_time %></span></h4>
@@ -352,26 +352,9 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
         >Apply</a>
         <% } %>
     </td>
-    <?php
-                                } ?>
+    <?php } ?>
     </tr>
     <% }); %>
-
-    <% if(items <= 10){ %>
-    <%
-    var i;
-    for (i = 0; i < 10 - items; i++) { %>
-    <tr class="even wow fadeInUp" data-wow-delay="0.<%= i + 2 %>s">
-        <td class="tbl-logo"><img src="<?= Helper::homeUrl(); ?>web/template/jobs/img/job-logo2.png" alt=""></td>
-        <td class="tbl-title"><h4>Front End Developer <br><span class="job-type">full time</span>
-            </h4></td>
-        <td><p>Jolil corporation</p></td>
-        <td class="text-center"><p><i class="icon-location"></i>
-                <br>San Franciso, USA</p></td>
-        <td class="tbl-apply"><a href="#">Apply</a></td>
-    </tr>
-    <% } %>
-    <% } %>
     <% } %>
 </script>
 

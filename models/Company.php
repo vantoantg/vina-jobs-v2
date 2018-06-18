@@ -62,6 +62,24 @@ class Company extends \app\models\base\Company
         return false;
     }
 
+    /**
+     * @param $company_code
+     * @return bool|string
+     */
+    public function getCompanyCode($company_code)
+    {
+        return Helper::encrypt($company_code, false);
+    }
+
+    /**
+     * @param $company_code
+     * @return bool|string
+     */
+    public function setCompanyCode($company_code)
+    {
+        return Helper::encrypt($company_code);
+    }
+
     public function getCompany($company)
     {
         $company = self::findOne($company);

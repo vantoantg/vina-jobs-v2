@@ -115,7 +115,8 @@ var Jobs = function(){
         siteIndex: function () {
             var jobsTop = $('#top-jobs');
             Service.getCallback(jobsTop.data('url'), function (data) {
-                var html = _.template($('#template-top-list').html())({data: data});
+                var html = _.template($('#template-top-list').html())({data: data.datas});
+                $('h2 > span.job-counter').html(data.jobs_counter);
                 $('#container-top-list').html(html);
             });
         }
