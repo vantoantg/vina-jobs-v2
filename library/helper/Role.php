@@ -49,12 +49,12 @@ class Role
     public static function allowAdmin($role = false)
     {
         if ($role == false) {
-            $role = Common::currentUser('role', false);
+            $role = Common::currentUsers()->role;
         }
         if (in_array($role, [
             self::ROLE_ADMINISTRATOR,
             self::ROLE_ADMIN,
-            self::ROLE_DIRECTOR, ])) {
+            self::ROLE_DIRECTOR])) {
             return true;
         }
 

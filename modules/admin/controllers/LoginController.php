@@ -13,6 +13,8 @@ namespace app\modules\admin\controllers;
 use app\forms\AdminLoginForm;
 use app\library\helper\Common;
 use app\library\helper\Helper;
+use app\library\helper\Role;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Default controller for the `admin` module
@@ -28,6 +30,7 @@ class LoginController extends BaseController
 
     /**
      * Renders the index view for the module
+     * @Route("admins/loginform")
      *
      * @return string
      */
@@ -39,7 +42,7 @@ class LoginController extends BaseController
 
         $model = new AdminLoginForm();
         if ($model->load($this->app->request->post()) && $model->login()) {
-            if (Common::currentUser('username') == 'admin') {
+            if (Common::currentUsers()->role == Role::ROLE_ADMINISTRATOR) {
                 return $this->redirect(['/admin']);
             }
 

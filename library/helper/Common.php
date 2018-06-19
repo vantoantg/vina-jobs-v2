@@ -46,8 +46,8 @@ class Common
 
     /**
      * @param string $key
-     *
-     * @return string
+     * @param bool $return
+     * @return bool|null
      */
     public static function currentUser($key = 'id', $return = true)
     {

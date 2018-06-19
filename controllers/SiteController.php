@@ -273,6 +273,8 @@ class SiteController extends FrontController
             Email::instance()->sendContact($body);
             Yii::$app->session->setFlash('contactFormSubmitted');
 
+            Logs::getInstance()->contactEmail($data);
+
             return $this->refresh();
         }
         return $this->render('contact', [
