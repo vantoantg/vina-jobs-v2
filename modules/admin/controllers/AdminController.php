@@ -10,6 +10,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\library\helper\Helper;
 use app\library\helper\Role;
 use app\models\search\Setting;
 
@@ -41,7 +42,7 @@ class AdminController extends BaseController
         $this->setSetting();
 
         if (!Role::allowAdmin()) {
-            //			return $this->redirect(Helper::siteURL());
+            return $this->redirect(Helper::siteURL());
         }
     }
 
