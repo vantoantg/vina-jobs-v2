@@ -27,6 +27,9 @@ body.modal-open {
 .pd-right-0 {
   padding-right: 0!important;
 }
+.pd-t-30 {
+  padding-top: 30px;
+}
 .w100 {
   width: 100%;
 }
@@ -55,6 +58,10 @@ body.modal-open {
   font-size: 70px;
   color: #dedede;
   margin-bottom: 15px;
+}
+.breadcrumb {
+  border-radius: 0;
+  margin-bottom: 0;
 }
 .loginmodal-container {
   padding: 30px;
@@ -92,7 +99,6 @@ input[type=password] {
   background: #fff;
   border: 1px solid #d9d9d9;
   border-top: 1px solid #c0c0c0;
-  /* border-radius: 2px; */
   padding: 0 8px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -659,6 +665,12 @@ a.search-options:hover {
 #tabs-cv-valid ul {
   padding: 0;
 }
+#tabs-cv-valid ul li {
+  list-style: none;
+}
+#tabs-cv-valid ul li.file {
+  padding-left: 40px;
+}
 #tabs-cv-valid label {
   margin: 5px;
   display: inline-block;
@@ -670,12 +682,12 @@ a.search-options:hover {
 #tabs-cv-valid label:hover {
   opacity: 0.8;
 }
-#tabs-cv-valid input {
+#tabs-cv-valid ul li label input {
   height: 1px;
   width: 1px;
   opacity: 0;
 }
-#tabs-cv-valid .outside {
+#tabs-cv-valid ul li label .outside {
   display: inline-block;
   position: absolute;
   left: 0;
@@ -689,7 +701,7 @@ a.search-options:hover {
   box-sizing: border-box;
   background: none;
 }
-#tabs-cv-valid .inside {
+#tabs-cv-valid ul li label .inside {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -705,19 +717,19 @@ a.search-options:hover {
   -webkit-transform: scale(0, 0);
   transform: scale(0, 0);
 }
-#tabs-cv-valid .no-transforms .inside {
+#tabs-cv-valid ul li label .no-transforms .inside {
   left: auto;
   top: auto;
   width: 0;
   height: 0;
 }
-#tabs-cv-valid input:checked + .outside .inside {
+#tabs-cv-valid ul li label input:checked + .outside .inside {
   -webkit-animation: radio-select 0.1s linear;
   animation: radio-select 0.1s linear;
   -webkit-transform: scale(1, 1);
   transform: scale(1, 1);
 }
-#tabs-cv-valid .no-transforms input:checked + .outside .inside {
+#tabs-cv-valid ul li label .no-transforms input:checked + .outside .inside {
   width: 10px;
   height: 10px;
 }
@@ -869,7 +881,119 @@ body.site-employeers-detail #viewGallery .modal-content .close {
   width: 58px;
 }
 /*********** Responsive ***************/
+@media (max-width: 1280px) {
+  .row-20-5 {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+  .row-20-5 .col-xs-1,
+  .row-20-5 .col-sm-1,
+  .row-20-5 .col-md-1,
+  .row-20-5 .col-lg-1,
+  .row-20-5 .col-xs-2,
+  .row-20-5 .col-sm-2,
+  .row-20-5 .col-md-2,
+  .row-20-5 .col-lg-2,
+  .row-20-5 .col-xs-3,
+  .row-20-5 .col-sm-3,
+  .row-20-5 .col-md-3,
+  .row-20-5 .col-lg-3,
+  .row-20-5 .col-xs-4,
+  .row-20-5 .col-sm-4,
+  .row-20-5 .col-md-4,
+  .row-20-5 .col-lg-4,
+  .row-20-5 .col-xs-5,
+  .row-20-5 .col-sm-5,
+  .row-20-5 .col-md-5,
+  .row-20-5 .col-lg-5,
+  .row-20-5 .col-xs-6,
+  .row-20-5 .col-sm-6,
+  .row-20-5 .col-md-6,
+  .row-20-5 .col-lg-6,
+  .row-20-5 .col-xs-7,
+  .row-20-5 .col-sm-7,
+  .row-20-5 .col-md-7,
+  .row-20-5 .col-lg-7,
+  .row-20-5 .col-xs-8,
+  .row-20-5 .col-sm-8,
+  .row-20-5 .col-md-8,
+  .row-20-5 .col-lg-8,
+  .row-20-5 .col-xs-9,
+  .row-20-5 .col-sm-9,
+  .row-20-5 .col-md-9,
+  .row-20-5 .col-lg-9,
+  .row-20-5 .col-xs-10,
+  .row-20-5 .col-sm-10,
+  .row-20-5 .col-md-10,
+  .row-20-5 .col-lg-10,
+  .row-20-5 .col-xs-11,
+  .row-20-5 .col-sm-11,
+  .row-20-5 .col-md-11,
+  .row-20-5 .col-lg-11,
+  .row-20-5 .col-xs-12,
+  .row-20-5 .col-sm-12,
+  .row-20-5 .col-md-12,
+  .row-20-5 .col-lg-12 {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
 @media (max-width: 767px) {
+  .row-sm-20-5 {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+  .row-sm-20-5 .col-xs-1,
+  .row-sm-20-5 .col-sm-1,
+  .row-sm-20-5 .col-md-1,
+  .row-sm-20-5 .col-lg-1,
+  .row-sm-20-5 .col-xs-2,
+  .row-sm-20-5 .col-sm-2,
+  .row-sm-20-5 .col-md-2,
+  .row-sm-20-5 .col-lg-2,
+  .row-sm-20-5 .col-xs-3,
+  .row-sm-20-5 .col-sm-3,
+  .row-sm-20-5 .col-md-3,
+  .row-sm-20-5 .col-lg-3,
+  .row-sm-20-5 .col-xs-4,
+  .row-sm-20-5 .col-sm-4,
+  .row-sm-20-5 .col-md-4,
+  .row-sm-20-5 .col-lg-4,
+  .row-sm-20-5 .col-xs-5,
+  .row-sm-20-5 .col-sm-5,
+  .row-sm-20-5 .col-md-5,
+  .row-sm-20-5 .col-lg-5,
+  .row-sm-20-5 .col-xs-6,
+  .row-sm-20-5 .col-sm-6,
+  .row-sm-20-5 .col-md-6,
+  .row-sm-20-5 .col-lg-6,
+  .row-sm-20-5 .col-xs-7,
+  .row-sm-20-5 .col-sm-7,
+  .row-sm-20-5 .col-md-7,
+  .row-sm-20-5 .col-lg-7,
+  .row-sm-20-5 .col-xs-8,
+  .row-sm-20-5 .col-sm-8,
+  .row-sm-20-5 .col-md-8,
+  .row-sm-20-5 .col-lg-8,
+  .row-sm-20-5 .col-xs-9,
+  .row-sm-20-5 .col-sm-9,
+  .row-sm-20-5 .col-md-9,
+  .row-sm-20-5 .col-lg-9,
+  .row-sm-20-5 .col-xs-10,
+  .row-sm-20-5 .col-sm-10,
+  .row-sm-20-5 .col-md-10,
+  .row-sm-20-5 .col-lg-10,
+  .row-sm-20-5 .col-xs-11,
+  .row-sm-20-5 .col-sm-11,
+  .row-sm-20-5 .col-md-11,
+  .row-sm-20-5 .col-lg-11,
+  .row-sm-20-5 .col-xs-12,
+  .row-sm-20-5 .col-sm-12,
+  .row-sm-20-5 .col-md-12,
+  .row-sm-20-5 .col-lg-12 {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
   .wrapper-sb {
     margin-left: 0;
     margin-right: 0;
@@ -906,6 +1030,10 @@ body.site-employeers-detail #viewGallery .modal-content .close {
     margin-left: 0;
     margin-right: 0;
   }
+  .ft-jobs-detail button {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 @media (max-width: 480px) {
   #blog-section .list .col-xs-6 {
@@ -916,5 +1044,8 @@ body.site-employeers-detail #viewGallery .modal-content .close {
   }
   .slider-content h2 {
     font-size: 20px;
+  }
+  .ft-jobs-detail button {
+    margin: 5px;
   }
 }

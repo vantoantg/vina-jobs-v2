@@ -3,7 +3,6 @@
 #/config/db.php
 assets/*
 /config/db.php
-/config/email.php
 /config/private.php
 /node_modules
 !/assets/app

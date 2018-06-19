@@ -12,6 +12,7 @@ body.modal-open{ padding-right: 0!important;}
 .pd-lr-0{ padding-left: 0!important; padding-right: 0!important;}
 .pd-left-0{ padding-left: 0!important;}
 .pd-right-0{ padding-right: 0!important;}
+.pd-t-30{ padding-top: 30px}
 .w100{ width: 100%}
 .lh-18{ line-height: 18px}
 .navbar-collapse.in{
@@ -28,6 +29,10 @@ body.modal-open{ padding-right: 0!important;}
 		color: #dedede;
 		margin-bottom: 15px;
 	}
+}
+.breadcrumb{
+	border-radius: 0;
+	margin-bottom: 0;
 }
 .loginmodal-container {
 	padding: 30px;
@@ -70,7 +75,6 @@ body.modal-open{ padding-right: 0!important;}
 	background: #fff;
 	border: 1px solid #d9d9d9;
 	border-top: 1px solid #c0c0c0;
-	/* border-radius: 2px; */
 	padding: 0 8px;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -616,6 +620,12 @@ a.search-options{
 #tabs-cv-valid{
 	ul{
 		padding: 0;
+		li{
+			list-style: none;
+		}
+		li.file{
+			padding-left: 40px;
+		}
 	}
 	label {
 		margin: 5px;
@@ -626,60 +636,60 @@ a.search-options{
 		font-weight: normal;
 		&:hover{ opacity: 0.8}
 	}
-	
-	input {
-		height: 1px;
-		width: 1px;
-		opacity: 0;
-	}
-	
-	.outside {
-		display: inline-block;
-		position: absolute;
-		left: 0;
-		top: 50%;
-		margin-top: -10px;
-		width: 20px;
-		height: 20px;
-		border: 2px solid #00AEEF;
-		border-radius: 50%;
-		-webkit-box-sizing: border-box;
-		box-sizing: border-box;
-		background: none;
-	}
-	
-	.inside {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		-webkit-transform: translate(-50%, -50%);
-		transform: translate(-50%, -50%);
-		display: inline-block;
-		border-radius: 50%;
-		width: 10px;
-		height: 10px;
-		background: #00AEEF;
-		left: 3px;
-		top: 3px;
-		-webkit-transform: scale(0, 0);
-		transform: scale(0, 0);
-	}
-	.no-transforms .inside {
-		left: auto;
-		top: auto;
-		width: 0;
-		height: 0;
-	}
-	
-	input:checked + .outside .inside {
-		-webkit-animation: radio-select 0.1s linear;
-		animation: radio-select 0.1s linear;
-		-webkit-transform: scale(1, 1);
-		transform: scale(1, 1);
-	}
-	.no-transforms input:checked + .outside .inside {
-		width: 10px;
-		height: 10px;
+	ul li label{
+		input {
+			height: 1px;
+			width: 1px;
+			opacity: 0;
+		}
+		
+		.outside {
+			display: inline-block;
+			position: absolute;
+			left: 0;
+			top: 50%;
+			margin-top: -10px;
+			width: 20px;
+			height: 20px;
+			border: 2px solid #00AEEF;
+			border-radius: 50%;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			background: none;
+		}
+		
+		.inside {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+			display: inline-block;
+			border-radius: 50%;
+			width: 10px;
+			height: 10px;
+			background: #00AEEF;
+			left: 3px;
+			top: 3px;
+			-webkit-transform: scale(0, 0);
+			transform: scale(0, 0);
+		}
+		.no-transforms .inside {
+			left: auto;
+			top: auto;
+			width: 0;
+			height: 0;
+		}
+		input:checked + .outside .inside {
+			-webkit-animation: radio-select 0.1s linear;
+			animation: radio-select 0.1s linear;
+			-webkit-transform: scale(1, 1);
+			transform: scale(1, 1);
+		}
+		.no-transforms input:checked + .outside .inside {
+			width: 10px;
+			height: 10px;
+		}
 	}
 }
 .header-call p span{ display: inline-block}
@@ -847,7 +857,23 @@ body.site-employeers-detail{
 }
 
 /*********** Responsive ***************/
+@media (max-width: 1280px) {
+	.row-20-5{
+		margin-left: -20px; margin-right: -20px;
+		.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12{
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+	}
+}
 @media (max-width: 767px) {
+	.row-sm-20-5{
+		margin-left: -20px; margin-right: -20px;
+		.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12{
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+	}
 	.wrapper-sb{
 		margin-left: 0;
 		margin-right: 0;
@@ -874,6 +900,7 @@ body.site-employeers-detail{
 	.slider-content p{line-height: 20px}
 	.button.navbar-right{ text-align: center}
 	.navbar-nav.navbar-right:last-child{margin-left: 0; margin-right: 0;}
+	.ft-jobs-detail button{ margin-left: 0; margin-right: 0; }
 }
 @media (max-width: 480px) {
 	#blog-section{
@@ -883,4 +910,5 @@ body.site-employeers-detail{
 	}
 	.slider .owl-pagination{ bottom: 50px}
 	.slider-content h2{ font-size: 20px}
+	.ft-jobs-detail button{ margin: 5px }
 }

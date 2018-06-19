@@ -1,8 +1,15 @@
 <?php
 
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\models\search;
 
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Job as JobModel;
@@ -13,17 +20,16 @@ use app\models\Job as JobModel;
 class JobCustomSearch extends JobModel
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
         return [
-
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function scenarios()
     {
@@ -61,11 +67,11 @@ class JobCustomSearch extends JobModel
             'status' => 1,
         ]);
 
-        if(isset($params['keywords'])){
+        if (isset($params['keywords'])) {
 //            $query->andFilterWhere(['like', 'title', $params['keywords']]);
         }
 
-        if(isset($params['jobs'])){
+        if (isset($params['jobs'])) {
 //            $query->andFilterWhere(['in', 'categories_id', $params['jobs']]);
         }
 //            ->andFilterWhere(['like', 'slug', $this->slug])

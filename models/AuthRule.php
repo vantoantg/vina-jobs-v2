@@ -1,14 +1,15 @@
 <?php
-/**
- * Created by Tona Nguyễn
- * Date: 1/25/2018
- * Time: 12:48 PM
+
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
  */
 
 namespace app\models;
 
-
 class AuthRule extends \app\models\base\AuthRule
 {
-
 }

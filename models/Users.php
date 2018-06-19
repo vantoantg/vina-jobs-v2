@@ -1,5 +1,13 @@
 <?php
 
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\models;
 
 use app\library\helper\Cons;
@@ -10,22 +18,20 @@ use yii\web\IdentityInterface;
 
 class Users extends \app\models\base\User implements IdentityInterface
 {
+    const
+        USER_TYPE_DEFAULT = 1;
+    const //  Register(candidate)
+        USER_TYPE_FACEBOOK = 2;
+    const USER_TYPE_GOOGLE = 3;
+    const USER_TYPE_TWITTER = 4;
+    const USER_TYPE_GITHUB = 5;
+    const USER_TYPE_CONTACT_OF_COMPANY = 9; // Contact of company
 
     const
-        USER_TYPE_DEFAULT = 1, //  Register(candidate)
-        USER_TYPE_FACEBOOK = 2,
-        USER_TYPE_GOOGLE = 3,
-        USER_TYPE_TWITTER = 4,
-        USER_TYPE_GITHUB = 5,
-
-        USER_TYPE_CONTACT_OF_COMPANY = 9; // Contact of company
-
-	const
-		STATUS_WAITING_ACTIVE = 0,
-		STATUS_WAITING_RESET_PASSWORD = 3,
-
-		STATUS_ACTIVED = 1,
-		STATUS_DISABLED = 2;
+        STATUS_WAITING_ACTIVE = 0;
+    const STATUS_WAITING_RESET_PASSWORD = 3;
+    const STATUS_ACTIVED = 1;
+    const STATUS_DISABLED = 2;
 
     const SCENARIO_REGISTER = 'register';
     const SCENARIO_UPDATE = 'update';
@@ -39,7 +45,7 @@ class Users extends \app\models\base\User implements IdentityInterface
     public $iread;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -56,7 +62,7 @@ class Users extends \app\models\base\User implements IdentityInterface
             [['lang'], 'string', 'max' => 5],
             [['timezone'], 'string', 'max' => 100],
             [['email', 'access_token'], 'unique'],
-	        ['repassword', 'compare', 'compareAttribute'=>'password', 'message' => "Mật khẩu nhập lại chưa chính xác." ],
+            ['repassword', 'compare', 'compareAttribute' => 'password', 'message' => 'Mật khẩu nhập lại chưa chính xác.'],
         ];
     }
 
@@ -66,18 +72,20 @@ class Users extends \app\models\base\User implements IdentityInterface
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios[self::SCENARIO_UPDATE] = ['name'];
+        $scenarios[self::SCENARIO_UPDATE] = ['name', 'email'];
         $scenarios[self::SCENARIO_REGISTER] = ['name', 'iread', 'email', 'password', 'repassword'];
         $scenarios[self::SCENARIO_RESET_PW] = [];
+
         return $scenarios;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
         $iread = 'Tôi đã đọc và chấp các chính sách và quy định của '.\Yii::$app->params['siteName'];
+
         return [
             'id' => 'ID',
             'username' => 'Email',
@@ -100,7 +108,7 @@ class Users extends \app\models\base\User implements IdentityInterface
             'iread' => $iread,
             'status' => 'Status',
 
-	        'as_employers' => 'Như là nhà tuyển dụng'
+            'as_employers' => 'Như là nhà tuyển dụng',
         ];
     }
 
@@ -109,50 +117,49 @@ class Users extends \app\models\base\User implements IdentityInterface
         $title = \Yii::$app->params['siteName'];
         $policyUrl = Helper::createUrl(['site/policy']);
         if (!$this->iread) {
-            $this->addError($this->attributes, 'Bạn chưa đồng ý với <a href="'.$policyUrl.'" target="_blank" title="'.$title.'">quy định</a> của ' . \Yii::$app->params['siteName']);
+            $this->addError($this->attributes, 'Bạn chưa đồng ý với <a href="'.$policyUrl.'" target="_blank" title="'.$title.'">quy định</a> của '.\Yii::$app->params['siteName']);
         }
     }
 
-	/**
-	 * @param bool $insert
-	 * @return bool
-	 */
-    public function beforeSave($insert) {
-
+    /**
+     * @param bool $insert
+     *
+     * @return bool
+     */
+    public function beforeSave($insert)
+    {
         if (parent::beforeSave($insert)) {
             if ($this->isNewRecord) {
-	            // TODO: Make active user register
-	            //$this->status = Users::STATUS_WAITING_ACTIVE;
-	            $this->status = Users::STATUS_ACTIVED;
+                // TODO: Make active user register
+                //$this->status = Users::STATUS_WAITING_ACTIVE;
+                $this->status = Users::STATUS_ACTIVED;
 
                 $this->setPassword($this->password);
                 $this->password_reset_token = $this->generatePasswordResetToken();
                 $this->auth_key = \Yii::$app->getSecurity()->generateRandomString();
             }
+
             return true;
         }
+
         return false;
     }
 
-	/**
-	 *
-	 */
-    public function newContactCompany(){
-	    $this->type = Users::USER_TYPE_CONTACT_OF_COMPANY;
-	    $this->role = Role::ROLE_CUSTOMMER;
+    public function newContactCompany()
+    {
+        $this->type = Users::USER_TYPE_CONTACT_OF_COMPANY;
+        $this->role = Role::ROLE_CUSTOMER;
     }
 
-    /**
-     *
-     */
-    public function newCandidate(){
+    public function newCandidate()
+    {
         $this->type = Users::USER_TYPE_DEFAULT;
         $this->status = Users::STATUS_WAITING_ACTIVE;
-        $this->role = Role::ROLE_CUSTOMMER;
+        $this->role = Role::ROLE_CUSTOMER;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function findIdentity($id)
     {
@@ -160,7 +167,7 @@ class Users extends \app\models\base\User implements IdentityInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
@@ -171,6 +178,7 @@ class Users extends \app\models\base\User implements IdentityInterface
      * Finds user by username
      *
      * @param string $username
+     *
      * @return static|null
      */
     public static function findByUsername($username)
@@ -182,24 +190,23 @@ class Users extends \app\models\base\User implements IdentityInterface
      * Finds user by password reset token
      *
      * @param string $token password reset token
+     *
      * @return static|null
      */
     public static function findByPasswordResetToken($token)
     {
         $expire = \Yii::$app->params['user.passwordResetTokenExpire'];
         $parts = explode('_', $token);
-        $timestamp = (int)end($parts);
+        $timestamp = (int) end($parts);
         if ($timestamp + $expire < time()) {
             return null;
         }
 
         return static::findOne(['password_reset_token' => $token]);
-
     }
 
-
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -207,7 +214,7 @@ class Users extends \app\models\base\User implements IdentityInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getAuthKey()
     {
@@ -215,7 +222,7 @@ class Users extends \app\models\base\User implements IdentityInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function validateAuthKey($authKey)
     {
@@ -226,6 +233,7 @@ class Users extends \app\models\base\User implements IdentityInterface
      * Validates password
      *
      * @param string $password password to validate
+     *
      * @return boolean if password provided is valid for current user
      */
     public function validatePassword($password)
@@ -260,7 +268,7 @@ class Users extends \app\models\base\User implements IdentityInterface
     public function generatePasswordResetToken()
     {
         $security = new Security();
-        $this->password_reset_token = $security->generateRandomKey() . '_' . time();
+        $this->password_reset_token = $security->generateRandomKey().'_'.time();
     }
 
     /**
@@ -270,6 +278,6 @@ class Users extends \app\models\base\User implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
-    /** EXTENSION MOVIE **/
 
+    /* EXTENSION MOVIE **/
 }

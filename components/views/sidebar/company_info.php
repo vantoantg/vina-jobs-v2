@@ -22,37 +22,39 @@
  */
 ?>
 
-<div class="widget-sidebar <?= \app\library\helper\Helper::wowClass() ?> fadeInRight" data-wow-delay="0.2s">
-    <h2 class="title-widget-sidebar">THÔNG TIN CÔNG TY</h2>
-    <div class="content-widget-sidebar">
-        <ul>
-            <li class="text-center">
-                <a href="">
-                    <img src="<?= $company['logo'];?>"
-                         class="img-responsive">
-                </a>
-            </li>
-            <hr>
+<div class="row">
+	<div class="widget-sidebar pd-t-30 <?= \app\library\helper\Helper::wowClass(); ?> fadeInRight" data-wow-delay="0.2s">
+		<h2 class="title-widget-sidebar">THÔNG TIN CÔNG TY</h2>
+		<div class="content-widget-sidebar">
+			<ul>
+				<li class="text-center">
+					<a href="">
+						<img src="<?= $company['logo']; ?>"
+						     class="img-responsive">
+					</a>
+				</li>
+				<hr>
 
-            <li class="">
-                <p><?= $company['name'];?></p>
-            </li>
-            <hr>
+				<li class="">
+					<p><?= $company['name']; ?></p>
+				</li>
+				<hr>
 
-            <li class="">
-                A social infrastructure and digital products software company
-            </li>
-            <hr>
+				<li class="">
+					A social infrastructure and digital products software company
+				</li>
+				<hr>
 
-            <li class="">
-                <div class="basic-info">
-                    <p class="company-type"><i class="fas fa-cogs"></i> Product </p>
-                    <p class="group-icon"><i class="fas fa-sort-amount-up"></i> 301-500 </p>
-                    <p class="group-icon"><i class="fas fa-flag-checkered"></i> Japan</p>
-                    <p class="group-icon"><i class="far fa-calendar-alt"></i> Monday - Friday</p>
-                    <p class="group-icon"><i class="far fa-clock"></i> No OT</p>
-                </div>
-            </li>
-        </ul>
-    </div>
+				<li class="">
+					<div class="basic-info">
+						<p class="company-type"><i class="fas fa-cogs"></i> Product </p>
+						<p class="group-icon"><i class="fas fa-sort-amount-up"></i> 301-500 </p>
+						<p class="group-icon"><i class="fas fa-flag-checkered"></i> Japan</p>
+						<p class="group-icon"><i class="far fa-calendar-alt"></i> Monday - Friday</p>
+						<p class="group-icon"><i class="far fa-clock"></i> No OT</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
 </div>

@@ -10,7 +10,9 @@
  * modifying or distribute this file or part of its contents. The contents of
  * this file is part of the Source Code of CKFinder.
  */
-if (!defined('IN_CKFINDER')) exit;
+if (!defined('IN_CKFINDER')) {
+    exit;
+}
 
 /**
  * @package CKFinder
@@ -63,7 +65,7 @@ class Ckfinder_Connector_Utils_XmlNode
      * @param string $nodeValue node value
      * @return Ckfinder_Connector_Utils_XmlNode
      */
-    function __construct($nodeName, $nodeValue = null)
+    public function __construct($nodeName, $nodeValue = null)
     {
         $this->_name = $nodeName;
         if (!is_null($nodeValue)) {
@@ -71,7 +73,7 @@ class Ckfinder_Connector_Utils_XmlNode
         }
     }
 
-    function getChild($name)
+    public function getChild($name)
     {
         foreach ($this->_childNodes as $i => $node) {
             if ($node->_name == $name) {

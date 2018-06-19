@@ -12,17 +12,17 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="auth-assignment-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title); ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'item_name' => $model->item_name, 'user_id' => $model->user_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Update', ['update', 'item_name' => $model->item_name, 'user_id' => $model->user_id], ['class' => 'btn btn-primary']); ?>
         <?= Html::a('Delete', ['delete', 'item_name' => $model->item_name, 'user_id' => $model->user_id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
-        ]) ?>
+        ]); ?>
     </p>
 
     <?= DetailView::widget([
@@ -32,6 +32,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'user_id',
             'created_at',
         ],
-    ]) ?>
+    ]); ?>
 
 </div>

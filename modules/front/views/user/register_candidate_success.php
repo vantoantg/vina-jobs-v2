@@ -1,10 +1,6 @@
 <?php
 
-use yii\helpers\Html;
-use \yii\widgets\ActiveForm;
-use \app\models\Dropdown;
 use app\library\helper\Helper;
-
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Users */
@@ -25,23 +21,20 @@ $this->params['breadcrumbs'][] = $this->title;
 		<div class="row main">
 			<div class="main-login main-center">
                 <div class="content-page">
-                    <div class="alert-message alert-message-info <?= Helper::wowClass() ?> zoomInDown animated"
+                    <div class="alert-message alert-message-info <?= Helper::wowClass(); ?> zoomInDown animated"
                          data-wow-delay="0.2s">
                         <h4>Đăng ký ứng viên thành công</h4>
                         <p>Lưu ý: Bạn vui lòng cập nhật đúng địa chỉ email, số điện thoại và các thông tin hệ thống sẽ gửi thông báo tuyển dụng vào <strong>email của bạn đăng ký</strong>.</p>
                     </div>
                 </div>
                 <div class="col-xs-12 text-center">
-                    <button class="navbar-btn nav-button <?= Helper::wowClass() ?> bounceInRight login animated" data-toggle="modal" data-target="#login-modal" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: bounceInRight;"><i class="fas fa-sign-in-alt"></i> Đăng nhập
+                    <button class="navbar-btn nav-button <?= Helper::wowClass(); ?> bounceInRight login animated" data-toggle="modal" data-target="#login-modal" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: bounceInRight;"><i class="fas fa-sign-in-alt"></i> Đăng nhập
                     </button>
                     <br>
-                    <a role="menuitem" tabindex="-1"
-                       href="<?= Helper::createUrl(['front/user/update-candidate']) ?>"><i class="far fa-edit"></i>
-                        Tiếp tục cập nhật thông tin</a>
                 </div>
 
                 <div class="clearfix"></div>
-                <div class="<?= Helper::wowClass() ?> zoomInDown animated" data-wow-delay="0.5s">
+                <div class="<?= Helper::wowClass(); ?> zoomInDown animated" data-wow-delay="0.5s">
 					<?= $page->content; ?>
                 </div>
 			</div>

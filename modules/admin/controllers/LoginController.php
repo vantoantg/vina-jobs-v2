@@ -1,50 +1,62 @@
 <?php
 
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\admin\controllers;
 
 use app\forms\AdminLoginForm;
 use app\library\helper\Common;
 use app\library\helper\Helper;
+use app\library\helper\Role;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Default controller for the `admin` module
  */
 class LoginController extends BaseController
 {
+    public function init()
+    {
+        parent::init();
+        $this->layout = '/login';
+        \Yii::$app->language = 'en';
+    }
 
-	public function init()
-	{
-		parent::init();
-		$this->layout = '/login';
-		\Yii::$app->language = 'en';
-	}
+    /**
+     * Renders the index view for the module
+     * @Route("admins/loginform")
+     *
+     * @return string
+     */
+    public function actionIndex()
+    {
+        /*if ($this->app->user->isGuest) {
+            return $this->goHome();
+        }*/
 
-	/**
-	 * Renders the index view for the module
-	 * @return string
-	 */
-	public function actionIndex()
-	{
-		/*if ($this->app->user->isGuest) {
-			return $this->goHome();
-		}*/
+        $model = new AdminLoginForm();
+        if ($model->load($this->app->request->post()) && $model->login()) {
+            if (Common::currentUsers()->role == Role::ROLE_ADMINISTRATOR) {
+                return $this->redirect(['/admin']);
+            }
 
-		$model = new AdminLoginForm();
-		if ($model->load($this->app->request->post()) && $model->login()) {
-			if (Common::currentUser('username') == 'admin') {
-				return $this->redirect(['/admin']);
-			}
-			return $this->goHome();
-		} else {
-			if ($this->app->request->isAjax) {
-				return Helper::jsonData(['error' => true, 'message' => $model->errors['password'][0]]);
-			}
-		}
+            return $this->goHome();
+        } else {
+            if ($this->app->request->isAjax) {
+                return Helper::jsonData(['error' => true, 'message' => $model->errors['password'][0]]);
+            }
+        }
 
-		return $this->render('index', [
-			'model' => $model
-		]);
-	}
+        return $this->render('index', [
+            'model' => $model,
+        ]);
+    }
 
     public function actionLogout()
     {
@@ -52,5 +64,4 @@ class LoginController extends BaseController
 
         return $this->redirect(['/admin/login']);
     }
-
 }

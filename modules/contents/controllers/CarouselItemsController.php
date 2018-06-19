@@ -1,12 +1,19 @@
 <?php
 
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\contents\controllers;
 
 use app\modules\admin\controllers\AdminController;
 use Yii;
 use app\models\CarouselItems;
 use app\models\search\CarouselItems as CarouselItemsSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -16,7 +23,7 @@ use yii\filters\VerbFilter;
 class CarouselItemsController extends AdminController
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -32,6 +39,7 @@ class CarouselItemsController extends AdminController
 
     /**
      * Lists all CarouselItems models.
+     *
      * @return mixed
      */
     public function actionIndex()
@@ -47,8 +55,11 @@ class CarouselItemsController extends AdminController
 
     /**
      * Displays a single CarouselItems model.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
@@ -61,6 +72,7 @@ class CarouselItemsController extends AdminController
     /**
      * Creates a new CarouselItems model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return mixed
      */
     public function actionCreate()
@@ -68,9 +80,10 @@ class CarouselItemsController extends AdminController
         $model = new CarouselItems();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if(Yii::$app->request->post('save') == 'saveedit'){
+            if (Yii::$app->request->post('save') == 'saveedit') {
                 return $this->redirect(['update', 'id' => $model->id]);
             }
+
             return $this->redirect(['index']);
         }
 
@@ -82,8 +95,11 @@ class CarouselItemsController extends AdminController
     /**
      * Updates an existing CarouselItems model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
@@ -91,8 +107,7 @@ class CarouselItemsController extends AdminController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
-            if(Yii::$app->request->post('save') == 'saveedit'){
+            if (Yii::$app->request->post('save') == 'saveedit') {
                 return $this->redirect(['update', 'id' => $model->id]);
             }
 
@@ -107,8 +122,11 @@ class CarouselItemsController extends AdminController
     /**
      * Deletes an existing CarouselItems model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
@@ -121,8 +139,11 @@ class CarouselItemsController extends AdminController
     /**
      * Finds the CarouselItems model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param integer $id
+     *
      * @return CarouselItems the loaded model
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)

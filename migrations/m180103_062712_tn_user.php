@@ -12,7 +12,6 @@ class m180103_062712_tn_user extends Migration
      */
     public function safeUp()
     {
-
     }
 
     /**

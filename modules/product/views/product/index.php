@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\Product */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -12,12 +13,12 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="product-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title); ?></h1>
     <?php Pjax::begin(['timeout' => 15000]); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]);?>
 
     <p>
-        <?= Html::a('Create Product', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Product', ['create'], ['class' => 'btn btn-success']); ?>
     </p>
 
     <?= GridView::widget([
@@ -28,26 +29,28 @@ $this->params['breadcrumbs'][] = $this->title;
 
 //            'id',
 //            'image',
-	        [
-		        'attribute' => 'image',
-		        'format' => 'html',
-		        'label' => 'Image',
-		        'value' => function ($data) {
-			        return Html::img(\app\library\helper\Helper::webImgs($data['image']),
-				        ['height' => '80px']);
-		        },
-	        ],
+            [
+                'attribute' => 'image',
+                'format' => 'html',
+                'label' => 'Image',
+                'value' => function ($data) {
+                    return Html::img(
+                        \app\library\helper\Helper::webImgs($data['image']),
+                        ['height' => '80px']
+                    );
+                },
+            ],
 //	        'category_id',
             [
-	            'attribute' => 'category_id',
-	            'format' => 'html',
-	            'label' => 'Category',
-	            'value' => function ($data) {
-		            return $data->getCategoryName();
-	            },
+                'attribute' => 'category_id',
+                'format' => 'html',
+                'label' => 'Category',
+                'value' => function ($data) {
+                    return $data->getCategoryName();
+                },
             ],
-	        'name',
-	        'description:ntext',
+            'name',
+            'description:ntext',
 //            'content:ntext',
 
             //'slug',

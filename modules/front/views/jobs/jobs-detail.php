@@ -2,11 +2,11 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use \app\library\helper\Helper;
+use app\library\helper\Helper;
 
 /** @var $page \app\models\Pages title */
 $page = \app\models\Pages::get('jobs-detail');
-/** @var $this \yii\web\View title */
+/* @var $this \yii\web\View title */
 $this->title = Helper::titleSeo($page);
 Helper::generateSeo($page);
 
@@ -20,7 +20,7 @@ $this->title = 'Post a Job';
     <div class="col-12 col-sm-8">
         <div class="front-jobs">
 
-            <div class="row page-title text-center <?= \app\library\helper\Helper::wowClass() ?> bounce animated" data-wow-delay="1s" style="visibility: visible; animation-delay: 1s; animation-name: bounce;">
+            <div class="row page-title text-center <?= \app\library\helper\Helper::wowClass(); ?> bounce animated" data-wow-delay="1s" style="visibility: visible; animation-delay: 1s; animation-name: bounce;">
                 <h5>Post Jobs</h5>
                 <h2><span>54716</span> Available jobs for you</h2>
                 <p>Using the outcomes from the job, we will put together a plan for the most effective marketing strategy to get the best results.</p>
@@ -28,7 +28,7 @@ $this->title = 'Post a Job';
 
             <?php $form = ActiveForm::begin(); ?>
 
-            <?= $form->field($model, 'title') ?>
+            <?= $form->field($model, 'title'); ?>
 
             <?php
             $countries = \app\models\JobCategories::find()->all();
@@ -37,11 +37,11 @@ $this->title = 'Post a Job';
                 $listData,
                 [
                     'prompt' => 'Select...',
-                    'class' => 'job-select2 form-control'
+                    'class' => 'job-select2 form-control',
                 ]
             );
             ?>
-            <?= $form->field($model, 'description')->textarea() ?>
+            <?= $form->field($model, 'description')->textarea(); ?>
             <?= $form->field($model, 'content')->widget(\yii\redactor\widgets\Redactor::className(), [
                 'clientOptions' => [
                     'placeholder' => 'Redactor placeholder text',
@@ -70,23 +70,23 @@ $this->title = 'Post a Job';
                         /*'image',
                         'file'*/
                     ],
-                ]
-            ]) ?>
+                ],
+            ]); ?>
             <div class="row">
                 <div class="col-xs-6">
-                    <?= $form->field($model, 'salary') ?>
+                    <?= $form->field($model, 'salary'); ?>
                 </div>
                 <div class="col-xs-6">
-                    <?= $form->field($model, 'address') ?>
+                    <?= $form->field($model, 'address'); ?>
                 </div>
             </div>
 
-            <?= $form->field($model, 'tags') ?>
-            <?= $form->field($model, 'keyword') ?>
+            <?= $form->field($model, 'tags'); ?>
+            <?= $form->field($model, 'keyword'); ?>
 
             <div class="form-group">
-                <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
-                <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+                <?= Html::resetButton('Reset', ['class' => 'btn btn-default']); ?>
+                <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']); ?>
             </div>
             <?php ActiveForm::end(); ?>
 

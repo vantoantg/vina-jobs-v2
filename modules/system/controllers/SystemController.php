@@ -1,5 +1,13 @@
 <?php
 
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\system\controllers;
 
 use app\library\helper\Datetime;
@@ -9,7 +17,6 @@ use Carbon\Carbon;
 use Yii;
 use app\models\System;
 use app\models\search\System as SystemSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -19,7 +26,7 @@ use yii\filters\VerbFilter;
 class SystemController extends AdminController
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -35,6 +42,7 @@ class SystemController extends AdminController
 
     /**
      * Lists all System models.
+     *
      * @return mixed
      */
     public function actionIndex()
@@ -50,8 +58,11 @@ class SystemController extends AdminController
 
     /**
      * Displays a single System model.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
@@ -64,6 +75,7 @@ class SystemController extends AdminController
     /**
      * Creates a new System model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return mixed
      */
     public function actionCreate()
@@ -82,8 +94,11 @@ class SystemController extends AdminController
     /**
      * Updates an existing System model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
@@ -102,8 +117,11 @@ class SystemController extends AdminController
     /**
      * Deletes an existing System model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
@@ -116,8 +134,11 @@ class SystemController extends AdminController
     /**
      * Finds the System model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param integer $id
+     *
      * @return System the loaded model
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
@@ -129,46 +150,48 @@ class SystemController extends AdminController
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-	public function actionBackupDb(){
+    public function actionBackupDb()
+    {
         @ini_set('memory_limit', '2048M');
         @set_time_limit(3000);
 
-    	$path = Yii::$app->basePath.'/web/backups';
-		if(!file_exists($path)){
-			mkdir($path);
-		}
-		@chmod($path, 0777);
+        $path = Yii::$app->basePath.'/web/backups';
+        if (!file_exists($path)) {
+            mkdir($path);
+        }
+        @chmod($path, 0777);
 
-		if(Yii::$app->request->isPost){
-			$backup = Yii::$app->request->post('backup_db');
-			if(isset($backup)){
-				Helper::backupDB();
-			}
-		}
-		if(Yii::$app->request->get('delete')){
-			@unlink(Yii::$app->basePath.'/web/backups/'.Yii::$app->request->get('delete'));
-			return $this->redirect(['/admin/admin/backup-db']);
-		}
-		$file = [];
-		if ($handle = opendir(Yii::$app->basePath.'/web/backups')) {
-			while (false !== ($entry = readdir($handle))) {
-				if ($entry != "." && $entry != "..") {
-					$time = explode('-', $entry);
-					$time = str_replace('.sql', '', $time[3]);
-					$file[] = [
-						'name' => $entry,
-						'size' => filesize($path.'/'.$entry),
-						'time' => Carbon::createFromFormat(Datetime::FILE_TIME, $time)->format(Datetime::VIEW_DATETIME_dmYHis),
-						'path'  => Helper::siteURL().'/web/backups/'.$entry
-					];
-				}
-			}
-			closedir($handle);
-		}
-		rsort($file);
+        if (Yii::$app->request->isPost) {
+            $backup = Yii::$app->request->post('backup_db');
+            if (isset($backup)) {
+                Helper::backupDB();
+            }
+        }
+        if (Yii::$app->request->get('delete')) {
+            @unlink(Yii::$app->basePath.'/web/backups/'.Yii::$app->request->get('delete'));
 
-		return $this->render('database', [
-			'files' => $file
-		]);
-	}
+            return $this->redirect(['/admin/admin/backup-db']);
+        }
+        $file = [];
+        if ($handle = opendir(Yii::$app->basePath.'/web/backups')) {
+            while (false !== ($entry = readdir($handle))) {
+                if ($entry != '.' && $entry != '..') {
+                    $time = explode('-', $entry);
+                    $time = str_replace('.sql', '', $time[3]);
+                    $file[] = [
+                        'name' => $entry,
+                        'size' => filesize($path.'/'.$entry),
+                        'time' => Carbon::createFromFormat(Datetime::FILE_TIME, $time)->format(Datetime::VIEW_DATETIME_dmYHis),
+                        'path' => Helper::siteURL().'/web/backups/'.$entry,
+                    ];
+                }
+            }
+            closedir($handle);
+        }
+        rsort($file);
+
+        return $this->render('database', [
+            'files' => $file,
+        ]);
+    }
 }

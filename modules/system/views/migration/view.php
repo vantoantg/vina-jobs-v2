@@ -12,17 +12,17 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="migration-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title); ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->version], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Update', ['update', 'id' => $model->version], ['class' => 'btn btn-primary']); ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->version], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
-        ]) ?>
+        ]); ?>
     </p>
 
     <?= DetailView::widget([
@@ -31,6 +31,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'version',
             'apply_time:datetime',
         ],
-    ]) ?>
+    ]); ?>
 
 </div>

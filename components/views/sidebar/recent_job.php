@@ -23,11 +23,12 @@
 
 ?>
 
-<div class="widget-sidebar <?= \app\library\helper\Helper::wowClass() ?> fadeInRight" data-wow-delay="0.2s">
+<div class="widget-sidebar pd-t-30 <?= \app\library\helper\Helper::wowClass(); ?> fadeInRight" data-wow-delay="0.2s">
     <h2 class="title-widget-sidebar">CÁC VIỆC LÀM MỚI</h2>
     <div class="content-widget-sidebar">
         <ul>
-            <?php foreach ($data as $item){ ?>
+            <?php foreach ($data as $item) {
+    ?>
             <li class="recent-post">
                 <div class="post-img">
                     <a href="<?= $item['url_company_detail']; ?>"><img src="<?= $item['com_logo']; ?>"
@@ -40,7 +41,8 @@
                 </p>
             </li>
             <hr>
-            <?php } ?>
+            <?php
+} ?>
         </ul>
     </div>
 </div>

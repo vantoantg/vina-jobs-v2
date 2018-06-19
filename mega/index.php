@@ -1,45 +1,50 @@
 <?php
 
-class Index{
+class Index
+{
+    public $num = 6;
+    public $min = 1;
+    public $max = 45;
+    public $arr = [];
 
-	public $num = 6;
-	public $min = 1;
-	public $max = 45;
-	public $arr = [];
+    /**
+     * @return array
+     */
+    public function mega()
+    {
+        for ($i=1; $i<= $this->num; $i++) {
+            $this->renderNumber();
+        }
 
-	/**
-	 * @return array
-	 */
-	public function mega(){
-		for($i=1; $i<= $this->num; $i++){
-			$this->renderNumber();
-		}
+        return $this->result();
+    }
 
-		return $this->result();
-	}
+    public function renderNumber()
+    {
+        $num = $this->getNumber();
+        $this->arr[$num] = $num;
+    }
 
-	public function renderNumber(){
-		$num = $this->getNumber();
-		$this->arr[$num] = $num;
-	}
+    public function getNumber()
+    {
+        $num = $this->random();
+        if (array_key_exists($num, $this->arr)) {
+            return $this->getNumber();
+        } else {
+            return $num;
+        }
+    }
 
-	public function getNumber(){
-		$num = $this->random();
-		if(array_key_exists($num, $this->arr)){
-			return $this->getNumber();
-		}else{
-			return $num;
-		}
-	}
+    public function random()
+    {
+        return rand($this->min, $this->max);
+    }
 
-	public function random(){
-		return rand($this->min, $this->max);
-	}
-
-	public function result(){
-		ksort($this->arr);
-		return $this->arr;
-	}
+    public function result()
+    {
+        ksort($this->arr);
+        return $this->arr;
+    }
 }
 
 
@@ -101,12 +106,12 @@ $a = $num->mega();
 	<h1>Mega</h1>
 	<p>Here are the results for the next lottery.</p>
 	<?php
-	echo '<ul>';
-	foreach($a as $value){
-		echo '<li class="orange"><a href="#">'.$value.'</a></li>';
-	}
-	echo '</ul>';
-	?>
+    echo '<ul>';
+    foreach ($a as $value) {
+        echo '<li class="orange"><a href="#">'.$value.'</a></li>';
+    }
+    echo '</ul>';
+    ?>
 </div>
 
 </body>

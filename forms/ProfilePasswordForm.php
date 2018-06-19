@@ -1,4 +1,13 @@
 <?php
+
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\forms;
 
 use app\models\Users as User;
@@ -12,31 +21,31 @@ class ProfilePasswordForm extends Model
     public $reenterpassword;
     public $_user;
 
-	const SCENARIO_UPDATE = 'update';
-	const SCENARIO_RESET_PW = 'reset_pw';
+    const SCENARIO_UPDATE = 'update';
+    const SCENARIO_RESET_PW = 'reset_pw';
 
     public function rules()
     {
         return [
-
             ['password', 'validatePassword'],
             [['password', 'changepassword'], 'required'],
-	        [['changepassword'],'string','min' => 8, 'max' => 60],
+            [['changepassword'], 'string', 'min' => 8, 'max' => 60],
             ['reenterpassword', 'required'],
-            ['reenterpassword', 'compare', 'compareAttribute'=>'changepassword', 'message'=>"Passwords don't match" ]
+            ['reenterpassword', 'compare', 'compareAttribute' => 'changepassword', 'message' => "Passwords don't match"],
         ];
     }
 
     /**
-	 * @return array
-	 */
-	public function scenarios()
-	{
-		$scenarios = parent::scenarios();
-		$scenarios[self::SCENARIO_UPDATE] = ['password', 'changepassword', 'reenterpassword'];
-		$scenarios[self::SCENARIO_RESET_PW] = ['changepassword', 'reenterpassword'];
-		return $scenarios;
-	}
+     * @return array
+     */
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_UPDATE] = ['password', 'changepassword', 'reenterpassword'];
+        $scenarios[self::SCENARIO_RESET_PW] = ['changepassword', 'reenterpassword'];
+
+        return $scenarios;
+    }
 
     public function attributeLabels()
     {
@@ -55,9 +64,11 @@ class ProfilePasswordForm extends Model
             $user = $this->getUser();
             if (!$user || !$user->validatePassword($this->password)) {
                 $this->addError($attribute, 'Mật khẩu bạn nhập không đúng');
+
                 return false;
             }
         }
+
         return true;
     }
 
@@ -69,5 +80,4 @@ class ProfilePasswordForm extends Model
 
         return $this->_user;
     }
-
 }

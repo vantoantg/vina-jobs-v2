@@ -1,10 +1,9 @@
 <?php
 
 use yii\helpers\Html;
-use \yii\widgets\ActiveForm;
-use yii\widgets\Pjax;
-use \app\library\helper\Common;
-use \app\library\helper\Helper;
+use yii\widgets\ActiveForm;
+use app\library\helper\Common;
+use app\library\helper\Helper;
 use app\models\Pages;
 
 /* @var $this yii\web\View */
@@ -16,15 +15,15 @@ $this->params['breadcrumbs'][] = $this->title;
 Helper::generateSeo($page);
 
 /** @var $userInfo \app\models\UserDetails $userInfo */
-$userInfo = \app\models\UserDetails::getInfo();
-\app\components\Menu\ActiveMenu::is('employeers')
+$userInfo = \app\models\UserDetails::instance()->getInfo();
+\app\components\Menu\ActiveMenu::is('employeers');
 ?>
 
 <div id="profile_contact" class="container">
     <div class="row">
         <div class="col-md-12 toppad pull-right">
             <br>
-            <p class=" text-info"><?= \app\library\helper\Datetime::getDateNow() ?></p>
+            <p class=" text-info"><?= \app\library\helper\Datetime::getDateNow(); ?></p>
         </div>
     </div>
     <div class="row">
@@ -32,8 +31,8 @@ $userInfo = \app\models\UserDetails::getInfo();
 
             <div class="card">
                 <ul id="contact_infos" class="nav nav-tabs" role="tablist"
-                    data-url="<?= Helper::createUrl(['front/user/client-infos']) ?>"
-                    data-url-del-gallery="<?= Helper::createUrl(['front/user/ajax-delete-img']) ?>"
+                    data-url="<?= Helper::createUrl(['front/user/client-infos']); ?>"
+                    data-url-del-gallery="<?= Helper::createUrl(['front/user/ajax-delete-img']); ?>"
                 >
                     <li role="presentation" class="active">
                         <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Thông tin nguời liên hệ</a></li>
@@ -45,11 +44,11 @@ $userInfo = \app\models\UserDetails::getInfo();
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="profile">
                         <div class="row">
-                            <div class="col-xs-12 toppad <?= \app\library\helper\Helper::wowClass() ?> fadeInUp"
+                            <div class="col-xs-12 toppad <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp"
                                  data-wow-delay="0.5s">
                                 <div class="panel panel-info">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title"><?= Common::currentUser('name') ?></h3>
+                                        <h3 class="panel-title"><?= Common::currentUser('name'); ?></h3>
                                     </div>
                                     <div class="panel-body">
                                         <div class="row">
@@ -84,7 +83,7 @@ $userInfo = \app\models\UserDetails::getInfo();
                                                     <tr>
                                                         <td>Email</td>
                                                         <td>
-                                                            <a href="mailto:<?= Common::currentUsers()->email ?>"><?= Common::currentUsers()->email ?></a>
+                                                            <a href="mailto:<?= Common::currentUsers()->email; ?>"><?= Common::currentUsers()->email; ?></a>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -99,9 +98,9 @@ $userInfo = \app\models\UserDetails::getInfo();
                                         </div>
                                     </div>
                                     <div class="panel-footer">
-                                        <a href="<?= Helper::createUrl(['front/user/update-company']) ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#profile'); ?>" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Cập nhật thông tin</a>
+                                        <a href="<?= Helper::createUrl(['front/user/update-company']); ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#profile'); ?>" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Cập nhật thông tin</a>
 
-                                        <a href="<?= Helper::createUrl(['front/jobs/post-jobs']) ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#profile'); ?>"
+                                        <a href="<?= Helper::createUrl(['front/jobs/post-jobs']); ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#profile'); ?>"
                                            class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Đăng tin tuyển dụng</a>
                                     </div>
                                 </div>
@@ -110,7 +109,7 @@ $userInfo = \app\models\UserDetails::getInfo();
                     </div>
                     <div role="tabpanel" class="tab-pane" id="company">
                         <div class="row ovf-y-h">
-                            <div class="col-xs-12 toppad <?= \app\library\helper\Helper::wowClass() ?> fadeInUp"
+                            <div class="col-xs-12 toppad <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp"
                                  data-wow-delay="0.5s">
                                 <div id="container-company" class="panel panel-info">
                                     <div class="text-center" style="min-height: 500px; padding-top: 30px">
@@ -122,7 +121,7 @@ $userInfo = \app\models\UserDetails::getInfo();
                     </div>
                     <div role="tabpanel" class="tab-pane" id="jobs">
                         <div class="row ovf-y-h">
-                            <div class="col-xs-12 toppad <?= \app\library\helper\Helper::wowClass() ?> fadeInUp"
+                            <div class="col-xs-12 toppad <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp"
                                  data-wow-delay="0.5s">
                                 <div id="container-jobs" class="panel panel-info">
                                     <div class="text-center" style="min-height: 500px; padding-top: 30px">
@@ -134,7 +133,7 @@ $userInfo = \app\models\UserDetails::getInfo();
                     </div>
                     <div role="tabpanel" class="tab-pane" id="candidate">
                         <div class="row ovf-y-h">
-                            <div class="col-xs-12 toppad <?= \app\library\helper\Helper::wowClass() ?> fadeInUp"
+                            <div class="col-xs-12 toppad <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp"
                                  data-wow-delay="0.5s">
                                 <div id="container-candidate" class="panel panel-info">
                                     <div class="text-center" style="min-height: 500px; padding-top: 30px">
@@ -246,14 +245,14 @@ $userInfo = \app\models\UserDetails::getInfo();
                 <br>
                 <div class="alert alert-success alert-dismissable">
                     <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-                    <i class="icon fa fa-check"></i> <?= Yii::$app->session->getFlash('success') ?>
+                    <i class="icon fa fa-check"></i> <?= Yii::$app->session->getFlash('success'); ?>
                 </div>
 	        <?php endif; ?>
         </div>
 
         <table class="table list-jobs">
             <% _.each(data, function(k,v){ %>
-            <tr class="odd <?= \app\library\helper\Helper::wowClass() ?> fadeInUp"
+            <tr class="odd <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp"
                 data-wow-delay="0.5s">
                 <td class="tbl-logo"><b><%= (v + 1) %>.</b></td>
                 <td class="tbl-title">
@@ -278,7 +277,7 @@ $userInfo = \app\models\UserDetails::getInfo();
         <p class="text-center nodata"><i class="far fa-file-alt"></i> <br> Chưa có tin nào được đăng!</p>
     <% } %>
     <div class="panel-footer">
-    <a href="<?= Helper::createUrl(['front/jobs/post-jobs']) ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#jobs'); ?>"
+    <a href="<?= Helper::createUrl(['front/jobs/post-jobs']); ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#jobs'); ?>"
        class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Đăng tin tuyển dụng</a>
     </div>
 </script>
@@ -295,15 +294,15 @@ $userInfo = \app\models\UserDetails::getInfo();
                     <tr>
                         <td colspan="100%">
 	                        <?php if (Yii::$app->session->hasFlash('updateSuccess')): ?>
-                                <div class="alert alert-success alert-dismissable <?= \app\library\helper\Helper::wowClass() ?> zoomInDown animated" data-wow-delay="0.5s">
+                                <div class="alert alert-success alert-dismissable <?= \app\library\helper\Helper::wowClass(); ?> zoomInDown animated" data-wow-delay="0.5s">
                                     <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-                                    <i class="icon fa fa-check"></i> <?= Yii::$app->session->getFlash('updateSuccess') ?>
+                                    <i class="icon fa fa-check"></i> <?= Yii::$app->session->getFlash('updateSuccess'); ?>
                                 </div>
 	                        <?php endif; ?>
                         </td>
                     <tr>
 	                    <td colspan="100%">
-		                    <ul class="com-gallery" data-url-sort="<?= Helper::createUrl(['front/user/ajax-sortable'])?>">
+		                    <ul class="com-gallery" data-url-sort="<?= Helper::createUrl(['front/user/ajax-sortable']); ?>">
 			                    <% if (data.gallery.length){ %>
 			                    <% _.each(data.gallery, function(k,v){ %>
 			                    <li class="item" data-id="<%= k.id %>" title="Nhấp chuột giữ và di chuyển để sắp xếp thứ tự cho các bức ảnh">
@@ -352,7 +351,7 @@ $userInfo = \app\models\UserDetails::getInfo();
         </div>
     </div>
     <div class="panel-footer">
-        <a href="<?= Helper::createUrl(['front/user/update-company']) ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#company'); ?>" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Cập nhật thông tin</a>
+        <a href="<?= Helper::createUrl(['front/user/update-company']); ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#company'); ?>" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Cập nhật thông tin</a>
     </div>
 </script>
 
@@ -367,8 +366,8 @@ $userInfo = \app\models\UserDetails::getInfo();
             </div>
             <div class="modal-body">
                 <?php $form = ActiveForm::begin(['action' => Helper::createUrl(['front/user/ajax-upload-img'])]); ?>
-                <?= $form->field($imgForm, 'image')->fileInput(['accept' => 'image/*'])->label('Tải ảnh lên Gallery') ?>
-                <?= Html::button('<i class="fas fa-upload"></i> Tải lên', ['class' => 'btn btn-primary upload-img', 'disabled' => true]) ?>
+                <?= $form->field($imgForm, 'image')->fileInput(['accept' => 'image/*'])->label('Tải ảnh lên Gallery'); ?>
+                <?= Html::button('<i class="fas fa-upload"></i> Tải lên', ['class' => 'btn btn-primary upload-img', 'disabled' => true]); ?>
                 <?php ActiveForm::end(); ?>
             </div>
             <div class="modal-footer">

@@ -1,15 +1,22 @@
 <?php
 
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\models;
 
 use app\library\helper\Common;
 use app\library\helper\Datetime;
-use Carbon\Carbon;
 
 class CurriculumVitae extends \app\models\base\CurriculumVitae
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
@@ -17,7 +24,7 @@ class CurriculumVitae extends \app\models\base\CurriculumVitae
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -31,7 +38,7 @@ class CurriculumVitae extends \app\models\base\CurriculumVitae
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -62,19 +69,17 @@ class CurriculumVitae extends \app\models\base\CurriculumVitae
 
     public function beforeSave($insert)
     {
-
-        if($this->isNewRecord){
+        if ($this->isNewRecord) {
             $this->effect_date = Datetime::getTimeNow(null, Datetime::SQL_DATETIME);
             $this->created_at = Datetime::getTimeNow(null, Datetime::SQL_DATETIME);
             $this->updated_at = Datetime::getTimeNow(null, Datetime::SQL_DATETIME);
             $this->updated_by = Common::currentUser();
             $this->created_by = Common::currentUser();
-        }else{
+        } else {
             $this->updated_at = Datetime::getTimeNow(null, Datetime::SQL_DATETIME);
             $this->updated_by = Common::currentUser();
         }
 
         return parent::beforeSave($insert);
     }
-
 }

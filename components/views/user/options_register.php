@@ -1,7 +1,5 @@
 <?php
 
-use yii\bootstrap\ActiveForm;
-use app\library\helper\Helper;
 
 ?>
 
@@ -19,12 +17,12 @@ use app\library\helper\Helper;
             <div class="clearfix"></div>
             <ul class="ds-btn">
                 <li>
-                    <a class="btn btn-lg btn-primary" href="<?= $candidate ?>">
+                    <a class="btn btn-lg btn-primary" href="<?= $candidate; ?>">
                         <i class="far fa-address-card pull-left"></i><span>Cá nhân<br><small>Người tìm việc</small></span></a>
 
                 </li>
                 <li>
-                    <a class="btn btn-lg btn-success " href="<?= $company ?>">
+                    <a class="btn btn-lg btn-success " href="<?= $company; ?>">
                         <i class="far fa-building pull-left"></i><span>Công ty<br><small>Nhà tuyển dụng</small></span></a>
 
                 </li>

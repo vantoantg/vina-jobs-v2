@@ -12,8 +12,8 @@ class m180328_153820_ex_data extends Migration
      */
     public function safeUp()
     {
-		$this->execute("INSERT INTO `tn_product_category` (`name`) VALUES ('Laptop');");
-		$this->execute("INSERT INTO `tn_product_category` (`name`, `arranged`) VALUES ('Desktop', '2');");
+        $this->execute("INSERT INTO `tn_product_category` (`name`) VALUES ('Laptop');");
+        $this->execute("INSERT INTO `tn_product_category` (`name`, `arranged`) VALUES ('Desktop', '2');");
     }
 
     /**

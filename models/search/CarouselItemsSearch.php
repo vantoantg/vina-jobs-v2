@@ -1,8 +1,15 @@
 <?php
 
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\models\search;
 
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\CarouselItems;
@@ -13,7 +20,7 @@ use app\models\CarouselItems;
 class CarouselItemsSearch extends CarouselItems
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -24,7 +31,7 @@ class CarouselItemsSearch extends CarouselItems
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function scenarios()
     {
@@ -72,7 +79,7 @@ class CarouselItemsSearch extends CarouselItems
             ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'link', $this->link]);
 
-        if($carousel_id) {
+        if ($carousel_id) {
             $query->andWhere(['carousel_id' => $carousel_id]);
         }
 

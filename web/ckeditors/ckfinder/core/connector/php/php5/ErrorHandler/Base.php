@@ -10,7 +10,9 @@
  * modifying or distribute this file or part of its contents. The contents of
  * this file is part of the Source Code of CKFinder.
  */
-if (!defined('IN_CKFINDER')) exit;
+if (!defined('IN_CKFINDER')) {
+    exit;
+}
 
 /**
  * @package CKFinder
@@ -79,7 +81,7 @@ class CKFinder_Connector_ErrorHandler_Base
         }
 
         $_xml =& CKFinder_Connector_Core_Factory::getInstance("Core_Xml");
-        $_xml->raiseError($number,$text);
+        $_xml->raiseError($number, $text);
 
         exit;
     }

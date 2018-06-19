@@ -16,16 +16,16 @@ use app\library\helper\Helper;
             <h1>ĐĂNG NHẬP</h1><br>
             <?php $form = ActiveForm::begin([
                 'action' => \app\library\helper\Helper::createUrl(['front/user/login']),
-                'method' => "post",
+                'method' => 'post',
                 'options' => [
                     'class' => 'form floating-label',
-                    'accept-charset' => "utf-8",
-                    'autocomplete' => 'on'
-                ]
-            ]) ?>
-            <input type="hidden" name="r" value="<?= Yii::$app->request->getUrl()?>">
-            <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'autocomplete' => 'off', 'placeholder' => 'Tài khoản hoặc email']) ?>
-            <?= $form->field($model, 'password')->passwordInput(['placeholder' => 'Mật khẩu']) ?>
+                    'accept-charset' => 'utf-8',
+                    'autocomplete' => 'on',
+                ],
+            ]); ?>
+            <input type="hidden" name="r" value="<?= Yii::$app->request->getUrl(); ?>">
+            <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'autocomplete' => 'off', 'placeholder' => 'Tài khoản hoặc email']); ?>
+            <?= $form->field($model, 'password')->passwordInput(['placeholder' => 'Mật khẩu']); ?>
             <div class="hide error-login"><p class="text-danger"></p></div>
             <input type="submit" id="login" class="login loginmodal-submit" value="ĐĂNG NHẬP">
             <?php ActiveForm::end(); ?>
@@ -33,13 +33,13 @@ use app\library\helper\Helper;
             <div class="login-help">
                 <a href="#" id="form-register" data-dismiss="modal">Đăng ký</a>
                 -
-                <a href="<?= Helper::createUrl(['front/user/forgot']) ?>">Quên mật khẩu</a>
+                <a href="<?= Helper::createUrl(['front/user/forgot']); ?>">Quên mật khẩu</a>
             </div>
             <div class="text-center socials">
                 <h2>Hoặc</h2><br>
                 <?= yii\authclient\widgets\AuthChoice::widget([
-                    'baseAuthUrl' => ['/site/auth']
-                ]) ?>
+                    'baseAuthUrl' => ['/site/auth'],
+                ]); ?>
             </div>
         </div>
     </div>

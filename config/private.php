@@ -26,7 +26,7 @@ return [
 	    ],
     ],
     'db' => [
-	    'dsn' => 'mysql:host=localhost;dbname=zadmin_vnjobs',
+	    'dsn' => 'mysql:host=localhost;dbname=',
         'username' => 'root',
         'password' => '123',
     ],

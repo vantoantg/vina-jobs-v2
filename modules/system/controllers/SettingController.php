@@ -1,5 +1,13 @@
 <?php
 
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
+ */
+
 namespace app\modules\system\controllers;
 
 use app\modules\admin\controllers\AdminController;
@@ -15,7 +23,7 @@ use yii\filters\VerbFilter;
 class SettingController extends AdminController
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -31,6 +39,7 @@ class SettingController extends AdminController
 
     /**
      * Lists all Setting models.
+     *
      * @return mixed
      */
     public function actionIndex()
@@ -46,8 +55,11 @@ class SettingController extends AdminController
 
     /**
      * Displays a single Setting model.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
@@ -60,6 +72,7 @@ class SettingController extends AdminController
     /**
      * Creates a new Setting model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return mixed
      */
     public function actionCreate()
@@ -67,10 +80,11 @@ class SettingController extends AdminController
         $model = new Setting();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-	        if(Yii::$app->request->post('save') == 'saveedit'){
-		        return $this->redirect(['update', 'id' => $model->id]);
-	        }
-	        return $this->redirect(['index']);
+            if (Yii::$app->request->post('save') == 'saveedit') {
+                return $this->redirect(['update', 'id' => $model->id]);
+            }
+
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -81,8 +95,11 @@ class SettingController extends AdminController
     /**
      * Updates an existing Setting model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
@@ -90,9 +107,9 @@ class SettingController extends AdminController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-	        if(Yii::$app->request->post('save') == 'saveback'){
-		        return $this->redirect(['index']);
-	        }
+            if (Yii::$app->request->post('save') == 'saveback') {
+                return $this->redirect(['index']);
+            }
         }
 
         return $this->render('update', [
@@ -103,13 +120,16 @@ class SettingController extends AdminController
     /**
      * Deletes an existing Setting model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param integer $id
+     *
      * @return mixed
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
     {
-    	// TODO:
+        // TODO:
 //        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -118,8 +138,11 @@ class SettingController extends AdminController
     /**
      * Finds the Setting model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param integer $id
+     *
      * @return Setting the loaded model
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)

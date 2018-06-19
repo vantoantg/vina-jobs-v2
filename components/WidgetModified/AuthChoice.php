@@ -1,10 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HP570
- * Date: 6/5/2018
- * Time: 11:08 AM
+
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
  */
+
 namespace app\components;
 
 use yii\helpers\Json;
@@ -24,7 +27,7 @@ class AuthChoice extends \yii\authclient\widgets\AuthChoice
             } else {
                 $options = Json::htmlEncode($this->clientOptions);
             }
-            $view->registerJs("jQuery('#" . $this->getId() . "').authchoice({$options});");
+            $view->registerJs("jQuery('#".$this->getId()."').authchoice({$options});");
         } else {
             \yii\authclient\widgets\AuthChoiceStyleAsset::register($view);
         }

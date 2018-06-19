@@ -1,12 +1,14 @@
 <?php
-/**
- * Created by Tona Nguyễn
- * Date: 1/29/2018
- * Time: 5:32 PM
+
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
  */
 
 namespace app\models;
-
 
 use app\library\helper\Common;
 use app\library\helper\Datetime;
@@ -15,39 +17,43 @@ use yii\db\Query;
 
 class FileUploads extends \app\models\base\FileUploads
 {
-
     const CANDIDATE = 'candidate';
     const COM_GALLERY = 'company_gallery';
-
-	/**
-	 * @param $object_type
-	 * @param $object_id
-	 * @return array
-	 */
-	public function getGallery($object_type, $object_id){
-		$imgs = self::instance()->getListByObjects($object_type, $object_id);
-		$return = [];
-
-		if($imgs){
-			foreach ($imgs as $img){
-				$return[] = [
-					'thum' => Helper::imgRender(Helper::params('companyCompanyGallery').$img['file_path'], 250, 200),
-					'view' => Helper::imgRender(Helper::params('companyCompanyGallery').$img['file_path'], 600, 400),
-				];
-			}
-		}
-
-		return $return;
-	}
 
     /**
      * @param $object_type
      * @param $object_id
+     *
      * @return array
      */
-    public function getListByObjects($object_type, $object_id){
+    public function getGallery($object_type, $object_id)
+    {
+        $imgs = self::instance()->getListByObjects($object_type, $object_id);
+        $return = [];
+
+        if ($imgs) {
+            foreach ($imgs as $img) {
+                $return[] = [
+                    'thum' => Helper::imgRender(Helper::params('companyCompanyGallery').$img['file_path'], 250, 200),
+                    'view' => Helper::imgRender(Helper::params('companyCompanyGallery').$img['file_path'], 600, 400),
+                ];
+            }
+        }
+
+        return $return;
+    }
+
+    /**
+     * @param $object_type
+     * @param $object_id
+     *
+     * @return array
+     */
+    public function getListByObjects($object_type, $object_id)
+    {
         $query = new Query();
-        $query->select([
+        $query->select(
+            [
                 'f.id',
                 'f.file_path',
                 'f.file_name',
@@ -58,9 +64,9 @@ class FileUploads extends \app\models\base\FileUploads
             ->from('tn_file_uploads f')
             ->where('f.object_type = :object_type AND f.object_id = :object_id AND f.is_deleted = 0', [
                 'object_type' => $object_type,
-                'object_id' => $object_id
+                'object_id' => $object_id,
             ])
-            ->orderBy(['f.arranged' => SORT_ASC,'f.created_at' => SORT_ASC]);
+            ->orderBy(['f.arranged' => SORT_ASC, 'f.created_at' => SORT_ASC]);
 
         return $query->createCommand()->queryAll();
     }
@@ -68,10 +74,12 @@ class FileUploads extends \app\models\base\FileUploads
     /**
      * @return array|false
      */
-    public static function getCV(){
+    public static function getCV()
+    {
         $user_id = Common::isLoginned() ? Common::currentUsers()->getId() : 0;
         $query = new Query();
-        $query->select([
+        $query->select(
+            [
                 'cv.file_path',
                 'cv.file_name',
                 'cv.file_type',
@@ -81,7 +89,7 @@ class FileUploads extends \app\models\base\FileUploads
             ->from('tn_file_uploads cv')
             ->where('cv.created_by = :created_by AND cv.object_type = :object_type AND cv.is_deleted = 0', [
                 'created_by' => $user_id,
-                'object_type' => self::CANDIDATE
+                'object_type' => self::CANDIDATE,
             ])
         ->orderBy(['cv.created_at' => SORT_ASC]);
 
@@ -94,9 +102,10 @@ class FileUploads extends \app\models\base\FileUploads
      * @param $file_path
      * @param $file_name
      * @param $file_type
+     *
      * @return FileUploads
      */
-    public static function saveFile($object_type, $file_path, $file_name, $file_type,  $object_id = 0)
+    public static function saveFile($object_type, $file_path, $file_name, $file_type, $object_id = 0)
     {
         $file = new FileUploads();
         $file->object_type = $object_type;
@@ -108,40 +117,44 @@ class FileUploads extends \app\models\base\FileUploads
         $file->created_by = Common::currentUser();
         $file->created_at = Datetime::createdAt();
         $file->save();
+
         return $file;
     }
 
     /**
      * @param $data
      */
-    public function doArrange($data){
+    public function doArrange($data)
+    {
         $db = \Yii::$app->db;
         $table = self::tableName();
-        if($data){
-            foreach ($data as $id => $arrange){
+        if ($data) {
+            foreach ($data as $id => $arrange) {
                 $sql = "UPDATE $table SET `arranged` = :arranged WHERE `id` = :id";
                 $params = [
                     'arranged' => $arrange,
-                    'id' => $id
+                    'id' => $id,
                 ];
                 $db->createCommand($sql)->bindValues($params)->execute();
             }
         }
-
     }
 
-	/**
-	 * @param $fileId
-	 * @return bool
-	 */
+    /**
+     * @param $fileId
+     *
+     * @return bool
+     */
     public function deleteFile($fileId)
     {
-	    $file = FileUploads::findOne($fileId);
-	    if($file){
-		    @unlink(\Yii::$app->basePath.Helper::params('companyCompanyGallery').$file->file_path);
-		    $file->delete();
-		    return true;
-	    }
-	    return false;
+        $file = FileUploads::findOne($fileId);
+        if ($file) {
+            @unlink(\Yii::$app->basePath.Helper::params('companyCompanyGallery').$file->file_path);
+            $file->delete();
+
+            return true;
+        }
+
+        return false;
     }
 }

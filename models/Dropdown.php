@@ -1,12 +1,14 @@
 <?php
-/**
- * Created by Tona Nguyễn
- * Date: 1/29/2018
- * Time: 5:32 PM
+
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
  */
 
 namespace app\models;
-
 
 class Dropdown extends \app\models\base\Dropdown
 {
@@ -31,16 +33,16 @@ class Dropdown extends \app\models\base\Dropdown
      */
     public function getAll()
     {
-        if($this->dropdowns){
-           return $this->dropdowns;
+        if ($this->dropdowns) {
+            return $this->dropdowns;
         }
 
         $this->dropdowns = self::find()
             ->select('type, name, value')
             ->where('status = :status', [
-                ':status' => Dropdown::STATUS_ACTIVE
+                ':status' => Dropdown::STATUS_ACTIVE,
             ])
-	        ->orderBy(['arranged' => SORT_ASC])
+            ->orderBy(['arranged' => SORT_ASC])
             ->asArray()->all();
 
         return $this->dropdowns;
@@ -48,14 +50,16 @@ class Dropdown extends \app\models\base\Dropdown
 
     /**
      * @param int $type
+     *
      * @return array
      */
-    public function getDropdown($type = 0){
+    public function getDropdown($type = 0)
+    {
         $array = [];
         $data = $this->dropdowns;
-        foreach ($data as $item){
-            if($type == $item['type']){
-            	$item['id'] = $item['value'];
+        foreach ($data as $item) {
+            if ($type == $item['type']) {
+                $item['id'] = $item['value'];
                 $array[] = $item;
             }
         }

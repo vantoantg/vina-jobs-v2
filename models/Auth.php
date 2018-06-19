@@ -1,12 +1,14 @@
 <?php
-/**
- * Created by Tona Nguyễn
- * Date: 1/29/2018
- * Time: 5:32 PM
+
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
  */
 
 namespace app\models;
-
 
 class Auth extends \yii\db\ActiveRecord
 {
@@ -15,37 +17,44 @@ class Auth extends \yii\db\ActiveRecord
 
     /**
      * @param $client
+     *
      * @return string
      */
     public function detectUserType($client)
     {
-	    \Yii::$app->session->set('redirectAfterLoginWithSocial', 4);
+        \Yii::$app->session->set('redirectAfterLoginWithSocial', 4);
 
         $clientId = $client->getId();
         $userAttributes = $client->getUserAttributes();
         switch ($clientId) {
             case 'facebook':
-	            $this->email = $userAttributes['email'];
+                $this->email = $userAttributes['email'];
+
                 return $this->userFacebook($userAttributes);
 
             case 'twitter':
-	            $this->email = $userAttributes['email'];
+                $this->email = $userAttributes['email'];
+
                 return $this->userTwitter($userAttributes);
 
             case 'github':
-	            $this->email = $userAttributes['email'];
+                $this->email = $userAttributes['email'];
+
                 return $this->userGitHub($userAttributes);
-	        case 'google':
-		        $this->email = $userAttributes['emails'][0]['value'];
-		        return $this->userGoogle($userAttributes);
+            case 'google':
+                $this->email = $userAttributes['emails'][0]['value'];
+
+                return $this->userGoogle($userAttributes);
         }
     }
 
     /**
      * @param $userData
+     *
      * @return bool
      */
-    public function userFacebook($userData){
+    public function userFacebook($userData)
+    {
         $this->userType = Users::USER_TYPE_FACEBOOK;
 
         $user = Users::find()->where(['email' => $this->email])->one();
@@ -55,70 +64,79 @@ class Auth extends \yii\db\ActiveRecord
             $user = $this->newUser($userData);
             \Yii::$app->user->login(Users::findOne($user->id));
         }
+
         return true;
     }
 
     /**
      * @param array $userData
+     *
      * @return bool
      */
-    public function userGitHub($userData = []){
+    public function userGitHub($userData = [])
+    {
         $this->userType = Users::USER_TYPE_GITHUB;
 
         $user = Users::find()->where(['email' => $this->email])->one();
         if ($user) {
             \Yii::$app->user->login(Users::findOne($user->id));
         } else {
-	        $transaction = \Yii::$app->db->beginTransaction();
+            $transaction = \Yii::$app->db->beginTransaction();
             $user = $this->newUser($userData);
-	        if($user){
-		        $userDetail = UserDetails::checkAndCreateUser($user->id);
-		        $userDetail->setNames($userData['name']);
-		        if($userDetail->update()){
-			        $transaction->commit();
-		        }else{
-			        $transaction->rollBack();
-		        }
-	        }
+            if ($user) {
+                $userDetail = UserDetails::checkAndCreateUser($user->id);
+                $userDetail->setNames($userData['name']);
+                if ($userDetail->update()) {
+                    $transaction->commit();
+                } else {
+                    $transaction->rollBack();
+                }
+            }
             \Yii::$app->user->login(Users::findOne($user->id));
         }
+
         return true;
     }
 
-	/**
-	 * @param array $userData
-	 * @return bool
-	 */
-	public function userGoogle($userData = []){
-		$this->userType = Users::USER_TYPE_GOOGLE;
+    /**
+     * @param array $userData
+     *
+     * @return bool
+     */
+    public function userGoogle($userData = [])
+    {
+        $this->userType = Users::USER_TYPE_GOOGLE;
 
-		$user = Users::find()->where(['email' => $this->email])->one();
-		if ($user) {
-			\Yii::$app->user->login(Users::findOne($user->id));
-		} else {
-			$userData['name'] = $userData['displayName'];
-			$userData['avatar_url'] = $userData['image']['url'];
-			$transaction = \Yii::$app->db->beginTransaction();
-			$user = $this->newUser($userData);
-			if($user){
-				$userDetail = UserDetails::checkAndCreateUser($user->id);
-				$userDetail->setNames($userData['name']);
-				if($userDetail->update()){
-					$transaction->commit();
-				}else{
-					$transaction->rollBack();
-				}
-			}
-			\Yii::$app->user->login(Users::findOne($user->id));
-		}
-		return true;
-	}
+        $user = Users::find()->where(['email' => $this->email])->one();
+        if ($user) {
+            \Yii::$app->user->login(Users::findOne($user->id));
+        } else {
+            $userData['name'] = $userData['displayName'];
+            $userData['avatar_url'] = $userData['image']['url'];
+            $transaction = \Yii::$app->db->beginTransaction();
+            $user = $this->newUser($userData);
+            if ($user) {
+                $userDetail = UserDetails::checkAndCreateUser($user->id);
+                $userDetail->setNames($userData['name']);
+                if ($userDetail->update()) {
+                    $transaction->commit();
+                } else {
+                    $transaction->rollBack();
+                }
+            }
+            \Yii::$app->user->login(Users::findOne($user->id));
+        }
+
+        return true;
+    }
 
     /**
      * @param $userData
+     *
      * @return bool
      */
-    public function userTwitter($userData){
+    public function userTwitter($userData)
+    {
         $this->userType = Users::USER_TYPE_TWITTER;
         $userData['login'] = $userData['screen_name'];
         $userData['avatar_url'] = $userData['profile_image_url'];
@@ -128,17 +146,17 @@ class Auth extends \yii\db\ActiveRecord
             \Yii::$app->user->login(Users::findOne($user->id));
         } else {
             // Save session attribute user from FB
-	        $transaction = \Yii::$app->db->beginTransaction();
+            $transaction = \Yii::$app->db->beginTransaction();
             $user = $this->newUser($userData);
-	        if($user){
-		        $userDetail = UserDetails::checkAndCreateUser($user->id);
-		        $userDetail->setNames($userData['name']);
-		        if($userDetail->update()){
-			        $transaction->commit();
-		        }else{
-			        $transaction->rollBack();
-		        }
-	        }
+            if ($user) {
+                $userDetail = UserDetails::checkAndCreateUser($user->id);
+                $userDetail->setNames($userData['name']);
+                if ($userDetail->update()) {
+                    $transaction->commit();
+                } else {
+                    $transaction->rollBack();
+                }
+            }
             \Yii::$app->user->login(Users::findOne($user->id));
         }
 
@@ -147,9 +165,11 @@ class Auth extends \yii\db\ActiveRecord
 
     /**
      * @param $userData
+     *
      * @return Users
      */
-    public function newUser($userData){
+    public function newUser($userData)
+    {
         $model = new Users();
         $model->scenario = Users::SCENARIO_UPDATE;
         $model->username = $this->email;
@@ -160,17 +180,17 @@ class Auth extends \yii\db\ActiveRecord
         $model->avatar_url = isset($userData['avatar_url']) ? $userData['avatar_url'] : null;
         $model->attributes = json_encode($userData);
         $model->type = $this->userType;
-        if($model->save()){
-	        //Todo: send email to user
-	        // $this->sendEmail();
+        if ($model->save()) {
+            //Todo: send email to user
+            // $this->sendEmail();
 
-	        return $model;
+            return $model;
         }
 
         return false;
     }
 
-    public function sendEmail(){
-
+    public function sendEmail()
+    {
     }
 }

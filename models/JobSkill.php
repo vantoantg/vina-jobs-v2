@@ -1,17 +1,19 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Admin
- * Date: 3/30/2018
- * Time: 4:51 PM
+
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
  */
 
 namespace app\models;
 
-
 class JobSkill extends \app\models\base\JobSkill
 {
-    public static function getAllGroupSkill(){
+    public static function getAllGroupSkill()
+    {
         $table = self::tableName();
         $result = [];
         $sql = "SELECT * FROM $table";
@@ -25,7 +27,8 @@ class JobSkill extends \app\models\base\JobSkill
         return $result;
     }
 
-    public static function getAllSkill(){
+    public static function getAllSkill()
+    {
         $table = self::tableName();
         $sql = "SELECT * FROM $table";
 
