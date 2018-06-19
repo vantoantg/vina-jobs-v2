@@ -3,7 +3,7 @@
 #/config/db.php
 assets/*
 /config/db.php
-/config/private.php
+config/private.php
 /node_modules
 !/assets/app
 /vendor
