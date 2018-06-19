@@ -513,9 +513,13 @@ body {
 .more-jobs a {
     background: none repeat scroll 0 0 #d1d1d1;
     color: #666666;
-    padding: 14px 22px;
+    /*padding: 14px 22px;*/
     border-radius: 2px;
     display: inline-block;
+}
+.more-jobs a i{
+    position: relative;
+    top: 1.45px;
 }
 
 .more-jobs i {

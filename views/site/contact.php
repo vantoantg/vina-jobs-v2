@@ -31,7 +31,7 @@ $this->registerJs(
             <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
 
                 <div class="alert alert-success">
-	                Cảm ơn bạn đã liên hệ với chúng tôi. Chúng tôi sẽ phản hồi ý kiến của bạn hoặc trả lời ngay khi có thể.
+	                Cảm ơn bạn đã gửi thông tin liên hệ cho chúng tôi. Chúng tôi sẽ phản hồi hoặc trả lời ý kiến của bạn ngay khi có thể.
                 </div>
 
             <?php else: ?>

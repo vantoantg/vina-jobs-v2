@@ -10,13 +10,10 @@
 
 namespace app\components;
 
-use \app\library\helper\Helper;
-use app\models\FileUploads;
 use app\models\Job;
 use Yii;
 use app\forms\ApplyForm;
 use yii\base\Widget;
-use yii\web\UploadedFile;
 
 class JobsWidget extends Widget
 {
@@ -34,8 +31,8 @@ class JobsWidget extends Widget
     public function applyPopup()
     {
         $form = new ApplyForm();
-	    $form->redirect = Yii::$app->request->getUrl();
-	    $form->job_code = Job::instance()->setJobCode(1988);
+        $form->redirect = Yii::$app->request->getUrl();
+        $form->job_code = Job::instance()->setJobCode(1988);
 
         return $this->render('jobs/apply_popup', [
             'applyForm' => $form,

@@ -27,6 +27,9 @@ body.modal-open {
 .pd-right-0 {
   padding-right: 0!important;
 }
+.pd-t-30 {
+  padding-top: 30px;
+}
 .w100 {
   width: 100%;
 }
@@ -58,6 +61,7 @@ body.modal-open {
 }
 .breadcrumb {
   border-radius: 0;
+  margin-bottom: 0;
 }
 .loginmodal-container {
   padding: 30px;

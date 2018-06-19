@@ -6,6 +6,8 @@ use app\components\CaptchaAction;
 use app\forms\ApplyForm;
 use app\library\helper\Common;
 use app\library\helper\Helper;
+use app\library\helper\Logs;
+use app\library\helper\Logss;
 use app\models\Auth;
 use app\models\Company;
 use app\models\Email;
@@ -261,12 +263,17 @@ class SiteController extends FrontController
      */
     public function actionContact()
     {
+	    $req_dump = print_r($_REQUEST, TRUE);
+    	Logs::getInstance()->applyEmail($req_dump);
+
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post())) {
             $data = Yii::$app->request->post();
             $body = $this->renderPartial('@app/mail/layouts/contact', ['data' => $data['ContactForm']]);
             Email::instance()->sendContact($body);
             Yii::$app->session->setFlash('contactFormSubmitted');
+
+            Logs::getInstance()->contactEmail($data);
 
             return $this->refresh();
         }

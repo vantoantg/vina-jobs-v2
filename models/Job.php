@@ -211,7 +211,7 @@ class Job extends Jobs
      *
      * @return array
      */
-    public function getAllCompanyJobs($user_id = false, $limit = false)
+    public function getAllCompanyJobs($company_id = false)
     {
         $query = new Query();
         $query->select(
@@ -229,6 +229,8 @@ class Job extends Jobs
                 'job_cat.name AS cat_name',
                 'loca.name AS loca_name',
                 'com.logo AS com_logo',
+                'com.id AS com_id',
+                'com.name AS com_name',
             ]
         )
             ->from('tn_jobs job');
@@ -236,12 +238,14 @@ class Job extends Jobs
         $query->innerJoin('tn_company com', 'job.created_by = com.created_by');
         $query->leftJoin('tn_locations loca', 'loca.id = job.address')
             ->orderBy(['job.status' => SORT_DESC, 'job.client_status' => SORT_DESC, 'job.approved_at' => SORT_DESC, 'job.effect_date' => SORT_DESC, 'job.updated_at' => SORT_DESC, 'job.created_at' => SORT_DESC]);
-        if ($limit) {
-            $query->limit(10);
+
+        if ($company_id) {
+            $query->where('com.id = :company_id', ['company_id' => $company_id]);
         }
 
         $data = $query->createCommand()->queryAll();
         if ($data) {
+
             $result = [];
             foreach ($data as $k => $item) {
                 $item['isGuest'] = Common::isGuest();
@@ -250,8 +254,9 @@ class Job extends Jobs
                 $item['com_logo'] = Company::getLogo($item['com_logo'], 70, 70);
                 $item['working_time'] = Dropdowns::$working_time[$item['working_time']];
                 $item['created_at'] = Datetime::sqlDatetimeDiffForHumans($item['created_at']);
-                $item['url_edit'] = Helper::createUrl(['front/jobs/edit-jobs', 'id' => $item['job_id']]);
+//                $item['url_edit'] = Helper::createUrl(['front/jobs/edit-jobs', 'id' => $item['job_id']]);
                 $item['url_view'] = Helper::createUrl(['site/employeers-detail', 'slug' => $item['slug'], 'id' => $item['job_id']]);
+                $item['url_company_detail'] = Helper::createUrl(['front/jobs/company-detail', 'id' => Company::instance()->setCompanyCode($item['com_id']), 'slug' => Helper::createSlug($item['com_name'])]);
                 $result[] = $item;
             }
 
@@ -318,7 +323,7 @@ class Job extends Jobs
                 $item['working_time'] = Dropdowns::$working_time[$item['working_time']];
                 $item['created_at'] = Datetime::sqlDatetimeDiffForHumans($item['created_at']);
                 $item['url_view'] = Helper::createUrl(['site/employeers-detail', 'slug' => $item['slug'], 'id' => $item['job_id']]);
-                $item['url_company_detail'] = Helper::createUrl(['front/jobs/company-detail', 'id' => $item['slug'], 'slug' => Helper::createSlug($item['com_name']), 'id' => $item['com_id']]);
+                $item['url_company_detail'] = Helper::createUrl(['front/jobs/company-detail', 'slug' => Helper::createSlug($item['com_name']), 'id' => Company::instance()->setCompanyCode($item['com_id'])]);
                 $item['cv_end_date'] = $item['cv_end_date'] ? Carbon::createFromFormat(Datetime::SQL_DATE, $item['cv_end_date'])->format(Datetime::INPUT_DMY) : '--';
                 $result[] = $item;
             }

@@ -231,7 +231,7 @@ class JobsController extends FrontController
     {
         $jobs = Job::instance()->getAllCompanyJobs();
 
-        return $this->asJson($jobs);
+        return $this->asJson(['datas' => $jobs, 'jobs_counter' => count($jobs)]);
     }
 
     /**
@@ -243,7 +243,8 @@ class JobsController extends FrontController
      */
     public function actionCompanyDetail($id)
     {
-        $company = Company::findOne($id);
+        $company_id = Company::instance()->getCompanyCode($id);
+        $company = Company::findOne($company_id);
         if (!$company) {
             throw new BadRequestHttpException();
         }
@@ -251,6 +252,7 @@ class JobsController extends FrontController
         return $this->render('company_detail', [
             'company' => $company,
             'galleries' => FileUploads::instance()->getGallery(FileUploads::COM_GALLERY, $company->id),
+            'company_jobs' => Job::instance()->getAllCompanyJobs($company_id),
         ]);
     }
 

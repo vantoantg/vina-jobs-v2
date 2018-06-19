@@ -148,14 +148,14 @@ class Users extends \app\models\base\User implements IdentityInterface
     public function newContactCompany()
     {
         $this->type = Users::USER_TYPE_CONTACT_OF_COMPANY;
-        $this->role = Role::ROLE_CUSTOMMER;
+        $this->role = Role::ROLE_CUSTOMER;
     }
 
     public function newCandidate()
     {
         $this->type = Users::USER_TYPE_DEFAULT;
         $this->status = Users::STATUS_WAITING_ACTIVE;
-        $this->role = Role::ROLE_CUSTOMMER;
+        $this->role = Role::ROLE_CUSTOMER;
     }
 
     /**

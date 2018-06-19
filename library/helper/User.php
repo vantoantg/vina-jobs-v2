@@ -1,8 +1,11 @@
 <?php
-/**
- * Created by Tona Nguyễn
- * Date: 3/28/2017
- * Time: 11:35 AM
+
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
  */
 
 namespace app\library\helper;
