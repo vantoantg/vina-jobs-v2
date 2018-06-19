@@ -1,9 +1,11 @@
 <?php
-/**
- * Created by Tona Nguyen.
- * User: tonanguyen
- * Date: 11/27/2017
- * Time: 10:33 PM
+
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
  */
 
 namespace app\library\helper;
@@ -13,15 +15,11 @@ use Exception;
 /**
  * Class SimpleImage
  * This class makes image manipulation in PHP as simple as possible.
- * @package SimpleImage
- *
  */
 class SimpleImage
 {
-
     /**
      * @var int Default output image quality
-     *
      */
     public $quality = 100;
 
@@ -44,8 +42,8 @@ class SimpleImage
      *                                  (is used for creating image from scratch)
      *
      * @return SimpleImage
-     * @throws Exception
      *
+     * @throws Exception
      */
     public function __construct($filename = null, $width = null, $height = null, $color = null)
     {
@@ -54,12 +52,12 @@ class SimpleImage
         } elseif ($width) {
             $this->create($width, $height, $color);
         }
+
         return $this;
     }
 
     /**
      * Destroy image resource
-     *
      */
     public function __destruct()
     {
@@ -79,7 +77,6 @@ class SimpleImage
      * @param int|null      $height If omitted - assumed equal to $width
      *
      * @return SimpleImage
-     *
      */
     public function adaptive_resize($width, $height = null)
     {
@@ -90,7 +87,6 @@ class SimpleImage
      * Rotates and/or flips an image automatically so the orientation will be correct (based on exif 'Orientation')
      *
      * @return SimpleImage
-     *
      */
     public function auto_orient()
     {
@@ -144,11 +140,9 @@ class SimpleImage
      * @param int           $max_height
      *
      * @return  SimpleImage
-     *
      */
     public function best_fit($max_width, $max_height)
     {
-
         // If it already fits, there's nothing to do
         if ($this->width <= $max_width && $this->height <= $max_height) {
             return $this;
@@ -182,7 +176,6 @@ class SimpleImage
      * @param int           $passes Number of times to apply the filter
      *
      * @return SimpleImage
-     *
      */
     public function blur($type = 'selective', $passes = 1)
     {
@@ -197,6 +190,7 @@ class SimpleImage
         for ($i = 0; $i < $passes; $i++) {
             imagefilter($this->image, $type);
         }
+
         return $this;
     }
 
@@ -206,11 +200,11 @@ class SimpleImage
      * @param int           $level  Darkest = -255, lightest = 255
      *
      * @return SimpleImage
-     *
      */
     public function brightness($level)
     {
         imagefilter($this->image, IMG_FILTER_BRIGHTNESS, $this->keep_within($level, -255, 255));
+
         return $this;
     }
 
@@ -220,12 +214,11 @@ class SimpleImage
      * @param int           $level  Min = -100, max = 100
      *
      * @return SimpleImage
-     *
-     *
      */
     public function contrast($level)
     {
         imagefilter($this->image, IMG_FILTER_CONTRAST, $this->keep_within($level, -100, 100));
+
         return $this;
     }
 
@@ -237,13 +230,13 @@ class SimpleImage
      * @param float|int     $opacity    0-1
      *
      * @return SimpleImage
-     *
      */
     public function colorize($color, $opacity)
     {
         $rgba = $this->normalize_color($color);
         $alpha = $this->keep_within(127 - (127 * $opacity), 0, 127);
         imagefilter($this->image, IMG_FILTER_COLORIZE, $this->keep_within($rgba['r'], 0, 255), $this->keep_within($rgba['g'], 0, 255), $this->keep_within($rgba['b'], 0, 255), $alpha);
+
         return $this;
     }
 
@@ -256,7 +249,6 @@ class SimpleImage
      *                              Where red, green, blue - integers 0-255, alpha - integer 0-127
      *
      * @return SimpleImage
-     *
      */
     public function create($width, $height = null, $color = null)
     {
@@ -264,14 +256,14 @@ class SimpleImage
         $this->width = $width;
         $this->height = $height;
         $this->image = imagecreatetruecolor($width, $height);
-        $this->original_info = array(
+        $this->original_info = [
             'width' => $width,
             'height' => $height,
             'orientation' => $this->get_orientation(),
             'exif' => null,
             'format' => 'png',
-            'mime' => 'image/png'
-        );
+            'mime' => 'image/png',
+        ];
 
         if ($color) {
             $this->fill($color);
@@ -289,17 +281,15 @@ class SimpleImage
      * @param int           $y2 Bottom
      *
      * @return SimpleImage
-     *
      */
     public function crop($x1, $y1, $x2, $y2)
     {
-
         // Determine crop size
         if ($x2 < $x1) {
-            list($x1, $x2) = array($x2, $x1);
+            list($x1, $x2) = [$x2, $x1];
         }
         if ($y2 < $y1) {
-            list($y1, $y2) = array($y2, $y1);
+            list($y1, $y2) = [$y2, $y1];
         }
         $crop_width = $x2 - $x1;
         $crop_height = $y2 - $y1;
@@ -324,11 +314,9 @@ class SimpleImage
      * @param int           $percentage Level of desaturization.
      *
      * @return SimpleImage
-     *
      */
     public function desaturate($percentage = 100)
     {
-
         // Determine percentage
         $percentage = $this->keep_within($percentage, 0, 100);
 
@@ -354,11 +342,11 @@ class SimpleImage
      * Edge Detect
      *
      * @return SimpleImage
-     *
      */
     public function edges()
     {
         imagefilter($this->image, IMG_FILTER_EDGEDETECT);
+
         return $this;
     }
 
@@ -366,11 +354,11 @@ class SimpleImage
      * Emboss
      *
      * @return SimpleImage
-     *
      */
     public function emboss()
     {
         imagefilter($this->image, IMG_FILTER_EMBOSS);
+
         return $this;
     }
 
@@ -381,7 +369,6 @@ class SimpleImage
      *                              Where red, green, blue - integers 0-255, alpha - integer 0-127
      *
      * @return SimpleImage
-     *
      */
     public function fill($color = '#000000')
     {
@@ -400,7 +387,6 @@ class SimpleImage
      * @param int           $height
      *
      * @return SimpleImage
-     *
      */
     public function fit_to_height($height)
     {
@@ -416,7 +402,6 @@ class SimpleImage
      * @param int           $width
      *
      * @return SimpleImage
-     *
      */
     public function fit_to_width($width)
     {
@@ -432,7 +417,6 @@ class SimpleImage
      * @param string        $direction  x|y
      *
      * @return SimpleImage
-     *
      */
     public function flip($direction)
     {
@@ -462,14 +446,12 @@ class SimpleImage
      * Generates an image
      *
      * @return int
-     *
      */
 
     /**
      * Get the current height
      *
      * @return int
-     *
      */
     public function getHeight()
     {
@@ -480,7 +462,6 @@ class SimpleImage
      * Get the current orientation
      *
      * @return string   portrait|landscape|square
-     *
      */
     public function get_orientation()
     {
@@ -506,7 +487,6 @@ class SimpleImage
      *  mime         => ['image/jpeg', 'image/gif', 'image/png'],
      *  format       => ['jpeg', 'gif', 'png']
      * )</pre>
-     *
      */
     public function get_original_info()
     {
@@ -517,7 +497,6 @@ class SimpleImage
      * Get the current width
      *
      * @return int
-     *
      */
     public function getWidth()
     {
@@ -528,11 +507,11 @@ class SimpleImage
      * Invert
      *
      * @return SimpleImage
-     *
      */
     public function invert()
     {
         imagefilter($this->image, IMG_FILTER_NEGATE);
+
         return $this;
     }
 
@@ -542,17 +521,17 @@ class SimpleImage
      * @param string        $filename   Path to image file
      *
      * @return SimpleImage
-     * @throws Exception
      *
+     * @throws Exception
      */
     public function load($filename)
     {
-
         // Require GD library
         if (!extension_loaded('gd')) {
             throw new Exception('Required extension GD is not loaded.');
         }
         $this->filename = $filename;
+
         return $this->get_meta_data();
     }
 
@@ -562,7 +541,6 @@ class SimpleImage
      * @param string        $filename   base64 string
      *
      * @return SimpleImage
-     *
      */
     public function load_base64($base64string)
     {
@@ -572,6 +550,7 @@ class SimpleImage
         //remove data URI scheme and spaces from base64 string then decode it
         $this->imagestring = base64_decode(str_replace(' ', '+', preg_replace('#^data:image/[^;]+;base64,#', '', $base64string)));
         $this->image = imagecreatefromstring($this->imagestring);
+
         return $this->get_meta_data();
     }
 
@@ -579,11 +558,11 @@ class SimpleImage
      * Mean Remove
      *
      * @return SimpleImage
-     *
      */
     public function mean_remove()
     {
         imagefilter($this->image, IMG_FILTER_MEAN_REMOVAL);
+
         return $this;
     }
 
@@ -593,11 +572,9 @@ class SimpleImage
      * @param float|int     $opacity    0-1
      *
      * @throws Exception
-     *
      */
     public function opacity($opacity)
     {
-
         // Determine opacity
         $opacity = $this->keep_within($opacity, 0, 1) * 100;
 
@@ -608,7 +585,7 @@ class SimpleImage
         imagecopy($copy, $this->image, 0, 0, 0, 0, $this->width, $this->height);
 
         // Create transparent layer
-        $this->create($this->width, $this->height, array(0, 0, 0, 127));
+        $this->create($this->width, $this->height, [0, 0, 0, 127]);
 
         // Merge with specified opacity
         $this->imagecopymerge_alpha($this->image, $copy, 0, 0, 0, 0, $this->width, $this->height, $opacity);
@@ -624,11 +601,9 @@ class SimpleImage
      * @param int|null      $quality    Output image quality in percents 0-100
      *
      * @throws Exception
-     *
      */
     protected function generate($format = null, $quality = null)
     {
-
         // Determine quality
         $quality = $quality ?: $this->quality;
 
@@ -671,7 +646,7 @@ class SimpleImage
         $imagestring = ob_get_contents();
         ob_end_clean();
 
-        return array($mimetype, $imagestring);
+        return [$mimetype, $imagestring];
     }
 
     /**
@@ -681,7 +656,6 @@ class SimpleImage
      * @param int|null      $quality    Output image quality in percents 0-100
      *
      * @throws Exception
-     *
      */
     public function output($format = null, $quality = null)
     {
@@ -699,8 +673,8 @@ class SimpleImage
      * @param int|null      $quality    Output image quality in percents 0-100
      *
      * @return string
-     * @throws Exception
      *
+     * @throws Exception
      */
     public function output_base64($format = null, $quality = null)
     {
@@ -722,11 +696,9 @@ class SimpleImage
      * @param int           $y_offset       Vertical offset in pixels
      *
      * @return SimpleImage
-     *
      */
     public function overlay($overlay, $position = 'center', $opacity = 1, $x_offset = 0, $y_offset = 0)
     {
-
         // Load overlay image
         if (!($overlay instanceof SimpleImage)) {
             $overlay = new SimpleImage($overlay);
@@ -788,11 +760,11 @@ class SimpleImage
      * @param int           $block_size Size in pixels of each resulting block
      *
      * @return SimpleImage
-     *
      */
     public function pixelate($block_size = 10)
     {
         imagefilter($this->image, IMG_FILTER_PIXELATE, $block_size, true);
+
         return $this;
     }
 
@@ -803,11 +775,9 @@ class SimpleImage
      * @param int   $height
      *
      * @return SimpleImage
-     *
      */
     public function resize($width, $height)
     {
-
         // Generate new GD image
         $new = imagecreatetruecolor($width, $height);
 
@@ -846,11 +816,9 @@ class SimpleImage
      *                                  Where red, green, blue - integers 0-255, alpha - integer 0-127
      *
      * @return SimpleImage
-     *
      */
     public function rotate($angle, $bg_color = '#000000')
     {
-
         // Perform the rotation
         $rgba = $this->normalize_color($bg_color);
         $bg_color = imagecolorallocatealpha($this->image, $rgba['r'], $rgba['g'], $rgba['b'], $rgba['a']);
@@ -876,12 +844,11 @@ class SimpleImage
      * @param null|string   $format     The format to use; determined by file extension if null
      *
      * @return SimpleImage
-     * @throws Exception
      *
+     * @throws Exception
      */
     public function save($filename = null, $quality = null, $format = null)
     {
-
         // Determine quality, filename, and format
         $filename = $filename ?: $this->filename;
         if (!$format) {
@@ -893,7 +860,7 @@ class SimpleImage
         // Save the image
         $result = file_put_contents($filename, $imagestring);
         if (!$result) {
-            throw new Exception('Unable to save image: ' . $filename);
+            throw new Exception('Unable to save image: '.$filename);
         }
 
         return $this;
@@ -903,12 +870,12 @@ class SimpleImage
      * Sepia
      *
      * @return SimpleImage
-     *
      */
     public function sepia()
     {
         imagefilter($this->image, IMG_FILTER_GRAYSCALE);
         imagefilter($this->image, IMG_FILTER_COLORIZE, 100, 50, 0);
+
         return $this;
     }
 
@@ -916,11 +883,11 @@ class SimpleImage
      * Sketch
      *
      * @return SimpleImage
-     *
      */
     public function sketch()
     {
         imagefilter($this->image, IMG_FILTER_MEAN_REMOVAL);
+
         return $this;
     }
 
@@ -930,11 +897,11 @@ class SimpleImage
      * @param int           $level  Min = -10, max = 10
      *
      * @return SimpleImage
-     *
      */
     public function smooth($level)
     {
         imagefilter($this->image, IMG_FILTER_SMOOTH, $this->keep_within($level, -10, 10));
+
         return $this;
     }
 
@@ -954,12 +921,11 @@ class SimpleImage
      * @param int           $letter_spacing
      *
      * @return SimpleImage
-     * @throws Exception
      *
+     * @throws Exception
      */
     public function text($text, $font_file, $font_size = 12, $color = '#000000', $position = 'center', $x_offset = 0, $y_offset = 0, $stroke_color = null, $stroke_size = null, $alignment = null, $letter_spacing = 0)
     {
-
         // todo - this method could be improved to support the text angle
         $angle = 0;
 
@@ -973,7 +939,6 @@ class SimpleImage
             $rgba = $this->normalize_color($color);
             $color_arr[] = imagecolorallocatealpha($this->image, $rgba['r'], $rgba['g'], $rgba['b'], $rgba['a']);
         }
-
 
         // Determine textbox size
         $box = imagettfbbox($font_size, $angle, $font_file, $text);
@@ -1024,10 +989,10 @@ class SimpleImage
                 break;
         }
 
-        if ($alignment === "left") {
+        if ($alignment === 'left') {
             // Left aligned text
             $x = -($x * 2);
-        } elseif ($alignment === "right") {
+        } elseif ($alignment === 'right') {
             // Right aligned text
             $dimensions = imagettfbbox($font_size, $angle, $font_file, $text);
             $alignment_offset = abs($dimensions[4] - $dimensions[0]);
@@ -1039,7 +1004,6 @@ class SimpleImage
         imagealphablending($this->image, true);
 
         if (isset($stroke_color) && isset($stroke_size)) {
-
             // Text with stroke
             if (is_array($color) || is_array($stroke_color)) {
                 // Multi colored text and/or multi colored stroke
@@ -1063,7 +1027,7 @@ class SimpleImage
                     }
 
                     // If the next letter is empty, we just move forward to the next letter
-                    if ($var !== " ") {
+                    if ($var !== ' ') {
                         $this->imagettfstroketext($this->image, $font_size, $angle, $x, $y, current($color_arr), current($stroke_color), $stroke_size, $font_file, $var);
 
                         // #000 is 0, black will reset the array so we write it this way
@@ -1083,7 +1047,6 @@ class SimpleImage
                 $this->imagettfstroketext($this->image, $font_size, $angle, $x, $y, $color_arr[0], $stroke_color, $stroke_size, $font_file, $text);
             }
         } else {
-
             // Text without stroke
 
             if (is_array($color)) {
@@ -1098,7 +1061,7 @@ class SimpleImage
                     }
 
                     // If the next letter is empty, we just move forward to the next letter
-                    if ($var !== " ") {
+                    if ($var !== ' ') {
                         imagettftext($this->image, $font_size, $angle, $x, $y, current($color_arr), $font_file, $var);
 
                         // #000 is 0, black will reset the array so we write it this way
@@ -1126,11 +1089,9 @@ class SimpleImage
      * @param string        $focal
      *
      * @return SimpleImage
-     *
      */
     public function thumbnail($width, $height = null, $focal = 'center')
     {
-
         // Determine height
         $height = $height ?: $width;
 
@@ -1213,7 +1174,6 @@ class SimpleImage
      * @param string    $filename
      *
      * @return string
-     *
      */
     protected function file_ext($filename)
     {
@@ -1230,8 +1190,8 @@ class SimpleImage
      * @param string|null       $imagestring    If omitted treat as a normal image
      *
      * @return SimpleImage
-     * @throws Exception
      *
+     * @throws Exception
      */
     protected function get_meta_data()
     {
@@ -1259,14 +1219,14 @@ class SimpleImage
             throw new Exception('PHP 5.4 is required to use method getimagesizefromstring');
         }
 
-        $this->original_info = array(
+        $this->original_info = [
             'width' => $info[0],
             'height' => $info[1],
             'orientation' => $this->get_orientation(),
             'exif' => function_exists('exif_read_data') && $info['mime'] === 'image/jpeg' && $this->imagestring === null ? $this->exif = @exif_read_data($this->filename) : null,
             'format' => preg_replace('/^image\//', '', $info['mime']),
-            'mime' => $info['mime']
-        );
+            'mime' => $info['mime'],
+        ];
         $this->width = $info[0];
         $this->height = $info[1];
 
@@ -1289,12 +1249,10 @@ class SimpleImage
      * @param $src_h
      * @param $pct
      *
-     * @link http://www.php.net/manual/en/function.imagecopymerge.php#88456
-     *
+     * @see http://www.php.net/manual/en/function.imagecopymerge.php#88456
      */
     protected function imagecopymerge_alpha($dst_im, $src_im, $dst_x, $dst_y, $src_x, $src_y, $src_w, $src_h, $pct)
     {
-
         // Get image width and height and percentage
         $pct /= 100;
         $w = imagesx($src_im);
@@ -1358,7 +1316,6 @@ class SimpleImage
      * @param  string $text         The text to output
      *
      * @return array                This method has the same return values as imagettftext()
-     *
      */
     protected function imagettfstroketext(&$image, $size, $angle, $x, $y, &$textcolor, &$strokecolor, $stroke_size, $fontfile, $text)
     {
@@ -1367,6 +1324,7 @@ class SimpleImage
                 $bg = imagettftext($image, $size, $angle, $c1, $c2, $strokecolor, $fontfile, $text);
             }
         }
+
         return imagettftext($image, $size, $angle, $x, $y, $textcolor, $fontfile, $text);
     }
 
@@ -1380,7 +1338,6 @@ class SimpleImage
      * @param int|float     $max
      *
      * @return int|float
-     *
      */
     protected function keep_within($value, $min, $max)
     {
@@ -1402,7 +1359,6 @@ class SimpleImage
      *                              Where red, green, blue - integers 0-255, alpha - integer 0-127
      *
      * @return array|bool
-     *
      */
     protected function normalize_color($color)
     {
@@ -1410,43 +1366,45 @@ class SimpleImage
             $color = trim($color, '#');
 
             if (strlen($color) == 6) {
-                list($r, $g, $b) = array(
+                list($r, $g, $b) = [
                     $color[0].$color[1],
                     $color[2].$color[3],
-                    $color[4].$color[5]
-                );
+                    $color[4].$color[5],
+                ];
             } elseif (strlen($color) == 3) {
-                list($r, $g, $b) = array(
+                list($r, $g, $b) = [
                     $color[0].$color[0],
                     $color[1].$color[1],
-                    $color[2].$color[2]
-                );
+                    $color[2].$color[2],
+                ];
             } else {
                 return false;
             }
-            return array(
+
+            return [
                 'r' => hexdec($r),
                 'g' => hexdec($g),
                 'b' => hexdec($b),
-                'a' => 0
-            );
+                'a' => 0,
+            ];
         } elseif (is_array($color) && (count($color) == 3 || count($color) == 4)) {
             if (isset($color['r'], $color['g'], $color['b'])) {
-                return array(
+                return [
                     'r' => $this->keep_within($color['r'], 0, 255),
                     'g' => $this->keep_within($color['g'], 0, 255),
                     'b' => $this->keep_within($color['b'], 0, 255),
-                    'a' => $this->keep_within(isset($color['a']) ? $color['a'] : 0, 0, 127)
-                );
+                    'a' => $this->keep_within(isset($color['a']) ? $color['a'] : 0, 0, 127),
+                ];
             } elseif (isset($color[0], $color[1], $color[2])) {
-                return array(
+                return [
                     'r' => $this->keep_within($color[0], 0, 255),
                     'g' => $this->keep_within($color[1], 0, 255),
                     'b' => $this->keep_within($color[2], 0, 255),
-                    'a' => $this->keep_within(isset($color[3]) ? $color[3] : 0, 0, 127)
-                );
+                    'a' => $this->keep_within(isset($color[3]) ? $color[3] : 0, 0, 127),
+                ];
             }
         }
+
         return false;
     }
 }

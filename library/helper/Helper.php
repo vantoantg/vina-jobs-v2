@@ -1,26 +1,27 @@
 <?php
-/**
- * Created by Tona Nguyễn
- * Date: 3/28/2017
- * Time: 11:35 AM
+
+/*
+ *  Created by Tona Nguyen
+ *  Email: nguyennguyen.vt88@gmail.com
+ *  Phone: 0932.252.414
+ *  Address: VN, HCMC
+ *  Website: https://jobsvina.com/
  */
 
 namespace app\library\helper;
 
 use app\models\Pages;
 use Carbon\Carbon;
-use tonanguyen\SimpleImage;
 use Yii;
-use \yii\web\Response;
+use yii\web\Response;
 
 /**
  * Class Helper
- * @package app\library\helper
  */
 class Helper
 {
     /**
-     * @var Object Helper
+     * @var object Helper
      */
     protected static $_instance;
 
@@ -54,6 +55,7 @@ class Helper
 
     /**
      * @param array $data
+     *
      * @return array
      */
     public static function jsonData($data = [])
@@ -80,33 +82,34 @@ class Helper
     public static function webImgs($pathFile, $check = true)
     {
         if ($pathFile) {
-            $path = Yii::$app->getHomeUrl() . 'web/imgs/' . $pathFile;
-            if ($check && file_exists(Yii::$app->basePath . '/' . $pathFile)) {
+            $path = Yii::$app->getHomeUrl().'web/imgs/'.$pathFile;
+            if ($check && file_exists(Yii::$app->basePath.'/'.$pathFile)) {
                 return $path;
             }
         }
 
-        return Yii::$app->getHomeUrl() . 'web/imgs/no-image.jpg';
+        return Yii::$app->getHomeUrl().'web/imgs/no-image.jpg';
     }
 
     /**
      * @param $pathFile
      * @param int $w
      * @param int $h
+     *
      * @return mixed|string
      */
     public static function imgRender($pathFile, $w = 100, $h = 100, $prefix = 'blog')
     {
-        if (!$pathFile || !file_exists(Yii::$app->basePath . '/' . $pathFile)) {
-            $pathFile = "/web/imgs/no-image.jpg";
+        if (!$pathFile || !file_exists(Yii::$app->basePath.'/'.$pathFile)) {
+            $pathFile = '/web/imgs/no-image.jpg';
         }
 
-        $basePath = Yii::$app->basePath .'/'. $pathFile;
+        $basePath = Yii::$app->basePath.'/'.$pathFile;
         $pathFileArr = explode('/', $pathFile);
         $imgName = end($pathFileArr);
         $prefix = $prefix.'-'.$w.'@'.$h;
-        $newUrl = self::homeUrl() . 'web/assets/' . $prefix . '-' . md5(date('Ymd')) . '-' . $imgName;
-        $newPath = Yii::$app->basePath . '/web/assets/' . $prefix . '-' . md5(date('Ymd')) . '-' . $imgName;
+        $newUrl = self::homeUrl().'web/assets/'.$prefix.'-'.md5(date('Ymd')).'-'.$imgName;
+        $newPath = Yii::$app->basePath.'/web/assets/'.$prefix.'-'.md5(date('Ymd')).'-'.$imgName;
 
         if (file_exists($newPath)) {
             return $newUrl;
@@ -117,6 +120,7 @@ class Helper
             $img->load($basePath);
             $img->thumbnail($w, $h);
             $img->save($newPath, 100);
+
             return $newUrl;
         }
     }
@@ -127,34 +131,36 @@ class Helper
     public static function userAvatar($pathFile, $check = true)
     {
         if ($pathFile) {
-            $path = Yii::$app->getHomeUrl() . $pathFile;
-            if ($check && file_exists(Yii::$app->basePath . '/' . $pathFile)) {
+            $path = Yii::$app->getHomeUrl().$pathFile;
+            if ($check && file_exists(Yii::$app->basePath.'/'.$pathFile)) {
                 return $path;
             }
         }
 
-        return Yii::$app->getHomeUrl() . 'web/imgs/no-image.jpg';
+        return Yii::$app->getHomeUrl().'web/imgs/no-image.jpg';
     }
 
     /**
      * @param bool $domainNameOnly
+     *
      * @return string
      */
     public static function siteURL($domainNameOnly = false)
     {
         $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') ||
-            $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+            $_SERVER['SERVER_PORT'] == 443) ? 'https://' : 'http://';
         $domainName = $_SERVER['HTTP_HOST'];
         if ($domainNameOnly) {
             return $domainName;
         }
-        return $protocol . $domainName;
-    }
 
+        return $protocol.$domainName;
+    }
 
     /**
      * @param string $route
      * @param string $returnClass
+     *
      * @return string
      */
     public static function active($route = 'site/index', $returnClass = 'active')
@@ -168,6 +174,7 @@ class Helper
 
     /**
      * @param $params
+     *
      * @return string
      */
     public static function createUrl($params)
@@ -181,11 +188,13 @@ class Helper
 
     /**
      * Get all route definned
+     *
      * @return mixed
      */
     public static function getRoutes()
     {
-        $routes = include(Yii::$app->basePath . '/config/routes.php');
+        $routes = include Yii::$app->basePath.'/config/routes.php';
+
         return $routes;
     }
 
@@ -226,11 +235,12 @@ class Helper
      */
     public static function getCurrentUrl()
     {
-        return "http" . (($_SERVER['SERVER_PORT'] == 443) ? "s://" : "://") . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        return 'http'.(($_SERVER['SERVER_PORT'] == 443) ? 's://' : '://').$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
     }
 
     /**
      * @param $name
+     *
      * @return mixed
      */
     public static function getCookie($name)
@@ -245,6 +255,7 @@ class Helper
 
     /**
      * @param $array
+     *
      * @return \stdClass
      */
     public static function arrayToObject($array)
@@ -256,11 +267,13 @@ class Helper
             }
             $object->$key = $value;
         }
+
         return $object;
     }
 
     /**
      * @param $object
+     *
      * @return array
      */
     public static function objectToArray($object)
@@ -272,11 +285,13 @@ class Helper
             }
             $arrays[$key] = $value;
         }
+
         return $arrays;
     }
 
     /**
      * @param $strUrl
+     *
      * @return string
      */
     public function checkUrlHttp($strUrl)
@@ -284,15 +299,16 @@ class Helper
         $arrParsedUrl = parse_url($strUrl);
         if (!empty($arrParsedUrl['scheme'])) {
             // Contains http:// schema
-            if ($arrParsedUrl['scheme'] === "http") {
+            if ($arrParsedUrl['scheme'] === 'http') {
             } // Contains https:// schema
             else {
-                if ($arrParsedUrl['scheme'] === "https") {
+                if ($arrParsedUrl['scheme'] === 'https') {
                 }
             }
+
             return $strUrl;
         } else {
-            return 'http://' . $strUrl;
+            return 'http://'.$strUrl;
         }
     }
 
@@ -301,7 +317,7 @@ class Helper
      */
     public static function urlTemplate()
     {
-        return self::siteURL() . '/web/template/' . Cons::TEMPLATE_FOLDER . '/';
+        return self::siteURL().'/web/template/'.Cons::TEMPLATE_FOLDER.'/';
     }
 
     /**
@@ -314,7 +330,7 @@ class Helper
     public static function createSlug($strings)
     {
         $string = self::stripUnicode($strings);
-        $table = array(
+        $table = [
             '�' => 'S',
             '�' => 's',
             '?' => 'Dj',
@@ -397,55 +413,59 @@ class Helper
             '@' => '-',
             '(' => '-',
             ')' => '-',
-        );
+        ];
 
         // -- Remove duplicated spaces
-        $string = preg_replace(array('/\s{2,}/', '/[\t\n]/'), ' ', $string);
+        $string = preg_replace(['/\s{2,}/', '/[\t\n]/'], ' ', $string);
 
         // -- Returns the slug
         $str = strtolower(strtr($string, $table));
-        $str = str_replace("--", "-", $str);
-        $str = str_replace("---", "-", $str);
-        $str = str_replace("----", "-", $str);
+        $str = str_replace('--', '-', $str);
+        $str = str_replace('---', '-', $str);
+        $str = str_replace('----', '-', $str);
+
         return $str;
     }
 
     /**
      * @param $str
+     *
      * @return mixed
      */
     public static function stripUnicode($str)
     {
-        $str = preg_replace("/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/", 'a', $str);
-        $str = preg_replace("/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/", 'e', $str);
-        $str = preg_replace("/(ì|í|ị|ỉ|ĩ)/", 'i', $str);
-        $str = preg_replace("/(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ)/", 'o', $str);
-        $str = preg_replace("/(ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ)/", 'u', $str);
-        $str = preg_replace("/(ỳ|ý|ỵ|ỷ|ỹ)/", 'y', $str);
-        $str = preg_replace("/(đ)/", 'd', $str);
-        $str = preg_replace("/(À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ)/", 'A', $str);
-        $str = preg_replace("/(È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ)/", 'E', $str);
-        $str = preg_replace("/(Ì|Í|Ị|Ỉ|Ĩ)/", 'I', $str);
-        $str = preg_replace("/(Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ)/", 'O', $str);
-        $str = preg_replace("/(Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ)/", 'U', $str);
-        $str = preg_replace("/(Ỳ|Ý|Ỵ|Ỷ|Ỹ)/", 'Y', $str);
-        $str = preg_replace("/(Đ)/", 'D', $str);
-        $str = str_replace("  ", " ", $str);
-        $str = str_replace("   ", " ", $str);
-        $str = str_replace("    ", " ", $str);
-        $str = str_replace("     ", " ", $str);
-        $str = str_replace("      ", " ", $str);
-        $str = str_replace("       ", " ", $str);
-        $str = str_replace("        ", " ", $str);
-        $str = str_replace("         ", " ", $str);
-        $str = str_replace("          ", " ", $str);
-        $str = str_replace("           ", " ", $str);
+        $str = preg_replace('/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/', 'a', $str);
+        $str = preg_replace('/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/', 'e', $str);
+        $str = preg_replace('/(ì|í|ị|ỉ|ĩ)/', 'i', $str);
+        $str = preg_replace('/(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ)/', 'o', $str);
+        $str = preg_replace('/(ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ)/', 'u', $str);
+        $str = preg_replace('/(ỳ|ý|ỵ|ỷ|ỹ)/', 'y', $str);
+        $str = preg_replace('/(đ)/', 'd', $str);
+        $str = preg_replace('/(À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ)/', 'A', $str);
+        $str = preg_replace('/(È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ)/', 'E', $str);
+        $str = preg_replace('/(Ì|Í|Ị|Ỉ|Ĩ)/', 'I', $str);
+        $str = preg_replace('/(Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ)/', 'O', $str);
+        $str = preg_replace('/(Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ)/', 'U', $str);
+        $str = preg_replace('/(Ỳ|Ý|Ỵ|Ỷ|Ỹ)/', 'Y', $str);
+        $str = preg_replace('/(Đ)/', 'D', $str);
+        $str = str_replace('  ', ' ', $str);
+        $str = str_replace('   ', ' ', $str);
+        $str = str_replace('    ', ' ', $str);
+        $str = str_replace('     ', ' ', $str);
+        $str = str_replace('      ', ' ', $str);
+        $str = str_replace('       ', ' ', $str);
+        $str = str_replace('        ', ' ', $str);
+        $str = str_replace('         ', ' ', $str);
+        $str = str_replace('          ', ' ', $str);
+        $str = str_replace('           ', ' ', $str);
+
         return $str;
     }
 
     /**
      * @param $str
      * @param int $words
+     *
      * @return string
      */
     public static function cutStringSpace($str, $words = 20)
@@ -455,10 +475,12 @@ class Helper
             $arr = explode(' ', $str);
             if (count($arr) > $words) {
                 for ($i = 0; $i < $words; $i++) {
-                    $string .= ' ' . $arr[$i];
+                    $string .= ' '.$arr[$i];
                 }
-                return trim($string . '...');
+
+                return trim($string.'...');
             }
+
             return $str;
         }
     }
@@ -500,7 +522,7 @@ class Helper
             $name = Helper::getConfigDb()['db_name'];
         }
 
-        $path = Yii::$app->basePath . '/web/backups';
+        $path = Yii::$app->basePath.'/web/backups';
 
         /* backup the db OR just a table */
         $link = mysqli_connect($host, $user, $pass);
@@ -508,7 +530,7 @@ class Helper
 
         //get all of the tables
         if ($tables == '*') {
-            $tables = array();
+            $tables = [];
             $result = mysqli_query($link, 'SHOW TABLES');
             while ($row = mysqli_fetch_row($result)) {
                 $tables[] = $row[0];
@@ -520,21 +542,21 @@ class Helper
         $return = '';
         //cycle through
         foreach ($tables as $table) {
-            $result = mysqli_query($link, 'SELECT * FROM ' . $table);
+            $result = mysqli_query($link, 'SELECT * FROM '.$table);
             $num_fields = mysqli_num_fields($result);
 
-            $return .= 'DROP TABLE ' . $table . ';';
-            $row2 = mysqli_fetch_row(mysqli_query($link, 'SHOW CREATE TABLE ' . $table));
-            $return .= "\n\n" . $row2[1] . ";\n\n";
+            $return .= 'DROP TABLE '.$table.';';
+            $row2 = mysqli_fetch_row(mysqli_query($link, 'SHOW CREATE TABLE '.$table));
+            $return .= "\n\n".$row2[1].";\n\n";
 
             for ($i = 0; $i < $num_fields; $i++) {
                 while ($row = mysqli_fetch_row($result)) {
-                    $return .= 'INSERT INTO ' . $table . ' VALUES(';
+                    $return .= 'INSERT INTO '.$table.' VALUES(';
                     for ($j = 0; $j < $num_fields; $j++) {
                         $row[$j] = addslashes($row[$j]);
-                        $row[$j] = mb_ereg_replace("\n", "\\n", $row[$j]);
+                        $row[$j] = mb_ereg_replace("\n", '\\n', $row[$j]);
                         if (isset($row[$j])) {
-                            $return .= '"' . $row[$j] . '"';
+                            $return .= '"'.$row[$j].'"';
                         } else {
                             $return .= '""';
                         }
@@ -549,20 +571,21 @@ class Helper
         }
 
         //save file
-        $time = Common::currentUser() . '-' . Carbon::now(Common::currentUser('timezone'))->format(Datetime::FILE_TIME);
-        $handle = fopen($path . '/db-backup-' . $time . '.sql', 'w+');
+        $time = Common::currentUser().'-'.Carbon::now(Common::currentUser('timezone'))->format(Datetime::FILE_TIME);
+        $handle = fopen($path.'/db-backup-'.$time.'.sql', 'w+');
         fwrite($handle, $return);
         fclose($handle);
     }
 
     /**
      * @param $page
+     *
      * @return string
      */
     public static function titleSeo($page)
     {
-        /** @var $page Pages */
-        return $page->seo_title ? $page->seo_title : Yii::$app->params['seo']['title'] . ' | ' . Helper::params();
+        /* @var $page Pages */
+        return $page->seo_title ? $page->seo_title : Yii::$app->params['seo']['title'].' | '.Helper::params();
     }
 
     /**
@@ -570,34 +593,36 @@ class Helper
      */
     public static function generateSeo($page)
     {
-        /** @var $page Pages */
+        /* @var $page Pages */
         Yii::$app->params['seo']['description'] = ($page->seo_description) ? $page->seo_description : Yii::$app->params['seo']['description'];
         Yii::$app->params['seo']['keywords'] = ($page->seo_keyword) ? $page->seo_keyword : Yii::$app->params['seo']['keywords'];
     }
 
-
     /**
      * @param array $items
      * @param string $activeClass
+     *
      * @return string
      */
     public static function activeMenu($items = [], $activeClass = 'expanded')
     {
         if ($items) {
             foreach ($items as $item) {
-                if ($item == Yii::$app->controller->id . '/' . Yii::$app->controller->action->id) {
+                if ($item == Yii::$app->controller->id.'/'.Yii::$app->controller->action->id) {
                     return $activeClass;
                 }
             }
         }
+
         return '';
     }
 
     public static function humanFilesize($bytes, $decimals = 2)
     {
-        $size = array('B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+        $size = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
         $factor = floor((strlen($bytes) - 1) / 3);
-        return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
+
+        return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)).@$size[$factor];
     }
 
     public static function redactorOps($placeholder = '')
@@ -636,6 +661,7 @@ class Helper
      * @param string $param
      * @param string $param2
      * @param string $param3
+     *
      * @return mixed
      */
     public static function params($param = 'siteName', $param2 = '', $param3 = '')
@@ -646,11 +672,13 @@ class Helper
         if ($param3) {
             return Yii::$app->params[$param][$param2][$param3];
         }
+
         return isset(Yii::$app->params[$param]) ? Yii::$app->params[$param] : null;
     }
 
     /**
      * @param bool $check_mobile
+     *
      * @return string
      */
     public static function wowClass($check_mobile = false)
@@ -681,6 +709,7 @@ class Helper
     /**
      * @param $string
      * @param bool $action
+     *
      * @return bool|string
      */
     public static function encrypt($string, $action = true)
@@ -690,7 +719,7 @@ class Helper
         $secret_iv = Helper::params('encrypt', 'my_simple_secret_iv');
 
         $output = false;
-        $encrypt_method = "AES-256-CBC";
+        $encrypt_method = 'AES-256-CBC';
         $key = hash('sha256', $secret_key);
         $iv = substr(hash('sha256', $secret_iv), 0, 16);
 
@@ -705,6 +734,7 @@ class Helper
 
     /**
      * @param $path
+     *
      * @return bool|mixed|string
      */
     public static function getContentFileWith($path)
@@ -715,6 +745,7 @@ class Helper
         $content = str_replace('../webfonts/', self::homeUrl().'web/template/jobs/prod/webfonts/', $content);
 
         $content = str_replace('img/', self::homeUrl().'web/template/jobs/prod/css/img/', $content);
+
         return $content;
     }
 }

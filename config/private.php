@@ -13,9 +13,21 @@ return [
     	'my_simple_secret_key' => '',
     	'my_simple_secret_iv' => '',
     ],
+    'email' => [
+	    'host' => '',
+	    'username' => '',
+	    'password' => '',
+	    'secure' => true,
+	    'port' => '25',
+	    'options' => [
+		    'mailInfo' => 'info@jobsvina.com',
+		    'setFrom' => 'system@jobsvina.com',
+		    'addReplyTo' => 'noreply@jobsvina.com',
+	    ],
+    ],
     'db' => [
-        'dsn' => 'mysql:host=;dbname=',
-        'username' => '',
-        'password' => '',
+        'dsn' => 'mysql:host=localhost;dbname=',
+        'username' => 'root',
+        'password' => '123',
     ],
 ];
