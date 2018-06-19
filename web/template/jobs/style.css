@@ -517,6 +517,10 @@ body {
     border-radius: 2px;
     display: inline-block;
 }
+.more-jobs a i{
+    position: relative;
+    top: 1.45px;
+}
 
 .more-jobs i {
     margin-right: 10px;

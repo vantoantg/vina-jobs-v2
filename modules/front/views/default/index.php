@@ -240,7 +240,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                 </div>
                 <div class="more-jobs text-center">
                     <a href="<?= Helper::createUrl(['site/employeers']); ?>"
-                       class="btn-sm"><i class="fa fa-download"></i>Xem thêm</a>
+                       class="btn-sm"><i class="fas fa-angle-double-right"></i> Xem thêm</a>
                 </div>
             </div>
             <div class="col-md-3 hidden-sm">

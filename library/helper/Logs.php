@@ -34,6 +34,10 @@ class Logs
      */
     public function createFileLog($log_msg, $folder)
     {
+        if (is_array($log_msg)){
+            $log_msg = json_encode($log_msg);
+        }
+
         $time = Carbon::now(Datetime::DEFAULT_TIME_ZONE)->format(Datetime::SQL_DATETIME);
         $log_filename = \Yii::$app->basePath.DIRECTORY_SEPARATOR.'assets'.DIRECTORY_SEPARATOR.'logs'.DIRECTORY_SEPARATOR.$folder;
 
@@ -62,6 +66,14 @@ class Logs
     public function applyEmail($message)
     {
         $this->createFileLog($message, 'email');
+    }
+
+    /**
+     * @param $message
+     */
+    public function contactEmail($message)
+    {
+        $this->createFileLog($message, 'contact');
     }
 
     /**
