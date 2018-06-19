@@ -44,7 +44,8 @@ class Logs
         if (!file_exists($log_filename)) {
             mkdir($log_filename, 0777, true);
         }
-        $log_file_data = $log_filename.'/log_'.date('d-M-Y').'.log';
+        $name = Carbon::now(Datetime::DEFAULT_TIME_ZONE)->format('d-M-Y');
+        $log_file_data = $log_filename.DIRECTORY_SEPARATOR.'log_'.$name.'.log';
         file_put_contents($log_file_data, '['.$time.'] - '.$log_msg."\n", FILE_APPEND);
     }
 
