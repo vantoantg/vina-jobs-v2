@@ -215,8 +215,8 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 
     <div class="container">
         <div class="row page-title text-center <?= \app\library\helper\Helper::wowClass(); ?> bounce" data-wow-delay="1s">
-            <h5>Công việc mới nhất</h5>
-            <h2><span class="job-counter">...</span> công việc sẵn có cho bạn</h2>
+            <h5>Tin mới nhất</h5>
+            <h2>Có <span class="job-counter">...</span> tin đã được đăng</h2>
         </div>
         <div class="row jobs">
             <div class="col-md-9">
@@ -239,7 +239,8 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                     </table>
                 </div>
                 <div class="more-jobs text-center">
-                    <a href="<?= Helper::createUrl(['site/employeers']); ?>"><i class="fa fa-download"></i>Xem thêm</a>
+                    <a href="<?= Helper::createUrl(['site/employeers']); ?>"
+                       class="btn-sm"><i class="fa fa-download"></i>Xem thêm</a>
                 </div>
             </div>
             <div class="col-md-3 hidden-sm">

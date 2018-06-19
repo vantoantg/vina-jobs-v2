@@ -72,3 +72,6 @@ nvtoan@lockon-vn.com / tona01 / upajupy7y
 
 TODO: List
 https://docs.google.com/spreadsheets/d/1J-bQBYpLSRa2FdkAu0Vi9Po-ebWU-NbPlJB_Ga57pWE/edit#gid=1386834576
+
+
+ssh -i "ub14_01062018.pem" ubuntu@ec2-54-169-77-31.ap-southeast-1.compute.amazonaws.com
