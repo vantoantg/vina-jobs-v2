@@ -22,6 +22,8 @@ body.modal-open{ padding-right: 0!important;}
 .ovf-x-h{ overflow-x: hidden}
 .ovf-y-h{ overflow-y: hidden}
 .red{color: red}
+.opacity-7{ opacity: .7}
+.opacity-5{ opacity: .5}
 .nodata{
 	padding: 100px;
 	i{
@@ -50,12 +52,15 @@ body.modal-open{ padding-right: 0!important;}
 		outline: none;
 	}
 }
-#login-modal{
-	> div{
-		max-width: 350px;
-		margin: 15px auto;
-	}
+#mark-loading{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.3);
 }
+
 .loginmodal-container h1 {
 	text-align: center;
 	font-size: 1.8em;
@@ -293,7 +298,7 @@ input, .export {
 	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 .search-form.top #searchform-keys{
-	/*margin-top: 0;*/
+	margin-top: 0;
 }
 // .search-form
 .search-form{

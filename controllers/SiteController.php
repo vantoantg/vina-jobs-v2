@@ -18,12 +18,15 @@ use app\models\Post;
 use app\models\search\JobCustomSearch;
 use app\modules\front\controllers\FrontController;
 use Yii;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\helpers\Url;
 use yii\web\BadRequestHttpException;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\ContactForm;
+use yii\widgets\LinkPager;
+use yii\widgets\ListView;
 
 class SiteController extends FrontController
 {
@@ -89,6 +92,8 @@ class SiteController extends FrontController
 
 
     /**
+     * Url: search/result.html?keywords=&mode=search-jobs
+     *
      * @return string|Response
      */
     public function actionSearch()
@@ -96,7 +101,7 @@ class SiteController extends FrontController
         $queryParams = Yii::$app->request->queryParams;
         // TODO: save $queryParams (JSON) to strafic user want ...?
 
-        return $this->render('search', [
+        return $this->render('search_jobs', [
             '_url' => Yii::$app->request->getUrl(),
             'queryParams' => $queryParams,
         ]);
@@ -108,15 +113,28 @@ class SiteController extends FrontController
     public function actionAjaxSearch()
     {
         $queryParams = Yii::$app->request->queryParams;
-        // TODO: save $queryParams (JSON) to strafic user want ...?
 
-        if (Yii::$app->request->isAjax && isset($queryParams['mode']) && $queryParams['mode'] == 'search-jobs') {
+	    // TODO: save $queryParams (JSON) to strafic user want ...?
+	    Logs::getInstance()->searchJobs($queryParams);
+
+	    if (Yii::$app->request->isAjax && isset($queryParams['mode']) && $queryParams['mode'] == 'search-jobs') {
             $searchModel = new JobCustomSearch();
             $dataProvider = $searchModel->search($queryParams);
-            $dataProvider->pagination->pageSize = 10;
+            $dataProvider->pagination->pageSize = 1;
+
+		    $pagination = new Pagination(['totalCount' => $dataProvider->totalCount, 'pageSize' => $dataProvider->pagination->pageSize]);
+
+            ob_start();
+		    echo LinkPager::widget([
+			    'pagination' => $pagination,
+		    ]);
+		    $papeLink = ob_get_contents();
+		    ob_end_clean();
+
             $data = [
                 'datas' => $dataProvider->getModels(),
-                'pagination' => $dataProvider->pagination
+                'pagination' => $dataProvider->pagination,
+	            'papeLink' => $papeLink
             ];
 
             return $this->asJson($data);

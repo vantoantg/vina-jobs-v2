@@ -11,6 +11,7 @@ use app\library\helper\Common;
 
 $this->title = $job['title'];
 $this->params['breadcrumbs'][] = $this->title;
+\app\components\Menu\ActiveMenu::is('employeers');
 ?>
 
 <div class="container">
