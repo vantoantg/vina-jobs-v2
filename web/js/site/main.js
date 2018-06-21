@@ -11,6 +11,14 @@ var Main = function () {
     var _settings = $('input#setting-common');
     var _rootUrl = _settings.attr('data-site');
 
+    var delay = (function(){
+        var timer = 0;
+        return function(callback, ms){
+            clearTimeout (timer);
+            timer = setTimeout(callback, ms);
+        };
+    })();
+
     return {
         init: function () {
             this.events();
@@ -267,6 +275,7 @@ var Main = function () {
         },
         initSearchJobsPage: function () {
             var searchJobs = $('#search-jobs');
+            var resultJobs = $('.jobs #jobs-search');
 
             if(searchJobs.length){
                 // var url = Common.buildUrl('http://localhost/search/result.html', 'keywords', $(this).val());
@@ -278,29 +287,53 @@ var Main = function () {
                 });
 
                 $('input', searchJobs).on('ifClicked', function(event){
-                    search();
+                    setTimeout(function () {
+                        search();
+                    }, 100)
                 });
 
                 $('select', searchJobs).on('change', function(event){
                     search();
                 });
 
+                resultJobs.on('click', '.paginator-jobs ul li a', function(e){
+                    e.preventDefault();
+                    exQuery($(this).attr('href'));
+                    history.pushState(null, null, $(this).attr('href'));
+                });
+
                 var search = function () {
-                    var loaded = true;
+                    resultJobs.addClass('opacity-5');
+                    delay(function(){
+                        doSearch();
+                    }, 1500 );
+                };
+
+                var doSearch = function () {
                     var formData = searchJobs.serializeArray();
                     var _hash = Main.createUrlParams(formData);
                     history.pushState(null, null, '?' + _hash);
-                    var newUrl = _rootUrl + 'search/load-data.html?' + _hash;
-                    if (loaded) {
-                        loaded = false;
-                        Service.getCallback(newUrl, function (data) {
-                            // console.log(data);
-                            loaded = true;
-                        });
-                    }
+                    var newUrl = _rootUrl + 'search/result.html?' + _hash;
 
+                    exQuery(newUrl)
                 };
-                search();
+
+                var exQuery = function (_url) {
+                    Service.getCallback(_url, function (data) {
+                        console.log(data);
+                        _renderSearchData(data);
+                        resultJobs.removeClass('opacity-5');
+                    });
+                };
+
+                var _renderSearchData = function (data) {
+                    resultJobs.find('h2 span').html(data.pagination.totalCount);
+                    var html = _.template($('#jobs-search-template').html())({data: data.datas});
+                    resultJobs.find('table.table').html(html);
+                    resultJobs.find('.paginator-jobs').html(data.papeLink);
+                };
+
+                doSearch();
             }
         },
         fixedSidebar: function () {

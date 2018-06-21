@@ -10,6 +10,7 @@ use app\library\helper\Helper;
 
 $this->title = $company['name'];
 $this->params['breadcrumbs'][] = $this->title;
+\app\components\Menu\ActiveMenu::is('employeers');
 ?>
 
 	<div class="container">

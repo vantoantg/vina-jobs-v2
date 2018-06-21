@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         concat: {
-            gopcss: {
+            mergecss: {
                 src: [
                     // 'http://fonts.googleapis.com/css?family=Roboto',
                     // 'http://fonts.googleapis.com/css?family=Lato:400,700',
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
                 dest: 'web/template/jobs/prod/css/all.css'
             },
 
-            gopjs: {
+            mergejs: {
                 src: [
                     // 'web/template/jobs/js/vendor/modernizr-2.6.2.min.js',
                     'web/template/jobs/js/bootstrap.min.js',
@@ -53,14 +53,14 @@ module.exports = function(grunt) {
             },
         },
         cssmin: {
-            nencss: {
+            minimumcss: {
                 src:    'web/template/jobs/prod/css/all.css',
                 dest:   'web/template/jobs/prod/css/all.min.css'
             },
 
         },
         uglify: {
-            nenjs: {
+            minimumjs: {
                 src:    'web/template/jobs/prod/js/all.js',
                 dest:   'web/template/jobs/prod/js/all.min.js',
             }
