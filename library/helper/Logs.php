@@ -77,6 +77,14 @@ class Logs
         $this->createFileLog($message, 'contact');
     }
 
+	/**
+	 * @param $message
+	 */
+	public function searchJobs($message)
+	{
+		$this->createFileLog($message, 'searchJobs');
+	}
+
     /**
      * @param $message
      */
