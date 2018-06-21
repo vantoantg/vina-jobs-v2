@@ -42,6 +42,22 @@ class Cons
     const PAGE_JOB_SEEKERS = 'job-seekers-html';
     const PAGE_EMPLOYEERS = 'employeers-html';
 
+	/**
+	 * @var object Cons
+	 */
+	protected static $_instance;
+	/**
+	 * @return Cons
+	 */
+	public static function getInstance($refresh = false)
+	{
+		if ($refresh || !(self::$_instance instanceof self)) {
+			self::$_instance = new self();
+		}
+
+		return self::$_instance;
+	}
+
     /**
      * @return string
      */
@@ -64,5 +80,18 @@ class Cons
     public static function getNoImg()
     {
         return Helper::homeUrl().'web/imgs/no-image.jpg';
+    }
+
+	/**
+	 * @param $key
+	 * @return bool|mixed
+	 */
+    public function settingSite($key)
+    {
+        $setting = [
+        	'perPage' => 10
+        ];
+
+        return isset($setting[$key]) ? $setting[$key] : false;
     }
 }
