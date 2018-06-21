@@ -205,12 +205,10 @@ class Job extends Jobs
         return $command->queryOne();
     }
 
-    /**
-     * @param bool $user_id
-     * @param bool $limit
-     *
-     * @return array
-     */
+	/**
+	 * @param bool $company_id
+	 * @return array
+	 */
     public function getAllCompanyJobs($company_id = false)
     {
         $query = new Query();
@@ -332,5 +330,26 @@ class Job extends Jobs
         }
 
         return [];
+    }
+
+	/**
+	 * @param $dataProvider
+	 * @return array
+	 */
+    public function formatRecord($dataProvider){
+    	$data = [];
+    	foreach ($dataProvider as $item){
+		    $item['isGuest'] = Common::isGuest();
+		    $item['com_logo'] = Company::getLogo($item['com_logo']);
+		    $item['salary'] = Dropdowns::$salary[$item['salary']];
+		    $item['working_time'] = Dropdowns::$working_time[$item['working_time']];
+		    $item['created_at'] = Datetime::sqlDatetimeDiffForHumans($item['created_at']);
+		    $item['url_view'] = Helper::createUrl(['site/employeers-detail', 'slug' => $item['slug'], 'id' => $item['job_id']]);
+		    $item['url_company_detail'] = Helper::createUrl(['front/jobs/company-detail', 'slug' => Helper::createSlug($item['com_name']), 'id' => Company::instance()->setCompanyCode($item['com_id'])]);
+		    $item['cv_end_date'] = $item['cv_end_date'] ? Carbon::createFromFormat(Datetime::SQL_DATE, $item['cv_end_date'])->format(Datetime::INPUT_DMY) : '--';
+    		$data[] = $item;
+	    }
+
+	    return $data;
     }
 }

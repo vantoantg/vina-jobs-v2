@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\components\CaptchaAction;
 use app\forms\ApplyForm;
 use app\library\helper\Common;
+use app\library\helper\Cons;
 use app\library\helper\Helper;
 use app\library\helper\Logs;
 use app\library\helper\Logss;
@@ -99,10 +100,13 @@ class SiteController extends FrontController
 	public function actionSearch()
 	{
 		$queryParams = Yii::$app->request->queryParams;
+		$queryParams['page'] = isset($queryParams['page']) ? $queryParams['page'] : 1;
+		$queryParams['per-page'] = isset($queryParams['per-page']) ? $queryParams['per-page'] : Cons::getInstance()->settingSite('perPage');
 
 		if (Yii::$app->request->isAjax &&
 			isset($queryParams['mode']) &&
 			$queryParams['mode'] == 'search-jobs') {
+
 			return $this->actionAjaxSearch($queryParams);
 		}
 
@@ -124,7 +128,7 @@ class SiteController extends FrontController
 
 		$searchModel = new JobCustomSearch();
 		$dataProvider = $searchModel->search($queryParams);
-		$dataProvider->pagination->pageSize = 1;
+		$dataProvider->pagination->pageSize = $queryParams['per-page'];
 
 		$pagination = new Pagination(['totalCount' => $dataProvider->totalCount, 'pageSize' => $dataProvider->pagination->pageSize]);
 
@@ -136,7 +140,7 @@ class SiteController extends FrontController
 		ob_end_clean();
 
 		$data = [
-			'datas' => $dataProvider->getModels(),
+			'datas' => Job::instance()->formatRecord($dataProvider->getModels()),
 			'pagination' => $dataProvider->pagination,
 			'papeLink' => $papeLink
 		];
