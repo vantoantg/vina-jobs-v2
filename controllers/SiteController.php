@@ -30,273 +30,276 @@ use yii\widgets\ListView;
 
 class SiteController extends FrontController
 {
-    public $successUrl;
-    public $attachment;
+	public $successUrl;
+	public $attachment;
 
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout'],
-                'rules' => [
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function behaviors()
+	{
+		return [
+			'access' => [
+				'class' => AccessControl::className(),
+				'only' => ['logout'],
+				'rules' => [
+					[
+						'actions' => ['logout'],
+						'allow' => true,
+						'roles' => ['@'],
+					],
+				],
+			],
+			'verbs' => [
+				'class' => VerbFilter::className(),
+				'actions' => [
+					'logout' => ['post'],
+				],
+			],
+		];
+	}
 
-    /**
-     * @inheritdoc
-     */
-    public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => '\app\components\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
-            'auth' => [
-                'class' => 'yii\authclient\AuthAction',
-                'successCallback' => [$this, 'successCallback'],
-                'successUrl' => Url::to(Helper::createUrl(['/front/user/update-candidate'])),
-            ],
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function actions()
+	{
+		return [
+			'error' => [
+				'class' => 'yii\web\ErrorAction',
+			],
+			'captcha' => [
+				'class' => '\app\components\CaptchaAction',
+				'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+			],
+			'auth' => [
+				'class' => 'yii\authclient\AuthAction',
+				'successCallback' => [$this, 'successCallback'],
+				'successUrl' => Url::to(Helper::createUrl(['/front/user/update-candidate'])),
+			],
+		];
+	}
 
-    /**
-     * @param $client
-     * @return Response
-     */
-    public function successCallback($client)
-    {
-        $this->successUrl = Url::to(Helper::createUrl(['/front/user/update-candidate']));
-	    Auth::instance()->detectUserType($client);
-    }
+	/**
+	 * @param $client
+	 * @return Response
+	 */
+	public function successCallback($client)
+	{
+		$this->successUrl = Url::to(Helper::createUrl(['/front/user/update-candidate']));
+		Auth::instance()->detectUserType($client);
+	}
 
 
-    /**
-     * Url: search/result.html?keywords=&mode=search-jobs
-     *
-     * @return string|Response
-     */
-    public function actionSearch()
-    {
-        $queryParams = Yii::$app->request->queryParams;
-        // TODO: save $queryParams (JSON) to strafic user want ...?
+	/**
+	 * Url: search/result.html?keywords=&mode=search-jobs
+	 *
+	 * @return string|Response
+	 */
+	public function actionSearch()
+	{
+		$queryParams = Yii::$app->request->queryParams;
 
-        return $this->render('search_jobs', [
-            '_url' => Yii::$app->request->getUrl(),
-            'queryParams' => $queryParams,
-        ]);
-    }
+		if (Yii::$app->request->isAjax &&
+			isset($queryParams['mode']) &&
+			$queryParams['mode'] == 'search-jobs') {
+			return $this->actionAjaxSearch($queryParams);
+		}
 
-    /**
-     * @return string|Response
-     */
-    public function actionAjaxSearch()
-    {
-        $queryParams = Yii::$app->request->queryParams;
+		// TODO: save $queryParams (JSON) to strafic user want ...?
 
-	    // TODO: save $queryParams (JSON) to strafic user want ...?
-	    Logs::getInstance()->searchJobs($queryParams);
+		return $this->render('search_jobs', [
+			'_url' => Yii::$app->request->getUrl(),
+			'queryParams' => $queryParams,
+		]);
+	}
 
-	    if (Yii::$app->request->isAjax && isset($queryParams['mode']) && $queryParams['mode'] == 'search-jobs') {
-            $searchModel = new JobCustomSearch();
-            $dataProvider = $searchModel->search($queryParams);
-            $dataProvider->pagination->pageSize = 1;
+	/**
+	 * @return string|Response
+	 */
+	public function actionAjaxSearch($queryParams)
+	{
+		// TODO: save $queryParams (JSON) to strafic user want ...?
+		Logs::getInstance()->searchJobs($queryParams);
 
-		    $pagination = new Pagination(['totalCount' => $dataProvider->totalCount, 'pageSize' => $dataProvider->pagination->pageSize]);
+		$searchModel = new JobCustomSearch();
+		$dataProvider = $searchModel->search($queryParams);
+		$dataProvider->pagination->pageSize = 1;
 
-            ob_start();
-		    echo LinkPager::widget([
-			    'pagination' => $pagination,
-		    ]);
-		    $papeLink = ob_get_contents();
-		    ob_end_clean();
+		$pagination = new Pagination(['totalCount' => $dataProvider->totalCount, 'pageSize' => $dataProvider->pagination->pageSize]);
 
-            $data = [
-                'datas' => $dataProvider->getModels(),
-                'pagination' => $dataProvider->pagination,
-	            'papeLink' => $papeLink
-            ];
+		ob_start();
+		echo LinkPager::widget([
+			'pagination' => $pagination,
+		]);
+		$papeLink = ob_get_contents();
+		ob_end_clean();
 
-            return $this->asJson($data);
-        }
-    }
+		$data = [
+			'datas' => $dataProvider->getModels(),
+			'pagination' => $dataProvider->pagination,
+			'papeLink' => $papeLink
+		];
 
-    /**
-     * Displays homepage.
-     *
-     * @return string
-     */
-    public function actionIndex()
-    {
-        return $this->render('index');
-    }
+		return $this->asJson($data);
+	}
 
-    /**
-     * Login action.
-     *
-     * @return Response|string
-     */
-    public function actionLogin()
-    {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
+	/**
+	 * Displays homepage.
+	 *
+	 * @return string
+	 */
+	public function actionIndex()
+	{
+		return $this->render('index');
+	}
 
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-        return $this->render('login', [
-            'model' => $model,
-        ]);
-    }
+	/**
+	 * Login action.
+	 *
+	 * @return Response|string
+	 */
+	public function actionLogin()
+	{
+		if (!Yii::$app->user->isGuest) {
+			return $this->goHome();
+		}
 
-    /**
-     * Logout action.
-     *
-     * @return Response
-     */
-    public function actionLogout()
-    {
-        Yii::$app->user->logout();
+		$model = new LoginForm();
+		if ($model->load(Yii::$app->request->post()) && $model->login()) {
+			return $this->goBack();
+		}
+		return $this->render('login', [
+			'model' => $model,
+		]);
+	}
 
-        return $this->goHome();
-    }
+	/**
+	 * Logout action.
+	 *
+	 * @return Response
+	 */
+	public function actionLogout()
+	{
+		Yii::$app->user->logout();
 
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAboutUs()
-    {
-        return $this->render('about');
-    }
+		return $this->goHome();
+	}
 
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionJobSeekers()
-    {
-        return $this->render('job_seekers');
-    }
+	/**
+	 * Displays about page.
+	 *
+	 * @return string
+	 */
+	public function actionAboutUs()
+	{
+		return $this->render('about');
+	}
 
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionEmployeers()
-    {
-        return $this->render('employeers');
-    }
+	/**
+	 * Displays about page.
+	 *
+	 * @return string
+	 */
+	public function actionJobSeekers()
+	{
+		return $this->render('job_seekers');
+	}
 
-    /**
-     * @param $slug
-     * @param $id
-     * @return string
-     * @throws BadRequestHttpException
-     */
-    public function actionEmployeersDetail($slug, $id)
-    {
-        $job = Job::instance()->getJob($id);
-        if (!$job) {
-            throw new BadRequestHttpException();
-        }
+	/**
+	 * Displays about page.
+	 *
+	 * @return string
+	 */
+	public function actionEmployeers()
+	{
+		return $this->render('employeers');
+	}
 
-        $galleries = FileUploads::instance()->getGallery(FileUploads::COM_GALLERY, $job['company_id']);
-        $form = new ApplyForm();
+	/**
+	 * @param $slug
+	 * @param $id
+	 * @return string
+	 * @throws BadRequestHttpException
+	 */
+	public function actionEmployeersDetail($slug, $id)
+	{
+		$job = Job::instance()->getJob($id);
+		if (!$job) {
+			throw new BadRequestHttpException();
+		}
 
-        return $this->render('employeers_detail', [
-            'job' => $job,
-            'galleries' => $galleries,
-            'applyForm' => $form,
-        ]);
-    }
+		$galleries = FileUploads::instance()->getGallery(FileUploads::COM_GALLERY, $job['company_id']);
+		$form = new ApplyForm();
 
-    /**
-     * Displays blog page.
-     *
-     * @return string
-     */
-    public function actionBlog()
-    {
-        $searchModel = new Post();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->pagination->pageSize = 20;
-        return $this->render('blog', [
-            'blogs' => $dataProvider->getModels()
-        ]);
-    }
+		return $this->render('employeers_detail', [
+			'job' => $job,
+			'galleries' => $galleries,
+			'applyForm' => $form,
+		]);
+	}
 
-    /**
-     * @param $slug
-     * @param $id
-     * @return string
-     * @throws BadRequestHttpException
-     */
-    public function actionBlogDetail($slug, $id)
-    {
-        $post = Post::find()->where('status = :status', ['status' => Post::STATUS_ACTIVE])->andWhere(['id' => $id])->one();
-        if (!$post) {
-            throw new BadRequestHttpException();
-        }
+	/**
+	 * Displays blog page.
+	 *
+	 * @return string
+	 */
+	public function actionBlog()
+	{
+		$searchModel = new Post();
+		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+		$dataProvider->pagination->pageSize = 20;
+		return $this->render('blog', [
+			'blogs' => $dataProvider->getModels()
+		]);
+	}
 
-        return $this->render('blog_detail', [
-            'blog' => $post
-        ]);
-    }
+	/**
+	 * @param $slug
+	 * @param $id
+	 * @return string
+	 * @throws BadRequestHttpException
+	 */
+	public function actionBlogDetail($slug, $id)
+	{
+		$post = Post::find()->where('status = :status', ['status' => Post::STATUS_ACTIVE])->andWhere(['id' => $id])->one();
+		if (!$post) {
+			throw new BadRequestHttpException();
+		}
 
-    public function actionPolicy()
-    {
-        return $this->render('policy');
-    }
+		return $this->render('blog_detail', [
+			'blog' => $post
+		]);
+	}
 
-    /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
-    public function actionContact()
-    {
-	    $req_dump = print_r($_REQUEST, TRUE);
-    	Logs::getInstance()->applyEmail($req_dump);
+	public function actionPolicy()
+	{
+		return $this->render('policy');
+	}
 
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post())) {
-            $data = Yii::$app->request->post();
-            $body = $this->renderPartial('@app/mail/layouts/contact', ['data' => $data['ContactForm']]);
-            Email::instance()->sendContact($body);
-            Yii::$app->session->setFlash('contactFormSubmitted');
+	/**
+	 * Displays contact page.
+	 *
+	 * @return Response|string
+	 */
+	public function actionContact()
+	{
+		$req_dump = print_r($_REQUEST, TRUE);
+		Logs::getInstance()->applyEmail($req_dump);
 
-            Logs::getInstance()->contactEmail($data);
+		$model = new ContactForm();
+		if ($model->load(Yii::$app->request->post())) {
+			$data = Yii::$app->request->post();
+			$body = $this->renderPartial('@app/mail/layouts/contact', ['data' => $data['ContactForm']]);
+			Email::instance()->sendContact($body);
+			Yii::$app->session->setFlash('contactFormSubmitted');
 
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
+			Logs::getInstance()->contactEmail($data);
+
+			return $this->refresh();
+		}
+		return $this->render('contact', [
+			'model' => $model,
+		]);
+	}
 }

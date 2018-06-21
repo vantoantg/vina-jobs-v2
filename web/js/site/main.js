@@ -313,7 +313,7 @@ var Main = function () {
                     var formData = searchJobs.serializeArray();
                     var _hash = Main.createUrlParams(formData);
                     history.pushState(null, null, '?' + _hash);
-                    var newUrl = _rootUrl + 'search/load-data.html?' + _hash;
+                    var newUrl = _rootUrl + 'search/result.html?' + _hash;
 
                     exQuery(newUrl)
                 };
