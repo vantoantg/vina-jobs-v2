@@ -5490,11 +5490,13 @@ var Main = function () {
             var resultJobs = $('.jobs #jobs-search');
 
             if(searchJobs.length){
-                // var url = Common.buildUrl('http://localhost/search/result.html', 'keywords', $(this).val());
-                // history.pushState(null, null, '/en/step2');
 
                 var _timer = 500;
                 searchJobs.on('change', function () {
+                    search();
+                });
+
+                $('[name="keywords"]').on('change keyup', function () {
                     search();
                 });
 
@@ -5512,6 +5514,12 @@ var Main = function () {
                     e.preventDefault();
                     exQuery($(this).attr('href'));
                     history.pushState(null, null, $(this).attr('href'));
+                });
+
+                searchJobs.on('click', 'button.doSearch', function(e){
+                    e.preventDefault();
+                    $('input[name="page"]').val(1);
+                    search();
                 });
 
                 var search = function () {
