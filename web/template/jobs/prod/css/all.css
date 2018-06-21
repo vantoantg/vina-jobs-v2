@@ -11146,6 +11146,12 @@ body.modal-open {
 .red {
   color: red;
 }
+.opacity-7 {
+  opacity: 0.7;
+}
+.opacity-5 {
+  opacity: 0.5;
+}
 .nodata {
   padding: 100px;
 }
@@ -11172,9 +11178,13 @@ body.modal-open {
   right: -15px;
   outline: none;
 }
-#login-modal > div {
-  max-width: 350px;
-  margin: 15px auto;
+#mark-loading {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.3);
 }
 .loginmodal-container h1 {
   text-align: center;
@@ -11400,7 +11410,7 @@ input,
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 .search-form.top #searchform-keys {
-  /*margin-top: 0;*/
+  margin-top: 0;
 }
 .search-form #searchform-keys {
   margin-right: 0;
