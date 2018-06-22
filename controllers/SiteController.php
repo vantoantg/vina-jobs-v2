@@ -221,6 +221,7 @@ class SiteController extends FrontController
 	}
 
 	/**
+     * Url: job/detail/{slug}-{id}.html
 	 * @param $slug
 	 * @param $id
 	 * @return string
