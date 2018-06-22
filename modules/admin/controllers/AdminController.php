@@ -13,6 +13,7 @@ namespace app\modules\admin\controllers;
 use app\library\helper\Helper;
 use app\library\helper\Role;
 use app\models\search\Setting;
+use yii\web\NotFoundHttpException;
 
 /**
  * Class BaseController
@@ -42,7 +43,7 @@ class AdminController extends BaseController
         $this->setSetting();
 
         if (!Role::allowAdmin()) {
-            return $this->redirect(Helper::siteURL());
+            throw new NotFoundHttpException();
         }
     }
 

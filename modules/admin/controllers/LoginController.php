@@ -14,6 +14,7 @@ use app\forms\AdminLoginForm;
 use app\library\helper\Common;
 use app\library\helper\Helper;
 use app\library\helper\Role;
+use yii\web\NotFoundHttpException;
 
 /**
  * Default controller for the `admin` module
@@ -25,6 +26,10 @@ class LoginController extends BaseController
         parent::init();
         $this->layout = '/login';
         \Yii::$app->language = 'en';
+
+        if(!\Yii::$app->request->get('login')){
+        	throw new NotFoundHttpException();
+        }
     }
 
     /**
