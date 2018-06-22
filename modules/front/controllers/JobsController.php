@@ -225,6 +225,8 @@ class JobsController extends FrontController
     }
 
     /**
+     * Url: service/jobs/top-list.html
+     *
      * @return Response
      */
     public function actionTopList()

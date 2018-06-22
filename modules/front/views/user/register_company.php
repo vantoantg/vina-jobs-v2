@@ -31,7 +31,9 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                 <div class="alert-message alert-message-info <?= \app\library\helper\Helper::wowClass(); ?> zoomInDown animated" data-wow-delay="0.2s">
                     <h4>Lưu ý:</h4>
                     <p>
-                        Bạn vui lòng điền đúng địa chỉ email. Hệ thống sẽ gửi các thông báo, thông tin liên quan tới tài khoản hoặc thông tin tuyển dụng vào <strong>email của bạn đăng ký</strong>.</p>
+                        - Bạn vui lòng điền đúng địa chỉ email. Hệ thống sẽ gửi các thông báo, thông tin liên quan tới tài khoản hoặc thông tin tuyển dụng vào <strong>email của bạn đăng ký</strong>.</p>
+	                <p>
+		                - Cũng có thể bổ sung thông tin hình ảnh của công ty bằng cách vào trang cá nhân sau khi bạn đăng nhập.</p>
                 </div>
 
 	            <?php if (Yii::$app->session->hasFlash('updateSuccess')): ?>
