@@ -53,7 +53,7 @@ class Job extends Jobs
     {
         return [
             [['categories_id', 'title', 'salary', 'address'], 'required'],
-            [['categories_id', 'company_id', 'working_time', 'created_by', 'updated_by', 'approved_by', 'arrange', 'star', 'client_status', 'status'], 'integer'],
+            [['categories_id', 'company_id', 'working_time', 'experience', 'created_by', 'updated_by', 'approved_by', 'arrange', 'star', 'client_status', 'status'], 'integer'],
             [['description', 'content'], 'string'],
             [['cv_end_date', 'created_at', 'updated_at', 'effect_date', 'end_date', 'approved_at'], 'safe'],
             [['title', 'slug', 'tags', 'keyword', 'salary', 'address'], 'string', 'max' => 255],
@@ -76,6 +76,7 @@ class Job extends Jobs
             'keyword' => 'Keyword',
             'salary' => 'Mức lương',
             'working_time' => 'Thời gian làm việc',
+            'experience' => 'Kinh nghiệm',
             'address' => 'Nơi làm việc',
             'created_by' => 'Created By',
             'updated_by' => 'Updated By',

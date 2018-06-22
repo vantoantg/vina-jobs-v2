@@ -19,13 +19,15 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 ?>
 
 <div class="container">
-    <div class="users-create">
-        <h1>ĐĂNG KÝ TÀI KHOẢN CÔNG TY</h1>
-    </div>
+
 </div>
 
 <div class="container">
     <div class="col-12 col-sm-8">
+	    <div class="users-create text-center">
+		    <h1>ĐĂNG KÝ TÀI KHOẢN CÔNG TY</h1>
+	    </div>
+
         <div class="row main">
             <div class="main-login main-center">
                 <div class="alert-message alert-message-info <?= \app\library\helper\Helper::wowClass(); ?> zoomInDown animated" data-wow-delay="0.2s">
@@ -183,8 +185,8 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 	            <div class="row row-20-5">
 		            <div class="col-xs-12 col-sm-4">
 			            <div class="form-group">
-				            <label for="email" class="cols-sm-2 control-label">Giới tính</label>
-				            <div class="cols-sm-10">
+				            <label for="email" class="control-label">Giới tính</label>
+				            <div class="">
                                 <?php $gender = \app\library\helper\Dropdowns::$gender; ?>
                                 <?= $form->field($userDetail, 'gender', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-transgender"
@@ -195,8 +197,8 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 		            </div>
 		            <div class="col-xs-12 col-sm-4">
 			            <div class="form-group">
-				            <label for="email" class="cols-sm-2 control-label">Sinh nhật</label>
-				            <div class="cols-sm-10">
+				            <label for="email" class="control-label">Sinh nhật</label>
+				            <div class="">
                                 <?= $form->field($userDetail, 'birthday', [
                                     'template' => '<div class="input-group"><span class="input-group-addon"><i class="fa fa-birthday-cake"
                                                                    aria-hidden="true"></i></span>{input}</div>{error}{hint}',
@@ -205,7 +207,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 			            </div>
 		            </div>
 		            <div class="col-xs-12 col-sm-4">
-                        <div class="cols-sm-10">
+                        <div class="">
                             <?= $form->field($userDetail, 'phone', [
                                 'template' => '{label}<div class="input-group"><span class="input-group-addon"><i class="fa fa-mobile-alt" aria-hidden="true"></i></span>{input}</div>{error}{hint}',
                             ])->label('Điện thoại liên hệ'); ?>

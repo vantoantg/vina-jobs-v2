@@ -92,8 +92,23 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                     ); ?>
                 </div>
             </div>
+	        <div class="row">
+		        <div class="col-xs-4">
+                    <?php
+                    $data = \app\library\helper\Dropdowns::$experience;
+                    ?>
+                    <?= $form->field($model, 'experience')->dropDownList(
+                        $data,
+                        [
+                            'class' => 'job-select2 form-control',
+                        ]
+                    ); ?>
+		        </div>
+		        <div class="col-xs-8">
+                    <?= $form->field($model, 'tags'); ?>
+		        </div>
+            </div>
 
-            <?= $form->field($model, 'tags'); ?>
             <?= $form->field($model, 'cv_end_date')->textInput([
                     'autocomplete' => 'off',
                 'class' => 'datepk form-control',

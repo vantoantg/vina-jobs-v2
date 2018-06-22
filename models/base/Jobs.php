@@ -1,19 +1,13 @@
 <?php
 
-/*
- *  Created by Tona Nguyen
- *  Email: nguyennguyen.vt88@gmail.com
- *  Phone: 0932.252.414
- *  Address: VN, HCMC
- *  Website: https://jobsvina.com/
- */
-
 namespace app\models\base;
+
+use Yii;
 
 /**
  * This is the model class for table "tn_jobs".
  *
- * @property string $id
+ * @property int $id
  * @property int $categories_id
  * @property int $company_id
  * @property string $title
@@ -25,6 +19,7 @@ namespace app\models\base;
  * @property string $keyword
  * @property int $salary
  * @property int $working_time
+ * @property int $experience
  * @property string $address
  * @property int $created_by
  * @property int $updated_by
@@ -55,7 +50,7 @@ class Jobs extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['categories_id', 'company_id', 'salary', 'working_time', 'created_by', 'updated_by', 'approved_by', 'arrange', 'star', 'client_status', 'status'], 'integer'],
+            [['categories_id', 'company_id', 'salary', 'working_time', 'experience', 'created_by', 'updated_by', 'approved_by', 'arrange', 'star', 'client_status', 'status'], 'integer'],
             [['description', 'content'], 'string'],
             [['cv_end_date', 'created_at', 'updated_at', 'effect_date', 'end_date', 'approved_at'], 'safe'],
             [['title', 'slug', 'tags', 'keyword', 'address'], 'string', 'max' => 255],
@@ -80,6 +75,7 @@ class Jobs extends \yii\db\ActiveRecord
             'keyword' => 'Keyword',
             'salary' => 'Salary',
             'working_time' => 'Working Time',
+            'experience' => 'Experience',
             'address' => 'Address',
             'created_by' => 'Created By',
             'updated_by' => 'Updated By',
