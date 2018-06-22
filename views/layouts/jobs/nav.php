@@ -63,12 +63,12 @@ use app\library\helper\Helper;
 	<li>
 		<a id="m-index" class="<?= Helper::active('front/default/index'); ?>"
 		   href="<?= Helper::createUrl(['front/default/index']); ?>">Trang chủ</a></li>
+    <li>
+        <a id="m-employeers" class="<?= Helper::active('site/employeers'); ?>"
+           href="<?= Helper::createUrl(['site/employeers']); ?>">Tin tuyển dụng</a></li>
 	<li>
 		<a id="m-job-seekers" class="<?= Helper::active('site/job-seekers'); ?>"
 		   href="<?= Helper::createUrl(['site/job-seekers']); ?>">Người tìm việc</a></li>
-	<li>
-		<a id="m-employeers" class="<?= Helper::active('site/employeers'); ?>"
-		   href="<?= Helper::createUrl(['site/employeers']); ?>">Nhà tuyển dụng</a></li>
 	<!--<li>
 		<a id="m-about-us" class="<?/*= Helper::active('site/about-us') */?>"
 		   href="<?/*= Helper::createUrl(['site/about-us']) */?>">Giới thiệu</a></li>-->

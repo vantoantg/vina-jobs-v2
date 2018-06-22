@@ -1062,6 +1062,17 @@ body.site-employeers-detail #viewGallery .modal-content .close {
     padding-right: 6px;
   }
 }
+@media (min-width: 767px) {
+  .md-pdl-15 {
+    padding-left: 15px;
+  }
+  .md-pdl-30 {
+    padding-left: 30px;
+  }
+  .md-pdr-15 {
+    padding-left: 15px;
+  }
+}
 @media (max-width: 767px) {
   .row-sm-20-5 {
     margin-left: -5px;

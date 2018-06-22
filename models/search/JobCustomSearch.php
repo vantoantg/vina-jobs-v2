@@ -97,24 +97,23 @@ class JobCustomSearch extends JobModel
         }
 
         if (isset($params['jobs'])) {
-            $query->andFilterWhere(['in', 'job.categories_id', $params['jobs']]);
+            $query->andWhere(['job.categories_id' => explode(',', $params['jobs'])]);
         }
 
         if (isset($params['loca'])) {
-            $query->andFilterWhere(['in', 'job.address', $params['loca']]);
+            $query->andWhere(['job.address' => explode(',', $params['loca'])]);
         }
 
         if (isset($params['wkt'])) {
-            $query->andFilterWhere(['in', 'job.working_time', $params['wkt']]);
+            $query->andWhere(['job.working_time' => explode(',', $params['wkt'])]);
         }
 
         if (isset($params['salary'])) {
-            $query->andFilterWhere(['in', 'job.salary', $params['salary']]);
+            $query->andWhere(['job.salary' => explode(',', $params['salary'])]);
         }
 
         if (isset($params['exp'])) {
-            // TODO: Add more field
-//		    $query->andFilterWhere(['in', 'job.categories_id', $params['exp']]);
+		    $query->andFilterWhere(['job.experience' => explode(',', $params['exp'])]);
         }
 //            ->andFilterWhere(['like', 'slug', $this->slug])
 //            ->andFilterWhere(['like', 'content', $this->content])
@@ -122,6 +121,8 @@ class JobCustomSearch extends JobModel
 //            ->andFilterWhere(['like', 'seo_keyword', $this->seo_keyword])
 //            ->andFilterWhere(['like', 'seo_description', $this->seo_description]);
 
+//	    var_dump($query->prepare(\Yii::$app->db->queryBuilder)->createCommand()->rawSql);
+//	    exit();
         return $dataProvider;
     }
 }
