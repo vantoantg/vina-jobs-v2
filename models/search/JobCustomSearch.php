@@ -48,24 +48,24 @@ class JobCustomSearch extends JobModel
     public function search($params)
     {
         $query = new Query();
-	    $query->select([
-	    	'job.id as job_id',
-	    	'job.title as job_name',
-		    'job.slug',
-		    'job.cv_end_date',
-		    'job.salary',
-		    'job.working_time',
-		    'job.created_at',
-		    'com.id as com_id',
-		    'com.name as com_name',
-		    'com.logo as com_logo',
-		    'job_cat.name AS cat_name',
-		    'loca.name AS loca_name',
-	    ])
-		    ->from(\app\models\Job::tableName(). ' job')
-	        ->innerJoin(\app\models\Company::tableName().' com', 'com.id = job.company_id')
-		    ->innerJoin('tn_job_categories job_cat', 'job_cat.id = job.categories_id')
-		    ->leftJoin('tn_locations loca', 'loca.id = job.address');
+        $query->select([
+            'job.id as job_id',
+            'job.title as job_name',
+            'job.slug',
+            'job.cv_end_date',
+            'job.salary',
+            'job.working_time',
+            'job.created_at',
+            'com.id as com_id',
+            'com.name as com_name',
+            'com.logo as com_logo',
+            'job_cat.name AS cat_name',
+            'loca.name AS loca_name',
+        ])
+            ->from(\app\models\Job::tableName().' job')
+            ->innerJoin(\app\models\Company::tableName().' com', 'com.id = job.company_id')
+            ->innerJoin('tn_job_categories job_cat', 'job_cat.id = job.categories_id')
+            ->leftJoin('tn_locations loca', 'loca.id = job.address');
 
         // add conditions that should always apply here
 
@@ -91,37 +91,38 @@ class JobCustomSearch extends JobModel
             $query->andFilterWhere(['like', 'job.title', $params['keywords']]);
             $query->orFilterWhere(['like', 'job.keyword', $params['keywords']]);
             $query->orFilterWhere(['like', 'job.content', $params['keywords']]);
-	        $query->orFilterWhere(['like', 'job.description', $params['keywords']]);
-	        $query->orFilterWhere(['like', 'com.name', $params['keywords']]);
-	        $query->orFilterWhere(['like', 'com.content', $params['keywords']]);
+            $query->orFilterWhere(['like', 'job.description', $params['keywords']]);
+            $query->orFilterWhere(['like', 'com.name', $params['keywords']]);
+            $query->orFilterWhere(['like', 'com.content', $params['keywords']]);
         }
 
         if (isset($params['jobs'])) {
-            $query->andFilterWhere(['in', 'job.categories_id', $params['jobs']]);
+            $query->andWhere(['job.categories_id' => explode(',', $params['jobs'])]);
         }
 
-	    if (isset($params['loca'])) {
-		    $query->andFilterWhere(['in', 'job.address', $params['loca']]);
-	    }
+        if (isset($params['loca'])) {
+            $query->andWhere(['job.address' => explode(',', $params['loca'])]);
+        }
 
-	    if (isset($params['wkt'])) {
-		    $query->andFilterWhere(['in', 'job.working_time', $params['wkt']]);
-	    }
+        if (isset($params['wkt'])) {
+            $query->andWhere(['job.working_time' => explode(',', $params['wkt'])]);
+        }
 
-	    if (isset($params['salary'])) {
-		    $query->andFilterWhere(['in', 'job.salary', $params['salary']]);
-	    }
+        if (isset($params['salary'])) {
+            $query->andWhere(['job.salary' => explode(',', $params['salary'])]);
+        }
 
-	    if (isset($params['exp'])) {
-		    // TODO: Add more field
-//		    $query->andFilterWhere(['in', 'job.categories_id', $params['exp']]);
-	    }
+        if (isset($params['exp'])) {
+		    $query->andFilterWhere(['job.experience' => explode(',', $params['exp'])]);
+        }
 //            ->andFilterWhere(['like', 'slug', $this->slug])
 //            ->andFilterWhere(['like', 'content', $this->content])
 //            ->andFilterWhere(['like', 'seo_title', $this->seo_title])
 //            ->andFilterWhere(['like', 'seo_keyword', $this->seo_keyword])
 //            ->andFilterWhere(['like', 'seo_description', $this->seo_description]);
 
+//	    var_dump($query->prepare(\Yii::$app->db->queryBuilder)->createCommand()->rawSql);
+//	    exit();
         return $dataProvider;
     }
 }

@@ -50,6 +50,8 @@ class UserController extends FrontController
     }
 
     /**
+     * Url: register/candidate.html
+     *
      * @return string
      */
     public function actionRegisterCandidate()
@@ -236,6 +238,8 @@ class UserController extends FrontController
     }
 
     /**
+     * Url: register/company.html
+     *
      * @return string|\yii\web\Response
      */
     public function actionRegisterCompany()

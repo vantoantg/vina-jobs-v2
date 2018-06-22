@@ -14,7 +14,7 @@ use app\forms\AdminLoginForm;
 use app\library\helper\Common;
 use app\library\helper\Helper;
 use app\library\helper\Role;
-use Symfony\Component\Routing\Annotation\Route;
+use yii\web\NotFoundHttpException;
 
 /**
  * Default controller for the `admin` module
@@ -26,11 +26,14 @@ class LoginController extends BaseController
         parent::init();
         $this->layout = '/login';
         \Yii::$app->language = 'en';
+
+        if(!\Yii::$app->request->get('login')){
+        	throw new NotFoundHttpException();
+        }
     }
 
     /**
      * Renders the index view for the module
-     * @Route("admins/loginform")
      *
      * @return string
      */
