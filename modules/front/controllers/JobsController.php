@@ -14,6 +14,7 @@ use app\forms\ApplyForm;
 use app\library\helper\Common;
 use app\library\helper\Datetime;
 use app\library\helper\Helper;
+use app\library\helper\Logs;
 use app\models\Company;
 use app\models\CurriculumVitae;
 use app\models\Email;
@@ -258,6 +259,12 @@ class JobsController extends FrontController
         ]);
     }
 
+	/**
+	 * Url: /service/jobs/apply.html
+	 *
+	 * @return Response
+	 * @throws BadRequestHttpException
+	 */
     public function actionApplyJob()
     {
         $form = new ApplyForm();
@@ -284,7 +291,7 @@ class JobsController extends FrontController
             // Send email
             $userDetail = UserDetails::instance()->getInfo();
 
-            $data['linkJobDetail'] = Helper::siteURL(true).Helper::createUrl([
+            $data['linkJobDetail'] = Yii::$app->homeUrl.Helper::createUrl([
                 'site/employeers-detail',
                 'slug' => $job['slug'],
                 'id' => $job_id,
@@ -295,6 +302,7 @@ class JobsController extends FrontController
             $data['candidatePhone'] = $userDetail->phone;
             //TODO: Add more and more infomation to send via email for contact
             $body = $this->renderPartial('@app/mail/layouts/candidate_apply_job', ['data' => $data]);
+            Logs::getInstance()->applyEmail($data);
             // Send and CC to admin
             Email::sendMailApply('There is a candidate who has submitted the CV via '.Helper::params(), $body,
                 $job['email'], $job['name'], $this->attachment);

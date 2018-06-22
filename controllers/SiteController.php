@@ -229,7 +229,7 @@ class SiteController extends FrontController
 	 */
 	public function actionEmployeersDetail($slug, $id)
 	{
-		$job = Job::instance()->getJob($id);
+		$job = Job::instance()->getJob(Job::instance()->getJobCode($id));
 		if (!$job) {
 			throw new BadRequestHttpException();
 		}

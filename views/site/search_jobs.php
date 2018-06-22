@@ -42,7 +42,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 		</div>
 	</div>
 </div>
-
+<?= (new \app\components\JobsWidget())->applyPopup(); ?>
 <script id="jobs-search-template" type="text/template">
     <%
     var i;

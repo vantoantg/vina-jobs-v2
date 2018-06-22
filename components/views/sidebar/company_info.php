@@ -28,7 +28,7 @@
 		<div class="content-widget-sidebar">
 			<ul>
 				<li class="text-center">
-					<a href="">
+					<a href="<?= $company['url_company_detail'] ?>">
 						<img src="<?= $company['logo']; ?>"
 						     class="img-responsive">
 					</a>
