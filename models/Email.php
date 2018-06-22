@@ -165,45 +165,45 @@ class Email extends Model
         }
     }
 
-	public static function sendNotiCandidateRegister($subject, $body)
-	{
-		$mail = new PHPMailer();                              // Passing `true` enables exceptions
-		try {
-			$m = \Yii::$app->params['mail'];
-			$mail->SMTPDebug = 0;
-			if (YII_DEBUG) {
-				$mail->SMTPDebug = 1;
-			}
-			// Enable verbose debug output
-			$mail->isSMTP();                                      // Set mailer to use SMTP
-			$mail->Host = $m['host'];  // Specify main and backup SMTP servers
-			$mail->SMTPAuth = true;                               // Enable SMTP authentication
-			$mail->Username = $m['username'];                 // SMTP username
-			$mail->Password = $m['password'];                           // SMTP password
-			$mail->SMTPSecure = $m['secure'];                            // Enable TLS encryption, `ssl` also accepted
-			$mail->Port = $m['port'];                                    // TCP port to connect to
+    public static function sendNotiCandidateRegister($subject, $body)
+    {
+        $mail = new PHPMailer();                              // Passing `true` enables exceptions
+        try {
+            $m = \Yii::$app->params['mail'];
+            $mail->SMTPDebug = 0;
+            if (YII_DEBUG) {
+                $mail->SMTPDebug = 1;
+            }
+            // Enable verbose debug output
+            $mail->isSMTP();                                      // Set mailer to use SMTP
+            $mail->Host = $m['host'];  // Specify main and backup SMTP servers
+            $mail->SMTPAuth = true;                               // Enable SMTP authentication
+            $mail->Username = $m['username'];                 // SMTP username
+            $mail->Password = $m['password'];                           // SMTP password
+            $mail->SMTPSecure = $m['secure'];                            // Enable TLS encryption, `ssl` also accepted
+            $mail->Port = $m['port'];                                    // TCP port to connect to
 
-			//Recipients
-			$mail->setFrom($m['options']['setFrom'], \Yii::$app->params['siteName']);
-			$mail->addAddress(Helper::params('adminEmail'), 'System - '.Helper::params());     // Add a recipient
-			//		    $mail->addAddress('admin@vina-jobs.com');               // Name is optional
-			$mail->addReplyTo($m['options']['addReplyTo'], 'noreply');
-			$mail->addCC(Helper::params('adminEmail'));
-			//		    $mail->addBCC('bcc@example.com');
+            //Recipients
+            $mail->setFrom($m['options']['setFrom'], \Yii::$app->params['siteName']);
+            $mail->addAddress(Helper::params('adminEmail'), 'System - '.Helper::params());     // Add a recipient
+            //		    $mail->addAddress('admin@vina-jobs.com');               // Name is optional
+            $mail->addReplyTo($m['options']['addReplyTo'], 'noreply');
+            $mail->addCC(Helper::params('adminEmail'));
+            //		    $mail->addBCC('bcc@example.com');
 
-			//Content
-			$mail->isHTML(true);                                  // Set email format to HTML
-			$mail->Subject = $subject;
-			$mail->Body = $body;
-			$mail->AltBody = $body;
+            //Content
+            $mail->isHTML(true);                                  // Set email format to HTML
+            $mail->Subject = $subject;
+            $mail->Body = $body;
+            $mail->AltBody = $body;
 
-			$mail->send();
+            $mail->send();
 
-			return true;
-		} catch (\PHPMailer\PHPMailer\Exception $e) {
-			echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-		}
-	}
+            return true;
+        } catch (\PHPMailer\PHPMailer\Exception $e) {
+            echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+        }
+    }
 
     public function validateRmailType()
     {

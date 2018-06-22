@@ -20,24 +20,25 @@ use yii\db\Query;
 
 class Job extends Jobs
 {
+    /**
+     * @param $job_code
+     *
+     * @return bool|string
+     */
+    public function getJobCode($job_code)
+    {
+        return Helper::encrypt($job_code, false);
+    }
 
-	/**
-	 * @param $job_code
-	 * @return bool|string
-	 */
-	public function getJobCode($job_code)
-	{
-		return Helper::encrypt($job_code, false);
-	}
-
-	/**
-	 * @param $job_code
-	 * @return bool|string
-	 */
-	public function setJobCode($job_code)
-	{
-		return Helper::encrypt($job_code);
-	}
+    /**
+     * @param $job_code
+     *
+     * @return bool|string
+     */
+    public function setJobCode($job_code)
+    {
+        return Helper::encrypt($job_code);
+    }
 
     const
         STATUS_WAITING_APPROVE = 0;
@@ -164,11 +165,12 @@ class Job extends Jobs
     /**
      * @param $job_id
      * @param array $columns
+     *
      * @return array|false
      */
     public function getJob($job_id, $columns = [])
     {
-        if(!$columns){
+        if (!$columns) {
             $columns = ['job.id', 'job.company_id', 'job.title', 'job.slug', 'job.content', 'ujob.applied', 'ujob.saved'];
         }
         $user_id = Common::isLoginned() ? Common::currentUsers()->getId() : 0;
@@ -186,11 +188,12 @@ class Job extends Jobs
     /**
      * @param $job_id
      * @param array $columns
+     *
      * @return array|false
      */
     public function getJobAndContact($job_id, $columns = [])
     {
-        if(!$columns){
+        if (!$columns) {
             $columns = ['job.`title`, job.`slug`, u.`name`, u.`email`'];
         }
 
@@ -205,10 +208,11 @@ class Job extends Jobs
         return $command->queryOne();
     }
 
-	/**
-	 * @param bool $company_id
-	 * @return array
-	 */
+    /**
+     * @param bool $company_id
+     *
+     * @return array
+     */
     public function getAllCompanyJobs($company_id = false)
     {
         $query = new Query();
@@ -243,7 +247,6 @@ class Job extends Jobs
 
         $data = $query->createCommand()->queryAll();
         if ($data) {
-
             $result = [];
             foreach ($data as $k => $item) {
                 $item['isGuest'] = Common::isGuest();
@@ -332,24 +335,26 @@ class Job extends Jobs
         return [];
     }
 
-	/**
-	 * @param $dataProvider
-	 * @return array
-	 */
-    public function formatRecord($dataProvider){
-    	$data = [];
-    	foreach ($dataProvider as $item){
-		    $item['isGuest'] = Common::isGuest();
-		    $item['com_logo'] = Company::getLogo($item['com_logo']);
-		    $item['salary'] = Dropdowns::$salary[$item['salary']];
-		    $item['working_time'] = Dropdowns::$working_time[$item['working_time']];
-		    $item['created_at'] = Datetime::sqlDatetimeDiffForHumans($item['created_at']);
-		    $item['url_view'] = Helper::createUrl(['site/employeers-detail', 'slug' => $item['slug'], 'id' => $item['job_id']]);
-		    $item['url_company_detail'] = Helper::createUrl(['front/jobs/company-detail', 'slug' => Helper::createSlug($item['com_name']), 'id' => Company::instance()->setCompanyCode($item['com_id'])]);
-		    $item['cv_end_date'] = $item['cv_end_date'] ? Carbon::createFromFormat(Datetime::SQL_DATE, $item['cv_end_date'])->format(Datetime::INPUT_DMY) : '--';
-    		$data[] = $item;
-	    }
+    /**
+     * @param $dataProvider
+     *
+     * @return array
+     */
+    public function formatRecord($dataProvider)
+    {
+        $data = [];
+        foreach ($dataProvider as $item) {
+            $item['isGuest'] = Common::isGuest();
+            $item['com_logo'] = Company::getLogo($item['com_logo']);
+            $item['salary'] = Dropdowns::$salary[$item['salary']];
+            $item['working_time'] = Dropdowns::$working_time[$item['working_time']];
+            $item['created_at'] = Datetime::sqlDatetimeDiffForHumans($item['created_at']);
+            $item['url_view'] = Helper::createUrl(['site/employeers-detail', 'slug' => $item['slug'], 'id' => $item['job_id']]);
+            $item['url_company_detail'] = Helper::createUrl(['front/jobs/company-detail', 'slug' => Helper::createSlug($item['com_name']), 'id' => Company::instance()->setCompanyCode($item['com_id'])]);
+            $item['cv_end_date'] = $item['cv_end_date'] ? Carbon::createFromFormat(Datetime::SQL_DATE, $item['cv_end_date'])->format(Datetime::INPUT_DMY) : '--';
+            $data[] = $item;
+        }
 
-	    return $data;
+        return $data;
     }
 }

@@ -6,7 +6,6 @@
 /* @var $model app\models\Job */
 
 use yii\helpers\Html;
-use app\library\helper\Helper;
 
 $this->title = $company['name'];
 $this->params['breadcrumbs'][] = $this->title;
@@ -23,23 +22,23 @@ $this->params['breadcrumbs'][] = $this->title;
 				</div>
 				<div class="row content">
                     <?php if ($galleries) {
-                        ?>
+    ?>
 						<div class="gallery col-xs-12">
 							<div class="row">
                                 <?php foreach ($galleries as $k => $gallery) {
-                                    ?>
+        ?>
 									<div class="col-xs-4 item">
 										<a href="#" data-toggle="modal" data-target="#viewGallery">
 											<img src="<?= $gallery['thum']; ?>" class="img-thumbnail" alt="Los Angeles">
 										</a>
 									</div>
                                     <?php
-                                } ?>
+    } ?>
 							</div>
 						</div>
 						<div class="clearfix"></div>
                         <?php
-                    } ?>
+} ?>
 					<div class="pd-t-30">
                         <?= $company['content']; ?>
 					</div>
@@ -61,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
 								<div class="job-posts table-responsive">
 									<table class="table list-jobs">
                                         <?php foreach ($company_jobs as $i => $job) {
-                                            ?>
+                                    ?>
 											<tr class="odd <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp"
 											    data-wow-delay="0.<?= $i; ?>s">
 												<td class="tbl-title"><h4><a
@@ -73,15 +72,17 @@ $this->params['breadcrumbs'][] = $this->title;
 												<td><p><i class="icon-location"></i><?= $job['loca_name']; ?></p></td>
 											</tr>
                                             <?php
-                                        } ?>
+                                } ?>
 									</table>
 								</div>
                                 <?php
-                            } else { ?>
+                            } else {
+                                ?>
 								<p class="text-center nodata"><i class="far fa-file"></i><br>
 									Không có tin nào!
 								</p>
-                            <?php } ?>
+                            <?php
+                            } ?>
 
 						</div>
 					</div>
@@ -103,7 +104,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	</div>
 
 <?php if ($galleries) {
-    ?>
+                                ?>
 	<!-- Modal -->
 	<div id="viewGallery" class="modal fade" role="dialog">
 		<div class="modal-dialog">
@@ -115,25 +116,25 @@ $this->params['breadcrumbs'][] = $this->title;
 						<!-- Indicators -->
 						<ol class="carousel-indicators">
                             <?php foreach ($galleries as $k => $gallery) {
-                                ?>
+                                    ?>
 								<li data-target="#myCarousel" data-slide-to="<?= $k; ?>" class="<?php if ($k == 0) {
-                                    echo 'active';
-                                } ?>"></li>
+                                        echo 'active';
+                                    } ?>"></li>
                                 <?php
-                            } ?>
+                                } ?>
 						</ol>
 
 						<!-- Wrapper for slides -->
 						<div class="carousel-inner">
                             <?php foreach ($galleries as $k => $gallery) {
-                                ?>
+                                    ?>
 								<div class="item <?php if ($k == 0) {
-                                    echo 'active';
-                                } ?>">
+                                        echo 'active';
+                                    } ?>">
 									<img src="<?= $gallery['view']; ?>" alt="Los Angeles">
 								</div>
                                 <?php
-                            } ?>
+                                } ?>
 						</div>
 
 						<!-- Left and right controls -->
@@ -151,4 +152,4 @@ $this->params['breadcrumbs'][] = $this->title;
 		</div>
 	</div>
     <?php
-} ?>
+                            } ?>

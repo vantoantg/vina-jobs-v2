@@ -14,7 +14,6 @@ use app\forms\AdminLoginForm;
 use app\library\helper\Common;
 use app\library\helper\Helper;
 use app\library\helper\Role;
-use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Default controller for the `admin` module
@@ -30,7 +29,6 @@ class LoginController extends BaseController
 
     /**
      * Renders the index view for the module
-     * @Route("admins/loginform")
      *
      * @return string
      */

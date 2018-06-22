@@ -60,7 +60,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
     <td class="text-center"><p title="Nơi làm việc"><i class="icon-location"></i>
                 <br><%= k.loca_name %></p></td>
 	    <?php if (\app\library\helper\Common::isGuest() || \app\library\helper\Common::currentUsers()->type != \app\models\Users::USER_TYPE_CONTACT_OF_COMPANY) {
-	    ?>
+    ?>
     <td class="tbl-apply">
         <% if (k.isGuest){ %>
         <a href="#"
@@ -78,7 +78,8 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
         >Apply</a>
         <% } %>
     </td>
-	    <?php } ?>
+	    <?php
+} ?>
     </tr>
     <% }); %>
 </script>

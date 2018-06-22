@@ -352,7 +352,8 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
         >Apply</a>
         <% } %>
     </td>
-    <?php } ?>
+    <?php
+                                } ?>
     </tr>
     <% }); %>
     <% } %>
