@@ -291,10 +291,10 @@ class JobsController extends FrontController
             // Send email
             $userDetail = UserDetails::instance()->getInfo();
 
-            $data['linkJobDetail'] = Yii::$app->homeUrl.Helper::createUrl([
+            $data['linkJobDetail'] = Helper::siteURL(true).Helper::createUrl([
                 'site/employeers-detail',
                 'slug' => $job['slug'],
-                'id' => $job_id,
+                'id' => Job::instance()->setJobCode($job_id),
             ]);
             $data['contactName'] = $job['name'];
             $data['candidateName'] = $userDetail->last_name;
