@@ -5566,7 +5566,7 @@ var Main = function () {
                 $(window).scroll(function() {
                     var contentHeight = $(tartgetHeight).height();
                     var wdTop = $(window).scrollTop();
-                    if($(window).width() >= 768 && wdTop + 400 < contentHeight){
+                    if($(window).width() >= 768 && wdTop + 430 < contentHeight){
                         Main.doFixedSidebar(sidebarfx, offset, topPadding);
                     }
                 });

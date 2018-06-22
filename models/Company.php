@@ -64,6 +64,7 @@ class Company extends \app\models\base\Company
 
     /**
      * @param $company_code
+     *
      * @return bool|string
      */
     public function getCompanyCode($company_code)
@@ -73,6 +74,7 @@ class Company extends \app\models\base\Company
 
     /**
      * @param $company_code
+     *
      * @return bool|string
      */
     public function setCompanyCode($company_code)

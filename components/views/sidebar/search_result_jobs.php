@@ -129,8 +129,8 @@
         </div>
 
         <input type="hidden" name="mode" value="search-jobs">
-        <input type="hidden" name="page" value="<?= $queryParams['page'] ?>">
-        <input type="hidden" name="per-page" value="<?= $queryParams['per-page'] ?>">
+        <input type="hidden" name="page" value="<?= $queryParams['page']; ?>">
+        <input type="hidden" name="per-page" value="<?= $queryParams['per-page']; ?>">
 <p>
         <button class="btn btn-primary w100 doSearch"><i class="fa fa-search" style="top:3px"></i> TÌM KIẾM</button></p>
     </form>

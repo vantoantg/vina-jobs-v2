@@ -22,9 +22,12 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 
             <div class="row page-title text-center <?= \app\library\helper\Helper::wowClass(); ?> bounce animated" data-wow-delay="1s" style="visibility: visible; animation-delay: 1s; animation-name: bounce;">
                 <h5>ĐĂNG TUYỂN DỤNG</h5>
-                <h2><span>54716</span> Available jobs for you</h2>
-                <p>Hãy liệt kế tất cả các chính sách đang có, và cơ hội cho hấp dẫn, để có thể thu hút ứng viên apply vào các vị trí mà công ty muốn tuyển.</p>
+                <h2><span><?= Helper::params(); ?></span> - WEBSITE TÌM KIẾM VIỆC LÀM</h2>
             </div>
+
+	        <div class="alert-message alert-message-info <?= \app\library\helper\Helper::wowClass(); ?> zoomInDown animated" data-wow-delay="0.2s">
+		        <p>Hãy liệt kế tất cả các chính sách đang có, và cơ hội cho hấp dẫn, để có thể thu hút ứng viên nhanh chóng ứng tuyển vào các vị trí mà công ty muốn tuyển.</p>
+	        </div>
 
             <?php if (Yii::$app->session->hasFlash('success')): ?>
 		        <div class="alert alert-success alert-dismissable">
@@ -89,8 +92,23 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                     ); ?>
                 </div>
             </div>
+	        <div class="row">
+		        <div class="col-xs-4">
+                    <?php
+                    $data = \app\library\helper\Dropdowns::$experience;
+                    ?>
+                    <?= $form->field($model, 'experience')->dropDownList(
+                        $data,
+                        [
+                            'class' => 'job-select2 form-control',
+                        ]
+                    ); ?>
+		        </div>
+		        <div class="col-xs-8">
+                    <?= $form->field($model, 'tags'); ?>
+		        </div>
+            </div>
 
-            <?= $form->field($model, 'tags'); ?>
             <?= $form->field($model, 'cv_end_date')->textInput([
                     'autocomplete' => 'off',
                 'class' => 'datepk form-control',
