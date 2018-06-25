@@ -8,15 +8,15 @@ use app\library\helper\Helper;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $page = \app\models\Pages::get('forgot-password');
-$this->title = Helper::titleSeo($page);
-Helper::generateSeo($page);
+$this->title = Helper::getInstance()->titleSeo($page);
+Helper::getInstance()->generateSeo($page);
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container">
     <div class="col-12 col-sm-8 ovf-y-h">
-        <div class="users-index <?= Helper::wowClass(); ?> fadeInUp" data-wow-delay="0.1s">
+        <div class="users-index <?= Helper::getInstance()->wowClass(); ?> fadeInUp" data-wow-delay="0.1s">
             <h1>QUÊN MẬT KHẨU ?</h1>
-            <div class="alert-message alert-message-info <?= Helper::wowClass(); ?> zoomInDown animated" data-wow-delay="0.2s">
+            <div class="alert-message alert-message-info <?= Helper::getInstance()->wowClass(); ?> zoomInDown animated" data-wow-delay="0.2s">
                 <p>Vui lòng điền đúng địa chỉ <strong>email bạn đã đăng ký</strong>, hệ thống sẽ gửi thông tin hướng dẫn để thiết lập mật khẩu mới vào email của bạn.
                     <br>
                 </p>

@@ -15,7 +15,7 @@ use app\library\helper\Helper;
 
             <h1>ĐĂNG NHẬP</h1><br>
             <?php $form = ActiveForm::begin([
-                'action' => \app\library\helper\Helper::createUrl(['front/user/login']),
+                'action' => \app\library\helper\Helper::getInstance()->createUrl(['front/user/login']),
                 'method' => 'post',
                 'options' => [
                     'class' => 'form floating-label',
@@ -33,7 +33,7 @@ use app\library\helper\Helper;
             <div class="login-help">
                 <a href="#" id="form-register" data-dismiss="modal">Đăng ký</a>
                 -
-                <a href="<?= Helper::createUrl(['front/user/forgot']); ?>">Quên mật khẩu</a>
+                <a href="<?= Helper::getInstance()->createUrl(['front/user/forgot']); ?>">Quên mật khẩu</a>
             </div>
             <div class="text-center socials">
                 <h2>Hoặc</h2><br>

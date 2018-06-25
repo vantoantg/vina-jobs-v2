@@ -8,8 +8,8 @@ use app\library\helper\Helper;
 /** @var $page \app\models\Pages title */
 /** @var $this \yii\web\View title */
 $page = \app\models\Pages::get('register-company');
-$this->title = Helper::titleSeo($page);
-Helper::generateSeo($page);
+$this->title = Helper::getInstance()->titleSeo($page);
+Helper::getInstance()->generateSeo($page);
 
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -30,7 +30,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 
         <div class="row main">
             <div class="main-login main-center">
-                <div class="alert-message alert-message-info <?= \app\library\helper\Helper::wowClass(); ?> zoomInDown animated" data-wow-delay="0.2s">
+                <div class="alert-message alert-message-info <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> zoomInDown animated" data-wow-delay="0.2s">
                     <h4>Lưu ý:</h4>
                     <p>
                         - Bạn vui lòng điền đúng địa chỉ email. Hệ thống sẽ gửi các thông báo, thông tin liên quan tới tài khoản hoặc thông tin tuyển dụng vào <strong>email của bạn đăng ký</strong>.</p>
@@ -39,7 +39,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                 </div>
 
 	            <?php if (Yii::$app->session->hasFlash('updateSuccess')): ?>
-                    <div class="alert alert-success alert-dismissable <?= \app\library\helper\Helper::wowClass(); ?> zoomInDown animated" data-wow-delay="0.5s">
+                    <div class="alert alert-success alert-dismissable <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> zoomInDown animated" data-wow-delay="0.5s">
                         <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
                         <i class="icon fa fa-check"></i> <?= Yii::$app->session->getFlash('updateSuccess'); ?>
                     </div>
@@ -83,7 +83,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 				            <div class="cols-sm-10">
 
                                 <?= $form->field($com, 'content')->widget(\yii\redactor\widgets\Redactor::className(), [
-                                    'clientOptions' => Helper::redactorOps('Giới thiệu về công ty'),
+                                    'clientOptions' => Helper::getInstance()->redactorOps('Giới thiệu về công ty'),
                                 ]); ?>
 				            </div>
 
@@ -218,7 +218,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                                 ?>
 	            <div class="form-group ">
 		            Các chính sách và quy địn của <?= Yii::$app->params['siteName']; ?> <a
-				            href="<?= \app\library\helper\Helper::siteURL(); ?>/dieu-khoan-su-dung.html" target="_blank">tại đây</a>
+				            href="<?= \app\library\helper\Helper::getInstance()->siteURL(); ?>/dieu-khoan-su-dung.html" target="_blank">tại đây</a>
                     <?= $form->field($model, 'iread', [
                         'template' => '{input}',
                     ])->checkbox(['class' => 'iCheck'])->label(false); ?>

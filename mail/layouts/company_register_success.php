@@ -15,7 +15,7 @@ use app\library\helper\Helper;
 	<meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
 	<meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
-	<title><?= Helper::params() ?></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+	<title><?= Helper::getInstance()->params() ?></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
 
 	<!-- Web Font / @font-face : BEGIN -->
 	<!-- NOTE: If web fonts are not required, lines 10 - 27 can be safely removed. -->
@@ -225,7 +225,7 @@ use app\library\helper\Helper;
 	<table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="600" style="margin: auto;" class="email-container">
 		<tr>
 			<td style="padding: 10px 0; text-align: center">
-				<img src="<?= Helper::siteURL() ?>/web/template/jobs/img/logo.jpg" width="72" alt="<?= Helper::params(); ?>" border="0" style="height: auto; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555;">
+				<img src="<?= Helper::getInstance()->siteURL() ?>/web/template/jobs/img/logo.jpg" width="72" alt="<?= Helper::getInstance()->params(); ?>" border="0" style="height: auto; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555;">
 			</td>
 		</tr>
 	</table>
@@ -238,14 +238,14 @@ use app\library\helper\Helper;
 		<tr>
 			<td bgcolor="#ffffff" style="padding: 40px 0px 20px; text-align: center;">
 				<h1 style="margin: 0; font-family: sans-serif; font-size: 24px; line-height: 125%; color: #333333; font-weight: normal;">
-                    Bạn vừa đăng ký thông tin trên website <?= Helper::params() ?>
+                    Bạn vừa đăng ký thông tin trên website <?= Helper::getInstance()->params() ?>
 				</h1>
 			</td>
 		</tr>
 		<tr>
 			<td bgcolor="#ffffff" style="padding: 0 0px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: center;">
-				<p style="margin: 0;">Chào bạn <b><?= $data['name'] ?></b>! bạn vừa đăng ký thành viên trên <?= Helper::params() ?>.</p>
-				<p style="margin: 0;"><?= Helper::params() ?> là một website đăng tin tuyển dụng, tìm kiếm việc làm miễn phí, hãy click vào button bên dưới để kích hoạt tài khoản và có thể đăng tin tuyển dụng trên website. Hoặc tiếp tục cập nhật thông tin, hoạt động của công ty để có thể giới thiệu công ty của bạn tới các ứng viên tốt nhất !</p>
+				<p style="margin: 0;">Chào bạn <b><?= $data['name'] ?></b>! bạn vừa đăng ký thành viên trên <?= Helper::getInstance()->params() ?>.</p>
+				<p style="margin: 0;"><?= Helper::getInstance()->params() ?> là một website đăng tin tuyển dụng, tìm kiếm việc làm miễn phí, hãy click vào button bên dưới để kích hoạt tài khoản và có thể đăng tin tuyển dụng trên website. Hoặc tiếp tục cập nhật thông tin, hoạt động của công ty để có thể giới thiệu công ty của bạn tới các ứng viên tốt nhất !</p>
 			</td>
 		</tr>
 		<tr>
@@ -255,7 +255,7 @@ use app\library\helper\Helper;
 					<tr>
 						<td style="border-radius: 3px; background: #00AEEF; text-align: center;" class="button-td">
 							<a href="<?= $data['linkActive'] ?>" style="background: #00AEEF; border: 15px solid #00AEEF; font-family: sans-serif; font-size: 13px; line-height: 110%; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a" title="Kích hoạt tài khoản">
-								&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff;">Kích hoạt tài khoản <?= Helper::params()  ?></span>&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff;">Kích hoạt tài khoản <?= Helper::getInstance()->params()  ?></span>&nbsp;&nbsp;&nbsp;&nbsp;
 							</a>
 						</td>
 					</tr>
@@ -267,9 +267,9 @@ use app\library\helper\Helper;
 	<table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 680px; font-family: sans-serif; color: #888888; font-size: 12px; line-height: 140%;">
 		<tr>
 			<td style="padding: 0px 10px; width: 100%; font-family: sans-serif; font-size: 12px; line-height: 140%; text-align: center; color: #888888;" class="x-gmail-data-detectors">
-				<webversion style="color: #cccccc; text-decoration: underline; font-weight: bold;"><?= Helper::params() ?></webversion>
+				<webversion style="color: #cccccc; text-decoration: underline; font-weight: bold;"><?= Helper::getInstance()->params() ?></webversion>
 				<br><br>
-				<?= Helper::siteURL() ?> | Tân Phú, Hồ Chí Minh | <?= Helper::params('hotline')?>
+				<?= Helper::getInstance()->siteURL() ?> | Tân Phú, Hồ Chí Minh | <?= Helper::getInstance()->params('hotline')?>
 				<br><br>
 				<!--<unsubscribe style="color: #888888; text-decoration: underline;">unsubscribe</unsubscribe>-->
 			</td>

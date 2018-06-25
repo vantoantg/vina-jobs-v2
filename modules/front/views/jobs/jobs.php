@@ -7,8 +7,8 @@ use app\library\helper\Helper;
 /** @var $page \app\models\Pages title */
 $page = \app\models\Pages::get('jobs');
 /* @var $this \yii\web\View title */
-$this->title = Helper::titleSeo($page);
-Helper::generateSeo($page);
+$this->title = Helper::getInstance()->titleSeo($page);
+Helper::getInstance()->generateSeo($page);
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Job */
@@ -20,12 +20,12 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
     <div class="col-12 col-sm-8">
         <div class="front-jobs">
 
-            <div class="row page-title text-center <?= \app\library\helper\Helper::wowClass(); ?> bounce animated" data-wow-delay="1s" style="visibility: visible; animation-delay: 1s; animation-name: bounce;">
+            <div class="row page-title text-center <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> bounce animated" data-wow-delay="1s" style="visibility: visible; animation-delay: 1s; animation-name: bounce;">
                 <h5>ĐĂNG TUYỂN DỤNG</h5>
-                <h2><span><?= Helper::params(); ?></span> - WEBSITE TÌM KIẾM VIỆC LÀM</h2>
+                <h2><span><?= Helper::getInstance()->params(); ?></span> - WEBSITE TÌM KIẾM VIỆC LÀM</h2>
             </div>
 
-	        <div class="alert-message alert-message-info <?= \app\library\helper\Helper::wowClass(); ?> zoomInDown animated" data-wow-delay="0.2s">
+	        <div class="alert-message alert-message-info <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> zoomInDown animated" data-wow-delay="0.2s">
 		        <p>Hãy liệt kế tất cả các chính sách đang có, và cơ hội cho hấp dẫn, để có thể thu hút ứng viên nhanh chóng ứng tuyển vào các vị trí mà công ty muốn tuyển.</p>
 	        </div>
 
@@ -53,7 +53,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
             ?>
             <?= $form->field($model, 'description')->textarea(); ?>
             <?= $form->field($model, 'content')->widget(\yii\redactor\widgets\Redactor::className(), [
-                'clientOptions' => Helper::redactorOps('Hãy mô tả yêu cầu, kỹ năng, chính sách hấp dẫn cho ứng viên,....'),
+                'clientOptions' => Helper::getInstance()->redactorOps('Hãy mô tả yêu cầu, kỹ năng, chính sách hấp dẫn cho ứng viên,....'),
             ]); ?>
             <div class="row">
                 <div class="col-xs-4">

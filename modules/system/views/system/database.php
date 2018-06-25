@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <tr>
                                 <td class="type"><?= $k + 1; ?></td>
                                 <td class="name"><?= $file['name']; ?></td>
-                                <td class="name"><?= \app\library\helper\Helper::humanFilesize($file['size']); ?></td>
+                                <td class="name"><?= \app\library\helper\Helper::getInstance()->humanFilesize($file['size']); ?></td>
                                 <td class="time"><?= $file['time']; ?></td>
                                 <td class="status">
                                     <a href="<?= $file['path']; ?>" download="<?= $file['name']; ?>"><span class="glyphicon glyphicon-download-alt"></span></a>

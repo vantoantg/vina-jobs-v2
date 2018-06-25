@@ -29,30 +29,30 @@ if (YII_DEBUG) {
     <meta name="keywords" content="<?= Yii::$app->params['seo']['keywords']; ?>">
     <meta name="robots" content="index,follow">
     <meta name="copyright" content="index,follow">
-    <link rel="shortcut icon" type="image/png" href="<?= \app\library\helper\Helper::homeUrl(); ?>favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="<?= \app\library\helper\Helper::getInstance()->homeUrl(); ?>favicon.ico"/>
     <meta property="og:type" content="Tuyển dụng và tìm kiếm việc làm" />
     <meta property="og:title" content="<?= Html::encode($this->title); ?>"/>
     <meta property="og:url" content="<?= Yii::$app->request->getUrl(); ?>"/>
     <meta property="og:description" content="<?= Yii::$app->params['seo']['description']; ?>"/>
     <meta property="article:published_time" content="<?= \Carbon\Carbon::createFromFormat('Y-m-d', '2018-01-01')->toFormattedDateString(); ?>"/>
     <meta property="article:modified_time" content="<?= \Carbon\Carbon::now()->toFormattedDateString(); ?>"/>
-    <meta property="og:site_name" content="<?= \app\library\helper\Helper::siteURL(); ?>"/>
-    <meta property="og:image" content="<?= \app\library\helper\Helper::homeUrl(); ?>favicon.ico?w=200"/>
+    <meta property="og:site_name" content="<?= \app\library\helper\Helper::getInstance()->siteURL(); ?>"/>
+    <meta property="og:image" content="<?= \app\library\helper\Helper::getInstance()->homeUrl(); ?>favicon.ico?w=200"/>
     <meta property="og:image:width" content="200"/>
     <meta property="og:image:height" content="200"/>
 	<meta property="og:locale" content="vi_VN" />
-	<meta name="twitter:site" content="<?= \app\library\helper\Helper::siteURL(); ?>"/>
+	<meta name="twitter:site" content="<?= \app\library\helper\Helper::getInstance()->siteURL(); ?>"/>
     <meta name="twitter:text:title" content="<?= Html::encode($this->title); ?>"/>
-    <meta name="twitter:image" content="<?= \app\library\helper\Helper::homeUrl(); ?>favicon.ico?w=240"/>
+    <meta name="twitter:image" content="<?= \app\library\helper\Helper::getInstance()->homeUrl(); ?>favicon.ico?w=240"/>
     <meta name="twitter:card" content="summary"/>
-	<meta name="twitter:creator" content="<?= Helper::params(); ?>"/>
+	<meta name="twitter:creator" content="<?= Helper::getInstance()->params(); ?>"/>
     <meta name="twitter:description" content="<?= Yii::$app->params['seo']['description']; ?>"/>
     <meta property="article:publisher" content="https://www.facebook.com/vina-jobs.com"/>
 	<?php $this->head(); ?>
 </head>
 <body class="<?= Yii::$app->controller->id; ?>-<?= Yii::$app->controller->action->id; ?>">
 <input type="hidden" id="setting-common"
-       data-site="<?= \app\library\helper\Helper::homeUrl(); ?>"
+       data-site="<?= \app\library\helper\Helper::getInstance()->homeUrl(); ?>"
        data-page-current="<?= Yii::$app->controller->module->id.'/'.Yii::$app->controller->id; ?>"
 >
 <?php $this->beginBody(); ?>
@@ -73,8 +73,8 @@ if (YII_DEBUG) {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?= Yii::$app->homeUrl; ?>" title="<?= Helper::siteURL(); ?>"><img
-                        src="<?= Helper::homeUrl(); ?>web/template/jobs/img/logo.jpg" style="max-height: 50px"
+            <a class="navbar-brand" href="<?= Yii::$app->homeUrl; ?>" title="<?= Helper::getInstance()->siteURL(); ?>"><img
+                        src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/logo.jpg" style="max-height: 50px"
                         alt="vina-jobs"></a>
         </div>
 

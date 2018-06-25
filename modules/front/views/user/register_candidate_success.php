@@ -7,8 +7,8 @@ use app\library\helper\Helper;
 /* @var $page app\models\Pages */
 $page = \app\models\Pages::get('user-dang-ky-thanh-cong');
 
-$this->title = Helper::titleSeo($page);
-Helper::generateSeo($page);
+$this->title = Helper::getInstance()->titleSeo($page);
+Helper::getInstance()->generateSeo($page);
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \app\components\Menu\ActiveMenu::is('job-seekers');
@@ -21,20 +21,20 @@ $this->params['breadcrumbs'][] = $this->title;
 		<div class="row main">
 			<div class="main-login main-center">
                 <div class="content-page">
-                    <div class="alert-message alert-message-info <?= Helper::wowClass(); ?> zoomInDown animated"
+                    <div class="alert-message alert-message-info <?= Helper::getInstance()->wowClass(); ?> zoomInDown animated"
                          data-wow-delay="0.2s">
                         <h4>Đăng ký ứng viên thành công</h4>
                         <p>Lưu ý: Bạn vui lòng cập nhật đúng địa chỉ email, số điện thoại và các thông tin hệ thống sẽ gửi thông báo tuyển dụng vào <strong>email của bạn đăng ký</strong>.</p>
                     </div>
                 </div>
                 <div class="col-xs-12 text-center">
-                    <button class="navbar-btn nav-button <?= Helper::wowClass(); ?> bounceInRight login animated" data-toggle="modal" data-target="#login-modal" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: bounceInRight;"><i class="fas fa-sign-in-alt"></i> Đăng nhập
+                    <button class="navbar-btn nav-button <?= Helper::getInstance()->wowClass(); ?> bounceInRight login animated" data-toggle="modal" data-target="#login-modal" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: bounceInRight;"><i class="fas fa-sign-in-alt"></i> Đăng nhập
                     </button>
                     <br>
                 </div>
 
                 <div class="clearfix"></div>
-                <div class="<?= Helper::wowClass(); ?> zoomInDown animated" data-wow-delay="0.5s">
+                <div class="<?= Helper::getInstance()->wowClass(); ?> zoomInDown animated" data-wow-delay="0.5s">
 					<?= $page->content; ?>
                 </div>
 			</div>

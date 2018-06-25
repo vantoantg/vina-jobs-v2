@@ -11,8 +11,8 @@ use app\library\helper\Helper;
 /** @var $page \app\models\Pages title */
 /** @var $this \yii\web\View title */
 $page = \app\models\Pages::get('update-candidate');
-$this->title = Helper::titleSeo($page);
-Helper::generateSeo($page);
+$this->title = Helper::getInstance()->titleSeo($page);
+Helper::getInstance()->generateSeo($page);
 
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -34,7 +34,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 				</button>
 
 				<div class="image-editor"
-				     data-default-img="<?= \app\library\helper\Helper::webImgs('no-image-u.jpg'); ?>">
+				     data-default-img="<?= \app\library\helper\Helper::getInstance()->webImgs('no-image-u.jpg'); ?>">
 					<input type="file" class="cropit-image-input">
 					<div class="cropit-preview text-center"></div>
                     <div class="image-size-label">Phóng to/thu nhỏ</div>
@@ -56,7 +56,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
             <h1 class="text-center">CẬP NHẬT HỒ SƠ ỨNG VIÊN</h1>
 
 			<div class="main-login main-center">
-                <div class="alert-message alert-message-info <?= \app\library\helper\Helper::wowClass(); ?> zoomInDown animated" data-wow-delay="0.2s">
+                <div class="alert-message alert-message-info <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> zoomInDown animated" data-wow-delay="0.2s">
                     <h4>Lưu ý:</h4>
                     <p>Vui lòng điền đúng địa chỉ email, hệ thống sẽ gửi link kích hoạt tài khoản hoặc thông báo tuyển dụng vào <strong>email của bạn đăng ký</strong>.</p>
                 </div>
@@ -67,7 +67,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                         <?= $form->field($model, 'avatar')->hiddenInput(['class' => 'hidden_base64'])->label(false); ?>
 						<a href="#" data-toggle="modal" data-target="#register-avatar" data-wow-delay="0.6s" title="Nhấp vào đây để tải ảnh lên">
 							<img class="imgs"
-                                 src="<?= $model->avatar ? Helper::userAvatar($model->avatar) : ($model->avatar_url ? $model->avatar_url : \app\library\helper\Helper::webImgs('no_image_user.png')); ?>">
+                                 src="<?= $model->avatar ? Helper::getInstance()->userAvatar($model->avatar) : ($model->avatar_url ? $model->avatar_url : \app\library\helper\Helper::getInstance()->webImgs('no_image_user.png')); ?>">
 						</a>
 					</div>
 				</div>
@@ -227,7 +227,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 				<div class="row row-20-5">
 					<div class="col-xs-12">
 	                    <?= $form->field($userDetail, 'about_me')->widget(\yii\redactor\widgets\Redactor::className(), [
-                            'clientOptions' => Helper::redactorOps('Hãy giới thiệu bản thân mình, điểm mạnh, điểm yếu, tính cách,... tạo sự chú ý cho nhà tuyển dụng nhanh nhất.'),
+                            'clientOptions' => Helper::getInstance()->redactorOps('Hãy giới thiệu bản thân mình, điểm mạnh, điểm yếu, tính cách,... tạo sự chú ý cho nhà tuyển dụng nhanh nhất.'),
                         ])->label('Đôi nét về bản thân'); ?>
 					</div>
 				</div>

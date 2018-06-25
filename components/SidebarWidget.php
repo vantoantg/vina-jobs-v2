@@ -49,7 +49,7 @@ class SidebarWidget extends Widget
         $company = Company::instance()->getCompany($company_id);
         $company = $company->toArray();
         $company['logo'] = Company::getLogo($company['logo']);
-	    $company['url_company_detail'] = Helper::createUrl(['front/jobs/company-detail', 'slug' => Helper::createSlug($company['name']), 'id' => Company::instance()->setCompanyCode($company['id'])]);
+	    $company['url_company_detail'] = Helper::getInstance()->createUrl(['front/jobs/company-detail', 'slug' => Helper::getInstance()->createSlug($company['name']), 'id' => Company::instance()->setCompanyCode($company['id'])]);
 
         return $this->render('sidebar/company_info', [
             'company' => $company,

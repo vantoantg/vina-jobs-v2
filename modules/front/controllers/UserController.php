@@ -120,11 +120,11 @@ class UserController extends FrontController
 //                    $temp = $this->renderPartial('@app/mail/layouts/active_user_register', ['data' => $data]);
 
                     // TODO: comment out
-//                    Email::sendMail('Instructions to activate your account - ' . Helper::siteURL(), $temp);
+//                    Email::sendMail('Instructions to activate your account - ' . Helper::getInstance()->siteURL(), $temp);
 
                     // Inform Candidate registered
                     $temp = $this->renderPartial('@app/mail/layouts/noti_candidate_register', ['data' => $data]);
-                    Email::sendNotiCandidateRegister('A candidate has just registered an account on '.Helper::params(), $temp);
+                    Email::sendNotiCandidateRegister('A candidate has just registered an account on '.Helper::getInstance()->params(), $temp);
                 }
 
                 return $this->render('register_candidate_success', [
@@ -297,13 +297,13 @@ class UserController extends FrontController
                 $model->status = Users::STATUS_WAITING_ACTIVE;
                 $model->update();
                 $temp = $this->renderPartial('@app/mail/layouts/company_register_success', ['data' => $data]);
-                Email::sendMail(Helper::params().' - Active your account', $temp, $model->email, $model->name);
+                Email::sendMail(Helper::getInstance()->params().' - Active your account', $temp, $model->email, $model->name);
 
                 // Inform Candidate registered
                 $data['email'] = $model->email;
                 $data['phone'] = $userDetail->phone;
                 $temp = $this->renderPartial('@app/mail/layouts/noti_candidate_register', ['data' => $data]);
-                Email::sendNotiCandidateRegister('A company has just registered contact on the website '.Helper::params(), $temp);
+                Email::sendNotiCandidateRegister('A company has just registered contact on the website '.Helper::getInstance()->params(), $temp);
             }
 
             return $this->render('register_company_success', [
@@ -344,7 +344,7 @@ class UserController extends FrontController
         $data['name'] = $model->name;
         $data['email'] = $model->email;
         $temp = $this->renderPartial('@app/mail/layouts/active_company_success', ['data' => $data]);
-        Email::sendMail(Helper::params().' - Active your account success', $temp, $model->email, $model->name);
+        Email::sendMail(Helper::getInstance()->params().' - Active your account success', $temp, $model->email, $model->name);
 
         return $this->render('active_company_success', [
             'model' => $model,
@@ -406,7 +406,7 @@ class UserController extends FrontController
             Yii::$app->session->setFlash('updateSuccess', 'Đã cập nhật thông tin công ty');
             $r = Yii::$app->request->get('r');
             if ($r) {
-                return $this->redirect(Helper::encrypt($r, false));
+                return $this->redirect(Helper::getInstance()->encrypt($r, false));
             }
         } else {
             $errs = array_merge($model->getErrors(), $com->getErrors(), $userDetail->getErrors());
@@ -592,7 +592,7 @@ class UserController extends FrontController
             return $this->redirect(\Yii::$app->request->post('r'));
         } else {
             if (\Yii::$app->request->isAjax) {
-                return Helper::jsonData(['error' => true, 'message' => $model->errors['password'][0]]);
+                return Helper::getInstance()->jsonData(['error' => true, 'message' => $model->errors['password'][0]]);
             }
         }
     }
@@ -618,13 +618,13 @@ class UserController extends FrontController
         $model->scenario = ProfilePasswordForm::SCENARIO_RESET_PW;
         $user = Users::findOne(['password_reset_token' => $token]);
         if (!$user) {
-            $url = Helper::siteURL();
+            $url = Helper::getInstance()->siteURL();
             throw new BadRequestHttpException('Liên kết này đã hết hạn hoặc không tồn tại. <a href="'.$url.'">Quay lại trang chủ!</a>');
         }
 
         if ($model->load(Yii::$app->request->post())) {
             $user = Users::findOne(['password_reset_token' => $token]);
-            $user->password_reset_token = $user->password_reset_token.'@'.Datetime::getDateNow(Datetime::SQL_DATETIME);
+            $user->password_reset_token = $user->password_reset_token.'@'.Datetime::getInstance()->getDateNow(Datetime::SQL_DATETIME);
             $user->scenario = Users::SCENARIO_RESET_PW;
             if ($model->validate()) {
                 $user->setPassword($model->changepassword);
@@ -677,7 +677,7 @@ class UserController extends FrontController
         try {
             \Yii::$app->user->logout();
 
-            return $this->redirect(Helper::encrypt(\Yii::$app->request->get('r'), false));
+            return $this->redirect(Helper::getInstance()->encrypt(\Yii::$app->request->get('r'), false));
         } catch (Exception $exception) {
             throw new BadRequestHttpException($exception->getMessage());
         }

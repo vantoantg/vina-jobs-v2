@@ -21,7 +21,7 @@ use app\library\helper\Helper;
             [
                 'class' => 'form-control select2-list',
                 'data-placeholder' => 'Select an item',
-                'data-root-url' => Helper::createUrl(['admin/layout/page']).'?id=',
+                'data-root-url' => Helper::getInstance()->createUrl(['admin/layout/page']).'?id=',
             ]
         )->label(false);
         ?>

@@ -39,10 +39,10 @@ $this->title = $name;
         <p class="text-center">
             <small style="font-size: 13px">
                 Đã xảy ra lỗi trong khi các máy chủ Web cố gắng xử lý các yêu cầu của bạn.<br>
-                Nếu bạn nghĩ rằng đây là một lỗi máy chủ, vui lòng liên hệ với chúng tôi qua email <?= \app\library\helper\Helper::params('adminSystemEmail'); ?> Cảm ơn bạn.
+                Nếu bạn nghĩ rằng đây là một lỗi máy chủ, vui lòng liên hệ với chúng tôi qua email <?= \app\library\helper\Helper::getInstance()->params('adminSystemEmail'); ?> Cảm ơn bạn.
             </small>
         </p>
 
-        <p class="text-center"><a class="btn btn-primary" href="<?= \app\library\helper\Helper::siteURL(); ?>"><i class="fa fa-home"></i> Quay lại trang chủ</a></p>
+        <p class="text-center"><a class="btn btn-primary" href="<?= \app\library\helper\Helper::getInstance()->siteURL(); ?>"><i class="fa fa-home"></i> Quay lại trang chủ</a></p>
     </div>
 </div>

@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Image',
                 'value' => function ($data) {
                     return Html::img(
-                        \app\library\helper\Helper::webImgs($data['img']),
+                        \app\library\helper\Helper::getInstance()->webImgs($data['img']),
                         ['height' => '80px']
                     );
                 },

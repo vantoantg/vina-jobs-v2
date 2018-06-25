@@ -31,7 +31,7 @@ use app\library\helper\Cons;
 
     <!-- BEGIN DASHBOARD -->
     <li>
-        <a href="<?= Helper::homeUrl().Cons::ROUTE_ADMIN_ROOT; ?>" class="active">
+        <a href="<?= Helper::getInstance()->homeUrl().Cons::ROUTE_ADMIN_ROOT; ?>" class="active">
             <div class="gui-icon"><i class="md md-home"></i></div>
             <span class="title">Dashboard</span>
         </a>
@@ -75,7 +75,7 @@ use app\library\helper\Cons;
     <!-- END LEVELS -->
 
     <!-- BEGIN Products -->
-    <li class="gui-folder <?= Helper::activeMenu(['product/index', 'product/create', '/product-category/index', 'product-category/create']); ?>">
+    <li class="gui-folder <?= Helper::getInstance()->activeMenu(['product/index', 'product/create', '/product-category/index', 'product-category/create']); ?>">
         <a>
             <div class="gui-icon"><i class="md md-computer"></i></div>
             <span class="title">Products</span>
@@ -91,7 +91,7 @@ use app\library\helper\Cons;
     <!-- END Products -->
 
 	<!-- BEGIN Candidate -->
-	<li class="gui-folder <?= Helper::activeMenu(['user/index', 'user/create', 'user/update']); ?>">
+	<li class="gui-folder <?= Helper::getInstance()->activeMenu(['user/index', 'user/create', 'user/update']); ?>">
 		<a>
 			<div class="gui-icon"><i class="md md-computer"></i></div>
 			<span class="title">Candidate</span>
@@ -104,7 +104,7 @@ use app\library\helper\Cons;
 	<!-- END Candidate -->
 
 	<!-- BEGIN Jobs -->
-	<li class="gui-folder <?= Helper::activeMenu(['job/index', 'job/create', 'job/update']); ?>">
+	<li class="gui-folder <?= Helper::getInstance()->activeMenu(['job/index', 'job/create', 'job/update']); ?>">
 		<a>
 			<div class="gui-icon"><i class="md md-computer"></i></div>
 			<span class="title">Jobs</span>
@@ -117,7 +117,7 @@ use app\library\helper\Cons;
 	<!-- END Jobs -->
 
 	<!-- BEGIN Company -->
-	<li class="gui-folder <?= Helper::activeMenu(['company/index', 'company/create', 'company/update']); ?>">
+	<li class="gui-folder <?= Helper::getInstance()->activeMenu(['company/index', 'company/create', 'company/update']); ?>">
 		<a>
 			<div class="gui-icon"><i class="md md-computer"></i></div>
 			<span class="title">Company</span>
@@ -130,7 +130,7 @@ use app\library\helper\Cons;
 	<!-- END Company -->
 
     <!-- BEGIN Pages -->
-    <li class="gui-folder <?= Helper::activeMenu(['pages/index', 'pages/create', 'pages/update', 'post/index', 'post/create', 'post/update', 'post-category/index', 'post-category/create', 'post-category/update']); ?>">
+    <li class="gui-folder <?= Helper::getInstance()->activeMenu(['pages/index', 'pages/create', 'pages/update', 'post/index', 'post/create', 'post/update', 'post-category/index', 'post-category/create', 'post-category/update']); ?>">
         <a>
             <div class="gui-icon"><i class="md md-computer"></i></div>
             <span class="title">Content</span>
@@ -145,7 +145,7 @@ use app\library\helper\Cons;
     <!-- END Pages -->
 
     <!-- BEGIN SYSTEM -->
-    <li class="gui-folder <?= Helper::activeMenu(['migration/index', 'log-system/index', 'system/index', 'setting/index', 'system/backup-db']); ?>">
+    <li class="gui-folder <?= Helper::getInstance()->activeMenu(['migration/index', 'log-system/index', 'system/index', 'setting/index', 'system/backup-db']); ?>">
         <a>
             <div class="gui-icon"><i class="fa fa-folder-open fa-fw"></i></div>
             <span class="title">System</span>
@@ -190,7 +190,7 @@ use app\library\helper\Cons;
 	<!-- END TAGS -->
 
 	<!-- BEGIN EMAIL -->
-	<li class="gui-folder <?= Helper::activeMenu(['layout/page', 'layout/style']); ?>">
+	<li class="gui-folder <?= Helper::getInstance()->activeMenu(['layout/page', 'layout/style']); ?>">
 		<a>
 			<div class="gui-icon"><i class="md md-web"></i></div>
 			<span class="title">Layouts</span>

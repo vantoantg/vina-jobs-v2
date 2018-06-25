@@ -15,7 +15,7 @@ use yii\widgets\ActiveForm;
 		<div class="modal-content">
 			<?php $form = ActiveForm::begin([
                 'method' => 'post',
-                'action' => \app\library\helper\Helper::createUrl(['front/jobs/apply-job']),
+                'action' => \app\library\helper\Helper::getInstance()->createUrl(['front/jobs/apply-job']),
                 'options' => [
                     'class' => 'form floating-label',
                     'accept-charset' => 'utf-8',

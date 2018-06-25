@@ -30,11 +30,12 @@ class Helper
     }
 
     /**
-     * @return Device
+     * @param bool $refresh
+     * @return Helper|object
      */
-    public static function getInstance()
+    public static function getInstance($refresh = false)
     {
-        if (!(self::$_instance instanceof self)) {
+        if ($refresh || !(self::$_instance instanceof self)) {
             self::$_instance = new self();
         }
 
@@ -44,7 +45,7 @@ class Helper
     /**
      * @return string
      */
-    public static function getTzUser()
+    public function getTzUser()
     {
         if (Common::isLoginned()) {
             return Common::currentUser('timezone');
@@ -58,7 +59,7 @@ class Helper
      *
      * @return array
      */
-    public static function jsonData($data = [])
+    public function jsonData($data = [])
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
         if (!$data) {
@@ -71,7 +72,7 @@ class Helper
     /**
      * @return string
      */
-    public static function homeUrl()
+    public function homeUrl()
     {
         return Yii::$app->getHomeUrl();
     }
@@ -79,7 +80,7 @@ class Helper
     /**
      * @return string
      */
-    public static function webImgs($pathFile, $check = true)
+    public function webImgs($pathFile, $check = true)
     {
         if ($pathFile) {
             $path = Yii::$app->getHomeUrl().'web/imgs/'.$pathFile;
@@ -98,7 +99,7 @@ class Helper
      *
      * @return mixed|string
      */
-    public static function imgRender($pathFile, $w = 100, $h = 100, $prefix = 'blog')
+    public function imgRender($pathFile, $w = 100, $h = 100, $prefix = 'blog')
     {
         if (!$pathFile || !file_exists(Yii::$app->basePath.'/'.$pathFile)) {
             $pathFile = '/web/imgs/no-image.jpg';
@@ -128,7 +129,7 @@ class Helper
     /**
      * @return string
      */
-    public static function userAvatar($pathFile, $check = true)
+    public function userAvatar($pathFile, $check = true)
     {
         if ($pathFile) {
             $path = Yii::$app->getHomeUrl().$pathFile;
@@ -145,7 +146,7 @@ class Helper
      *
      * @return string
      */
-    public static function siteURL($domainNameOnly = false)
+    public function siteURL($domainNameOnly = false)
     {
         $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') ||
             $_SERVER['SERVER_PORT'] == 443) ? 'https://' : 'http://';
@@ -163,7 +164,7 @@ class Helper
      *
      * @return string
      */
-    public static function active($route = 'site/index', $returnClass = 'active')
+    public function active($route = 'site/index', $returnClass = 'active')
     {
         if ($route == Yii::$app->controller->getRoute()) {
             return $returnClass;
@@ -177,7 +178,7 @@ class Helper
      *
      * @return string
      */
-    public static function createUrl($params)
+    public function createUrl($params)
     {
         if (!is_array($params)) {
             $params = [$params];
@@ -191,7 +192,7 @@ class Helper
      *
      * @return mixed
      */
-    public static function getRoutes()
+    public function getRoutes()
     {
         $routes = include Yii::$app->basePath.'/config/routes.php';
 
@@ -201,7 +202,7 @@ class Helper
     /**
      * @return mixed
      */
-    public static function getBrowser()
+    public function getBrowser()
     {
         return $_SERVER['HTTP_USER_AGENT'];
     }
@@ -258,12 +259,12 @@ class Helper
      *
      * @return \stdClass
      */
-    public static function arrayToObject($array)
+    public function arrayToObject($array)
     {
         $object = new \stdClass();
         foreach ($array as $key => $value) {
             if (is_array($value)) {
-                $value = self::arrayToObject($value);
+                $value = self::getInstance()->arrayToObject($value);
             }
             $object->$key = $value;
         }
@@ -276,12 +277,12 @@ class Helper
      *
      * @return array
      */
-    public static function objectToArray($object)
+    public function objectToArray($object)
     {
         $arrays = [];
         foreach ($object as $key => $value) {
             if (is_object($value)) {
-                $value = self::objectToArray($value);
+                $value = self::getInstance()->objectToArray($value);
             }
             $arrays[$key] = $value;
         }
@@ -315,7 +316,7 @@ class Helper
     /**
      * @return string
      */
-    public static function urlTemplate()
+    public function urlTemplate()
     {
         return self::siteURL().'/web/template/'.Cons::TEMPLATE_FOLDER.'/';
     }
@@ -327,9 +328,9 @@ class Helper
      *
      * @return string the resulting slug.
      */
-    public static function createSlug($strings)
+    public function createSlug($strings)
     {
-        $string = self::stripUnicode($strings);
+        $string = self::getInstance()->stripUnicode($strings);
         $table = [
             '�' => 'S',
             '�' => 's',
@@ -432,7 +433,7 @@ class Helper
      *
      * @return mixed
      */
-    public static function stripUnicode($str)
+    public function stripUnicode($str)
     {
         $str = preg_replace('/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/', 'a', $str);
         $str = preg_replace('/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/', 'e', $str);
@@ -468,7 +469,7 @@ class Helper
      *
      * @return string
      */
-    public static function cutStringSpace($str, $words = 20)
+    public function cutStringSpace($str, $words = 20)
     {
         if ($str) {
             $string = '';
@@ -488,7 +489,7 @@ class Helper
     /**
      * @return array
      */
-    public static function getConfigDb()
+    public function getConfigDb()
     {
         $dsn = str_replace('mysql:', '', Yii::$app->getDb()->dsn);
         $dsn = explode(';', $dsn);
@@ -507,19 +508,19 @@ class Helper
      * @param $name
      * @param string $tables
      */
-    public static function backupDB($host = null, $user = null, $pass = null, $name = null, $tables = '*')
+    public function backupDB($host = null, $user = null, $pass = null, $name = null, $tables = '*')
     {
         if ($host == null) {
-            $host = Helper::getConfigDb()['host'];
+            $host = Helper::getInstance()->getConfigDb()['host'];
         }
         if ($user == null) {
-            $user = Helper::getConfigDb()['user'];
+            $user = Helper::getInstance()->getConfigDb()['user'];
         }
         if ($pass == null) {
-            $pass = Helper::getConfigDb()['pass'];
+            $pass = Helper::getInstance()->getConfigDb()['pass'];
         }
         if ($name == null) {
-            $name = Helper::getConfigDb()['db_name'];
+            $name = Helper::getInstance()->getConfigDb()['db_name'];
         }
 
         $path = Yii::$app->basePath.'/web/backups';
@@ -582,16 +583,16 @@ class Helper
      *
      * @return string
      */
-    public static function titleSeo($page)
+    public function titleSeo($page)
     {
         /* @var $page Pages */
-        return $page->seo_title ? $page->seo_title : Yii::$app->params['seo']['title'].' | '.Helper::params();
+        return $page->seo_title ? $page->seo_title : Yii::$app->params['seo']['title'].' | '.Helper::getInstance()->params();
     }
 
     /**
      * @param $page
      */
-    public static function generateSeo($page)
+    public function generateSeo($page)
     {
         /* @var $page Pages */
         Yii::$app->params['seo']['description'] = ($page->seo_description) ? $page->seo_description : Yii::$app->params['seo']['description'];
@@ -604,7 +605,7 @@ class Helper
      *
      * @return string
      */
-    public static function activeMenu($items = [], $activeClass = 'expanded')
+    public function activeMenu($items = [], $activeClass = 'expanded')
     {
         if ($items) {
             foreach ($items as $item) {
@@ -617,7 +618,7 @@ class Helper
         return '';
     }
 
-    public static function humanFilesize($bytes, $decimals = 2)
+    public function humanFilesize($bytes, $decimals = 2)
     {
         $size = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
         $factor = floor((strlen($bytes) - 1) / 3);
@@ -625,7 +626,7 @@ class Helper
         return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)).@$size[$factor];
     }
 
-    public static function redactorOps($placeholder = '')
+    public function redactorOps($placeholder = '')
     {
         return [
             'placeholder' => $placeholder,
@@ -664,7 +665,7 @@ class Helper
      *
      * @return mixed
      */
-    public static function params($param = 'siteName', $param2 = '', $param3 = '')
+    public function params($param = 'siteName', $param2 = '', $param3 = '')
     {
         if ($param2) {
             return Yii::$app->params[$param][$param2];
@@ -681,13 +682,13 @@ class Helper
      *
      * @return string
      */
-    public static function wowClass($check_mobile = false)
+    public function wowClass($check_mobile = false)
     {
         if ($check_mobile) {
             return '';
         }
 
-        if (!Helper::params('urlCookied')) {
+        if (!Helper::getInstance()->params('urlCookied')) {
             return 'wow';
         }
 
@@ -697,7 +698,7 @@ class Helper
     /**
      * @return string 'data-toggle="modal" data-target="#login-modal"'
      */
-    public static function checkLogin()
+    public function checkLogin()
     {
         if (!Common::isLoginned()) {
             return 'data-toggle="modal" data-target="#login-modal"';
@@ -712,13 +713,12 @@ class Helper
      *
      * @return bool|string
      */
-    public static function encrypt($string, $action = true)
+    public function encrypt($string, $action = true)
     {
         // you may change these values to your own
-        $secret_key = Helper::params('encrypt', 'my_simple_secret_key');
-        $secret_iv = Helper::params('encrypt', 'my_simple_secret_iv');
+        $secret_key = Helper::getInstance()->params('encrypt', 'my_simple_secret_key');
+        $secret_iv = Helper::getInstance()->params('encrypt', 'my_simple_secret_iv');
 
-        $output = false;
         $encrypt_method = 'AES-256-CBC';
         $key = hash('sha256', $secret_key);
         $iv = substr(hash('sha256', $secret_iv), 0, 16);
@@ -737,7 +737,7 @@ class Helper
      *
      * @return bool|mixed|string
      */
-    public static function getContentFileWith($path)
+    public function getContentFileWith($path)
     {
         $content = file_get_contents($path);
         $content = str_replace('../fonts/gg-', self::homeUrl().'web/template/jobs/prod/fonts/gg-', $content);

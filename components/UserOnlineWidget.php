@@ -49,12 +49,12 @@ class UserOnlineWidget extends Widget
             $u = new UserOnline();
             $u->session = $session;
             $u->time = Carbon::now()->format(Datetime::SQL_DATETIME);
-            $u->browser = Helper::getBrowser();
+            $u->browser = Helper::getInstance()->getBrowser();
             $u->url = Helper::getCurrentUrl();
             $u->ip = Helper::getIpClient();
             $u->controller = Yii::$app->controller->id ? Yii::$app->controller->id : '';
             $u->action = Yii::$app->controller->action->id;
-            $u->method = Helper::getMethod();
+            $u->method = Helper::getInstance()->getMethod();
             $u->save();
         }
     }
@@ -70,7 +70,7 @@ class UserOnlineWidget extends Widget
             self::$statistics = self::countUserOnline();
         }
 
-        return Helper::arrayToObject(self::$statistics);
+        return Helper::getInstance()->arrayToObject(self::$statistics);
     }
 
     /**
@@ -138,12 +138,12 @@ class UserOnlineWidget extends Widget
             $u = new UserOnline();
             $u->session = md5(rand(111, 999));
             $u->time = Carbon::now()->format(Cons::SQL_DATE_TIME);
-            $u->browser = Helper::getBrowser();
+            $u->browser = Helper::getInstance()->getBrowser();
             $u->url = Helper::getCurrentUrl();
             $u->ip = Helper::getIpClient();
             $u->controller = Yii::$app->controller->id;
             $u->action = Yii::$app->controller->action->id;
-            $u->method = Helper::getMethod();
+            $u->method = Helper::getInstance()->getMethod();
             $u->save();
         }
     }
