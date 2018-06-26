@@ -27,7 +27,7 @@ class Job extends Jobs
      */
     public function getJobCode($job_code)
     {
-        return Helper::encrypt($job_code, false);
+        return Helper::getInstance()->encrypt($job_code, false);
     }
 
     /**
@@ -37,7 +37,7 @@ class Job extends Jobs
      */
     public function setJobCode($job_code)
     {
-        return Helper::encrypt($job_code);
+        return Helper::getInstance()->encrypt($job_code);
     }
 
     const
@@ -151,8 +151,8 @@ class Job extends Jobs
                 $item['salary'] = Dropdowns::$salary[$item['salary']];
                 $item['working_time'] = Dropdowns::$working_time[$item['working_time']];
                 $item['created_at'] = Datetime::sqlDatetimeDiffForHumans($item['created_at']);
-                $item['url_edit'] = Helper::createUrl(['front/jobs/edit-jobs', 'id' => $item['job_id']]);
-                $item['url_view'] = Helper::createUrl(['site/employeers-detail', 'slug' => $item['slug'], 'id' => $item['job_id']]);
+                $item['url_edit'] = Helper::getInstance()->createUrl(['front/jobs/edit-jobs', 'id' => $item['job_id']]);
+                $item['url_view'] = Helper::getInstance()->createUrl(['site/employeers-detail', 'slug' => $item['slug'], 'id' => $item['job_id']]);
                 $item['client_status'] = ($item['client_status'] == Job::STATUS_CLIENT_PUBLISH) ? '<i class="fas fa-eye"></i>' : '<i class="far fa-eye-slash"></i>';
                 $result[] = $item;
             }
@@ -256,9 +256,9 @@ class Job extends Jobs
                 $item['com_logo'] = Company::getLogo($item['com_logo'], 70, 70);
                 $item['working_time'] = Dropdowns::$working_time[$item['working_time']];
                 $item['created_at'] = Datetime::sqlDatetimeDiffForHumans($item['created_at']);
-//                $item['url_edit'] = Helper::createUrl(['front/jobs/edit-jobs', 'id' => $item['job_id']]);
-                $item['url_view'] = Helper::createUrl(['site/employeers-detail', 'slug' => $item['slug'], 'id' => Job::instance()->setJobCode($item['job_id'])]);
-                $item['url_company_detail'] = Helper::createUrl(['front/jobs/company-detail', 'id' => Company::instance()->setCompanyCode($item['com_id']), 'slug' => Helper::createSlug($item['com_name'])]);
+//                $item['url_edit'] = Helper::getInstance()->createUrl(['front/jobs/edit-jobs', 'id' => $item['job_id']]);
+                $item['url_view'] = Helper::getInstance()->createUrl(['site/employeers-detail', 'slug' => $item['slug'], 'id' => Job::instance()->setJobCode($item['job_id'])]);
+                $item['url_company_detail'] = Helper::getInstance()->createUrl(['front/jobs/company-detail', 'id' => Company::instance()->setCompanyCode($item['com_id']), 'slug' => Helper::getInstance()->createSlug($item['com_name'])]);
                 $result[] = $item;
             }
 
@@ -324,8 +324,8 @@ class Job extends Jobs
                 $item['salary'] = Dropdowns::$salary[$item['salary']];
                 $item['working_time'] = Dropdowns::$working_time[$item['working_time']];
                 $item['created_at'] = Datetime::sqlDatetimeDiffForHumans($item['created_at']);
-                $item['url_view'] = Helper::createUrl(['site/employeers-detail', 'slug' => $item['slug'], 'id' => Job::instance()->setJobCode($item['job_id'])]);
-                $item['url_company_detail'] = Helper::createUrl(['front/jobs/company-detail', 'slug' => Helper::createSlug($item['com_name']), 'id' => Company::instance()->setCompanyCode($item['com_id'])]);
+                $item['url_view'] = Helper::getInstance()->createUrl(['site/employeers-detail', 'slug' => $item['slug'], 'id' => Job::instance()->setJobCode($item['job_id'])]);
+                $item['url_company_detail'] = Helper::getInstance()->createUrl(['front/jobs/company-detail', 'slug' => Helper::getInstance()->createSlug($item['com_name']), 'id' => Company::instance()->setCompanyCode($item['com_id'])]);
                 $item['cv_end_date'] = $item['cv_end_date'] ? Carbon::createFromFormat(Datetime::SQL_DATE, $item['cv_end_date'])->format(Datetime::INPUT_DMY) : '--';
                 $result[] = $item;
             }
@@ -351,8 +351,8 @@ class Job extends Jobs
             $item['salary'] = Dropdowns::$salary[$item['salary']];
             $item['working_time'] = Dropdowns::$working_time[$item['working_time']];
             $item['created_at'] = Datetime::sqlDatetimeDiffForHumans($item['created_at']);
-            $item['url_view'] = Helper::createUrl(['site/employeers-detail', 'slug' => $item['slug'], 'id' => Job::instance()->setJobCode($item['job_id'])]);
-            $item['url_company_detail'] = Helper::createUrl(['front/jobs/company-detail', 'slug' => Helper::createSlug($item['com_name']), 'id' => Company::instance()->setCompanyCode($item['com_id'])]);
+            $item['url_view'] = Helper::getInstance()->createUrl(['site/employeers-detail', 'slug' => $item['slug'], 'id' => Job::instance()->setJobCode($item['job_id'])]);
+            $item['url_company_detail'] = Helper::getInstance()->createUrl(['front/jobs/company-detail', 'slug' => Helper::getInstance()->createSlug($item['com_name']), 'id' => Company::instance()->setCompanyCode($item['com_id'])]);
             $item['cv_end_date'] = $item['cv_end_date'] ? Carbon::createFromFormat(Datetime::SQL_DATE, $item['cv_end_date'])->format(Datetime::INPUT_DMY) : '--';
             $data[] = $item;
         }

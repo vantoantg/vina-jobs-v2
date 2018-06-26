@@ -162,7 +162,7 @@ class UserDetails extends \app\models\base\UserDetails
             $com = Company::find()->select(['id', 'name', 'website', 'content', 'logo'])->where(['created_by' => Common::currentUsers()->getId()])->asArray()->one();
             $com['logo'] = Company::getLogo($com['logo']);
             $com['gallery'] = Company::instance()->gallery($com['id']);
-            $com['isUpload'] = (count($com['gallery']) < Helper::params('gallery', 'max')) ? true : false;
+            $com['isUpload'] = (count($com['gallery']) < Helper::getInstance()->params('gallery', 'max')) ? true : false;
 
             return $com;
         }

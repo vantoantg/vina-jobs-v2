@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 	<div class="container">
 		<div class="col-12 col-sm-9">
-			<div class="employeers-detail <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp"
+			<div class="employeers-detail <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> fadeInUp"
 			     data-wow-delay="0.1s">
 
 				<div class="row">
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
 									<table class="table list-jobs">
                                         <?php foreach ($company_jobs as $i => $job) {
                                     ?>
-											<tr class="odd <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp"
+											<tr class="odd <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> fadeInUp"
 											    data-wow-delay="0.<?= $i; ?>s">
 												<td class="tbl-title"><h4><a
 																href="<?= $job['url_view']; ?>"><?= $job['job_name']; ?></a>
@@ -96,7 +96,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		</div>
 
 		<div id="sidebarfx" data-follow-scroll='.employeers-detail' class="col-12 col-sm-3 pd-t-30">
-			<div class="job-add <?= \app\library\helper\Helper::wowClass(); ?> fadeInRight" data-wow-delay="0.1s">
+			<div class="job-add <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> fadeInRight" data-wow-delay="0.1s">
 				<h2>Tìm việc ?</h2>
 				<a href="#" data-toggle="modal" data-target="#register-modal">TẠO TÀI KHOẢN</a>
 			</div>

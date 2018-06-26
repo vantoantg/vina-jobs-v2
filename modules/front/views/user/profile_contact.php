@@ -10,9 +10,9 @@ use app\models\Pages;
 /* @var $searchModel app\models\search\User */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 $page = Pages::get('profile-contact');
-$this->title = Helper::titleSeo($page);
+$this->title = Helper::getInstance()->titleSeo($page);
 $this->params['breadcrumbs'][] = $this->title;
-Helper::generateSeo($page);
+Helper::getInstance()->generateSeo($page);
 
 /** @var $userInfo \app\models\UserDetails $userInfo */
 $userInfo = \app\models\UserDetails::instance()->getInfo();
@@ -23,7 +23,7 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
     <div class="row">
         <div class="col-md-12 toppad pull-right">
             <br>
-            <p class=" text-info"><?= \app\library\helper\Datetime::getDateNow(); ?></p>
+            <p class=" text-info"><?= \app\library\helper\Datetime::getInstance()->getDateNow(); ?></p>
         </div>
     </div>
     <div class="row">
@@ -31,8 +31,8 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
 
             <div class="card">
                 <ul id="contact_infos" class="nav nav-tabs" role="tablist"
-                    data-url="<?= Helper::createUrl(['front/user/client-infos']); ?>"
-                    data-url-del-gallery="<?= Helper::createUrl(['front/user/ajax-delete-img']); ?>"
+                    data-url="<?= Helper::getInstance()->createUrl(['front/user/client-infos']); ?>"
+                    data-url-del-gallery="<?= Helper::getInstance()->createUrl(['front/user/ajax-delete-img']); ?>"
                 >
                     <li role="presentation" class="active">
                         <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Thông tin nguời liên hệ</a></li>
@@ -44,7 +44,7 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="profile">
                         <div class="row">
-                            <div class="col-xs-12 toppad <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp"
+                            <div class="col-xs-12 toppad <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> fadeInUp"
                                  data-wow-delay="0.5s">
                                 <div class="panel panel-info">
                                     <div class="panel-heading">
@@ -59,7 +59,7 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
                                                         <td>Avatar:</td>
                                                         <td>
                                                             <img alt="User Pic"
-                                                                 src="<?= Helper::webImgs(Common::currentUser('avatar')); ?>"
+                                                                 src="<?= Helper::getInstance()->webImgs(Common::currentUser('avatar')); ?>"
                                                                  class="img-circle img-responsive"></td>
                                                     </tr>
                                                     <tr>
@@ -98,9 +98,9 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
                                         </div>
                                     </div>
                                     <div class="panel-footer">
-                                        <a href="<?= Helper::createUrl(['front/user/update-company']); ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#profile'); ?>" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Cập nhật thông tin</a>
+                                        <a href="<?= Helper::getInstance()->createUrl(['front/user/update-company']); ?>?r=<?= Helper::getInstance()->encrypt(Yii::$app->request->getUrl().'#profile'); ?>" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Cập nhật thông tin</a>
 
-                                        <a href="<?= Helper::createUrl(['front/jobs/post-jobs']); ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#profile'); ?>"
+                                        <a href="<?= Helper::getInstance()->createUrl(['front/jobs/post-jobs']); ?>?r=<?= Helper::getInstance()->encrypt(Yii::$app->request->getUrl().'#profile'); ?>"
                                            class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Đăng tin tuyển dụng</a>
                                     </div>
                                 </div>
@@ -109,7 +109,7 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
                     </div>
                     <div role="tabpanel" class="tab-pane" id="company">
                         <div class="row ovf-y-h">
-                            <div class="col-xs-12 toppad <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp"
+                            <div class="col-xs-12 toppad <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> fadeInUp"
                                  data-wow-delay="0.5s">
                                 <div id="container-company" class="panel panel-info">
                                     <div class="text-center" style="min-height: 500px; padding-top: 30px">
@@ -121,7 +121,7 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
                     </div>
                     <div role="tabpanel" class="tab-pane" id="jobs">
                         <div class="row ovf-y-h">
-                            <div class="col-xs-12 toppad <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp"
+                            <div class="col-xs-12 toppad <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> fadeInUp"
                                  data-wow-delay="0.5s">
                                 <div id="container-jobs" class="panel panel-info">
                                     <div class="text-center" style="min-height: 500px; padding-top: 30px">
@@ -133,7 +133,7 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
                     </div>
                     <div role="tabpanel" class="tab-pane" id="candidate">
                         <div class="row ovf-y-h">
-                            <div class="col-xs-12 toppad <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp"
+                            <div class="col-xs-12 toppad <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> fadeInUp"
                                  data-wow-delay="0.5s">
                                 <div id="container-candidate" class="panel panel-info">
                                     <div class="text-center" style="min-height: 500px; padding-top: 30px">
@@ -154,10 +154,10 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
     </p>
     <!--<div class="job-posts table-responsive">
         <table class="table list-jobs">
-            <tr class="odd <?/*= \app\library\helper\Helper::wowClass() */?> fadeInUp"
+            <tr class="odd <?/*= \app\library\helper\Helper::getInstance()->wowClass() */?> fadeInUp"
                 data-wow-delay="1s">
                 <td class="tbl-logo"><img
-                            src="<?/*= Helper::homeUrl() */?>web/template/jobs/img/job-logo1.png"
+                            src="<?/*= Helper::getInstance()->homeUrl() */?>web/template/jobs/img/job-logo1.png"
                             alt=""></td>
                 <td class="tbl-title"><h4>Web Designer <br><span
                                 class="job-type">full time</span></h4></td>
@@ -165,10 +165,10 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
                 <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
                 <td><p>&dollar; 14000</p></td>
             </tr>
-            <tr class="even <?/*= \app\library\helper\Helper::wowClass() */?> fadeInUp"
+            <tr class="even <?/*= \app\library\helper\Helper::getInstance()->wowClass() */?> fadeInUp"
                 data-wow-delay="1.1s">
                 <td class="tbl-logo"><img
-                            src="<?/*= Helper::homeUrl() */?>web/template/jobs/img/job-logo2.png"
+                            src="<?/*= Helper::getInstance()->homeUrl() */?>web/template/jobs/img/job-logo2.png"
                             alt=""></td>
                 <td class="tbl-title"><h4>Front End Developer <br><span class="job-type">full time</span>
                     </h4></td>
@@ -176,10 +176,10 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
                 <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
                 <td><p>&dollar; 14000</p></td>
             </tr>
-            <tr class="odd <?/*= \app\library\helper\Helper::wowClass() */?> fadeInUp"
+            <tr class="odd <?/*= \app\library\helper\Helper::getInstance()->wowClass() */?> fadeInUp"
                 data-wow-delay="1.2s">
                 <td class="tbl-logo"><img
-                            src="<?/*= Helper::homeUrl() */?>web/template/jobs/img/job-logo3.png"
+                            src="<?/*= Helper::getInstance()->homeUrl() */?>web/template/jobs/img/job-logo3.png"
                             alt=""></td>
                 <td class="tbl-title"><h4>HR Manager <br><span class="job-type">full time</span>
                     </h4></td>
@@ -187,10 +187,10 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
                 <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
                 <td><p>&dollar; 14000</p></td>
             </tr>
-            <tr class="even <?/*= \app\library\helper\Helper::wowClass() */?> fadeInUp"
+            <tr class="even <?/*= \app\library\helper\Helper::getInstance()->wowClass() */?> fadeInUp"
                 data-wow-delay="1.3s">
                 <td class="tbl-logo"><img
-                            src="<?/*= Helper::homeUrl() */?>web/template/jobs/img/job-logo4.png"
+                            src="<?/*= Helper::getInstance()->homeUrl() */?>web/template/jobs/img/job-logo4.png"
                             alt=""></td>
                 <td class="tbl-title"><h4>Internship Designer <br><span class="job-type">full time</span>
                     </h4></td>
@@ -198,10 +198,10 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
                 <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
                 <td><p>&dollar; 14000</p></td>
             </tr>
-            <tr class="odd <?/*= \app\library\helper\Helper::wowClass() */?> fadeInUp"
+            <tr class="odd <?/*= \app\library\helper\Helper::getInstance()->wowClass() */?> fadeInUp"
                 data-wow-delay="1.4s">
                 <td class="tbl-logo"><img
-                            src="<?/*= Helper::homeUrl() */?>web/template/jobs/img/job-logo5.png"
+                            src="<?/*= Helper::getInstance()->homeUrl() */?>web/template/jobs/img/job-logo5.png"
                             alt=""></td>
                 <td class="tbl-title"><h4>Software Designer <br><span
                                 class="job-type">full time</span></h4></td>
@@ -209,10 +209,10 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
                 <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
                 <td><p>&dollar; 14000</p></td>
             </tr>
-            <tr class="odd <?/*= \app\library\helper\Helper::wowClass() */?> fadeInUp"
+            <tr class="odd <?/*= \app\library\helper\Helper::getInstance()->wowClass() */?> fadeInUp"
                 data-wow-delay="1.5s">
                 <td class="tbl-logo"><img
-                            src="<?/*= Helper::homeUrl() */?>web/template/jobs/img/job-logo4.png"
+                            src="<?/*= Helper::getInstance()->homeUrl() */?>web/template/jobs/img/job-logo4.png"
                             alt=""></td>
                 <td class="tbl-title"><h4>Internship Designer <br><span class="job-type">full time</span>
                     </h4></td>
@@ -220,10 +220,10 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
                 <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
                 <td><p>&dollar; 14000</p></td>
             </tr>
-            <tr class="odd <?/*= \app\library\helper\Helper::wowClass() */?> fadeInUp"
+            <tr class="odd <?/*= \app\library\helper\Helper::getInstance()->wowClass() */?> fadeInUp"
                 data-wow-delay="1.6s">
                 <td class="tbl-logo"><img
-                            src="<?/*= Helper::homeUrl() */?>web/template/jobs/img/job-logo4.png"
+                            src="<?/*= Helper::getInstance()->homeUrl() */?>web/template/jobs/img/job-logo4.png"
                             alt=""></td>
                 <td class="tbl-title"><h4>Internship Designer <br><span class="job-type">full time</span>
                     </h4></td>
@@ -252,13 +252,13 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
 
         <table class="table list-jobs">
             <% _.each(data, function(k,v){ %>
-            <tr class="odd <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp"
+            <tr class="odd <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> fadeInUp"
                 data-wow-delay="0.5s">
                 <td class="tbl-logo"><b><%= (v + 1) %>.</b></td>
                 <td class="tbl-title">
                     <h4><%= k.job_name %><br>
                         <span class="job-type">
-                            <a href="<%= k.url_edit %>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#jobs'); ?>"><i class="fas fa-edit"></i></a> |
+                            <a href="<%= k.url_edit %>?r=<?= Helper::getInstance()->encrypt(Yii::$app->request->getUrl().'#jobs'); ?>"><i class="fas fa-edit"></i></a> |
                             <a href="<%= k.url_view %>" target="_blank"><i class="fas fa-eye"></i></a>
                         </span></h4>
                 </td>
@@ -277,7 +277,7 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
         <p class="text-center nodata"><i class="far fa-file-alt"></i> <br> Chưa có tin nào được đăng!</p>
     <% } %>
     <div class="panel-footer">
-    <a href="<?= Helper::createUrl(['front/jobs/post-jobs']); ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#jobs'); ?>"
+    <a href="<?= Helper::getInstance()->createUrl(['front/jobs/post-jobs']); ?>?r=<?= Helper::getInstance()->encrypt(Yii::$app->request->getUrl().'#jobs'); ?>"
        class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Đăng tin tuyển dụng</a>
     </div>
 </script>
@@ -294,7 +294,7 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
                     <tr>
                         <td colspan="100%">
 	                        <?php if (Yii::$app->session->hasFlash('updateSuccess')): ?>
-                                <div class="alert alert-success alert-dismissable <?= \app\library\helper\Helper::wowClass(); ?> zoomInDown animated" data-wow-delay="0.5s">
+                                <div class="alert alert-success alert-dismissable <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> zoomInDown animated" data-wow-delay="0.5s">
                                     <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
                                     <i class="icon fa fa-check"></i> <?= Yii::$app->session->getFlash('updateSuccess'); ?>
                                 </div>
@@ -302,7 +302,7 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
                         </td>
                     <tr>
 	                    <td colspan="100%">
-		                    <ul class="com-gallery" data-url-sort="<?= Helper::createUrl(['front/user/ajax-sortable']); ?>">
+		                    <ul class="com-gallery" data-url-sort="<?= Helper::getInstance()->createUrl(['front/user/ajax-sortable']); ?>">
 			                    <% if (data.gallery.length){ %>
 			                    <% _.each(data.gallery, function(k,v){ %>
 			                    <li class="item" data-id="<%= k.id %>" title="Nhấp chuột giữ và di chuyển để sắp xếp thứ tự cho các bức ảnh">
@@ -351,7 +351,7 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
         </div>
     </div>
     <div class="panel-footer">
-        <a href="<?= Helper::createUrl(['front/user/update-company']); ?>?r=<?= Helper::encrypt(Yii::$app->request->getUrl().'#company'); ?>" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Cập nhật thông tin</a>
+        <a href="<?= Helper::getInstance()->createUrl(['front/user/update-company']); ?>?r=<?= Helper::getInstance()->encrypt(Yii::$app->request->getUrl().'#company'); ?>" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Cập nhật thông tin</a>
     </div>
 </script>
 
@@ -365,7 +365,7 @@ $userInfo = \app\models\UserDetails::instance()->getInfo();
                 <h4 class="modal-title">CẬP NHẬT THÔNG TIN CÔNG TY</h4>
             </div>
             <div class="modal-body">
-                <?php $form = ActiveForm::begin(['action' => Helper::createUrl(['front/user/ajax-upload-img'])]); ?>
+                <?php $form = ActiveForm::begin(['action' => Helper::getInstance()->createUrl(['front/user/ajax-upload-img'])]); ?>
                 <?= $form->field($imgForm, 'image')->fileInput(['accept' => 'image/*'])->label('Tải ảnh lên Gallery'); ?>
                 <?= Html::button('<i class="fas fa-upload"></i> Tải lên', ['class' => 'btn btn-primary upload-img', 'disabled' => true]); ?>
                 <?php ActiveForm::end(); ?>

@@ -76,7 +76,7 @@ class SiteController extends FrontController
 			'auth' => [
 				'class' => 'yii\authclient\AuthAction',
 				'successCallback' => [$this, 'successCallback'],
-				'successUrl' => Url::to(Helper::createUrl(['/front/user/update-candidate'])),
+				'successUrl' => Url::to(Helper::getInstance()->createUrl(['/front/user/update-candidate'])),
 			],
 		];
 	}
@@ -87,7 +87,7 @@ class SiteController extends FrontController
 	 */
 	public function successCallback($client)
 	{
-		$this->successUrl = Url::to(Helper::createUrl(['/front/user/update-candidate']));
+		$this->successUrl = Url::to(Helper::getInstance()->createUrl(['/front/user/update-candidate']));
 		Auth::instance()->detectUserType($client);
 	}
 

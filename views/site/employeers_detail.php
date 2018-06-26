@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="container">
     <div class="col-12 col-sm-8">
-        <div class="employeers-detail <?= \app\library\helper\Helper::wowClass(); ?> fadeInUp" data-wow-delay="0.1s">
+        <div class="employeers-detail <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> fadeInUp" data-wow-delay="0.1s">
 
             <div class="row content">
 	            <?php if ($galleries) {
@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<?= $job['content']; ?>
             </div>
 
-            <div class="row ft-jobs-detail" data-href="<?= Helper::createUrl([
+            <div class="row ft-jobs-detail" data-href="<?= Helper::getInstance()->createUrl([
                 'front/jobs/favorite',
                 'slug' => $job['slug'],
                 'id' => $job['id'],
@@ -72,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         class="btn btn-sunny text-uppercase btn-lg apply-job"
                                         data-toggle="modal"
                                         data-target="#apply-modal"
-                                        data-href="<?= Helper::createUrl(['front/jobs/preapply']); ?>">
+                                        data-href="<?= Helper::getInstance()->createUrl(['front/jobs/preapply']); ?>">
                                     <i class="fas fa-location-arrow"></i> Gửi hồ sơ
                                 </button>
 							<?php
@@ -85,11 +85,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 ?>
                     <div class="well text-center pd-lr-0">
                         <button type="button" data-action="favorite"
-                                class="btn btn-sunny text-uppercase btn-lg" <?= Helper::checkLogin(); ?>><i
+                                class="btn btn-sunny text-uppercase btn-lg" <?= Helper::getInstance()->checkLogin(); ?>><i
                                     class="far fa-save"></i> Lưu tin này
                         </button>
                         <button type="button" data-action="apply" class="btn btn-sunny text-uppercase btn-lg"
-							<?= Helper::checkLogin(); ?>><i class="fas fa-location-arrow"></i> Apply
+							<?= Helper::getInstance()->checkLogin(); ?>><i class="fas fa-location-arrow"></i> Apply
                         </button>
                     </div>
 				<?php

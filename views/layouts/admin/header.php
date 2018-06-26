@@ -12,8 +12,8 @@ use yii\helpers\Url;
             <ul class="header-nav header-nav-options">
                 <li class="header-nav-brand" >
                     <div class="brand-holder">
-                        <a href="<?= \app\library\helper\Helper::homeUrl(); ?>">
-                            <span class="text-lg text-bold text-primary"><?= Helper::params(); ?> ADMIN</span>
+                        <a href="<?= \app\library\helper\Helper::getInstance()->homeUrl(); ?>">
+                            <span class="text-lg text-bold text-primary"><?= Helper::getInstance()->params(); ?> ADMIN</span>
                         </a>
                     </div>
                 </li>
@@ -44,14 +44,14 @@ use yii\helpers\Url;
                         <li class="dropdown-header">Today's messages</li>
                         <li>
                             <a class="alert alert-callout alert-warning" href="javascript:void(0);">
-                                <img class="pull-right img-circle dropdown-avatar" src="<?= \app\library\helper\Helper::homeUrl(); ?>web/template/admin/assets/img/avatar2.jpg?1404026449" alt="" />
+                                <img class="pull-right img-circle dropdown-avatar" src="<?= \app\library\helper\Helper::getInstance()->homeUrl(); ?>web/template/admin/assets/img/avatar2.jpg?1404026449" alt="" />
                                 <strong>Alex Anistor</strong><br/>
                                 <small>Testing functionality...</small>
                             </a>
                         </li>
                         <li>
                             <a class="alert alert-callout alert-info" href="javascript:void(0);">
-                                <img class="pull-right img-circle dropdown-avatar" src="<?= \app\library\helper\Helper::homeUrl(); ?>web/template/admin/assets/img/avatar3.jpg?1404026799" alt="" />
+                                <img class="pull-right img-circle dropdown-avatar" src="<?= \app\library\helper\Helper::getInstance()->homeUrl(); ?>web/template/admin/assets/img/avatar3.jpg?1404026799" alt="" />
                                 <strong>Alicia Adell</strong><br/>
                                 <small>Reviewing last changes...</small>
                             </a>
@@ -100,7 +100,7 @@ use yii\helpers\Url;
             <ul class="header-nav header-nav-profile">
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
-                        <img src="<?= \app\library\helper\Helper::homeUrl(); ?>web/template/admin/assets/img/avatar1.jpg?1403934956" alt="" />
+                        <img src="<?= \app\library\helper\Helper::getInstance()->homeUrl(); ?>web/template/admin/assets/img/avatar1.jpg?1403934956" alt="" />
                         <span class="profile-info">
 									<?= Common::currentUser('name'); ?>
 									<small>Administrator</small>

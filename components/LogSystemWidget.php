@@ -46,12 +46,12 @@ class LogSystemWidget extends Widget
         $user_id = Common::currentUser('id');
         $u->user_id = $user_id ? $user_id : 0;
         $u->time = Carbon::now()->format(Datetime::SQL_DATETIME);
-        $u->browser = Helper::getBrowser();
+        $u->browser = Helper::getInstance()->getBrowser();
         $u->url = Helper::getCurrentUrl();
         $u->ip = Helper::getIpClient();
         $u->controller = Yii::$app->controller->id;
         $u->action = Yii::$app->controller->action->id;
-        $u->method = Helper::getMethod();
+        $u->method = Helper::getInstance()->getMethod();
         $u->user_timezone = Common::currentUser('timezone');
         $u->save();
 //        }

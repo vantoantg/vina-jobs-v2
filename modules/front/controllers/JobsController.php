@@ -112,17 +112,17 @@ class JobsController extends FrontController
         $model->client_status = Job::STATUS_CLIENT_DRAFT;
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $model->company_id = Company::findOne(['created_by' => Common::currentUser()])->id;
-            $model->slug = Helper::createSlug($model->title);
+            $model->slug = Helper::getInstance()->createSlug($model->title);
             $model->created_by = Common::currentUsers()->getId();
             $model->updated_by = Common::currentUsers()->getId();
-            $model->created_at = Datetime::getDateNow(Datetime::SQL_DATETIME);
-            $model->updated_at = Datetime::getDateNow(Datetime::SQL_DATETIME);
+            $model->created_at = Datetime::getInstance()->getDateNow(Datetime::SQL_DATETIME);
+            $model->updated_at = Datetime::getInstance()->getDateNow(Datetime::SQL_DATETIME);
             $model->cv_end_date = Carbon::createFromFormat(Datetime::INPUT_DMY, $model->cv_end_date)->format(Datetime::SQL_DATE);
 
             // TODO: will make func approve
-            $model->effect_date = Datetime::getDateNow(Datetime::SQL_DATETIME);
+            $model->effect_date = Datetime::getInstance()->getDateNow(Datetime::SQL_DATETIME);
             $model->approved_by = 1;
-            $model->approved_at = Datetime::getDateNow(Datetime::SQL_DATETIME);
+            $model->approved_at = Datetime::getInstance()->getDateNow(Datetime::SQL_DATETIME);
             $model->status = Job::STATUS_ACTIVE;
 
             if ($model->save()) {
@@ -163,7 +163,7 @@ class JobsController extends FrontController
                 if ($r) {
                     Yii::$app->session->setFlash('success', 'Tin tuyển dụng đã được cập nhật.');
 
-                    return $this->redirect(Helper::encrypt($r, false));
+                    return $this->redirect(Helper::getInstance()->encrypt($r, false));
                 }
             }
         }
@@ -291,7 +291,7 @@ class JobsController extends FrontController
             // Send email
             $userDetail = UserDetails::instance()->getInfo();
 
-            $data['linkJobDetail'] = Helper::siteURL(true).Helper::createUrl([
+            $data['linkJobDetail'] = Helper::getInstance()->siteURL(true).Helper::getInstance()->createUrl([
                 'site/employeers-detail',
                 'slug' => $job['slug'],
                 'id' => Job::instance()->setJobCode($job_id),
@@ -304,7 +304,7 @@ class JobsController extends FrontController
             $body = $this->renderPartial('@app/mail/layouts/candidate_apply_job', ['data' => $data]);
             Logs::getInstance()->applyEmail($data);
             // Send and CC to admin
-            Email::sendMailApply('There is a candidate who has submitted the CV via '.Helper::params(), $body,
+            Email::sendMailApply('There is a candidate who has submitted the CV via '.Helper::getInstance()->params(), $body,
                 $job['email'], $job['name'], $this->attachment);
 
             return $this->redirect($applyForm['ApplyForm']['redirect']);

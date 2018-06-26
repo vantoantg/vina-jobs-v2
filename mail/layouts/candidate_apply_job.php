@@ -15,7 +15,7 @@ use app\library\helper\Helper;
 	<meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
 	<meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
-	<title><?= Helper::params() ?></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+	<title><?= Helper::getInstance()->params() ?></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
 
 	<!-- Web Font / @font-face : BEGIN -->
 	<!-- NOTE: If web fonts are not required, lines 10 - 27 can be safely removed. -->
@@ -200,7 +200,7 @@ use app\library\helper\Helper;
 	<table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="600" style="margin: auto;" class="email-container">
 		<tr>
 			<td style="padding: 10px 0; text-align: center">
-				<img src="<?= Helper::siteURL() ?>/web/template/jobs/img/logo.jpg" width="72" alt="<?= Helper::params(); ?>" border="0" style="height: auto; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555;">
+				<img src="<?= Helper::getInstance()->siteURL() ?>/web/template/jobs/img/logo.jpg" width="72" alt="<?= Helper::getInstance()->params(); ?>" border="0" style="height: auto; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555;">
 			</td>
 		</tr>
 	</table>
@@ -213,13 +213,13 @@ use app\library\helper\Helper;
 		<tr>
 			<td bgcolor="#ffffff" style="padding: 40px 0px 20px; text-align: left;">
 				<h1 style="margin: 0; font-family: sans-serif; font-size: 24px; line-height: 125%; color: #333333; font-weight: normal;">
-                    Có một ứng viên vừa apply tin của bạn trên - <?= Helper::params() ?>
+                    Có một ứng viên vừa apply tin của bạn trên - <?= Helper::getInstance()->params() ?>
 				</h1>
 			</td>
 		</tr>
 		<tr>
 			<td bgcolor="#ffffff" style="padding: 0 0px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: left;">
-				<p style="margin: 0;">Chào <b><?= $data['contactName'] ?></b>! bạn vừa nhận được thông tin candidate apply tin tuyển dụng của bạn qua website <?= Helper::params() ?> như sau:</p>
+				<p style="margin: 0;">Chào <b><?= $data['contactName'] ?></b>! bạn vừa nhận được thông tin candidate apply tin tuyển dụng của bạn qua website <?= Helper::getInstance()->params() ?> như sau:</p>
 				<p style="margin: 0;">
 					<b>Tin bạn đã đăng: </b> <?= $data['linkJobDetail'] ?><br>
 					<b>Tên ứng viên</b>: <?= $data['candidateName'] ?><br>
@@ -234,9 +234,9 @@ use app\library\helper\Helper;
 	<table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 680px; font-family: sans-serif; color: #888888; font-size: 12px; line-height: 140%;">
 		<tr>
 			<td style="padding: 0px 10px; width: 100%; font-family: sans-serif; font-size: 12px; line-height: 140%; text-align: center; color: #888888;" class="x-gmail-data-detectors">
-				<webversion style="color: #cccccc; text-decoration: underline; font-weight: bold;"><?= Helper::params() ?></webversion>
+				<webversion style="color: #cccccc; text-decoration: underline; font-weight: bold;"><?= Helper::getInstance()->params() ?></webversion>
 				<br><br>
-				<?= Helper::siteURL() ?> | Tân Phú, Hồ Chí Minh | <?= Helper::params('hotline')?>
+				<?= Helper::getInstance()->siteURL() ?> | Tân Phú, Hồ Chí Minh | <?= Helper::getInstance()->params('hotline')?>
 				<br><br>
 				<!--<unsubscribe style="color: #888888; text-decoration: underline;">unsubscribe</unsubscribe>-->
 			</td>

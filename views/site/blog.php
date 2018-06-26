@@ -30,23 +30,23 @@ $this->params['breadcrumbs'][] = $this->title;
 		    <div class="row list">
                 <?php
                 $i = 0;
-                //                    Helper::imgRender($blogs[0]->img, 230,200);
+                //                    Helper::getInstance()->imgRender($blogs[0]->img, 230,200);
                 //                    die;
                 foreach ($blogs as $k => $blog) {
                     $i++; ?>
-				    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 <?= Helper::wowClass(); ?> fadeInUp"
+				    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 <?= Helper::getInstance()->wowClass(); ?> fadeInUp"
 				         data-wow-delay="0.<?= $i; ?>s">
 					    <aside>
-						    <img src="<?= Helper::imgRender($blog->img, 230, 200); ?>"
+						    <img src="<?= Helper::getInstance()->imgRender($blog->img, 230, 200); ?>"
 						         class="img-responsive">
 						    <div class="content-title">
 							    <div class="text-center">
-								    <h3><a href="<?= Helper::createUrl(['site/blog-detail', 'slug' => $blog->slug, 'id' => $blog->id]); ?>"><?= $blog->name; ?></a></h3>
+								    <h3><a href="<?= Helper::getInstance()->createUrl(['site/blog-detail', 'slug' => $blog->slug, 'id' => $blog->id]); ?>"><?= $blog->name; ?></a></h3>
 							    </div>
 						    </div>
 						    <div class="content-footer">
 							    <img class="user-small-img"
-							         src="<?= Helper::imgRender(null, 33, 33); ?>">
+							         src="<?= Helper::getInstance()->imgRender(null, 33, 33); ?>">
 							    <span>Sumit Kumar Kumar</span>
 							    <span class="pull-right">
 									<a href="#" data-toggle="tooltip" data-placement="top" title="Comments"><i class="fa fa-comments"></i> 30</a>

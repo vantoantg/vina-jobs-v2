@@ -5,9 +5,9 @@
 /** @var $page \app\models\Pages $page */
 $page = \app\models\Pages::get('policy');
 
-$this->title = \app\library\helper\Helper::titleSeo($page);
+$this->title = \app\library\helper\Helper::getInstance()->titleSeo($page);
 $this->params['breadcrumbs'][] = $this->title;
-\app\library\helper\Helper::generateSeo($page);
+\app\library\helper\Helper::getInstance()->generateSeo($page);
 ?>
 <div class="container">
     <div class="col-12 col-sm-8">

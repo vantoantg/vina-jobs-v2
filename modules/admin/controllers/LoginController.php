@@ -52,7 +52,7 @@ class LoginController extends BaseController
             return $this->goHome();
         } else {
             if ($this->app->request->isAjax) {
-                return Helper::jsonData(['error' => true, 'message' => $model->errors['password'][0]]);
+                return Helper::getInstance()->jsonData(['error' => true, 'message' => $model->errors['password'][0]]);
             }
         }
 

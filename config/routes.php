@@ -21,7 +21,7 @@ return [
     'dieu-khoan-su-dung.html' => 'site/policy',
 
     'search/result.html' => 'site/search',
-    'search/load-data.html' => 'site/ajax-search',
+//    'search/load-data.html' => 'site/ajax-search',
 
     'search-jobs.html' => 'front/default/ajax-search',
 

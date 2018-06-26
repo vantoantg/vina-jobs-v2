@@ -33,8 +33,26 @@ class Datetime
 
     const DEFAULT_TIME_ZONE = 'Asia/Bangkok';
 
+    /**
+     * @var object Datetime
+     */
+    protected static $_instance;
+
     public function init()
     {
+    }
+
+    /**
+     * @param bool $refresh
+     * @return Datetime|object
+     */
+    public static function getInstance($refresh = false)
+    {
+        if ($refresh || !(self::$_instance instanceof self)) {
+            self::$_instance = new self();
+        }
+
+        return self::$_instance;
     }
 
     /**
@@ -43,7 +61,7 @@ class Datetime
      *
      * @return string
      */
-    public static function getDateNow($format = null, $zone = null)
+    public function getDateNow($format = null, $zone = null)
     {
         if ($zone == null) {
             $zone = Common::currentUser('timezone');
@@ -187,7 +205,7 @@ class Datetime
             return '';
         }
         if ($tz === null) {
-            $tz = Helper::getTzUser();
+            $tz = Helper::getInstance()->getTzUser();
         }
         Carbon::setLocale(Yii::$app->language);
 

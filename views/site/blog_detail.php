@@ -10,10 +10,10 @@ $page = \app\models\Pages::get('blog-detail');
 $sidebarWidget = new app\components\SidebarWidget();
 
 $this->title = $blog->name;
-$this->params['breadcrumbs'][] = ['label' => 'Blogs', 'url' => Helper::createUrl(['site/blog'])];
+$this->params['breadcrumbs'][] = ['label' => 'Blogs', 'url' => Helper::getInstance()->createUrl(['site/blog'])];
 $this->params['breadcrumbs'][] = $this->title;
 
-\app\library\helper\Helper::generateSeo($page);
+\app\library\helper\Helper::getInstance()->generateSeo($page);
 \app\components\Menu\ActiveMenu::is('blogs');
 ?>
 

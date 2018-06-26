@@ -6,8 +6,8 @@ use app\library\helper\Helper;
 /** @var $page \app\models\Pages title */
 /** @var $this \yii\web\View title */
 $page = \app\models\Pages::get('register-company');
-$this->title = Helper::titleSeo($page);
-Helper::generateSeo($page);
+$this->title = Helper::getInstance()->titleSeo($page);
+Helper::getInstance()->generateSeo($page);
 
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="row main">
             <div class="main-login main-center">
 
-	            <div class="alert-message alert-message-info <?= \app\library\helper\Helper::wowClass(); ?> zoomInDown animated" data-wow-delay="0.2s">
+	            <div class="alert-message alert-message-info <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> zoomInDown animated" data-wow-delay="0.2s">
 		            <h4>Lưu ý:</h4>
 		            <p>
 			            Chúc mừng bạn, tài khoản của bạn đã đăng ký. Hệ thống đã gửi một email kích hoạt đến <?= $email; ?>  của bạn.<br>
