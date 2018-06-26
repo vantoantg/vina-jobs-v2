@@ -122,42 +122,42 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in active" id="job-seekers">
                         <ul class="list-inline job-seeker">
-                            <li>
+                            <li class="col-xs-6 col-sm-4 col-md-2">
                                 <a href="">
                                     <img class="lazy" data-src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/team-small-5.jpg" alt="">
                                     <div class="overlay"><h3>Ohidul Islam</h3>
                                         <p>Web Designer</p></div>
                                 </a>
                             </li>
-                            <li>
+	                        <li class="col-xs-6 col-sm-4 col-md-2">
                                 <a href="">
                                     <img class="lazy" data-src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/team-small-6.jpg" alt="">
                                     <div class="overlay"><h3>Mohidul Islam</h3>
                                         <p>CEO</p></div>
                                 </a>
                             </li>
-                            <li>
+	                        <li class="col-xs-6 col-sm-4 col-md-2">
                                 <a href="">
                                     <img class="lazy" data-src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/team-small-3.jpg" alt="">
                                     <div class="overlay"><h3>Unknown girl</h3>
                                         <p>Graphic Designer</p></div>
                                 </a>
                             </li>
-                            <li>
+	                        <li class="col-xs-6 col-sm-4 col-md-2">
                                 <a href="">
                                     <img class="lazy" data-src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/team-small-4.jpg" alt="">
                                     <div class="overlay"><h3>Eftakher Alam</h3>
                                         <p>Graphic Designer</p></div>
                                 </a>
                             </li>
-                            <li>
+	                        <li class="col-xs-6 col-sm-4 col-md-2">
                                 <a href="">
                                     <img class="lazy" data-src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/team-small-2.jpg" alt="">
                                     <div class="overlay"><h3>Mark Otto</h3>
                                         <p>Founder</p></div>
                                 </a>
                             </li>
-                            <li>
+	                        <li class="col-xs-6 col-sm-4 col-md-2">
                                 <a href="">
                                     <img class="lazy" data-src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/team-small-1.jpg" alt="">
                                     <div class="overlay"><h3>Rasel Ahmed</h3>
@@ -168,37 +168,37 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="employeers">
                         <ul class="list-inline">
-                            <li>
+	                        <li class="col-xs-6 col-sm-4 col-md-2">
                                 <a href="">
                                     <img class="lazy" data-src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/employee4.png" alt="">
                                     <div class="overlay"><h3>Instagram</h3></div>
                                 </a>
                             </li>
-                            <li>
+	                        <li class="col-xs-6 col-sm-4 col-md-2">
                                 <a href="">
                                     <img class="lazy" data-src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/employee5.png" alt="">
                                     <div class="overlay"><h3>Microsoft</h3></div>
                                 </a>
                             </li>
-                            <li>
+	                        <li class="col-xs-6 col-sm-4 col-md-2">
                                 <a href="">
                                     <img class="lazy" data-src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/employee6.png" alt="">
                                     <div class="overlay"><h3>Dribbble</h3></div>
                                 </a>
                             </li>
-                            <li>
+	                        <li class="col-xs-6 col-sm-4 col-md-2">
                                 <a href="">
                                     <img class="lazy" data-src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/employee1.png" alt="">
                                     <div class="overlay"><h3>Beats Music</h3></div>
                                 </a>
                             </li>
-                            <li>
+	                        <li class="col-xs-6 col-sm-4 col-md-2">
                                 <a href="">
                                     <img src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/employee2.png" alt="">
                                     <div class="overlay"><h3>Facebook</h3></div>
                                 </a>
                             </li>
-                            <li>
+	                        <li class="col-xs-6 col-sm-4 col-md-2">
                                 <a href="#">
                                     <img class="lazy" data-src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/employee3.png" alt="">
                                     <div class="overlay"><h3>Twitter</h3></div>
@@ -271,7 +271,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 							<h4><strong>Steve Jobs, </strong><i>CEO của Apple</i></h4>
 						</div>
 						<div class="client-face <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> fadeInRight" data-wow-delay=".9s" style="top: 123px; right: 149px">
-							<img class="lazy" data-src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/client-face1.png" alt="">
+							<img src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/client-face1.png" alt="">
 						</div>
 					</div>
 					<div class="item">
@@ -283,7 +283,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 							<h4><strong>Denise Morrison, </strong><i>CEO của Campbell Soup</i></h4>
 						</div>
 						<div class="client-face" style="top: 123px; right: 149px">
-							<img class="lazy" data-src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/client-face2.png" alt="">
+							<img src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/client-face2.png" alt="">
 						</div>
 					</div>
 					<div class="item">
@@ -294,7 +294,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 							<h4><strong>Mark Zuckerberg, </strong><i>CEO của Facebook</i></h4>
 						</div>
 						<div class="client-face">
-							<img class="lazy" data-src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/client-face1.png" alt="">
+							<img src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/client-face1.png" alt="">
 						</div>
 					</div>
 					<div class="item">
@@ -304,7 +304,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
 							<h4><strong>Ohidul Islam, </strong><i>Web Designer</i></h4>
 						</div>
 						<div class="client-face">
-							<img class="lazy" data-src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/client-face2.png" alt="">
+							<img src="<?= Helper::getInstance()->homeUrl(); ?>web/template/jobs/img/client-face2.png" alt="">
 						</div>
 					</div>
 				</div>

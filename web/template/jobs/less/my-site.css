@@ -318,9 +318,6 @@ input,
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
-.search-form.top #searchform-keys {
-  margin-top: 0;
-}
 .search-form #searchform-keys {
   margin-right: 0;
   margin-top: -1px;
@@ -894,6 +891,12 @@ body.site-employeers-detail #viewGallery .modal-content .close {
   text-align: center;
   width: 58px;
 }
+.select2-container {
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
 /*********** Responsive ***************/
 @media (max-width: 1920px) {
   .row-20-5 {
@@ -1182,7 +1185,7 @@ body.site-employeers-detail #viewGallery .modal-content .close {
     bottom: 50px;
   }
   .slider-content h2 {
-    font-size: 20px;
+    font-size: 17px;
   }
   .ft-jobs-detail button {
     margin: 5px;

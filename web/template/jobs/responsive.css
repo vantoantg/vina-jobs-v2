@@ -73,6 +73,7 @@
     .slider-content h2 {
         font-size: 21px;
         margin-bottom: 15px;
+        line-height: 20px;
     }
 
     .slider-content p {
@@ -156,19 +157,12 @@
     }
 
     .tab-content ul li {
-        height: 235px;
         margin-bottom: 20px;
-        width: 219px;
     }
 
     .tab-content ul li a img {
         height: 100%;
         width: 100%;
-    }
-
-    .overlay {
-        height: 235px;
-        top: -104px;
     }
 
     .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
@@ -316,10 +310,6 @@
         margin-top: 15px;
     }
 
-    .navbar-brand img {
-        /*width: 110px;*/
-    }
-
     .navbar-default .navbar-nav > li > a {
         font-size: 13px;
     }
@@ -360,6 +350,7 @@
     .slider-content h2 {
         font-size: 24px;
         margin-bottom: 15px;
+        line-height: 30px;
     }
 
     .slider-content p {
@@ -444,20 +435,9 @@
         font-size: 12px;
     }
 
-    .tab-content ul li {
-        height: 235px;
-        margin-bottom: 20px;
-        width: 219px;
-    }
-
     .tab-content ul li a img {
         height: 100%;
         width: 100%;
-    }
-
-    .overlay {
-        height: 235px;
-        top: -104px;
     }
 
     .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
@@ -570,10 +550,6 @@
         min-height: 85px;
     }
 
-    .navbar-brand img {
-        /*width: 110px;*/
-    }
-
     .navbar-default .navbar-nav > li > a {
         font-size: 13px;
     }
@@ -614,11 +590,12 @@
     .slider-content h2 {
         font-size: 30px;
         margin-bottom: 15px;
+        line-height: 40px;
     }
 
     .slider-content p {
         font-size: 12px;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
     }
 
     .search-form {
@@ -637,10 +614,6 @@
         height: 440px;
     }
 
-    #bg-slider .item img {
-        height: 440px;
-    }
-
     .slider .owl-pagination {
         bottom: 165px;
         right: 0;
@@ -653,7 +626,6 @@
 
     .page-title h2 {
         font-size: 20px;
-        /*margin-top: 2px;*/
     }
 
     .page-title h5 {
@@ -667,19 +639,12 @@
     }
 
     .tab-content ul li {
-        height: 235px;
         margin-bottom: 20px;
-        width: 219px;
     }
 
     .tab-content ul li a img {
         height: 100%;
         width: 100%;
-    }
-
-    .overlay {
-        height: 235px;
-        top: -104px;
     }
 
     .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
@@ -784,11 +749,6 @@
 
     .slider-area {
         height: 540px;
-    }
-
-    .tab-content ul li {
-        height: 160px;
-        width: 145px;
     }
 
     .tab-content ul li a img {
