@@ -8,8 +8,8 @@ use app\library\helper\Helper;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $page = \app\models\Pages::get('forgot-password-success');
-$this->title = Helper::titleSeo($page);
-Helper::generateSeo($page);
+$this->title = Helper::getInstance()->titleSeo($page);
+Helper::getInstance()->generateSeo($page);
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container">

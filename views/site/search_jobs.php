@@ -8,8 +8,8 @@ $page = \app\models\Pages::get('search');
 /* @var $page \app\models\Pages title */
 
 /* @var $this \yii\web\View title */
-$this->title = \app\library\helper\Helper::titleSeo($page);
-\app\library\helper\Helper::generateSeo($page);
+$this->title = \app\library\helper\Helper::getInstance()->titleSeo($page);
+\app\library\helper\Helper::getInstance()->generateSeo($page);
 $this->params['breadcrumbs'][] = $this->title;
 $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/js/select2.min.js');
 
@@ -74,7 +74,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
            data-toggle="modal"
            data-target="#apply-modal"
            data-job-code="<%= k.job_code %>"
-           data-href="<?= Helper::createUrl(['front/jobs/preapply']); ?>"
+           data-href="<?= Helper::getInstance()->createUrl(['front/jobs/preapply']); ?>"
         >Apply</a>
         <% } %>
     </td>

@@ -7,8 +7,8 @@ use app\library\helper\Helper;
 /** @var $page \app\models\Pages title */
 $page = \app\models\Pages::get('candidate');
 /* @var $this \yii\web\View title */
-$this->title = Helper::titleSeo($page);
-Helper::generateSeo($page);
+$this->title = Helper::getInstance()->titleSeo($page);
+Helper::getInstance()->generateSeo($page);
 
 /* @var $this yii\web\View */
 /* @var $model app\models\CurriculumVitae */
@@ -22,7 +22,7 @@ $this->title = 'Post a Curriculum Vitae';
     <div class="col-12 col-sm-8">
         <div class="modules-front-jobs">
 
-            <div class="row page-title text-center <?= \app\library\helper\Helper::wowClass(); ?> bounce animated" data-wow-delay="1s"
+            <div class="row page-title text-center <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> bounce animated" data-wow-delay="1s"
                  style="visibility: visible; animation-delay: 1s; animation-name: bounce;">
                 <h5>Post Jobs</h5>
                 <h2><span>54716</span> Available jobs for you</h2>

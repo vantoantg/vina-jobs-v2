@@ -20,6 +20,8 @@ class Cons
         ARCHIVE_FALSE = 0;
     const ARCHIVE_TRUE = 1;
 
+    const TEMPLATE_FOLDER = 'web'; // TODO
+
     const
         ROUTE_ADMIN_ROOT = 'admin';
     const ROUTE_AD_PAGE_LIST = '/admin/pages';
@@ -63,7 +65,7 @@ class Cons
      */
     public static function getLoadingImg()
     {
-        return Helper::homeUrl().'web/template/jobs/img/loading.gif';
+        return Helper::getInstance()->homeUrl().'web/template/jobs/img/loading.gif';
     }
 
     /**
@@ -71,7 +73,7 @@ class Cons
      */
     public static function getNoUserImg()
     {
-        return Helper::homeUrl().'web/imgs/no_image_user.png';
+        return Helper::getInstance()->homeUrl().'web/imgs/no_image_user.png';
     }
 
     /**
@@ -79,7 +81,7 @@ class Cons
      */
     public static function getNoImg()
     {
-        return Helper::homeUrl().'web/imgs/no-image.jpg';
+        return Helper::getInstance()->homeUrl().'web/imgs/no-image.jpg';
     }
 
 	/**

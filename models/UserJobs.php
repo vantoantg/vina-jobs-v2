@@ -39,7 +39,7 @@ class UserJobs extends \app\models\base\UserJobs
                 }
                 $job->user_id = Common::currentUser();
                 $job->jobs_id = $jobId;
-                $job->saved_time = Datetime::getDateNow(Datetime::SQL_DATETIME);
+                $job->saved_time = Datetime::getInstance()->getDateNow(Datetime::SQL_DATETIME);
                 $job->save();
             } else {
                 if ($data['action'] == 'favorite') {

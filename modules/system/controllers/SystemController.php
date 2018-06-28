@@ -164,7 +164,7 @@ class SystemController extends AdminController
         if (Yii::$app->request->isPost) {
             $backup = Yii::$app->request->post('backup_db');
             if (isset($backup)) {
-                Helper::backupDB();
+                Helper::getInstance()->backupDB();
             }
         }
         if (Yii::$app->request->get('delete')) {
@@ -182,7 +182,7 @@ class SystemController extends AdminController
                         'name' => $entry,
                         'size' => filesize($path.'/'.$entry),
                         'time' => Carbon::createFromFormat(Datetime::FILE_TIME, $time)->format(Datetime::VIEW_DATETIME_dmYHis),
-                        'path' => Helper::siteURL().'/web/backups/'.$entry,
+                        'path' => Helper::getInstance()->siteURL().'/web/backups/'.$entry,
                     ];
                 }
             }

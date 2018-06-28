@@ -6,8 +6,8 @@ use app\library\helper\Helper;
 /* @var $model app\models\Users */
 
 $page = \app\models\Pages::get('reset-password');
-$this->title = Helper::titleSeo($page);
-Helper::generateSeo($page);
+$this->title = Helper::getInstance()->titleSeo($page);
+Helper::getInstance()->generateSeo($page);
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

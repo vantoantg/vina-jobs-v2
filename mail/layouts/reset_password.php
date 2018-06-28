@@ -278,7 +278,7 @@
 		<tr>
 			<td style="padding: 0px 10px; width: 100%; font-family: sans-serif; font-size: 12px; line-height: 140%; text-align: center; color: #888888;" class="x-gmail-data-detectors">
                 <br><br>
-				<?= \app\library\helper\Helper::siteURL()?><br><?= \app\library\helper\Helper::params('address')?><br><?= \app\library\helper\Helper::params('hotline'); ?>
+				<?= \app\library\helper\Helper::getInstance()->siteURL()?><br><?= \app\library\helper\Helper::getInstance()->params('address')?><br><?= \app\library\helper\Helper::getInstance()->params('hotline'); ?>
                 <br><br>
 				<br><br>
 				<!--<unsubscribe style="color: #888888; text-decoration: underline;">unsubscribe</unsubscribe>-->

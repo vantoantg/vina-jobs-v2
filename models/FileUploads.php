@@ -34,8 +34,8 @@ class FileUploads extends \app\models\base\FileUploads
         if ($imgs) {
             foreach ($imgs as $img) {
                 $return[] = [
-                    'thum' => Helper::imgRender(Helper::params('companyCompanyGallery').$img['file_path'], 250, 200),
-                    'view' => Helper::imgRender(Helper::params('companyCompanyGallery').$img['file_path'], 600, 400),
+                    'thum' => Helper::getInstance()->imgRender(Helper::getInstance()->params('companyCompanyGallery').$img['file_path'], 250, 200),
+                    'view' => Helper::getInstance()->imgRender(Helper::getInstance()->params('companyCompanyGallery').$img['file_path'], 600, 400),
                 ];
             }
         }
@@ -149,7 +149,7 @@ class FileUploads extends \app\models\base\FileUploads
     {
         $file = FileUploads::findOne($fileId);
         if ($file) {
-            @unlink(\Yii::$app->basePath.Helper::params('companyCompanyGallery').$file->file_path);
+            @unlink(\Yii::$app->basePath.Helper::getInstance()->params('companyCompanyGallery').$file->file_path);
             $file->delete();
 
             return true;

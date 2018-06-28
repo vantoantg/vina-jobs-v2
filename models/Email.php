@@ -55,7 +55,7 @@ class Email extends Model
             $mail->addAddress($toEmail, $toName);     // Add a recipient
             //		    $mail->addAddress('admin@vina-jobs.com');               // Name is optional
             $mail->addReplyTo($m['options']['addReplyTo'], 'noreply');
-            $mail->addCC(Helper::params('adminEmail'));
+            $mail->addCC(Helper::getInstance()->params('adminEmail'));
             //		    $mail->addBCC('bcc@example.com');
 
             //Attachments
@@ -98,7 +98,7 @@ class Email extends Model
             $mail->addAddress($toEmail, $toName);     // Add a recipient
             //		    $mail->addAddress('admin@vina-jobs.com');               // Name is optional
             $mail->addReplyTo($m['options']['addReplyTo'], 'noreply');
-            $mail->addCC(Helper::params('adminEmail'), 'Tona Nguyen - Noti');
+            $mail->addCC(Helper::getInstance()->params('adminEmail'), 'Tona Nguyen - Noti');
             //		    $mail->addBCC('bcc@example.com');
 
             //Attachments
@@ -141,10 +141,10 @@ class Email extends Model
 
             //Recipients
             $mail->setFrom($m['options']['setFrom'], \Yii::$app->params['siteName']);
-            $mail->addAddress(Helper::params('adminEmail'), 'System - '.Helper::params());     // Add a recipient
+            $mail->addAddress(Helper::getInstance()->params('adminEmail'), 'System - '.Helper::getInstance()->params());     // Add a recipient
             //		    $mail->addAddress('admin@vina-jobs.com');               // Name is optional
             $mail->addReplyTo($m['options']['addReplyTo'], 'noreply');
-            $mail->addCC(Helper::params('adminEmail'));
+            $mail->addCC(Helper::getInstance()->params('adminEmail'));
             //		    $mail->addBCC('bcc@example.com');
 
             //Attachments
@@ -153,7 +153,7 @@ class Email extends Model
 
             //Content
             $mail->isHTML(true);                                  // Set email format to HTML
-            $mail->Subject = 'Contact from '.Helper::params();
+            $mail->Subject = 'Contact from '.Helper::getInstance()->params();
             $mail->Body = $body;
             $mail->AltBody = $body;
 
@@ -185,10 +185,10 @@ class Email extends Model
 
             //Recipients
             $mail->setFrom($m['options']['setFrom'], \Yii::$app->params['siteName']);
-            $mail->addAddress(Helper::params('adminEmail'), 'System - '.Helper::params());     // Add a recipient
+            $mail->addAddress(Helper::getInstance()->params('adminEmail'), 'System - '.Helper::getInstance()->params());     // Add a recipient
             //		    $mail->addAddress('admin@vina-jobs.com');               // Name is optional
             $mail->addReplyTo($m['options']['addReplyTo'], 'noreply');
-            $mail->addCC(Helper::params('adminEmail'));
+            $mail->addCC(Helper::getInstance()->params('adminEmail'));
             //		    $mail->addBCC('bcc@example.com');
 
             //Content

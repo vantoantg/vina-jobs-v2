@@ -47,6 +47,6 @@ class BaseController extends Controller
      */
     public function jsonData($data = [])
     {
-        return Helper::jsonData($data);
+        return Helper::getInstance()->jsonData($data);
     }
 }

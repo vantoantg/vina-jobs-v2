@@ -40,8 +40,8 @@ class UserWidget extends Widget
     public function optionsRegister()
     {
         return $this->render('user/options_register', [
-            'candidate' => Helper::createUrl(['front/user/register-candidate']),
-            'company' => Helper::createUrl(['front/user/register-company']),
+            'candidate' => Helper::getInstance()->createUrl(['front/user/register-candidate']),
+            'company' => Helper::getInstance()->createUrl(['front/user/register-company']),
         ]);
     }
 }

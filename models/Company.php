@@ -69,7 +69,7 @@ class Company extends \app\models\base\Company
      */
     public function getCompanyCode($company_code)
     {
-        return Helper::encrypt($company_code, false);
+        return Helper::getInstance()->encrypt($company_code, false);
     }
 
     /**
@@ -79,7 +79,7 @@ class Company extends \app\models\base\Company
      */
     public function setCompanyCode($company_code)
     {
-        return Helper::encrypt($company_code);
+        return Helper::getInstance()->encrypt($company_code);
     }
 
     public function getCompany($company)
@@ -102,7 +102,7 @@ class Company extends \app\models\base\Company
             foreach ($files as $file) {
                 $imgs[] = [
                     'id' => $file['id'],
-                    'img' => Helper::imgRender(Helper::params('companyCompanyGallery').$file['file_path'], 150, 120), ];
+                    'img' => Helper::getInstance()->imgRender(Helper::getInstance()->params('companyCompanyGallery').$file['file_path'], 150, 120), ];
             }
         }
 
@@ -119,15 +119,15 @@ class Company extends \app\models\base\Company
     public static function getLogo($logo, $w = 200, $h = 200)
     {
         if ($logo) {
-            $path = Yii::$app->basePath.'/'.Helper::params('companyLogoPath').$logo;
+            $path = Yii::$app->basePath.'/'.Helper::getInstance()->params('companyLogoPath').$logo;
             if (file_exists($path)) {
-                return Yii::$app->getHomeUrl().Helper::params('companyLogoPath').$logo;
+                return Yii::$app->getHomeUrl().Helper::getInstance()->params('companyLogoPath').$logo;
             }
 
             return Cons::getNoImg();
-        //		    return Helper::imgRender(Helper::params('companyLogoPath') . $logo, $w, $h);
+        //		    return Helper::getInstance()->imgRender(Helper::getInstance()->params('companyLogoPath') . $logo, $w, $h);
         } else {
-            return Helper::imgRender(false);
+            return Helper::getInstance()->imgRender(false);
         }
     }
 }

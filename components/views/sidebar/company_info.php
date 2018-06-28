@@ -23,7 +23,7 @@
 ?>
 
 <div class="row">
-	<div class="widget-sidebar pd-t-30 md-pdl-30 <?= \app\library\helper\Helper::wowClass(); ?> fadeInRight" data-wow-delay="0.2s">
+	<div class="widget-sidebar pd-t-30 md-pdl-30 <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> fadeInRight" data-wow-delay="0.2s">
 		<h2 class="title-widget-sidebar">THÔNG TIN CÔNG TY</h2>
 		<div class="content-widget-sidebar">
 			<ul>
