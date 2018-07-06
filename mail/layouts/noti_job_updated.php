@@ -213,13 +213,13 @@ use app\library\helper\Helper;
 		<tr>
 			<td bgcolor="#ffffff" style="padding: 40px 0px 20px; text-align: left;">
 				<h1 style="margin: 0; font-family: sans-serif; font-size: 24px; line-height: 125%; color: #333333; font-weight: normal;">
-                    Có một Job vừa đăng ký trên - <?= Helper::getInstance()->params() ?>
+                    Có một job vừa cập nhật trên - <?= Helper::getInstance()->params() ?>
 				</h1>
 			</td>
 		</tr>
 		<tr>
 			<td bgcolor="#ffffff" style="padding: 0 0px 40px; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: left;">
-				<p style="margin: 0;">Chào <b>Admin</b>! 1 Job đã được đăng trên <?= Helper::getInstance()->params() ?> như sau:</p>
+				<p style="margin: 0;">Chào <b>Admin</b>! Job [<?= $data['title'] ?>] vừa được cập nhật trên <?= Helper::getInstance()->params() ?> như sau:</p>
 				<p style="margin: 0;">
 					<b>Job ID</b>: <?= $data['id'] ?><br>
 					<b>Job status</b>: <?= $data['status'] ?><br>

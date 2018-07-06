@@ -29,10 +29,10 @@ $this->registerJs(
             <h1><?= Html::encode($this->title); ?></h1>
 
             <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
-
-                <div class="alert alert-success">
-	                Cảm ơn bạn đã gửi thông tin liên hệ cho chúng tôi. Chúng tôi sẽ phản hồi hoặc trả lời ý kiến của bạn ngay khi có thể.
-                </div>
+	            <div class="alert-message alert-message-info <?= Helper::getInstance()->wowClass(); ?> zoomInDown animated"
+	                 data-wow-delay="0.2s">
+		            <p>Cảm ơn bạn đã gửi thông tin liên hệ cho chúng tôi. Chúng tôi sẽ phản hồi hoặc trả lời ý kiến của bạn ngay khi có thể.</p>
+	            </div>
 
             <?php else: ?>
                 <div class="alert-message alert-message-info <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> zoomInDown animated" data-wow-delay="0.2s">
