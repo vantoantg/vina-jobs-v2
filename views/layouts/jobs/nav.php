@@ -67,8 +67,11 @@ use app\library\helper\Helper;
         <a id="m-employeers" class="<?= Helper::getInstance()->active('site/employeers'); ?>"
            href="<?= Helper::getInstance()->createUrl(['site/search']); ?>?keywords=&mode=search-jobs">Tin tuyển dụng</a></li>
 	<li>
-		<a id="m-job-seekers" class="<?= Helper::getInstance()->active('site/job-seekers'); ?>"
-		   href="<?= Helper::getInstance()->createUrl(['site/job-seekers']); ?>">Người tìm việc</a></li>
+		<a id="m-job-seekers" class="<?= Helper::getInstance()->active('site/policy'); ?>"
+		   href="<?= Helper::getInstance()->createUrl(['site/policy']); ?>">Chính sách</a></li>
+	<!--<li>
+		<a id="m-job-seekers" class="<?/*= Helper::getInstance()->active('site/job-seekers'); */?>"
+		   href="<?/*= Helper::getInstance()->createUrl(['site/job-seekers']); */?>">Người tìm việc</a></li>-->
 	<!--<li>
 		<a id="m-about-us" class="<?/*= Helper::getInstance()->active('site/about-us') */?>"
 		   href="<?/*= Helper::getInstance()->createUrl(['site/about-us']) */?>">Giới thiệu</a></li>-->

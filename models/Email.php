@@ -55,7 +55,7 @@ class Email extends Model
             $mail->addAddress($toEmail, $toName);     // Add a recipient
             //		    $mail->addAddress('admin@vina-jobs.com');               // Name is optional
             $mail->addReplyTo($m['options']['addReplyTo'], 'noreply');
-            $mail->addCC(Helper::getInstance()->params('adminEmail'));
+//            $mail->addCC(Helper::getInstance()->params('adminEmail'));
             //		    $mail->addBCC('bcc@example.com');
 
             //Attachments
