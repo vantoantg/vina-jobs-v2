@@ -294,10 +294,11 @@ class UserController extends FrontController
 
                 // Send email when register success (to active)
                 $model->scenario = Users::SCENARIO_UPDATE;
-                $model->status = Users::STATUS_WAITING_ACTIVE;
+//                $model->status = Users::STATUS_WAITING_ACTIVE; // TODO: fix email active
+                $model->status = Users::STATUS_ACTIVED;
                 $model->update();
                 $temp = $this->renderPartial('@app/mail/layouts/company_register_success', ['data' => $data]);
-                Email::sendMail(Helper::getInstance()->params().' - Active your account', $temp, $model->email, $model->name);
+//                Email::sendMail(Helper::getInstance()->params().' - Active your account', $temp, $model->email, $model->name); // TODO: fix
 
                 // Inform Candidate registered
                 $data['email'] = $model->email;
