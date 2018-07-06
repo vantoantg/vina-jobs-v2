@@ -164,11 +164,10 @@ class JobsController extends FrontController
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $model->cv_end_date = Carbon::createFromFormat(Datetime::INPUT_DMY, $model->cv_end_date)->format(Datetime::SQL_DATE);
             if ($model->save()) {
-
                 $data['id'] = $model->id;
                 $data['title'] = $model->title;
                 $data['status'] = $model->status;
-                $temp = $this->renderPartial('@app/mail/layouts/noti_job_register', ['data' => $data]);
+                $temp = $this->renderPartial('@app/mail/layouts/noti_job_updated', ['data' => $data]);
                 Email::sendNotiCompanyPostJob('A job has updated on '.Helper::getInstance()->params(), $temp);
 
                 $r = Yii::$app->request->get('r');
