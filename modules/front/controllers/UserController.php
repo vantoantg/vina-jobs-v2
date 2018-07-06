@@ -345,6 +345,7 @@ class UserController extends FrontController
         $data['email'] = $model->email;
         $temp = $this->renderPartial('@app/mail/layouts/active_company_success', ['data' => $data]);
         Email::sendMail(Helper::getInstance()->params().' - Active your account success', $temp, $model->email, $model->name);
+        Email::sendMail(Helper::getInstance()->params().' - Active account success', $temp, Helper::getInstance()->params('adminEmail'), 'Admin');
 
         return $this->render('active_company_success', [
             'model' => $model,
