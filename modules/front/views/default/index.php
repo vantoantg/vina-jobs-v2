@@ -239,7 +239,7 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
                     </table>
                 </div>
                 <div class="more-jobs text-center">
-                    <a href="<?= Helper::getInstance()->createUrl(['site/employeers']); ?>"
+                    <a href="<?= Helper::getInstance()->createUrl(['site/search']); ?>?keywords=&mode=search-jobs"
                        class="btn-sm"><i class="fas fa-angle-double-right"></i> Xem thêm</a>
                 </div>
             </div>

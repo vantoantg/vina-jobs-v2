@@ -129,6 +129,11 @@ class JobsController extends FrontController
                 Yii::$app->session->setFlash('success', 'Tin tuyển dụng đã được lưu.');
                 $url = Yii::$app->getUrlManager()->createUrl(['front/jobs/edit-jobs', 'id' => $model->id]);
 
+                $data['id'] = $model->id;
+                $data['title'] = $model->title;
+                $data['status'] = $model->status;
+                $temp = $this->renderPartial('@app/mail/layouts/noti_job_register', ['data' => $data]);
+                Email::sendNotiCompanyPostJob('A company has just add a Job '.Helper::getInstance()->params(), $temp);
                 return $this->redirect($url);
             }
         }
@@ -159,6 +164,13 @@ class JobsController extends FrontController
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $model->cv_end_date = Carbon::createFromFormat(Datetime::INPUT_DMY, $model->cv_end_date)->format(Datetime::SQL_DATE);
             if ($model->save()) {
+
+                $data['id'] = $model->id;
+                $data['title'] = $model->title;
+                $data['status'] = $model->status;
+                $temp = $this->renderPartial('@app/mail/layouts/noti_job_register', ['data' => $data]);
+                Email::sendNotiCompanyPostJob('A job has updated on '.Helper::getInstance()->params(), $temp);
+
                 $r = Yii::$app->request->get('r');
                 if ($r) {
                     Yii::$app->session->setFlash('success', 'Tin tuyển dụng đã được cập nhật.');
