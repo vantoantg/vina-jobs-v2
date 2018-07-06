@@ -53,7 +53,8 @@ class Logs
     {
         $r = \Yii::$app->urlManager->parseRequest(\Yii::$app->request);
 
-        $data['ip'] = $_SERVER['SERVER_ADDR'];
+        $data['ip'] = $_SERVER['REMOTE_ADDR'];
+        $data['user_id'] = Common::currentUser('id');
         $data['http_user_agent'] = $_SERVER['HTTP_USER_AGENT'];
         $data['route'] = $r[0];
         $data['url'] = \Yii::$app->request->getUrl();

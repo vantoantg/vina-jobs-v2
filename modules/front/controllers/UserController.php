@@ -307,6 +307,7 @@ class UserController extends FrontController
             }
 
             return $this->render('register_company_success', [
+                'name' => $model->name,
                 'email' => $model->email,
             ]);
         } else {

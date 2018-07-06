@@ -24,11 +24,16 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="main-login main-center">
 
 	            <div class="alert-message alert-message-info <?= \app\library\helper\Helper::getInstance()->wowClass(); ?> zoomInDown animated" data-wow-delay="0.2s">
-		            <h4>Lưu ý:</h4>
-		            <p>
-			            Chúc mừng bạn, tài khoản của bạn đã đăng ký. Hệ thống đã gửi một email kích hoạt đến <?= $email; ?>  của bạn.<br>
+		            <h4>Bạn đã đăng ký tài khoản trên <?= Helper::getInstance()->params(); ?>:</h4>
+		            <!--<p>
+			            Chào mừng bạn <?/*= $name; */?>, tài khoản của bạn đã đăng ký. Hệ thống đã gửi một email kích hoạt đến <strong><?/*= $email; */?></strong>  của bạn.<br>
 			            Vui lòng kiểm tra email để có thể kích hoạt và hoàn thành việc đăng ký tài khoản.<br>
 			            Vui lòng kiểm tra trong cả hộp thư spam.
+		            </p>-->
+		            <p>
+			            - Chào mừng bạn <?= $name; ?>, tài khoản của bạn đã đăng ký thành công. Bạn đã có thể đăng nhập vào hệ thống và tạo tin tuyển dụng.<br>
+			            - Bạn cũng có thể quản lý các thông tin, cập nhật hình ảnh công ty trong phần quản lý trang cá nhân của mình.<br>
+			            - Xin chân thành cảm ơn đã sử dụng dịch vụ của chúng tôi !
 		            </p>
 	            </div>
             </div>
