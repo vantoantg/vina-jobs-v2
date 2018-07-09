@@ -112,6 +112,7 @@ use app\library\helper\Cons;
 		<!--start submenu -->
 		<ul>
 			<li><a href="<?= Url::toRoute('/jobs/job'); ?>" ><span class="title">List</span></a></li>
+			<li><a href="<?= Url::toRoute('/jobs/news-latter'); ?>" ><span class="title">News letter</span></a></li>
 		</ul><!--end /submenu -->
 	</li><!--end /menu-li -->
 	<!-- END Jobs -->

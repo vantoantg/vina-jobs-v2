@@ -6,6 +6,7 @@ var Jobs = function(){
     var Page = $('body.site-search');
     var site_employeers_detail = $('body.site-employeers-detail');
     var site_index = $('body.default-index');
+    var formNewsLatter = $('form#formNewsLatter');
 
     var applyModal = $('#apply-modal');
     var _callToPreApply = false;
@@ -25,6 +26,9 @@ var Jobs = function(){
             }
             if(site_index.length){
                 this.siteIndex();
+            }
+            if(formNewsLatter.length){
+                this.newsLatter();
             }
         },
         events: function(){
@@ -100,6 +104,15 @@ var Jobs = function(){
                     $('ul.cv-new li.radio label input').click();
                 }
             };
+        },
+        newsLatter: function () {
+            alert('TODO:121333');
+            formNewsLatter.on('click', 'button', function (e) {
+                e.preventDefault();
+                Service.postCallback(formNewsLatter.attr('action'), function (data) {
+
+                });
+            });
         },
         handleActiveImgWhenClickShowPopupGellery: function(){
             var myCarousel = $('#myCarousel');

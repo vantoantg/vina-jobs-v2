@@ -10,6 +10,7 @@
 
 namespace app\modules\front\controllers;
 
+use app\forms\NewsLatterForm;
 use app\forms\SearchForm;
 use app\library\helper\Device;
 use yii\web\BadRequestHttpException;
@@ -55,5 +56,28 @@ class DefaultController extends FrontController
      */
     public function actionCallback()
     {
+    }
+
+    public function actionNewsLatter(){
+        echo '<pre>';
+        print_r(121);
+        echo '</pre>';
+        die;
+        if(\Yii::$app->request->isAjax){
+            $form = new NewsLatterForm();
+            if($form->load(\Yii::$app->request->post())){
+                if($form->validate()){
+                    echo '<pre>';
+                    print_r(\Yii::$app->request->post());
+                    echo '</pre>';
+                    die;
+                }else{
+                    echo '<pre>';
+                    print_r($form->errors);
+                    echo '</pre>';
+                    die;
+                }
+            }
+        }
     }
 }
