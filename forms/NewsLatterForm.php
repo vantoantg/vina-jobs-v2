@@ -43,4 +43,9 @@ class NewsLatterForm extends Model
             'email' => 'Email',
         ];
     }
+
+    public function formName()
+    {
+        return 'NewsLatter';
+    }
 }

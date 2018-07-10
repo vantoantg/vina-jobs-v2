@@ -106,11 +106,12 @@ var Jobs = function(){
             };
         },
         newsLatter: function () {
-            alert('TODO:121333');
             formNewsLatter.on('click', 'button', function (e) {
                 e.preventDefault();
-                Service.postCallback(formNewsLatter.attr('action'), function (data) {
-
+                Service.postCallback(formNewsLatter.attr('action'), formNewsLatter.serialize(), function (data) {
+                    if(data.error == false){
+                        formNewsLatter.find('div.help-block').html(data.message);
+                    }
                 });
             });
         },

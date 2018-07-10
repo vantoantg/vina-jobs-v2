@@ -37,7 +37,7 @@ use yii\widgets\ActiveForm;
 	<p>Bằng cách nhập email vào đây và nhấn gửi. Bạn sẽ nhận các tin mới nhất từ <?=\app\library\helper\Helper::getInstance()->params() ?></p>
     <?= $form->field($newsLatter, 'email', [
         'template' => '{label}<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>{input}</div>{error}{hint}',
-    ])->textInput()->label(false); ?>
-	<button type="button" class="btn btn-warning"><i class="fas fa-location-arrow"></i> Gửi</button>
+    ])->textInput(['data-enter' => 'ajax'])->label(false); ?>
+	<button type="button" class="btn btn-primary ajaxForm"><i class="fas fa-location-arrow"></i> Đăng ký</button>
     <?php ActiveForm::end(); ?>
 </div>

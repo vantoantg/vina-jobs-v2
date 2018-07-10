@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\NewsLetter */
+/* @var $model app\models\NewsLatter */
 
 $this->title = 'Update News Letter: {nameAttribute}';
 $this->params['breadcrumbs'][] = ['label' => 'News Letters', 'url' => ['index']];

@@ -4,8 +4,8 @@ namespace app\modules\jobs\controllers;
 
 use app\modules\admin\controllers\AdminController;
 use Yii;
-use app\models\NewsLetter;
-use app\models\search\NewsLetter as NewsLetterSearch;
+use app\models\NewsLatter;
+use app\models\search\NewsLatter as NewsLetterSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -64,7 +64,7 @@ class NewsLatterController extends AdminController
      */
     public function actionCreate()
     {
-        $model = new NewsLetter();
+        $model = new NewsLatter();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -113,12 +113,12 @@ class NewsLatterController extends AdminController
      * Finds the NewsLetter model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return NewsLetter the loaded model
+     * @return NewsLatter the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = NewsLetter::findOne($id)) !== null) {
+        if (($model = NewsLatter::findOne($id)) !== null) {
             return $model;
         }
 

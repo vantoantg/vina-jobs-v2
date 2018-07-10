@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\NewsLetter */
+/* @var $model app\models\NewsLatter */
 
 $this->title = 'Create News Letter';
 $this->params['breadcrumbs'][] = ['label' => 'News Letters', 'url' => ['index']];

@@ -13,7 +13,9 @@ namespace app\modules\front\controllers;
 use app\forms\NewsLatterForm;
 use app\forms\SearchForm;
 use app\library\helper\Device;
+use app\models\NewsLatter;
 use yii\web\BadRequestHttpException;
+use Yii;
 
 /**
  * Default controller for the `front` module
@@ -58,24 +60,18 @@ class DefaultController extends FrontController
     {
     }
 
-    public function actionNewsLatter(){
-        echo '<pre>';
-        print_r(121);
-        echo '</pre>';
-        die;
-        if(\Yii::$app->request->isAjax){
+    /**
+     * @return bool|\yii\web\Response
+     */
+    public function actionNewsLatter()
+    {
+        if (Yii::$app->request->isAjax && Yii::$app->request->isPost) {
             $form = new NewsLatterForm();
-            if($form->load(\Yii::$app->request->post())){
-                if($form->validate()){
-                    echo '<pre>';
-                    print_r(\Yii::$app->request->post());
-                    echo '</pre>';
-                    die;
-                }else{
-                    echo '<pre>';
-                    print_r($form->errors);
-                    echo '</pre>';
-                    die;
+            if ($form->load(Yii::$app->request->post())) {
+                if ($form->validate()) {
+                    return $this->asJson(NewsLatter::instance()->saveNewsLatter($form->email));
+                } else {
+                    return $this->asJson(['error' => true, 'message' => $form->errors]);
                 }
             }
         }

@@ -10,9 +10,10 @@
 
 namespace app\models;
 
+use app\library\helper\Cons;
 use app\library\helper\Datetime;
 
-class NewsLetter extends \app\models\base\NewsLatter
+class NewsLatter extends \app\models\base\NewsLatter
 {
     const STATUS_ACTIVE = 1;
     const STATUS_DRAFT = 0;
@@ -32,5 +33,22 @@ class NewsLetter extends \app\models\base\NewsLatter
         }
 
         return parent::beforeSave($insert);
+    }
+
+    /**
+     * @param $email
+     * @return array
+     */
+    public function saveNewsLatter($email){
+        $newsLatter = self::findOne(['email' => $email]);
+        $message = Cons::MSG_NEWS_LATTER_REGISTERED;
+        if(!$newsLatter){
+            $model = new self();
+            $model->email = $email;
+            $model->save();
+            $message = Cons::MSG_NEWS_LATTER_SUCCESS;
+        }
+
+        return ['error' => false, 'message' => $message];
     }
 }

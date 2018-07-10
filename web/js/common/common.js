@@ -109,7 +109,23 @@ var Common = {
         return base + sep + key + '=' + value;
     },
 
+    preEnter: function () {
+        $('form input[data-enter="false"]').keydown(function (e) {
+            if (e.keyCode == 13) {
+                e.preventDefault();
+                return false;
+            }
+        });
 
+        $('form input[data-enter="ajax"]').keydown(function (e) {
+            if (e.keyCode == 13) {
+                e.preventDefault();
+
+                $(this).closest('form').find('button.ajaxForm').click();
+                return false;
+            }
+        });
+    }
 };
 
 (function($) {
@@ -153,6 +169,7 @@ var isMobile = {
 };
 $(document).ready(function(){
     Common.clickGoToUrl();
+    Common.preEnter();
     $('[data-toggle="tooltip"]').tooltip();
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         $('body').addClass('ismb');
