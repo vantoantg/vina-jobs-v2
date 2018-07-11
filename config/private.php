@@ -14,27 +14,20 @@ return [
     	'my_simple_secret_iv' => 'tonanguyen',
     ],
     'email' => [
-	    'host' => '',
-	    'username' => '',
-	    'password' => '',
-	    'secure' => true,
-	    'port' => '25',
-	    'options' => [
-		    'mailInfo' => 'info@jobsvina.com',
-		    'setFrom' => 'system@jobsvina.com',
-		    'addReplyTo' => 'noreply@jobsvina.com',
-	    ],
+'host' => 'vina-jobs.com',
+    'username' => 'system@vina-jobs.com',
+    'password' => '12345678090',
+    'secure' => false,
+    'port' => '25',
+    'options' => [
+        'mailInfo' => 'info@jobsvina.com',
+        'setFrom' => 'system@jobsvina.com',
+        'addReplyTo' => 'noreply@jobsvina.com',
+    ],
     ],
     'db' => [
-<<<<<<< HEAD
             'dsn' => 'mysql:host=localhost;dbname=zadmin_vnjobs',
         'username' => 'vnjobs',
         'password' => 'apy9yzavu',
     ]
-=======
-	    'dsn' => 'mysql:host=localhost;dbname=',
-        'username' => 'root',
-        'password' => '123',
-    ],
->>>>>>> 4b244e55b615030b9ff5feea974b81f3bd7d7f76
 ];
