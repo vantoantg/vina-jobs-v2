@@ -121,6 +121,7 @@ class JobCustomSearch extends JobModel
 //            ->andFilterWhere(['like', 'seo_keyword', $this->seo_keyword])
 //            ->andFilterWhere(['like', 'seo_description', $this->seo_description]);
 
+        $query->orderBy(['job.arrange' => SORT_ASC, 'job.created_at' => SORT_DESC]);
 //	    var_dump($query->prepare(\Yii::$app->db->queryBuilder)->createCommand()->rawSql);
 //	    exit();
         return $dataProvider;

@@ -278,8 +278,6 @@ var Main = function () {
             var resultJobs = $('.jobs #jobs-search');
 
             if(searchJobs.length){
-
-                var _timer = 500;
                 searchJobs.on('change', function () {
                     search();
                 });
@@ -322,7 +320,6 @@ var Main = function () {
                     var _hash = Main.createUrlParams(formData);
                     history.pushState(null, null, '?' + _hash);
                     var newUrl = _rootUrl + 'search/result.html?' + _hash;
-
                     exQuery(newUrl)
                 };
 
@@ -336,7 +333,11 @@ var Main = function () {
 
                 var _renderSearchData = function (data) {
                     resultJobs.find('h2 span').html(data.pagination.totalCount);
-                    var html = _.template($('#jobs-search-template').html())({data: data.datas});
+                    if (data.pagination.totalCount == 0) {
+                        var html = _.template($('#jobs-search-template-empty').html())();
+                    } else {
+                        var html = _.template($('#jobs-search-template').html())({data: data.datas});
+                    }
                     resultJobs.find('table.table').html(html);
                     resultJobs.find('.paginator-jobs').html(data.papeLink);
                 };
