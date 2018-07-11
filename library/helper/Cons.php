@@ -42,7 +42,10 @@ class Cons
     const PAGE_REGISTER_CANDIDATE = 'register-candidate-html';
     const PAGE_REGISTER_COMPANY = 'register-company-html';
     const PAGE_JOB_SEEKERS = 'job-seekers-html';
-    const PAGE_EMPLOYEERS = 'employeers-html';
+    const PAGE_EMPLOYERS = 'employers-html';
+
+    const MSG_NEWS_LATTER_SUCCESS = 'Bạn đã đăng ký thành công!';
+    const MSG_NEWS_LATTER_REGISTERED = 'Email này đã được đăng ký!';
 
 	/**
 	 * @var object Cons

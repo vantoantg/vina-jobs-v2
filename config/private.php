@@ -28,6 +28,6 @@ return [
     'db' => [
 	    'dsn' => 'mysql:host=localhost;dbname=',
         'username' => 'root',
-        'password' => '123',
+        'password' => '',
     ],
 ];

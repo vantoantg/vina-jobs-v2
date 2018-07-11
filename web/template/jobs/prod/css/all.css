@@ -10070,7 +10070,7 @@ aside .content-footer > img {
     border-bottom: 2px solid #e5ebef;
     margin-bottom: 15px;
     padding-bottom: 10px;
-    margin-top: 0px;
+    /*margin-top: 0px;*/
 }
 
 .title-widget-sidebar:after {
@@ -11092,6 +11092,9 @@ body.modal-open {
 .lh-18 {
   line-height: 18px;
 }
+.fz-50 {
+  font-size: 50px;
+}
 .navbar-collapse.in {
   overflow-y: hidden!important;
 }
@@ -11120,6 +11123,9 @@ body.modal-open {
   font-size: 70px;
   color: #dedede;
   margin-bottom: 15px;
+}
+.bg_e5f6fd {
+  background: #E5F6FD;
 }
 .breadcrumb {
   border-radius: 0;
