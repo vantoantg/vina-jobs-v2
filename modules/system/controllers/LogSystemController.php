@@ -10,7 +10,9 @@
 
 namespace app\modules\system\controllers;
 
+use app\forms\ViewLogsForm;
 use app\modules\admin\controllers\AdminController;
+use Symfony\Component\Finder\Finder;
 use Yii;
 use app\models\LogSystem;
 use app\models\search\LogSystem as LogSystemSearch;
@@ -42,16 +44,48 @@ class LogSystemController extends AdminController
      *
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($id = null)
     {
-        $searchModel = new LogSystemSearch();
+        $path = Yii::$app->basePath.'/assets/logs';
+
+        $finder = new Finder();
+        $finder->files()->in($path);
+
+        $files = [];
+        $model = new ViewLogsForm();
+        foreach ($finder as $file) {
+            // dumps the absolute path
+//            var_dump($file->getRealPath());
+            // dumps the relative path to the file, omitting the filename
+//            var_dump($file->getRelativePath());
+            // dumps the relative path to the file
+//            var_dump($file->getRelativePathname());
+
+            $name = $file->getRelativePathname().' - '.$file->getSize().'Byte';
+            $files[] = [
+                'name' => $name,
+                'realPath' => $file->getRealPath(),
+            ];
+
+            if($id == $file->getRealPath()){
+                $model->fileName = $name;
+                $model->textarea = $file->getContents();
+            }
+        }
+
+        return $this->render('index_file', [
+            'files' => $files,
+            'model' => $model,
+        ]);
+
+        /*$searchModel = new LogSystemSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination->pageSize = $this->setting['page_size'];
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-        ]);
+        ]);*/
     }
 
     /**
