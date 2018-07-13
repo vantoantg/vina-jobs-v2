@@ -1197,3 +1197,16 @@ body.site-employeers-detail #viewGallery .modal-content .close {
     margin: 5px;
   }
 }
+/*
+Fix when click select2 then page jump to top
+ */
+.select2-container,
+.select2-dropdown,
+.select2-search,
+.select2-results {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
