@@ -1,10 +1,11 @@
 <?php
+
 // create curl resource
 $ch = curl_init();
-$myurl = '//front/cron/index';
+$myUrl = 'https://jobsvina.com/front/cron/index';
 
 // set url
-curl_setopt($ch, CURLOPT_URL, $myurl);
+curl_setopt($ch, CURLOPT_URL, $myUrl);
 
 //return the transfer as a string
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -14,4 +15,3 @@ $output = curl_exec($ch);
 
 // close curl resource to free up system resources
 curl_close($ch);
-?>
