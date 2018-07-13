@@ -36,6 +36,9 @@ body.modal-open {
 .lh-18 {
   line-height: 18px;
 }
+.fz-50 {
+  font-size: 50px;
+}
 .navbar-collapse.in {
   overflow-y: hidden!important;
 }
@@ -64,6 +67,9 @@ body.modal-open {
   font-size: 70px;
   color: #dedede;
   margin-bottom: 15px;
+}
+.bg_e5f6fd {
+  background: #E5F6FD;
 }
 .breadcrumb {
   border-radius: 0;
@@ -1190,4 +1196,17 @@ body.site-employeers-detail #viewGallery .modal-content .close {
   .ft-jobs-detail button {
     margin: 5px;
   }
+}
+/*
+Fix when click select2 then page jump to top
+ */
+.select2-container,
+.select2-dropdown,
+.select2-search,
+.select2-results {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
 }

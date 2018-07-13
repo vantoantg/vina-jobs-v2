@@ -83,3 +83,12 @@ $this->registerJsFile(Yii::$app->getHomeUrl().'vendor/bower-asset/select2/dist/j
     </tr>
     <% }); %>
 </script>
+<script id="jobs-search-template-empty" type="text/template">
+    <tr class="bg_e5f6fd">
+        <td colspan="100%">
+	        <h5 class="text-center">
+		        <p><i class="fas fa-info-circle fz-50"></i></p>
+		        Không có kết quả nào với điều kiện tìm kiếm của bạn !</h5>
+        </td>
+    </tr>
+</script>

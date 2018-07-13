@@ -20,14 +20,24 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
+use yii\widgets\ActiveForm;
 ?>
 
 <div class="widget-sidebar">
-	<h2 class="title-widget-sidebar">NEWSLATTER</h2>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ut .</p>
-	<div class="input-group">
-		<span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
-		<input id="email" type="text" class="form-control" name="email" placeholder="Email">
-	</div>
-	<button type="button" class="btn btn-warning">Warning</button>
+    <?php $form = ActiveForm::begin([
+        'method' => 'post',
+        'action' => \app\library\helper\Helper::getInstance()->createUrl(['news-latter.html']),
+        'options' => [
+            'id' => 'formNewsLatter',
+            'class' => 'form floating-label',
+            'accept-charset' => 'utf-8',
+        ],
+    ]); ?>
+	<h2 class="title-widget-sidebar">Đăng ký nhận tin</h2>
+	<p>Bằng cách nhập email vào đây và nhấn gửi. Bạn sẽ nhận các tin mới nhất từ <?=\app\library\helper\Helper::getInstance()->params() ?></p>
+    <?= $form->field($newsLatter, 'email', [
+        'template' => '{label}<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>{input}</div>{error}{hint}',
+    ])->textInput(['data-enter' => 'ajax'])->label(false); ?>
+	<button type="button" class="btn btn-primary ajaxForm"><i class="fas fa-location-arrow"></i> Đăng ký</button>
+    <?php ActiveForm::end(); ?>
 </div>

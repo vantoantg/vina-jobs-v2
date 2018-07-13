@@ -19,6 +19,7 @@ return [
     'blog/<slug:[a-zA-Z0-9_ -@.]+>-<id:[a-zA-Z0-9_ -@.]+>.html' => 'site/blog-detail',
     'contact.html' => 'site/contact',
     'dieu-khoan-su-dung.html' => 'site/policy',
+    'news-latter.html' => 'front/default/news-latter',
 
     'search/result.html' => 'site/search',
 //    'search/load-data.html' => 'site/ajax-search',

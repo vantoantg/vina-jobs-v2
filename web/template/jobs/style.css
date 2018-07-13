@@ -818,7 +818,7 @@ aside .content-footer > img {
     border-bottom: 2px solid #e5ebef;
     margin-bottom: 15px;
     padding-bottom: 10px;
-    margin-top: 0px;
+    /*margin-top: 0px;*/
 }
 
 .title-widget-sidebar:after {

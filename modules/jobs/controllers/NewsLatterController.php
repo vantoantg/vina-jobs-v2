@@ -1,31 +1,21 @@
 <?php
 
-/*
- *  Created by Tona Nguyen
- *  Email: nguyennguyen.vt88@gmail.com
- *  Phone: 0932.252.414
- *  Address: VN, HCMC
- *  Website: https://jobsvina.com/
- */
+namespace app\modules\jobs\controllers;
 
-namespace app\modules\system\controllers;
-
-use app\forms\ViewLogsForm;
 use app\modules\admin\controllers\AdminController;
-use Symfony\Component\Finder\Finder;
 use Yii;
-use app\models\LogSystem;
-use app\models\search\LogSystem as LogSystemSearch;
+use app\models\NewsLatter;
+use app\models\search\NewsLatter as NewsLetterSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * LogSystemController implements the CRUD actions for LogSystem model.
+ * NewsLetterController implements the CRUD actions for NewsLetter model.
  */
-class LogSystemController extends AdminController
+class NewsLatterController extends AdminController
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function behaviors()
     {
@@ -40,61 +30,24 @@ class LogSystemController extends AdminController
     }
 
     /**
-     * Lists all LogSystem models.
-     *
+     * Lists all NewsLetter models.
      * @return mixed
      */
-    public function actionIndex($id = null)
+    public function actionIndex()
     {
-        $path = Yii::$app->basePath.'/assets/logs';
-
-        $finder = new Finder();
-        $finder->files()->in($path);
-
-        $files = [];
-        $model = new ViewLogsForm();
-        foreach ($finder as $file) {
-            // dumps the absolute path
-//            var_dump($file->getRealPath());
-            // dumps the relative path to the file, omitting the filename
-//            var_dump($file->getRelativePath());
-            // dumps the relative path to the file
-//            var_dump($file->getRelativePathname());
-
-            $name = $file->getRelativePathname().' - '.$file->getSize().'Byte';
-            $files[] = [
-                'name' => $name,
-                'realPath' => $file->getRealPath(),
-            ];
-
-            if($id == $file->getRealPath()){
-                $model->fileName = $name;
-                $model->textarea = $file->getContents();
-            }
-        }
-
-        return $this->render('index_file', [
-            'files' => $files,
-            'model' => $model,
-        ]);
-
-        /*$searchModel = new LogSystemSearch();
+        $searchModel = new NewsLetterSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->pagination->pageSize = $this->setting['page_size'];
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-        ]);*/
+        ]);
     }
 
     /**
-     * Displays a single LogSystem model.
-     *
+     * Displays a single NewsLetter model.
      * @param integer $id
-     *
      * @return mixed
-     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
@@ -105,14 +58,13 @@ class LogSystemController extends AdminController
     }
 
     /**
-     * Creates a new LogSystem model.
+     * Creates a new NewsLetter model.
      * If creation is successful, the browser will be redirected to the 'view' page.
-     *
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new LogSystem();
+        $model = new NewsLatter();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -124,13 +76,10 @@ class LogSystemController extends AdminController
     }
 
     /**
-     * Updates an existing LogSystem model.
+     * Updates an existing NewsLetter model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     *
      * @param integer $id
-     *
      * @return mixed
-     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
@@ -147,13 +96,10 @@ class LogSystemController extends AdminController
     }
 
     /**
-     * Deletes an existing LogSystem model.
+     * Deletes an existing NewsLetter model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     *
      * @param integer $id
-     *
      * @return mixed
-     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
@@ -164,18 +110,15 @@ class LogSystemController extends AdminController
     }
 
     /**
-     * Finds the LogSystem model based on its primary key value.
+     * Finds the NewsLetter model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     *
      * @param integer $id
-     *
-     * @return LogSystem the loaded model
-     *
+     * @return NewsLatter the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = LogSystem::findOne($id)) !== null) {
+        if (($model = NewsLatter::findOne($id)) !== null) {
             return $model;
         }
 

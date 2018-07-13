@@ -11,6 +11,7 @@
 namespace app\components;
 
 use app\library\helper\Helper;
+use app\models\base\NewsLatter;
 use app\models\Company;
 use app\models\Job;
 use yii\base\Widget;
@@ -71,6 +72,7 @@ class SidebarWidget extends Widget
     public function newsLatter()
     {
         return $this->render('sidebar/news_latter', [
+            'newsLatter' => new NewsLatter()
         ]);
     }
 

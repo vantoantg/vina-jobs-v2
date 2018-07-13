@@ -1,31 +1,23 @@
 <?php
 
-/*
- *  Created by Tona Nguyen
- *  Email: nguyennguyen.vt88@gmail.com
- *  Phone: 0932.252.414
- *  Address: VN, HCMC
- *  Website: https://jobsvina.com/
- */
-
-namespace app\modules\system\controllers;
+namespace app\modules\jobs\controllers;
 
 use app\forms\ViewLogsForm;
 use app\modules\admin\controllers\AdminController;
 use Symfony\Component\Finder\Finder;
 use Yii;
-use app\models\LogSystem;
-use app\models\search\LogSystem as LogSystemSearch;
+use app\models\SendEmail;
+use app\models\search\SendEmail as SendEmailSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * LogSystemController implements the CRUD actions for LogSystem model.
+ * SendEmailController implements the CRUD actions for SendEmail model.
  */
-class LogSystemController extends AdminController
+class SendEmailController extends AdminController
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function behaviors()
     {
@@ -40,61 +32,53 @@ class LogSystemController extends AdminController
     }
 
     /**
-     * Lists all LogSystem models.
-     *
+     * Lists all SendEmail models.
      * @return mixed
      */
-    public function actionIndex($id = null)
+    public function actionIndex()
     {
-        $path = Yii::$app->basePath.'/assets/logs';
-
-        $finder = new Finder();
-        $finder->files()->in($path);
-
-        $files = [];
-        $model = new ViewLogsForm();
-        foreach ($finder as $file) {
-            // dumps the absolute path
-//            var_dump($file->getRealPath());
-            // dumps the relative path to the file, omitting the filename
-//            var_dump($file->getRelativePath());
-            // dumps the relative path to the file
-//            var_dump($file->getRelativePathname());
-
-            $name = $file->getRelativePathname().' - '.$file->getSize().'Byte';
-            $files[] = [
-                'name' => $name,
-                'realPath' => $file->getRealPath(),
-            ];
-
-            if($id == $file->getRealPath()){
-                $model->fileName = $name;
-                $model->textarea = $file->getContents();
-            }
-        }
-
-        return $this->render('index_file', [
-            'files' => $files,
-            'model' => $model,
-        ]);
-
-        /*$searchModel = new LogSystemSearch();
+        $searchModel = new SendEmailSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->pagination->pageSize = $this->setting['page_size'];
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-        ]);*/
+        ]);
+    }
+
+    public function actionTemplate($id = null){
+	    $path = Yii::$app->basePath.'/assets/logs';
+
+	    $finder = new Finder();
+//	    $finder->files()->in($path);
+	    echo '<pre>';
+	    print_r($path);
+	    echo '</pre>';
+	    die;
+	    $files = [];
+	    $model = new ViewLogsForm();
+	    foreach ($finder as $file) {
+		    $name = $file->getRelativePathname().' - '.$file->getSize().'Byte';
+		    $files[] = [
+			    'name' => $name,
+			    'realPath' => $file->getRealPath(),
+		    ];
+
+		    if($id == $file->getRealPath()){
+			    $model->fileName = $name;
+			    $model->textarea = $file->getContents();
+		    }
+	    }
+	    return $this->render('template', [
+		    'files' => $files,
+		    'model' => $model,
+	    ]);
     }
 
     /**
-     * Displays a single LogSystem model.
-     *
-     * @param integer $id
-     *
+     * Displays a single SendEmail model.
+     * @param string $id
      * @return mixed
-     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
@@ -105,14 +89,13 @@ class LogSystemController extends AdminController
     }
 
     /**
-     * Creates a new LogSystem model.
+     * Creates a new SendEmail model.
      * If creation is successful, the browser will be redirected to the 'view' page.
-     *
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new LogSystem();
+        $model = new SendEmail();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -124,13 +107,10 @@ class LogSystemController extends AdminController
     }
 
     /**
-     * Updates an existing LogSystem model.
+     * Updates an existing SendEmail model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     *
-     * @param integer $id
-     *
+     * @param string $id
      * @return mixed
-     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
@@ -147,13 +127,10 @@ class LogSystemController extends AdminController
     }
 
     /**
-     * Deletes an existing LogSystem model.
+     * Deletes an existing SendEmail model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     *
-     * @param integer $id
-     *
+     * @param string $id
      * @return mixed
-     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
@@ -164,18 +141,15 @@ class LogSystemController extends AdminController
     }
 
     /**
-     * Finds the LogSystem model based on its primary key value.
+     * Finds the SendEmail model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     *
-     * @param integer $id
-     *
-     * @return LogSystem the loaded model
-     *
+     * @param string $id
+     * @return SendEmail the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = LogSystem::findOne($id)) !== null) {
+        if (($model = SendEmail::findOne($id)) !== null) {
             return $model;
         }
 

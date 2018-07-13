@@ -24,6 +24,13 @@ return [
         'setFrom' => 'system@jobsvina.com',
         'addReplyTo' => 'noreply@jobsvina.com',
     ],
+<<<<<<< HEAD
+=======
+    'db' => [
+	    'dsn' => 'mysql:host=localhost;dbname=',
+        'username' => 'root',
+        'password' => '',
+>>>>>>> 4f0e926f87da584fd63dfd9980d34d59f7a3a756
     ],
     'db' => [
             'dsn' => 'mysql:host=localhost;dbname=zadmin_vnjobs',

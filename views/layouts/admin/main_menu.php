@@ -112,6 +112,7 @@ use app\library\helper\Cons;
 		<!--start submenu -->
 		<ul>
 			<li><a href="<?= Url::toRoute('/jobs/job'); ?>" ><span class="title">List</span></a></li>
+			<li><a href="<?= Url::toRoute('/jobs/news-latter'); ?>" ><span class="title">News letter</span></a></li>
 		</ul><!--end /submenu -->
 	</li><!--end /menu-li -->
 	<!-- END Jobs -->
@@ -211,7 +212,8 @@ use app\library\helper\Cons;
         </a>
         <!--start submenu -->
         <ul>
-            <li><a href="../../html/mail/inbox.html" ><span class="title">Inbox</span></a></li>
+            <li><a href="<?= Url::toRoute('/jobs/send-email/index'); ?>" ><span class="title">Email List</span></a></li>
+            <li><a href="<?= Url::toRoute('/jobs/send-email/template'); ?>" ><span class="title">Template</span></a></li>
             <li><a href="../../html/mail/compose.html" ><span class="title">Compose</span></a></li>
             <li><a href="../../html/mail/reply.html" ><span class="title">Reply</span></a></li>
             <li><a href="../../html/mail/message.html" ><span class="title">View message</span></a></li>
