@@ -104,4 +104,12 @@ class Logs
     {
         $this->createFileLog($message, 'errors');
     }
+
+    /**
+     * @param $message
+     */
+    public function cron($message)
+    {
+        $this->createFileLog($message, 'cron');
+    }
 }
